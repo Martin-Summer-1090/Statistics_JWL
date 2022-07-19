@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+These are lecture notes for my introductory statistics and data literarcy course I am developing for Jesuit worldwide learning (JWL) together with my colleagues from Seitwerk.

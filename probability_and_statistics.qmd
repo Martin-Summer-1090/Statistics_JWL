@@ -1,0 +1,17 @@
+# Putting probability and statistics together
+
+## Contents 
+
+This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are
+
+
+1. Using probability theory we can derive the sampling distribution of summary statistics from which formulae for confidence intervals can be derived. 
+2. Explain what a 95 \% confidence interval means
+3. The central limit theorem and the normal distribution
+4. The role of systematic error due to non random causes and the role of judgment
+5. Explain the idea that confidence intervals can be calculated even when we observe all the data which then represent uncertainty about the parameters of an underlying metaphorical population.
+
+
+## Outcome
+
+The students should gain a firm understanding of confidence intervals and how they help us in quantifying uncertainty of predictions we make based on our available data. They should see and understand how and why it is sometimes more convenient and parsimonious to have formulae for confidence intervals rather than quantifying the uncertainty from simulation. The intuitive understanding of the limit theorems and when they can be legitimately applied will be important here.

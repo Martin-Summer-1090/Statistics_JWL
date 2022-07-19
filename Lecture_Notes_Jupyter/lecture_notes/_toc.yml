@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: introduction
+- file: categorical_data_and_proportions
+- file: summarizing_and_communicting_lots_of_data
+- file: from_limited_data_to_populations
+- file: what_causes_what
+- file: modelling_relationships_using_regression
+- file: algorithmic_prediction
+- file: how_sure_can_we_be
+- file: probability_quantifying_uncertainty_and_variability
+- file: putting_probability_and_statistics_together
+- file: answering_questions_and_claiming_discoveries

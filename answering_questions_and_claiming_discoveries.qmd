@@ -1,0 +1,20 @@
+# Answering questions and claiming discoveries
+
+## Contents
+
+Formal statistical testing as a major empirical tool for answering questions and claiming discoveries.
+
+
+1. Tests of null hypothesis as a major part of statistical practice
+2. p-value as the measure of incompatibility between the observed data and the null hypothesis
+3. The traditional p value thresholds.
+4. The need to adjust thresholds with multiple tests
+5. Correspondence between p-values and confidence intervals
+6. Neyman-Pearson theory (alternative hypothesis and type 1 and type 2 error). 
+7. Sequential testing
+8. The misinterpretation of p-values.
+
+
+## Outcomes
+
+Students should learn the basic ideas of hypothesis testing and the terminology around it.

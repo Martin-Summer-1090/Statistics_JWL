@@ -1,0 +1,17 @@
+# Modelling relationships using regression
+
+## Contents 
+
+Regression models provide a mathematical representation between a set of explanatory variables and a response. 
+
+
+1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change. 
+2. Regression to the mean
+3. Regression models can incorporate different types of response variable
+4. Explanatory variables and non-linear relationships
+5. Be cautious in interpreting models and don’t take them literally.
+
+
+## Outcome
+
+The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect. 

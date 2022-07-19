@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Statistics - 1&nbsp; Introduction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./categorical_data_and_proportions.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Statistics</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lost of data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p>Introduce the concept of statistics and give an overview what students will learn during the course. In the introductory unit I would like to include an activity on variation or an interesting visualization where students see the code (which they do not yet understand in detail) but can change certain details and experiment on the computer how the visualization changes. This will also provide a first check of whether the software and hardware work for each student. I would also like to discuss why statistics is important and get students involved by collecting data on them for use later in the course. I would like to have lots of involvement in the first unit to set expectations for plenty of participation.</p>
+<p>The overall goals of this course might be described as follows: After successfully completing this course students will have learned new skills in three core pillars of statistics</p>
+<ol type="1">
+<li><p>Data exploration or finding patterns in data and information through visualisation and computation.</p></li>
+<li><p>Making predictions, which means using available data and information to make informed guesses about data and information we do not have.</p></li>
+<li><p>To quantify the uncertainty we have to attach to our predictions.</p></li>
+</ol>
+<p>Simultaneously with these three core skills the students will learn to use the computer and modern computing tools to apply this knowledge to real world data. The combination of these skills will empower students to achieve a level of data literacy allowing them to independently work with new data and new situations they encounter in their professional life after completing the course or in their further studies.</p>
+<p>As sources for my notes I rely very much on <span class="citation" data-cites="FrePisPur2009">(<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">Freedman, Pisani, and Purves 2009</a>)</span> on <span class="citation" data-cites="Kap2009">(<a href="references.html#ref-Kap2009" role="doc-biblioref">Kaplan 2009</a>)</span> and in particular on Spiegelhalter’s wonderful exposition <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> in terms of concepts and the logic how the concepts are developed. Important sources for examples are [<span class="citation" data-cites="BekKes2021">Bekes and Kezdi (<a href="references.html#ref-BekKes2021" role="doc-biblioref">2021</a>)</span>], [<span class="citation" data-cites="GelNol2017">Gelman and Nolan (<a href="references.html#ref-GelNol2017" role="doc-biblioref">2017</a>)</span>] as well as <span class="citation" data-cites="PeCa2005">(<a href="references.html#ref-PeCa2005" role="doc-biblioref">Peck et al. 2005</a>)</span> as well as <span class="citation" data-cites="AdhDen">(<a href="references.html#ref-AdhDen" role="doc-biblioref">Adhikari, DeNero, and Wagner</a>)</span>, who wrote the textbook for Berkeley’s introductory data science course Data08.</p>
+<p>My vision would be to achieve a suitably adapted combination of Spiegelhalter and Adhikari, DeNero and Wagner. While the former is the didactically best exposition of statistics I have ever encountered, the latter is unmatched in explaining modern computational tools at a basic level. For this course, however both sources need to be substantially reworked. Spiegelhalter is written for a general audience of readers. Here we need to teach the concepts and actively involve students through exercises and projects they do themselves. I will thus follow the conceptual development logic of Spiegelhalter – and in this lecture note outline I have literally done so – but I would like to find a different and more interactive exposition with perhaps also different examples, nearer to the live context of students. Adhikari, DeNero and Wagner is for this course a bit too much tilted towards computation and perhaps not enough towards statistics. On the other hand this is a lightening rod for how I would like to see this course roughly turn out in terms of exposition and the use of the computational tools, in particular notebooks and coding style.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-AdhDen" class="csl-entry" role="doc-biblioentry">
+Adhikari, Ani, John DeNero, and David Wagner. <span>“Computational and Inferential Thinking: The Foundations of Data Science.”</span> <a href="https://inferentialthinking.com/chapters/intro.html" class="uri">https://inferentialthinking.com/chapters/intro.html</a>.
+</div>
+<div id="ref-BekKes2021" class="csl-entry" role="doc-biblioentry">
+Bekes, Gabor, and Gabor Kezdi. 2021. <em>Data Analysis for Business, Economics and Policy</em>. Cambridge University Press.
+</div>
+<div id="ref-FrePisPur2009" class="csl-entry" role="doc-biblioentry">
+Freedman, David, Robert Pisani, and Roger Purves. 2009. <em>Statistics</em>. Fourth. Viva-Norton.
+</div>
+<div id="ref-GelNol2017" class="csl-entry" role="doc-biblioentry">
+Gelman, Andrew, and Deborah Nolan. 2017. <em>Teaching Statistics: A Bag of Tricks</em>. Oxford University Press.
+</div>
+<div id="ref-Kap2009" class="csl-entry" role="doc-biblioentry">
+Kaplan, Daniel T. 2009. <em>Statistical Modeling: A Fresh Approach</em>. Ingram.
+</div>
+<div id="ref-PeCa2005" class="csl-entry" role="doc-biblioentry">
+Peck, Roxy, George Casella, George W. Cobb, Roger Hoerl, and Deborah Nolan. 2005. <em>Statistics: A Guide to the Unknown</em>. Fourth. Duxbury Press.
+</div>
+<div id="ref-Spi2019" class="csl-entry" role="doc-biblioentry">
+Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
+</div>
+</div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./categorical_data_and_proportions.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

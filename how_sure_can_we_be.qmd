@@ -1,0 +1,10 @@
+# How sure can we be about what is going on
+
+## Contents
+
+
+Probability theory provides a formal language and mathematics for dealing with chance phenomena. Probability is often counter intuitive but using the idea of expected frequency improves intuition. Probability ideas can be very useful in statistics even if there is no explicit use of a randomizing mechanism. Many social phenomena show a remarkable regularity in their overall pattern while individual events are entirely unpredictable.
+
+## Outcome
+
+Students should learn the simplest and most basic facts about probability as a language to quantify uncertainty, the most important rules to manipulate probability as well as the concept of conditional probability.

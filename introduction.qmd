@@ -1,0 +1,17 @@
+# **Introduction**
+
+Introduce the concept of statistics and give an overview what students will learn during the course. In the introductory unit I would like to include an activity on variation or an interesting visualization where students see the code (which they do not yet understand in detail) but can change certain details and experiment on the computer how the visualization changes. This will also provide a first check of whether the software and hardware work for each student. I would also like to discuss why statistics is important and get students involved by collecting data on them for use later in the course. I would like to have lots of involvement in the first unit to set expectations for plenty of participation.
+
+The overall goals of this course might be described as follows: After successfully completing this course students will have learned new skills in three core pillars of statistics
+
+1.  Data exploration or finding patterns in data and information through visualisation and computation.
+
+2.  Making predictions, which means using available data and information to make informed guesses about data and information we do not have.
+
+3.  To quantify the uncertainty we have to attach to our predictions.
+
+Simultaneously with these three core skills the students will learn to use the computer and modern computing tools to apply this knowledge to real world data. The combination of these skills will empower students to achieve a level of data literacy allowing them to independently work with new data and new situations they encounter in their professional life after completing the course or in their further studies.
+
+As sources for my notes I rely very much on [@FrePisPur2009] on [@Kap2009] and in particular on Spiegelhalter's wonderful exposition [@Spi2019] in terms of concepts and the logic how the concepts are developed. Important sources for examples are \[@BekKes2021\], \[@GelNol2017\] as well as [@PeCa2005] as well as [@AdhDen], who wrote the textbook for Berkeley's introductory data science course Data08.
+
+My vision would be to achieve a suitably adapted combination of Spiegelhalter and Adhikari, DeNero and Wagner. While the former is the didactically best exposition of statistics I have ever encountered, the latter is unmatched in explaining modern computational tools at a basic level. For this course, however both sources need to be substantially reworked. Spiegelhalter is written for a general audience of readers. Here we need to teach the concepts and actively involve students through exercises and projects they do themselves. I will thus follow the conceptual development logic of Spiegelhalter -- and in this lecture note outline I have literally done so -- but I would like to find a different and more interactive exposition with perhaps also different examples, nearer to the live context of students. Adhikari, DeNero and Wagner is for this course a bit too much tilted towards computation and perhaps not enough towards statistics. On the other hand this is a lightening rod for how I would like to see this course roughly turn out in terms of exposition and the use of the computational tools, in particular notebooks and coding style.

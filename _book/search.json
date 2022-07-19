@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistics",
+    "section": "",
+    "text": "These are lecture notes for my introductory statistics and data literarcy course I am developing for Jesuit worldwide learning (JWL) together with my colleagues from Seitwerk."
+  },
+  {
+    "objectID": "introduction.html",
+    "href": "introduction.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "The overall goals of this course might be described as follows: After successfully completing this course students will have learned new skills in three core pillars of statistics\n\nData exploration or finding patterns in data and information through visualisation and computation.\nMaking predictions, which means using available data and information to make informed guesses about data and information we do not have.\nTo quantify the uncertainty we have to attach to our predictions.\n\nSimultaneously with these three core skills the students will learn to use the computer and modern computing tools to apply this knowledge to real world data. The combination of these skills will empower students to achieve a level of data literacy allowing them to independently work with new data and new situations they encounter in their professional life after completing the course or in their further studies.\nAs sources for my notes I rely very much on (Freedman, Pisani, and Purves 2009) on (Kaplan 2009) and in particular on Spiegelhalter’s wonderful exposition (Spiegelhalter 2019) in terms of concepts and the logic how the concepts are developed. Important sources for examples are [Bekes and Kezdi (2021)], [Gelman and Nolan (2017)] as well as (Peck et al. 2005) as well as (Adhikari, DeNero, and Wagner), who wrote the textbook for Berkeley’s introductory data science course Data08.\nMy vision would be to achieve a suitably adapted combination of Spiegelhalter and Adhikari, DeNero and Wagner. While the former is the didactically best exposition of statistics I have ever encountered, the latter is unmatched in explaining modern computational tools at a basic level. For this course, however both sources need to be substantially reworked. Spiegelhalter is written for a general audience of readers. Here we need to teach the concepts and actively involve students through exercises and projects they do themselves. I will thus follow the conceptual development logic of Spiegelhalter – and in this lecture note outline I have literally done so – but I would like to find a different and more interactive exposition with perhaps also different examples, nearer to the live context of students. Adhikari, DeNero and Wagner is for this course a bit too much tilted towards computation and perhaps not enough towards statistics. On the other hand this is a lightening rod for how I would like to see this course roughly turn out in terms of exposition and the use of the computational tools, in particular notebooks and coding style.\n\n\n\n\nAdhikari, Ani, John DeNero, and David Wagner. “Computational and Inferential Thinking: The Foundations of Data Science.” https://inferentialthinking.com/chapters/intro.html.\n\n\nBekes, Gabor, and Gabor Kezdi. 2021. Data Analysis for Business, Economics and Policy. Cambridge University Press.\n\n\nFreedman, David, Robert Pisani, and Roger Purves. 2009. Statistics. Fourth. Viva-Norton.\n\n\nGelman, Andrew, and Deborah Nolan. 2017. Teaching Statistics: A Bag of Tricks. Oxford University Press.\n\n\nKaplan, Daniel T. 2009. Statistical Modeling: A Fresh Approach. Ingram.\n\n\nPeck, Roxy, George Casella, George W. Cobb, Roger Hoerl, and Deborah Nolan. 2005. Statistics: A Guide to the Unknown. Fourth. Duxbury Press.\n\n\nSpiegelhalter, David. 2019. The Art of Statistcis: Learning from Data. Pelican Books."
+  },
+  {
+    "objectID": "categorical_data_and_proportions.html",
+    "href": "categorical_data_and_proportions.html",
+    "title": "2  Categorical Data and Proportions",
+    "section": "",
+    "text": "Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions.\n\nThe importance of framing\nRelative and absolute risk\nHow to think in expected frequencies can promote understanding and provide an appropriate sense of importance, what are odds rations, why we need to understand what they mean and why we should avoid them in communication. All these concepts and discussions should be accompanied by data visualization and students will learn how to visualize the data on the computer."
+  },
+  {
+    "objectID": "categorical_data_and_proportions.html#outcome",
+    "href": "categorical_data_and_proportions.html#outcome",
+    "title": "2  Categorical Data and Proportions",
+    "section": "2.2 Outcome",
+    "text": "2.2 Outcome\nThe outcome of learning from the introduction and this chapter, which together form unit 1, students should have an overview of\n\nThe contents of the course\nShould have formed expectations that this course will actively involve them and require their hands on participation\nKnow how to start and stop R (Python) and R studio (Jupyter notebooks) and have played with one or two meaningful visualizations right away.\n\nThe way to achieve this is to prepare a visualization code in an interactive notebook, which students need not understand in all details. But they can change details, for instance if the variables contain countries, they could change the code such that the data for their own country are shown and rerun the visualization code.\nAfter this unit the students should feel familiar with proportions and their meaning and interpretation. We will also have gathered data from an activity which will be used later in the course."
+  },
+  {
+    "objectID": "summarizing_and_communicating_lots_of_data.html",
+    "href": "summarizing_and_communicating_lots_of_data.html",
+    "title": "3  Summarizing and communicating lost of data",
+    "section": "",
+    "text": "Statistics usually involves lots of data and we need ways to communicate and summarize these data. This chapter introduces the most important concepts.\n\nThe empirical distribution of data points\nMeasures of location and spread.\nSkewed data distributions are common and some summary statistics are very sensitive to outlying values.\nSummaries always hide some detail.\nHow to summarize sets of numbers graphically (histograms and box plots)\nUseful transformations to reveal patterns\nLooking at pairs of numbers, scatter plots, time series as line graphs.\nThe primary aim in data exploration is to get an idea of the overall variation."
+  },
+  {
+    "objectID": "summarizing_and_communicating_lots_of_data.html#outcome",
+    "href": "summarizing_and_communicating_lots_of_data.html#outcome",
+    "title": "3  Summarizing and communicating lost of data",
+    "section": "3.2 Outcome",
+    "text": "3.2 Outcome\nUnderstand these concepts and work through may examples showing how to apply these summary measures to data on the computer."
+  },
+  {
+    "objectID": "from_limited_data_to_populations.html",
+    "href": "from_limited_data_to_populations.html",
+    "title": "4  From limited data to populations",
+    "section": "",
+    "text": "Inductive inference requires working from data to study sample and study population to target population.\nAt each stage bias can crop up. The best way to proceed from sample to study population is if you have drawn a random sample. Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population Populations can be summarized using parameters that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t."
+  },
+  {
+    "objectID": "from_limited_data_to_populations.html#outcome",
+    "href": "from_limited_data_to_populations.html#outcome",
+    "title": "4  From limited data to populations",
+    "section": "4.2 Outcome",
+    "text": "4.2 Outcome\nMake the concept of a random sample and a probability distribution tangible by using the computer."
+  },
+  {
+    "objectID": "what_causes_what.html",
+    "href": "what_causes_what.html",
+    "title": "5  What causes what?",
+    "section": "",
+    "text": "In this lecture we discuss what causation means in a statistical sense, why we need be careful to distinguish between causation and correlation.\n\nCausation in a statistical sense means that when we intervene, the chances of different outcomes vary systematically.\nCausation is difficult to establish statistically, but well designed randomized trials are the best available framework. 3.Principles that helped clinical trials to identify effects. 4, Observational data may have background factors influencing the apparent relationships between exposure and outcome which may be either observed confounders or lurking factors.\nStatistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed."
+  },
+  {
+    "objectID": "what_causes_what.html#outcome",
+    "href": "what_causes_what.html#outcome",
+    "title": "5  What causes what?",
+    "section": "5.2 Outcome",
+    "text": "5.2 Outcome\nThis is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis."
+  },
+  {
+    "objectID": "modelling_relationships_using_regression.html",
+    "href": "modelling_relationships_using_regression.html",
+    "title": "6  Modelling relationships using regression",
+    "section": "",
+    "text": "Regression models provide a mathematical representation between a set of explanatory variables and a response.\n\nThe coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.\nRegression to the mean\nRegression models can incorporate different types of response variable\nExplanatory variables and non-linear relationships\nBe cautious in interpreting models and don’t take them literally."
+  },
+  {
+    "objectID": "modelling_relationships_using_regression.html#outcome",
+    "href": "modelling_relationships_using_regression.html#outcome",
+    "title": "6  Modelling relationships using regression",
+    "section": "6.2 Outcome",
+    "text": "6.2 Outcome\nThe students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect."
+  },
+  {
+    "objectID": "algorithmic_prediction.html",
+    "href": "algorithmic_prediction.html",
+    "title": "7  Algorithmic prediction",
+    "section": "",
+    "text": "Algorithms built from data can be used for classification and prediction in technological applications.\n\nImportance of guarding an algorithm against over fitting\nAlgorithms can be evaluated according to classification accuracy, their ability to discriminate between groups and their overall predictive accuracy\nComplex algorithms can lack transparency and it may be worth trading off some accuracy for comprehension.\nThere are many challenges in using algorithms and machine learning, be aware of them."
+  },
+  {
+    "objectID": "algorithmic_prediction.html#outcome",
+    "href": "algorithmic_prediction.html#outcome",
+    "title": "7  Algorithmic prediction",
+    "section": "7.2 Outcome",
+    "text": "7.2 Outcome\nWith respect to algorithmic prediction the students should have seen what it is and see a not too complex example, for instance in classification. They should be able to see the close similarity between regression and machine learning methods and be able to understand the jargon. Both regression and machine learning use sometimes different notions for the same thing."
+  },
+  {
+    "objectID": "how_sure_can_we_be.html",
+    "href": "how_sure_can_we_be.html",
+    "title": "8  How sure can we be about what is going on",
+    "section": "",
+    "text": "Probability theory provides a formal language and mathematics for dealing with chance phenomena. Probability is often counter intuitive but using the idea of expected frequency improves intuition. Probability ideas can be very useful in statistics even if there is no explicit use of a randomizing mechanism. Many social phenomena show a remarkable regularity in their overall pattern while individual events are entirely unpredictable."
+  },
+  {
+    "objectID": "how_sure_can_we_be.html#outcome",
+    "href": "how_sure_can_we_be.html#outcome",
+    "title": "8  How sure can we be about what is going on",
+    "section": "8.2 Outcome",
+    "text": "8.2 Outcome\nStudents should learn the simplest and most basic facts about probability as a language to quantify uncertainty, the most important rules to manipulate probability as well as the concept of conditional probability."
+  },
+  {
+    "objectID": "probability.html",
+    "href": "probability.html",
+    "title": "9  Probability: Quantifying uncertainty and variablility",
+    "section": "",
+    "text": "11 Outcome\nStudents should learn the simplest and most basic facts about probability as a language to quantify uncertainty, the most important rules to manipulate probability as well as the concept of conditional probability."
+  },
+  {
+    "objectID": "probability_and_statistics.html",
+    "href": "probability_and_statistics.html",
+    "title": "10  Putting probability and statistics together",
+    "section": "",
+    "text": "This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are\n\nUsing probability theory we can derive the sampling distribution of summary statistics from which formulae for confidence intervals can be derived.\nExplain what a 95 % confidence interval means\nThe central limit theorem and the normal distribution\nThe role of systematic error due to non random causes and the role of judgment\nExplain the idea that confidence intervals can be calculated even when we observe all the data which then represent uncertainty about the parameters of an underlying metaphorical population."
+  },
+  {
+    "objectID": "probability_and_statistics.html#outcome",
+    "href": "probability_and_statistics.html#outcome",
+    "title": "10  Putting probability and statistics together",
+    "section": "10.2 Outcome",
+    "text": "10.2 Outcome\nThe students should gain a firm understanding of confidence intervals and how they help us in quantifying uncertainty of predictions we make based on our available data. They should see and understand how and why it is sometimes more convenient and parsimonious to have formulae for confidence intervals rather than quantifying the uncertainty from simulation. The intuitive understanding of the limit theorems and when they can be legitimately applied will be important here."
+  },
+  {
+    "objectID": "answering_questions_and_claiming_discoveries.html",
+    "href": "answering_questions_and_claiming_discoveries.html",
+    "title": "11  Answering questions and claiming discoveries",
+    "section": "",
+    "text": "Formal statistical testing as a major empirical tool for answering questions and claiming discoveries.\n\nTests of null hypothesis as a major part of statistical practice\np-value as the measure of incompatibility between the observed data and the null hypothesis\nThe traditional p value thresholds.\nThe need to adjust thresholds with multiple tests\nCorrespondence between p-values and confidence intervals\nNeyman-Pearson theory (alternative hypothesis and type 1 and type 2 error).\nSequential testing\nThe misinterpretation of p-values."
+  },
+  {
+    "objectID": "answering_questions_and_claiming_discoveries.html#outcomes",
+    "href": "answering_questions_and_claiming_discoveries.html#outcomes",
+    "title": "11  Answering questions and claiming discoveries",
+    "section": "11.2 Outcomes",
+    "text": "11.2 Outcomes\nStudents should learn the basic ideas of hypothesis testing and the terminology around it."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Adhikari, Ani, John DeNero, and David Wagner. “Computational and\nInferential Thinking: The Foundations of Data Science.” https://inferentialthinking.com/chapters/intro.html.\n\n\nBekes, Gabor, and Gabor Kezdi. 2021. Data Analysis for Business,\nEconomics and Policy. Cambridge University Press.\n\n\nFreedman, David, Robert Pisani, and Roger Purves. 2009.\nStatistics. Fourth. Viva-Norton.\n\n\nGelman, Andrew, and Deborah Nolan. 2017. Teaching Statistics: A Bag\nof Tricks. Oxford University Press.\n\n\nKaplan, Daniel T. 2009. Statistical Modeling: A Fresh Approach.\nIngram.\n\n\nPeck, Roxy, George Casella, George W. Cobb, Roger Hoerl, and Deborah\nNolan. 2005. Statistics: A Guide to the Unknown. Fourth.\nDuxbury Press.\n\n\nSpiegelhalter, David. 2019. The Art of Statistcis: Learning from\nData. Pelican Books."
+  }
+]

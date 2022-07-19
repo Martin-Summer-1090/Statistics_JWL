@@ -1,0 +1,22 @@
+# Summarizing and communicating lost of data
+
+## Contents 
+
+Statistics usually involves lots of data and we need ways to communicate and summarize these data. This
+chapter introduces the most important concepts.
+
+
+1. The empirical distribution of data points
+2. Measures of location and spread.
+3. Skewed data distributions are common and some summary statistics are very sensitive to outlying values. 
+4. Summaries always hide some detail. 
+5. How to summarize sets of numbers graphically (histograms and box plots)
+6. Useful transformations to reveal patterns
+7. Looking at pairs of numbers, scatter plots, time series as line graphs. 
+8. The primary aim in data exploration is to get an idea of the overall variation.
+
+
+## Outcome 
+
+Understand these concepts and work through may examples showing how to apply these summary measures to data on the
+computer.

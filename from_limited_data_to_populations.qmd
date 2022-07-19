@@ -1,0 +1,15 @@
+# From limited data to populations
+
+## Contents
+
+Inductive inference requires working from data to study sample and study population to target population.
+
+At each stage bias can crop up.
+The best way to proceed from sample to study population is if you have drawn a random sample.
+Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population
+Populations can be summarized using parameters that mirror the summary statistics of sample data.
+It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.
+
+## Outcome
+
+Make the concept of a random sample and a probability distribution tangible by using the computer.

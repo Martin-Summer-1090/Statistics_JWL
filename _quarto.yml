@@ -1,0 +1,35 @@
+project:
+  type: book
+
+book:
+  title: "Statistics"
+  subtitle: "The science and art of learning from data"
+  author: "Martin Summer"
+  date: "07/17/2022"
+  chapters:
+    - index.qmd
+    - introduction.qmd
+    - categorical_data_and_proportions.qmd
+    - summarizing_and_communicating_lots_of_data.qmd
+    - from_limited_data_to_populations.qmd
+    - what_causes_what.qmd
+    - modelling_relationships_using_regression.qmd
+    - algorithmic_prediction.qmd
+    - how_sure_can_we_be.qmd
+    - probability.qmd
+    - probability_and_statistics.qmd
+    - answering_questions_and_claiming_discoveries.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html: 
+    theme: cosmo
+  pdf:
+    documentclass: scrbook
+  
+reference-location: margin
+
+
+

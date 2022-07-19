@@ -1,0 +1,23 @@
+#Categorical Data and Proportions
+
+## Contents
+
+Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions.
+
+1. The importance of framing
+2. Relative and absolute risk
+3. How to think in expected frequencies can promote understanding and provide an appropriate sense of importance, what are odds rations, why we need to understand what they mean and why we should avoid them in communication.
+All these concepts and discussions should be accompanied by data visualization and students will learn how to visualize the data on the computer.
+
+## Outcome
+
+The outcome of learning from the introduction and this chapter, which together form unit 1, students should have an overview of
+
+1. The contents of the course
+2. Should have formed expectations that this course will actively involve them and require their hands on participation
+3. Know how to start and stop R (Python) and R studio (Jupyter notebooks) and have played with one or two meaningful visualizations right away.
+
+The way to achieve this is to prepare a visualization code in an interactive notebook, which students need not understand in all details. But they can change details, for instance if the variables contain countries, they could change the code such that the data for their own country are shown and rerun the visualization code.
+
+After this unit the students should feel familiar with proportions and their meaning and interpretation.
+We will also have gathered data from an activity which will be used later in the course.

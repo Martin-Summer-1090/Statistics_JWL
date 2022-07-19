@@ -1,0 +1,15 @@
+# What causes what?
+
+## Contents
+
+In this lecture we discuss what causation means in a statistical sense, why we need be careful to distinguish between causation and correlation.
+
+1. Causation in a statistical sense means that when we intervene, the chances of different outcomes vary systematically.
+2. Causation is difficult to establish statistically, but well designed randomized trials are the best available framework.
+3.Principles that helped clinical trials to identify effects.
+4, Observational data may have background factors influencing the apparent relationships between exposure and outcome which may be either observed confounders or lurking factors.
+5. Statistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed.
+
+## Outcome
+
+This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis.
