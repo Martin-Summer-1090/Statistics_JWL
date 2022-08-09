@@ -1,5 +1,52 @@
 # **Introduction**
 
+What is the biggest source of electricity production in Kenya? Answering 
+this question needs data, listing and recording various forms of 
+electricity production in specific countries. An internationally 
+acknowledged organisation, which collects and reports these data 
+is the International Energy Agency (IEA). If you have access to the internet,
+you can look up data and reports by the IEA for instance at it's website
+https://www.iea.org/, where it host a special category called *data* which you 
+can look up and consult. 
+
+Now let's take a quiz and guess. What do you think is
+actually the biggest source of electricity production in Kenya?
+
+1. Coal
+2. Renewable energy
+3. Natural gas
+
+Consulting the IEA data, you will find that the correct answer 
+is *renewable energy*. A very interesting website 
+called *gapminder* (https://www.gapminder.org/), which analyzes the answers of
+many people to this question, finds that 61 % give a wrong answer to this
+question. Maybe they find it hard to imagine that 80 % of energy production in 
+Kenya is already fossil free thanks to huge 
+sources of geothermal and hydropower. Even if you break the answers down by
+country you see that 38 % of people from Kenya get the answer wrong. Among
+the people from the UK, who answer this question even 72 % answer wrongly.
+
+If you are not familiar with some of the vocabulary used here, like 
+geothermal, hydropower or even if you are not completely sure how 
+to interpret a number like 38 %, don't worry. The point here is 
+that you see that one useful consequence of being able to access, read and 
+interpret data is that it can help to establish facts about the world and
+help us to perhaps correct misconceptions we might have had about these
+facts. I encourage you to visit https://www.gapminder.org/ at some occasion 
+when you have access to the internet. You will be surprised how often you
+might have a wrong guess about basic facts in the world.
+
+In this course you will learn how to work with data and how to learn from these
+data in a systematic way. Learning from data entails more than just establishing
+facts. This might not always be possible, either because you cannot access the
+relevant data or you cannot completely access them, since doing so would be
+way too expensive. Think about the following interesting 
+example, which I learned from a wonderful book by the British 
+statistician David Spiegelhalter [@Spi2019].
+
+
+
+
 Introduce the concept of statistics and give an overview what students will learn during the course. In the introductory unit I would like to include an activity on variation or an interesting visualization where students see the code (which they do not yet understand in detail) but can change certain details and experiment on the computer how the visualization changes. This will also provide a first check of whether the software and hardware work for each student. I would also like to discuss why statistics is important and get students involved by collecting data on them for use later in the course. I would like to have lots of involvement in the first unit to set expectations for plenty of participation.
 
 The overall goals of this course might be described as follows: After successfully completing this course students will have learned new skills in three core pillars of statistics
