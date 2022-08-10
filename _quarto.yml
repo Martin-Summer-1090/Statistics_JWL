@@ -5,7 +5,8 @@ book:
   title: "Statistics"
   subtitle: "The science and art of learning from data"
   author: "Martin Summer"
-  date: "07/17/2022"
+  date: last-modified
+  date-format: D MMMM, YYYY
   chapters:
     - index.qmd
     - introduction.qmd
