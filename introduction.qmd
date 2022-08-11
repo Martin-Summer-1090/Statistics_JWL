@@ -40,42 +40,48 @@ In this course you will learn how to work with data and how to learn from these
 data in a systematic way. Learning from data entails more than just establishing
 facts. This might not always be possible, either because you cannot access the
 relevant data or you cannot completely access them, since doing so would be
-way too expensive. Think about the following interesting 
+way too expensive. 
+
+Think for a moment about the following interesting 
 example, which I learned from a wonderful book by the British 
 statistician David Spiegelhalter [@Spi2019]. The example shows that even
-categorizing and labeling can be challenging. The basic question raised in 
-this book is: How many trees are there on the planet?
+just categorizing and labeling things in the world to measure them and turn
+them into data can be challenging. The basic question raised in 
+the introduction of the book is: 
 
-It is clear that answering this question is more challenging than the task of 
+How many trees are there on the planet?
+
+It is clear that answering this question is more challenging than the task 
 the IEA had to solve in listing energy sources by country around the world. 
-But even before you go about to think how this could be done you have to answer
+But even before you go about to think how you might count all the trees on
+the planet, you have to answer
 an even more basic question, namely: What is a tree? Some of you might think
 this is a silly and obvious question, which every child can answer when it sees
-a tree. But what some might consider a tree others will consider just a bush. 
+a tree. But what some might consider a tree others will consider just a shrub. 
 Turning experience into data requires rigorous definitions. It turns out 
-that such definitions can be given for trees. But even with the definition at
-hand you cannot go around the planet and count every plant that meets the
+that such definitions can be given for trees. ^[For example the 
+forestry expert Michael Kuhns writes: "...*Though no scientific definition exists to separate trees and shrubs, a useful definition for a tree is a woody plant having one erect perennial stem (trunk) at least three inches in diameter at a point 4-1/2 feet above the ground, a definitely formed crown of foliage, and a mature height of at least 13 feet. This definition works fine, though some trees may have more than one stem and young trees obviously don't meet the size criteria. A shrub can then be defined as a woody plant with several perennial stems that may be erect or may lay close to the ground. It will usually have a height less than 13 feet and stems no more than about three inches in diameter.*" [@Kuh]] 
+But even with the definition at
+hand you cannot just go around the planet and count every plant that meets the
 criteria. So this is what the researchers investigating that question 
 did according to [@Spi2019]: 
 
-"...*They first took a series of of areas 
-with a common type of landscape, known as a biome and counted the average 
-number of trees per square kilometer. They then used satellite imaging to
-estimate the total area of the planet covered by each type of biome, 
-carried out some complex statistical modelling, and eventually came up with
-an estimate of 3.04 trillion (3,040,000,000,000) trees on the planet. This
-sounds a lot, except that they reckoned there used to be twice this
-number*."
+"...*They first took a series of of areas with a common type of landscape, known as a biome and counted the average number of trees per square kilometer. They then used satellite imaging to estimate the total area of the planet covered by each type of biome, carried out some complex statistical modelling, and eventually came up with an estimate of 3.04 trillion (3,040,000,000,000) trees on the planet. This sounds a lot, except that they reckoned there used to be twice this number*."
 
-Now imagine that if authorities need long discussions or even disagree 
-about what the call a tree, you can imagine that more complex concepts
-such as unemployment or the definition of the total value of goods ans services 
-produced in a country in a year, known as Gross Domestic Product or GDP, is
-even more challenging. There is no automatic way to turn experience into data
+Now imagine that if long expert discussions are needed to precisely 
+define something
+so seemingly obvious as a tree, you can imagine that more complex concepts
+such as unemployment or the definition of the total value of goods ans services
+produced in a country in a given year, known as Gross Domestic Product 
+or GDP, is
+even more challenging. 
+
+There is no automatism or mechanical receipt how we can 
+turn experience into data
 and the statistics that we use and produce are constructed on the basis of
 judgement. It is a starting point for a deeper understanding of the world 
 around us. This is one of the reasons why in this course statistics is
-not only referred to as science, which it arguably is to some degree but also
+not only referred to as science, which it arguably is to some degree, but also
 as an art.
 
 One of the limitations of data as a source of knowledge about the world is
@@ -91,6 +97,9 @@ Exploring and finding such meaningful relationships or patterns
 in data using the
 science of statistics and computational tools is one of the skills you will
 learn in this course.
+
+Visualizing trends in world extreme poverty as an example of data
+exploration.
 
 But finding relationships and patterns in data naturally 
 leads to another set of skills that you acquire by learning 
