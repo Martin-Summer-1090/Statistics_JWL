@@ -1,0 +1,25 @@
+---
+title: "extreme poverty around the world"
+author: "Martin Summer"
+editor: visual
+---
+
+We load the worldbank data:
+
+```{r}
+dat <- read.csv("../data/extreme_poverty/share-of-population-in-extreme-poverty.csv")
+```
+
+And view their structure:
+
+```{r}
+View(dat)
+```
+
+We extract the data at the world level:
+
+```{r}
+world_dat <- dat[dat$Entity == "World" & dat$Year >= 2000, ]
+names(world_dat) <- c("Entity", "Code", "Year", "Share")
+```
+
