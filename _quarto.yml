@@ -27,6 +27,8 @@ bibliography: references.bib
 format:
   html: 
     theme: cosmo
+    code-fold: true
+    tbl-cap-location: bottom
   pdf:
     documentclass: scrbook
   
