@@ -288,7 +288,7 @@ the assigned projects.
 The course is split into 8 units in total.
 
 :::{.callout-note}
-## Unit 1
+## Unit 1: Overview; Categorical Data and Proportions
 
 In unit 1 we will give an overview of the course and we begin 
 with the analysis and understanding of binary variables, variables that can be
@@ -300,7 +300,7 @@ importance of these numbers.
 :::
 
 :::{.callout-note}
-## Unit 2
+## Unit 2: Summarizing and Communication lots of data; From limited data to populations
 
 In unit 2 we learn how to deal with lots of data, the typical situation we will face when we
 do statistics. When there are lots of data we need instruments and tools to summarize them and
@@ -319,7 +319,7 @@ and limits of this important technique.
 :::
 
 :::{.callout-note}
-## Unit 3
+## Unit 3: What causes what?
 
 In unit 3 we discuss when data analysis allows us to say something about what causes what. We learn
 about the important concept of randomized trials. We will also learn what an observational study
@@ -329,7 +329,7 @@ the discussion of real world examples.
 
 :::{.callout-note}
 
-## Unit 4
+## Unit 4: Modelling relationships using regression and algorithmic predictions
 
 In unit 4 we will learn a key concept needed to make predictions. The technical term for this
 concept in statistics is regression. It is a simple mathematical model describing how a set of
@@ -343,7 +343,7 @@ learning.
 
 :::{.callout-note}
 
-## Unit 5
+## Unit 5: How sure can we be about what is going on: Estimates and Intervals.
 
 In unit 5 we encounter the first time tools for quantifying uncertainty. We learn how to determine
 and use uncertainty intervals by using a technique which is called the bootstrap. 
@@ -354,7 +354,7 @@ for supporting a systematic and sound answer to the question: How sure can we be
 
 :::{.callout-note}
 
-## Unit 6
+## Unit 6: Probability: Quantifying uncertainty and variability
 
 In unit 6 we deepen the knowledge how to quantify uncertainty by introducing 
 basic ideas of probability theory. Probability theory provides a formal language and 
@@ -368,7 +368,7 @@ remarkable regularity in their overall pattern while individual events are entir
 
 :::{.callout-note}
 
-## Unit 7
+## Unit 7: Putting Probability and Statistics together
 
 In unit 7 we put statistics and probability theory together. This allows us to both simplify
 ideas and techniques how to quantify uncertainty. The combination of the two field makes 
@@ -381,7 +381,7 @@ in unit 1 to 6 very versatile and powerful.
 
 :::{.callout-note}
 
-## Unit 8
+## Unit 8: Answering questions and claiming discoveries
 
 In unit 8 we learn how to leverage the knowledge of this course to answer questions and to claim
 discoveries. You will learn how statistics is used in the sciences and how it supports to develop
