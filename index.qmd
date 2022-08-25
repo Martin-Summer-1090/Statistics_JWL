@@ -1,3 +1,34 @@
 # Preface {.unnumbered}
 
-These are lecture notes for my introductory statistics and data literarcy course I am developing for Jesuit worldwide learning (JWL) together with my colleagues from Seitwerk.
+These are lecture notes for my introductory statistics and data literacy course I am 
+developing for Jesuit worldwide learning (JWL) together with my colleagues from Seitwerk. 
+I would like to thank
+Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst and Anny Mayr 
+for all their generous help and support
+in kickstarting this challenging project.
+
+The goal of the notes is to develop the core contents of the course systematically and to support
+the production of the online units. I also write up in these notes material and instructions for
+teaching material, which is meant to be used in the local study centers. My  vision is that after
+we are through with the production of the online units, the notes will be overhauled and can then
+when the course actually begins, be used by the students as a textbook and reading material.
+
+For the time beeing it is more like a systematic notebook and a scenario. I will add questions
+and comments for the Seitwerk team during this phase as collapsible callout notes like this:
+
+:::{.callout-caution collapse="true"}
+## Comment or Remark for Seitwerk
+
+This is an example of a 'folded' caution callout that can be expanded by the user. 
+:::
+
+This helps me to keep a better overview of the overall development of the text.
+
+I will put the developing material on our MS-teams collaboration platform as we go along. Data and
+graphics will be put on the platform as seperate files. In addition, mainly for the interaction with
+my past and future self, I keep a versioning of the notes on a public guthub archive, which may
+also be accesed by colleagues, and of course by the Seitwerk team. The github reporitory's adress is:
+
+https://github.com/Martin-Summer-1090/Statistics_JWL
+
+

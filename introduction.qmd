@@ -14,10 +14,10 @@ the modern world and to study many fields in the sciences.
 
 ## Experiencing the world through data
 
-### Example 1: What are the major sources of electricity production in Kenya?
+### What are the major sources of electricity production in Kenya?
 
 What is the biggest source of electricity production in Kenya? Answering 
-this question needs data listing and recording various forms of 
+this question needs data, listing and recording various forms of 
 electricity production in specific countries. An internationally 
 acknowledged organisation, which collects and reports these data 
 is the International Energy Agency (IEA). 
@@ -27,7 +27,8 @@ is the International Energy Agency (IEA).
 
 If you have access to the internet,
 you can look up data and reports by the IEA on it's website
-https://www.iea.org/ 
+https://www.iea.org/^[A screenshot I have taken in August 2022 shows the website like this. In the upperm right part of the website there is a link called *data* which will bring you to the data collected by IEA.
+![iea-website](pictures/IEA-website-as-of-2022-08.png)] 
 :::
 
 
@@ -38,6 +39,12 @@ actually the biggest source of electricity production in Kenya?
 1. Coal
 2. Renewable energy
 3. Natural gas
+
+:::{.callout-caution collapse="true"}
+## Seitwerk: Expand for reading comment.
+It would be great to make this like an online quiz, where you can click the answer and get
+right or wrong. Renewable energy is the right answer.
+:::
 
 Consulting the IEA data, you will find that the correct answer 
 is *renewable energy*. A very interesting website 
@@ -60,21 +67,22 @@ facts.
 
 :::{.callout-tip}
 ## The gapminder webpage
-If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/). I encourage you to visit this page at an occasion 
+If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/.
+I encourage you to visit this page at an occasion 
 when you have access to the internet. You will be surprised how often you
-might have a wrong guess about basic facts in the world.
+might have a wrong guess about basic facts in the world.^[Here is how the website looks like as of August 2022: ![gapminder-website](pictures/gapminder-website-as-of-2022-08.png)] 
 :::
 
 In this course you will learn how to work with data and how to learn from these
 data in a systematic way.
 
-### Example 2: How many trees are there on the planet?
+### How many trees are there on the planet?
 
 Learning from data entails more than just establishing
 facts. This might not always be possible, either because you cannot access the
 relevant data or you cannot completely access them, since doing so would be
 way too expensive. When working with data you also need rigorous definitions
-of concepts, so that you can transform your experience about the world into
+of concepts, so that you can actually transform your experience about the world into
 data
 
 Think for a moment about the following interesting 
@@ -97,7 +105,9 @@ the IEA had to solve when listing energy sources by country around the world
 in a given time period. 
 But before you go about to think how you might count all the trees on
 the planet, you have to answer
-an even more basic question, namely: What is a tree? Some of you might think
+an even more basic question, namely: What is a tree? 
+
+Some of you might think
 this is a silly and obvious question, which every child can answer. But 
 what some might consider a tree others will consider just a shrub. 
 Turning experience into data requires rigorous definitions. It turns out 
@@ -127,7 +137,35 @@ around us. This is one of the reasons why in this course statistics is
 not only referred to as science, which it arguably is to some degree, but also
 as an art.
 
-### Example 3: What has happened to extreme poverty on the globe in the last 20 years?
+To guard against the trap of mindlessly fall into mechanical thinking or automatism it is 
+sometimes helpful to make a rough plausibility estimates about the order of magnitude you
+might expect as a result for a really big number, like the number of trees on  the globe.
+
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk: Please uncollapse
+Here would be a good opportunity to engage students in an activity estimating a big number.
+Since this has an interactive part, which better works when in class together, one could set up
+the problem with some guidance in the online unit and then discuss solutions in class. It might
+be fun to add a competitive element by splitting the students in teams or pairs and rewarding
+the team/pair who
+comes closest to the true value. Let them first just guess and then lead them through the
+guestimation a bit more systematically: 
+One way to lead students through this exercise might be: How many
+people are there in country X, how many children of school age, how many of them ride the bus, 
+how many students can be transported by a bus etc. The estimate will have lots of uncertainty but be
+hopefully closer to the truth than most of the original unguided guesses. It is a first 
+encounter for the students with propagation of uncertainty, an important topic in 
+statistics more generally. 
+The activity contains further interesting aspects like reliability of data sources and the design
+of data collection. I am not quite sure whether and how to build this in at this stage but maybe
+you have an idea or suggestion.
+
+A good example would for instance be: How many school buses are there in country X? 
+
+
+:::
+
+### What has happened to extreme poverty on the globe in the last 20 years?
 
 One of the limitations of data as a source of knowledge about the world is
 that anything we choose to measure will differ across places, across persons
@@ -172,6 +210,7 @@ names(plot_data) <- c("Year", "Share")
 # produce a table
 library(knitr)
 kable(head(plot_data, n= 10), row.names = F, digits = 1)
+write.csv(head(plot_data, n= 10), file = "tables/table_1_1_world_poverty.csv", row.names = FALSE)
 ```
 
 The table shows that the share of people living in extreme poverty has been decreasing year
@@ -185,7 +224,9 @@ number array which is awkward to read.
 Exploring data and detecting patterns is usually easier when we use the power of the human
 visual system. Humans are very good in finding visual patterns. Looking for patterns is almost
 visceral for us. We can't help but looking for patterns. This almost instinctive human urge can
-also be misleading and suggesting patterns to us where there are in fact none. In data
+also be misleading and suggesting patterns to us where there are in fact none. 
+
+In data
 exploration we can make use of the power of visualization by plotting data and looking at them
 graphically. The modern computer has made this form of displaying data particularly easy and
 powerful and visualizing data in data exploration is another core skill you are going to
@@ -213,7 +254,9 @@ p
 Visualizing trends in world extreme poverty as an example of data
 exploration. In this case the data pattern reveals a stunning fact. Over almost
 two decades we can see a sharp fall in the share of extremely poor people when looked
-at from a global perspective. Of course when we drill down to the level of individual
+at from a global perspective. 
+
+Of course when we drill down to the level of individual
 countries this trend will not look the same everywhere and there might be countries where the
 share has actually increased. But overall we have seen a breathtaking steady decline. This is
 good news.^[When you have access to the internet you can have a closer look at these data
@@ -265,7 +308,8 @@ p <- ggplot(dat, aes(x = Year, y = Share, group = Scenario, color = Scenario)) +
 p
 ```
 
-Observe that the line showing the share of extreme poverty in the world takes different shapes
+Observe that the line showing the share of extreme poverty in the world takes different 
+distinct future paths
 as we make predictions. What does this mean? 
 
 At the root of the predictions is an abstract model^[If you have
@@ -285,22 +329,25 @@ do not yet have there is uncertainty involved. Using the theory of probability i
 statistics we can quantify this uncertainty. Quantifying the uncertainty attached to
 predictions is the third basic skill you will learn in this course.
 
-### Example 4: Does taking your time in college pay off?
+### Does taking your time in college pay off?
 
 A newspaper in Germany reported that the more semesters needed 
-to complete and academic program at the university the greater 
+to complete an academic program at the university the greater 
 the starting salary in the
 first year of a job. The report was 
-based on a study that used a random sample of 24 people 
+based on a study that used a random sample^[We will later in the course learn in detail what a random sample is. For the moment imagine that there is a mechanism which allows to select these 24 students at random from the large population of all university students in Germany. When a sample is random, every member in the sample has the same probability of beeing chosen from the population.] of 24 people 
 who had recently
 completed an academic program. 
+
 Information was collected on the number of semesters each 
 person in the sample needed to complete the program and the 
 starting salary, in thousand Euros, at the beginning of 
-the job. The data are shown in the following plot.
+the job. 
+
+The data are shown in the following plot
 
 ```{r}
-#| label: Years in college versus starting salary
+#| label: Years_in_college_versus_starting_salary
 #| fig-cap: Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job.
 #| warning: false
 
@@ -316,9 +363,10 @@ p
 
 What you see in this picture is a so called *scatter-plot*. It takes
 the data and plots all pairs of time in semesters needed to complete
-the academic university program and the starting salary in the job. The
+the academic university program and the starting salary in the job, where the first value
+is shown on the x-axis and the second on the y-axes. The
 points you draw like this are "scattered" all over the place, but it 
-seems that "by and large" there seems to be a trend, like this:
+seems that "by and large" there is also some trend - shown as a blue line - like this:
 
 ```{r}
 #| label: Years in college versus starting salary with trend
@@ -335,15 +383,16 @@ Looking at the data, does this plot support the claim of the Newspaper?
 
 Apparently the journalist writing the article saw a pattern, shown here
 as the blue line, which suggests that on average the salaries are
-really increasing with the semesters spent at the university. But is this pattern plausible? What do you think?
+really increasing with the semesters spent at the university. 
+But is this pattern plausible? What do you think?
 
 An independent researcher, who doubted the result, received 
 the data from the 
-newspaper and did a new analysis of the data by separating 
+newspaper and did a new analysis by separating 
 the data into three groups based on the major of each person.
 
 ```{r}
-#| label: Years in college versus starting salary by major
+#| label: Years_in_college_versus_starting_salary_by_major
 #| fig-cap: Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm by major and the starting salary in the first year in the job.
 #| warning: false
 p <- ggplot(dat, aes(x=Time, y=Salary, group = Major, color = Major)) +
@@ -354,6 +403,24 @@ p
 
 Now, looking at this plot, describe the relation for students with
 a major in business. How could the newspaper report be modified to describe the data?
+
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk
+This example works particularly well for involving students. I am not quiet sure how to build this
+interactive element in the online unit. maybe you have an idea.
+:::
+
+You see in this example that looking for patterns is not as easy as it seems. Again we see that
+there are no automatism. You will need the skills you learn in this course to gain 
+competence in distinguishing actual patterns from spurious ones.
+
+Why did I go through all these example with you in the beginning, pinning down the share of renewable energy in the electricity production in Kenya, estimating the number of trees on the planet, long term trends in world extreme poverty, and the relation between study time and beginning
+salaries for students in Germany? All these examples illustrate some special skills you will
+learn in this course. Hopefully it also convinced most of you that statistics and working with
+data is an exciting field and a way to engage with real world issues. 
+
+So these are the three
+core skills you will learn in this course:
 
 ## The three basic skills you will learn in this course
 
@@ -371,117 +438,130 @@ After successfully completing this course students you will have learned three c
 :::
 
 The course is split into 8 units in total. Units 1, 2 and 3 will be mostly be concerned with data exploration and with making comparisons based on data. You will also learn step by step how you can use the
-computer for data exporation and visualisation. We assume no prior knowledge and start from skratch. We also do not strive for completeness. The idea is that you aqucire the practically most impirtant skills and get maturity to drill deeper for yourself after
+computer for data exploration and visualization. We assume no prior knowledge and start from scratch. We also do not strive for completeness. The idea is that you acquire the practically most important skills and get maturity to drill deeper for yourself after
 the course either in your further studies or on the job.
 
 Unit 4 and unit 5 will be predominantly be concerned with models and using models for prediction. Here you will learn how to spot trends in data, how you can discern actual information in data, so called signals, from random variation, called noise.
 
 Units 6, 7 and 8 will focus on how to quantify uncertainty related to prediction and inference from data. Here is the place where probability theory combines with statistics to provide analytically and practically powerful tools which ground data analysis in a firm scientific foundation. This is also the most challenging part of the course and it
-will require lots of practice and participation from you to aqcuire this important skill.
+will require lots of practice and participation from you to acquire this important skill.
 
-<!-- :::{.callout-note} -->
-<!-- ## Unit 1: Overview; Categorical Data and Proportions -->
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk
 
-<!-- In unit 1 we will give an overview of the course and we begin  -->
-<!-- with the analysis and understanding of binary variables, variables that can be -->
-<!-- imagined as simple yes or no questions and how they can be summarized as proportions or -->
-<!-- percentages. You will learn about how the idea of expected frequency will promote the  -->
-<!-- understanding of the meaning of these shares and how this provides a basic understanding of the -->
-<!-- importance of these numbers. -->
+In your template you suggest that in the introduction I give a minute overview of the details
+of topics learned in  the course. I would prefer to abstain from this, because it contains
+lot of terms the students will learn step by step and it is probably boring at this stage. I
+would rather prefer the big picture approach outlined here with the three basic skills as the
+guiding posts. If listing the details is a must, it would look roughly like this:
 
-<!-- ::: -->
+:::{.callout-note}
+## Unit 1: Overview; Categorical Data and Proportions
 
-<!-- :::{.callout-note} -->
-<!-- ## Unit 2: Summarizing and Communication lots of data; From limited data to populations -->
+In unit 1 we will give an overview of the course and we begin
+with the analysis and understanding of binary variables, variables that can be
+imagined as simple yes or no questions and how they can be summarized as proportions or
+percentages. You will learn about how the idea of expected frequency will promote the
+understanding of the meaning of these shares and how this provides a basic understanding of the
+importance of these numbers.
 
-<!-- In unit 2 we learn how to deal with lots of data, the typical situation we will face when we -->
-<!-- do statistics. When there are lots of data we need instruments and tools to summarize them and -->
-<!-- to get an overview. This overview is usually also very important for communicating the -->
-<!-- data and the information they might contain. -->
-<!-- We will also learn how we can use statistics to learn properties about large populations -->
-<!-- by only making limited observations on some appropriately chosen  -->
-<!-- subset of individuals from this population. The -->
-<!-- gold standard in making such inferences possible is the concept of a so called random sample. But -->
-<!-- at each step of the sampling procedure bias can crop up and invalidate our results leading to -->
-<!-- wrong conclusions. The circumstances under which inference from samples to populations can be made -->
-<!-- and how we can make sure to minimize bias we need a firm understanding of the opportunities  -->
-<!-- and limits of this important technique. -->
+:::
 
+:::{.callout-note}
+## Unit 2: Summarizing and Communication lots of data; From limited data to populations
 
-<!-- ::: -->
-
-<!-- :::{.callout-note} -->
-<!-- ## Unit 3: What causes what? -->
-
-<!-- In unit 3 we discuss when data analysis allows us to say something about what causes what. We learn -->
-<!-- about the important concept of randomized trials. We will also learn what an observational study -->
-<!-- is and how it differs from a randomized trial. This is an important concept we will learn through -->
-<!-- the discussion of real world examples. -->
-<!-- ::: -->
-
-<!-- :::{.callout-note} -->
-
-<!-- ## Unit 4: Modelling relationships using regression and algorithmic predictions -->
-
-<!-- In unit 4 we will learn a key concept needed to make predictions. The technical term for this -->
-<!-- concept in statistics is regression. It is a simple mathematical model describing how a set of -->
-<!-- explanatory variables varies systematically with a response variable. We will learn to construct -->
-<!-- such models and to interpret them correctly. We will also cover related techniques which have -->
-<!-- become very important recently and entered the statistical toolbox from the field  -->
-<!-- of computer science. These methods are known under the notion of algorithmic prediction or machine -->
-<!-- learning. -->
-
-<!-- ::: -->
-
-<!-- :::{.callout-note} -->
-
-<!-- ## Unit 5: How sure can we be about what is going on: Estimates and Intervals. -->
-
-<!-- In unit 5 we encounter the first time tools for quantifying uncertainty. We learn how to determine -->
-<!-- and use uncertainty intervals by using a technique which is called the bootstrap.  -->
-<!-- Being able to determine such intervals is extremely important in communicating statistics and  -->
-<!-- for supporting a systematic and sound answer to the question: How sure can we be about an estimate. -->
-
-<!-- ::: -->
-
-<!-- :::{.callout-note} -->
-
-<!-- ## Unit 6: Probability: Quantifying uncertainty and variability -->
-
-<!-- In unit 6 we deepen the knowledge how to quantify uncertainty by introducing  -->
-<!-- basic ideas of probability theory. Probability theory provides a formal language and  -->
-<!-- mathematics for dealing with chance phenomena. Probability is often  -->
-<!-- counter intuitive but using the idea of expected frequency improves intuition.  -->
-<!-- Probability ideas can be very useful in statistics even if there is no  -->
-<!-- explicit use of a randomizing mechanism. Many social phenomena show a  -->
-<!-- remarkable regularity in their overall pattern while individual events are entirely unpredictable. -->
-
-<!-- ::: -->
-
-<!-- :::{.callout-note} -->
-
-<!-- ## Unit 7: Putting Probability and Statistics together -->
-
-<!-- In unit 7 we put statistics and probability theory together. This allows us to both simplify -->
-<!-- ideas and techniques how to quantify uncertainty. The combination of the two field makes  -->
-<!-- the tools for quantifying uncertainty at the same time more powerful. Combining statistics and -->
-<!-- probability theory is at the heart of statistics as a science. It makes all the ideas developed -->
-<!-- in unit 1 to 6 very versatile and powerful. -->
-
-<!-- ::: -->
+In unit 2 we learn how to deal with lots of data, the typical situation we will face when we
+do statistics. When there are lots of data we need instruments and tools to summarize them and
+to get an overview. This overview is usually also very important for communicating the
+data and the information they might contain.
+We will also learn how we can use statistics to learn properties about large populations
+by only making limited observations on some appropriately chosen
+subset of individuals from this population. The
+gold standard in making such inferences possible is the concept of a so called random sample. But
+at each step of the sampling procedure bias can crop up and invalidate our results leading to
+wrong conclusions. The circumstances under which inference from samples to populations can be made
+and how we can make sure to minimize bias we need a firm understanding of the opportunities
+and limits of this important technique.
 
 
-<!-- :::{.callout-note} -->
+:::
 
-<!-- ## Unit 8: Answering questions and claiming discoveries -->
+:::{.callout-note}
+## Unit 3: What causes what?
 
-<!-- In unit 8 we learn how to leverage the knowledge of this course to answer questions and to claim -->
-<!-- discoveries. You will learn how statistics is used in the sciences and how it supports to develop -->
-<!-- our knowledge of the world. It pulls many ideas of  the whole course together and when you have  -->
-<!-- mastered this unit you have mastered all the basic skills we want to develop in this course, data -->
-<!-- exploration, prediction and quantifying uncertainty. -->
+In unit 3 we discuss when data analysis allows us to say something about what causes what. We learn
+about the important concept of randomized trials. We will also learn what an observational study
+is and how it differs from a randomized trial. This is an important concept we will learn through
+the discussion of real world examples.
+:::
 
-<!-- ::: -->
+:::{.callout-note}
+
+## Unit 4: Modelling relationships using regression and algorithmic predictions
+
+In unit 4 we will learn a key concept needed to make predictions. The technical term for this
+concept in statistics is regression. It is a simple mathematical model describing how a set of
+explanatory variables varies systematically with a response variable. We will learn to construct
+such models and to interpret them correctly. We will also cover related techniques which have
+become very important recently and entered the statistical toolbox from the field
+of computer science. These methods are known under the notion of algorithmic prediction or machine
+learning.
+
+:::
+
+:::{.callout-note}
+
+## Unit 5: How sure can we be about what is going on: Estimates and Intervals.
+
+In unit 5 we encounter the first time tools for quantifying uncertainty. We learn how to determine
+and use uncertainty intervals by using a technique which is called the bootstrap.
+Being able to determine such intervals is extremely important in communicating statistics and
+for supporting a systematic and sound answer to the question: How sure can we be about an estimate.
+
+:::
+
+:::{.callout-note}
+
+## Unit 6: Probability: Quantifying uncertainty and variability
+
+In unit 6 we deepen the knowledge how to quantify uncertainty by introducing
+basic ideas of probability theory. Probability theory provides a formal language and
+mathematics for dealing with chance phenomena. Probability is often
+counter intuitive but using the idea of expected frequency improves intuition.
+Probability ideas can be very useful in statistics even if there is no
+explicit use of a randomizing mechanism. Many social phenomena show a
+remarkable regularity in their overall pattern while individual events are entirely unpredictable.
+
+:::
+
+:::{.callout-note}
+
+## Unit 7: Putting Probability and Statistics together
+
+In unit 7 we put statistics and probability theory together. This allows us to both simplify
+ideas and techniques how to quantify uncertainty. The combination of the two field makes
+the tools for quantifying uncertainty at the same time more powerful. Combining statistics and
+probability theory is at the heart of statistics as a science. It makes all the ideas developed
+in unit 1 to 6 very versatile and powerful.
+
+:::
+
+
+:::{.callout-note}
+
+## Unit 8: Answering questions and claiming discoveries
+
+In unit 8 we learn how to leverage the knowledge of this course to answer questions and to claim
+discoveries. You will learn how statistics is used in the sciences and how it supports to develop
+our knowledge of the world. It pulls many ideas of  the whole course together and when you have
+mastered this unit you have mastered all the basic skills we want to develop in this course, data
+exploration, prediction and quantifying uncertainty.
+
+:::
+
+
+:::
+
 
 
 
@@ -489,13 +569,17 @@ will require lots of practice and participation from you to aqcuire this importa
 
 Our approach to teach you basic ideas of statistics and data analysis will be very much
 problem and activity oriented. The application of specific statistical techniques will be
-only one component in a howl package of activities you will need to engage in when you work
+only one component in a whole package of activities you will need to engage in when you work
 with data in real world applications. Preparing data appropriately for analysis as well as 
 communicating the conclusions for your analysis will be important elements of the whole process
-of statistical analysis. Today these activities involve using a computer. In this course you will
+of statistical analysis. Today these activities involve using a computer. 
+
+In this course you will
 also learn how to use the computer. It will play an important role for developing your skills. We
 will make no assumptions of prior knowledge of computers and programming and will introduce the
-use of the computer step by step. Using a computer requires a language in which we can tell the
+use of the computer step by step. 
+
+Using a computer requires a language in which we can tell the
 computer what to do and which the computer can understand. The language of our choice for this
 course is called R. It is one of the most widely used and most powerful languages for data analysis
 and statistics. We will introduce you to the language and its use step by step as we go along and
@@ -505,9 +589,19 @@ in parallel with the statistical concepts we develop.
 
 ### Visualizing the share of extremely poor people for different countries
 
-Here we assume that students have a running R and R-Studio installation on their
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk
+Here we assume that students have a running R and R-Studio or R with Jupyter Notebook or
+Jupyter Lab installation on their
 laptops at the study center. We would give the code in a notebook with the code chunk
 shown in the source file, to play with.
+
+While we need not pin down all the details of the computational infrastructure yet, we need
+a discussion how to integrate the computer instructions into the course and the material I have
+to prepare for that. I would very much prefer a minimalist solution with R and some kind of
+notebook but not more.
+
+:::
 
 Lets go back to figure @fig-share-of-people-in-extreme-poverty-world for a moment. This
 figure has been created by the use of the computer. 
@@ -518,6 +612,19 @@ not (yet) understand the details of the code. Think of it as a language that tel
 computer what to do with the data. You can edit the code and delete China and insert another
 country instead. If you click the green arrow at the upper right corner of the box the
 computer will run the code again and generate a new graphic. 
+
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk
+
+The details of this will of course depend on the kind of notebook we use. We can use in principle
+three options. Option 1: Have an installation of Rstudio (https://www.rstudio.com/). RStudio is the
+most popular (and free) IDE for development of R code. In R Studio we can open quarto notebooks (qdm) and run code interactively there. Pro: Works seamlessly with my notes and enhances
+production efficiency. Con: You need to explain students the IDE in addition to R, though no big deal it is an additional complication. Option 2: Jupyter Notebook with an R kernel (ipynp). Pro: If
+JWE decides to work more with Jupyter notebooks on a broader base, seamless integration for this 
+strategy. Con: same as with R studio and just a tiny inch more awkward to produce for me. Option 3:
+Work in the R console only. Pro: No IDE or notebook. Con: perhaps a bit too difficult to use for
+students without Computer Science background.
+:::
 
 Try to play and experiment with the
 code in this way to see what happens. Soon you will know yourself how to make interesting
@@ -565,15 +672,34 @@ Introduce the concept of error  - guessed age minus actual age - and wrote the e
 of the guessed ages. Then fill the whole table. Ask the students to compute the 
 absolute average error. 
 
-Students get an indea about: uncertainty, empirical analysis and data display. There are many
+Students get an idea about: uncertainty, empirical analysis and data display. There are many
 statistical ideas in this game and the data can be taken up throughout the course (variance, bias, experimental design, randomization, linear regression, two-way tables, statistical significance).
 
-### Where are the cancers
+To illustrate the idea more precisely:
 
-### Estimating a big number
+For each card your group is given, estimate the age of the person on  the card and write your guess on the table below in the row corresponding to this numbered card. Later students are told the
+true ages and they can compute the error. The error is defined as estimated minus actual age.
+
+| Card | Estimated | Actual | Error |
+|------|:--------- |:-------|:------|
+| 1    |           |        |       |
+| 2    |           |        |       |
+| 3    |           |        |       |
+| 4    |           |        |       |
+| 5    |           |        |       |
+| 6    |           |        |       |
+| 7    |           |        |       |
+| 8    |           |        |       |
+| 9    |           |        |       |
+| 10   |           |        |       |
+
+: Example for group card, guessing ages
+
 
 ### Collect data from students.
 
-
+One data collection exercise, which might be fun here is to collect the height and hand span from 
+students in the class. Later when we teach regression we can compare to the data Pearson
+collected on university students over 100 years ago.
 
 

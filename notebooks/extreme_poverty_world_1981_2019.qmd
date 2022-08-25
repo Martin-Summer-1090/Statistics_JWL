@@ -1,0 +1,31 @@
+---
+title: "extreme poverty around the world"
+---
+
+The following grey box contains R code to generate a plot of the share
+of extreme poverty in the world from 2000-2017 (or for some countries where the
+data are available even longer than that). Don't worry, if you don't know or 
+understand what the code precisely means. This is something you will learn step
+by step as we work with R.
+
+You can write in the grey box and exchange the word "China" for example by
+another country you might be interested in, say "Turkey". Then save the file and
+press the green arrow to see what happens.
+
+```{r}
+library(ggplot2)
+
+demo_data <- read.csv("../data/extreme_poverty/share-of-population-in-extreme-poverty.csv")
+
+names(demo_data) <- c("Country", "Code", "Year", "Share")
+
+pl_dat <- with(demo_data, demo_data[Country %in% c("World", "China") & Year >= 2000, ])
+
+p <- ggplot(pl_dat, aes(x = Year, y = Share, color = Country)) +
+     geom_point() +
+     geom_line() +
+     xlab("")
+
+p
+```
+
