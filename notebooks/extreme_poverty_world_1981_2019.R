@@ -1,6 +1,6 @@
 library(ggplot2)
 
-demo_data <- read.csv("../data/extreme_poverty/share-of-population-in-extreme-poverty.csv")
+demo_data <- read.csv("~/R/Statistics_JWL/data/extreme_poverty/share-of-population-in-extreme-poverty.csv")
 
 names(demo_data) <- c("Country", "Code", "Year", "Share")
 
