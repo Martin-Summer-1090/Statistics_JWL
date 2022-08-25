@@ -1,7 +1,7 @@
 # Preface {.unnumbered}
 
 These are lecture notes for my introductory statistics and data literacy course I am 
-developing for Jesuit worldwide learning (JWL) together with my colleagues from Seitwerk. 
+developing for Jesuit Worldwide Learning (JWL) together with my colleagues from Seitwerk. 
 I would like to thank
 Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst and Anny Mayr 
 for all their generous help and support
@@ -25,9 +25,9 @@ This is an example of a 'folded' caution callout that can be expanded by the use
 This helps me to keep a better overview of the overall development of the text.
 
 I will put the developing material on our MS-teams collaboration platform as we go along. Data and
-graphics will be put on the platform as seperate files. In addition, mainly for the interaction with
-my past and future self, I keep a versioning of the notes on a public guthub archive, which may
-also be accesed by colleagues, and of course by the Seitwerk team. The github reporitory's adress is:
+graphics will be put on the platform as separate files. In addition, mainly for the interaction with
+my past and future self, I keep a versioning of the notes on a public github archive, which may
+also be accessed by colleagues, and of course by the Seitwerk team. The github repository's address is:
 
 https://github.com/Martin-Summer-1090/Statistics_JWL
 

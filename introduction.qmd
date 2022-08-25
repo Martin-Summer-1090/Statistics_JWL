@@ -247,7 +247,10 @@ p <- ggplot(plot_data, aes(x = Year, y = Share)) +
      geom_line() +
      geom_point() +
      xlab("")
+ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world.png")
 p
+
+
 ```
 
 
@@ -305,6 +308,7 @@ p <- ggplot(dat, aes(x = Year, y = Share, group = Scenario, color = Scenario)) +
   geom_line(alpha = 0.5)+
   geom_point()+
   scale_color_manual(values=c('green', 'red', 'black', 'blue'))
+ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world-forecast.png")
 p
 ```
 
@@ -357,7 +361,7 @@ library(ggplot2)
 
 p <- ggplot(dat, aes(x=Time, y=Salary)) +
      geom_point()
-
+ggsave(plot=p, filename="figures/Years_in_college_versus_starting_salary.png")
 p
 ```
 
@@ -373,9 +377,11 @@ seems that "by and large" there is also some trend - shown as a blue line - like
 #| fig-cap: Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job with a linear trend fitted to data.
 #| warning: false
 
-ggplot(dat, aes(x=Time, y=Salary)) +
+p <- ggplot(dat, aes(x=Time, y=Salary)) +
      geom_point() +
      geom_smooth(method = "lm", se = FALSE)
+ggsave(plot=p, filename="figures/Years_in_college_versus_starting_salary_with_trend.png")
+p
 ```
 
 
@@ -397,7 +403,7 @@ the data into three groups based on the major of each person.
 #| warning: false
 p <- ggplot(dat, aes(x=Time, y=Salary, group = Major, color = Major)) +
      geom_point()
-
+ggsave(plot=p, filename="figures/Years_in_college_versus_starting_salary_by_major.png")
 p
 ```
 
@@ -643,7 +649,7 @@ p <- ggplot(pl_dat, aes(x = Year, y = Share, color = Country)) +
      geom_point() +
      geom_line() +
      xlab("")
-
+ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world-china.png")
 p
 ```
 
