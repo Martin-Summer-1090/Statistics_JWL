@@ -10,7 +10,9 @@ seventh sense to your ability of experiencing the
 world. It will allow you to experience the world through data. 
 Understanding data by the art and science of statistics is 
 an essential skill you will need to navigate
-the modern world and to study many fields in the sciences. 
+the modern world and to study many fields in the sciences.
+
+TO DO: Overview of Unit 1 i.e. Introduction and Categorical Data
 
 ## Experiencing the world through data
 

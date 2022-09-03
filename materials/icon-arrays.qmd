@@ -1,0 +1,82 @@
+---
+title: "Icon-arrays"
+editor: visual
+---
+
+https://ourworldindata.org/data-review-air-pollution-deaths
+
+icon arrays:
+
+https://www.r-bloggers.com/2017/09/infographic-style-charts-using-the-r-waffle-package/
+
+```{r}
+library(waffle)
+library(extrafont)
+
+waffle(c(50, 30, 15, 5), rows = 5, title = "Your basic waffle chart")
+
+```
+
+
+```{r}
+waffle(c(50, 30, 15, 5), rows = 5, use_glyph = "child", glyph_size = 6, 
+title = "Look I made an infographic using R!")
+```
+Here is another (similar) approach discussed in detail here:
+
+https://thomassie.me/2020-07-07-waffle-chart/
+
+A simple waffle chart:
+
+```{r}
+waffle(
+  c('Yes=70%' = 70, 'No=30%' = 30), rows = 10, colors = c("#FD6F6F", "#93FB98"),
+  title = 'Responses', legend_pos="bottom"
+)
+```
+
+```{r}
+waffle(
+  c(`Poor=10` =10, `Average=18` = 18, `Excellent=7` =7), rows = 5, colors = c("#FD6F6F", "#93FB98", "#D5D9DD"),
+  use_glyph = "female", glyph_size = 12 ,title = 'Girls Performance', legend_pos="bottom"
+)
+```
+
+```{r}
+waffle(
+  c(`Poor Quality=6` = 6, `Top Quality=15` = 15), 
+  rows = 3, colors = c("#FD6F6F", "#93FB98"),
+  use_glyph = "apple", 
+  glyph_size = 12, 
+  title = 'Apples',
+  legend_pos="bottom"
+) + theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+waffle::fa_grep("male")
+```
+
+```{r}
+iron(
+  waffle(
+    c('TRUE' = 7, 'FALSE' = 3),
+    colors = c("pink", "grey70"),
+    use_glyph = "female",
+    glyph_size = 12,
+    title = "Female vs Male",
+    rows = 1,
+    legend_pos = "none"
+  ) + theme(plot.title = element_text(hjust = 0.5))
+  ,
+  waffle(
+    c('TRUE' = 8, 'FALSE' = 2),
+    colors = c("skyblue", "grey70"),
+    use_glyph = "male",
+    glyph_size = 12,
+    rows = 1,
+    legend_pos = "none"
+  )
+  )
+```
+

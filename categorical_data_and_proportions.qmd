@@ -1,23 +1,93 @@
 #Categorical Data and Proportions
 
-## Contents
+The death of a child is an enormous tragedy to its family and friends. The numbers
+across the globe add up to millions. From 56 million people who died for example in the year
+2017 5.4 millions were children under the age of 5, as reported by Max Roser [@Ros]
+in an interesting article on the website "Our world in Data" which we referred to
+in our introduction to this course. This is a number of enormous scale that never makes the
+headlines.
 
-Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions.
+In his article [@Ros] puts the scale very vividly into perspective. He writes:
 
-1. The importance of framing
-2. Relative and absolute risk
-3. How to think in expected frequencies can promote understanding and provide an appropriate sense of importance, what are odds rations, why we need to understand what they mean and why we should avoid them in communication.
-All these concepts and discussions should be accompanied by data visualization and students will learn how to visualize the data on the computer.
+"...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day.Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
 
-## Outcome
+Yet infant and child mortality in pre-industrial societies where uniformly and cruelly high. They
+were a universal and frequent experience for families all over the world. Anthony Volk 
+and Jeremy Atkinson made an attempt in a scientific publication to report mortality 
+rates of infants and children in the past, collecting data from a wide 
+range of geographic locations and cultures reaching far
+into the past [@VolAtk2013]. The authors find that in the entire sample about 27 % of children 
+dies in their first year of life and 46 % died before they reached adulthood. These
+rates are surprisingly similar across regions and cultures: Every forth newborn child died in the
+first year of life, every second child during its childhood. These are grim numbers.
 
-The outcome of learning from the introduction and this chapter, which together form unit 1, students should have an overview of
+They started to improve, very gradually only with the onset of industrialization. Gapminder, the
+site we have already encountered in the introduction has collected the data.^[See https://www.gapminder.org/data/documentation/gd002/]
 
-1. The contents of the course
-2. Should have formed expectations that this course will actively involve them and require their hands on participation
-3. Know how to start and stop R (Python) and R studio (Jupyter notebooks) and have played with one or two meaningful visualizations right away.
+Let us have a look at them. For instance, if we go back to 1850, we have data from Europe.
 
-The way to achieve this is to prepare a visualization code in an interactive notebook, which students need not understand in all details. But they can change details, for instance if the variables contain countries, they could change the code such that the data for their own country are shown and rerun the visualization code.
+```{r}
+#| warning: false
+#| echo: false
 
-After this unit the students should feel familiar with proportions and their meaning and interpretation.
-We will also have gathered data from an activity which will be used later in the course.
+# read data from data folder. The data are a csv version of the excel file from gapminder
+# sheet data
+
+infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data_gm.csv")
+
+# when we read the data all years are read sa characters with X as prefix, like X1850. We want
+# to remove the X
+
+names(infant_mortality) <- as.numeric(sub("X", "", names(infant_mortality), fixed = T))
+
+# replace Infant.Mortality. Rate by country
+
+names(infant_mortality)[1] <- "country"
+
+# transform to a long format and add to the counts a column with the mortality rate. The rate
+# is defined as the number of death during the first year of life per 1000 life births.
+
+library(tidyverse)
+
+data <- as_tibble(infant_mortality)
+
+mort_dat <- pivot_longer(data, !country, names_to = "year", values_to = "count",  values_transform = list(count = as.numeric))
+
+mort_dat$mortality_rate <- ifelse(is.na(mort_dat$count), NA, mort_dat$count/1000)
+
+# read world population data
+
+world_population <- read.csv("data/infant_mortality/population-since-1800.csv")
+
+# table for 1850
+
+rate_1850 <- with(mort_dat, mort_dat[year == 1850, ]) %>% na.omit()
+
+library(knitr)
+kable(rate_1850[order(-rate_1850$mortality_rate), ], rownames = F, digits = 2)
+```
+
+
+
+
+<!-- ## Contents -->
+
+<!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
+
+<!-- 1. The importance of framing -->
+<!-- 2. Relative and absolute risk -->
+<!-- 3. How to think in expected frequencies can promote understanding and provide an appropriate sense of importance, what are odds rations, why we need to understand what they mean and why we should avoid them in communication. -->
+<!-- All these concepts and discussions should be accompanied by data visualization and students will learn how to visualize the data on the computer. -->
+
+<!-- ## Outcome -->
+
+<!-- The outcome of learning from the introduction and this chapter, which together form unit 1, students should have an overview of -->
+
+<!-- 1. The contents of the course -->
+<!-- 2. Should have formed expectations that this course will actively involve them and require their hands on participation -->
+<!-- 3. Know how to start and stop R (Python) and R studio (Jupyter notebooks) and have played with one or two meaningful visualizations right away. -->
+
+<!-- The way to achieve this is to prepare a visualization code in an interactive notebook, which students need not understand in all details. But they can change details, for instance if the variables contain countries, they could change the code such that the data for their own country are shown and rerun the visualization code. -->
+
+<!-- After this unit the students should feel familiar with proportions and their meaning and interpretation. -->
+<!-- We will also have gathered data from an activity which will be used later in the course. -->
