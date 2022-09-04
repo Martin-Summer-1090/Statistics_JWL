@@ -2,31 +2,41 @@
 
 The death of a child is an enormous tragedy to its family and friends. The numbers
 across the globe add up to millions. From 56 million people who died for example in the year
-2017 5.4 millions were children under the age of 5, as reported by Max Roser [@Ros]
+2017, 5.4 millions were children under the age of 5, as reported by Max Roser [@Ros]
 in an interesting article on the website "Our world in Data" which we referred to
 in our introduction to this course. This is a number of enormous scale that never makes the
 headlines.
 
 In his article [@Ros] puts the scale very vividly into perspective. He writes:
 
-"...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day.Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
+"...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
 
 Yet infant and child mortality in pre-industrial societies where uniformly and cruelly high. They
-were a universal and frequent experience for families all over the world. Anthony Volk 
-and Jeremy Atkinson made an attempt in a scientific publication to report mortality 
+were a universal and frequent experience for families all over the world. 
+In a scientific publication Anthony Volk 
+and Jeremy Atkinson made an attempt  to report mortality 
 rates of infants and children in the past, collecting data from a wide 
 range of geographic locations and cultures reaching far
-into the past [@VolAtk2013]. The authors find that in the entire sample about 27 % of children 
-dies in their first year of life and 46 % died before they reached adulthood. These
+into the past [@VolAtk2013]. The mortality rate is defined as the number
+of deaths per 1000 life births. 
+
+The authors find that in the entire sample about 27 % of children 
+died in their first year of life and 46 % died before they reached adulthood. These
 rates are surprisingly similar across regions and cultures: Every forth newborn child died in the
-first year of life, every second child during its childhood. These are grim numbers.
+first year of life, every second child during its childhood. These are truely 
+grim numbers.
 
-They started to improve, very gradually only with the onset of industrialization. Gapminder, the
-site we have already encountered in the introduction has collected the data.^[See https://www.gapminder.org/data/documentation/gd002/]
+The numbers started to improve, very gradually only with the onset of industrialization. 
+Gapminder, the
+site we have already encountered in the introduction has 
+collected the data.^[See https://www.gapminder.org/data/documentation/gd002/]
 
-Let us have a look at them. For instance, if we go back to 1850, we have data from Europe.
+Let us have a look at them. For instance, if we go back to 1850, we have data only 
+from Europe.
 
 ```{r}
+#| label: infant-mortality-1860
+#| tbl-cap: Infant mortality in some European countries in 1860
 #| warning: false
 #| echo: false
 
@@ -40,9 +50,9 @@ infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data_gm.csv
 
 names(infant_mortality) <- as.numeric(sub("X", "", names(infant_mortality), fixed = T))
 
-# replace Infant.Mortality. Rate by country
+# replace Infant.Mortality.Rate by country
 
-names(infant_mortality)[1] <- "country"
+names(infant_mortality)[1] <- "Country"
 
 # transform to a long format and add to the counts a column with the mortality rate. The rate
 # is defined as the number of death during the first year of life per 1000 life births.
@@ -51,23 +61,106 @@ library(tidyverse)
 
 data <- as_tibble(infant_mortality)
 
-mort_dat <- pivot_longer(data, !country, names_to = "year", values_to = "count",  values_transform = list(count = as.numeric))
 
-mort_dat$mortality_rate <- ifelse(is.na(mort_dat$count), NA, mort_dat$count/1000)
+mort_dat <- pivot_longer(data, !Country, names_to = "Year", values_to = "Count",  
+                         values_transform = list(Count = as.numeric))
 
-# read world population data
+mort_dat$"Mortality Rate" <- ifelse(is.na(mort_dat$Count), NA, mort_dat$Count/1000)
 
-world_population <- read.csv("data/infant_mortality/population-since-1800.csv")
+# table for 1860
 
-# table for 1850
-
-rate_1850 <- with(mort_dat, mort_dat[year == 1850, ]) %>% na.omit()
+rate_1860 <- with(mort_dat, mort_dat[Year == 1860, c("Country", "Count", "Mortality Rate")]) %>% na.omit()
 
 library(knitr)
-kable(rate_1850[order(-rate_1850$mortality_rate), ], rownames = F, digits = 2)
+kable(rate_1860[order(-rate_1860$"Mortality Rate"), ], digits = 2)
+write.csv(rate_1860, file = "tables/table_2_1_infant_mortality_1860.csv", row.names = FALSE)
 ```
 
+The table shows the counts of infant death during the first year in the year 1850 per 
+1000 life births. Before we deal with the information conveyed by these data, let us take the
+opportunity to discuss some terminology and technical terms that will be a focus of this
+chapter. 
 
+The data are shown here in a table. The columns of the table are called *variables*. So 
+the variables shown in this table are Country, Count and Mortality Rate. In the specific
+example shown here we have data that record whether an event has happened or not, in our case the
+death of an infant in his first year of life in a specific country during a specific year. 
+Variables that can take only two values, are called **binary data**. Sets of binary data can
+be summarized by the number of times and the percentage of cases in which an event has occurred.
+the basis for computing the percentages in our case are 1000 life births. So in the case of
+Norway in 1850 we can report the data by saying that in 1850 among 1000 life births we had 102 
+infant deaths in the first year of life. Expressed as a rate this would be $\frac{102}{1000}$, or
+$0.102$, which amounts to $10.2$ percent. Since we display the rates in the 
+table rounded to the second 
+digit, in the table this number is displayed as 0.10.^[Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the
+percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For
+example 45 % is the fraction $\frac{45}{100}$ or 0.45. Percentages are often used to express
+a proportionate part of the total. Thus when we see in the table that the mortality rate in
+Germany in the year 1850 is 0.30 this is expressed in percent as mortality rate of 30 %.]
+
+Each row in the table
+is a *record* or sometimes also called an *observation*. Our table shown here has eight records. 
+For doing statistics especially when using the computer it is often useful to display 
+data tables such that each variable is a column and each record is a row.
+
+In this chapter we will use counts and proportions as the leading example to discuss the
+basic presentation of statistics and data. We will learn about alternative ways to display data.
+You will learn how design choices for the display of data help or prevent engagement and 
+readability for the audience to which you communicate these data. You will also learn the 
+first steps in R and how to use the computer to analyze and communicate data.
+
+## Communicating Counts and Proportions
+
+Let us follow the history of infant mortality around the globe. When we looked at the 1850ies
+rates of infant mortality were very high, not much better than it had been all the centuries
+before. But then about 100 years later we see a significant reduction in the Western countries, 
+with rates reduced still much further until now in the most affluent countries. Let us look at 
+the country group for which we had data in 1850 already, again today in 2020,
+before we go to the global picture. We will use this example to discuss some important aspects
+of communication counts and proportions.
+
+```{r}
+#| label: infant-mortality-1960
+#| fig-cap: Infant mortality in some European countries today.
+#| warning: false
+
+#read data from the data file our world in data
+
+im_1960_2020 <- read.csv("data/infant_mortality/infant-mortality.csv")
+
+# change names consistent with the previous frame
+
+names(im_1960_2020) <- c("Country", "Code", "Year", "Mortality Rate")
+
+# add counts
+
+im_1960_2020$Count <- im_1960_2020$"Mortality Rate"*100
+
+# rearrange
+
+im_owd <- data.frame(Country = im_1960_2020$Country, Year = im_1960_2020$Year, Count = im_1960_2020$Count,"Mortality Rate" = im_1960_2020$"Mortality Rate")
+
+names(im_owd)[4] <- "Mortality Rate"
+
+# select the country group from 1850 once again
+
+sel <- im_owd[im_owd$Country %in% c("Germany", "Austria", "Netherlands", "Spain", "France", "Belgium", "Denmark", "Sweden", "Norway") & im_owd$Year == 2020, ]
+
+library(knitr)
+kable(sel[order(-sel$"Mortality Rate"), ], row.names = F, digits = 2)
+write.csv(sel, file = "tables/table_2_2_infant_mortality_2020.csv", row.names = FALSE)
+```
+
+This is a spectacular improvement in these countries. Within a bit more than a century the
+mortality rate has been reduced from 30 % to below 1 % i.e. by a factor of 30. As Vaclav Smil
+has pointed out in a recent book [@Smil2020] such low rates are impossible without the combination
+of a number of critical conditions, such as good healthcare in general, appropriate 
+prenatal, perinatal and neonatal care, proper maternal and infant nutrition, adequate 
+sanitary living conditions as well as access to social support for disadvantages families. All of
+these factors require relevant government and private spending and on infrastructures that can be
+universally used and accessed. Infant mortality is thus a very powerful 
+indicator of quality of life in a country. Unfortunately on a global scale we are not in a similar
+position as this group of countries. 
 
 
 <!-- ## Contents -->
