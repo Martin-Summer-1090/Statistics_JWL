@@ -246,6 +246,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"> <span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
+  <li><a href="#visualizing-infant-mortality-rates-first-steps-in-r" id="toc-visualizing-infant-mortality-rates-first-steps-in-r" class="nav-link" data-scroll-target="#visualizing-infant-mortality-rates-first-steps-in-r"> <span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</a></li>
   </ul>
 </nav>
     </div>
@@ -464,7 +465,34 @@ div.csl-indent {
 </div>
 <p>This is a spectacular improvement for this group of countries, who are today all at about Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 % i.e.&nbsp;by a factor of about 100. Isn’t this a spectacular achievement?</p>
 <p>As Vaclav Smil has pointed out in a recent book <span class="citation" data-cites="Smil2020">(<a href="references.html#ref-Smil2020" role="doc-biblioref">Smil 2020</a>)</span> such low rates are impossible without the combination of a number of critical conditions, such as good healthcare in general, appropriate prenatal, perinatal and neonatal care, proper maternal and infant nutrition, adequate sanitary living conditions as well as access to social support for disadvantages families. All of these factors require relevant government and private spending and on infrastructures that can be universally used and accessed. Infant mortality is thus a very powerful indicator of quality of life in a country.</p>
-<p>Unfortunately on a global scale we are not in a similar position as this group of countries.</p>
+<p>When data, such as counts and proportions are reported in a table we should make careful considerations how the data are precisely presented.</p>
+<p>For instance in table about infant mortality in some Europen countries in 1860, we could have reported the same information by presenting survival rates instead of mortality rates. Such a choice in reporting is generally known as <em>framing</em>. Framing can have effects on the impact of communication. Depending on how you frame the communication of data, the same information might affect and engage your audience differently. Take for instance the data for Germany 1860. If we had reported a survival rate of 74 % it might sound to many better than if we had reported the equivalent information of a mortality rate of 26 %.</p>
+<p>Risk impression can be made more clear if we report the actual counts as well as<br>
+the percentages. The count or total number can then be imagined as an actual crowd of people.</p>
+<p>A very interesting and illustrative example for this is given in the book by David Spiegelhalter<span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, which we have already encountered when we discussed the issue of how many trees there are on the planet in the introduction. He describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious violence. The add was presumably intended to reassure passengers about the safety situation. Here is what he writes:</p>
+<p>“…<em>we could reverse the emotional impact by two simple changes: First the statement means that 1 % of young Londoners do commit serious violence. Second, the population of London is around 9 million, there are around 1 million people aged between 15 and 25, and f we consider these as ”young”, this means there are 1 % of a million or a total of 10.00 seriously violent young people in the city. This does not sound at all reassuring. Note the two tricks used to manipulate the impact of this statistic: Convert from a positive to a negative frame, and then turn a percentage to an actual number of people.</em>”</p>
+<p>A standard we should strive for when reporting data is providing impartial information. For this we should thing carefully about our framing and should perhaps provide both positive and negative frames. But even if we achieve this, we should consider other things, like the ordering of the rows.</p>
+<p>In this discussion the countries were presented in decreasing order of infant mortality rates. This choice of display might create the impression that this was an important and valid way of comparing and ranking countries. While such rankings are popular in the media we should avoid such displays of information. First of all the differences could be there just by chance. Furthermore countries with low infant moralities usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogenous country.</p>
+</section>
+<section id="visualizing-infant-mortality-rates-first-steps-in-r" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="visualizing-infant-mortality-rates-first-steps-in-r"><span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</h2>
+<p>While a table might be the medium of choice for displaying data, it is often more powerful to c convey information visually. To enable you to visualize the infant-mortality data, we now begin with an introduction to the computer language we will use throughout this course: The R language. So here we want to begin this journey.</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Seitwerk: A decision pending.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Since we begin here to introduce R for the first time, a decision on how R will be used in the course would be helpful. We have in principle three options. Assuming that students have (1) only an R installation, (2) R and RStudio, (3) R with Jupyter Books or Jupyter Lab.</p>
+</div>
+</div>
+</div>
 <!-- ## Contents -->
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
 <!-- 1. The importance of framing -->
@@ -490,6 +518,9 @@ Roser, Max. 2019. <span>“Child Mortality Is an Everyday Tragedy of Enormous Sc
 </div>
 <div id="ref-Smil2020" class="csl-entry" role="doc-biblioentry">
 Smil, Vaclav. 2020. <em>Numbers Don’t Lie: 71 Things You Need to Know about the World</em>. Penguin Books.
+</div>
+<div id="ref-Spi2019" class="csl-entry" role="doc-biblioentry">
+Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
 </div>
 <div id="ref-JSSv059i10" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.

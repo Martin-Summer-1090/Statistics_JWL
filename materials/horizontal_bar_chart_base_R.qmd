@@ -1,0 +1,23 @@
+---
+title: "Horizontal Bar Charts in Base R"
+author: "Martin Summer"
+editor: visual
+---
+
+```{r}
+#read data from the data file our world in data
+
+im_1960_2020 <- read.csv("../data/infant_mortality/infant-mortality.csv")
+
+names(im_1960_2020) <- c("Country", "Code", "Year", "Mortality Rate")
+
+# Select variables to be consistent with previous format
+
+im_1960_2020 <- im_1960_2020[c("Country", "Year", "Mortality Rate")]
+
+dat <- with(im_1960_2020, im_1960_2020[Year == 2020 & Country %in% c("Lower middle income", "High income"), ])
+
+barplot(dat$"Mortality Rate", horiz = TRUE)
+
+```
+
