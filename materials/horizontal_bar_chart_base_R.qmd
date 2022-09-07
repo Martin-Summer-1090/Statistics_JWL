@@ -15,9 +15,51 @@ names(im_1960_2020) <- c("Country", "Code", "Year", "Mortality Rate")
 
 im_1960_2020 <- im_1960_2020[c("Country", "Year", "Mortality Rate")]
 
-dat <- with(im_1960_2020, im_1960_2020[Year == 2020 & Country %in% c("Lower middle income", "High income"), ])
+# In the data the mortality rate is given in percent. We add the corresponding counts
 
-barplot(dat$"Mortality Rate", horiz = TRUE)
+im_1960_2020$Count <- (im_1960_2020$"Mortality Rate"*10) 
 
+# We transform the percentage rate to the actual rate of number of death per 1000 life births
+
+im_1960_2020$"Mortality Rate" <- im_1960_2020$Count/1000
+
+im_1960_2020 <- im_1960_2020[, c("Country", "Year", "Count", "Mortality Rate")]
+```
+
+Now build certain subsets
+
+```{r}
+# filter all data not referring to individual countries
+
+im_1960_2020_countries <- im_1960_2020[! im_1960_2020$Country %in% c("Low and middle income", "Low income", "High income", "World", "Upper middle income"), ]
+
+im_1960_2020_aggregates <- im_1960_2020[im_1960_2020$Country %in% c("Low and middle income", "Low income", "High income", "World", "Upper middle income"), ]
+```
+
+Try a bar plot in base R first for 2020
+
+```{r}
+dat1 <- with(im_1960_2020_aggregates, im_1960_2020_aggregates[Year == 2020, ])
+
+# Increase margin size
+par(mar=c(4,12,4,4)+0.1)
+
+barplot(dat1$"Mortality Rate", names.arg = dat1$Country, horiz = T, las = 1, cex.names = 0.5, cex.axis = 0.5)
+```
+
+Try a barplot for all countries next. Order by mortality rate
+
+```{r}
+dat2 <- with(im_1960_2020_countries, im_1960_2020_countries[Year == 2020, ])
+
+dat2_ordered <- dat2[order(-dat2$"Mortality Rate"), ]
+
+barplot(dat2_ordered$"Mortality Rate", names.arg = dat2_ordered$Country, horiz = T, las = 1, cex.names = 0.5, cex.axis = 0.5)
+```
+
+```{r}
+library(ggplot2)
+
+ggplot(dat1,aes(x = Country,y = 'Mortality Rate'))+ geom_segment(aes(x=Country, xend=Country, y=0, yend= "Mortality Rate"))
 ```
 
