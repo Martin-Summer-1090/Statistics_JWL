@@ -12,7 +12,7 @@ puts the scale very vividly into perspective. He writes:
 
 "...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
 
-Yet infant and child mortality in pre-industrial societies where uniformly and cruelly high. They
+In pre-industrial societies infant and child mortality were uniformly and cruelly high. They
 were a universal and frequent experience for families all over the world. 
 In a scientific publication Anthony Volk 
 and Jeremy Atkinson made an attempt  to report mortality 
@@ -39,7 +39,6 @@ from Europe.
 #| label: infant-mortality-1860
 #| tbl-cap: Infant mortality in some European countries in 1860
 #| warning: false
-#| echo: false
 
 # read data from data folder. The data are a csv version of the excel file from gapminder
 # sheet data
@@ -90,7 +89,8 @@ example shown here we have data that record whether an event has happened or not
 death of an infant in his first year of life in a specific country during a specific year. 
 Variables that can take only two values, are called **binary data**. Sets of binary data can
 be summarized by the number of times and the percentage of cases in which an event has occurred.
-the basis for computing the percentages in our case are 1000 life births. So in the case of
+
+The basis for computing the percentages in our case are 1000 life births. So in the case of
 Norway in 1860 we can report the data by saying that among 1000 life births we had 102 
 infant deaths in the first year of life. Expressed as a rate this would be $\frac{102}{1000}$, or
 $0.102$, which amounts to $10.2$ percent.^[Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the
@@ -122,9 +122,9 @@ first steps in R and how to use the computer to analyze and communicate data.
 
 ## Communicating Counts and Proportions
 
-Let us follow the history of infant mortality around the globe. When we looked at the 1860ies
+Let us follow the history of infant mortality around the globe. When we looked at the 1860-ies
 rates of infant mortality were very high, not much better than it had been all the centuries
-before. 
+before industrialization has set in in Europe. 
 
 But then about 100 years later we already see a significant reduction in the Western countries, 
 with rates reduced still much further until now in the most affluent countries. Let us look at 
@@ -172,37 +172,118 @@ write.csv(dat_sel, file = "tables/table_2_2_infant_mortality_2020.csv", row.name
 
 ```
 
-This is a spectacular improvement for this group of countries, who are
-today all at about Within a bit more than a century the
-mortality rate has been reduced from 30 % to below 0.3 % i.e. by a factor of about 100.
-Isn't this a spectacular achievement?
+This is a spectacular improvement for this group of countries. 
+Within a bit more than a century the
+mortality rate has been reduced from 30 % to below 0.3 %. This amounts to 
+a reduction by a factor of about 100.
+Isn't this a stunning achievement?
 
 As Vaclav Smil
-has pointed out in a recent book [@Smil2020] such low rates are impossible without the combination
+has pointed out in a recent book [@Smil2020] such low rates are impossible 
+without the combination
 of a number of critical conditions, such as good healthcare in general, appropriate 
 prenatal, perinatal and neonatal care, proper maternal and infant nutrition, adequate 
-sanitary living conditions as well as access to social support for disadvantages families. All of
-these factors require relevant government and private spending and on infrastructures that can be
+sanitary living conditions as well as access to social support for 
+disadvantages families. All of
+these factors require relevant government and private spending and on 
+infrastructures that can be
 universally used and accessed. Infant mortality is thus a very powerful 
 indicator of quality of life in a country.
 
 When data, such as counts and proportions are reported in a table we should make careful
 considerations how the data are precisely presented. 
 
-For instance in table about infant mortality in some Europen countries in 1860,
+For instance in the table about infant mortality in some European countries in 1860,
 we could have reported the same information by
 presenting survival rates instead of mortality rates. Such a choice in reporting is 
 generally known as *framing*. Framing can have effects on the impact of communication. 
 Depending on how you frame the communication of data, the same information might 
-affect and engage your audience differently. Take for instance the data for Germany 1860. If we had
+affect and engage your audience differently. The same table with survival rates instead
+of mortality rates would the look like this.
+
+```{r}
+#| label: infant-survivial rate-1860
+#| tbl-cap: Infant survival rates in some European countries in 1860
+#| warning: false
+
+# read data from data folder. The data are a csv version of the excel file from gapminder
+# sheet data
+
+infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data_gm.csv")
+
+# when we read the data all years are read sa characters with X as prefix, like X1850. We want
+# to remove the X
+
+names(infant_mortality) <- as.numeric(sub("X", "", names(infant_mortality), fixed = T))
+
+# replace Infant.Mortality.Rate by country
+
+names(infant_mortality)[1] <- "Country"
+
+# transform to a long format and add to the counts a column with the mortality rate. The rate
+# is defined as the number of death during the first year of life per 1000 life births.
+
+library(tidyverse)
+
+data <- as_tibble(infant_mortality)
+
+
+mort_dat <- pivot_longer(data, !Country, names_to = "Year", values_to = "Count",  
+                         values_transform = list(Count = as.numeric))
+
+mort_dat$"Survival Rate" <- 1 - ifelse(is.na(mort_dat$Count), NA, mort_dat$Count/1000)
+
+mort_dat$Count = 1000 - mort_dat$Count
+
+# table for 1860
+
+rate_1860 <- with(mort_dat, mort_dat[Year == 1860, c("Country", "Count", "Survival Rate")]) %>% na.omit()
+
+library(knitr)
+kable(rate_1860[order(rate_1860$"Survival Rate"), ], digits = 3)
+write.csv(rate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
+```
+
+
+
+
+Take for instance the data for Germany 1860. If we had
 reported a survival rate of 74 % it might sound to many better than if we had reported the
-equivalent information of a mortality rate of 26 %.
+equivalent information of a mortality rate of 26 %. So whenever you report
+counts or proportions be mindful of framing effects.
 
-Risk impression can be made more clear if we report the actual counts as well as  
+Risk impression can often be made more clear if we report the actual counts as well as  
 the percentages. The count or total number can then be imagined as an actual crowd of
-people. 
+people. For example we could visualize the infant mortality rate in Germany by creating
+a picture of the counts of cases (infant deaths) among 1000 life births.
 
-A very interesting and illustrative example for this is given in the book by David Spiegelhalter[@Spi2019], which we have already encountered when we discussed the issue of
+Such a visualization could then look for example like this:
+
+```{r}
+#| label: infant-mortality-isotype-1860
+#| fig-cap: In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.
+
+library(waffle)
+waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 2)
+```
+Here you visualize the numbers as differently colored crowds. It makes the magnitude
+of the mortality rate (as well as the survival rate) tangible. When you plot the
+same graph for the data of 2020 the enormous improvement that took place within a time
+span of one and a half centuries in Germany become perhaps more obvious that looking at the
+rates alone. The same kind of visualization for the 2020 data would then look like this
+
+```{r}
+#| label: infant-mortality-isotype-2020
+#| fig-cap: In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.
+
+library(waffle)
+waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 2)
+```
+
+
+A very interesting and illustrative example for how imagining actual crowds of 
+people rather than mere rates is given in the book by David Spiegelhalter[@Spi2019], which 
+we have already encountered when we discussed the issue of
 how many trees there are on the planet in the introduction. He describes
 an advertisement in the London Underground, saying that 99 % of young Londoners 
 do not commit serious violence. The add was presumably intended to reassure
@@ -210,26 +291,98 @@ passengers about the safety situation. Here is what he writes:
 
 "...*we could reverse the emotional impact by two simple changes: First the statement means that 1 % of young Londoners do commit serious violence. Second, the population of London is around 9 million, there are around 1 million people aged between 15 and 25, and f we consider these as "young", this means there are 1 % of a million or a total of 10.00 seriously violent young people in the city. This does not sound at all reassuring. Note the two tricks used to manipulate the impact of this statistic: Convert from a positive to a negative frame, and then turn a percentage to an actual number of people.*"
 
-A standard we should strive for when reporting data is providing impartial information. For this
-we should thing carefully about our framing and should perhaps provide both positive and negative
+A standard we should strive for when reporting data is providing impartial information. 
+For this
+we should think carefully about our framing and should perhaps provide 
+both positive and negative
 frames. But even if we achieve this, we should consider other things, like the ordering
 of the rows.
 
-In this discussion the countries were presented in decreasing order of infant mortality rates. This
+In this discussion the countries were presented ordered according to decreasing 
+infant mortality rates. This
 choice of display might create the impression that this was an important and valid way of 
-comparing and ranking countries. While such rankings are popular in the media we should avoid such
-displays of information. First of all the differences could be there just by chance. Furthermore
-countries with low infant moralities usually have low population numbers smaller than 10 
+comparing and ranking countries. 
+
+While such rankings are popular 
+in the media we should avoid such
+displays of information when there is no specific reason
+to display a ranking. 
+
+First of all the differences could be there just by chance. Furthermore
+countries with low infant morality rates usually have low population numbers smaller than 10 
 million. They include the world's most homogeneous societies, like Japan, south Korea, 
 Iceland, Finland and Norway. A country with a large and heterogeneous population, will 
 find it difficult to achieve the same infant mortality rate as a small and homogenous country. 
 
 ## Visualizing infant mortality rates: First steps in R
 
-While a table might be the medium of choice for displaying data, it is often more powerful to c
-convey information visually. To enable you to visualize the infant-mortality data, we now begin
-with an introduction to the computer language we will use throughout this course: The R language.
-So here we want to begin this journey. 
+While a table might be the medium of choice for displaying data  it is 
+often more powerful to
+convey information visually. The example of how imagining actual crowds might give us
+sometimes a more tangible picture of the same information, was one illustration of this.
+
+Today when we visualize data as one important tool of data exploration, the tool of choice
+is a computer and an appropriate language that enables us to tell the computer what to do. 
+
+For us in this course this will be the R language and now we start to learn the first steps 
+in this language.
+
+### Starting an quitting R
+
+We assume that the computer you work with has a recent version of R installed. R will work
+with the most common operating systems such as Windows, OSX or Linux. We will use R in two
+ways: First from the R command line and then also by working with Jupyter Notebooks. The
+notebooks will not only allow to send command to R and execute these commands but in addition
+it will allow to store command, comment them and make them available as files for later use.
+
+For a start we just work with the R command line or the R-console, as it is called, introducing
+the use of R via the notebooks a bit later. You start R by either typing `R` into the 
+terminal or by clicking the R icon. To end your R session write `quit()` at the 
+prompt `>` of the console. Congratulations. Now that you can start and quit R we are ready to 
+go.
+
+### First steps
+
+The R command prompt is `>`. When R shows the prompt, it says that it is ready to receive commands. You type the commands at the prompt.
+
+Here is an easy command you can send to R. Just try to type `1 + 1` at the prompt
+
+```{r}
+#| code-fold: false
+1 + 1
+```
+
+Sure enough, R gives you the result of the addition, which is `2`. But what is
+`[1]`? This is just a row lable. We will go into that later. 
+
+So R can do all the
+usual computations. For instance if you knew that in Germany in 1860 there were 270
+infant death per 1000 life birth you could compute the mortality rate by typing
+
+```{r}
+#| code-fold: false
+270/1000
+```
+
+you will get the mortality rate `0.27`.
+
+::: {.callout-note icon=false}
+
+## Example: Infant mortality rates in 2020 by global regions
+
+As a first example of visualizing data in R I have prepared a data file from our initial
+infant-mortality data which shows infant mortality rates for country groups with different
+income-levels: Low and middle income, Low income, High income,  Upper middle income as well
+as the infant mortality rate globally. I don't go here into the details how exactly these
+data have been aggregated from individual country data. 
+
+:::
+
+
+
+A great visualization story is this for life expectancy:
+https://www.youtube.com/watch?v=hVimVzgtD6w
+Could we do something like this perhaps with infant mortality.?
 
 :::{.callout-caution collapse="true"}
 ## Seitwerk: A decision pending.

@@ -246,7 +246,11 @@ div.csl-indent {
    
   <ul>
   <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"> <span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
-  <li><a href="#visualizing-infant-mortality-rates-first-steps-in-r" id="toc-visualizing-infant-mortality-rates-first-steps-in-r" class="nav-link" data-scroll-target="#visualizing-infant-mortality-rates-first-steps-in-r"> <span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</a></li>
+  <li><a href="#visualizing-infant-mortality-rates-first-steps-in-r" id="toc-visualizing-infant-mortality-rates-first-steps-in-r" class="nav-link" data-scroll-target="#visualizing-infant-mortality-rates-first-steps-in-r"> <span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</a>
+  <ul class="collapse">
+  <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"> <span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
+  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"> <span class="header-section-number">2.2.2</span> First steps</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -272,11 +276,47 @@ div.csl-indent {
 <p>The death of a child is an enormous tragedy to its family and friends. The numbers across the globe add up to millions. From 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5, as reported by Max Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> in an interesting article on the website “Our world in Data” which we referred to in our introduction to this course. This is a number of enormous scale that never makes the headlines.</p>
 <p>Max Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> on the website “our world in data”, we have encountered in the introduction, puts the scale very vividly into perspective. He writes:</p>
 <p>“…<em>The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.</em></p>
-<p>Yet infant and child mortality in pre-industrial societies where uniformly and cruelly high. They were a universal and frequent experience for families all over the world. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far into the past <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>. The mortality rate is defined as the number of deaths per 1000 life births.</p>
+<p>In pre-industrial societies infant and child mortality were uniformly and cruelly high. They were a universal and frequent experience for families all over the world. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far into the past <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>. The mortality rate is defined as the number of deaths per 1000 life births.</p>
 <p>The authors find that in the entire sample about 27 % of children died in their first year of life and 46 % died before they reached adulthood. These rates are surprisingly similar across regions and cultures: Every forth newborn child died in the first year of life, every second child during its childhood. These are truely grim numbers.</p>
 <div class="page-columns page-full"><p>The numbers started to improve, very gradually only with the onset of industrialization. Gapminder, the site we have already encountered in the introduction has collected and commented the available data back to 1800.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;See https://www.gapminder.org/data/documentation/gd002/</p></li></div></div>
 <p>Let us have a look at them. For instance, if we go back to 1850, we have data only from Europe.</p>
 <div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data from data folder. The data are a csv version of the excel file from gapminder</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sheet data</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>infant_mortality <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant_mortality_data_gm.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># when we read the data all years are read sa characters with X as prefix, like X1850. We want</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># to remove the X</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality) <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"X"</span>, <span class="st">""</span>, <span class="fu">names</span>(infant_mortality), <span class="at">fixed =</span> T))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># replace Infant.Mortality.Rate by country</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to a long format and add to the counts a column with the mortality rate. The rate</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># is defined as the number of death during the first year of life per 1000 life births.</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(infant_mortality)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>mort_dat <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(data, <span class="sc">!</span>Country, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Count"</span>,  </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">values_transform =</span> <span class="fu">list</span>(<span class="at">Count =</span> as.numeric))</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span><span class="st">"Mortality Rate"</span> <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(mort_dat<span class="sc">$</span>Count), <span class="cn">NA</span>, mort_dat<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(mort_dat, mort_dat[Year <span class="sc">==</span> <span class="dv">1860</span>, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality Rate"</span>)]) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span><span class="st">"Mortality Rate"</span>), ], <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Infant mortality in some European countries in 1860 </caption>
@@ -336,48 +376,53 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rate_1860, <span class="at">file =</span> <span class="st">"tables/table_2_1_infant_mortality_1860.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>The table shows the counts of infant death during the first year in the year 1860 per 1000 life births. Before we deal with the information conveyed by these data, let us take the opportunity to discuss some terminology and technical terms that will be a focus of this chapter.</p>
-<div class="page-columns page-full"><p>The data are shown here in a table. We have ordered the countries by the infant mortality rate, displaying the country with the highest rate first. The columns of the table are called <em>variables</em>. So the variables shown in this table are Country, Count and Mortality Rate. In the specific example shown here we have data that record whether an event has happened or not, in our case the death of an infant in his first year of life in a specific country during a specific year. Variables that can take only two values, are called <strong>binary data</strong>. Sets of binary data can be summarized by the number of times and the percentage of cases in which an event has occurred. the basis for computing the percentages in our case are 1000 life births. So in the case of Norway in 1860 we can report the data by saying that among 1000 life births we had 102 infant deaths in the first year of life. Expressed as a rate this would be <span class="math inline">\(\frac{102}{1000}\)</span>, or <span class="math inline">\(0.102\)</span>, which amounts to <span class="math inline">\(10.2\)</span> percent.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as mortality rate of 26 %.</p></li></div></div>
+<p>The data are shown here in a table. We have ordered the countries by the infant mortality rate, displaying the country with the highest rate first. The columns of the table are called <em>variables</em>. So the variables shown in this table are Country, Count and Mortality Rate. In the specific example shown here we have data that record whether an event has happened or not, in our case the death of an infant in his first year of life in a specific country during a specific year. Variables that can take only two values, are called <strong>binary data</strong>. Sets of binary data can be summarized by the number of times and the percentage of cases in which an event has occurred.</p>
+<div class="page-columns page-full"><p>The basis for computing the percentages in our case are 1000 life births. So in the case of Norway in 1860 we can report the data by saying that among 1000 life births we had 102 infant deaths in the first year of life. Expressed as a rate this would be <span class="math inline">\(\frac{102}{1000}\)</span>, or <span class="math inline">\(0.102\)</span>, which amounts to <span class="math inline">\(10.2\)</span> percent.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as mortality rate of 26 %.</p></li></div></div>
 <div class="page-columns page-full"><p>Each row in the table is a <em>record</em> or sometimes also called an <em>observation</em>. Our table shown here has eight records. For doing statistics, especially when using the computer, it is often useful to display data tables such that each variable is a column and each record is a row.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Such a format is not always the reader friendliest to humans and thus data on the web are often organized differently. For example the Gapminder data show the Years as columns and countries as rows. While easier to read such a table for working with the computer this deviation from the format variable as column and observation as row, often creates problems. We will come back to this seemingly minor but in fact quite important point over and over again. Hadley Wickham <span class="citation" data-cites="JSSv059i10">(<a href="references.html#ref-JSSv059i10" role="doc-biblioref">Wickham 2014</a>)</span>, who has contributed a lot to R and the R programming language which we will use in this course has popularized the term “tidy” for the table format where every column is a variable and every row is an observation.</p></li></div></div>
 <p>In this chapter we will use counts and proportions as the leading example to discuss the basic presentation of statistics and data. We will learn about alternative ways to display data. You will learn how design choices for the display of data help or prevent engagement and readability for your respective audience. You will also learn the first steps in R and how to use the computer to analyze and communicate data.</p>
 <section id="communicating-counts-and-proportions" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="communicating-counts-and-proportions"><span class="header-section-number">2.1</span> Communicating Counts and Proportions</h2>
-<p>Let us follow the history of infant mortality around the globe. When we looked at the 1860ies rates of infant mortality were very high, not much better than it had been all the centuries before.</p>
+<p>Let us follow the history of infant mortality around the globe. When we looked at the 1860-ies rates of infant mortality were very high, not much better than it had been all the centuries before industrialization has set in in Europe.</p>
 <p>But then about 100 years later we already see a significant reduction in the Western countries, with rates reduced still much further until now in the most affluent countries. Let us look at the country group for which we had data in 1860 already, again today in 2020, before we go to the global picture. We will use this example to discuss some important aspects of communication counts and proportions. Again we have ordered the observation by a decreasing mortality rate.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read data from the data file our world in data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant-mortality.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(im_1960_2020) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select variables to be consistent with previous format</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> im_1960_2020[<span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the country group used in the historical 1860 data</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> im_1960_2020[im_1960_2020<span class="sc">$</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Austria"</span>, <span class="st">"Netherlands"</span>, <span class="st">"Spain"</span>, <span class="st">"France"</span>, <span class="st">"Belgium"</span>, <span class="st">"Denmark"</span>, <span class="st">"Sweden"</span>, <span class="st">"Norway"</span>) <span class="sc">&amp;</span> im_1960_2020<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2020</span>, ]</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># In the data the mortality rate is given in percent. We add the corresponding counts</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span>Count <span class="ot">&lt;-</span> (dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span><span class="sc">*</span><span class="dv">10</span>) </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># We transform the percentage rate to the actual rate of number of death per 1000 life births</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span> <span class="ot">&lt;-</span> dat_sel<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder columns</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> dat_sel[, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality Rate"</span>)]</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># display the table and write text file of table</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat_sel[<span class="fu">order</span>(<span class="sc">-</span>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span>), ], <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read data from the data file our world in data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant-mortality.csv"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(im_1960_2020) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select variables to be consistent with previous format</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> im_1960_2020[<span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the country group used in the historical 1860 data</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> im_1960_2020[im_1960_2020<span class="sc">$</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Austria"</span>, <span class="st">"Netherlands"</span>, <span class="st">"Spain"</span>, <span class="st">"France"</span>, <span class="st">"Belgium"</span>, <span class="st">"Denmark"</span>, <span class="st">"Sweden"</span>, <span class="st">"Norway"</span>) <span class="sc">&amp;</span> im_1960_2020<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2020</span>, ]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># In the data the mortality rate is given in percent. We add the corresponding counts</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span>Count <span class="ot">&lt;-</span> (dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span><span class="sc">*</span><span class="dv">10</span>) </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># We transform the percentage rate to the actual rate of number of death per 1000 life births</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span> <span class="ot">&lt;-</span> dat_sel<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder columns</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> dat_sel[, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality Rate"</span>)]</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># display the table and write text file of table</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat_sel[<span class="fu">order</span>(<span class="sc">-</span>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span>), ], <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -460,23 +505,186 @@ div.csl-indent {
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_sel, <span class="at">file =</span> <span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_sel, <span class="at">file =</span> <span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>This is a spectacular improvement for this group of countries, who are today all at about Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 % i.e.&nbsp;by a factor of about 100. Isn’t this a spectacular achievement?</p>
+<p>This is a spectacular improvement for this group of countries. Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 %. This amounts to a reduction by a factor of about 100. Isn’t this a stunning achievement?</p>
 <p>As Vaclav Smil has pointed out in a recent book <span class="citation" data-cites="Smil2020">(<a href="references.html#ref-Smil2020" role="doc-biblioref">Smil 2020</a>)</span> such low rates are impossible without the combination of a number of critical conditions, such as good healthcare in general, appropriate prenatal, perinatal and neonatal care, proper maternal and infant nutrition, adequate sanitary living conditions as well as access to social support for disadvantages families. All of these factors require relevant government and private spending and on infrastructures that can be universally used and accessed. Infant mortality is thus a very powerful indicator of quality of life in a country.</p>
 <p>When data, such as counts and proportions are reported in a table we should make careful considerations how the data are precisely presented.</p>
-<p>For instance in table about infant mortality in some Europen countries in 1860, we could have reported the same information by presenting survival rates instead of mortality rates. Such a choice in reporting is generally known as <em>framing</em>. Framing can have effects on the impact of communication. Depending on how you frame the communication of data, the same information might affect and engage your audience differently. Take for instance the data for Germany 1860. If we had reported a survival rate of 74 % it might sound to many better than if we had reported the equivalent information of a mortality rate of 26 %.</p>
-<p>Risk impression can be made more clear if we report the actual counts as well as<br>
-the percentages. The count or total number can then be imagined as an actual crowd of people.</p>
-<p>A very interesting and illustrative example for this is given in the book by David Spiegelhalter<span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, which we have already encountered when we discussed the issue of how many trees there are on the planet in the introduction. He describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious violence. The add was presumably intended to reassure passengers about the safety situation. Here is what he writes:</p>
+<p>For instance in the table about infant mortality in some European countries in 1860, we could have reported the same information by presenting survival rates instead of mortality rates. Such a choice in reporting is generally known as <em>framing</em>. Framing can have effects on the impact of communication. Depending on how you frame the communication of data, the same information might affect and engage your audience differently. The same table with survival rates instead of mortality rates would the look like this.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data from data folder. The data are a csv version of the excel file from gapminder</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sheet data</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>infant_mortality <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant_mortality_data_gm.csv"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># when we read the data all years are read sa characters with X as prefix, like X1850. We want</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># to remove the X</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality) <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"X"</span>, <span class="st">""</span>, <span class="fu">names</span>(infant_mortality), <span class="at">fixed =</span> T))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># replace Infant.Mortality.Rate by country</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to a long format and add to the counts a column with the mortality rate. The rate</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># is defined as the number of death during the first year of life per 1000 life births.</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(infant_mortality)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>mort_dat <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(data, <span class="sc">!</span>Country, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Count"</span>,  </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">values_transform =</span> <span class="fu">list</span>(<span class="at">Count =</span> as.numeric))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span><span class="st">"Survival Rate"</span> <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(mort_dat<span class="sc">$</span>Count), <span class="cn">NA</span>, mort_dat<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span>Count <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">-</span> mort_dat<span class="sc">$</span>Count</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(mort_dat, mort_dat[Year <span class="sc">==</span> <span class="dv">1860</span>, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Survival Rate"</span>)]) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(rate_1860<span class="sc">$</span><span class="st">"Survival Rate"</span>), ], <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Infant survival rates in some European countries in 1860 </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country</th>
+<th style="text-align: right;">Count</th>
+<th style="text-align: right;">Survival Rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Germany</td>
+<td style="text-align: right;">740</td>
+<td style="text-align: right;">0.740</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Austria</td>
+<td style="text-align: right;">763</td>
+<td style="text-align: right;">0.763</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Netherlands</td>
+<td style="text-align: right;">808</td>
+<td style="text-align: right;">0.808</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">826</td>
+<td style="text-align: right;">0.826</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">France</td>
+<td style="text-align: right;">850</td>
+<td style="text-align: right;">0.850</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">861</td>
+<td style="text-align: right;">0.861</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Denmark</td>
+<td style="text-align: right;">864</td>
+<td style="text-align: right;">0.864</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">876</td>
+<td style="text-align: right;">0.876</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Norway</td>
+<td style="text-align: right;">898</td>
+<td style="text-align: right;">0.898</td>
+</tr>
+</tbody>
+</table>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rate_1860, <span class="at">file =</span> <span class="st">"tables/table_2_3_infant_survival_1860.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Take for instance the data for Germany 1860. If we had reported a survival rate of 74 % it might sound to many better than if we had reported the equivalent information of a mortality rate of 26 %. So whenever you report counts or proportions be mindful of framing effects.</p>
+<p>Risk impression can often be made more clear if we report the actual counts as well as<br>
+the percentages. The count or total number can then be imagined as an actual crowd of people. For example we could visualize the infant mortality rate in Germany by creating a picture of the counts of cases (infant deaths) among 1000 life births.</p>
+<p>Such a visualization could then look for example like this:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">260</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">740</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="categorical_data_and_proportions_files/figure-html/infant-mortality-isotype-1860-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here you visualize the numbers as differently colored crowds. It makes the magnitude of the mortality rate (as well as the survival rate) tangible. When you plot the same graph for the data of 2020 the enormous improvement that took place within a time span of one and a half centuries in Germany become perhaps more obvious that looking at the rates alone. The same kind of visualization for the 2020 data would then look like this</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">997</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="categorical_data_and_proportions_files/figure-html/infant-mortality-isotype-2020-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A very interesting and illustrative example for how imagining actual crowds of people rather than mere rates is given in the book by David Spiegelhalter<span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, which we have already encountered when we discussed the issue of how many trees there are on the planet in the introduction. He describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious violence. The add was presumably intended to reassure passengers about the safety situation. Here is what he writes:</p>
 <p>“…<em>we could reverse the emotional impact by two simple changes: First the statement means that 1 % of young Londoners do commit serious violence. Second, the population of London is around 9 million, there are around 1 million people aged between 15 and 25, and f we consider these as ”young”, this means there are 1 % of a million or a total of 10.00 seriously violent young people in the city. This does not sound at all reassuring. Note the two tricks used to manipulate the impact of this statistic: Convert from a positive to a negative frame, and then turn a percentage to an actual number of people.</em>”</p>
-<p>A standard we should strive for when reporting data is providing impartial information. For this we should thing carefully about our framing and should perhaps provide both positive and negative frames. But even if we achieve this, we should consider other things, like the ordering of the rows.</p>
-<p>In this discussion the countries were presented in decreasing order of infant mortality rates. This choice of display might create the impression that this was an important and valid way of comparing and ranking countries. While such rankings are popular in the media we should avoid such displays of information. First of all the differences could be there just by chance. Furthermore countries with low infant moralities usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogenous country.</p>
+<p>A standard we should strive for when reporting data is providing impartial information. For this we should think carefully about our framing and should perhaps provide both positive and negative frames. But even if we achieve this, we should consider other things, like the ordering of the rows.</p>
+<p>In this discussion the countries were presented ordered according to decreasing infant mortality rates. This choice of display might create the impression that this was an important and valid way of comparing and ranking countries.</p>
+<p>While such rankings are popular in the media we should avoid such displays of information when there is no specific reason to display a ranking.</p>
+<p>First of all the differences could be there just by chance. Furthermore countries with low infant morality rates usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogenous country.</p>
 </section>
 <section id="visualizing-infant-mortality-rates-first-steps-in-r" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="visualizing-infant-mortality-rates-first-steps-in-r"><span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</h2>
-<p>While a table might be the medium of choice for displaying data, it is often more powerful to c convey information visually. To enable you to visualize the infant-mortality data, we now begin with an introduction to the computer language we will use throughout this course: The R language. So here we want to begin this journey.</p>
+<p>While a table might be the medium of choice for displaying data it is often more powerful to convey information visually. The example of how imagining actual crowds might give us sometimes a more tangible picture of the same information, was one illustration of this.</p>
+<p>Today when we visualize data as one important tool of data exploration, the tool of choice is a computer and an appropriate language that enables us to tell the computer what to do.</p>
+<p>For us in this course this will be the R language and now we start to learn the first steps in this language.</p>
+<section id="starting-an-quitting-r" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</h3>
+<p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux. We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks. The notebooks will not only allow to send command to R and execute these commands but in addition it will allow to store command, comment them and make them available as files for later use.</p>
+<p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later. You start R by either typing <code>R</code> into the terminal or by clicking the R icon. To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
+</section>
+<section id="first-steps" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="first-steps"><span class="header-section-number">2.2.2</span> First steps</h3>
+<p>The R command prompt is <code>&gt;</code>. When R shows the prompt, it says that it is ready to receive commands. You type the commands at the prompt.</p>
+<p>Here is an easy command you can send to R. Just try to type <code>1 + 1</code> at the prompt</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>Sure enough, R gives you the result of the addition, which is <code>2</code>. So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by typing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">270</span><span class="sc">/</span><span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.27</code></pre>
+</div>
+</div>
+<p>A great visualization story is this for life expectancy: https://www.youtube.com/watch?v=hVimVzgtD6w Could we do something like this perhaps with infant mortality.?</p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -526,6 +734,7 @@ Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. 
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 </div>
+</section>
 </section>
 
 
