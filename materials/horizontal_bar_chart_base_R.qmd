@@ -35,7 +35,7 @@ im_1960_2020_countries <- im_1960_2020[! im_1960_2020$Country %in% c("Low and mi
 
 im_1960_2020_aggregates <- im_1960_2020[im_1960_2020$Country %in% c("Low and middle income", "Low income", "High income", "World", "Upper middle income") & im_1960_2020$Year == 2020, ]
 
-write.csv(im_1960_2020_aggregates, file = "../data/infant_mortality/im_agg_2020.csv")
+write.csv(im_1960_2020_aggregates, file = "../data/infant_mortality/im_agg_2020.csv", row.names = F)
 ```
 
 Try a bar plot in base R first for 2020

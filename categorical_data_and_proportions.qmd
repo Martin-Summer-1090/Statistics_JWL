@@ -264,7 +264,7 @@ Such a visualization could then look for example like this:
 #| fig-cap: In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.
 
 library(waffle)
-waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 2)
+waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
 ```
 Here you visualize the numbers as differently colored crowds. It makes the magnitude
 of the mortality rate (as well as the survival rate) tangible. When you plot the
@@ -277,7 +277,7 @@ rates alone. The same kind of visualization for the 2020 data would then look li
 #| fig-cap: In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.
 
 library(waffle)
-waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 2)
+waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
 ```
 
 
@@ -330,10 +330,19 @@ in this language.
 ### Starting an quitting R
 
 We assume that the computer you work with has a recent version of R installed. R will work
-with the most common operating systems such as Windows, OSX or Linux. We will use R in two
-ways: First from the R command line and then also by working with Jupyter Notebooks. The
-notebooks will not only allow to send command to R and execute these commands but in addition
-it will allow to store command, comment them and make them available as files for later use.
+with the most common operating systems such as Windows, OSX or Linux.^[Installing R 
+yourself is not complicated. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here ![cran-website](pictures/cran-website-as-of-2022-09.png)] 
+
+We will use R in two
+ways: First from the R command line and then also by working with Jupyter Notebooks.^[Another very powerful and popular program to work with R and R code is RStudio, which you can find 
+here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to
+install software yourself, feel free to experiment also with this tool. The basic version is
+free of charge.]
+
+The
+notebooks, which we already encountered in an example in the introduction, 
+will not only allow to send command to R and execute these commands but in addition
+also to store command, comment them and make them available as files for later use.
 
 For a start we just work with the R command line or the R-console, as it is called, introducing
 the use of R via the notebooks a bit later. You start R by either typing `R` into the 
@@ -366,29 +375,179 @@ infant death per 1000 life birth you could compute the mortality rate by typing
 
 you will get the mortality rate `0.27`.
 
-::: {.callout-note icon=false}
 
-## Example: Infant mortality rates in 2020 by global regions
+R needs a complete command to be able to execute it, when the return key is pressed. 
+Lets see what happens, if a command is incomplete, like for instance:
 
-As a first example of visualizing data in R I have prepared a data file from our initial
-infant-mortality data which shows infant mortality rates for country groups with different
-income-levels: Low and middle income, Low income, High income,  Upper middle income as well
-as the infant mortality rate globally. I don't go here into the details how exactly these
-data have been aggregated from individual country data. 
+`5*`
 
-:::
+In this case R will show the expression followed by a `+` instead of showing a new prompt. This
+means that the expression is incomplete. It expects more input.
+If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.
 
 
+If you type a command that R does not understand, you will be returned an error message. 
+Don't worry if you see an error message. It just is a way the computer tells you that he does 
+not understand what you
+want him to do.
 
-A great visualization story is this for life expectancy:
-https://www.youtube.com/watch?v=hVimVzgtD6w
-Could we do something like this perhaps with infant mortality.?
+For instance, if you type `5%3` you will get an error message like this
 
-:::{.callout-caution collapse="true"}
-## Seitwerk: A decision pending.
-Since we begin here to introduce R for the first time, a decision on how R will be used in the
-course would be helpful. We have in principle three options. Assuming that students have (1) only an R installation, (2) R and RStudio, (3) R with Jupyter Books or Jupyter Lab.
-:::
+```{r}
+#| code-fold: false
+#| error: true
+
+5%3
+```
+
+Sometimes it is obvious why a mistake occurred. In this case, that R just does not 
+know what to do with
+the symbol `%`. It has no meaning in this context. Sometimes it is 
+not so obvious what the error
+message actually means and what you might do about it. 
+
+A useful strategy in this 
+case is to type
+the error message into a search engine and see what you can find. The chance is very 
+high that others
+encountered the same problem before you and got helpful advice how to fix it from other users on 
+the internet. One site, we find particularly helpful for all kinds of questions related to R
+and R programming is https://stackoverflow.com/. Try it at the next opportunity.
+
+With this knowledge we can already do a first example, by continuing our disucssion
+on infant mortality data we started in this lecture. We now use R to read a dataset 
+showing the mortality rates by groups of countries categorized by their income levels as 
+well as for the world as a whole. 
+
+One of the great features of R is that it comes with many built in functions that perform
+certain tasks, like for instance reading data or making particular plots with these data.
+In this example we read data provided in a very common format, the csv format. Csv is an
+abbreviation of comma separated values. A csv file is a raw text file, containing data with
+different data points separated by commas (or sometimes semicolons). 
+
+In R a function has a name followed by parenthesis, which can take inputs or arguments, like this:
+
+```{r}
+#| code-fold: false
+read.csv("tables/table_2_2_infant_mortality_2020.csv")
+```
+
+You can recognize this table. It is the same table of infant mortality rates among some
+European countries in 2020, we looked at before in a slightly different format. These
+data are stored on my machine in a particular folder. The pathname to the folder "tables/table_2_2_infant_mortality_2020.csv" is an argument to the function `read.csv()` 
+telling R to which file the function should be applied. When we execute the function
+by pressing the enter key, R reads the file and displays its contents.
+
+We can save data in R by stroing them in *objects*. An object is a name, you 
+can choose yourself to
+store data. For example, if you choose to store the output of the function
+call to `read.csv()`in an object called `dat`,
+you would type:
+
+```{r}
+#| code-fold: false
+dat <- read.csv("tables/table_2_2_infant_mortality_2020.csv")
+```
+
+R will now store the output of the function call, the data table, in an object called `dat`. 
+You can use this object name now to refer to it. For instance if you now type
+
+```{r}
+#| code-fold: false
+dat
+```
+
+the value that is stored in the object will be printed to the screen. In this case
+the table will be displayed. 
+
+We now use this fact an make our first own graph. Instead of showing the rates in a table,
+we rather want to display in in a bar chart. R has a built in function for such charts, which
+is called `barplot()`. The `barplot()` function takes as arguments the data and perhaps other
+arguments influencing the appearance of the plot, and produces a graphics.
+
+For the plot we need the mortality rates, not the whole object dat. We will learn how we extract
+subsets of data from a large table systematically in the next unit. Here we just show you, how
+we do it for this particular example. We extract the mortality rate column from the table by 
+tying `dat$Mortality.Rate` and store it in a new object which we choose to call `mr`.
+
+```{r}
+#| code-fold: false
+mr <- dat$Mortality.Rate
+```
+
+We have extracted the column with the name "Mortality.Rate" from the object `dat` and stored
+it in a new object which we have called `mr`. Now let us make the barplot.
+
+```{r}
+#| code-fold: false
+
+barplot(mr)
+```
+
+It would be easier, if we had the plot turned horizontal. This can be achieved by 
+specifying further arguments. We will learn later how we can find out which arguments can
+be used with a function by accessing the documentation. For `barplot()`it turns out that
+there is an argument, called `horiz` which has the logical value `FALSE` but which can be
+set to the logical value `TRUE`, yielding what we want:
+
+```{r}
+#| code-fold: false
+barplot(mr, horiz = TRUE)
+```
+
+But which bar belongs to which country? Here we can specify the countries again by a new
+function argument, which is called `names.arg` for the boxplot function. We assign the
+column of country names in `dat`to this argument.
+
+```{r}
+#| code-fold: false
+#| fig-cap: Infant mortality in some European countries in 2020.
+barplot(mr, horiz = TRUE, names.arg = dat$Country, 
+        las = 1, cex.names = 0.5)
+```
+
+Now we have visualized the information we had displayed in a table before. What do these
+other strange labels mean? `las` is an additional argument to the function which will make
+the country names on thy y-axes appear horizontally. `cex.names` is an argument that will scale
+down the font size of country names such that the names do not exceed the frame and
+become unreadable.
+
+Don't worry if this first encounter with R and R functions might look a bit duanting and
+not very systematic. We will learn to visualize data much more systematically as we go through
+the course. For now you have seen a very direct way how to visualize some of our data in very
+few steps.
+
+Before I end the discussion of this first encounter with R and visualization, let me point
+out an important point about the display of proportions or rates in a (horizontal) bar
+chart. It is usually a good idea, to choose the origin of the graph, as we have done here,
+at 0. If we choose the origin somewhere else, differences might look much bigger. This
+is by the way a standard trick of manipulative display of data. With bar charts always be
+mindful about the choice of origin.
+
+To see this point, let us choose the origin, say at 0.0015 instead of 0. R allows us to do
+so very easily. The barplot function allows for setting the origin for the x-axes at a
+particular value with the `xlim` argument.
+
+```{r}
+#| code-fold: false
+#| fig-cap: Infant mortality in some European countries in 2020, different origin.
+barplot(mr, horiz = TRUE, names.arg = dat$Country, 
+        las = 1, cex.names = 0.5, xlim = c(0.0015, 0.0037), xpd = FALSE)
+```
+
+Now the differences suddenly look bigger. 
+
+Before we end these first steps in R, note that each R function comes with its own 
+help documentation, which you can access by typing
+
+```{r}
+#| code-fold: false
+
+?barplot
+```
+
+function. It will show you the documentation for the function, describing what it does, what the
+parameters mean and also at least one example for calling the function 
 
 
 

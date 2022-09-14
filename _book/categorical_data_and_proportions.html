@@ -623,7 +623,7 @@ the percentages. The count or total number can then be imagined as an actual cro
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">260</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">740</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">260</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">740</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">equal =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -639,7 +639,7 @@ the percentages. The count or total number can then be imagined as an actual cro
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">997</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">997</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">equal =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -657,14 +657,16 @@ the percentages. The count or total number can then be imagined as an actual cro
 <p>While such rankings are popular in the media we should avoid such displays of information when there is no specific reason to display a ranking.</p>
 <p>First of all the differences could be there just by chance. Furthermore countries with low infant morality rates usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogenous country.</p>
 </section>
-<section id="visualizing-infant-mortality-rates-first-steps-in-r" class="level2" data-number="2.2">
+<section id="visualizing-infant-mortality-rates-first-steps-in-r" class="level2 page-columns page-full" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="visualizing-infant-mortality-rates-first-steps-in-r"><span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</h2>
 <p>While a table might be the medium of choice for displaying data it is often more powerful to convey information visually. The example of how imagining actual crowds might give us sometimes a more tangible picture of the same information, was one illustration of this.</p>
 <p>Today when we visualize data as one important tool of data exploration, the tool of choice is a computer and an appropriate language that enables us to tell the computer what to do.</p>
 <p>For us in this course this will be the R language and now we start to learn the first steps in this language.</p>
-<section id="starting-an-quitting-r" class="level3" data-number="2.2.1">
+<section id="starting-an-quitting-r" class="level3 page-columns page-full" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</h3>
-<p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux. We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks. The notebooks will not only allow to send command to R and execute these commands but in addition it will allow to store command, comment them and make them available as files for later use.</p>
+<div class="page-columns page-full"><p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;Installing R yourself is not complicated. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here <img src="pictures/cran-website-as-of-2022-09.png" class="img-fluid" alt="cran-website"></p></li></div></div>
+<div class="page-columns page-full"><p>We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is free of charge.</p></li></div></div>
+<p>The notebooks, which we already encountered in an example in the introduction, will not only allow to send command to R and execute these commands but in addition also to store command, comment them and make them available as files for later use.</p>
 <p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later. You start R by either typing <code>R</code> into the terminal or by clicking the R icon. To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
 </section>
 <section id="first-steps" class="level3" data-number="2.2.2">
@@ -677,27 +679,115 @@ the percentages. The count or total number can then be imagined as an actual cro
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>Sure enough, R gives you the result of the addition, which is <code>2</code>. So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by typing</p>
+<p>Sure enough, R gives you the result of the addition, which is <code>2</code>. But what is <code>[1]</code>? This is just a row lable. We will go into that later.</p>
+<p>So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by typing</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">270</span><span class="sc">/</span><span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.27</code></pre>
 </div>
 </div>
-<p>A great visualization story is this for life expectancy: https://www.youtube.com/watch?v=hVimVzgtD6w Could we do something like this perhaps with infant mortality.?</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>you will get the mortality rate <code>0.27</code>.</p>
+<p>R needs a complete command to be able to execute it, when the return key is pressed. Lets see what happens, if a command is incomplete, like for instance:</p>
+<p><code>5*</code></p>
+<p>In this case R will show the expression followed by a <code>+</code> instead of showing a new prompt. This means that the expression is incomplete. It expects more input. If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.</p>
+<p>If you type a command that R does not understand, you will be returned an error message. Don’t worry if you see an error message. It just is a way the computer tells you that he does not understand what you want him to do.</p>
+<p>For instance, if you type <code>5%3</code> you will get an error message like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>%<span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:1:2: unexpected input
+1: 5%3
+     ^</code></pre>
 </div>
-<div class="callout-caption-container flex-fill">
-Seitwerk: A decision pending.
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<p>Sometimes it is obvious why a mistake occurred. In this case, that R just does not know what to do with the symbol <code>%</code>. It has no meaning in this context. Sometimes it is not so obvious what the error message actually means and what you might do about it.</p>
+<p>A useful strategy in this case is to type the error message into a search engine and see what you can find. The chance is very high that others encountered the same problem before you and got helpful advice how to fix it from other users on the internet. One site, we find particularly helpful for all kinds of questions related to R and R programming is https://stackoverflow.com/. Try it at the next opportunity.</p>
+<p>With this knowledge we can already do a first example, by continuing our disucssion on infant mortality data we started in this lecture. We now use R to read a dataset showing the mortality rates by groups of countries categorized by their income levels as well as for the world as a whole.</p>
+<p>One of the great features of R is that it comes with many built in functions that perform certain tasks, like for instance reading data or making particular plots with these data. In this example we read data provided in a very common format, the csv format. Csv is an abbreviation of comma separated values. A csv file is a raw text file, containing data with different data points separated by commas (or sometimes semicolons).</p>
+<p>In R a function has a name followed by parenthesis, which can take inputs or arguments, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Country Year Count Mortality.Rate
+1     Austria 2020   3.0         0.0030
+2     Belgium 2020   3.4         0.0034
+3     Denmark 2020   3.1         0.0031
+4      France 2020   3.4         0.0034
+5     Germany 2020   3.1         0.0031
+6 Netherlands 2020   3.6         0.0036
+7      Norway 2020   1.8         0.0018
+8       Spain 2020   2.7         0.0027
+9      Sweden 2020   2.1         0.0021</code></pre>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Since we begin here to introduce R for the first time, a decision on how R will be used in the course would be helpful. We have in principle three options. Assuming that students have (1) only an R installation, (2) R and RStudio, (3) R with Jupyter Books or Jupyter Lab.</p>
+</div>
+<p>You can recognize this table. It is the same table of infant mortality rates among some European countries in 2020, we looked at before in a slightly different format. These data are stored on my machine in a particular folder. The pathname to the folder “tables/table_2_2_infant_mortality_2020.csv” is an argument to the function <code>read.csv()</code> telling R to which file the function should be applied. When we execute the function by pressing the enter key, R reads the file and displays its contents.</p>
+<p>We can save data in R by stroing them in <em>objects</em>. An object is a name, you can choose yourself to store data. For example, if you choose to store the output of the function call to <code>read.csv()</code>in an object called <code>dat</code>, you would type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>R will now store the output of the function call, the data table, in an object called <code>dat</code>. You can use this object name now to refer to it. For instance if you now type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Country Year Count Mortality.Rate
+1     Austria 2020   3.0         0.0030
+2     Belgium 2020   3.4         0.0034
+3     Denmark 2020   3.1         0.0031
+4      France 2020   3.4         0.0034
+5     Germany 2020   3.1         0.0031
+6 Netherlands 2020   3.6         0.0036
+7      Norway 2020   1.8         0.0018
+8       Spain 2020   2.7         0.0027
+9      Sweden 2020   2.1         0.0021</code></pre>
+</div>
+</div>
+<p>the value that is stored in the object will be printed to the screen. In this case the table will be displayed.</p>
+<p>We now use this fact an make our first own graph. Instead of showing the rates in a table, we rather want to display in in a bar chart. R has a built in function for such charts, which is called <code>barplot()</code>. The <code>barplot()</code> function takes as arguments the data and perhaps other arguments influencing the appearance of the plot, and produces a graphics.</p>
+<p>For the plot we need the mortality rates, not the whole object dat. We will learn how we extract subsets of data from a large table systematically in the next unit. Here we just show you, how we do it for this particular example. We extract the mortality rate column from the table by tying <code>dat$Mortality.Rate</code> and store it in a new object which we choose to call <code>mr</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mr <span class="ot">&lt;-</span> dat<span class="sc">$</span>Mortality.Rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We have extracted the column with the name “Mortality.Rate” from the object <code>dat</code> and stored it in a new object which we have called <code>mr</code>. Now let us make the barplot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>It would be easier, if we had the plot turned horizontal. This can be achieved by specifying further arguments. We will learn later how we can find out which arguments can be used with a function by accessing the documentation. For <code>barplot()</code>it turns out that there is an argument, called <code>horiz</code> which has the logical value <code>FALSE</code> but which can be set to the logical value <code>TRUE</code>, yielding what we want:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>But which bar belongs to which country? Here we can specify the countries again by a new function argument, which is called <code>names.arg</code> for the boxplot function. We assign the column of country names in <code>dat</code>to this argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">names.arg =</span> dat<span class="sc">$</span>Country, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Infant mortality in some European countries in 2020.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we have visualized the information we had displayed in a table before. What do these other strange labels mean? <code>las</code> is an additional argument to the function which will make the country names on thy y-axes appear horizontally. <code>cex.names</code> is an argument that will scale down the font size of country names such that the names do not exceed the frame and become unreadable.</p>
+<p>Don’t worry if this first encounter with R and R functions might look a bit duanting and not very systematic. We will learn to visualize data much more systematically as we go through the course. For now you have seen a very direct way how to visualize some of our data in very few steps.</p>
+<p>Before I end the discussion of this first encounter with R and visualization, let me point out an important point about the display of proportions or rates in a (horizontal) bar chart. It is usually a good idea, to choose the origin of the graph, as we have done here, at 0. If we choose the origin somewhere else, differences might look much bigger. This is by the way a standard trick of manipulative display of data. With bar charts always be mindful about the choice of origin.</p>
+<p>To see this point, let us choose the origin, say at 0.0015 instead of 0. R allows us to do so very easily. The barplot function allows for setting the origin for the x-axes at a particular value with the <code>xlim</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">names.arg =</span> dat<span class="sc">$</span>Country, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.0015</span>, <span class="fl">0.0037</span>), <span class="at">xpd =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Infant mortality in some European countries in 2020, different origin.</figcaption><p></p>
+</figure>
 </div>
 </div>
 </div>
