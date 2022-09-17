@@ -246,10 +246,12 @@ div.csl-indent {
    
   <ul>
   <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"> <span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
-  <li><a href="#visualizing-infant-mortality-rates-first-steps-in-r" id="toc-visualizing-infant-mortality-rates-first-steps-in-r" class="nav-link" data-scroll-target="#visualizing-infant-mortality-rates-first-steps-in-r"> <span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</a>
+  <li><a href="#a-first-acquaintance-with-r" id="toc-a-first-acquaintance-with-r" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r"> <span class="header-section-number">2.2</span> A first acquaintance with R</a>
   <ul class="collapse">
   <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"> <span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
   <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"> <span class="header-section-number">2.2.2</span> First steps</a></li>
+  <li><a href="#storing-and-reusing-results" id="toc-storing-and-reusing-results" class="nav-link" data-scroll-target="#storing-and-reusing-results"> <span class="header-section-number">2.2.3</span> Storing and reusing results</a></li>
+  <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"> <span class="header-section-number">2.2.4</span> A first data visualization</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -276,9 +278,9 @@ div.csl-indent {
 <p>The death of a child is an enormous tragedy to its family and friends. The numbers across the globe add up to millions. From 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5, as reported by Max Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> in an interesting article on the website “Our world in Data” which we referred to in our introduction to this course. This is a number of enormous scale that never makes the headlines.</p>
 <p>Max Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> on the website “our world in data”, we have encountered in the introduction, puts the scale very vividly into perspective. He writes:</p>
 <p>“…<em>The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.</em></p>
-<p>In pre-industrial societies infant and child mortality were uniformly and cruelly high. They were a universal and frequent experience for families all over the world. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far into the past <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>. The mortality rate is defined as the number of deaths per 1000 life births.</p>
+<div class="page-columns page-full"><p>In pre-industrial societies infant and child mortality were uniformly and cruelly high. They were a universal and frequent experience for families all over the world. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far into the past <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>. The mortality rate is defined as the number of deaths per 1000 life births.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;Maybe this might be confusing for some of you because the usual understanding of a rate is the number of cases divided by the entire population exposed to a specific risk. To be precise the mortality rate is a probability of death derived from a life table and expressed as rate per 1000 live births. If you don’t know what these notions mean, don’t worry. We will learn later in the course about probability and also what life tables are. This footnote is just in case some of you might have wondered why the rate is expressed as cases per 1000. This is a convention of reporting mortality rates.</p></li></div></div>
 <p>The authors find that in the entire sample about 27 % of children died in their first year of life and 46 % died before they reached adulthood. These rates are surprisingly similar across regions and cultures: Every forth newborn child died in the first year of life, every second child during its childhood. These are truely grim numbers.</p>
-<div class="page-columns page-full"><p>The numbers started to improve, very gradually only with the onset of industrialization. Gapminder, the site we have already encountered in the introduction has collected and commented the available data back to 1800.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;See https://www.gapminder.org/data/documentation/gd002/</p></li></div></div>
+<div class="page-columns page-full"><p>The numbers started to improve, very gradually only with the onset of industrialization. Gapminder, the site we have already encountered in the introduction has collected and commented the available data back to 1800.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;See https://www.gapminder.org/data/documentation/gd002/</p></li></div></div>
 <p>Let us have a look at them. For instance, if we go back to 1850, we have data only from Europe.</p>
 <div class="cell">
 <details>
@@ -286,36 +288,17 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data from data folder. The data are a csv version of the excel file from gapminder</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sheet data</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>infant_mortality <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant_mortality_data_gm.csv"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>infant_mortality <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant_mortality_data.csv"</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># when we read the data all years are read sa characters with X as prefix, like X1850. We want</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># to remove the X</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality) <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"X"</span>, <span class="st">""</span>, <span class="fu">names</span>(infant_mortality), <span class="at">fixed =</span> T))</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># replace Infant.Mortality.Rate by country</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> infant_mortality[infant_mortality<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">1860</span>, ] <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> dat[ , <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality_Rate"</span>)]</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to a long format and add to the counts a column with the mortality rate. The rate</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># is defined as the number of death during the first year of life per 1000 life births.</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(infant_mortality)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>mort_dat <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(data, <span class="sc">!</span>Country, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Count"</span>,  </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">values_transform =</span> <span class="fu">list</span>(<span class="at">Count =</span> as.numeric))</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span><span class="st">"Mortality Rate"</span> <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(mort_dat<span class="sc">$</span>Count), <span class="cn">NA</span>, mort_dat<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(mort_dat, mort_dat[Year <span class="sc">==</span> <span class="dv">1860</span>, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality Rate"</span>)]) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span><span class="st">"Mortality Rate"</span>), ], <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span>Mortality_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -324,7 +307,7 @@ div.csl-indent {
 <tr class="header">
 <th style="text-align: left;">Country</th>
 <th style="text-align: right;">Count</th>
-<th style="text-align: right;">Mortality Rate</th>
+<th style="text-align: right;">Mortality_Rate</th>
 </tr>
 </thead>
 <tbody>
@@ -339,36 +322,31 @@ div.csl-indent {
 <td style="text-align: right;">0.237</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">192</td>
-<td style="text-align: right;">0.192</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Spain</td>
 <td style="text-align: right;">174</td>
 <td style="text-align: right;">0.174</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">France</td>
 <td style="text-align: right;">150</td>
 <td style="text-align: right;">0.150</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Belgium</td>
 <td style="text-align: right;">139</td>
 <td style="text-align: right;">0.139</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Denmark</td>
 <td style="text-align: right;">136</td>
 <td style="text-align: right;">0.136</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Sweden</td>
 <td style="text-align: right;">124</td>
 <td style="text-align: right;">0.124</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Norway</td>
 <td style="text-align: right;">102</td>
 <td style="text-align: right;">0.102</td>
@@ -383,8 +361,8 @@ div.csl-indent {
 </div>
 <p>The table shows the counts of infant death during the first year in the year 1860 per 1000 life births. Before we deal with the information conveyed by these data, let us take the opportunity to discuss some terminology and technical terms that will be a focus of this chapter.</p>
 <p>The data are shown here in a table. We have ordered the countries by the infant mortality rate, displaying the country with the highest rate first. The columns of the table are called <em>variables</em>. So the variables shown in this table are Country, Count and Mortality Rate. In the specific example shown here we have data that record whether an event has happened or not, in our case the death of an infant in his first year of life in a specific country during a specific year. Variables that can take only two values, are called <strong>binary data</strong>. Sets of binary data can be summarized by the number of times and the percentage of cases in which an event has occurred.</p>
-<div class="page-columns page-full"><p>The basis for computing the percentages in our case are 1000 life births. So in the case of Norway in 1860 we can report the data by saying that among 1000 life births we had 102 infant deaths in the first year of life. Expressed as a rate this would be <span class="math inline">\(\frac{102}{1000}\)</span>, or <span class="math inline">\(0.102\)</span>, which amounts to <span class="math inline">\(10.2\)</span> percent.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as mortality rate of 26 %.</p></li></div></div>
-<div class="page-columns page-full"><p>Each row in the table is a <em>record</em> or sometimes also called an <em>observation</em>. Our table shown here has eight records. For doing statistics, especially when using the computer, it is often useful to display data tables such that each variable is a column and each record is a row.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Such a format is not always the reader friendliest to humans and thus data on the web are often organized differently. For example the Gapminder data show the Years as columns and countries as rows. While easier to read such a table for working with the computer this deviation from the format variable as column and observation as row, often creates problems. We will come back to this seemingly minor but in fact quite important point over and over again. Hadley Wickham <span class="citation" data-cites="JSSv059i10">(<a href="references.html#ref-JSSv059i10" role="doc-biblioref">Wickham 2014</a>)</span>, who has contributed a lot to R and the R programming language which we will use in this course has popularized the term “tidy” for the table format where every column is a variable and every row is an observation.</p></li></div></div>
+<div class="page-columns page-full"><p>The basis for computing the percentages in our case are 1000 life births. So in the case of Norway in 1860 we can report the data by saying that among 1000 life births we had 102 infant deaths in the first year of life. Expressed as a rate this would be <span class="math inline">\(\frac{102}{1000}\)</span>, or <span class="math inline">\(0.102\)</span>, which amounts to <span class="math inline">\(10.2\)</span> percent.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as mortality rate of 26 %.</p></li></div></div>
+<div class="page-columns page-full"><p>Each row in the table is a <em>record</em> or sometimes also called an <em>observation</em>. Our table shown here has eight records. For doing statistics, especially when using the computer, it is often useful to display data tables such that each variable is a column and each record is a row.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;Such a format is not always the reader friendliest to humans and thus data on the web are often organized differently. For example the Gapminder data show the Years as columns and countries as rows. While easier to read such a table for working with the computer this deviation from the format variable as column and observation as row, often creates problems. We will come back to this seemingly minor but in fact quite important point over and over again. Hadley Wickham <span class="citation" data-cites="JSSv059i10">(<a href="references.html#ref-JSSv059i10" role="doc-biblioref">Wickham 2014</a>)</span>, who has contributed a lot to R and the R programming language which we will use in this course has popularized the term “tidy” for the table format where every column is a variable and every row is an observation.</p></li></div></div>
 <p>In this chapter we will use counts and proportions as the leading example to discuss the basic presentation of statistics and data. We will learn about alternative ways to display data. You will learn how design choices for the display of data help or prevent engagement and readability for your respective audience. You will also learn the first steps in R and how to use the computer to analyze and communicate data.</p>
 <section id="communicating-counts-and-proportions" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="communicating-counts-and-proportions"><span class="header-section-number">2.1</span> Communicating Counts and Proportions</h2>
@@ -393,109 +371,62 @@ div.csl-indent {
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#read data from the data file our world in data</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the country group used in the historical 1860 data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant-mortality.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>rate_2020 <span class="ot">&lt;-</span> infant_mortality[infant_mortality<span class="sc">$</span>Country <span class="sc">%in%</span> dat<span class="sc">$</span>Country <span class="sc">&amp;</span> infant_mortality<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2020</span>, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality_Rate"</span>)]</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(im_1960_2020) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display the table and write text file of table</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Select variables to be consistent with previous format</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>im_1960_2020 <span class="ot">&lt;-</span> im_1960_2020[<span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Mortality Rate"</span>)]</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the country group used in the historical 1860 data</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> im_1960_2020[im_1960_2020<span class="sc">$</span>Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"Austria"</span>, <span class="st">"Netherlands"</span>, <span class="st">"Spain"</span>, <span class="st">"France"</span>, <span class="st">"Belgium"</span>, <span class="st">"Denmark"</span>, <span class="st">"Sweden"</span>, <span class="st">"Norway"</span>) <span class="sc">&amp;</span> im_1960_2020<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2020</span>, ]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># In the data the mortality rate is given in percent. We add the corresponding counts</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span>Count <span class="ot">&lt;-</span> (dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span><span class="sc">*</span><span class="dv">10</span>) </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># We transform the percentage rate to the actual rate of number of death per 1000 life births</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span> <span class="ot">&lt;-</span> dat_sel<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder columns</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>dat_sel <span class="ot">&lt;-</span> dat_sel[, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Year"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality Rate"</span>)]</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># display the table and write text file of table</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat_sel[<span class="fu">order</span>(<span class="sc">-</span>dat_sel<span class="sc">$</span><span class="st">"Mortality Rate"</span>), ], <span class="at">digits =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_2020[<span class="fu">order</span>(<span class="sc">-</span>rate_2020<span class="sc">$</span>Mortality_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
 <th style="text-align: left;">Country</th>
-<th style="text-align: right;">Year</th>
 <th style="text-align: right;">Count</th>
-<th style="text-align: right;">Mortality Rate</th>
+<th style="text-align: right;">Mortality_Rate</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">7040</td>
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">3.6</td>
-<td style="text-align: right;">0.0036</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">898</td>
 <td style="text-align: left;">Belgium</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">3.4</td>
 <td style="text-align: right;">0.0034</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">3445</td>
+<tr class="even">
 <td style="text-align: left;">France</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">3.4</td>
 <td style="text-align: right;">0.0034</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">2576</td>
+<tr class="odd">
 <td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">2020</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">0.0031</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Germany</td>
 <td style="text-align: right;">3.1</td>
 <td style="text-align: right;">0.0031</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">3659</td>
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">2020</td>
-<td style="text-align: right;">3.1</td>
-<td style="text-align: right;">0.0031</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">521</td>
 <td style="text-align: left;">Austria</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">3.0</td>
 <td style="text-align: right;">0.0030</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">9354</td>
+<tr class="even">
 <td style="text-align: left;">Spain</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">2.7</td>
 <td style="text-align: right;">0.0027</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">9606</td>
+<tr class="odd">
 <td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">2.1</td>
 <td style="text-align: right;">0.0021</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">7441</td>
+<tr class="even">
 <td style="text-align: left;">Norway</td>
-<td style="text-align: right;">2020</td>
 <td style="text-align: right;">1.8</td>
 <td style="text-align: right;">0.0018</td>
 </tr>
@@ -505,7 +436,7 @@ div.csl-indent {
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat_sel, <span class="at">file =</span> <span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rate_2020, <span class="at">file =</span> <span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>This is a spectacular improvement for this group of countries. Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 %. This amounts to a reduction by a factor of about 100. Isn’t this a stunning achievement?</p>
@@ -515,41 +446,17 @@ div.csl-indent {
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read data from data folder. The data are a csv version of the excel file from gapminder</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sheet data</span></span>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datrev <span class="ot">&lt;-</span> rate_1860</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>datrev<span class="sc">$</span>Survival_Rate <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(dat<span class="sc">$</span>Count), <span class="cn">NA</span>, dat<span class="sc">$</span>Mortality_Rate)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>infant_mortality <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/infant_mortality/infant_mortality_data_gm.csv"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>datrev<span class="sc">$</span>Count <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">-</span> dat<span class="sc">$</span>Count</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># when we read the data all years are read sa characters with X as prefix, like X1850. We want</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># to remove the X</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality) <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"X"</span>, <span class="st">""</span>, <span class="fu">names</span>(infant_mortality), <span class="at">fixed =</span> T))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># replace Infant.Mortality.Rate by country</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(infant_mortality)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"Country"</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to a long format and add to the counts a column with the mortality rate. The rate</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># is defined as the number of death during the first year of life per 1000 life births.</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(infant_mortality)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>mort_dat <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(data, <span class="sc">!</span>Country, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Count"</span>,  </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                         <span class="at">values_transform =</span> <span class="fu">list</span>(<span class="at">Count =</span> as.numeric))</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span><span class="st">"Survival Rate"</span> <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(mort_dat<span class="sc">$</span>Count), <span class="cn">NA</span>, mort_dat<span class="sc">$</span>Count<span class="sc">/</span><span class="dv">1000</span>)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>mort_dat<span class="sc">$</span>Count <span class="ot">=</span> <span class="dv">1000</span> <span class="sc">-</span> mort_dat<span class="sc">$</span>Count</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(mort_dat, mort_dat[Year <span class="sc">==</span> <span class="dv">1860</span>, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Survival Rate"</span>)]) <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>()</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(rate_1860<span class="sc">$</span><span class="st">"Survival Rate"</span>), ], <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># table for 1860</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>surv_rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(datrev, datrev[ , <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Survival_Rate"</span>)])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(surv_rate_1860[<span class="fu">order</span>(surv_rate_1860<span class="sc">$</span>Survival_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -558,7 +465,7 @@ div.csl-indent {
 <tr class="header">
 <th style="text-align: left;">Country</th>
 <th style="text-align: right;">Count</th>
-<th style="text-align: right;">Survival Rate</th>
+<th style="text-align: right;">Survival_Rate</th>
 </tr>
 </thead>
 <tbody>
@@ -573,36 +480,31 @@ div.csl-indent {
 <td style="text-align: right;">0.763</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Netherlands</td>
-<td style="text-align: right;">808</td>
-<td style="text-align: right;">0.808</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Spain</td>
 <td style="text-align: right;">826</td>
 <td style="text-align: right;">0.826</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">France</td>
 <td style="text-align: right;">850</td>
 <td style="text-align: right;">0.850</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Belgium</td>
 <td style="text-align: right;">861</td>
 <td style="text-align: right;">0.861</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Denmark</td>
 <td style="text-align: right;">864</td>
 <td style="text-align: right;">0.864</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Sweden</td>
 <td style="text-align: right;">876</td>
 <td style="text-align: right;">0.876</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Norway</td>
 <td style="text-align: right;">898</td>
 <td style="text-align: right;">0.898</td>
@@ -612,7 +514,7 @@ div.csl-indent {
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rate_1860, <span class="at">file =</span> <span class="st">"tables/table_2_3_infant_survival_1860.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(surv_rate_1860, <span class="at">file =</span> <span class="st">"tables/table_2_3_infant_survival_1860.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Take for instance the data for Germany 1860. If we had reported a survival rate of 74 % it might sound to many better than if we had reported the equivalent information of a mortality rate of 26 %. So whenever you report counts or proportions be mindful of framing effects.</p>
@@ -655,23 +557,23 @@ the percentages. The count or total number can then be imagined as an actual cro
 <p>A standard we should strive for when reporting data is providing impartial information. For this we should think carefully about our framing and should perhaps provide both positive and negative frames. But even if we achieve this, we should consider other things, like the ordering of the rows.</p>
 <p>In this discussion the countries were presented ordered according to decreasing infant mortality rates. This choice of display might create the impression that this was an important and valid way of comparing and ranking countries.</p>
 <p>While such rankings are popular in the media we should avoid such displays of information when there is no specific reason to display a ranking.</p>
-<p>First of all the differences could be there just by chance. Furthermore countries with low infant morality rates usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogenous country.</p>
+<p>First of all the differences could be there just by chance. Furthermore countries with low infant morality rates usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogeneous country.</p>
 </section>
-<section id="visualizing-infant-mortality-rates-first-steps-in-r" class="level2 page-columns page-full" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="visualizing-infant-mortality-rates-first-steps-in-r"><span class="header-section-number">2.2</span> Visualizing infant mortality rates: First steps in R</h2>
+<section id="a-first-acquaintance-with-r" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="a-first-acquaintance-with-r"><span class="header-section-number">2.2</span> A first acquaintance with R</h2>
 <p>While a table might be the medium of choice for displaying data it is often more powerful to convey information visually. The example of how imagining actual crowds might give us sometimes a more tangible picture of the same information, was one illustration of this.</p>
 <p>Today when we visualize data as one important tool of data exploration, the tool of choice is a computer and an appropriate language that enables us to tell the computer what to do.</p>
 <p>For us in this course this will be the R language and now we start to learn the first steps in this language.</p>
 <section id="starting-an-quitting-r" class="level3 page-columns page-full" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</h3>
-<div class="page-columns page-full"><p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;Installing R yourself is not complicated. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here <img src="pictures/cran-website-as-of-2022-09.png" class="img-fluid" alt="cran-website"></p></li></div></div>
-<div class="page-columns page-full"><p>We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is free of charge.</p></li></div></div>
-<p>The notebooks, which we already encountered in an example in the introduction, will not only allow to send command to R and execute these commands but in addition also to store command, comment them and make them available as files for later use.</p>
-<p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later. You start R by either typing <code>R</code> into the terminal or by clicking the R icon. To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
+<div class="page-columns page-full"><p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;Installing R yourself is not complicated. To install R yourself you need a computer where you have the privileges to install software and you need an internet connection. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here <img src="pictures/cran-website-as-of-2022-09.png" class="img-fluid" alt="cran-website"></p></li></div></div>
+<div class="page-columns page-full"><p>We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6" role="doc-endnote"><p><sup>6</sup>&nbsp;Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is free of charge. Again you need a computer where you have the privileges to install software and you need an internet connection.</p></li></div></div>
+<p>The notebooks, which we already encountered in an example in the introduction, will not only allow to write R code and send this code to R for execution. Notebooks also allows you to store commands, to comment them and make them available as files for later use. This is especially useful, once you work on longer and more complicated tasks. It is then essential that you can reproduce what you did in the past days, that you can write easily readable comments and that you can collaborate in a team, where you can share your work with others. This circle of collaborators includes your future and past self.</p>
+<p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later. You start R by either typing <code>R</code> into the terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol that looks like this <code>&gt;</code>. When you see the prompt in the R console, R is ready to receive commands.</p>
+<p>To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
 </section>
 <section id="first-steps" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="first-steps"><span class="header-section-number">2.2.2</span> First steps</h3>
-<p>The R command prompt is <code>&gt;</code>. When R shows the prompt, it says that it is ready to receive commands. You type the commands at the prompt.</p>
 <p>Here is an easy command you can send to R. Just try to type <code>1 + 1</code> at the prompt</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -679,8 +581,8 @@ the percentages. The count or total number can then be imagined as an actual cro
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>Sure enough, R gives you the result of the addition, which is <code>2</code>. But what is <code>[1]</code>? This is just a row lable. We will go into that later.</p>
-<p>So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by typing</p>
+<p>Sure enough, R gives you the result of the addition, which is <code>2</code>. But what is <code>[1]</code>? This is just a row label. If there were more outputs to your command, then they would be labelled [2], [3], [4], and more. We will go into this aspect of R’s output display later in more detail.</p>
+<p>So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by dividing the counts by 1000, because the convention is to report infant mortality rates as infant deaths in a region during a year divided by 1000. The R command for division is <code>/</code>. So by typing</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">270</span><span class="sc">/</span><span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -688,13 +590,42 @@ the percentages. The count or total number can then be imagined as an actual cro
 </div>
 </div>
 <p>you will get the mortality rate <code>0.27</code>.</p>
+<p>You can do all the usual arithmetic operations, like with a calculator in R. For instance subtraction</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>Or multiplication</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="sc">*</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>You can raise a number to the power of another, like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 9</code></pre>
+</div>
+</div>
+<p>and of course you can combine all of these operations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="sc">+</span><span class="dv">3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">5</span><span class="sc">*</span><span class="dv">4</span> <span class="sc">+</span> <span class="dv">12</span><span class="sc">^</span><span class="dv">3</span> <span class="sc">-</span> (<span class="dv">13</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1717.5</code></pre>
+</div>
+</div>
+<p>The comma is represented in R as a dot <code>.</code>. So the above output reads <code>1717</code>and one half or <code>0.5</code>.</p>
 <p>R needs a complete command to be able to execute it, when the return key is pressed. Lets see what happens, if a command is incomplete, like for instance:</p>
 <p><code>5*</code></p>
-<p>In this case R will show the expression followed by a <code>+</code> instead of showing a new prompt. This means that the expression is incomplete. It expects more input. If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.</p>
-<p>If you type a command that R does not understand, you will be returned an error message. Don’t worry if you see an error message. It just is a way the computer tells you that he does not understand what you want him to do.</p>
+<p>In this case R will show the expression <code>5*</code> followed by a <code>+</code> instead of showing a new prompt. This means that the expression is incomplete. When R shows <code>+</code> after entering a command instead of the output and a new prompt, it means that it expects more input. If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.</p>
+<p>If you type a command that R does not understand, you will be returned an error message. Errors are usually printed in red, and it instinctively might create a feeling of alarm. Don’t worry if you see an error message. It just is a way the computer tells you that he does not understand what you want him to do.</p>
 <p>For instance, if you type <code>5%3</code> you will get an error message like this</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>%<span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span>%<span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: &lt;text&gt;:1:2: unexpected input
 1: 5%3
@@ -702,95 +633,120 @@ the percentages. The count or total number can then be imagined as an actual cro
 </div>
 </div>
 <p>Sometimes it is obvious why a mistake occurred. In this case, that R just does not know what to do with the symbol <code>%</code>. It has no meaning in this context. Sometimes it is not so obvious what the error message actually means and what you might do about it.</p>
-<p>A useful strategy in this case is to type the error message into a search engine and see what you can find. The chance is very high that others encountered the same problem before you and got helpful advice how to fix it from other users on the internet. One site, we find particularly helpful for all kinds of questions related to R and R programming is https://stackoverflow.com/. Try it at the next opportunity.</p>
-<p>With this knowledge we can already do a first example, by continuing our disucssion on infant mortality data we started in this lecture. We now use R to read a dataset showing the mortality rates by groups of countries categorized by their income levels as well as for the world as a whole.</p>
-<p>One of the great features of R is that it comes with many built in functions that perform certain tasks, like for instance reading data or making particular plots with these data. In this example we read data provided in a very common format, the csv format. Csv is an abbreviation of comma separated values. A csv file is a raw text file, containing data with different data points separated by commas (or sometimes semicolons).</p>
-<p>In R a function has a name followed by parenthesis, which can take inputs or arguments, like this:</p>
+<p>A useful strategy in this case is to type the error message into a search engine and see what you can find. The chance is very high that others encountered the same problem before you and got helpful advice how to fix it from other users on the internet. One site, which is particularly helpful for all kinds of questions related to R and R programming is https://stackoverflow.com/. Try it at the next opportunity.</p>
+<p>With this knowledge we can already do a first example, by continuing our discussion on infant mortality data we started in this lecture. On the way we learn a few more things about R and the R language.</p>
+</section>
+<section id="storing-and-reusing-results" class="level3 page-columns page-full" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="storing-and-reusing-results"><span class="header-section-number">2.2.3</span> Storing and reusing results</h3>
+<p>When our operations become just a bit more complex than just typing in a simple arithmetic operation, it becomes useful if we can store answers and use these answers, which might be an intermediate result of some transformed data or something else. In R this problem is solved very easily. We <em>assign</em> the answer to a name we choose ourselves. Here is an example.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="page-columns page-full"><p>The symbol <code>&lt;-</code> tells R pleas assign to the name <code>a</code> the result of the computation <code>1+1</code>.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn7" role="doc-endnote"><p><sup>7</sup>&nbsp;The assignment operator is used so often that it is useful to type it using a keyboard shortcut instead of typing first <code>&lt;</code>and then <code>-</code>. The same result can be achieved by pressing the <code>ALT</code>key followed by the <code>-</code> key. </p></li></div></div>
+<p>Now see why we have said that the assignement has stored your result. Enter on your keyboard the name you have just chosen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Country Year Count Mortality.Rate
-1     Austria 2020   3.0         0.0030
-2     Belgium 2020   3.4         0.0034
-3     Denmark 2020   3.1         0.0031
-4      France 2020   3.4         0.0034
-5     Germany 2020   3.1         0.0031
-6 Netherlands 2020   3.6         0.0036
-7      Norway 2020   1.8         0.0018
-8       Spain 2020   2.7         0.0027
-9      Sweden 2020   2.1         0.0021</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
-<p>You can recognize this table. It is the same table of infant mortality rates among some European countries in 2020, we looked at before in a slightly different format. These data are stored on my machine in a particular folder. The pathname to the folder “tables/table_2_2_infant_mortality_2020.csv” is an argument to the function <code>read.csv()</code> telling R to which file the function should be applied. When we execute the function by pressing the enter key, R reads the file and displays its contents.</p>
-<p>We can save data in R by stroing them in <em>objects</em>. An object is a name, you can choose yourself to store data. For example, if you choose to store the output of the function call to <code>read.csv()</code>in an object called <code>dat</code>, you would type:</p>
+<p>And you can use the stored value to do further computations with it, like</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>R will now store the output of the function call, the data table, in an object called <code>dat</code>. You can use this object name now to refer to it. For instance if you now type</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>      Country Year Count Mortality.Rate
-1     Austria 2020   3.0         0.0030
-2     Belgium 2020   3.4         0.0034
-3     Denmark 2020   3.1         0.0031
-4      France 2020   3.4         0.0034
-5     Germany 2020   3.1         0.0031
-6 Netherlands 2020   3.6         0.0036
-7      Norway 2020   1.8         0.0018
-8       Spain 2020   2.7         0.0027
-9      Sweden 2020   2.1         0.0021</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
-<p>the value that is stored in the object will be printed to the screen. In this case the table will be displayed.</p>
-<p>We now use this fact an make our first own graph. Instead of showing the rates in a table, we rather want to display in in a bar chart. R has a built in function for such charts, which is called <code>barplot()</code>. The <code>barplot()</code> function takes as arguments the data and perhaps other arguments influencing the appearance of the plot, and produces a graphics.</p>
-<p>For the plot we need the mortality rates, not the whole object dat. We will learn how we extract subsets of data from a large table systematically in the next unit. Here we just show you, how we do it for this particular example. We extract the mortality rate column from the table by tying <code>dat$Mortality.Rate</code> and store it in a new object which we choose to call <code>mr</code>.</p>
+<p>When you assign a new value to the old name <code>a</code>, the old value will be overwritten by the new value.</p>
+<p>What names should you use? You could uses actually anything but you have to follow a few rules. A name in R must for example not begin with a number, a dot <code>.</code> or an underscore <code>_</code>. So for example <code>var_1</code>, <code>var.1</code>, <code>var1</code> and <code>VAR1</code> and <code>myVar1</code> are all allowed names but <code>1var</code>, <code>.var</code> and <code>_var1</code> are not</p>
+</section>
+<section id="a-first-data-visualization" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="a-first-data-visualization"><span class="header-section-number">2.2.4</span> A first data visualization</h3>
+<p>We showed the infant mortality rates of a group of European countries before in tables. Humans are very visual creatures. Thus using our visual system to explore data and absorb information in these data visualizations can be very powerful. To deploy their power, we must - however - follow some principles, which we will learn step by step over this course.</p>
+<p>Assume we would like to display the information in our tables in a so called bar chart. A bar chart would combine in a plot bars for each country in the table with the bar length proportional to the mortality rate. This will give us a visual impression how the countries differ in one view, which might be more informative as just looking at the numbers themselves.</p>
+<section id="functions" class="level4" data-number="2.2.4.1">
+<h4 data-number="2.2.4.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.2.4.1</span> Functions</h4>
+<p>R is not just a calculator and data storage device. What makes R very powerful is that it comes equipped with many functions which we can use to do things with data, like for instance producing plots like a bar chart.</p>
+<p>Functions in R have a name followed by parenthesis. In the very first step we typed for example <code>quit()</code> at the prompt. This is a function and by typing its name followed by the parenthesis, R knows that it has to close the program and shut down.</p>
+<p>Functions can also have arguments, which we can assign certain values to. For example, R has a function which would round numbers. This function is calles <code>round()</code>. It has also arguments. You need to tell R which numbers to round and the number of digits the rounding should consider.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mr <span class="ot">&lt;-</span> dat<span class="sc">$</span>Mortality.Rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>( <span class="at">x =</span> <span class="fl">2.4356789123456</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.44</code></pre>
 </div>
-<p>We have extracted the column with the name “Mortality.Rate” from the object <code>dat</code> and stored it in a new object which we have called <code>mr</code>. Now let us make the barplot.</p>
+</div>
+<p>The first argument in the function <code>round</code> is <code>x</code>. We can give <code>x</code> a value, which we assign by <code>=</code>. The second argument is called <code>digits</code> and we assign to it the value <code>2</code>. The output is then, not very surprisingly, <code>2.44</code>.</p>
+<p>Note that R is programmed such that we could also have typed:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fl">2.4356789123456</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.44</code></pre>
+</div>
+</div>
+<p>R would have known automatically that the first value is assigend to <code>x</code>and the second to <code>digits</code>.</p>
+<p>We will encounter a lot of R functions during this course. We will also learn how to access R documentation to know for so many different functions, what is their name, which arguments they accept as input and how we can use them.</p>
+</section>
+<section id="visualizing-the-infant-mortality-data" class="level4" data-number="2.2.4.2">
+<h4 data-number="2.2.4.2" class="anchored" data-anchor-id="visualizing-the-infant-mortality-data"><span class="header-section-number">2.2.4.2</span> Visualizing the infant mortality data</h4>
+<p>R has a built in function for plotting bar charts, which is called <code>barplot()</code>. Let is make use of this function to show the infant mortality rates of 1860 as a bar chart. The arguments taken by R are the data. Then we can add additional arguments which determine details of the plot display and appearance.</p>
+<p>Let us first store the data in an object with the name <code>mr</code>for mortality rates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.237</span>, <span class="fl">0.139</span>, <span class="fl">0.136</span>, <span class="fl">0.150</span>, <span class="fl">0.260</span>, <span class="fl">0.102</span>, <span class="fl">0.174</span>, <span class="fl">0.124</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we see another important function of R which we will need all of the time, the <code>c()</code>function. This function concatenates values in a vector of values. So the output of the operation will be a vector <span class="math inline">\((0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)\)</span> with the name <code>mr</code>. Thus when we type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.237 0.139 0.136 0.150 0.260 0.102 0.174 0.124</code></pre>
+</div>
+</div>
+<p>R will print the whole vector as one object. This is why the counting lable is [1] and not [8].</p>
+<p>Now lets see what happens when we give mr as an argument to <code>barplot</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>It would be easier, if we had the plot turned horizontal. This can be achieved by specifying further arguments. We will learn later how we can find out which arguments can be used with a function by accessing the documentation. For <code>barplot()</code>it turns out that there is an argument, called <code>horiz</code> which has the logical value <code>FALSE</code> but which can be set to the logical value <code>TRUE</code>, yielding what we want:</p>
+<p>We see on the y axis the infant mortality rates from 0 to 0.25 and on the x axis a bar for each country with a length proportional to the infant mortality rate in this country.</p>
+<p>But here it is difficult to connect the bars to the countries. So let us store the country names in another vector and call them <code>ctr</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ctr <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Austria"</span>, <span class="st">"Belgium"</span>, <span class="st">"Denmark"</span>, <span class="st">"France"</span>, </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Germany"</span>, <span class="st">"Norway"</span>, <span class="st">"Spain"</span>, <span class="st">"Sweden"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>But which bar belongs to which country? Here we can specify the countries again by a new function argument, which is called <code>names.arg</code> for the boxplot function. We assign the column of country names in <code>dat</code>to this argument.</p>
+<p>Note that the names of the countries had to be written between <code>" "</code>. This is the way to tell R that the sequence of letters are characters. Characters are a specific data type representing text. Now we have a vector of words, the counrty names. We can give the country names as an argument to <code>barplot()</code>like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">names.arg =</span> dat<span class="sc">$</span>Country, </span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">names.arg =</span> ctr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Infant mortality in some European countries in 2020.</figcaption><p></p>
-</figure>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</div>
-<p>Now we have visualized the information we had displayed in a table before. What do these other strange labels mean? <code>las</code> is an additional argument to the function which will make the country names on thy y-axes appear horizontally. <code>cex.names</code> is an argument that will scale down the font size of country names such that the names do not exceed the frame and become unreadable.</p>
-<p>Don’t worry if this first encounter with R and R functions might look a bit duanting and not very systematic. We will learn to visualize data much more systematically as we go through the course. For now you have seen a very direct way how to visualize some of our data in very few steps.</p>
-<p>Before I end the discussion of this first encounter with R and visualization, let me point out an important point about the display of proportions or rates in a (horizontal) bar chart. It is usually a good idea, to choose the origin of the graph, as we have done here, at 0. If we choose the origin somewhere else, differences might look much bigger. This is by the way a standard trick of manipulative display of data. With bar charts always be mindful about the choice of origin.</p>
-<p>To see this point, let us choose the origin, say at 0.0015 instead of 0. R allows us to do so very easily. The barplot function allows for setting the origin for the x-axes at a particular value with the <code>xlim</code> argument.</p>
+<p>Not too bad but some country names are missing. It seems that the width of the bars is not wide enough that R is able to print all names. It would be more convenient to flip the chart around and interchange the x and the y axes here. This can be done by another argument to <code>barplot()</code>. This argument is called <code>horiz</code> and it assumes a logical value. A logical is another data type which allows us to express whether something is true or false. Logical true and false values are expressed as <code>TRUE</code> and <code>FALSE</code> in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">names.arg =</span> dat<span class="sc">$</span>Country, </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.0015</span>, <span class="fl">0.0037</span>), <span class="at">xpd =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">names.arg =</span> ctr, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Infant mortality in some European countries in 2020, different origin.</figcaption><p></p>
-</figure>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>This does not yet help much, because this flip of coordinates can only help if the country names are also printed horizontally. You might guess it already. This can be controlled by another argument which is called in the case of this function <code>las</code>. If <code>las</code> gets value 1 we get what we want.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">names.arg =</span> ctr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<p>Now we have visualized the information we had displayed in a table before. It is not yet perfect because the names of countries with longer names are cut off a bit. This could be fixed by additional function arguments, but let us not go too much in the details of the <code>barplot()</code>function at this stage. We will learn a lot about powerful visualization techniques in R as we go along.</p>
+<p>Before we close this first encounter with R and data visualization, let me point out an important aspect of bar charts. The visual impression is powerful and truthful, if we choose the origin of the bars carefully. It is usually the best idea to start the bars at zero. So we see clearly the relative lengths and the magnitude of differences in the context of the entire dataset.</p>
+<p>Changing the origin with not enough care can visaully exaggerate the differences between countries. This is a manipulative visualization, which should be avoided but which is encountered often. So be mindful about the choice of origin in a bar chart.</p>
+<p>let me who you what I mean by telling R, for example to start the plot at <span class="math inline">\(0.08\)</span> instead as of <span class="math inline">\(0\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr, <span class="at">names.arg =</span> ctr, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.08</span>, <span class="fl">0.275</span>), <span class="at">xpd =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Do you see that now the differences appear bigger? Th choice of origin can have a big influence on the appearance of differences between the length of the bars. Aways be mindful of this effect and reflect what happenes if for some reason you have to choose a different origin for the bar chart than zero.</p>
 <!-- ## Contents -->
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
 <!-- 1. The importance of framing -->
@@ -824,6 +780,7 @@ Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. 
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 </div>
+</section>
 </section>
 </section>
 

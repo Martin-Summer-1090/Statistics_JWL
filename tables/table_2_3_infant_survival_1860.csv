@@ -1,10 +1,9 @@
-"Country","Count","Survival Rate"
+"Country","Count","Survival_Rate"
 "Austria",763,0.763
 "Belgium",861,0.861
 "Denmark",864,0.864
 "France",850,0.85
 "Germany",740,0.74
-"Netherlands",808,0.808
 "Norway",898,0.898
 "Spain",826,0.826
 "Sweden",876,0.876

@@ -19,7 +19,12 @@ and Jeremy Atkinson made an attempt  to report mortality
 rates of infants and children in the past, collecting data from a wide 
 range of geographic locations and cultures reaching far
 into the past [@VolAtk2013]. The mortality rate is defined as the number
-of deaths per 1000 life births. 
+of deaths per 1000 life births.^[Maybe this might be confusing for some of you because
+the usual understanding of a rate is the number of cases divided by the entire population
+exposed to a specific risk. To be precise the mortality rate is a probability of death derived from a life table and expressed as rate per 1000 live births. If you don't know what these notions mean, don't worry. 
+We will learn later in the course about probability and also what life tables are. This footnote is just
+in case some of you might have wondered why the rate is expressed as cases per 1000. This is a convention
+of reporting mortality rates.]
 
 The authors find that in the entire sample about 27 % of children 
 died in their first year of life and 46 % died before they reached adulthood. These
@@ -38,41 +43,23 @@ from Europe.
 ```{r}
 #| label: infant-mortality-1860
 #| tbl-cap: Infant mortality in some European countries in 1860
-#| warning: false
+#| message: false
+
 
 # read data from data folder. The data are a csv version of the excel file from gapminder
 # sheet data
 
-infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data_gm.csv")
-
-# when we read the data all years are read sa characters with X as prefix, like X1850. We want
-# to remove the X
-
-names(infant_mortality) <- as.numeric(sub("X", "", names(infant_mortality), fixed = T))
-
-# replace Infant.Mortality.Rate by country
-
-names(infant_mortality)[1] <- "Country"
-
-# transform to a long format and add to the counts a column with the mortality rate. The rate
-# is defined as the number of death during the first year of life per 1000 life births.
-
-library(tidyverse)
-
-data <- as_tibble(infant_mortality)
-
-
-mort_dat <- pivot_longer(data, !Country, names_to = "Year", values_to = "Count",  
-                         values_transform = list(Count = as.numeric))
-
-mort_dat$"Mortality Rate" <- ifelse(is.na(mort_dat$Count), NA, mort_dat$Count/1000)
+infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data.csv")
 
 # table for 1860
 
-rate_1860 <- with(mort_dat, mort_dat[Year == 1860, c("Country", "Count", "Mortality Rate")]) %>% na.omit()
+library(tidyverse)
+
+dat <- infant_mortality[infant_mortality$Year == 1860, ] %>% na.omit() 
+rate_1860 <- dat[ , c("Country", "Count", "Mortality_Rate")]
 
 library(knitr)
-kable(rate_1860[order(-rate_1860$"Mortality Rate"), ], digits = 3)
+kable(rate_1860[order(-rate_1860$Mortality_Rate), ], digits = 4, row.names = FALSE)
 write.csv(rate_1860, file = "tables/table_2_1_infant_mortality_1860.csv", row.names = FALSE)
 ```
 
@@ -138,37 +125,15 @@ mortality rate.
 #| fig-cap: Infant mortality in some European countries in 2020.
 #| warning: false
 
-#read data from the data file our world in data
-
-im_1960_2020 <- read.csv("data/infant_mortality/infant-mortality.csv")
-
-names(im_1960_2020) <- c("Country", "Code", "Year", "Mortality Rate")
-
-# Select variables to be consistent with previous format
-
-im_1960_2020 <- im_1960_2020[c("Country", "Year", "Mortality Rate")]
-
 # Select the country group used in the historical 1860 data
 
-dat_sel <- im_1960_2020[im_1960_2020$Country %in% c("Germany", "Austria", "Netherlands", "Spain", "France", "Belgium", "Denmark", "Sweden", "Norway") & im_1960_2020$Year == 2020, ]
-
-# In the data the mortality rate is given in percent. We add the corresponding counts
-
-dat_sel$Count <- (dat_sel$"Mortality Rate"*10) 
-
-# We transform the percentage rate to the actual rate of number of death per 1000 life births
-
-dat_sel$"Mortality Rate" <- dat_sel$Count/1000
-
-# reorder columns
-
-dat_sel <- dat_sel[, c("Country", "Year", "Count", "Mortality Rate")]
+rate_2020 <- infant_mortality[infant_mortality$Country %in% dat$Country & infant_mortality$Year == 2020, c("Country", "Count", "Mortality_Rate")]
 
 # display the table and write text file of table
 
 library(knitr)
-kable(dat_sel[order(-dat_sel$"Mortality Rate"), ], digits = 4)
-write.csv(dat_sel, file = "tables/table_2_2_infant_mortality_2020.csv", row.names = FALSE)
+kable(rate_2020[order(-rate_2020$Mortality_Rate), ], digits = 4, row.names = FALSE)
+write.csv(rate_2020, file = "tables/table_2_2_infant_mortality_2020.csv", row.names = FALSE)
 
 ```
 
@@ -206,46 +171,19 @@ of mortality rates would the look like this.
 #| tbl-cap: Infant survival rates in some European countries in 1860
 #| warning: false
 
-# read data from data folder. The data are a csv version of the excel file from gapminder
-# sheet data
+datrev <- rate_1860
+datrev$Survival_Rate <- 1 - ifelse(is.na(dat$Count), NA, dat$Mortality_Rate)
 
-infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data_gm.csv")
-
-# when we read the data all years are read sa characters with X as prefix, like X1850. We want
-# to remove the X
-
-names(infant_mortality) <- as.numeric(sub("X", "", names(infant_mortality), fixed = T))
-
-# replace Infant.Mortality.Rate by country
-
-names(infant_mortality)[1] <- "Country"
-
-# transform to a long format and add to the counts a column with the mortality rate. The rate
-# is defined as the number of death during the first year of life per 1000 life births.
-
-library(tidyverse)
-
-data <- as_tibble(infant_mortality)
-
-
-mort_dat <- pivot_longer(data, !Country, names_to = "Year", values_to = "Count",  
-                         values_transform = list(Count = as.numeric))
-
-mort_dat$"Survival Rate" <- 1 - ifelse(is.na(mort_dat$Count), NA, mort_dat$Count/1000)
-
-mort_dat$Count = 1000 - mort_dat$Count
+datrev$Count = 1000 - dat$Count
 
 # table for 1860
 
-rate_1860 <- with(mort_dat, mort_dat[Year == 1860, c("Country", "Count", "Survival Rate")]) %>% na.omit()
+surv_rate_1860 <- with(datrev, datrev[ , c("Country", "Count", "Survival_Rate")])
 
 library(knitr)
-kable(rate_1860[order(rate_1860$"Survival Rate"), ], digits = 3)
-write.csv(rate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
+kable(surv_rate_1860[order(surv_rate_1860$Survival_Rate), ], digits = 4, row.names = FALSE)
+write.csv(surv_rate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
 ```
-
-
-
 
 Take for instance the data for Germany 1860. If we had
 reported a survival rate of 74 % it might sound to many better than if we had reported the
@@ -312,9 +250,9 @@ First of all the differences could be there just by chance. Furthermore
 countries with low infant morality rates usually have low population numbers smaller than 10 
 million. They include the world's most homogeneous societies, like Japan, south Korea, 
 Iceland, Finland and Norway. A country with a large and heterogeneous population, will 
-find it difficult to achieve the same infant mortality rate as a small and homogenous country. 
+find it difficult to achieve the same infant mortality rate as a small and homogeneous country. 
 
-## Visualizing infant mortality rates: First steps in R
+## A first acquaintance with R 
 
 While a table might be the medium of choice for displaying data  it is 
 often more powerful to
@@ -331,28 +269,32 @@ in this language.
 
 We assume that the computer you work with has a recent version of R installed. R will work
 with the most common operating systems such as Windows, OSX or Linux.^[Installing R 
-yourself is not complicated. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here ![cran-website](pictures/cran-website-as-of-2022-09.png)] 
+yourself is not complicated. To install R yourself you need a computer where you have the privileges to install software and you need an internet connection. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here ![cran-website](pictures/cran-website-as-of-2022-09.png)] 
 
 We will use R in two
-ways: First from the R command line and then also by working with Jupyter Notebooks.^[Another very powerful and popular program to work with R and R code is RStudio, which you can find 
-here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to
-install software yourself, feel free to experiment also with this tool. The basic version is
-free of charge.]
+ways: First from the R command line and then also by working 
+with Jupyter Notebooks.^[Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is
+free of charge. Again you need a computer where you have the privileges to install software and you need an internet connection.]
 
 The
 notebooks, which we already encountered in an example in the introduction, 
-will not only allow to send command to R and execute these commands but in addition
-also to store command, comment them and make them available as files for later use.
+will not only allow to write R code and send this code to R for execution.  Notebooks also 
+allows you to store commands, to comment them and make them available as files for later use. This
+is especially useful, once you work on longer and more complicated tasks. It is then 
+essential that you can reproduce what you did in the past days, that you can write
+easily readable comments and that you can collaborate in a team, where you can share your work
+with others. This circle of collaborators includes your future and past self.
 
 For a start we just work with the R command line or the R-console, as it is called, introducing
 the use of R via the notebooks a bit later. You start R by either typing `R` into the 
-terminal or by clicking the R icon. To end your R session write `quit()` at the 
+terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol
+that looks like this `>`. When you see the prompt in the R console, R is ready to receive commands.
+
+To end your R session write `quit()` at the 
 prompt `>` of the console. Congratulations. Now that you can start and quit R we are ready to 
 go.
 
 ### First steps
-
-The R command prompt is `>`. When R shows the prompt, it says that it is ready to receive commands. You type the commands at the prompt.
 
 Here is an easy command you can send to R. Just try to type `1 + 1` at the prompt
 
@@ -362,11 +304,15 @@ Here is an easy command you can send to R. Just try to type `1 + 1` at the promp
 ```
 
 Sure enough, R gives you the result of the addition, which is `2`. But what is
-`[1]`? This is just a row lable. We will go into that later. 
+`[1]`? This is just a row label. If there were more outputs to your command, then they
+would be labelled [2], [3], [4], and more. We will go into this aspect of R's output display later
+in more detail. 
 
 So R can do all the
 usual computations. For instance if you knew that in Germany in 1860 there were 270
-infant death per 1000 life birth you could compute the mortality rate by typing
+infant death per 1000 life birth you could compute the mortality rate by dividing the counts by 
+1000, because the convention is to report infant mortality rates as infant deaths in a region during a
+year divided by 1000. The R command for division is `/`. So by typing
 
 ```{r}
 #| code-fold: false
@@ -375,21 +321,52 @@ infant death per 1000 life birth you could compute the mortality rate by typing
 
 you will get the mortality rate `0.27`.
 
+You can do all the usual arithmetic operations, like with a calculator in R. For instance subtraction
+
+```{r}
+#| code-fold: false
+
+3-2
+```
+
+Or multiplication
+
+```{r}
+#| code-fold: false
+
+10*10
+```
+
+You can raise a number to the power of another, like
+
+```{r}
+#| code-fold: false
+3^2
+```
+
+and of course you can combine all of these operations:
+
+```{r}
+#| code-fold: false
+(1+3)^2 - 5*4 + 12^3 - (13/2)
+```
+
+The comma is represented in R as a dot `.`. So the above output reads `1717`and one half or `0.5`.
 
 R needs a complete command to be able to execute it, when the return key is pressed. 
 Lets see what happens, if a command is incomplete, like for instance:
 
 `5*`
 
-In this case R will show the expression followed by a `+` instead of showing a new prompt. This
-means that the expression is incomplete. It expects more input.
+In this case R will show the expression `5*` followed by a `+` instead of showing a new prompt. This
+means that the expression is incomplete. When R shows `+` after entering a command instead of 
+the output and a new prompt, it means that it expects more input.
 If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.
 
-
-If you type a command that R does not understand, you will be returned an error message. 
+If you type a command that R does not understand, you will be returned an error message. Errors are
+usually printed in red, and it instinctively might create a feeling of alarm.
 Don't worry if you see an error message. It just is a way the computer tells you that he does 
-not understand what you
-want him to do.
+not understand what you want him to do.
 
 For instance, if you type `5%3` you will get an error message like this
 
@@ -411,143 +388,199 @@ case is to type
 the error message into a search engine and see what you can find. The chance is very 
 high that others
 encountered the same problem before you and got helpful advice how to fix it from other users on 
-the internet. One site, we find particularly helpful for all kinds of questions related to R
+the internet. One site, which is particularly helpful for all kinds of questions related to R
 and R programming is https://stackoverflow.com/. Try it at the next opportunity.
 
-With this knowledge we can already do a first example, by continuing our disucssion
-on infant mortality data we started in this lecture. We now use R to read a dataset 
-showing the mortality rates by groups of countries categorized by their income levels as 
-well as for the world as a whole. 
+With this knowledge we can already do a first example, by continuing our discussion
+on infant mortality data we started in this lecture. On the way we learn a few more
+things about R and the R language.
 
-One of the great features of R is that it comes with many built in functions that perform
-certain tasks, like for instance reading data or making particular plots with these data.
-In this example we read data provided in a very common format, the csv format. Csv is an
-abbreviation of comma separated values. A csv file is a raw text file, containing data with
-different data points separated by commas (or sometimes semicolons). 
+### Storing and reusing results
 
-In R a function has a name followed by parenthesis, which can take inputs or arguments, like this:
+When our operations become just a bit more complex than just typing in a simple arithmetic
+operation, it becomes useful if we can store answers and use these answers, which might be an intermediate
+result of some transformed data or something else. In R this problem is solved very easily. We
+*assign* the answer to a name we choose ourselves. Here is an example.
 
 ```{r}
 #| code-fold: false
-read.csv("tables/table_2_2_infant_mortality_2020.csv")
+a <- 1+1
 ```
 
-You can recognize this table. It is the same table of infant mortality rates among some
-European countries in 2020, we looked at before in a slightly different format. These
-data are stored on my machine in a particular folder. The pathname to the folder "tables/table_2_2_infant_mortality_2020.csv" is an argument to the function `read.csv()` 
-telling R to which file the function should be applied. When we execute the function
-by pressing the enter key, R reads the file and displays its contents.
+The symbol `<-` tells R pleas assign to the name `a` the result of the computation `1+1`.^[The assignment
+operator is used so often that it is useful to type it using a keyboard shortcut instead of typing 
+first `< `and then `-`. The same result can be achieved by pressing the `ALT`key followed by the `- ` key. ]
 
-We can save data in R by stroing them in *objects*. An object is a name, you 
-can choose yourself to
-store data. For example, if you choose to store the output of the function
-call to `read.csv()`in an object called `dat`,
-you would type:
+Now see why we have said that the assignement has stored your result. Enter on your keyboard the name
+you have just chosen:
 
 ```{r}
 #| code-fold: false
-dat <- read.csv("tables/table_2_2_infant_mortality_2020.csv")
+a
 ```
 
-R will now store the output of the function call, the data table, in an object called `dat`. 
-You can use this object name now to refer to it. For instance if you now type
+And you can use the stored value to do further computations with it, like
 
 ```{r}
 #| code-fold: false
-dat
+a^2
 ```
 
-the value that is stored in the object will be printed to the screen. In this case
-the table will be displayed. 
+When you assign a new value to the old name `a`, the old value will be overwritten by the new value.
 
-We now use this fact an make our first own graph. Instead of showing the rates in a table,
-we rather want to display in in a bar chart. R has a built in function for such charts, which
-is called `barplot()`. The `barplot()` function takes as arguments the data and perhaps other
-arguments influencing the appearance of the plot, and produces a graphics.
+What names should you use? You could uses actually anything but you have to follow a few rules. A name in 
+R must for example not begin with a number, a dot  `.` or an  underscore `_`. So for example `var_1`, `var.1`, `var1` and `VAR1` and `myVar1` are all allowed names but `1var`, `.var` and `_var1` are not
 
-For the plot we need the mortality rates, not the whole object dat. We will learn how we extract
-subsets of data from a large table systematically in the next unit. Here we just show you, how
-we do it for this particular example. We extract the mortality rate column from the table by 
-tying `dat$Mortality.Rate` and store it in a new object which we choose to call `mr`.
+### A first data visualization
+
+We showed the infant mortality rates of a group of European countries before in tables. Humans
+are very visual creatures. Thus using our visual system to explore data and absorb 
+information in these data visualizations can be very powerful. To deploy their power, we must
+- however - follow some principles, which we will learn step by step over this course.
+
+Assume we would like to display the information in our tables in a so called bar chart. A bar chart
+would combine in a plot bars for each country in the table with the bar length proportional to
+the mortality rate. This will give us a visual impression how the countries differ in one
+view, which might be more informative as just looking at the numbers themselves.
+
+#### Functions
+
+R is not just a calculator and data storage device. What makes R very powerful is that it
+comes equipped with many functions which we can use to do things with data, like for instance
+producing plots like a bar chart.
+
+Functions in R have a name followed by parenthesis. In the very first step we typed for example `quit()` at
+the prompt. This is a function and by typing its name followed by the parenthesis, R knows that it has to
+close the program and shut down.
+
+Functions can also have arguments, which we can assign certain values to. For example, R has a function
+which would round numbers. This function is calles `round()`. It has also arguments. You need to tell
+R which numbers to round and the number of digits the rounding should consider.
 
 ```{r}
 #| code-fold: false
-mr <- dat$Mortality.Rate
+
+round( x = 2.4356789123456, digits = 2)
 ```
 
-We have extracted the column with the name "Mortality.Rate" from the object `dat` and stored
-it in a new object which we have called `mr`. Now let us make the barplot.
+The first argument in the function `round` is `x`. We can give `x` a value, which we assign by `=`. The second argument is called `digits` and we assign to it the value `2`. The output is then, not very surprisingly, `2.44`.
+
+Note that R is programmed such that we could also have typed:
+
+```{r}
+#| code-fold: false
+
+round(2.4356789123456, 2)
+```
+
+R would have known automatically that the first value is assigend to `x`and the second to `digits`.
+
+We will encounter a lot of R functions during this course. We will also learn how to access
+R documentation to know for so many different functions, what is their name, which arguments they accept as
+input and how we can use them.
+
+#### Visualizing the infant mortality data
+
+R has a built in function for plotting bar charts, which is called `barplot()`. Let is make use of this
+function to show the infant mortality rates of 1860 as a bar chart. The arguments taken by R are 
+the data. Then we can add additional arguments which determine details of the plot display and 
+appearance.
+
+Let us first store the data in an object with the name `mr`for mortality rates. 
+
+```{r}
+#| code-fold: false
+
+mr <- c(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)
+```
+
+Here we see another important function of R which we will need all of the time, the `c()`function. This
+function concatenates values in a vector of values. So the output of the operation will be a vector
+$(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)$ with the name `mr`. Thus when we type
+
+```{r}
+#| code-fold: false
+
+mr
+```
+
+R will print the whole vector as one object. This is why the counting lable is [1] and not [8]. 
+
+Now lets see what happens when we give mr as an argument to `barplot`.
 
 ```{r}
 #| code-fold: false
 
 barplot(mr)
 ```
+We see on the y axis the infant mortality rates from 0 to 0.25 and on the x axis a bar for each country
+with a length proportional to the infant mortality rate in this country.
 
-It would be easier, if we had the plot turned horizontal. This can be achieved by 
-specifying further arguments. We will learn later how we can find out which arguments can
-be used with a function by accessing the documentation. For `barplot()`it turns out that
-there is an argument, called `horiz` which has the logical value `FALSE` but which can be
-set to the logical value `TRUE`, yielding what we want:
-
-```{r}
-#| code-fold: false
-barplot(mr, horiz = TRUE)
-```
-
-But which bar belongs to which country? Here we can specify the countries again by a new
-function argument, which is called `names.arg` for the boxplot function. We assign the
-column of country names in `dat`to this argument.
+But here it is difficult to connect the bars to the countries. So let us store the country names in 
+another vector and call them `ctr`
 
 ```{r}
 #| code-fold: false
-#| fig-cap: Infant mortality in some European countries in 2020.
-barplot(mr, horiz = TRUE, names.arg = dat$Country, 
-        las = 1, cex.names = 0.5)
+ctr <- c("Austria", "Belgium", "Denmark", "France", 
+         "Germany", "Norway", "Spain", "Sweden")
 ```
 
-Now we have visualized the information we had displayed in a table before. What do these
-other strange labels mean? `las` is an additional argument to the function which will make
-the country names on thy y-axes appear horizontally. `cex.names` is an argument that will scale
-down the font size of country names such that the names do not exceed the frame and
-become unreadable.
-
-Don't worry if this first encounter with R and R functions might look a bit duanting and
-not very systematic. We will learn to visualize data much more systematically as we go through
-the course. For now you have seen a very direct way how to visualize some of our data in very
-few steps.
-
-Before I end the discussion of this first encounter with R and visualization, let me point
-out an important point about the display of proportions or rates in a (horizontal) bar
-chart. It is usually a good idea, to choose the origin of the graph, as we have done here,
-at 0. If we choose the origin somewhere else, differences might look much bigger. This
-is by the way a standard trick of manipulative display of data. With bar charts always be
-mindful about the choice of origin.
-
-To see this point, let us choose the origin, say at 0.0015 instead of 0. R allows us to do
-so very easily. The barplot function allows for setting the origin for the x-axes at a
-particular value with the `xlim` argument.
+Note that the names of the countries had to be written between `" "`. This is the way to tell R that the
+sequence of letters are characters. Characters are a specific data type representing text. Now we have a 
+vector of words, the counrty names. We can give the country names as an argument to `barplot()`like this:
 
 ```{r}
 #| code-fold: false
-#| fig-cap: Infant mortality in some European countries in 2020, different origin.
-barplot(mr, horiz = TRUE, names.arg = dat$Country, 
-        las = 1, cex.names = 0.5, xlim = c(0.0015, 0.0037), xpd = FALSE)
+barplot(mr, names.arg = ctr)
 ```
-
-Now the differences suddenly look bigger. 
-
-Before we end these first steps in R, note that each R function comes with its own 
-help documentation, which you can access by typing
+Not too bad but some country names are missing. It seems that the width of the
+bars is not wide enough that R is able to print all names. It would be more convenient
+to flip the chart around and interchange the x and the y axes here. This can be done by another
+argument to `barplot()`. This argument is called `horiz` and it assumes a logical value. A logical
+is another data type which allows us to express whether something is true or false. Logical true and
+false values are expressed as `TRUE` and `FALSE` in R.
 
 ```{r}
 #| code-fold: false
+barplot(mr, names.arg = ctr, horiz = TRUE)
+```
+This does not yet help much, because this flip of coordinates can only help if the country names
+are also printed horizontally. You might guess it already. This can be controlled by another argument
+which is called in the case of this function `las`. If `las` gets value 1 we get what we want.
 
-?barplot
+```{r}
+#| code-fold: false
+barplot(mr, names.arg = ctr, horiz = TRUE, las = 1)
 ```
 
-function. It will show you the documentation for the function, describing what it does, what the
-parameters mean and also at least one example for calling the function 
+Now we have visualized the information we had displayed in a table before. It is not yet perfect
+because the names of countries with longer names are cut off a bit. This could be fixed by
+additional function arguments, but let us not go too much in the details of the
+`barplot()`function at this stage. We will learn a lot about powerful visualization
+techniques in R as we go along.
+
+Before we close this first encounter with R and data visualization, let me point out an
+important aspect of bar charts. The visual impression is powerful and truthful, if we choose
+the origin of the bars carefully. It is usually the best idea to start the bars at zero. So we see
+clearly the relative lengths and the magnitude of differences in the context of the entire dataset.
+
+Changing the origin with not enough care can visaully exaggerate the differences between countries. This
+is a manipulative visualization, which should be avoided but which is encountered often. So be mindful
+about the choice of origin in a bar chart. 
+
+let me who you what I mean by telling R, for example to start the plot at $0.08$ instead as of $0$.
+
+```{r}
+#| code-fold: false
+barplot(mr, names.arg = ctr, horiz = TRUE, las = 1, 
+        xlim = c(0.08, 0.275), xpd = F)
+```
+
+Do you see that now the differences appear bigger? Th choice of origin can have a big influence
+on the appearance of differences between the length of the bars. Aways be mindful of this effect and
+reflect what happenes if for some reason you have to choose a different origin for the bar chart
+than zero.
+
 
 
 

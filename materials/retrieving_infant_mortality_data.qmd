@@ -164,3 +164,96 @@ row.names(infant_mortality_data) <- NULL
 ```
 
 Add continent as a factor, add population
+
+Define continents by country lists:
+
+```{r}
+library(stringr)
+library(XML)
+library(RCurl)
+
+site_asia <- getURL("https://www.countryaah.com/asian-countries/")
+tables_asia <- readHTMLTable(site_asia, stringsAsFactors = F, header = T)
+asia <- as_tibble(tables_asia[[1]])
+countries_asia <- asia[,3] %>% unlist() %>% unname()
+
+site_europe <- getURL("https://www.countryaah.com/european-countries/")
+tables_europe <- readHTMLTable(site_europe, stringsAsFactors = F, header = T)
+europe <- as_tibble(tables_europe[[1]])
+countries_europe <- europe[,3] %>% unlist() %>% unname()
+
+site_africa <- getURL("https://www.countryaah.com/african-countries/")
+tables_africa <- readHTMLTable(site_africa, stringsAsFactors = F, header = T)
+africa <- as_tibble(tables_africa[[1]])
+countries_africa <- africa[,3] %>% unlist() %>% unname()
+
+site_northamerica <- getURL("https://www.countryaah.com/north-american-countries/")
+tables_northamerica <- readHTMLTable(site_northamerica, stringsAsFactors = F, header = T)
+northamerica <- as_tibble(tables_northamerica[[1]])
+countries_northamerica <- northamerica[,3] %>% unlist() %>% unname()
+
+site_southamerica <- getURL("https://www.countryaah.com/south-american-countries/")
+tables_southamerica <- readHTMLTable(site_southamerica, stringsAsFactors = F, header = T)
+southamerica <- as_tibble(tables_southamerica[[1]])
+countries_southamerica <- southamerica[,3] %>% unlist() %>% unname()
+
+site_oceania <- getURL("https://www.countryaah.com/oceania-countries/")
+tables_oceania <- readHTMLTable(site_oceania, stringsAsFactors = F, header = T)
+oceania <- as_tibble(tables_oceania[[1]])
+countries_oceania <- oceania[,3] %>% unlist() %>% unname()
+```
+
+Check uniqueness of names:
+
+```{r}
+intersect(countries_europe, countries_asia)
+```
+
+```{r}
+intersect(countries_northamerica, countries_southamerica)
+```
+
+Add continent names to mortality table:
+
+```{r}
+infant_mortality_data$Continent <- 
+  ifelse(infant_mortality_data$Country %in% countries_europe, "Europe",
+    ifelse(infant_mortality_data$Country %in% countries_asia, "Asia",
+      ifelse(infant_mortality_data$Country %in% countries_africa, "Africa",     
+        ifelse(infant_mortality_data$Country %in% countries_northamerica, "North America",
+          ifelse(infant_mortality_data$Country %in% countries_southamerica, "South America",
+            ifelse(infant_mortality_data$Country %in% countries_oceania, "Oceania", ""))))))
+```
+
+Exclude entities not belonging to the list
+
+```{r}
+infant_mortality_data_clean <- infant_mortality_data[!(infant_mortality_data$Continent == ""), ]
+```
+
+Matching population data:
+
+```{r}
+population_data <- read_csv("../data/infant_mortality/population-since-1800.csv")
+names(population_data) <- c("Country", "Code", "Year", "Population")
+```
+
+Merge dataframes:
+
+```{r}
+infant_mortality <- 
+  left_join(infant_mortality_data_clean, population_data, by = c("Country", "Code","Year"))
+```
+
+Specify continent as factor:
+
+```{r}
+infant_mortality$Continent <- as.factor(infant_mortality$Continent)
+```
+
+Write the final dataset as a csv file to tables:
+
+```{r}
+write.csv(infant_mortality, file = "../data/infant_mortality/infant_mortality_data.csv", row.names = FALSE)
+```
+

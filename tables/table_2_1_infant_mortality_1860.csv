@@ -1,10 +1,9 @@
-"Country","Count","Mortality Rate"
+"Country","Count","Mortality_Rate"
 "Austria",237,0.237
 "Belgium",139,0.139
 "Denmark",136,0.136
 "France",150,0.15
 "Germany",260,0.26
-"Netherlands",192,0.192
 "Norway",102,0.102
 "Spain",174,0.174
 "Sweden",124,0.124
