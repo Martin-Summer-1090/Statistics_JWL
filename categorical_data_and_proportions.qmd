@@ -59,7 +59,7 @@ dat <- infant_mortality[infant_mortality$Year == 1860, ] %>% na.omit()
 rate_1860 <- dat[ , c("Country", "Count", "Mortality_Rate")]
 
 library(knitr)
-kable(rate_1860[order(-rate_1860$Mortality_Rate), ], digits = 4, row.names = FALSE)
+kable(rate_1860, digits = 4, row.names = FALSE)
 write.csv(rate_1860, file = "tables/table_2_1_infant_mortality_1860.csv", row.names = FALSE)
 ```
 
@@ -132,7 +132,7 @@ rate_2020 <- infant_mortality[infant_mortality$Country %in% dat$Country & infant
 # display the table and write text file of table
 
 library(knitr)
-kable(rate_2020[order(-rate_2020$Mortality_Rate), ], digits = 4, row.names = FALSE)
+kable(rate_2020, digits = 4, row.names = FALSE)
 write.csv(rate_2020, file = "tables/table_2_2_infant_mortality_2020.csv", row.names = FALSE)
 
 ```
@@ -181,7 +181,7 @@ datrev$Count = 1000 - dat$Count
 surv_rate_1860 <- with(datrev, datrev[ , c("Country", "Count", "Survival_Rate")])
 
 library(knitr)
-kable(surv_rate_1860[order(surv_rate_1860$Survival_Rate), ], digits = 4, row.names = FALSE)
+kable(surv_rate_1860, digits = 4, row.names = FALSE)
 write.csv(surv_rate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
 ```
 
@@ -218,16 +218,23 @@ library(waffle)
 waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
 ```
 
+From this perspective the improvement in infant mortality rates in Germany are truly spectacular. Still
+even at the low mortality rate this can mean a huge amount of individual tragedies. In 2020 Germany had
+760.378 births. If in every 1000 births we had 3 deaths, this would mean about 2280 individual tradgedies only of the year 2020. While the rate came down significantly over a period of over 100 years, imagined 
+as a crowd the absolute number still sounds not very small.
 
-A very interesting and illustrative example for how imagining actual crowds of 
-people rather than mere rates is given in the book by David Spiegelhalter[@Spi2019], which 
-we have already encountered when we discussed the issue of
-how many trees there are on the planet in the introduction. He describes
-an advertisement in the London Underground, saying that 99 % of young Londoners 
-do not commit serious violence. The add was presumably intended to reassure
-passengers about the safety situation. Here is what he writes:
+::: {.callout-note icon=false}
 
-"...*we could reverse the emotional impact by two simple changes: First the statement means that 1 % of young Londoners do commit serious violence. Second, the population of London is around 9 million, there are around 1 million people aged between 15 and 25, and f we consider these as "young", this means there are 1 % of a million or a total of 10.00 seriously violent young people in the city. This does not sound at all reassuring. Note the two tricks used to manipulate the impact of this statistic: Convert from a positive to a negative frame, and then turn a percentage to an actual number of people.*"
+## Now you try
+
+David Spiegelhalter [@Spi2019] whose book we have encountered when we discussed the question of how many
+trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of
+young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers 
+that riding on the London Underground is very safe. Try to imagine what this statement would mean
+when you think of crowds of young Londoners, assuming that "young" means between 15 and 25.
+
+:::
+
 
 A standard we should strive for when reporting data is providing impartial information. 
 For this
@@ -236,23 +243,8 @@ both positive and negative
 frames. But even if we achieve this, we should consider other things, like the ordering
 of the rows.
 
-In this discussion the countries were presented ordered according to decreasing 
-infant mortality rates. This
-choice of display might create the impression that this was an important and valid way of 
-comparing and ranking countries. 
 
-While such rankings are popular 
-in the media we should avoid such
-displays of information when there is no specific reason
-to display a ranking. 
-
-First of all the differences could be there just by chance. Furthermore
-countries with low infant morality rates usually have low population numbers smaller than 10 
-million. They include the world's most homogeneous societies, like Japan, south Korea, 
-Iceland, Finland and Norway. A country with a large and heterogeneous population, will 
-find it difficult to achieve the same infant mortality rate as a small and homogeneous country. 
-
-## A first acquaintance with R 
+## A first acquaintance with R: Visualizing Infant Mortality Rates 
 
 While a table might be the medium of choice for displaying data  it is 
 often more powerful to
@@ -576,10 +568,31 @@ barplot(mr, names.arg = ctr, horiz = TRUE, las = 1,
         xlim = c(0.08, 0.275), xpd = F)
 ```
 
-Do you see that now the differences appear bigger? Th choice of origin can have a big influence
-on the appearance of differences between the length of the bars. Aways be mindful of this effect and
-reflect what happenes if for some reason you have to choose a different origin for the bar chart
-than zero.
+Do you see that now the differences appear bigger? The choice of origin can have a big influence
+on the appearance of differences between the length of the bars. Always be mindful of this effect and
+reflect what happens if for some reason you have to choose a different origin for the bar chart
+than zero. Alberto Cairo, who is the author of an influential book on data visualization [@Cai2016] recommends to always choose a "...*logical and meaningful baseline*". 
+
+Before we close this digression into visualization, let me briefly discuss another aspect of data presentation which you need to consider. The ordering of the rows in the data table, or in this case, the
+order of the bars in the barchart has to be carefully considered. If you look at the bar chart we have
+produced, you see that the bars have an order corresponding to the alphabetical order of the countries, starting with A for Austria and ending with S for Sweden. 
+
+Now consider we had ordered the data according to mortality rate like this:
+
+```{r}
+barplot(rate_1860[order(-rate_1860$Mortality_Rate) , ]$Mortality_Rate, 
+        names.arg = rate_1860[order(-rate_1860$Mortality_Rate) , ]$Country, horiz = TRUE, las = 1)
+```
+Now the bar chart could suggests that the infant mortality rate is an important and meaningful way of 
+comparing this particular group of countries. Such ranking comparisons are very popular in the media 
+but they can be misleading. They can be misleading because the differences could be there just by
+chance. There could be also systematic differences between countries affecting infant mortality rates. For
+example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates. So an ordering like the one presented in the graph needs migh suggest
+a ranking that is in fact spurious and is not really substantial. 
+
+## Categorical variables
+
+## Compairing pairs of proportions
 
 
 

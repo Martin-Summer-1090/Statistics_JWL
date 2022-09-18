@@ -246,7 +246,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"> <span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
-  <li><a href="#a-first-acquaintance-with-r" id="toc-a-first-acquaintance-with-r" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r"> <span class="header-section-number">2.2</span> A first acquaintance with R</a>
+  <li><a href="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates" id="toc-a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates"> <span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing Infant Mortality Rates</a>
   <ul class="collapse">
   <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"> <span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
   <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"> <span class="header-section-number">2.2.2</span> First steps</a></li>
@@ -298,7 +298,7 @@ div.csl-indent {
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>rate_1860 <span class="ot">&lt;-</span> dat[ , <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Mortality_Rate"</span>)]</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span>Mortality_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_1860, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -312,19 +312,19 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">260</td>
-<td style="text-align: right;">0.260</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Austria</td>
 <td style="text-align: right;">237</td>
 <td style="text-align: right;">0.237</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">0.139</td>
+</tr>
 <tr class="odd">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">174</td>
-<td style="text-align: right;">0.174</td>
+<td style="text-align: left;">Denmark</td>
+<td style="text-align: right;">136</td>
+<td style="text-align: right;">0.136</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">France</td>
@@ -332,24 +332,24 @@ div.csl-indent {
 <td style="text-align: right;">0.150</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Belgium</td>
-<td style="text-align: right;">139</td>
-<td style="text-align: right;">0.139</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">136</td>
-<td style="text-align: right;">0.136</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">124</td>
-<td style="text-align: right;">0.124</td>
+<td style="text-align: left;">Germany</td>
+<td style="text-align: right;">260</td>
+<td style="text-align: right;">0.260</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Norway</td>
 <td style="text-align: right;">102</td>
 <td style="text-align: right;">0.102</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">174</td>
+<td style="text-align: right;">0.174</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">0.124</td>
 </tr>
 </tbody>
 </table>
@@ -378,7 +378,7 @@ div.csl-indent {
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># display the table and write text file of table</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_2020[<span class="fu">order</span>(<span class="sc">-</span>rate_2020<span class="sc">$</span>Mortality_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(rate_2020, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -391,12 +391,12 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Belgium</td>
-<td style="text-align: right;">3.4</td>
-<td style="text-align: right;">0.0034</td>
+<td style="text-align: left;">Austria</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.0030</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">France</td>
+<td style="text-align: left;">Belgium</td>
 <td style="text-align: right;">3.4</td>
 <td style="text-align: right;">0.0034</td>
 </tr>
@@ -406,29 +406,29 @@ div.csl-indent {
 <td style="text-align: right;">0.0031</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">France</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">0.0034</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Germany</td>
 <td style="text-align: right;">3.1</td>
 <td style="text-align: right;">0.0031</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Austria</td>
-<td style="text-align: right;">3.0</td>
-<td style="text-align: right;">0.0030</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">2.7</td>
-<td style="text-align: right;">0.0027</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">2.1</td>
-<td style="text-align: right;">0.0021</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Norway</td>
 <td style="text-align: right;">1.8</td>
 <td style="text-align: right;">0.0018</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">0.0027</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">0.0021</td>
 </tr>
 </tbody>
 </table>
@@ -456,7 +456,7 @@ div.csl-indent {
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>surv_rate_1860 <span class="ot">&lt;-</span> <span class="fu">with</span>(datrev, datrev[ , <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Count"</span>, <span class="st">"Survival_Rate"</span>)])</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(surv_rate_1860[<span class="fu">order</span>(surv_rate_1860<span class="sc">$</span>Survival_Rate), ], <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(surv_rate_1860, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -470,19 +470,19 @@ div.csl-indent {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Germany</td>
-<td style="text-align: right;">740</td>
-<td style="text-align: right;">0.740</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Austria</td>
 <td style="text-align: right;">763</td>
 <td style="text-align: right;">0.763</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">861</td>
+<td style="text-align: right;">0.861</td>
+</tr>
 <tr class="odd">
-<td style="text-align: left;">Spain</td>
-<td style="text-align: right;">826</td>
-<td style="text-align: right;">0.826</td>
+<td style="text-align: left;">Denmark</td>
+<td style="text-align: right;">864</td>
+<td style="text-align: right;">0.864</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">France</td>
@@ -490,24 +490,24 @@ div.csl-indent {
 <td style="text-align: right;">0.850</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Belgium</td>
-<td style="text-align: right;">861</td>
-<td style="text-align: right;">0.861</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">864</td>
-<td style="text-align: right;">0.864</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Sweden</td>
-<td style="text-align: right;">876</td>
-<td style="text-align: right;">0.876</td>
+<td style="text-align: left;">Germany</td>
+<td style="text-align: right;">740</td>
+<td style="text-align: right;">0.740</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Norway</td>
 <td style="text-align: right;">898</td>
 <td style="text-align: right;">0.898</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">826</td>
+<td style="text-align: right;">0.826</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">876</td>
+<td style="text-align: right;">0.876</td>
 </tr>
 </tbody>
 </table>
@@ -552,15 +552,24 @@ the percentages. The count or total number can then be imagined as an actual cro
 </div>
 </div>
 </div>
-<p>A very interesting and illustrative example for how imagining actual crowds of people rather than mere rates is given in the book by David Spiegelhalter<span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>, which we have already encountered when we discussed the issue of how many trees there are on the planet in the introduction. He describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious violence. The add was presumably intended to reassure passengers about the safety situation. Here is what he writes:</p>
-<p>“…<em>we could reverse the emotional impact by two simple changes: First the statement means that 1 % of young Londoners do commit serious violence. Second, the population of London is around 9 million, there are around 1 million people aged between 15 and 25, and f we consider these as ”young”, this means there are 1 % of a million or a total of 10.00 seriously violent young people in the city. This does not sound at all reassuring. Note the two tricks used to manipulate the impact of this statistic: Convert from a positive to a negative frame, and then turn a percentage to an actual number of people.</em>”</p>
+<p>From this perspective the improvement in infant mortality rates in Germany are truly spectacular. Still even at the low mortality rate this can mean a huge amount of individual tragedies. In 2020 Germany had 760.378 births. If in every 1000 births we had 3 deaths, this would mean about 2280 individual tradgedies only of the year 2020. While the rate came down significantly over a period of over 100 years, imagined as a crowd the absolute number still sounds not very small.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>David Spiegelhalter <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> whose book we have encountered when we discussed the question of how many trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers that riding on the London Underground is very safe. Try to imagine what this statement would mean when you think of crowds of young Londoners, assuming that “young” means between 15 and 25.</p>
+</div>
+</div>
 <p>A standard we should strive for when reporting data is providing impartial information. For this we should think carefully about our framing and should perhaps provide both positive and negative frames. But even if we achieve this, we should consider other things, like the ordering of the rows.</p>
-<p>In this discussion the countries were presented ordered according to decreasing infant mortality rates. This choice of display might create the impression that this was an important and valid way of comparing and ranking countries.</p>
-<p>While such rankings are popular in the media we should avoid such displays of information when there is no specific reason to display a ranking.</p>
-<p>First of all the differences could be there just by chance. Furthermore countries with low infant morality rates usually have low population numbers smaller than 10 million. They include the world’s most homogeneous societies, like Japan, south Korea, Iceland, Finland and Norway. A country with a large and heterogeneous population, will find it difficult to achieve the same infant mortality rate as a small and homogeneous country.</p>
 </section>
-<section id="a-first-acquaintance-with-r" class="level2 page-columns page-full" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="a-first-acquaintance-with-r"><span class="header-section-number">2.2</span> A first acquaintance with R</h2>
+<section id="a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="a-first-acquaintance-with-r-visualizing-infant-mortality-rates"><span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing Infant Mortality Rates</h2>
 <p>While a table might be the medium of choice for displaying data it is often more powerful to convey information visually. The example of how imagining actual crowds might give us sometimes a more tangible picture of the same information, was one illustration of this.</p>
 <p>Today when we visualize data as one important tool of data exploration, the tool of choice is a computer and an appropriate language that enables us to tell the computer what to do.</p>
 <p>For us in this course this will be the R language and now we start to learn the first steps in this language.</p>
@@ -746,7 +755,20 @@ the percentages. The count or total number can then be imagined as an actual cro
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Do you see that now the differences appear bigger? Th choice of origin can have a big influence on the appearance of differences between the length of the bars. Aways be mindful of this effect and reflect what happenes if for some reason you have to choose a different origin for the bar chart than zero.</p>
+<p>Do you see that now the differences appear bigger? The choice of origin can have a big influence on the appearance of differences between the length of the bars. Always be mindful of this effect and reflect what happens if for some reason you have to choose a different origin for the bar chart than zero. Alberto Cairo, who is the author of an influential book on data visualization <span class="citation" data-cites="Cai2016">(<a href="references.html#ref-Cai2016" role="doc-biblioref">Cairo 2016</a>)</span> recommends to always choose a “…<em>logical and meaningful baseline</em>”.</p>
+<p>Before we close this digression into visualization, let me briefly discuss another aspect of data presentation which you need to consider. The ordering of the rows in the data table, or in this case, the order of the bars in the barchart has to be carefully considered. If you look at the bar chart we have produced, you see that the bars have an order corresponding to the alphabetical order of the countries, starting with A for Austria and ending with S for Sweden.</p>
+<p>Now consider we had ordered the data according to mortality rate like this:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span>Mortality_Rate) , ]<span class="sc">$</span>Mortality_Rate, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> rate_1860[<span class="fu">order</span>(<span class="sc">-</span>rate_1860<span class="sc">$</span>Mortality_Rate) , ]<span class="sc">$</span>Country, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now the bar chart could suggests that the infant mortality rate is an important and meaningful way of comparing this particular group of countries. Such ranking comparisons are very popular in the media but they can be misleading. They can be misleading because the differences could be there just by chance. There could be also systematic differences between countries affecting infant mortality rates. For example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates. So an ordering like the one presented in the graph needs migh suggest a ranking that is in fact spurious and is not really substantial.</p>
 <!-- ## Contents -->
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
 <!-- 1. The importance of framing -->
@@ -766,6 +788,9 @@ the percentages. The count or total number can then be imagined as an actual cro
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-VolAtk2013" class="csl-entry" role="doc-biblioentry">
 Antony, Volk, and Atkinson Jeremy. 2013. <span>“Infant and Child Death in the Human Environment of Evolutionary Adaptation.”</span> <em>Evolution and Human Behavior</em> 34: 182–92.
+</div>
+<div id="ref-Cai2016" class="csl-entry" role="doc-biblioentry">
+Cairo, Alberto. 2016. <em>The Truthful Art: Data, Charts, and Maps for Communication</em>. New Riders.
 </div>
 <div id="ref-Ros" class="csl-entry" role="doc-biblioentry">
 Roser, Max. 2019. <span>“Child Mortality Is an Everyday Tragedy of Enormous Scale That Rarely Makes the Headlines.”</span> <a href="https://ourworldindata.org/child-mortality-everyday-tragedy-no-headlines" class="uri">https://ourworldindata.org/child-mortality-everyday-tragedy-no-headlines</a>.
