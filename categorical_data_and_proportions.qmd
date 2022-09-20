@@ -3,7 +3,7 @@
 The death of a child is an enormous tragedy to its family and friends. The numbers
 across the globe add up to millions. From 56 million people who died for example in the year
 2017, 5.4 millions were children under the age of 5, as reported by Max Roser [@Ros]
-in an interesting article on the website "Our world in Data" which we referred to
+in an article on the website "Our world in Data" which we referred to
 in our introduction to this course. This is a number of enormous scale that never makes the
 headlines.
 
@@ -12,24 +12,31 @@ puts the scale very vividly into perspective. He writes:
 
 "...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
 
-In pre-industrial societies infant and child mortality were uniformly and cruelly high. They
+In pre-industrial societies infant- and child-mortality were uniformly and cruelly high. They
 were a universal and frequent experience for families all over the world. 
 In a scientific publication Anthony Volk 
 and Jeremy Atkinson made an attempt  to report mortality 
 rates of infants and children in the past, collecting data from a wide 
 range of geographic locations and cultures reaching far
-into the past [@VolAtk2013]. The mortality rate is defined as the number
-of deaths per 1000 life births.^[Maybe this might be confusing for some of you because
-the usual understanding of a rate is the number of cases divided by the entire population
-exposed to a specific risk. To be precise the mortality rate is a probability of death derived from a life table and expressed as rate per 1000 live births. If you don't know what these notions mean, don't worry. 
-We will learn later in the course about probability and also what life tables are. This footnote is just
-in case some of you might have wondered why the rate is expressed as cases per 1000. This is a convention
-of reporting mortality rates.]
+into the past [@VolAtk2013]. A newborn, which dies under the age of 1 year is referred to
+in the mortality statistics as an infant. A death before the 5th year of life is referred to as
+the death of a child.
+
+Mortality statistics report infant- and children mortality as mortality rates 
+standardized to 1000 life births. To compute an infant mortality rate in a given year in a given
+geographic area one would, for instance, need to know how many babies were born alive in a given
+period in a given area and how many babies who were born alive died before their first birthday during
+the same period. The number of deaths is the divided by the number of births. This rate is then multiplied
+by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized 
+manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on
+the level of comparison that is required.^[Note that by this standardization you can end up reporting
+numbers like 3.1, which sounds strange if you think about death events.]. Sometimes infant mortality
+rates are just reported as percentages. In this case the number would reflect the numbers of deaths divided by the number of births.
 
 The authors find that in the entire sample about 27 % of children 
 died in their first year of life and 46 % died before they reached adulthood. These
 rates are surprisingly similar across regions and cultures: Every forth newborn child died in the
-first year of life, every second child during its childhood. These are truely 
+first year of life, every second child during its childhood. These are truly 
 grim numbers.
 
 The numbers started to improve, very gradually only with the onset of industrialization. 

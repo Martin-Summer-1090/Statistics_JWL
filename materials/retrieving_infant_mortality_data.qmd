@@ -1,10 +1,11 @@
 ---
 title: "retrieving_infant_mortality_data"
 editor: visual
+date: 20.9.2022
+author: Martin Summer
 ---
 
-We create a dataset about global infant mortality rates, combining the gapminder data set
-on infant mortality with the dataset displaye in our world in data.
+We create a dataset about global infant mortality rates, combining the gapminder data set on infant mortality with the dataset displayed in "our world in data".
 
 Load libraries:
 
@@ -14,15 +15,26 @@ library(readxl)
 library(tidyverse)
 ```
 
-
 Read the gapminder data first, then read the data from our world in data:
 
 ```{r}
+# The data are downloaded from
+# https://www.gapminder.org/documentation/documentation/. Here
+# we load the data from a local file repository in my project directory.
+
 imr_gapminder <- read_excel("../data/infant_mortality/gapdata002.xlsx", sheet = 2, na = "")
+
+# The data are downloaded from
+# https://ourworldindata.org/grapher/infant-mortality/
+# using the Full Data Pane
+
 imr_owid <- read.csv("../data/infant_mortality/infant-mortality.csv")
+names(imr_owid) <- c("Entity", "Code", "Year", "Mortality")
 ```
 
-We first transform the gapminder data into a long format.
+We first transform the gapminder data into a long format. We also express the mortality rate in percent; the probability that an infant dies during the first year after birth. Since the gapminder data are
+expressed as mortality rate, number of infant deaths per 100 life births, we have to divide by 1000 to get
+this probability.
 
 ```{r}
 
@@ -30,41 +42,17 @@ We first transform the gapminder data into a long format.
 
 imr_gapminder_long <- imr_gapminder %>% 
                  as_tibble() %>% 
-                 pivot_longer(!"Infant Mortality Rate", names_to = "Year", values_to = "Count",  
-                              values_transform = list(Count = as.numeric)) %>% 
+                 pivot_longer(!"Infant Mortality Rate", names_to = "Year", values_to = "Mortality",  
+                              values_transform = list(Mortality = as.numeric)) %>% 
                  suppressWarnings()
 
-names(imr_gapminder_long) <- c("Entity", "Year", "Count")
-
-imr_gapminder_long$Mortality_Rate <- ifelse(is.na(imr_gapminder_long$Count), NA, imr_gapminder_long$Count/1000)
+names(imr_gapminder_long) <- c("Entity", "Year", "Mortality")
 
 imr_gapminder_long$Year <- as.numeric(imr_gapminder_long$Year)
-imr_gapminder_long$Count <- as.numeric(imr_gapminder_long$Count)
-imr_gapminder_long$Mortality_Rate <- as.numeric(imr_gapminder_long$Mortality_Rate)
+imr_gapminder_long$Mortality <- as.numeric(imr_gapminder_long$Mortality)/1000
 ```
 
-Check the country names:
-
-```{r}
-names_gm <- unique(imr_gapminder_long$Entity) %>% as_tibble()
-names_owid <- unique(imr_owid$Entity) %>% as_tibble()
-```
-
-Names which are in both lists:
-
-```{r}
-common <- intersect(names_gm, names_owid) %>% as_tibble()
-```
-
-Names which are in gapminder but not in our world in data:
-
-```{r}
-not_common <- setdiff(names_gm, names_owid) %>% as_tibble()
-```
-
-It seems that the gapminder data contain more entities, some of them which do not exist anymore like East Germany or USSR.
-
-Enrich the gapminder data by ISO-3 country codes
+Add ISO-3 country codes to the Gapminder data.
 
 ```{r}
 iso <- read.csv("../data/infant_mortality/ISO.csv")
@@ -74,94 +62,70 @@ names(iso) <- c("Entity", "Code")
 We join by entities in the iso-list:
 
 ```{r}
-imr_gapminder_extended <- left_join(iso, imr_gapminder_long, by = "Entity")
-```
-
-Check whether the name list has length 178:
-
-```{r}
-length(unique(imr_gapminder_extended$Entity))
-```
-
-So there are more countries in gapminder than in owid.
-
-Transform the owid-data from rates to counts and percentages to rates and reorder columns:
-
-```{r}
-imr_owid$Count <- (imr_owid$Mortality.rate..infant..per.1.000.live.births.)*10
-imr_owid$Mortality.rate..infant..per.1.000.live.births. <- (imr_owid$Mortality.rate..infant..per.1.000.live.births.)/100
-names(imr_owid) <- c("Entity", "Code", "Year", "Mortality_Rate", "Count")
-
-imr_owid <- imr_owid[, c("Entity", "Code", "Year", "Count", "Mortality_Rate")] %>% as_tibble()
-```
-
-We need identical country lists. So we do a full join of the owid data with the gapminder data by Entity
-
-```{r}
-joint_data <- left_join(imr_owid, imr_gapminder_extended, by = c("Entity", "Code", "Year"))
+imr_gapminder_long_with_iso <- left_join(iso, imr_gapminder_long, by = "Entity")
 ```
 
 
-How different are the two rates?
+Transform the owid-data from percent notation to death probabilities to be consistent with the
+gapminder data:
 
 ```{r}
-plot(joint_data$Mortality_Rate.x, joint_data$Mortality_Rate.y)
-```
-There are discrepancies. We assume that the owid data are more accurate and combine pre 1960 years, where
-we only have gapminder data with the owid data.
+imr_owid$Mortality <- (imr_owid$Mortality)/100
 
-```{r}
-data_new <- joint_data[, c("Entity", "Code", "Year", "Count.x", "Mortality_Rate.x")]
-names(data_new) <- c("Entity", "Code", "Year", "Count", "Mortality_Rate")
+imr_owid <- imr_owid[, c("Entity", "Code", "Year", "Mortality")] %>% as_tibble()
 ```
 
-Now the observations before 1961 we take them from the gapminder data: 
+We would like to combine both datasets by taking the gapminder data until 1960 and then from then on
+the owid data. 
 
 ```{r}
-data_old <- imr_gapminder_extended[imr_gapminder_extended$Year < 1961, ]
+gapminder <- imr_gapminder_long_with_iso[imr_gapminder_long_with_iso$Year < 1961, ]
 ```
 
-Now match the two datasets by Entities:
+Now the problem is that owid and gapminder have different country lists. To see and check this:
 
 ```{r}
-data_matched <- left_join(data_new, data_old, by = "Entity")
+length(unique(gapminder$Entity))
+length(unique(imr_owid$Entity))
+```
+What are the common countries?
+
+```{r}
+gapminder_countries <- unique(gapminder$Entity) %>% as_tibble() %>% na.omit()
+owid_countries <- unique(imr_owid$Entity) %>% as_tibble()
+common_countries <- intersect(unique(gapminder$Entity), unique(imr_owid$Entity)) %>% as_tibble()
+names(common_countries) <- "Entity"
 ```
 
+We select the same country list by joining both sets with the common country list
+
 ```{r}
-data1 <- data_matched[, c("Entity", "Code.x", "Year.x", "Count.x", "Mortality_Rate.x")]
-data2 <- data_matched[, c("Entity", "Code.y", "Year.y", "Count.y", "Mortality_Rate.y")]
+data1 <- left_join(common_countries, gapminder, by = "Entity")
+data2 <- left_join(common_countries, imr_owid, by = "Entity")
 ```
 
-remove the duplicated rows in data 1:
+Check whether both lists are the same:
 
 ```{r}
-data1 <- data1[!duplicated(data1), ]
-data2 <- data2[!duplicated(data2), ]
+identical(unique(data1$Entity), unique(data2$Entity))
 ```
 
-Rename
-
+Now we split bothe frames by country and then stitch together again
 ```{r}
-names(data1) <- c("Country", "Code", "Year", "Count", "Mortality_Rate")
-names(data2) <- c("Country", "Code", "Year", "Count", "Mortality_Rate")
-```
-
-Now we have to combine both datasets:
-
-```{r}
-comb1 <- split(data1, data1$Country)
-comb2 <- split(data2, data2$Country)
-```
-
-
-```{r}
-res <- Map(bind_rows, comb2, comb1)
+comb1 <- split(data1, data1$Entity)
+comb2 <- split(data2, data2$Entity)
 ```
 
 ```{r}
-infant_mortality_data <- do.call(rbind, res)
-row.names(infant_mortality_data) <- NULL
+res <- Map(bind_rows, comb1, comb2)
 ```
+
+```{r}
+data <- do.call(rbind, res)
+row.names(data) <- NULL
+names(data) <- c("Country", "Code", "Year", "Mortality")
+```
+
 
 Add continent as a factor, add population
 
@@ -216,19 +180,19 @@ intersect(countries_northamerica, countries_southamerica)
 Add continent names to mortality table:
 
 ```{r}
-infant_mortality_data$Continent <- 
-  ifelse(infant_mortality_data$Country %in% countries_europe, "Europe",
-    ifelse(infant_mortality_data$Country %in% countries_asia, "Asia",
-      ifelse(infant_mortality_data$Country %in% countries_africa, "Africa",     
-        ifelse(infant_mortality_data$Country %in% countries_northamerica, "North America",
-          ifelse(infant_mortality_data$Country %in% countries_southamerica, "South America",
-            ifelse(infant_mortality_data$Country %in% countries_oceania, "Oceania", ""))))))
+data$Continent <- 
+  ifelse(data$Country %in% countries_europe, "Europe",
+    ifelse(data$Country %in% countries_asia, "Asia",
+      ifelse(data$Country %in% countries_africa, "Africa",     
+        ifelse(data$Country %in% countries_northamerica, "North America",
+          ifelse(data$Country %in% countries_southamerica, "South America",
+            ifelse(data$Country %in% countries_oceania, "Oceania", ""))))))
 ```
 
 Exclude entities not belonging to the list
 
 ```{r}
-infant_mortality_data_clean <- infant_mortality_data[!(infant_mortality_data$Continent == ""), ]
+data_clean <- data[!(data$Continent == ""), ]
 ```
 
 Matching population data:
@@ -242,7 +206,7 @@ Merge dataframes:
 
 ```{r}
 infant_mortality <- 
-  left_join(infant_mortality_data_clean, population_data, by = c("Country", "Code","Year"))
+  left_join(data_clean, population_data, by = c("Country", "Code","Year"))
 ```
 
 Specify continent as factor:
@@ -251,9 +215,26 @@ Specify continent as factor:
 infant_mortality$Continent <- as.factor(infant_mortality$Continent)
 ```
 
-Write the final dataset as a csv file to tables:
+Add birth and death counts:
 
 ```{r}
-write.csv(infant_mortality, file = "../data/infant_mortality/infant_mortality_data.csv", row.names = FALSE)
+births <- read.csv("../data/infant_mortality/births-and-deaths-projected-to-2100.csv")
+births <- births[ ,c(1,2,3,6)]
+names(births) <- c("Country", "Code", "Year", "Births")
+deaths <- read.csv("../data/infant_mortality/number-of-infant-deaths.csv")
+names(deaths) <- c("Country", "Code", "Year", "Deaths")
 ```
 
+
+```{r}
+infant_mortality_b <- left_join(infant_mortality, births, by = c("Country", "Code", "Year"))
+infant_mortality_data <- left_join(infant_mortality_b, deaths, by = c("Country", "Code", "Year"))
+```
+
+
+
+Write the final dataset as a RDS to data:
+
+```{r}
+saveRDS(infant_mortality_data, "../data/infant_mortality/infant_mortality_data.RDS")
+```

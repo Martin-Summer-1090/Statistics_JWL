@@ -1,0 +1,181 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1990,726129389.4666458,766997718.8581464,690304898.8463385
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1990,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1990,551850.9467330258,582910.4611849387,524624.6984199461
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1992,700725817.8597472,742533620.3540902,662084709.3261179
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1992,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1992,534773.361554939,566679.8483851402,505283.6025392736
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1991,715266538.9215529,758247852.4521172,676871160.427753
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1991,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1991,544081.3547882829,576775.9239086953,514875.1660295953
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1994,675012506.6209732,715043138.2221311,636180423.6475321
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1994,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1994,518396.07252151606,549138.7950622828,488573.81129848846
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1997,636973149.3712926,675201867.2934942,600580266.3406646
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1997,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1997,491749.04630562564,521261.9631346702,463653.41065711
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1993,686079539.1206334,728664464.3648336,647750676.2877024
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1993,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1993,525508.0417090115,558126.3015394792,496149.7464972297
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1996,650270778.2283262,688572430.9118475,612892031.4646231
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1996,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1996,501278.1118021701,530803.9351651821,472463.7344280393
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1995,662845381.310592,703308909.8733484,623951138.2065578
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1995,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1995,510133.6195016625,541274.8280934987,480200.1514986005
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1998,624427999.9663455,661566006.0069393,589627466.9576019
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1998,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1998,483124.8260077028,511858.79166523553,456199.3815117309
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2000,597773215.3260264,634778276.0668759,562698724.5139639
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2000,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2000,463682.0209934867,492386.18657231034,436475.36407396535
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,1999,611777166.2161303,649168885.9423721,576401779.2717528
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1999,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1999,474217.3496823716,503201.43605865183,446796.2179907311
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2004,548300079.301875,587992672.3303496,511880427.4057142
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2004,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2004,421756.5857891503,452288.4298445481,393742.31291340664
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2002,572287000.9621178,610019637.0767229,535478745.2118575
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2002,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2002,443792.32441854366,473052.9126541459,415248.5669162113
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2001,584329917.6269068,624101065.414537,549760277.1720206
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2001,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2001,453536.10314414866,484405.0537849557,426704.3775281173
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2003,559946527.6124456,599166037.760232,521978159.718153
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2003,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2003,432660.2512005497,462964.43611059146,403322.8006034997
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2007,508245355.4019088,549023629.373454,471062684.3110166
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2007,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2007,384503.5345256519,415353.57635538216,356373.67892422335
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2006,522320836.30997515,562314726.275711,485978117.2011269
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2006,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2006,397824.46645172243,428285.7209736574,370144.1178349157
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2009,482193238.9419407,523295473.2587843,443111284.1905656
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2009,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2009,361831.63474063925,392674.2252900013,332505.0361189363
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2005,535477833.3610331,574339543.6378391,499322818.81064767
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2005,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2005,410100.68870991765,439863.2916713335,382411.0338938366
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2008,495746194.2305315,536865091.50238323,457046098.7253546
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2008,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2008,373025.45511807216,403965.4714959955,343905.47213698574
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2011,455646806.6183183,500255460.9033949,414201061.1191125
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2011,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2011,341172.9956442527,374574.45482938614,310139.81612167927
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2014,415169892.36386573,466425172.36068887,369367113.6681877
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2014,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2014,309177.69513584714,347347.5856419524,275068.2912305761
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2013,430128054.3726438,479250138.87270695,386327530.0169991
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2013,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2013,319486.32294096384,355972.74597842485,286952.59646808496
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2010,469225289.1636387,511716494.5835231,429540316.2325134
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2010,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2010,351944.93053819065,383815.68577101396,322179.00494933326
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2012,442110497.51215607,487418632.2825053,400373377.2520816
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2012,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2012,329241.41933369887,362982.56477832154,298159.62238326453
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2016,383859233.1906636,441351244.19405437,334017099.9132731
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2016,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2016,282768.24862341007,325119.4905777549,246052.25610356472
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2017,366392508.06779796,424619385.00095356,314769623.8362
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2017,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2017,271784.18310637807,314975.9619600687,233491.14186907274
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2015,401931250.1832618,456808154.6499509,354018280.12009686
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2015,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2015,298307.12558237737,339035.9109775232,262746.8640422747
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2019,338606532.6663712,402895147.8969204,287471360.0289391
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2019,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2019,256548.35711933742,305257.21837195,217805.32275480917
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,1,Number,2018,351495201.2576301,411391597.1256259,299973050.3347661
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2018,1.0,1.0,1.0
+2,DALYs (Disability-Adjusted Life Years),1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2018,264921.3516334934,310065.1660996651,226089.19172714595
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1990,8123868.896757765,8579447.044303004,7719452.127877054
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1990,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1990,6174.057691155746,6520.292447220889,5866.705062245541
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1991,8001496.476201632,8483724.28831329,7573325.13294276
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1991,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1991,6086.493364654532,6453.30929557435,5760.796534388926
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1992,7837646.277142545,8306622.36049055,7402551.690641274
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1992,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1992,5981.461421113186,6339.370192545209,5649.410012862932
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1993,7672574.7771853935,8141179.162907518,7231181.026175323
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1993,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1993,5876.869249289333,6235.800479613918,5538.780219534567
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1997,7118595.855182593,7551002.312851542,6716594.768848629
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1997,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1997,5495.6205395413535,5829.4422451893515,5185.272056228253
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1994,7547829.064844919,7992872.997137363,7116392.597732129
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1994,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1994,5796.581403900438,6138.366221717866,5465.246846540283
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1995,7410540.244443996,7857371.7743793465,6981279.655035519
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1995,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1995,5703.239132309166,6047.125945283087,5372.875122302195
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1998,6977073.906344034,7392119.941265521,6583911.90389583
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1998,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1998,5398.2166354279825,5719.340997912419,5094.02411998045
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1996,7268658.825069686,7702611.501439002,6848259.877801226
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1996,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1996,5603.23436506284,5937.758051971504,5279.158922115038
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,1999,6834373.684542546,7253476.212959325,6432592.032353259
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,1999,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,1999,5297.64553892769,5622.511685044649,4986.205621301058
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2000,6676268.784006516,7092914.908770214,6278288.502784069
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2000,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2000,5178.662615011103,5501.847582514482,4869.95640941081
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2002,6388510.341298835,6815608.868265726,5976052.480407203
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2002,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2002,4954.108426664388,5285.311210791439,4634.259063491601
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2001,6524541.641483189,6967013.448410442,6135208.763649186
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2001,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2001,5064.117207788428,5407.548089917362,4761.930872788078
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2003,6248982.514043227,6700496.00249554,5823476.434841584
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2003,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2003,4828.472382536274,5177.34844426877,4499.691761465684
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2004,6117300.376947554,6559467.285072865,5714674.568767375
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2004,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2004,4705.473915876654,5045.592060228053,4395.771085950243
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2005,5972400.871727472,6403434.045138785,5567877.628500583
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2005,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2005,4574.01886343964,4904.129636024352,4264.210967928363
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2006,5823820.81183853,6269568.343030766,5420034.128123664
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2006,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2006,4435.699757926458,4775.202342241298,4128.156556808889
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2007,5665029.210979233,6123241.3200126,5251094.918797157
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2007,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2007,4285.772081655509,4632.4238977777895,3972.6178211910524
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2008,5524066.016182135,5988993.603111185,5088766.61850608
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2008,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2008,4156.597193826147,4506.433111337005,3829.0550809053025
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2011,5072334.76816728,5579547.117756742,4601661.842038892
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2011,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2011,3797.9935832530646,4177.777122221558,3445.569534969587
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2010,5225311.638960369,5698955.508614016,4772646.150390619
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2010,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2010,3919.272861640159,4274.53197203938,3579.748697851625
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2009,5371372.399374412,5836815.557229248,4929815.887676095
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2009,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2009,4030.60909840009,4379.871686683176,3699.2707436592664
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2013,4784787.821102734,5342040.428209262,4303790.012883396
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2013,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2013,3553.998051223231,3967.908710116198,3196.727188445415
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2012,4919719.876286313,5430694.959368335,4438664.175246866
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2012,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2012,3663.734663409978,4044.2598093740826,3305.4905984532443
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2014,4616469.041475212,5198429.677031231,4101947.9857135215
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2014,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2014,3437.8920152002947,3871.2790484857137,3054.727346843655
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2015,4467265.698334491,5082466.469552632,3927007.927144167
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2015,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2015,3315.535154520343,3772.127603190279,2914.5642354294637
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2016,4263426.641992382,4914639.774010855,3698175.935368967
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2016,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2016,3140.634848535142,3620.3481936872868,2724.245353311883
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2018,3899513.1133755115,4568771.318504093,3321632.697250422
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2018,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2018,2939.056581744853,3443.4753836519603,2503.5090682236882
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2017,4066855.110290462,4715952.472803029,3483557.52891533
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2017,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2017,3016.7289713188284,3498.2191561408886,2584.048026236206
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,1,Number,2019,3754652.7931031156,4479159.269595032,3180108.0632162155
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,2,Percent,2019,1.0,1.0,1.0
+1,Deaths,1,Global,3,Both,28,<1 year,294,All causes,3,Rate,2019,2844.7472588286537,3393.6762614756867,2409.438154236484
