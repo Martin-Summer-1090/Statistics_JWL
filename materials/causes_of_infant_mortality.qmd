@@ -1,0 +1,19 @@
+---
+title: "Causes of infant mortality"
+author: "Martin Summer"
+editor: visual
+---
+
+Read the IHME data
+
+```{r}
+causes <- read.csv("../data/infant_mortality/infant-death-rates-by-cause-by-sex.csv", stringsAsFactors = FALSE)
+names(causes) <- c("Entity", "Code", "Year", "Boys", "Girls")
+
+causes$All <- causes$Boys + causes$Girls
+causes$Share <- causes$All/sum(causes$All)
+
+# remove the superfluous Code column
+
+causes$Code <- NULL
+```

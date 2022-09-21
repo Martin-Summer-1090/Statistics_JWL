@@ -1,105 +1,130 @@
-#Categorical Data and Proportions
+#Categorical Data and Proportions: The story of infant mortality
 
-The death of a child is an enormous tragedy to its family and friends. The numbers
-across the globe add up to millions. From 56 million people who died for example in the year
-2017, 5.4 millions were children under the age of 5, as reported by Max Roser [@Ros]
-in an article on the website "Our world in Data" which we referred to
-in our introduction to this course. This is a number of enormous scale that never makes the
+The death of a child is a tragedy to its family and friends. The numbers of such
+events across the globe add up to millions. Max Roser, in an article
+on the website "Our world in Data" [@Ros], reports that from 
+56 million people who died for example in the year
+2017, 5.4 millions were children under the age of 5. This is a number of 
+enormous scale that never makes the
 headlines.
 
-Max Roser [@Ros] on the website "our world in data", we have encountered in the introduction,
-puts the scale very vividly into perspective. He writes:
+In his article Roser [@Ros] puts this scale into perspective. He writes:
 
 "...*The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.*
 
 In pre-industrial societies infant- and child-mortality were uniformly and cruelly high. They
 were a universal and frequent experience for families all over the world. 
-In a scientific publication Anthony Volk 
-and Jeremy Atkinson made an attempt  to report mortality 
-rates of infants and children in the past, collecting data from a wide 
-range of geographic locations and cultures reaching far
-into the past [@VolAtk2013]. A newborn, which dies under the age of 1 year is referred to
-in the mortality statistics as an infant. A death before the 5th year of life is referred to as
-the death of a child.
 
-Mortality statistics report infant- and children mortality as mortality rates 
+Such tragic events are today, counted as well as reported and compiled in so called mortality statistics,
+usually by national health authorities and civil registration and statistics systems. These
+data are then again collected and globally reported by the United Nation World Health 
+Organisation.^[If you have internet access you can look at the organisation's website https://www.who.int/data/data-collection-tools/who-mortality-database]
+
+Mortality statistics distinguish between infant- and child-mortality. If a child dies within
+the first year of his life, this is classified and counted as an infant death and the statistics
+is referred to as infant-mortality statistics. If a child dies before its fifth year
+this is classified as child-mortality. 
+
+Mortality statistics are reported in different formats. Often the concept of a *mortality-rate* is used
+in such reports. These are usually mortality rates 
 standardized to 1000 life births. To compute an infant mortality rate in a given year in a given
 geographic area one would, for instance, need to know how many babies were born alive in a given
 period in a given area and how many babies who were born alive died before their first birthday during
 the same period. The number of deaths is the divided by the number of births. This rate is then multiplied
 by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized 
 manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on
-the level of comparison that is required.^[Note that by this standardization you can end up reporting
-numbers like 3.1, which sounds strange if you think about death events.]. Sometimes infant mortality
-rates are just reported as percentages. In this case the number would reflect the numbers of deaths divided by the number of births.
+the level of comparison that is required. Reporting mortality statistics as mortality rates 
+has the advantage that it communicates the risk as an expected frequency. 
+Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 people. 
+
+
+The production and reporting of mortality statistics is a modern phenomenon. Historically 
+these statistics can only be based on estimation and proxies of different and varied sources.
+In a scientific publication Anthony Volk 
+and Jeremy Atkinson made an attempt  to report mortality 
+rates of infants and children in the past, collecting data from a wide 
+range of geographic locations and cultures reaching far
+back in history [@VolAtk2013]. 
 
 The authors find that in the entire sample about 27 % of children 
 died in their first year of life and 46 % died before they reached adulthood. These
-rates are surprisingly similar across regions and cultures: Every forth newborn child died in the
-first year of life, every second child during its childhood. These are truly 
-grim numbers.
+numbers are surprisingly  similar across regions and cultures: Every forth newborn child died in the
+first year of life, every second child during its early childhood. 
 
-The numbers started to improve, very gradually only with the onset of industrialization. 
-Gapminder, the
-site we have already encountered in the introduction has 
-collected and commented the available data back to 1800.^[See https://www.gapminder.org/data/documentation/gd002/]
+Let us have a look at the data which we have collected and compiled from
+gapminder and the website our world in data.^[The files are at
+https://www.gapminder.org/documentation/documentation/gapdata002.xlsx  and
+https://ourworldindata.org/grapher/infant-mortality/infant-mortality.csv. From the
+file name extensions you can see that the first file is an Excel sheet whereas
+the second file is a comma separated text file. Both file formats
+can be read by a computer. We will learn soon how to do this. For the moment let
+this data work be conducted in the background and just look at some numbers from the
+file I have compiled from these sources.] When we do this we only get
+data for a small group of countries.
 
-Let us have a look at them. For instance, if we go back to 1850, we have data only 
-from Europe.
 
 ```{r}
-#| label: infant-mortality-1860
+#| label: tbl-infant-mortality-1860
 #| tbl-cap: Infant mortality in some European countries in 1860
 #| message: false
 
+# Load our project  data library and the tidyverse
+
+library(JWL)
+library(tidyverse)
 
 # read data from data folder. The data are a csv version of the excel file from gapminder
 # sheet data
 
-infant_mortality <- read.csv("data/infant_mortality/infant_mortality_data.csv")
+infant_mortality <- infant_mortality_data
 
-# table for 1860
+# make table for the year 1860 and throw away all countries where there are no observations
+# and select the variables Country, Continent, Mortality
 
-library(tidyverse)
+dat <- infant_mortality[infant_mortality$Year == 1860, ]
+rate_1860 <- dat[ , c("Country", "Continent", "Mortality")] %>% na.omit()
 
-dat <- infant_mortality[infant_mortality$Year == 1860, ] %>% na.omit() 
-rate_1860 <- dat[ , c("Country", "Count", "Mortality_Rate")]
+# make a table
 
 library(knitr)
 kable(rate_1860, digits = 4, row.names = FALSE)
+
+# write a csv file of the table to the project table folder for further use by Seitwerk
+
 write.csv(rate_1860, file = "tables/table_2_1_infant_mortality_1860.csv", row.names = FALSE)
 ```
 
-The table shows the counts of infant death during the first year in the year 1860 per 
-1000 life births. Before we deal with the information conveyed by these data, let us take the
-opportunity to discuss some terminology and technical terms that will be a focus of this
-chapter. 
+The table shows infant mortality in the year 1860 as percent in decimal notation. So 0.124, for example, means 12.4 %. This is the percentage of infant deaths in Sweden in 1860. It is better than the
+historical numbers reported by [@VolAtk2013] but still fairly high. Others at that time bigger countries
+with a much more heterogeneous population like Germany and Austria were pretty much at where the rates had
+always been in the past. The countries for which we have data from 1860 are all in Europe. 
+Some of the bigger countries by this time had begun
+to register and report infant deaths in a mortality statistics.
 
-The data are shown here in a table. We have ordered the countries by the infant mortality rate, 
-displaying the country with the highest rate first. 
-The columns of the table are called *variables*. So 
-the variables shown in this table are Country, Count and Mortality Rate. In the specific
+Before we deal with the information conveyed by these data, let us take the
+opportunity to discuss some terminology and technical terms that we will always use
+when we deal with tabular data like the ones shown in @tbl-infant-mortality-1860. 
+
+The columns of the table have names. In our case these names are: Country, Continent and Mortality.
+These names are called our **variables**. In the specific
 example shown here we have data that record whether an event has happened or not, in our case the
 death of an infant in his first year of life in a specific country during a specific year. 
 Variables that can take only two values, are called **binary data**. Sets of binary data can
-be summarized by the number of times and the percentage of cases in which an event has occurred.
-
-The basis for computing the percentages in our case are 1000 life births. So in the case of
-Norway in 1860 we can report the data by saying that among 1000 life births we had 102 
-infant deaths in the first year of life. Expressed as a rate this would be $\frac{102}{1000}$, or
-$0.102$, which amounts to $10.2$ percent.^[Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the
+be summarized by the number of times and the percentage^[Remember from school mathematics 
+that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the
 percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For
 example 45 % is the fraction $\frac{45}{100}$ or 0.45. Percentages are often used to express
 a proportionate part of the total. Thus when we see in the table that the mortality rate in
-Germany in the year 1860 is 0.260 this is expressed in percent as mortality rate of 26 %.]
+Germany in the year 1860 is 0.260 this is expressed in percent as 26 %.] of cases in 
+which an event has occurred.
 
 Each row in the table
-is a *record* or sometimes also called an *observation*. Our table shown here has eight records. 
+is a **record** or sometimes also called an **observation**. Our table shown here has eight records. 
 For doing statistics, especially when using the computer, it is often useful to display 
 data tables such that each variable is a column and each record is a row.^[Such a format is
-not always the reader friendliest to humans and thus data on the web are often 
+not always the reader friendliest to humans. Thus data on the web are often 
 organized differently. For example the Gapminder data show the Years as columns and countries
-as rows. While easier to read such a table for working with the computer this deviation from
+as rows. While easier to read such a table for us, for working with the computer this deviation from
 the format variable as column and observation as row, often creates problems. We will come back
 to this seemingly minor but in fact quite important point over and over again. 
 Hadley Wickham [@JSSv059i10], who
@@ -116,7 +141,7 @@ first steps in R and how to use the computer to analyze and communicate data.
 
 ## Communicating Counts and Proportions
 
-Let us follow the history of infant mortality around the globe. When we looked at the 1860-ies
+Let us follow the history of infant mortality around the globe. When we looked at the year 1860
 rates of infant mortality were very high, not much better than it had been all the centuries
 before industrialization has set in in Europe. 
 
@@ -124,17 +149,16 @@ But then about 100 years later we already see a significant reduction in the Wes
 with rates reduced still much further until now in the most affluent countries. Let us look at 
 the country group for which we had data in 1860 already, again today in 2020,
 before we go to the global picture. We will use this example to discuss some important aspects
-of communication counts and proportions. Again we have ordered the observation by a decreasing
-mortality rate.
+of communication counts and proportions. 
 
 ```{r}
-#| label: infant-mortality-2020
-#| fig-cap: Infant mortality in some European countries in 2020.
+#| label: tbl-infant-mortality-2020
+#| tbl-cap: Infant mortality in some European countries in 2020.
 #| warning: false
 
 # Select the country group used in the historical 1860 data
 
-rate_2020 <- infant_mortality[infant_mortality$Country %in% dat$Country & infant_mortality$Year == 2020, c("Country", "Count", "Mortality_Rate")]
+rate_2020 <- infant_mortality[infant_mortality$Country %in% rate_1860$Country & infant_mortality$Year == 2020, c("Country", "Continent", "Mortality")]
 
 # display the table and write text file of table
 
@@ -144,22 +168,36 @@ write.csv(rate_2020, file = "tables/table_2_2_infant_mortality_2020.csv", row.na
 
 ```
 
-This is a spectacular improvement for this group of countries. 
+This is a spectacular improvement for this group of countries. by 2020 we have much more data, covering
+more regions and we will follow the global story later. But let us stick for the moment with this
+group of European Countries, which we followed over a time span of 160 year.
+
 Within a bit more than a century the
 mortality rate has been reduced from 30 % to below 0.3 %. This amounts to 
-a reduction by a factor of about 100.
-Isn't this a stunning achievement?
+a reduction by a factor of about 100. Isn't this a stunning achievement?
 
-As Vaclav Smil
-has pointed out in a recent book [@Smil2020] such low rates are impossible 
+::: {.callout-note icon=false}
+
+## Now you try
+
+This is a good opportunity to practice and refresh your skills in manipulating
+percentages. Compute and report the reduction in the share of infant mortality for
+each of the 8 countries between 1860 and 2020 based on the numbers reported in
+@tbl-infant-mortality-1860 and @tbl-infant-mortality-2020
+
+:::
+
+In a recent book [@Smil2020], the Canadian researcher Vaclav Smil
+has pointed out that such low rates are impossible 
 without the combination
 of a number of critical conditions, such as good healthcare in general, appropriate 
-prenatal, perinatal and neonatal care, proper maternal and infant nutrition, adequate 
+prenatal, perinatal and neonatal^[prenatal is a word rooted in ancient Latin and means
+before birth. Perinatal means around the time of birth and neonatal means the
+first month after birth of a child.] care, proper maternal and infant nutrition, adequate 
 sanitary living conditions as well as access to social support for 
 disadvantages families. All of
 these factors require relevant government and private spending and on 
-infrastructures that can be
-universally used and accessed. Infant mortality is thus a very powerful 
+infrastructures that can be  universally used and accessed. Infant mortality is thus a very powerful 
 indicator of quality of life in a country.
 
 When data, such as counts and proportions are reported in a table we should make careful
@@ -168,28 +206,28 @@ considerations how the data are precisely presented.
 For instance in the table about infant mortality in some European countries in 1860,
 we could have reported the same information by
 presenting survival rates instead of mortality rates. Such a choice in reporting is 
-generally known as *framing*. Framing can have effects on the impact of communication. 
+generally known as **framing**. 
+
+Framing can have effects on the impact of communication. 
 Depending on how you frame the communication of data, the same information might 
 affect and engage your audience differently. The same table with survival rates instead
 of mortality rates would the look like this.
 
 ```{r}
-#| label: infant-survivial rate-1860
+#| label: tbl-infant-survivial rate-1860
 #| tbl-cap: Infant survival rates in some European countries in 1860
 #| warning: false
 
-datrev <- rate_1860
-datrev$Survival_Rate <- 1 - ifelse(is.na(dat$Count), NA, dat$Mortality_Rate)
+srate_1860 <- rate_1860
+srate_1860$Survival <- 1 - rate_1860$Mortality
 
-datrev$Count = 1000 - dat$Count
+# table for 1860 survival rates
 
-# table for 1860
-
-surv_rate_1860 <- with(datrev, datrev[ , c("Country", "Count", "Survival_Rate")])
+srate_1860 <- with(srate_1860, srate_1860[ , c("Country", "Continent", "Survival")])
 
 library(knitr)
-kable(surv_rate_1860, digits = 4, row.names = FALSE)
-write.csv(surv_rate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
+kable(srate_1860, digits = 4, row.names = FALSE)
+write.csv(srate_1860, file = "tables/table_2_3_infant_survival_1860.csv", row.names = FALSE)
 ```
 
 Take for instance the data for Germany 1860. If we had
@@ -197,10 +235,14 @@ reported a survival rate of 74 % it might sound to many better than if we had re
 equivalent information of a mortality rate of 26 %. So whenever you report
 counts or proportions be mindful of framing effects.
 
-Risk impression can often be made more clear if we report the actual counts as well as  
-the percentages. The count or total number can then be imagined as an actual crowd of
+Risk impression can often be made more clear if we report expected frequencies as well  
+the percentages. In this way the risk can be imagined as an actual crowd of
 people. For example we could visualize the infant mortality rate in Germany by creating
-a picture of the counts of cases (infant deaths) among 1000 life births.
+a picture of the mortality rate, the actual number of cases per 1000 life births. If there are
+relatively few cases, as in 2020 Germany, this arbitrary normalisation leads to an artificial number
+such as 3.1 deaths per 1000 life births. Of course this is an artifact of the normalisation because there
+is nothing as an event with 0.1 deaths. If we had normalized to 10000 this would amount to 31 in 10000 which
+sounds more like an actual count. So for the visualization we take an infant mortality rate as infant deaths per 1000 life births to be 3.
 
 Such a visualization could then look for example like this:
 
@@ -211,10 +253,15 @@ Such a visualization could then look for example like this:
 library(waffle)
 waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
 ```
-Here you visualize the numbers as differently colored crowds. It makes the magnitude
-of the mortality rate (as well as the survival rate) tangible. When you plot the
+Here you visualize the numbers as differently colored crowds. There are 20 rows with 50
+people symbols each. This multiplies to a crowd of 1000 people. It makes the magnitude
+of the mortality rate (as well as the survival rate) tangible. The share of infant death
+per 1000 life births in Germany in 1860 becomes now more tangible than reporting
+just a percentage in a table.
+
+When you plot the
 same graph for the data of 2020 the enormous improvement that took place within a time
-span of one and a half centuries in Germany become perhaps more obvious that looking at the
+span of one and a half centuries in Germany become perhaps more obvious than just looking at the
 rates alone. The same kind of visualization for the 2020 data would then look like this
 
 ```{r}
@@ -225,10 +272,13 @@ library(waffle)
 waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
 ```
 
-From this perspective the improvement in infant mortality rates in Germany are truly spectacular. Still
+From this perspective the improvement in infant mortality rates in Germany are truly spectacular. 
+
+Still
 even at the low mortality rate this can mean a huge amount of individual tragedies. In 2020 Germany had
-760.378 births. If in every 1000 births we had 3 deaths, this would mean about 2280 individual tradgedies only of the year 2020. While the rate came down significantly over a period of over 100 years, imagined 
-as a crowd the absolute number still sounds not very small.
+760.378 births. 0.31 % of this amounts to 2357 individual tragedies. Even if this rate could be
+brought down further, say to 0.28 % which sounds like a tiny improvement, it would mean 228 infant lives
+that could be saved.  
 
 ::: {.callout-note icon=false}
 
@@ -238,17 +288,33 @@ David Spiegelhalter [@Spi2019] whose book we have encountered when we discussed 
 trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of
 young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers 
 that riding on the London Underground is very safe. Try to imagine what this statement would mean
-when you think of crowds of young Londoners, assuming that "young" means between 15 and 25.
-
+when you think about this information in terms of crowds of young Londoners, assuming 
+that "young" means between 15 and 25. Try to exlpain how the same information presented differently 
+may have a different impact.
+What kind of communication tools we have just heard about, have been applied here? 
 :::
 
+:::{.callout-caution collapse="true"}
+## Seitwerk: A remark on answer.
+Turn a positive frame into a negative one and then imagine actual crowds of people instead of percentages.
+This or an answer like this I would have in mind that studnets come up with if they reflect this
+example. I think an answer to such a reflection is best placed in the interactive part of the course
+or in the study center meet ups.
+:::
+
+:::{.callout-important}
+## Be mindful of framing
 
 A standard we should strive for when reporting data is providing impartial information. 
 For this
 we should think carefully about our framing and should perhaps provide 
 both positive and negative
-frames. But even if we achieve this, we should consider other things, like the ordering
-of the rows.
+frames.
+:::
+
+But even if we achieve this, we should consider other things, like the ordering
+of the rows. Let us discuss this aspect in the next session together with
+your first steps in R.
 
 
 ## A first acquaintance with R: Visualizing Infant Mortality Rates 
@@ -285,13 +351,23 @@ easily readable comments and that you can collaborate in a team, where you can s
 with others. This circle of collaborators includes your future and past self.
 
 For a start we just work with the R command line or the R-console, as it is called, introducing
-the use of R via the notebooks a bit later. You start R by either typing `R` into the 
+the use of R via the notebooks a bit later. 
+
+You start R by either typing `R` into the 
 terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol
 that looks like this `>`. When you see the prompt in the R console, R is ready to receive commands.
 
 To end your R session write `quit()` at the 
 prompt `>` of the console. Congratulations. Now that you can start and quit R we are ready to 
 go.
+
+:::{.callout-caution collapse="true"}
+## Seitwerk: A remark on a demo.
+This would be perhaps best shown in a brief video. Of course when producing the video it is
+important to think about which operating system the students will use, and the R version that they
+will have available. If this is open, so the demo for windows, mac and linux. It does only take
+marginally more time and effort. Maybe this whole intro is perfect for a video demo.
+:::
 
 ### First steps
 
@@ -351,6 +427,15 @@ and of course you can combine all of these operations:
 ```
 
 The comma is represented in R as a dot `.`. So the above output reads `1717`and one half or `0.5`.
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Use R to transform the Mortality numbers reported in percent in @tbl-infant-mortality-1860 and
+@tbl-infant-mortality-2020 in mortality rates, i.e. the (approximate) 
+number of infant-deaths per 1000 life births.
+:::
 
 R needs a complete command to be able to execute it, when the return key is pressed. 
 Lets see what happens, if a command is incomplete, like for instance:
@@ -432,15 +517,20 @@ R must for example not begin with a number, a dot  `.` or an  underscore `_`. So
 
 ### A first data visualization
 
-We showed the infant mortality rates of a group of European countries before in tables. Humans
+We showed the infant mortality rates of a group of European countries before 
+in tables @tbl-infant-mortality-1860 and
+@tbl-infant-mortality-2020. 
+
+Humans
 are very visual creatures. Thus using our visual system to explore data and absorb 
 information in these data visualizations can be very powerful. To deploy their power, we must
 - however - follow some principles, which we will learn step by step over this course.
 
-Assume we would like to display the information in our tables in a so called bar chart. A bar chart
+Assume we would like to display the information in our tables in a so called **bar chart**. A bar chart
 would combine in a plot bars for each country in the table with the bar length proportional to
 the mortality rate. This will give us a visual impression how the countries differ in one
-view, which might be more informative as just looking at the numbers themselves.
+view, which might be more informative as just looking at the numbers themselves in
+a table.
 
 #### Functions
 
@@ -453,7 +543,7 @@ the prompt. This is a function and by typing its name followed by the parenthesi
 close the program and shut down.
 
 Functions can also have arguments, which we can assign certain values to. For example, R has a function
-which would round numbers. This function is calles `round()`. It has also arguments. You need to tell
+which would round numbers. This function is called `round()`. It has also arguments. You need to tell
 R which numbers to round and the number of digits the rounding should consider.
 
 ```{r}
@@ -472,7 +562,7 @@ Note that R is programmed such that we could also have typed:
 round(2.4356789123456, 2)
 ```
 
-R would have known automatically that the first value is assigend to `x`and the second to `digits`.
+R would have known automatically that the first value is assigned to `x`and the second to `digits`.
 
 We will encounter a lot of R functions during this course. We will also learn how to access
 R documentation to know for so many different functions, what is their name, which arguments they accept as
@@ -485,32 +575,37 @@ function to show the infant mortality rates of 1860 as a bar chart. The argument
 the data. Then we can add additional arguments which determine details of the plot display and 
 appearance.
 
-Let us first store the data in an object with the name `mr`for mortality rates. 
+Let us first store the data in an object with the name `mr`for mortality rates of 1860. 
 
 ```{r}
 #| code-fold: false
 
-mr <- c(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)
+mr_1860 <- c(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)
 ```
 
 Here we see another important function of R which we will need all of the time, the `c()`function. This
 function concatenates values in a vector of values. So the output of the operation will be a vector
-$(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)$ with the name `mr`. Thus when we type
+$(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)$ with the name `mr_1860`. Thus when we type
 
 ```{r}
 #| code-fold: false
 
-mr
+mr_1860
 ```
 
-R will print the whole vector as one object. This is why the counting lable is [1] and not [8]. 
+R will print the whole vector as one object. This is why the counting label is [1] and not [8]. The `c()` function concatenates the number so a single object, a vector containing all eight numbers.^[In case
+you are worried about the technical term of a vector, don't worry. We use this term here losely and
+not in a rigorous mathematical sense. You can think for the moment of a vector in R as a single
+object that can hold several data at once, like numbers, or characters. I avoided the term list
+in the text to avoid confusion with the list data structure which is a special data structure in R which
+we learn about in the course later.]
 
-Now lets see what happens when we give mr as an argument to `barplot`.
+Now lets see what happens when we give `mr_1860`  as an argument to `barplot`.
 
 ```{r}
 #| code-fold: false
 
-barplot(mr)
+barplot(mr_1860)
 ```
 We see on the y axis the infant mortality rates from 0 to 0.25 and on the x axis a bar for each country
 with a length proportional to the infant mortality rate in this country.
@@ -524,32 +619,38 @@ ctr <- c("Austria", "Belgium", "Denmark", "France",
          "Germany", "Norway", "Spain", "Sweden")
 ```
 
-Note that the names of the countries had to be written between `" "`. This is the way to tell R that the
+Note that the names of the countries had to be written between quotation marks `" "`. This is the 
+way to tell R that the
 sequence of letters are characters. Characters are a specific data type representing text. Now we have a 
-vector of words, the counrty names. We can give the country names as an argument to `barplot()`like this:
+vector of words, the country names. We can give the country names as an argument to `barplot()`like this:
 
 ```{r}
 #| code-fold: false
-barplot(mr, names.arg = ctr)
+barplot(mr_1860, names.arg = ctr)
 ```
-Not too bad but some country names are missing. It seems that the width of the
-bars is not wide enough that R is able to print all names. It would be more convenient
+Not too bad. But some country names are missing. It seems that the width of the
+bars is not wide enough that R is able to print all names. 
+
+It would be more convenient
 to flip the chart around and interchange the x and the y axes here. This can be done by another
 argument to `barplot()`. This argument is called `horiz` and it assumes a logical value. A logical
-is another data type which allows us to express whether something is true or false. Logical true and
+is another R data type which allows us to express whether something is true or false. Logical true and
 false values are expressed as `TRUE` and `FALSE` in R.
 
 ```{r}
 #| code-fold: false
-barplot(mr, names.arg = ctr, horiz = TRUE)
+barplot(mr_1860, names.arg = ctr, horiz = TRUE)
 ```
-This does not yet help much, because this flip of coordinates can only help if the country names
-are also printed horizontally. You might guess it already. This can be controlled by another argument
+This does not yet help much, because this flip of coordinates can only support a better 
+display of the data if the country names
+are also printed horizontally. 
+
+You might guess it already: This can be controlled by another argument
 which is called in the case of this function `las`. If `las` gets value 1 we get what we want.
 
 ```{r}
 #| code-fold: false
-barplot(mr, names.arg = ctr, horiz = TRUE, las = 1)
+barplot(mr_1860, names.arg = ctr, horiz = TRUE, las = 1)
 ```
 
 Now we have visualized the information we had displayed in a table before. It is not yet perfect
@@ -558,20 +659,28 @@ additional function arguments, but let us not go too much in the details of the
 `barplot()`function at this stage. We will learn a lot about powerful visualization
 techniques in R as we go along.
 
+::: {.callout-note icon=false}
+
+## Now you try
+
+Use R to redo the barplot visualization we just did for the 1880 data for the 2020 data.
+:::
+
 Before we close this first encounter with R and data visualization, let me point out an
 important aspect of bar charts. The visual impression is powerful and truthful, if we choose
 the origin of the bars carefully. It is usually the best idea to start the bars at zero. So we see
 clearly the relative lengths and the magnitude of differences in the context of the entire dataset.
 
-Changing the origin with not enough care can visaully exaggerate the differences between countries. This
+Changing the origin with not enough care can visually exaggerate the differences between countries. This
 is a manipulative visualization, which should be avoided but which is encountered often. So be mindful
 about the choice of origin in a bar chart. 
 
-let me who you what I mean by telling R, for example to start the plot at $0.08$ instead as of $0$.
+Let me show you what I mean by telling R, for example, to start the plot of the data for the
+1880 data at $0.08$ instead as of $0$.
 
 ```{r}
 #| code-fold: false
-barplot(mr, names.arg = ctr, horiz = TRUE, las = 1, 
+barplot(mr_1860, names.arg = ctr, horiz = TRUE, las = 1, 
         xlim = c(0.08, 0.275), xpd = F)
 ```
 
@@ -580,24 +689,108 @@ on the appearance of differences between the length of the bars. Always be mindf
 reflect what happens if for some reason you have to choose a different origin for the bar chart
 than zero. Alberto Cairo, who is the author of an influential book on data visualization [@Cai2016] recommends to always choose a "...*logical and meaningful baseline*". 
 
-Before we close this digression into visualization, let me briefly discuss another aspect of data presentation which you need to consider. The ordering of the rows in the data table, or in this case, the
-order of the bars in the barchart has to be carefully considered. If you look at the bar chart we have
-produced, you see that the bars have an order corresponding to the alphabetical order of the countries, starting with A for Austria and ending with S for Sweden. 
+:::{.callout-important}
+## Be mindful in choosing a logical and meaningful origin for barcharts
+
+When you compare porportions visually with a bar chart always think of choosing a logical
+and meaningful origin. In most cases this will be 0. If 0 is not possible, think about what
+would be a choice that gives a truthfull and not exaggerated display of differences.
+:::
+
+Before we close this digression into visualization, let me briefly discuss another aspect 
+of data presentation which you need to consider. The ordering of the rows in the 
+data table, or in this case, the
+order of the bars in the barchart has to be carefully considered. 
+
+If you look at the bar chart we have
+produced, you see that the bars have an order corresponding to the alphabetical 
+order of the countries, starting with A for Austria and ending with S for Sweden. 
 
 Now consider we had ordered the data according to mortality rate like this:
 
 ```{r}
-barplot(rate_1860[order(-rate_1860$Mortality_Rate) , ]$Mortality_Rate, 
-        names.arg = rate_1860[order(-rate_1860$Mortality_Rate) , ]$Country, horiz = TRUE, las = 1)
+barplot(rate_1860[order(-rate_1860$Mortality) , ]$Mortality, 
+        names.arg = rate_1860[order(-rate_1860$Mortality) , ]$Country, horiz = TRUE, las = 1)
 ```
 Now the bar chart could suggests that the infant mortality rate is an important and meaningful way of 
-comparing this particular group of countries. Such ranking comparisons are very popular in the media 
-but they can be misleading. They can be misleading because the differences could be there just by
-chance. There could be also systematic differences between countries affecting infant mortality rates. For
-example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates. So an ordering like the one presented in the graph needs migh suggest
-a ranking that is in fact spurious and is not really substantial. 
+comparing this particular group of countries. 
 
-## Categorical variables
+Such ranking comparisons are very popular in the media 
+but they can be misleading. They can be misleading because the differences could be there just by
+chance. 
+
+There could be also systematic differences between countries affecting infant mortality rates. For
+example, countries that are small with populations under 10 Million and that have 
+very homogeneous populations and low birth rates tend to show lower infant mortality rates
+just because of these demographic features. So an ordering like the one presented 
+in the graph needs might suggest
+a ranking that is in fact spurious and is not really substantial.
+
+:::{.callout-important}
+## Be mindful about order in displaying the data
+
+When you display proportions in a table or a bar chart be mindful of the ordering
+of data and avoid spurious rankings. Choose a particular ordering only if there is
+a meaningful and logical reason to do so.
+:::
+
+## Categorical variables: Causes of infant mortality
+
+We have discussed binary data. These are data that can take two values, like death or alive, in the
+examples of infant mortality data we have studied so far. A generalisation of binary variables are
+calles **categorical variables** in statistics. Categorical variables are measures that can take two or
+more values, which can be either unordered, such as eye color, countries or study centers at which JWL courses take place. They can also be ordered, like positions in a hierarchy.
+
+An example of categorical arises if we study the issue of infant mortality further and ask for
+the causes. Why do infants die in the first year of their life?
+
+Here are the causes that have been registered by the Global Burden of Disease Study in 2019 by 
+the Institute for Health Metrics and Evaluation as well as the share of each cause in the
+overall cases.
+
+```{r}
+
+# read data from JWL package
+
+library(JWL)
+causes <- infant_mortality_causes
+# order by share
+causes_ordered <- causes[order(-causes$Share) , ]
+
+dat <- causes_ordered[, c("Entity", "Share")]
+names(dat) <- c("Cause", "Share")
+
+library(knitr)
+kable(dat, digits = 3, row.names = FALSE)
+write.csv(dat, file = "tables/table_2_4_infant_mortality_causes.csv", row.names = FALSE)
+```
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Use R to visualize this table in a barchart. Don't worry if some of the causes are cut off at
+the left of the graph. We will learn during the course how to better control the appearance
+of a visualization and control for details like this.
+:::
+
+:::{.callout-caution collapse="true"}
+## This is how an answer can look like.
+Since students have not yet learned subsetting, they need to use the table and retype the values and
+the causes manually. This is intended because it will familiarize them with the `c()` function, the 
+difference between numerical and character data type and is an excellent opportunity to review what
+we did on simple R bar-charts. In the example cause below I use - of course - the convenience
+of subsetting
+
+```{r}
+barplot(dat$Share, 
+        names.arg = dat$Cause, horiz = TRUE, las = 1, cex.names = 0.3)
+```
+
+
+:::
+
+Explain why bars are preferred over pies.
 
 ## Compairing pairs of proportions
 

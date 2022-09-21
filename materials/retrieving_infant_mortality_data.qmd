@@ -32,9 +32,7 @@ imr_owid <- read.csv("../data/infant_mortality/infant-mortality.csv")
 names(imr_owid) <- c("Entity", "Code", "Year", "Mortality")
 ```
 
-We first transform the gapminder data into a long format. We also express the mortality rate in percent; the probability that an infant dies during the first year after birth. Since the gapminder data are
-expressed as mortality rate, number of infant deaths per 100 life births, we have to divide by 1000 to get
-this probability.
+We first transform the gapminder data into a long format. We also express the mortality rate in percent; the probability that an infant dies during the first year after birth. Since the gapminder data are expressed as mortality rate, number of infant deaths per 100 life births, we have to divide by 1000 to get this probability.
 
 ```{r}
 
@@ -65,9 +63,7 @@ We join by entities in the iso-list:
 imr_gapminder_long_with_iso <- left_join(iso, imr_gapminder_long, by = "Entity")
 ```
 
-
-Transform the owid-data from percent notation to death probabilities to be consistent with the
-gapminder data:
+Transform the owid-data from percent notation to death probabilities to be consistent with the gapminder data:
 
 ```{r}
 imr_owid$Mortality <- (imr_owid$Mortality)/100
@@ -75,8 +71,7 @@ imr_owid$Mortality <- (imr_owid$Mortality)/100
 imr_owid <- imr_owid[, c("Entity", "Code", "Year", "Mortality")] %>% as_tibble()
 ```
 
-We would like to combine both datasets by taking the gapminder data until 1960 and then from then on
-the owid data. 
+We would like to combine both datasets by taking the gapminder data until 1960 and then from then on the owid data.
 
 ```{r}
 gapminder <- imr_gapminder_long_with_iso[imr_gapminder_long_with_iso$Year < 1961, ]
@@ -88,6 +83,7 @@ Now the problem is that owid and gapminder have different country lists. To see 
 length(unique(gapminder$Entity))
 length(unique(imr_owid$Entity))
 ```
+
 What are the common countries?
 
 ```{r}
@@ -111,6 +107,7 @@ identical(unique(data1$Entity), unique(data2$Entity))
 ```
 
 Now we split bothe frames by country and then stitch together again
+
 ```{r}
 comb1 <- split(data1, data1$Entity)
 comb2 <- split(data2, data2$Entity)
@@ -125,7 +122,6 @@ data <- do.call(rbind, res)
 row.names(data) <- NULL
 names(data) <- c("Country", "Code", "Year", "Mortality")
 ```
-
 
 Add continent as a factor, add population
 
@@ -225,16 +221,13 @@ deaths <- read.csv("../data/infant_mortality/number-of-infant-deaths.csv")
 names(deaths) <- c("Country", "Code", "Year", "Deaths")
 ```
 
-
 ```{r}
 infant_mortality_b <- left_join(infant_mortality, births, by = c("Country", "Code", "Year"))
 infant_mortality_data <- left_join(infant_mortality_b, deaths, by = c("Country", "Code", "Year"))
 ```
 
-
-
 Write the final dataset as a RDS to data:
 
 ```{r}
-saveRDS(infant_mortality_data, "../data/infant_mortality/infant_mortality_data.RDS")
+save(infant_mortality_data, "../data/infant_mortality/infant_mortality_data.rda")
 ```
