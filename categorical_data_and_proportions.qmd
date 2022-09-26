@@ -1,6 +1,6 @@
-#Categorical Data and Proportions: The story of infant mortality
+#Categorical Data and Proportions
 
-The death of a child is a tragedy to its family and friends. The numbers of such
+The death of a child is a tragedy to its family. The numbers of such
 events across the globe add up to millions. Max Roser, in an article
 on the website "Our world in Data" [@Ros], reports that from 
 56 million people who died for example in the year
@@ -15,7 +15,7 @@ In his article Roser [@Ros] puts this scale into perspective. He writes:
 In pre-industrial societies infant- and child-mortality were uniformly and cruelly high. They
 were a universal and frequent experience for families all over the world. 
 
-Such tragic events are today, counted as well as reported and compiled in so called mortality statistics,
+Such tragic events are today counted as well as reported and compiled in so called mortality statistics,
 usually by national health authorities and civil registration and statistics systems. These
 data are then again collected and globally reported by the United Nation World Health 
 Organisation.^[If you have internet access you can look at the organisation's website https://www.who.int/data/data-collection-tools/who-mortality-database]
@@ -35,7 +35,7 @@ by 1000, so that the rate reflects the number of infant deaths per 1000 life bir
 manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on
 the level of comparison that is required. Reporting mortality statistics as mortality rates 
 has the advantage that it communicates the risk as an expected frequency. 
-Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 people. 
+Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 births. 
 
 
 The production and reporting of mortality statistics is a modern phenomenon. Historically 
@@ -49,7 +49,9 @@ back in history [@VolAtk2013].
 The authors find that in the entire sample about 27 % of children 
 died in their first year of life and 46 % died before they reached adulthood. These
 numbers are surprisingly  similar across regions and cultures: Every forth newborn child died in the
-first year of life, every second child during its early childhood. 
+first year of life, every second child during its early childhood. These high
+mortality rates are a major cause of the slow population growth of past
+centuries before the onset of the industrial revolution at around 1800.
 
 Let us have a look at the data which we have collected and compiled from
 gapminder and the website our world in data.^[The files are at
@@ -111,7 +113,7 @@ example shown here we have data that record whether an event has happened or not
 death of an infant in his first year of life in a specific country during a specific year. 
 Variables that can take only two values, are called **binary data**. Sets of binary data can
 be summarized by the number of times and the percentage^[Remember from school mathematics 
-that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the
+that a percentage is a number or ratio expressed as a fraction of 100. It is often denoted by the
 percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For
 example 45 % is the fraction $\frac{45}{100}$ or 0.45. Percentages are often used to express
 a proportionate part of the total. Thus when we see in the table that the mortality rate in
@@ -168,7 +170,7 @@ write.csv(rate_2020, file = "tables/table_2_2_infant_mortality_2020.csv", row.na
 
 ```
 
-This is a spectacular improvement for this group of countries. by 2020 we have much more data, covering
+This is a spectacular improvement for this group of countries. By 2020 we have much more data, covering
 more regions and we will follow the global story later. But let us stick for the moment with this
 group of European Countries, which we followed over a time span of 160 year.
 
@@ -214,7 +216,7 @@ affect and engage your audience differently. The same table with survival rates 
 of mortality rates would the look like this.
 
 ```{r}
-#| label: tbl-infant-survivial rate-1860
+#| label: tbl-infant-survivial-rate-1860
 #| tbl-cap: Infant survival rates in some European countries in 1860
 #| warning: false
 
@@ -236,7 +238,7 @@ equivalent information of a mortality rate of 26 %. So whenever you report
 counts or proportions be mindful of framing effects.
 
 Risk impression can often be made more clear if we report expected frequencies as well  
-the percentages. In this way the risk can be imagined as an actual crowd of
+as percentages. In this way the risk can be imagined as an actual crowd of
 people. For example we could visualize the infant mortality rate in Germany by creating
 a picture of the mortality rate, the actual number of cases per 1000 life births. If there are
 relatively few cases, as in 2020 Germany, this arbitrary normalisation leads to an artificial number
@@ -248,7 +250,8 @@ Such a visualization could then look for example like this:
 
 ```{r}
 #| label: infant-mortality-isotype-1860
-#| fig-cap: In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.
+#| fig-cap: In 1860 in Germany among 1000 newborns 
+#|          260 infants died in the first year of their life.
 
 library(waffle)
 waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
@@ -317,7 +320,7 @@ of the rows. Let us discuss this aspect in the next session together with
 your first steps in R.
 
 
-## A first acquaintance with R: Visualizing Infant Mortality Rates 
+## A first acquaintance with R: Visualizing infant mortality rates 
 
 While a table might be the medium of choice for displaying data  it is 
 often more powerful to
@@ -385,16 +388,16 @@ in more detail.
 
 So R can do all the
 usual computations. For instance if you knew that in Germany in 1860 there were 270
-infant death per 1000 life birth you could compute the mortality rate by dividing the counts by 
-1000, because the convention is to report infant mortality rates as infant deaths in a region during a
-year divided by 1000. The R command for division is `/`. So by typing
+infant death per 1000 life birth you could compute the mortality rate in a 
+decimal format by dividing the counts by 
+1000, because the convention is to report mortality as cases per 1000 life briths. The R command for division is `/`. So by typing
 
 ```{r}
 #| code-fold: false
 270/1000
 ```
 
-you will get the mortality rate `0.27`.
+you will get the mortality rate `0.27` or 27 %.
 
 You can do all the usual arithmetic operations, like with a calculator in R. For instance subtraction
 
@@ -518,7 +521,7 @@ R must for example not begin with a number, a dot  `.` or an  underscore `_`. So
 ### A first data visualization
 
 We showed the infant mortality rates of a group of European countries before 
-in tables @tbl-infant-mortality-1860 and
+in @tbl-infant-mortality-1860 and
 @tbl-infant-mortality-2020. 
 
 Humans
@@ -663,7 +666,7 @@ techniques in R as we go along.
 
 ## Now you try
 
-Use R to redo the barplot visualization we just did for the 1880 data for the 2020 data.
+Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.
 :::
 
 Before we close this first encounter with R and data visualization, let me point out an
@@ -723,7 +726,7 @@ There could be also systematic differences between countries affecting infant mo
 example, countries that are small with populations under 10 Million and that have 
 very homogeneous populations and low birth rates tend to show lower infant mortality rates
 just because of these demographic features. So an ordering like the one presented 
-in the graph needs might suggest
+in the graph might suggest
 a ranking that is in fact spurious and is not really substantial.
 
 :::{.callout-important}
@@ -737,16 +740,17 @@ a meaningful and logical reason to do so.
 ## Categorical variables: Causes of infant mortality
 
 We have discussed binary data. These are data that can take two values, like death or alive, in the
-examples of infant mortality data we have studied so far. A generalisation of binary variables are
-calles **categorical variables** in statistics. Categorical variables are measures that can take two or
-more values, which can be either unordered, such as eye color, countries or study centers at which JWL courses take place. They can also be ordered, like positions in a hierarchy.
+examples of infant mortality data we have studied so far. A generalization of binary variables are
+called **categorical variables** in statistics. Categorical variables are measures that can take two or
+more values, which can be either unordered, such as eye color, countries or study center
+locations at which JWL courses take place. They can also be ordered, like positions in a hierarchy.
 
-An example of categorical arises if we study the issue of infant mortality further and ask for
+An example of categorical data arises if we study the issue of infant mortality further and ask for
 the causes. Why do infants die in the first year of their life?
 
 Here are the causes that have been registered by the Global Burden of Disease Study in 2019 by 
 the Institute for Health Metrics and Evaluation as well as the share of each cause in the
-overall cases.
+overall cases.^[See https://www.healthdata.org/gbd/2019]
 
 ```{r}
 
@@ -790,12 +794,68 @@ barplot(dat$Share,
 
 :::
 
-Explain why bars are preferred over pies.
+In the news but also in many publications you will often find proportions and how
+they add up to a total represented in so called pie charts. A pie chart for the
+causes of infant mortality visualizing our data will look like this
+
+```{r}
+pie(dat$Share, labels = dat$Cause, radius = 1, cex = 0.5)
+```
+
+Now compare this to a display of the same information using the bar chart. If 
+you have done the exercise before correctly, it will look like this
+
+```{r}
+barplot(dat$Share, 
+        names.arg = dat$Cause, horiz = TRUE, las = 1, cex.names = 0.5)
+```
+
+Apart from some imperfections of displaying the labels in a easily readable way, why
+does the bar chart work much better for comparing the proportions of causes than the
+pie chart?
+
+The reason is that the bar chart is supported better by by our visual perception
+capacity. In the case of the bar chart we have to compare lengths, which our visual
+system can do well. For decoding the pie we have to compare areas of slices or
+angles formed by the slices at the circle center. But our visual system does not work well
+for such tasks. It works even worse, if the display is a three dimensioal pie chart,
+as offered by various apps. In this case the pie would look like this:
+
+```{r}
+library(plotrix)
+pie3D(dat$Share, labels = dat$Cause, radius = 1, labelcex = 0.5)
+```
+
+Now it is even worse, because our visual system now has to additionally decode 
+perspective on top of area, something it is naturally also not good at.
+
+There are ways to visually display data that work because they are naturally 
+supported by our ability of visual perception and cognition, while others are
+not.
+
+:::{.callout-important}
+## Don't use pie charts to visually compare proportions
+
+When you display proportions choose bar charts and avoid pie charts. Bar charts
+are naturally supported by the ability of our visual system to compare lengths,
+while pie charts require the comparion of areas and angles, a task our visual 
+system is not so good at.
+:::
 
 ## Compairing pairs of proportions
 
 
+## Activities in the study center
 
+### The story of infant mortality around the globe
+
+Use a series of ggplot graphs and guide the students through the story of child
+mortality like Hans Rosling does in his TED-Talk.
+
+
+
+
+### Exercises to do at home
 
 <!-- ## Contents -->
 

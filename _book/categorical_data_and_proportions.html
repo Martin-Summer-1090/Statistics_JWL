@@ -246,14 +246,14 @@ div.csl-indent {
    
   <ul>
   <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"> <span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
-  <li><a href="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates" id="toc-a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates"> <span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing Infant Mortality Rates</a>
+  <li><a href="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates" id="toc-a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates"> <span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing infant mortality rates</a>
   <ul class="collapse">
   <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"> <span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
   <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"> <span class="header-section-number">2.2.2</span> First steps</a></li>
   <li><a href="#storing-and-reusing-results" id="toc-storing-and-reusing-results" class="nav-link" data-scroll-target="#storing-and-reusing-results"> <span class="header-section-number">2.2.3</span> Storing and reusing results</a></li>
   <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"> <span class="header-section-number">2.2.4</span> A first data visualization</a></li>
   </ul></li>
-  <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables"> <span class="header-section-number">2.3</span> Categorical variables</a></li>
+  <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"> <span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</a></li>
   <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"> <span class="header-section-number">2.4</span> Compairing pairs of proportions</a></li>
   </ul>
 </nav>
@@ -277,15 +277,15 @@ div.csl-indent {
 
 </header>
 
-<p>The death of a child is a tragedy to its family and friends. The numbers of such events across the globe add up to millions. Max Roser, in an article on the website “Our world in Data” <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span>, reports that from 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5. This is a number of enormous scale that never makes the headlines.</p>
+<p>The death of a child is a tragedy to its family. The numbers of such events across the globe add up to millions. Max Roser, in an article on the website “Our world in Data” <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span>, reports that from 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5. This is a number of enormous scale that never makes the headlines.</p>
 <p>In his article Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> puts this scale into perspective. He writes:</p>
 <p>“…<em>The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.</em></p>
 <p>In pre-industrial societies infant- and child-mortality were uniformly and cruelly high. They were a universal and frequent experience for families all over the world.</p>
-<div class="page-columns page-full"><p>Such tragic events are today, counted as well as reported and compiled in so called mortality statistics, usually by national health authorities and civil registration and statistics systems. These data are then again collected and globally reported by the United Nation World Health Organisation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;If you have internet access you can look at the organisation’s website https://www.who.int/data/data-collection-tools/who-mortality-database</p></li></div></div>
+<div class="page-columns page-full"><p>Such tragic events are today counted as well as reported and compiled in so called mortality statistics, usually by national health authorities and civil registration and statistics systems. These data are then again collected and globally reported by the United Nation World Health Organisation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;If you have internet access you can look at the organisation’s website https://www.who.int/data/data-collection-tools/who-mortality-database</p></li></div></div>
 <p>Mortality statistics distinguish between infant- and child-mortality. If a child dies within the first year of his life, this is classified and counted as an infant death and the statistics is referred to as infant-mortality statistics. If a child dies before its fifth year this is classified as child-mortality.</p>
-<p>Mortality statistics are reported in different formats. Often the concept of a <em>mortality-rate</em> is used in such reports. These are usually mortality rates standardized to 1000 life births. To compute an infant mortality rate in a given year in a given geographic area one would, for instance, need to know how many babies were born alive in a given period in a given area and how many babies who were born alive died before their first birthday during the same period. The number of deaths is the divided by the number of births. This rate is then multiplied by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on the level of comparison that is required. Reporting mortality statistics as mortality rates has the advantage that it communicates the risk as an expected frequency. Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 people.</p>
+<p>Mortality statistics are reported in different formats. Often the concept of a <em>mortality-rate</em> is used in such reports. These are usually mortality rates standardized to 1000 life births. To compute an infant mortality rate in a given year in a given geographic area one would, for instance, need to know how many babies were born alive in a given period in a given area and how many babies who were born alive died before their first birthday during the same period. The number of deaths is the divided by the number of births. This rate is then multiplied by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on the level of comparison that is required. Reporting mortality statistics as mortality rates has the advantage that it communicates the risk as an expected frequency. Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 births.</p>
 <p>The production and reporting of mortality statistics is a modern phenomenon. Historically these statistics can only be based on estimation and proxies of different and varied sources. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far back in history <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>.</p>
-<p>The authors find that in the entire sample about 27 % of children died in their first year of life and 46 % died before they reached adulthood. These numbers are surprisingly similar across regions and cultures: Every forth newborn child died in the first year of life, every second child during its early childhood.</p>
+<p>The authors find that in the entire sample about 27 % of children died in their first year of life and 46 % died before they reached adulthood. These numbers are surprisingly similar across regions and cultures: Every forth newborn child died in the first year of life, every second child during its early childhood. These high mortality rates are a major cause of the slow population growth of past centuries before the onset of the industrial revolution at around 1800.</p>
 <div class="page-columns page-full"><p>Let us have a look at the data which we have collected and compiled from gapminder and the website our world in data.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> When we do this we only get data for a small group of countries.</p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;The files are at https://www.gapminder.org/documentation/documentation/gapdata002.xlsx and https://ourworldindata.org/grapher/infant-mortality/infant-mortality.csv. From the file name extensions you can see that the first file is an Excel sheet whereas the second file is a comma separated text file. Both file formats can be read by a computer. We will learn soon how to do this. For the moment let this data work be conducted in the background and just look at some numbers from the file I have compiled from these sources.</p></li></div></div>
 <div class="cell">
 <details>
@@ -376,7 +376,7 @@ div.csl-indent {
 </div>
 <p>The table shows infant mortality in the year 1860 as percent in decimal notation. So 0.124, for example, means 12.4 %. This is the percentage of infant deaths in Sweden in 1860. It is better than the historical numbers reported by <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span> but still fairly high. Others at that time bigger countries with a much more heterogeneous population like Germany and Austria were pretty much at where the rates had always been in the past. The countries for which we have data from 1860 are all in Europe. Some of the bigger countries by this time had begun to register and report infant deaths in a mortality statistics.</p>
 <p>Before we deal with the information conveyed by these data, let us take the opportunity to discuss some terminology and technical terms that we will always use when we deal with tabular data like the ones shown in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a>.</p>
-<div class="page-columns page-full"><p>The columns of the table have names. In our case these names are: Country, Continent and Mortality. These names are called our <strong>variables</strong>. In the specific example shown here we have data that record whether an event has happened or not, in our case the death of an infant in his first year of life in a specific country during a specific year. Variables that can take only two values, are called <strong>binary data</strong>. Sets of binary data can be summarized by the number of times and the percentage<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of cases in which an event has occurred.</p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expresses as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as 26 %.</p></li></div></div>
+<div class="page-columns page-full"><p>The columns of the table have names. In our case these names are: Country, Continent and Mortality. These names are called our <strong>variables</strong>. In the specific example shown here we have data that record whether an event has happened or not, in our case the death of an infant in his first year of life in a specific country during a specific year. Variables that can take only two values, are called <strong>binary data</strong>. Sets of binary data can be summarized by the number of times and the percentage<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of cases in which an event has occurred.</p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Remember from school mathematics that a percentage is a number or ratio expressed as a fraction of 100. It is often denoted by the percentage sign %. A percentage is a dimensionless number. It has no unit of measurement. For example 45 % is the fraction <span class="math inline">\(\frac{45}{100}\)</span> or 0.45. Percentages are often used to express a proportionate part of the total. Thus when we see in the table that the mortality rate in Germany in the year 1860 is 0.260 this is expressed in percent as 26 %.</p></li></div></div>
 <div class="page-columns page-full"><p>Each row in the table is a <strong>record</strong> or sometimes also called an <strong>observation</strong>. Our table shown here has eight records. For doing statistics, especially when using the computer, it is often useful to display data tables such that each variable is a column and each record is a row.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;Such a format is not always the reader friendliest to humans. Thus data on the web are often organized differently. For example the Gapminder data show the Years as columns and countries as rows. While easier to read such a table for us, for working with the computer this deviation from the format variable as column and observation as row, often creates problems. We will come back to this seemingly minor but in fact quite important point over and over again. Hadley Wickham <span class="citation" data-cites="JSSv059i10">(<a href="references.html#ref-JSSv059i10" role="doc-biblioref">Wickham 2014</a>)</span>, who has contributed a lot to R and the R programming language which we will use in this course has popularized the term “tidy” for the table format where every column is a variable and every row is an observation.</p></li></div></div>
 <p>In this chapter we will use counts and proportions as the leading example to discuss the basic presentation of statistics and data. We will learn about alternative ways to display data. You will learn how design choices for the display of data help or prevent engagement and readability for your respective audience. You will also learn the first steps in R and how to use the computer to analyze and communicate data.</p>
 <section id="communicating-counts-and-proportions" class="level2 page-columns page-full" data-number="2.1">
@@ -456,7 +456,7 @@ div.csl-indent {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(rate_2020, <span class="at">file =</span> <span class="st">"tables/table_2_2_infant_mortality_2020.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>This is a spectacular improvement for this group of countries. by 2020 we have much more data, covering more regions and we will follow the global story later. But let us stick for the moment with this group of European Countries, which we followed over a time span of 160 year.</p>
+<p>This is a spectacular improvement for this group of countries. By 2020 we have much more data, covering more regions and we will follow the global story later. But let us stick for the moment with this group of European Countries, which we followed over a time span of 160 year.</p>
 <p>Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 %. This amounts to a reduction by a factor of about 100. Isn’t this a stunning achievement?</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -475,7 +475,7 @@ Now you try
 <p>When data, such as counts and proportions are reported in a table we should make careful considerations how the data are precisely presented.</p>
 <p>For instance in the table about infant mortality in some European countries in 1860, we could have reported the same information by presenting survival rates instead of mortality rates. Such a choice in reporting is generally known as <strong>framing</strong>.</p>
 <p>Framing can have effects on the impact of communication. Depending on how you frame the communication of data, the same information might affect and engage your audience differently. The same table with survival rates instead of mortality rates would the look like this.</p>
-<p>::: {#tbl-infant-survivial rate-1860 .cell tbl-cap=‘Infant survival rates in some European countries in 1860’}</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>srate_1860 <span class="ot">&lt;-</span> rate_1860</span>
@@ -489,7 +489,9 @@ Now you try
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(srate_1860, <span class="at">digits =</span> <span class="dv">4</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table">
+<div id="tbl-infant-survivial-rate-1860" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table 2.3: Infant survival rates in some European countries in 1860</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Country</th>
@@ -541,14 +543,15 @@ Now you try
 </tbody>
 </table>
 </div>
+</div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(srate_1860, <span class="at">file =</span> <span class="st">"tables/table_2_3_infant_survival_1860.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p>:::</p>
+</div>
 <p>Take for instance the data for Germany 1860. If we had reported a survival rate of 74 % it might sound to many better than if we had reported the equivalent information of a mortality rate of 26 %. So whenever you report counts or proportions be mindful of framing effects.</p>
 <p>Risk impression can often be made more clear if we report expected frequencies as well<br>
-the percentages. In this way the risk can be imagined as an actual crowd of people. For example we could visualize the infant mortality rate in Germany by creating a picture of the mortality rate, the actual number of cases per 1000 life births. If there are relatively few cases, as in 2020 Germany, this arbitrary normalisation leads to an artificial number such as 3.1 deaths per 1000 life births. Of course this is an artifact of the normalisation because there is nothing as an event with 0.1 deaths. If we had normalized to 10000 this would amount to 31 in 10000 which sounds more like an actual count. So for the visualization we take an infant mortality rate as infant deaths per 1000 life births to be 3.</p>
+as percentages. In this way the risk can be imagined as an actual crowd of people. For example we could visualize the infant mortality rate in Germany by creating a picture of the mortality rate, the actual number of cases per 1000 life births. If there are relatively few cases, as in 2020 Germany, this arbitrary normalisation leads to an artificial number such as 3.1 deaths per 1000 life births. Of course this is an artifact of the normalisation because there is nothing as an event with 0.1 deaths. If we had normalized to 10000 this would amount to 31 in 10000 which sounds more like an actual count. So for the visualization we take an infant mortality rate as infant deaths per 1000 life births to be 3.</p>
 <p>Such a visualization could then look for example like this:</p>
 <div class="cell">
 <details>
@@ -629,7 +632,7 @@ Be mindful of framing
 <p>But even if we achieve this, we should consider other things, like the ordering of the rows. Let us discuss this aspect in the next session together with your first steps in R.</p>
 </section>
 <section id="a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="level2 page-columns page-full" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="a-first-acquaintance-with-r-visualizing-infant-mortality-rates"><span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing Infant Mortality Rates</h2>
+<h2 data-number="2.2" class="anchored" data-anchor-id="a-first-acquaintance-with-r-visualizing-infant-mortality-rates"><span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing infant mortality rates</h2>
 <p>While a table might be the medium of choice for displaying data it is often more powerful to convey information visually. The example of how imagining actual crowds might give us sometimes a more tangible picture of the same information, was one illustration of this.</p>
 <p>Today when we visualize data as one important tool of data exploration, the tool of choice is a computer and an appropriate language that enables us to tell the computer what to do.</p>
 <p>For us in this course this will be the R language and now we start to learn the first steps in this language.</p>
@@ -668,14 +671,14 @@ Seitwerk: A remark on a demo.
 </div>
 </div>
 <p>Sure enough, R gives you the result of the addition, which is <code>2</code>. But what is <code>[1]</code>? This is just a row label. If there were more outputs to your command, then they would be labelled [2], [3], [4], and more. We will go into this aspect of R’s output display later in more detail.</p>
-<p>So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate by dividing the counts by 1000, because the convention is to report infant mortality rates as infant deaths in a region during a year divided by 1000. The R command for division is <code>/</code>. So by typing</p>
+<p>So R can do all the usual computations. For instance if you knew that in Germany in 1860 there were 270 infant death per 1000 life birth you could compute the mortality rate in a decimal format by dividing the counts by 1000, because the convention is to report mortality as cases per 1000 life briths. The R command for division is <code>/</code>. So by typing</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">270</span><span class="sc">/</span><span class="dv">1000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.27</code></pre>
 </div>
 </div>
-<p>you will get the mortality rate <code>0.27</code>.</p>
+<p>you will get the mortality rate <code>0.27</code> or 27 %.</p>
 <p>You can do all the usual arithmetic operations, like with a calculator in R. For instance subtraction</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3-2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -761,7 +764,7 @@ Now you try
 </section>
 <section id="a-first-data-visualization" class="level3 page-columns page-full" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="a-first-data-visualization"><span class="header-section-number">2.2.4</span> A first data visualization</h3>
-<p>We showed the infant mortality rates of a group of European countries before in tables <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a>.</p>
+<p>We showed the infant mortality rates of a group of European countries before in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a>.</p>
 <p>Humans are very visual creatures. Thus using our visual system to explore data and absorb information in these data visualizations can be very powerful. To deploy their power, we must - however - follow some principles, which we will learn step by step over this course.</p>
 <p>Assume we would like to display the information in our tables in a so called <strong>bar chart</strong>. A bar chart would combine in a plot bars for each country in the table with the bar length proportional to the mortality rate. This will give us a visual impression how the countries differ in one view, which might be more informative as just looking at the numbers themselves in a table.</p>
 <section id="functions" class="level4" data-number="2.2.4.1">
@@ -848,7 +851,7 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use R to redo the barplot visualization we just did for the 1880 data for the 2020 data.</p>
+<p>Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.</p>
 </div>
 </div>
 <p>Before we close this first encounter with R and data visualization, let me point out an important aspect of bar charts. The visual impression is powerful and truthful, if we choose the origin of the bars carefully. It is usually the best idea to start the bars at zero. So we see clearly the relative lengths and the magnitude of differences in the context of the entire dataset.</p>
@@ -890,7 +893,7 @@ Be mindful in choosing a logical and meaningful origin for barcharts
 </div>
 <p>Now the bar chart could suggests that the infant mortality rate is an important and meaningful way of comparing this particular group of countries.</p>
 <p>Such ranking comparisons are very popular in the media but they can be misleading. They can be misleading because the differences could be there just by chance.</p>
-<p>There could be also systematic differences between countries affecting infant mortality rates. For example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates tend to show lower infant mortality rates just because of these demographic features. So an ordering like the one presented in the graph needs might suggest a ranking that is in fact spurious and is not really substantial.</p>
+<p>There could be also systematic differences between countries affecting infant mortality rates. For example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates tend to show lower infant mortality rates just because of these demographic features. So an ordering like the one presented in the graph might suggest a ranking that is in fact spurious and is not really substantial.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -907,11 +910,11 @@ Be mindful about order in displaying the data
 </section>
 </section>
 </section>
-<section id="categorical-variables" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="categorical-variables"><span class="header-section-number">2.3</span> Categorical variables</h2>
-<p>We have discussed binary data. These are data that can take two values, like death or alive, in the examples of infant mortality data we have studied so far. A generalisation of binary variables are calles <strong>categorical variables</strong> in statistics. Categorical variables are measures that can take two or more values, which can be either unordered, such as eye color, countries or study centers at which JWL courses take place. They can also be ordered, like positions in a hierarchy.</p>
-<p>An example of categorical arises if we study the issue of infant mortality further and ask for the causes. Why do infants die in the first year of their life?</p>
-<p>Here are the causes that have been registered by the Global Burden of Disease Study in 2019 by the Institute for Health Metrics and Evaluation as well as the share of each cause in the overall cases.</p>
+<section id="categorical-variables-causes-of-infant-mortality" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</h2>
+<p>We have discussed binary data. These are data that can take two values, like death or alive, in the examples of infant mortality data we have studied so far. A generalization of binary variables are called <strong>categorical variables</strong> in statistics. Categorical variables are measures that can take two or more values, which can be either unordered, such as eye color, countries or study center locations at which JWL courses take place. They can also be ordered, like positions in a hierarchy.</p>
+<p>An example of categorical data arises if we study the issue of infant mortality further and ask for the causes. Why do infants die in the first year of their life?</p>
+<div class="page-columns page-full"><p>Here are the causes that have been registered by the Global Burden of Disease Study in 2019 by the Institute for Health Metrics and Evaluation as well as the share of each cause in the overall cases.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10" role="doc-endnote"><p><sup>10</sup>&nbsp;See https://www.healthdata.org/gbd/2019</p></li></div></div>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -1039,7 +1042,7 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use R to visualize this table in a barchart.</p>
+<p>Use R to visualize this table in a barchart. Don’t worry if some of the causes are cut off at the left of the graph. We will learn during the course how to better control the appearance of a visualization and control for details like this.</p>
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
@@ -1054,11 +1057,68 @@ This is how an answer can look like.
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>Since students have not yet learned subsetting, they need to use the table and retype the values and the causes manually. This is intended because it will familiarize them with the <code>c()</code> function, the difference between numerical and character data type and is an excellent opportunity to review what we did on simple R bar-charts. In the example cause below I use - of course - the convenience of subsetting</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
-<p>Explain why bars are preferred over pies.</p>
+</div>
+</div>
+<p>In the news but also in many publications you will often find proportions and how they add up to a total represented in so called pie charts. A pie chart for the causes of infant mortality visualizing our data will look like this</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now compare this to a display of the same information using the bar chart. If you have done the exercise before correctly, it will look like this</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Apart from some imperfections of displaying the labels in a easily readable way, why does the bar chart work much better for comparing the proportions of causes than the pie chart?</p>
+<p>The reason is that the bar chart is supported better by by our visual perception capacity. In the case of the bar chart we have to compare lengths, which our visual system can do well. For decoding the pie we have to compare areas of slices or angles formed by the slices at the circle center. But our visual system does not work well for such tasks. It works even worse, if the display is a three dimensioal pie chart, as offered by various apps. In this case the pie would look like this:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie3D</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">labelcex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now it is even worse, because our visual system now has to additionally decode perspective on top of area, something it is naturally also not good at.</p>
+<p>There are ways to visually display data that work because they are naturally supported by our ability of visual perception and cognition, while others are not.</p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Don’t use pie charts to visually compare proportions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you display proportions choose bar charts and avoid pie charts. Bar charts are naturally supported by the ability of our visual system to compare lengths, while pie charts require the comparion of areas and angles, a task our visual system is not so good at.</p>
+</div>
+</div>
 </section>
 <section id="compairing-pairs-of-proportions" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="compairing-pairs-of-proportions"><span class="header-section-number">2.4</span> Compairing pairs of proportions</h2>
