@@ -33,12 +33,18 @@ period in a given area and how many babies who were born alive died before their
 the same period. The number of deaths is the divided by the number of births. This rate is then multiplied
 by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized 
 manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on
-the level of comparison that is required. Reporting mortality statistics as mortality rates 
+the level of comparison that is required. Reporting mortality statistics as mortality rates
 has the advantage that it communicates the risk as an expected frequency. 
 Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 births. 
 
+The production and reporting of mortality statistics is a modern phenomenon. 
+In many countries there are now statistical registry systems that record
+infant-deaths in legally regulated processes. But this is not the case all over
+the world. Poorer countries find it hard to have such processes in place. Still
+for these countries, where no registry data are available, the United Nations Health Organisation conduct high quality surveys that allow a fairly precise estimate of
+infant mortality rates. We will learn later in the course how you can draw conclusions from a survey to the whole population with a certain confidence. Today using either registry data of surveys we know a lot more about infant mortality based on a rich amount of data.
 
-The production and reporting of mortality statistics is a modern phenomenon. Historically 
+Historically 
 these statistics can only be based on estimation and proxies of different and varied sources.
 In a scientific publication Anthony Volk 
 and Jeremy Atkinson made an attempt  to report mortality 
@@ -838,21 +844,106 @@ not.
 
 When you display proportions choose bar charts and avoid pie charts. Bar charts
 are naturally supported by the ability of our visual system to compare lengths,
-while pie charts require the comparion of areas and angles, a task our visual 
+while pie charts require the comparison of areas and angles, a task our visual 
 system is not so good at.
 :::
 
 ## Compairing pairs of proportions
 
+Often proportions or percentages are used to communicate risks by comparing
+pairs of proportions.
+
+When pairs of proportions are compared, we need to understand how such
+comparisons can be made in a meaningful way. Especially in the media
+it is popular to often run spectacular headlines of how specific
+behaviors affect your likelihood of developing a disease.
+
+Much of the spectacle in the headlines is due to the exclusive reporting of 
+*relative risks*. It is important to understand that such statements 
+need to be put into context by also reporting baseline of *absolute* risk.
+
+Let me illustrate the issue using the example of consuming processed meat and the
+risk of developing bowel cancer. 
+
+From epidemiological research it is known that the chance of a person of developing
+bowel cancer is based on factors such as meat consumption, the level of physical
+activity, the body weight or income. 
+
+The *relative risk* is the risk of developing bowel cancer in a group of people 
+compared to another group of people with different behaviors, different physical conditions
+of different environments.
+
+For instance when we compare meat eaters versus vegetarians, a statement about relative
+risk would be that the consumption of processed meat increases the risk of developing
+bowel cancer by 18 %. This sounds spectacular but it does not tell the full story.
+
+To see this go back to our previous example of imagining crowds of people instead of
+percentages. 
+
+```{r}
+waffle(c(2, 8), rows = 2, use_glyph = "male", 
+       colors = c("#FD6F6F", "#93FB98"), glyph_size = 16, 
+       equal = F, legend_pos = "")
+```
+Here we have an *absolute risk* of two out of 10 persons developing bowel cancer.
+If the relative risk would increase by 50 % this would mean in terms of
+absolute risk that now we have
+
+```{r}
+waffle(c(2, 1, 7), rows = 2, use_glyph = "male", 
+       colors = c("#FD6F6F", "#3A9ABD", "#93FB98"), glyph_size = 16, equal = F, legend_pos = "", size = 0.2)
+```
+
+The risk increases now to three out of 10.
+
+## Now you try
+
+Assume the absolute risk is 4 out of 10 and the relative risk is 50 %. How many out of 10 are now at risk? 
+:::
+
+These examples illustrate that you need baseline or absolute risks as a vital 
+information to understand what an 18 % increase in risk really means. 
+
+Going back to the example of processed meat consumption and bowel cancer risk, the
+estimated lifetime risk of developing bowel cancer is 5.6 %. Expressed as a
+relative frequency this is about 6 out of 100 or in a chart
+
+```{r}
+waffle(c(6, 94), rows = 5, use_glyph = "male", 
+       colors = c("#FD6F6F", "#93FB98"), glyph_size = 8, 
+       equal = F, legend_pos = "")
+```
+The estimated life time risk of developing bowel cancer if you eat 50 g of processed meat 
+per day increases your relative risk by 18 %. At this heigthened risk level the new
+absolute risk is now 6.6 % or about 7 out of 100
+
+```{r}
+waffle(c(6, 1, 93), rows = 5, use_glyph = "male", 
+       colors = c("#FD6F6F", "#3A9ABD", "#93FB98"), glyph_size = 8, 
+       equal = F, legend_pos = "")
+```
+
+In the research literature proportions are often expressed by the *odds ratio*.
+This ratio expresses the chance of an event happening relative to the chance of
+an event not happening. In the example of processed meat and bowel cancer this would
+be $6/94$, because 6 out of hundered people develop bowel cancer in their life time
+and 94 out of hundred do not. While odds are very common in the research literture they
+are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside
+a scientific context, since it easily invites misunderstanding.
 
 ## Activities in the study center
 
 ### The story of infant mortality around the globe
 
-Use a series of ggplot graphs and guide the students through the story of child
-mortality like Hans Rosling does in his TED-Talk.
+For this activity we continue to look into the issue of infant mortality around the
+globe by working with a Jupyter notebook. To work on this assignment, please open
+the notebook `infant_mortality_global.ipynb` and work through 
+the instructions given there.
+
+### Visualizing food waste
 
 
+### The relative and absolute risk of flying compared to just beeing alive
 
 
 ### Exercises to do at home
