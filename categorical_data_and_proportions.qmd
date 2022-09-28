@@ -937,8 +937,13 @@ a scientific context, since it easily invites misunderstanding.
 
 For this activity we continue to look into the issue of infant mortality around the
 globe by working with a Jupyter notebook. To work on this assignment, please open
-the notebook `infant_mortality_global.ipynb` and work through 
-the instructions given there.
+the notebook `infant_mortality_global.ipynb` with the jupyter notebook. 
+The notebook contains some text and some code which you can interactively 
+execute from the notebook, as we already did it in the assignments 
+in the Introduction, when we looked at the share of
+poverty in various countries. In this notebook we continue to dive deeper into the
+story of infant mortality around the globe. The things you learn when you work through 
+this assignment will probably surprise you.
 
 ### Visualizing food waste
 
