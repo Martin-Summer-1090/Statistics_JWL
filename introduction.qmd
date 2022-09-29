@@ -12,7 +12,25 @@ Understanding data by the art and science of statistics is
 an essential skill you will need to navigate
 the modern world and to study many fields in the sciences.
 
-TO DO: Overview of Unit 1 i.e. Introduction and Categorical Data
+::: {.callout-note appearance="simple"}
+
+## Overview
+
+In this introduction we start our course with four examples that illustrate different aspects
+of the three core skills you will learn in this course:
+
+1.  **Data exploration** or finding patterns in data and information through visualisation and computation.
+
+2.  **Making predictions**, which means using available data and information to make informed guesses about data and information we do not have.
+
+3.  To **quantify the uncertainty** we have to attach to our predictions.
+
+The introduction also takes you through some activities, where we will collect data
+from you, to analyze and use them later in the course. You will also do your very 
+first steps on the computer by playing with a visualization set up in a digital notebook.
+This will be your very first encounter with a technology we will use all over this course.
+
+:::
 
 ## Experiencing the world through data
 

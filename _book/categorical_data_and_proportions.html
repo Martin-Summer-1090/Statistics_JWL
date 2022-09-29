@@ -255,13 +255,9 @@ div.csl-indent {
   </ul></li>
   <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"> <span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</a></li>
   <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"> <span class="header-section-number">2.4</span> Compairing pairs of proportions</a></li>
-  <li><a href="#now-you-try-5" id="toc-now-you-try-5" class="nav-link" data-scroll-target="#now-you-try-5"> <span class="header-section-number">2.5</span> Now you try</a></li>
-  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"> <span class="header-section-number">2.6</span> Activities in the study center</a>
+  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"> <span class="header-section-number">2.5</span> Activities in the study center</a>
   <ul class="collapse">
-  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"> <span class="header-section-number">2.6.1</span> The story of infant mortality around the globe</a></li>
-  <li><a href="#visualizing-food-waste" id="toc-visualizing-food-waste" class="nav-link" data-scroll-target="#visualizing-food-waste"> <span class="header-section-number">2.6.2</span> Visualizing food waste</a></li>
-  <li><a href="#the-relative-and-absolute-risk-of-flying-compared-to-just-beeing-alive" id="toc-the-relative-and-absolute-risk-of-flying-compared-to-just-beeing-alive" class="nav-link" data-scroll-target="#the-relative-and-absolute-risk-of-flying-compared-to-just-beeing-alive"> <span class="header-section-number">2.6.3</span> The relative and absolute risk of flying compared to just beeing alive</a></li>
-  <li><a href="#exercises-to-do-at-home" id="toc-exercises-to-do-at-home" class="nav-link" data-scroll-target="#exercises-to-do-at-home"> <span class="header-section-number">2.6.4</span> Exercises to do at home</a></li>
+  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"> <span class="header-section-number">2.5.1</span> The story of infant mortality around the globe</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -285,6 +281,26 @@ div.csl-indent {
 
 </header>
 
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>In this chapter we will learn how to analyze and communicate binary variables. Binary variables express answers to yes-no questions. When we summarize many such answers we can express them as proportions or percentages.</p></li>
+<li><p>We will discuss these concepts within the examples of infant-mortality. This topic is not only interesting because it provides you a very important real world case where we work with counts and proportions of binary variables. It is also a great story of progress and positive global developments, where the data show you how much we have achieved together to better the life of children and infants.</p></li>
+<li><p>You will learn about important aspects when you communicate such data such as framing, choosing appropriate and truthful visualizations and translate numbers in a way that promotes understanding.</p></li>
+<li><p>You will also make your first steps in R, a computer language that we will use throughout the course and where you are going to build your skills step by step. Here you will already do your first visualization applying all the principles taught in this section.</p></li>
+<li><p>When a variable can take on not only two but more values we speak of categorical variables and we discuss and generalize the principles we learn about the display and communication of binary data to the case of categorical data.</p></li>
+<li><p>You will learn about the important notions of relative and absolute risks and what an odds ratio is. By the end of this section you will have learned some important principles of data visualization and communication that will be relevant and important also in other lessons.</p></li>
+</ol>
+</div>
+</div>
 <p>The death of a child is a tragedy to its family. The numbers of such events across the globe add up to millions. Max Roser, in an article on the website “Our world in Data” <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span>, reports that from 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5. This is a number of enormous scale that never makes the headlines.</p>
 <p>In his article Roser <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span> puts this scale into perspective. He writes:</p>
 <p>“…<em>The suffering and dying of children remains immense, yet these daily tragedies continue without receiving the attention this injustice deserves. A comparison of the tragedy of child deaths with those tragedies that do receive public attention puts it in perspective. A large jumbo jet can carry up to 620 passengers. The number of child deaths is that of 24 jumbo jet crashes, with only children on board, every single day. Single events – such as plane crashes – always make the headlines. Daily tragedies – even the worst ones like the deaths of thousands of children – never make the headlines.</em></p>
@@ -610,7 +626,7 @@ Now you try
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -619,7 +635,7 @@ Seitwerk: A remark on answer.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Turn a positive frame into a negative one and then imagine actual crowds of people instead of percentages. This or an answer like this I would have in mind that studnets come up with if they reflect this example. I think an answer to such a reflection is best placed in the interactive part of the course or in the study center meet ups.</p>
 </div>
@@ -654,7 +670,7 @@ Be mindful of framing
 <p>You start R by either typing <code>R</code> into the terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol that looks like this <code>&gt;</code>. When you see the prompt in the R console, R is ready to receive commands.</p>
 <p>To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -663,7 +679,7 @@ Seitwerk: A remark on a demo.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This would be perhaps best shown in a brief video. Of course when producing the video it is important to think about which operating system the students will use, and the R version that they will have available. If this is open, so the demo for windows, mac and linux. It does only take marginally more time and effort. Maybe this whole intro is perfect for a video demo.</p>
 </div>
@@ -1055,7 +1071,7 @@ Now you try
 </div>
 </div>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1064,7 +1080,7 @@ This is how an answer can look like.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Since students have not yet learned subsetting, they need to use the table and retype the values and the causes manually. This is intended because it will familiarize them with the <code>c()</code> function, the difference between numerical and character data type and is an excellent opportunity to review what we did on simple R bar-charts. In the example cause below I use - of course - the convenience of subsetting</p>
 <div class="cell">
@@ -1162,10 +1178,19 @@ Don’t use pie charts to visually compare proportions
 </div>
 </div>
 <p>The risk increases now to three out of 10.</p>
-</section>
-<section id="now-you-try-5" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="now-you-try-5"><span class="header-section-number">2.5</span> Now you try</h2>
-<p>Assume the absolute risk is 4 out of 10 and the relative risk is 50 %. How many out of 10 are now at risk? :::</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk?</p>
+</div>
+</div>
 <p>These examples illustrate that you need baseline or absolute risks as a vital information to understand what an 18 % increase in risk really means.</p>
 <p>Going back to the example of processed meat consumption and bowel cancer risk, the estimated lifetime risk of developing bowel cancer is 5.6 %. Expressed as a relative frequency this is about 6 out of 100 or in a chart</p>
 <div class="cell">
@@ -1193,20 +1218,11 @@ Don’t use pie charts to visually compare proportions
 </div>
 <p>In the research literature proportions are often expressed by the <em>odds ratio</em>. This ratio expresses the chance of an event happening relative to the chance of an event not happening. In the example of processed meat and bowel cancer this would be <span class="math inline">\(6/94\)</span>, because 6 out of hundered people develop bowel cancer in their life time and 94 out of hundred do not. While odds are very common in the research literture they are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside a scientific context, since it easily invites misunderstanding.</p>
 </section>
-<section id="activities-in-the-study-center" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="activities-in-the-study-center"><span class="header-section-number">2.6</span> Activities in the study center</h2>
-<section id="the-story-of-infant-mortality-around-the-globe" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.6.1</span> The story of infant mortality around the globe</h3>
-<p>For this activity we continue to look into the issue of infant mortality around the globe by working with a Jupyter notebook. To work on this assignment, please open the notebook xy and follow the instructions given there.</p>
-</section>
-<section id="visualizing-food-waste" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="visualizing-food-waste"><span class="header-section-number">2.6.2</span> Visualizing food waste</h3>
-</section>
-<section id="the-relative-and-absolute-risk-of-flying-compared-to-just-beeing-alive" class="level3" data-number="2.6.3">
-<h3 data-number="2.6.3" class="anchored" data-anchor-id="the-relative-and-absolute-risk-of-flying-compared-to-just-beeing-alive"><span class="header-section-number">2.6.3</span> The relative and absolute risk of flying compared to just beeing alive</h3>
-</section>
-<section id="exercises-to-do-at-home" class="level3" data-number="2.6.4">
-<h3 data-number="2.6.4" class="anchored" data-anchor-id="exercises-to-do-at-home"><span class="header-section-number">2.6.4</span> Exercises to do at home</h3>
+<section id="activities-in-the-study-center" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="activities-in-the-study-center"><span class="header-section-number">2.5</span> Activities in the study center</h2>
+<section id="the-story-of-infant-mortality-around-the-globe" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.1</span> The story of infant mortality around the globe</h3>
+<p>For this activity we continue to look into the issue of infant mortality around the globe by working with a Jupyter notebook. To work on this assignment, please open the notebook <code>infant_mortality_global.ipynb</code> with the jupyter notebook. The notebook contains some text and some code which you can interactively execute from the notebook, as we already did it in the assignments in the Introduction, when we looked at the share of poverty in various countries. In this notebook we continue to dive deeper into the story of infant mortality around the globe. The things you learn when you work through this assignment will probably surprise you.</p>
 <!-- ## Contents -->
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
 <!-- 1. The importance of framing -->
