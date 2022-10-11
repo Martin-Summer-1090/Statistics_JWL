@@ -977,6 +977,10 @@ poverty in various countries. In this notebook we continue to dive deeper into t
 story of infant mortality around the globe. The things you learn when you work through 
 this assignment will probably surprise you.
 
+## A data collection exercise for the next unit
+
+Maybe handedness score?
+
 <!-- ## Contents -->
 
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
