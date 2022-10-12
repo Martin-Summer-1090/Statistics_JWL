@@ -330,11 +330,18 @@ Frequency = 1
 </tbody>
 </table>
 <p>In the column Flow-bin we have recorded the bins in steps of 100 and in the right column, Frequency, we have recorded the count of values that are in this bin.</p>
-<p>When we make such a tabulation we have to agree on an endpoint convention. This is important, since when a flow value would for instance be measures as exactly 500, in which bin should it be counted: 400-500 or 500-600? You the constructor of the histogram has to take this decision. In practice you will usually do a histogram by computer. The code of the computer program has to specify an endpoint convention, so the computer knows what to do when a value coincides with an endpoint.</p>
-<p>On the Frequency axes you put the frequency scale: Counts of values. Then for each bin, you plot a bar, which has the width of the bin and the height of the frequency. Do this for all the bins you have tabulated and you are ready.</p>
-<p>The histogram provides a certain aggregation of the data because it sorts the 100 data points into 10 bins, in our example. While loosing some local information on individua data points the global information conveyed by the summary gives us a pretty good idea of the overall pattern of variation on the Nile river flow data. We can see for instance, that the most frequent flow is between 800 and 900 and that the variation is fairly symmetric around this bin. In the extremes this most frequent value can half or almost double, so there is quite some spread in the data.</p>
-<p>Insert hand drawn histogram here</p>
-<p>If we had kust plotted all individual data points, we also got a picture, though you probably agree that it is not particularly useful.</p>
+<p>When we make such a tabulation we have to agree on an endpoint convention. This is important, since when a flow value would for instance be measures as exactly 500, in which bin should it be counted: 400-500 or 500-600? You the constructor of the histogram has to take this decision. Let us agree on the convention that when a value falls exactly at the endpoint of the bin, we put it in the next bin. In practice you will usually do a histogram by computer. The code of the computer program has to specify an endpoint convention, so the computer knows what to do when a value coincides with an endpoint.</p>
+<p>On the Frequency axes you put the frequency scale: Counts of values. Then for each bin, you plot a bar, which has the width of the bin and the height of the frequency.</p>
+<p>Do this for all the bins you have tabulated and you are ready.</p>
+<p>The histogram provides a certain aggregation of the data because it sorts the 100 data points into 10 bins, in our example. While loosing some local information on individual data points the global information conveyed by the summary gives us a pretty good idea of the overall pattern of variation on the Nile river flow data.</p>
+<p>We can see, for instance, that the most frequent flow is between 800 and 900 and that the variation is fairly symmetric around this bin. In the extremes this most frequent value can half or almost double, so there is quite some spread in the data.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/hist_nile.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Constructing the river flow histogram</figcaption><p></p>
+</figure>
+</div>
+<p>If we had just plotted all individual data points, we also got a picture, though you probably agree that it is not particularly useful.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -344,6 +351,7 @@ Frequency = 1
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Now you try</p>
 </section>
 <section id="contents" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="contents"><span class="header-section-number">3.2</span> Contents</h2>
