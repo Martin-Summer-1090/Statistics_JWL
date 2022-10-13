@@ -337,7 +337,7 @@ Frequency = 1
 <p>We can see, for instance, that the most frequent flow is between 800 and 900 and that the variation is fairly symmetric around this bin. In the extremes this most frequent value can half or almost double, so there is quite some spread in the data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="pictures/hist_nile.png" class="img-fluid figure-img"></p>
+<p><img src="pictures/nile_hist.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Constructing the river flow histogram</figcaption><p></p>
 </figure>
 </div>
@@ -351,7 +351,38 @@ Frequency = 1
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Now you try</p>
+<p>Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how it is roughly distributed that every statistical software has functions to produce histograms. In R, the language we use in this course there is also such a function. The function name is called <code>hist()</code> and it takes the data as an argument. This is the second graphic function of R you encounter in this course after we played with the <code>barplot()</code>function in the last lecture.</p>
+<p>To produce a histogram from the river flow data, we type at the console</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let us check your understanding of histograms by a little quiz now. The histogram below shows the distribution of the final score in a certain class.</p>
+<ol type="a">
+<li>Which block represents the people who scored between 60 and 80?</li>
+<li>Ten percent scored between 20 and 40 about what percentage scored between 40 and 60?</li>
+<li>About what percentage scored over 60?</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/final_score.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Final Score</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="contents" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="contents"><span class="header-section-number">3.2</span> Contents</h2>

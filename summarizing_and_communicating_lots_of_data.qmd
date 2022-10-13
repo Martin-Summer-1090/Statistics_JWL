@@ -86,7 +86,7 @@ We can see, for instance, that the most frequent flow is between 800 and 900 and
 variation is fairly symmetric around this bin. In the extremes this most frequent value can half or almost
 double, so there is quite some spread in the data.
 
-![Constructing the river flow histogram](pictures/hist_nile.png)
+![Constructing the river flow histogram](pictures/nile_hist.png)
 
 If we had just plotted all individual data points, we also got a picture, though you probably agree
 that it is not particularly useful.
@@ -95,7 +95,33 @@ that it is not particularly useful.
 plot(as.numeric(Nile), xlab = "Observation", ylab = "Annual Flow", pch = 16)
 ```
 
-Now you try
+Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how
+it is roughly distributed that every statistical software has functions to produce histograms. In R, the
+language we use in this course there is also such a function. The function name is called `hist()` and it
+takes the data as an argument. This is the second graphic function of R you encounter in this course
+after we played with the `barplot()`function in the last lecture. 
+
+To produce a histogram from the river flow data, we type at the console
+
+```{r}
+#| code-fold: false
+
+hist(Nile)
+```
+
+:::{.callout-note icon=false}
+
+## Now you try
+
+Let us check your understanding of histograms by a little quiz now. The histogram below
+shows the distribution of the final score in a certain class.
+
+(a) Which block represents the people who scored between 60 and 80?
+(b) Ten percent scored between 20 and 40 about what percentage scored between 40 and 60?
+(c) About what percentage scored over 60?
+
+![Final Score](pictures/final_score.png)
+:::
 
 ## Contents 
 
