@@ -3,16 +3,22 @@
 When we analyze data, we usually have to look at lots of them. An example might be
 income data gained from household surveys. Such a survey will contain a huge number of
 data points, in the order of magnitude of ten thousands of data. These data need to be
-summarized, to understand their main characteristics. In this unit you will learn the
+summarized, to understand their main characteristics. 
+
+In this unit you will learn the
 most important tools for summarizing and communicating lost of data. You are going to
 learn the principles how data summaries are constructed, what are the properties of
-these summaries and what needs to be carefully considered. Clearly, when we need to deal
+these summaries and what needs to be carefully considered. 
+
+When we need to deal
 with really large data sets, and most modern data sets are too large to be handled manually,
 we will need the computer. We already did some first steps in R. In this unit we will build on these
 first steps but enlarge them in a way that will enable you to deal and manipulate large
 datasets on the computer. 
 
-## Understanding variation in a single variable
+## Understanding variation in a single variable using histograms
+
+### Constructing a Histogram
 
 To summarize data, statisticians often use a graph which is called a **histogram**. In this section
 we will discuss all you have to know about histograms and how to use them. Let us start by an example,
@@ -21,13 +27,15 @@ by hand.
 
 The data we want to look at come from measurements of the annual flow of the river Nile at 
 Aswan (formerly) Assuan in Egypt from 1871 to 1970. The units of these measurement in which the
-annual flow is recorder are 100 Millions of cubic meters, i.e. $10^8 m^3$. 
+annual flow is recorded are 100 millions of cubic meters, i.e. $10^8 m^3$. 
 
 This is one of the data sets that is bundled with the R distribution and is available to all users of R. 
 They are stored in an R object called `Nile`.^[When you type `data()` at the R console, you get a list
 of all datasets that are available with the current distribution of R.]
 
-This is how the data look like, when we print them to the R console
+This is how the data look like, when we print them to the R console using the R command
+`print()`. The R function `options()` with the argument `width`just controls how the
+numbers are printed. Here I made sure that they will fit in the width of the page.
 
 ```{r}
 #| code-fold: false
@@ -37,8 +45,9 @@ print(Nile)
 
 We start the construction of a histogram by choosing for the horizontal axes ranges of numerical
 values - in our case of the river flow data - which are called *bins* or *classes*. There is no
-fixed rule as to how to choose the size of these ranges. These ranges should neither be to fine, nor too
-coarse. While there are a list of mechanical rules, which you can for example find on Wikipedia^[See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width], it is usually best to use your domain
+fixed rule as to how to choose the size of these ranges. These ranges should neither be too 
+fine, nor too
+coarse. While there are lists of mechanical rules, which you can for example find on Wikipedia^[See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width], it is usually best to use your domain
 knowledge and some experimentation to find out the bin size that works best for your data.
 
 For this example, assume we had chosen a bin size of 100^[Note that this will mean $100\times 10^8 m^3$ per year.]. When you study the list, you will find that the lowest value is at 456 while the highest value
@@ -64,8 +73,8 @@ In the column Flow-bin we have recorded the bins in steps of 100 and in the righ
 have recorded the count of values that are in this bin. 
 
 When we make such a tabulation we have to agree on an endpoint convention. This is important, since 
-when a flow value would for instance be measures as exactly 500, in which bin should it be counted:
-400-500 or 500-600? You the constructor of the histogram has to take this decision. Let us
+when a flow value would for instance be measured as exactly 500, in which bin should it be counted:
+400-500 or 500-600? You, the constructor of the histogram, has to take this decision. Let us
 agree on the convention that when a value falls exactly at the endpoint of the bin, we
 put it in the next bin. In practice you
 will usually do a histogram by computer. The code of the computer program has to specify an endpoint
@@ -97,7 +106,7 @@ plot(as.numeric(Nile), xlab = "Observation", ylab = "Annual Flow", pch = 16)
 
 Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how
 it is roughly distributed that every statistical software has functions to produce histograms. In R, the
-language we use in this course there is also such a function. The function name is called `hist()` and it
+language we use in this course, there is also such a function. The function name is called `hist()` and it
 takes the data as an argument. This is the second graphic function of R you encounter in this course
 after we played with the `barplot()`function in the last lecture. 
 
@@ -122,6 +131,19 @@ shows the distribution of the final score in a certain class.
 
 ![Final Score](pictures/final_score.png)
 :::
+
+### The density scale: Absolute versus relative frequency
+
+Sometimes it might be useful, to choose a different scale for the y axes of your histogram. Instead
+of absolute frequencies (or counts) it might be useful to show relative frequencies, the proportion
+of occurrences in each bin. The type of scale you choose will depend on what kind of 
+comparisons you want to emphasize about your data.
+
+Let us look at this issue by an example.
+
+Best practices for histograms
+common misuses you should avoid
+displaying unknown data
 
 ## Contents 
 

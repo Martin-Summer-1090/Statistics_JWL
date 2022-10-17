@@ -226,7 +226,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#understanding-variation-in-a-single-variable" id="toc-understanding-variation-in-a-single-variable" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable"> <span class="header-section-number">3.1</span> Understanding variation in a single variable</a></li>
+  <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"> <span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</a>
+  <ul class="collapse">
+  <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"> <span class="header-section-number">3.1.1</span> Constructing a Histogram</a></li>
+  <li><a href="#the-density-scale-absolute-versus-relative-frequency" id="toc-the-density-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-density-scale-absolute-versus-relative-frequency"> <span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</a></li>
+  </ul></li>
   <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"> <span class="header-section-number">3.2</span> Contents</a></li>
   <li><a href="#next-steps-in-r" id="toc-next-steps-in-r" class="nav-link" data-scroll-target="#next-steps-in-r"> <span class="header-section-number">3.3</span> Next steps in R:</a></li>
   </ul>
@@ -251,13 +255,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>When we analyze data, we usually have to look at lots of them. An example might be income data gained from household surveys. Such a survey will contain a huge number of data points, in the order of magnitude of ten thousands of data. These data need to be summarized, to understand their main characteristics. In this unit you will learn the most important tools for summarizing and communicating lost of data. You are going to learn the principles how data summaries are constructed, what are the properties of these summaries and what needs to be carefully considered. Clearly, when we need to deal with really large data sets, and most modern data sets are too large to be handled manually, we will need the computer. We already did some first steps in R. In this unit we will build on these first steps but enlarge them in a way that will enable you to deal and manipulate large datasets on the computer.</p>
-<section id="understanding-variation-in-a-single-variable" class="level2 page-columns page-full" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="understanding-variation-in-a-single-variable"><span class="header-section-number">3.1</span> Understanding variation in a single variable</h2>
+<p>When we analyze data, we usually have to look at lots of them. An example might be income data gained from household surveys. Such a survey will contain a huge number of data points, in the order of magnitude of ten thousands of data. These data need to be summarized, to understand their main characteristics.</p>
+<p>In this unit you will learn the most important tools for summarizing and communicating lost of data. You are going to learn the principles how data summaries are constructed, what are the properties of these summaries and what needs to be carefully considered.</p>
+<p>When we need to deal with really large data sets, and most modern data sets are too large to be handled manually, we will need the computer. We already did some first steps in R. In this unit we will build on these first steps but enlarge them in a way that will enable you to deal and manipulate large datasets on the computer.</p>
+<section id="understanding-variation-in-a-single-variable-using-histograms" class="level2 page-columns page-full" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="understanding-variation-in-a-single-variable-using-histograms"><span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</h2>
+<section id="constructing-a-histogram" class="level3 page-columns page-full" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="constructing-a-histogram"><span class="header-section-number">3.1.1</span> Constructing a Histogram</h3>
 <p>To summarize data, statisticians often use a graph which is called a <strong>histogram</strong>. In this section we will discuss all you have to know about histograms and how to use them. Let us start by an example, where we have about 100 data points, which is a lot but not that large that we can not handle them by hand.</p>
-<p>The data we want to look at come from measurements of the annual flow of the river Nile at Aswan (formerly) Assuan in Egypt from 1871 to 1970. The units of these measurement in which the annual flow is recorder are 100 Millions of cubic meters, i.e.&nbsp;<span class="math inline">\(10^8 m^3\)</span>.</p>
+<p>The data we want to look at come from measurements of the annual flow of the river Nile at Aswan (formerly) Assuan in Egypt from 1871 to 1970. The units of these measurement in which the annual flow is recorded are 100 millions of cubic meters, i.e.&nbsp;<span class="math inline">\(10^8 m^3\)</span>.</p>
 <div class="page-columns page-full"><p>This is one of the data sets that is bundled with the R distribution and is available to all users of R. They are stored in an R object called <code>Nile</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;When you type <code>data()</code> at the R console, you get a list of all datasets that are available with the current distribution of R.</p></li></div></div>
-<p>This is how the data look like, when we print them to the R console</p>
+<p>This is how the data look like, when we print them to the R console using the R command <code>print()</code>. The R function <code>options()</code> with the argument <code>width</code>just controls how the numbers are printed. Here I made sure that they will fit in the width of the page.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">70</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -276,7 +284,7 @@ Frequency = 1
  [92]  906  901 1170  912  746  919  718  714  740</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>We start the construction of a histogram by choosing for the horizontal axes ranges of numerical values - in our case of the river flow data - which are called <em>bins</em> or <em>classes</em>. There is no fixed rule as to how to choose the size of these ranges. These ranges should neither be to fine, nor too coarse. While there are a list of mechanical rules, which you can for example find on Wikipedia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, it is usually best to use your domain knowledge and some experimentation to find out the bin size that works best for your data.</p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width</p></li></div></div>
+<div class="page-columns page-full"><p>We start the construction of a histogram by choosing for the horizontal axes ranges of numerical values - in our case of the river flow data - which are called <em>bins</em> or <em>classes</em>. There is no fixed rule as to how to choose the size of these ranges. These ranges should neither be too fine, nor too coarse. While there are lists of mechanical rules, which you can for example find on Wikipedia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, it is usually best to use your domain knowledge and some experimentation to find out the bin size that works best for your data.</p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width</p></li></div></div>
 <div class="page-columns page-full"><p>For this example, assume we had chosen a bin size of 100<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. When you study the list, you will find that the lowest value is at 456 while the highest value is at 1370. This is already quite tedious to find out by eyeballing the numbers with the small number of values we have chosen for this example. It is impossible to do for really large data sets.</p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Note that this will mean <span class="math inline">\(100\times 10^8 m^3\)</span> per year.</p></li></div></div>
 <p>Now lets make a distribution table like this:</p>
 <table class="table">
@@ -330,7 +338,7 @@ Frequency = 1
 </tbody>
 </table>
 <p>In the column Flow-bin we have recorded the bins in steps of 100 and in the right column, Frequency, we have recorded the count of values that are in this bin.</p>
-<p>When we make such a tabulation we have to agree on an endpoint convention. This is important, since when a flow value would for instance be measures as exactly 500, in which bin should it be counted: 400-500 or 500-600? You the constructor of the histogram has to take this decision. Let us agree on the convention that when a value falls exactly at the endpoint of the bin, we put it in the next bin. In practice you will usually do a histogram by computer. The code of the computer program has to specify an endpoint convention, so the computer knows what to do when a value coincides with an endpoint.</p>
+<p>When we make such a tabulation we have to agree on an endpoint convention. This is important, since when a flow value would for instance be measured as exactly 500, in which bin should it be counted: 400-500 or 500-600? You, the constructor of the histogram, has to take this decision. Let us agree on the convention that when a value falls exactly at the endpoint of the bin, we put it in the next bin. In practice you will usually do a histogram by computer. The code of the computer program has to specify an endpoint convention, so the computer knows what to do when a value coincides with an endpoint.</p>
 <p>On the Frequency axes you put the frequency scale: Counts of values. Then for each bin, you plot a bar, which has the width of the bin and the height of the frequency.</p>
 <p>Do this for all the bins you have tabulated and you are ready.</p>
 <p>The histogram provides a certain aggregation of the data because it sorts the 100 data points into 10 bins, in our example. While loosing some local information on individual data points the global information conveyed by the summary gives us a pretty good idea of the overall pattern of variation on the Nile river flow data.</p>
@@ -351,7 +359,7 @@ Frequency = 1
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how it is roughly distributed that every statistical software has functions to produce histograms. In R, the language we use in this course there is also such a function. The function name is called <code>hist()</code> and it takes the data as an argument. This is the second graphic function of R you encounter in this course after we played with the <code>barplot()</code>function in the last lecture.</p>
+<p>Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how it is roughly distributed that every statistical software has functions to produce histograms. In R, the language we use in this course, there is also such a function. The function name is called <code>hist()</code> and it takes the data as an argument. This is the second graphic function of R you encounter in this course after we played with the <code>barplot()</code>function in the last lecture.</p>
 <p>To produce a histogram from the river flow data, we type at the console</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -383,6 +391,13 @@ Now you try
 </div>
 </div>
 </div>
+</section>
+<section id="the-density-scale-absolute-versus-relative-frequency" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-density-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</h3>
+<p>Sometimes it might be useful, to choose a different scale for the y axes of your histogram. Instead of absolute frequencies (or counts) it might be useful to show relative frequencies, the proportion of occurrences in each bin. The type of scale you choose will depend on what kind of comparisons you want to emphasize about your data.</p>
+<p>Let us look at this issue by an example.</p>
+<p>Best practices for histograms common misuses you should avoid displaying unknown data</p>
+</section>
 </section>
 <section id="contents" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="contents"><span class="header-section-number">3.2</span> Contents</h2>
