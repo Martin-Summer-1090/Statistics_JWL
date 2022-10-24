@@ -139,7 +139,34 @@ of absolute frequencies (or counts) it might be useful to show relative frequenc
 of occurrences in each bin. The type of scale you choose will depend on what kind of 
 comparisons you want to emphasize about your data.
 
-Let us look at this issue by an example.
+Let us look at this issue by an example. The numbers we want to look at report energy consumption per
+capita in kwh per person per year for different countries around the world. The energy numbers 
+refer to primary energy – the energy input before the transformation to forms of energy for 
+end-use (such as electricity or petrol for transport).Let us look at the
+year 2019.
+
+```{r}
+library(JWL)
+library(ggplot2)
+
+dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year == 2019, ])
+
+hist_info <- hist(dat$Cons, plot = FALSE)         # Store output of hist function
+hist_info$density <- hist_info$counts /    # Compute density values
+  sum(hist_info$counts) * 100
+plot(hist_info, freq = FALSE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Energy Consuption per Capita 2019")              # Plot histogram with percentages
+```
+In this histogram you see the distribution of per capita primary energy consumption for the year
+2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.
+For example, you see from the graph that roughly 55 % of countries have a primary energy consumption 
+smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already 
+roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. The
+distribution is skewed. The countries with a really huge primary energy consumption per capita are a small
+fraction of the countries in the world. 
+
+When you have a histogram with a density or relative frequency scale, the total area sums to 100 (or to 1
+depending on how you express the percentages, i.e. whether you express them as 10 % or as 0.1.)
+
 
 Best practices for histograms
 common misuses you should avoid

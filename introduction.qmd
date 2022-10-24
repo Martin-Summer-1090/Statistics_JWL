@@ -208,7 +208,10 @@ share of people in the world who are living in extreme poverty.
 Extreme poverty is defined by the World Bank, an international 
 development finance organisation for low and middle income countries located in the US^[The Worldbank is an international financial institution founded along with the International Monetary Fund in the Bretton Wods conference in 1944. It is located in Washington D.C. and finances projects in low and middle income countries. It also collects and processes data globally to support its activities and conduct development research. The Worldbank makes its data public in print or through its website https://www.worldbank.org/en/home] as the percentage 
 of people in the world who
-have to live on less that $ 1.90 per day. 
+have to live on less that $ 1.90 per day. Hans Rosling in his great book Factfullness [@Ros2018], gives
+a concrete description of what it means in concrete terms to live on this income level, which Rosling calls level 1. I quote from his book:
+
+*"... Your five children have to spend hours walking barefoot with your single plastic bucket, back and forth, to fetch water from a dirty mud hole and hour's walk away. On their way home they gather firewood, and you prepare the same gray porridge that you have been eating at every meal, every day, for your whole life - except during the months when the meager soil yielded no crops and you went to bed hungry. One day your youngest daughter develops a nasty cough. Smoke from the indoor fire is weakening her lungs. You can't afford antibiotics, and one month later she is dead. Yet you keep struggling on. If you are lucky and the yields are good, you can maybe sell some surplus crops and manage to earn more than 2 $ a day, which would move you to the next level...(Roughly 1 billion people live like this today).* 
 
 Let us have a look at a table showing the first 10 observations of this
 share
