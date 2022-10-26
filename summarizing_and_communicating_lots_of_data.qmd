@@ -120,7 +120,7 @@ hist(Nile)
 
 :::{.callout-note icon=false}
 
-## Now you try
+### Now you try
 
 Let us check your understanding of histograms by a little quiz now. The histogram below
 shows the distribution of the final score in a certain class.
@@ -140,9 +140,22 @@ of occurrences in each bin. The type of scale you choose will depend on what kin
 comparisons you want to emphasize about your data.
 
 Let us look at this issue by an example. The numbers we want to look at report energy consumption per
-capita in kwh per person per year for different countries around the world. The energy numbers 
+capita in kwh per person per year for different countries around the world.^[A kilowatt-hour, known as Kwh
+is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if
+a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb 
+for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt 
+vs. kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a 
+measure of the amount of energy a certain machine needs to run for one hour. So, if you have 
+a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that 
+drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. 
+Obviously, every appliance will use a different amount of power. Here are some of the 
+usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour,
+electric water heater: 380-500 kWh per month] 
+The energy numbers 
 refer to primary energy – the energy input before the transformation to forms of energy for 
-end-use (such as electricity or petrol for transport).Let us look at the
+end-use (such as electricity or petrol for transport).
+
+Let us look at the
 year 2019.
 
 ```{r}
@@ -154,23 +167,171 @@ dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year ==
 hist_info <- hist(dat$Cons, plot = FALSE)         # Store output of hist function
 hist_info$density <- hist_info$counts /    # Compute density values
   sum(hist_info$counts) * 100
-plot(hist_info, freq = FALSE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Energy Consuption per Capita 2019")              # Plot histogram with percentages
+plot(hist_info, freq = FALSE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Primary energy Consuption per Capita 2019")              # Plot histogram with percentages
 ```
 In this histogram you see the distribution of per capita primary energy consumption for the year
 2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.
+
 For example, you see from the graph that roughly 55 % of countries have a primary energy consumption 
 smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already 
-roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. The
-distribution is skewed. The countries with a really huge primary energy consumption per capita are a small
-fraction of the countries in the world. 
+roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This
+means that there is a relatively small share of counrties, around 20 %, which have a large
+primary energy consumption per capita. One says in the language of statistics that the
+distribution of per capita primary energy consumption is skewed. 
 
 When you have a histogram with a density or relative frequency scale, the total area sums to 100 (or to 1
-depending on how you express the percentages, i.e. whether you express them as 10 % or as 0.1.)
+depending on how you express the percentages, i.e. whether you express them as 10 % or as 0.1.).
+
+### Exercises: Now you try
+
+1. A histogram of monthly wages for part-time employees is shown below (densities are marked in
+parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200
+to 300 is missing. How tall must it be?
+
+![Wages](pictures/wages.png)
+2. Three people plot histograms for the weights of subjects in a study, using the density scale. Only one is right. Which one and why?
+
+```{r}
+
+#| echo = false
+
+library(JWL)
+
+dat <- height_weight
+
+data <- dat[dat$state == 1 & dat$sex == 1 & dat$age > 18, ]
+
+hist_inf <- hist(data$height, plot = FALSE)         # Store output of hist function
+hist_inf$density <- hist_inf$counts /    # Compute density values
+  sum(hist_inf$counts) * 100
+
+png(file="pictures/hight_version1.png")
+plot(hist_inf, freq = FALSE, xlab = " ", ylab = " ", main = " ")
 
 
-Best practices for histograms
-common misuses you should avoid
-displaying unknown data
+png(file="pictures/hight_version2.png")
+plot(hist_inf, freq = FALSE, xlab = "hight (cm) ", ylab = "Percent per 5 cm ", main = " ")
+
+
+png(file="pictures/hight_version3.png")
+plot(hist_inf, freq = FALSE, xlab = "hight (cm) ", ylab = "5 cm per percent", main = " ")
+
+```
+
+::: {#fig-height_hist layout-ncol=3}
+![Version 1](pictures/hight_version1.png){#fig-hight-hist-version1}
+
+![Version 2](pictures/hight_version2.png){#fig-hight-hist-version2}
+
+![Version 3](pictures/hight_version3.png){#fig-hight-hist-version3}
+
+Three versions of a hight histogram of males over age 18
+:::
+
+3. An investigator draws a histogram for some height data, using the metric system. She is working in
+centimeters (cm). The vertical axes shows density and the top of the vertical axes is 10 percent per cem. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the 
+horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.
+
+4. In a Public Health Service study, a histogram was plotted showing the number of cigarettes per day smoked by each subject (male current smokers), as shown in the histogram below. The density is marked in
+parentheses. The class interval include the right endpoint, not the left.
+
+   (a) The percentage who smoked 10 cigarettes or less per day is around:
+
+        1.5%    15%   30%   50%
+
+   (b) The percentage who smoked more than a pack a day, but not more than 2 packs, is around
+
+        1.5%    15 %    30%   50%
+        (There are 20 cigarettes in a pack)
+
+   (c) The percentage who smoked more than a pack a day is around
+
+        1.5%,   15%,   30%,   50%
+
+   (d) The percent who smoked more than 3 packs a day is around
+
+        0.25 of 1%,    0.5 of 1%,     10 %
+
+   (e) The percent who smoked 15 cigarettes per day is around
+
+        0.35 of 1%,    0.5 of 1%,   1.5%,    3.5%,    10%
+        
+![Number of cigarettes](pictures/cigarettes.png){#fig-hight-cigarettes}
+
+### Best practices for histograms
+
+When you summarize lots of data by a histogram there are some things you should 
+consider carefully. Let us go through the most important best practice 
+principles for histograms.
+
+#### Bin size
+
+When doing exploratory data work it is usually a good idea not to look at a single 
+histogram but at several histograms of the same data by changing the bin size. There
+is no clear rule about the optimal bin size. It often depends on context and field 
+knowledge. 
+
+If the bins are to fine, then the data will be be very noisy and give no overview because
+they show too many individual points. On the other hand if the bins are too wide, they
+will not show you the overall variability in the data very well and you fail to
+get a good idea about the distribution. 
+
+Let us illustrate this point using the river flow data of the Nile. 
+
+In the first case we have chosen 100 bins, which is too fine. There is almost one bar
+for every single data point. In this way we have a lot of spurious peaks and throughs and can
+not see the variation pattern in the data very clearly
+
+```{r}
+hist(Nile, breaks = seq(min(Nile), max(Nile), length.out = 100))
+```
+Now here we have the other extreme, lets assume we have only 3 bins. This would give us
+a pattern like this.
+
+```{r}
+hist(Nile, breaks = seq(min(Nile), max(Nile), length.out = 3))
+```
+Here the histogram is too coarse and we do not see the variation pattern either. 
+
+The computer usually has a built in rule of thumb for the histgram which will work well in most
+of the cases. Still for individual datasets it is sometimes better to choose a different bin size
+that more adequately mirrors the variation in the data.
+
+#### Choose boundaries that can be clearly interpreted
+
+Tick marks and labels should fall on the bin boundaries. As in the examples discussed
+so far, they need not be there for every tick but it is enough if they are there between
+every few bars. Bin labels should also have not many significant digits, so they are easy to
+read. So bin sized which divide 10 and 20 evenly are easier to read than bin sizes that do not.
+So always take caution not to arbitrarily split bin sizes. Otherwise you can end up with
+off bin boundaries.
+
+For example, if we just took the maximum and the minimum of the Nile river flow data and
+arbitrarily divided them into 7 bins, we would get the difficult to read bin boundaries
+
+```{r}
+seq(min(Nile), max(Nile), length.out = 7)
+```
+
+instead of the more easily readable boundaries
+
+```{r}
+seq(400,1200,100)
+```
+
+#### What's the difference between a histogram and a bar chart?
+
+A histogram depicts the frequency distribution of a continuous, quantitative variable, such 
+as height, weight, time, energy consumption etc. These are variables that can take on any
+value and these values can be ordered from smallest to highest.
+
+When we have a categorical variable, like we encountered them in section 2, we need to use a bar chart.
+The bars of the bar chart typically will have a small gap between the bars, emphasizing the discrete
+nature of the variable. The categories in a bar chart usually have no natural ordering. As we discussed
+in section 2, we have even to be conscious how we display the categories to avoid suggesting an
+order that is in fact not there in the data.
+
+
 
 ## Contents 
 

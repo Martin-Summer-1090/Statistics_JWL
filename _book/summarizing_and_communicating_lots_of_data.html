@@ -230,6 +230,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"> <span class="header-section-number">3.1.1</span> Constructing a Histogram</a></li>
   <li><a href="#the-density-scale-absolute-versus-relative-frequency" id="toc-the-density-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-density-scale-absolute-versus-relative-frequency"> <span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</a></li>
+  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"> <span class="header-section-number">3.1.3</span> Exercises: Now you try</a></li>
+  <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"> <span class="header-section-number">3.1.4</span> Best practices for histograms</a></li>
   </ul></li>
   <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"> <span class="header-section-number">3.2</span> Contents</a></li>
   <li><a href="#next-steps-in-r" id="toc-next-steps-in-r" class="nav-link" data-scroll-target="#next-steps-in-r"> <span class="header-section-number">3.3</span> Next steps in R:</a></li>
@@ -392,11 +394,180 @@ Now you try
 </div>
 </div>
 </section>
-<section id="the-density-scale-absolute-versus-relative-frequency" class="level3" data-number="3.1.2">
+<section id="the-density-scale-absolute-versus-relative-frequency" class="level3 page-columns page-full" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="the-density-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</h3>
 <p>Sometimes it might be useful, to choose a different scale for the y axes of your histogram. Instead of absolute frequencies (or counts) it might be useful to show relative frequencies, the proportion of occurrences in each bin. The type of scale you choose will depend on what kind of comparisons you want to emphasize about your data.</p>
-<p>Let us look at this issue by an example.</p>
-<p>Best practices for histograms common misuses you should avoid displaying unknown data</p>
+<div class="page-columns page-full"><p>Let us look at this issue by an example. The numbers we want to look at report energy consumption per capita in kwh per person per year for different countries around the world.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The energy numbers refer to primary energy – the energy input before the transformation to forms of energy for end-use (such as electricity or petrol for transport).</p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;A kilowatt-hour, known as Kwh is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt vs.&nbsp;kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a measure of the amount of energy a certain machine needs to run for one hour. So, if you have a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. Obviously, every appliance will use a different amount of power. Here are some of the usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour, electric water heater: 380-500 kWh per month</p></li></div></div>
+<p>Let us look at the year 2019.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">with</span>(energy_consumption_per_capita, energy_consumption_per_capita[Year <span class="sc">==</span> <span class="dv">2019</span>, ])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>hist_info <span class="ot">&lt;-</span> <span class="fu">hist</span>(dat<span class="sc">$</span>Cons, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>hist_info<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_info<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_info<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)              <span class="co"># Plot histogram with percentages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this histogram you see the distribution of per capita primary energy consumption for the year 2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.</p>
+<p>For example, you see from the graph that roughly 55 % of countries have a primary energy consumption smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This means that there is a relatively small share of counrties, around 20 %, which have a large primary energy consumption per capita. One says in the language of statistics that the distribution of per capita primary energy consumption is skewed.</p>
+<p>When you have a histogram with a density or relative frequency scale, the total area sums to 100 (or to 1 depending on how you express the percentages, i.e.&nbsp;whether you express them as 10 % or as 0.1.).</p>
+</section>
+<section id="exercises-now-you-try" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="exercises-now-you-try"><span class="header-section-number">3.1.3</span> Exercises: Now you try</h3>
+<ol type="1">
+<li>A histogram of monthly wages for part-time employees is shown below (densities are marked in parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200 to 300 is missing. How tall must it be?</li>
+</ol>
+<p><img src="pictures/wages.png" class="img-fluid" alt="Wages"> 2. Three people plot histograms for the weights of subjects in a study, using the density scale. Only one is right. Which one and why?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="fig-height_hist" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hight-hist-version1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hight_version1.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
+<p></p><figcaption class="figure-caption">(a) Version 1</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hight-hist-version2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hight_version2.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
+<p></p><figcaption class="figure-caption">(b) Version 2</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hight-hist-version3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hight_version3.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
+<p></p><figcaption class="figure-caption">(c) Version 3</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure 3.1: Three versions of a hight histogram of males over age 18</figcaption><p></p>
+</figure>
+</div>
+<ol start="3" type="1">
+<li><p>An investigator draws a histogram for some height data, using the metric system. She is working in centimeters (cm). The vertical axes shows density and the top of the vertical axes is 10 percent per cem. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.</p></li>
+<li><p>In a Public Health Service study, a histogram was plotted showing the number of cigarettes per day smoked by each subject (male current smokers), as shown in the histogram below. The density is marked in parentheses. The class interval include the right endpoint, not the left.</p>
+<ol type="a">
+<li><p>The percentage who smoked 10 cigarettes or less per day is around:</p>
+<p>1.5% 15% 30% 50%</p></li>
+<li><p>The percentage who smoked more than a pack a day, but not more than 2 packs, is around</p>
+<p>1.5% 15 % 30% 50% (There are 20 cigarettes in a pack)</p></li>
+<li><p>The percentage who smoked more than a pack a day is around</p>
+<p>1.5%, 15%, 30%, 50%</p></li>
+<li><p>The percent who smoked more than 3 packs a day is around</p>
+<p>0.25 of 1%, 0.5 of 1%, 10 %</p></li>
+<li><p>The percent who smoked 15 cigarettes per day is around</p>
+<p>0.35 of 1%, 0.5 of 1%, 1.5%, 3.5%, 10%</p></li>
+</ol></li>
+</ol>
+<div id="fig-hight-cigarettes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/cigarettes.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure 3.2: Number of cigarettes</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="best-practices-for-histograms" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="best-practices-for-histograms"><span class="header-section-number">3.1.4</span> Best practices for histograms</h3>
+<p>When you summarize lots of data by a histogram there are some things you should consider carefully. Let us go through the most important best practice principles for histograms.</p>
+<section id="bin-size" class="level4" data-number="3.1.4.1">
+<h4 data-number="3.1.4.1" class="anchored" data-anchor-id="bin-size"><span class="header-section-number">3.1.4.1</span> Bin size</h4>
+<p>When doing exploratory data work it is usually a good idea not to look at a single histogram but at several histograms of the same data by changing the bin size. There is no clear rule about the optimal bin size. It often depends on context and field knowledge.</p>
+<p>If the bins are to fine, then the data will be be very noisy and give no overview because they show too many individual points. On the other hand if the bins are too wide, they will not show you the overall variability in the data very well and you fail to get a good idea about the distribution.</p>
+<p>Let us illustrate this point using the river flow data of the Nile.</p>
+<p>In the first case we have chosen 100 bins, which is too fine. There is almost one bar for every single data point. In this way we have a lot of spurious peaks and throughs and can not see the variation pattern in the data very clearly</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(Nile), <span class="fu">max</span>(Nile), <span class="at">length.out =</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now here we have the other extreme, lets assume we have only 3 bins. This would give us a pattern like this.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(Nile), <span class="fu">max</span>(Nile), <span class="at">length.out =</span> <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here the histogram is too coarse and we do not see the variation pattern either.</p>
+<p>The computer usually has a built in rule of thumb for the histgram which will work well in most of the cases. Still for individual datasets it is sometimes better to choose a different bin size that more adequately mirrors the variation in the data.</p>
+</section>
+<section id="choose-boundaries-that-can-be-clearly-interpreted" class="level4" data-number="3.1.4.2">
+<h4 data-number="3.1.4.2" class="anchored" data-anchor-id="choose-boundaries-that-can-be-clearly-interpreted"><span class="header-section-number">3.1.4.2</span> Choose boundaries that can be clearly interpreted</h4>
+<p>Tick marks and labels should fall on the bin boundaries. As in the examples discussed so far, they need not be there for every tick but it is enough if they are there between every few bars. Bin labels should also have not many significant digits, so they are easy to read. So bin sized which divide 10 and 20 evenly are easier to read than bin sizes that do not. So always take caution not to arbitrarily split bin sizes. Otherwise you can end up with off bin boundaries.</p>
+<p>For example, if we just took the maximum and the minimum of the Nile river flow data and arbitrarily divided them into 7 bins, we would get the difficult to read bin boundaries</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="fu">min</span>(Nile), <span class="fu">max</span>(Nile), <span class="at">length.out =</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  456.0000  608.3333  760.6667  913.0000 1065.3333 1217.6667
+[7] 1370.0000</code></pre>
+</div>
+</div>
+<p>instead of the more easily readable boundaries</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">400</span>,<span class="dv">1200</span>,<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  400  500  600  700  800  900 1000 1100 1200</code></pre>
+</div>
+</div>
+</section>
+<section id="whats-the-difference-between-a-histogram-and-a-bar-chart" class="level4" data-number="3.1.4.3">
+<h4 data-number="3.1.4.3" class="anchored" data-anchor-id="whats-the-difference-between-a-histogram-and-a-bar-chart"><span class="header-section-number">3.1.4.3</span> What’s the difference between a histogram and a bar chart?</h4>
+<p>A histogram depicts the frequency distribution of a continuous, quantitative variable, such as height, weight, time, energy consumption etc. These are variables that can take on any value and these values can be ordered from smallest to highest.</p>
+<p>When we have a categorical variable, like we encountered them in section 2, we need to use a bar chart. The bars of the bar chart typically will have a small gap between the bars, emphasizing the discrete nature of the variable. The categories in a bar chart usually have no natural ordering. As we discussed in section 2, we have even to be conscious how we display the categories to avoid suggesting an order that is in fact not there in the data.</p>
+</section>
 </section>
 </section>
 <section id="contents" class="level2" data-number="3.2">
