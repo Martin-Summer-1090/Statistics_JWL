@@ -331,33 +331,666 @@ nature of the variable. The categories in a bar chart usually have no natural or
 in section 2, we have even to be conscious how we display the categories to avoid suggesting an
 order that is in fact not there in the data.
 
+## Some more concepts from R: Reading Data, R Objects, Subsetting and Modifying Values {#sec-moreR}
+
+Before we go on with learning the tools to summarize and communicate lost of data let us
+gain more skills for handling the tool that will actually enable us to handle
+large data sets. Building on what we learned in the last unit, we now expand
+our knowledge of R bit further.
+
+### Reading data in R {#sec-readingdata}
+
+Before we can do anything with data, we need first to learn how  to load data into R and how
+to save them. We will discuss now how to do this with comma separated
+text files. R provides packages for reading and writing from almost any other format, like data stored in
+Excel files and many more data formats that are used today. There is an option for every data format. 
+Since in all those cases the same principles apply as in the csv case, it is sufficient if we stick
+to the csv case.
+
+We have discussed a data set of per capita primary energy use in countries around the globe before to
+produce a histogram of these data for the year 2019. How did I get these data into R?
+
+First of all I could access these data because helpful people at Oxford University in the UK who maintain
+and run the website "Our world in data", which we have encountered before store these data on their
+website. In the concrete case of the energy data, they can currently be found at
+https://ourworldindata.org/grapher/per-capita-energy-use
+where you can download the data from the page. 
+
+I have taken a screenshot here
+
+![Our World in Data website energy](pictures/our_world_in_data_energy.png)
+
+In the lower right corner you see a box called Data and a download button. This butto allows you to 
+download the dataset to your machine. The file is called `per-capita-energy-use.csv` and I have stored
+the file in a subfolder to the directory in which I am writing these lecture notes. If you decide to
+download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps
+you have a folder for this course and in this folder you have a subfolder where you store all the
+data sets we are using in the course.
+
+To read a plain text or csv file, R provides the function `read.csv()`. If the csv file
+comes with a European instead of an US decimal format (`,` instead of `.` for the
+decimal sign.) you need to use the function `read.csv2()`.
+
+In the simplest form you read the data and write them to an object
+you can work with in R. For this you need to type something like this: Let's call the
+object in which we save our data `energy_consumption`, then by calling the function `read.csv()` with the
+path to your file as an argument will read the data from your local folder and store them in the
+object we have created. This allows us to refer to the data for doing further computations.
+```{r}
+#| code-fold: false
+energy_consumption <- read.csv("data/energy_use_per_capita/per-capita-energy-use.csv")
+```
+The function needs as an argument the file name. If the file is in a sub-folder
+of  the current directory you need to also specify the path.
+To specify the correct path to the file
+you need to know in which part of your directory tree you are currently working.
+
+In my
+case I am working in the project folder for my lecture notes, which has a sub-folder called
+`data`. The data subfolder has a further subfolder called `energy_use_per_capita` in my case
+and thus I specify the path relative to this location. 
+
+To find out what is your current
+R working directory, R provides the function `getwd()`. If I type this in my case, I will get
+```{r}
+#| code-fold: false
+getwd()
+```
+the path of my project folder for this lecture notes. So if I type the string
+`"data/energy_use_per_capita/per-capita-energy-use.csv"` this specifies the path relative to my working directory.
+
+If you read the file on your computer, you need to specify the path appropriately from where
+you are working in R at the moment to where you have stored the csv file.
+
+Now `read.csv()` has many additional arguments, which provide you with lots of
+flexibility. I encourage you to check it out and play with it using the help function and
+the examples given therein by typing `?read.csv` at the prompt.
+
+We have now read the primary energy consumption data and written it to the 
+R-object `energy_consumption`. Lets
+inspect the object a bit to see what we've got. I use the function `head()` with
+the parameter value `n = 10`. This will show me the first 10 rows of the datafile.
+```{r}
+#| code-fold: false
+options(width = 120)
+head(energy_consumption, n = 10)
+```
+This gives you an idea what the data look like. There are four variables, called `Entity`, `Code`, `Year` and `Primary.energy.consumption.per.capita..kWh.person.` The last variable name is very informative
+but also very long and unpractical. We will learn how to change variable names soon. Because of the
+long name, I had to use the function `options()` before `heads()` to tell R to use a sufficiently wide
+display. Don't worry for this detail at the moment.
+
+### R objects {#sec-robjects}
+
+The most basic type of R objects are **atomic vectors**. Most structures in R are built
+from atomic vectors. The energy consumption data-file we have just loaded is an example of such
+a more complex structure built from atomic vectors. We have already encountered a few of
+those in our previous lecture.
+
+#### Atomic vectors {#sec-atomic}
+
+An atomic vector is just a simple vector of data. For example remember when we typed the
+infant mortality data for eight European countries for 1860 we typed
+```{r}
+#| code-fold: false
+mr_1860 <- c(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)
+```
+In this case `mr_1860` is an atomic vector. 
 
 
-## Contents 
+R has a function, which allows you to check whether an object is an atomic vector or not.
+This function is called `is.vector()`. It takes the object name as an argument and returns `TRUE`
+if the object is an atomic vector and `FALSE` if it is not. For example:
+```{r}
+#| code-fold: false
+is.vector(mr_1860)
+```
+does indeed return `TRUE`.
 
-Statistics usually involves lots of data and we need ways to communicate and summarize these data. This
-chapter introduces the most important concepts.
+Each atomic vector stores values in a one-dimensional vector, and each atomic vector can
+only store one type of data. The length of the atomic vector can be determined by the
+function `length()` This function takes an R object, which is an atomic vector, as an
+argument and returns the number of elements in this vector. Here is the example of the die
+```{r}
+#| code-fold: false
+length(mr_1860)
+```
+which is 8 as it should be. An atomic vector could also have only one element, in which case
+`lenght()`would return 1.
+
+Now altogether R has implemented six basic types of atomic vectors:
+
+1. double
+
+2. integers
+
+3. characters
+
+4. logical
+
+5. complex
+
+6. raw
+
+We will not encounter complex and raw data-types in this course, so let us skip those and discuss
+only the first 4 types.
+
+<!-- If yo u go back to our stock data and look at the first three lines -->
+<!-- ```{r apple-price-1-3} -->
+<!-- head(aapl_prices, n=3) -->
+<!-- ``` -->
+<!-- The variables open, high, close, volume and adjusted are all stored  -->
+<!-- as the first R data type: **Doubles**. A double vector stores regular numbers. It seems -->
+<!-- natural to store such quantities as opening and closing prices as doubles. Doubles can be -->
+<!-- positive or negative, they can have digits right of the decimal place. If not -->
+<!-- explicitly told otherwise, R saves any number you give it as a double. Note that some functions -->
+<!-- refer to doubles with the more intuitive term numeric. It has an equivalent meaning in R. -->
+
+<!-- For example the number of traded shares in our apple stock price file is saved as a double. But -->
+<!-- arguably the number of shares could also have been saved as an **Integer**. This is the second -->
+<!-- data type in R for number which can be written without decimals. If you explicitly specify -->
+<!-- number as integers, you need to append the letter `L` to the number. Say, for example,  -->
+<!-- we would want to specifie the points shown on our die explicitly as integers, then we would type -->
+<!-- ```{r die-int} -->
+<!-- die_int <- c(1L,2L,3L,4L,5L,6L) -->
+<!-- ``` -->
+<!-- Now R will save the die with integer values. Before, since we did not explicitly specify it,  -->
+<!-- the values were stored probably as doubles. You can check the type always  -->
+<!-- with the function `typeof()`: -->
+<!-- ```{r check-type} -->
+<!-- typeof(die_int) -->
+<!-- ``` -->
+<!-- Now why should we care for distinguishing integers from doubles? This has to do with the -->
+<!-- way a computer does computations. Sometimes a difference in precision can have surprising effects. -->
+<!-- In your computer 64bits of memory are allocated for each double in an R program. While this  -->
+<!-- allows for a very precise representation of numbers not all numbers can be exactly represented  -->
+<!-- with 64-bits. The famous candidates are $\pi$, which has an infinite sequence of digits and must -->
+<!-- therefore be rounded by the computer. Usually the rounding error introduced into your -->
+<!-- computations will go unnoticed but sometimes surprises can occur. Take for instance: -->
+<!-- ```{r sqrt-4-minus-2} -->
+<!-- sqrt(2)^2 - 2 -->
+<!-- ``` -->
+<!-- Why is that? The square root of 2 can not be expresses precisely because, as already  -->
+<!-- the old Greeks -->
+<!-- knew, it is not a rational number. And voila, you have a small rounding error. Such errors -->
+<!-- are called *floating point errors* in computer science lingo and computing with such numbers is -->
+<!-- called *floating-point-arithmetic*.  -->
+
+<!-- With integers floating point errors are avoided, but for many applications this is not an  -->
+<!-- option. Luckily for most cases floating-point arithmetic provides sufficient precision -->
+<!-- for most of the applications we encounter in practice. -->
+
+<!-- When you look at the first column of our stock price data you see the ticker symbol of the  -->
+<!-- apple stock `AAPL`. This is the symbol of the -->
+<!-- third data type: **Character**. A character vector stores strings of text, which have to  -->
+<!-- be put between quotation marks `""`. Strings are the individual elements of a character vector. -->
+<!-- We have encountered character vectors already in this lecture, where we represented the -->
+<!-- fair coin with the vector `c("H", "T")` with the string `"H"` for head and the string -->
+<!-- `"T"` for tail. -->
+
+<!-- Note that a string can be more than just letters. If you type, for instance the number `1` with -->
+<!-- quotation marks, like `"1"` R would interpret the value as a string not as a number. Sometimes -->
+<!-- one can get confused in R because both objects and characters appear as text in R code. Object -->
+<!-- names are without quotation marks strings always are between quotation marks. -->
+
+<!-- The next data type in the list are: **Logicals**. Logical vectors store `TRUEs` and `FALSES`. They -->
+<!-- are extremely useful for doing comparisons and - as we will see shortly - also for -->
+<!-- subsetting. -->
+
+<!-- For example, if you type: -->
+<!-- ```{r comp} -->
+<!-- 0 > 1 -->
+<!-- ``` -->
+<!-- R tells you that this statement is False.  -->
+
+<!-- Whenever you type `TRUE` of `FALSE` without quotation marks, R will treat the -->
+<!-- input as logical data. For instance, the following statement yields: -->
+<!-- ```{r logical-inputs} -->
+<!-- logic <- c(TRUE, FALSE, TRUE) -->
+<!-- logic -->
+<!-- ``` -->
+<!-- You can check the type: -->
+<!-- ```{r check-logic} -->
+<!-- typeof(logic) -->
+<!-- ``` -->
+
+<!-- One important R-fact which you need to know about atomic vectors is that atomic vectors -->
+<!-- can have **attributes**. Attributes won't affect the values of an object but can hold -->
+<!-- and store object metadata. Normally we do not look at these metadata, but many R functions -->
+<!-- check for attributes and then do special things with the object depending on these  -->
+<!-- attributes. -->
+
+<!-- Attributes can be checked with the function `attributes()` using an R object as an argument. -->
+<!-- ```{r attrib} -->
+<!-- attributes(die) -->
+<!-- ``` -->
+<!-- Since `die`has no attributes R returns `NULL`. This value is often returned by functions whose  -->
+<!-- values are undefined. -->
+
+<!-- The most common attributes for atomic vectors are **names**, **dimensions** and **classes**. -->
+<!-- Each of these attributes has its own helper function that you can use to give attributes to -->
+<!-- the object.  -->
+
+<!-- When you look up the value for the die you will get -->
+<!-- ```{r names-of-die} -->
+<!-- names(die) -->
+<!-- ``` -->
+<!-- We see that our die object has no names, but we could assign some. For example: -->
+<!-- ```{r assign-names-to-die} -->
+<!-- names(die) <- c("one", "two", "three", "four", "five", "six") -->
+<!-- ``` -->
+<!-- Now the die has a name attribute: -->
+<!-- ```{r show-die-name} -->
+<!-- attributes(die) -->
+<!-- ``` -->
+<!-- Note that the values are not affected nor will the names be affected when the  -->
+<!-- values are manipulated. For instance, if you type -->
+<!-- ```{r increase-values} -->
+<!-- die + 1 -->
+<!-- ``` -->
+<!-- the names stay what they were and all values are increased by 1. To remove the names -->
+<!-- you can type: -->
+<!-- ```{r remove-names} -->
+<!-- names(die) <- NULL -->
+<!-- ``` -->
+
+<!-- One very important attribute, we will encounter all the time is **dimension**, with the -->
+<!-- helper function `dim()`. For example we can look at our data object of stock prices -->
+<!-- to get: -->
+<!-- ```{r dim-in-action} -->
+<!-- dim(aapl_prices) -->
+<!-- ``` -->
+<!-- which returns two numbers, which mean that the object has 8044 rows and 8 columns.  -->
+
+<!-- But with dim we can also transform our die into a matrix, with say two rows and three columns: -->
+<!-- ```{r transform-die-to-matrix} -->
+<!-- dim(die) <- c(2,3) -->
+<!-- die -->
+<!-- ``` -->
+<!-- R will always use the first value in dim for the rows and the second for the columns. dim can -->
+<!-- be generalized to higher dimensional array structures. -->
+
+<!-- If you want to have more control on how R fills up the values, you can use a richer -->
+<!-- helper function, which gives you more control. For two dimensional data arrays this -->
+<!-- is provide by the function `matrix()`. Say you type -->
+<!-- ```{r construct-matrix} -->
+<!-- m <- matrix(die, nrow = 2) -->
+<!-- m -->
+<!-- ``` -->
+<!-- the matrix will be filled up by column. You can change that behavior by setting the `byrow`  -->
+<!-- argument to `TRUE`. -->
+<!-- ```{r construct-matrix-with-byrow-true} -->
+<!-- m <- matrix(die, nrow = 2, byrow = TRUE) -->
+<!-- m -->
+<!-- ``` -->
+
+<!-- Notice that changing the dimensions of an object, will not change its type. But it will -->
+<!-- change the object's **class** attribute: -->
+<!-- ```{r class-attribute-behavior} -->
+<!-- dim(die) <- c(2,3) -->
+<!-- typeof(die) -->
+<!-- class(die) -->
+<!-- ``` -->
+<!-- A class in R is a special case of an atomic vector.  -->
+
+<!-- With the attribute system R allows you to represent more data types. R uses, for example -->
+<!-- a special class to represent dates and times. The data variable in our stock data is - for -->
+<!-- example - represents as a type of this kind. -->
+
+<!-- To illustrate this we take the R-function `Sys.time()`. This function returns the -->
+<!-- current time on your computer. It looks like a character string -->
+<!-- when you display it but it is actually a double with class `POSIXct`, `POSIXt` (it has -->
+<!-- two classes): -->
+<!-- ```{r time-type} -->
+<!-- now <- Sys.time() -->
+<!-- now -->
+<!-- typeof(now) -->
+<!-- class(now) -->
+<!-- ``` -->
+<!-- `POSIXct` is a widely used framework for representing dates and times. But we will skip the -->
+<!-- details here. -->
+
+<!-- R stores categorical data, such as nationality, sex etc. by using **factors**. If -->
+<!-- you take for instance, sex, it can have only two values - male or female - and these -->
+<!-- values may have their idiosyncratic order, for example that females go always first. -->
+<!-- To make a factor in R you have to pass an atomic vector to the `factor()` function. -->
+<!-- This function works by recoding the values in the vector as integers and store the  -->
+<!-- results in an integer vector. R also adds a `level` attribute which contains the set -->
+<!-- of labels and their order and a class attribute that says the vector is -->
+<!-- a factor. Example: -->
+<!-- ```{r sex-factor} -->
+<!-- sex <- factor(c("m", "f", "f", "m")) -->
+<!-- typeof(sex) -->
+<!-- attributes(sex) -->
+<!-- ``` -->
+<!-- Factors can be confusing since they look like characters but behave like integers. -->
+
+<!-- Note that R will often try to convert character strings to factors when you load and create data. -->
+<!-- I recommend that you do not allow R to make factors unless you explicitly ask for it. This -->
+<!-- can usually be controlled by an argument to whatever the data reader function is. For instance -->
+<!-- you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`.  -->
+
+<!-- R has an internal **coercion** behavior for data types, which you should know -->
+<!-- about if you work with R. With this knowledge you can do many useful things. -->
+
+<!-- If a character string is present in an atomic vector, R will automatically convert every -->
+<!-- other component in this vector to a character string. If a vector contains only logicals  -->
+<!-- and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and -->
+<!-- every `FALSE` becomes a 0. -->
+
+<!-- R also uses the coercion rules, when we do math with logicals, like for example -->
+<!-- ```{r math-with-logicals} -->
+<!-- sum(c(TRUE, TRUE, FALSE, FALSE)) -->
+<!-- ``` -->
+<!-- What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the  -->
+<!-- vector `c(1, 1, 0, 0)` and sums the components. -->
+
+<!-- Going back to our data set on the apple stock price, we see that this dataset stores  -->
+<!-- values of different types, characters, dates and doubles. How does R achieve this? -->
+
+<!-- The answer is that this is achieved by a data structure called a **list**. List are -->
+<!-- like atomic vectors, because the group data into a one-dimensional set. However, lists do -->
+<!-- no group together individual values. List group together R objects, such as atomic -->
+<!-- vectors or even other lists.  -->
+
+<!-- For example, you can create a list, which contains a numeric vector of length 31 in its -->
+<!-- first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this: -->
+<!-- ```{r create-list} -->
+<!-- list_example <- list(100:130, "R", list(TRUE, FALSE)) -->
+<!-- list_example -->
+<!-- ``` -->
+<!-- The double bracketed indices tell you which element of the list is being displayed. The -->
+<!-- single bracketed indices tell you which sub-element of the list is being displayed. For example -->
+<!-- 100 is the first subelement of the first element in the list. "R" is the first subelement of the -->
+<!-- second list element. -->
+
+<!-- **Data Frames** are the two dimensional version of a list. They are by far the most -->
+<!-- useful storage structure for data analysis. Indeed, our dataset on the Apple stock -->
+<!-- price we have loaded before is an instance of a data frame. Data frames group vectors -->
+<!-- together in a two dimensional table. As a consequence each variable can, i.e. each column of the -->
+<!-- data frame can contain a different data type. Within a column, however, we can have only -->
+<!-- one data type. -->
+
+<!-- if you look at the type of a data frame, you will see that it is indeed a list and the class is  -->
+<!-- a data frame. -->
+<!-- ```{r type-of-data-frame} -->
+<!-- typeof(aapl_prices) -->
+<!-- class(aapl_prices) -->
+<!-- ``` -->
+
+<!-- Now armed with our new knowledge of R and probability lets ask a question to -->
+<!-- our new data set. -->
+
+<!-- ### Example: Will the stock price of Apple move up or down? {#apple-up-down} -->
+
+<!-- Let us look at the first lines of our data once again: -->
+<!-- ```{r fist-lines-again} -->
+<!-- head(aapl_prices, n = 10) -->
+<!-- ``` -->
+<!-- Let us check what kind of object `aapl_prices` is. -->
+<!-- ```{r} -->
+<!-- typeof(aapl_prices) -->
+<!-- class(aapl_prices) -->
+<!-- ``` -->
+<!-- As expected the object is a list. The class shows that our -->
+<!-- object is a `data.frame`. Since the object is of class data-frame we can use the `dim` function -->
+<!-- to see the number of daily observations in our data set. -->
+<!-- ```{r dim-aapl} -->
+<!-- dim(aapl_prices) -->
+<!-- ``` -->
+<!-- We see that our data store price information about 8044 trading days.  -->
+
+<!-- We could now -->
+<!-- approach the question about the probability of the Apple stock price moving up -->
+<!-- tomorrow by taking a frequency-approach. This would require us first to count the -->
+<!-- number of up-movements in our data. How do we do that? -->
+
+<!-- Now we need to know know how we address and work with individual values in our data-set. Let's say -->
+<!-- we measure the movement of the close price. R has a notation system to extract a value -->
+<!-- or subset of values from an object: You write the name of the object first, followed  -->
+<!-- by a pair of hard brackets. Between the brackets goes a `,`separating row and column -->
+<!-- indices. The notation is thus like `aapl_prices[ , ]`. -->
+
+<!-- When it comes to writing the indices you have six different ways to do this, all of them -->
+<!-- very simple. You can use: -->
+
+<!-- 1. Positive integers -->
+<!-- 2. Negative integers -->
+<!-- 3. Zero -->
+<!-- 4. Blank spaces -->
+<!-- 5. Logical values -->
+<!-- 6. Names -->
+
+<!-- The simplest are **positive integers**. For example if you choose -->
+<!-- ```{r select-values-by-integers} -->
+<!-- aapl_prices[1,6] -->
+<!-- ``` -->
+<!-- you see that the first value in the sixth column is selected. You thus get the first closing -->
+<!-- price of the Apple stock recorded in our dataset. You can extract more than one value, for instance -->
+<!-- by typing: -->
+<!-- ```{r selection-from-apple} -->
+<!-- aapl_prices[1:10, 6] -->
+<!-- ``` -->
+<!-- which gives you the first 10 closing prices. -->
+
+<!-- Note that R's notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two -->
+<!-- things have to be kept in mind. In R indexing begins at 1. In some other programming languages -->
+<!-- indexing begins at 0. The indexing convention in R is just like in linear algebra. The second -->
+<!-- thing to note is that if you select two or more columns from a data frame, R will return a new data -->
+<!-- frame, like in -->
+<!-- ```{r select-block} -->
+<!-- aapl_prices[1:10,1:8] -->
+<!-- ``` -->
+<!-- However, if you select a single column, R will return a vector: -->
+<!-- ```{r select-single-column} -->
+<!-- aapl_prices[1:10, 6] -->
+<!-- ``` -->
+<!-- If you prefer to get returned a data frame in this case, you have to add the argument -->
+<!-- `drop = FALSE`, like: -->
+<!-- ```{r drop-false} -->
+<!-- aapl_prices[1:10, 6, drop = FALSE] -->
+<!-- ``` -->
+
+<!-- **Negative integers** work exactly opposite to positive integers. If you type: -->
+<!-- ```{r negative-integers} -->
+<!-- head(aapl_prices[-1,6], n = 10) -->
+<!-- ``` -->
+<!-- R will return the sixth column of the data frame *except* the first row. We just display the -->
+<!-- first 10 values. -->
+
+<!-- If you try to pair a negative and a positive integer in an index, R will return an error. -->
+<!-- However, you can use both negative and positive integers if you use them in *different* -->
+<!-- indices. -->
+
+<!-- **Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing -->
+<!-- from a dimension with index 0. The following syntax for instance creates an empty object -->
+<!-- ```{r empty-object} -->
+<!-- aapl_prices[0,0] -->
+<!-- ``` -->
+
+<!-- **Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for -->
+<!-- instance, if you type: -->
+<!-- ```{r select one column} -->
+<!-- sel <- aapl_prices[ , 6] -->
+<!-- ``` -->
+<!-- R will select the entire column of closing prices. You can check that the length of this -->
+<!-- vector is -->
+<!-- ```{r length-sel} -->
+<!-- length(sel) -->
+<!-- ``` -->
+<!-- as expected. -->
+
+<!-- **Logical Values** can also be used for subsetting. If you type for instance -->
+<!-- ```{r logical subsetting} -->
+<!-- aapl_prices[1, c(F,F,F,F,F,T,F,F)] -->
+<!-- ``` -->
+<!-- R will select the first closing price. Note that here we used the R convention that `TRUE`and `T` -->
+<!-- as well as `FALSE`and `F` have an equivalent meaning. -->
+
+<!-- Finally, you can ask for the elements, you want by name. On our case, you could select the first -->
+<!-- closing price by -->
+<!-- ```{r first-value-by-name} -->
+<!-- aapl_prices[1, "close"] -->
+<!-- ``` -->
+
+<!-- Finally, note that two types of object in R obey an optional second system of notation. You can -->
+<!-- extract values from data frames and lists with th `$`syntax. It works as follows: For example -->
+<!-- ```{r select-dollar-notation} -->
+<!-- mean(aapl_prices$close) -->
+<!-- ``` -->
+<!-- would select the column of closing prices and compute their mean. -->
+
+<!-- Now lets try to solve the counting problem for our data set. To see whether the price went up -->
+<!-- we need to subtract the closing price of the first data from the second, and see whether it is -->
+<!-- larger than zero. This we would have to do for every observation in the whole frame. -->
+
+<!-- Now let us bring our indexing rules into action. We create two new objects, one ranging from -->
+<!-- observation 2 of the close price until the end of the data frame, the other ranging from 1 to but the last -->
+<!-- element, then we subtract and write the result in a new object. Finally we inspect -->
+<!-- the first 10 elements of the result -->
+<!-- ```{r differencing} -->
+<!-- aux_1 <- aapl_prices[2:8044, "close"] -->
+<!-- aux_2 <- aapl_prices[1:8043 , "close"] -->
+<!-- diff_close <- (aux_1 - aux_2) -->
+<!-- diff_close[1:10] -->
+<!-- ``` -->
+<!-- Now this works but it is not very elegant. Actually R has a built in function, called -->
+<!-- `diff()` which will do the job for us. We can even append the result to the frame we have -->
+<!-- using the `$` notation as follows: Let us call the new variable `diff`. But now we have to -->
+<!-- be careful. Since we take first differences we will looe one observation. This will create a  -->
+<!-- mismatch in the dimenion of the dataframe. Since the data frame starts at some date (in our case 1990-01-02) we have no difference for the first observation. R's notation for a missing -->
+<!-- observation is `NA`. So we neet to put an `NA`ahead of our diff column: -->
+<!-- ```{r apply-diff-function} -->
+<!-- aapl_prices$diff <- c(NA, diff(aapl_prices$close, lag = 1)) -->
+<!-- head(aapl_prices, n= 5) -->
+<!-- ``` -->
+<!-- Let's check whether we get the same thing and compare with the values in `diff_close`. They  -->
+<!-- do indeed match. -->
+
+<!-- Now we can use a really cool feature to count the up moves, which shows you the power of R -->
+<!-- in a very nice example. We can test conditions by logical operators. In our case we want -->
+<!-- to know whether the diff between two consecutive closing prices is positive. We add another -->
+<!-- column to the dataframe which will then contain `TRUE` or `FALSE`values, when the condition -->
+<!-- holds. To see what happens, let us do this and look at the first 5 rows of our new data frame: -->
+<!-- ```{r logical-test} -->
+<!-- aapl_prices$diff_pos <- aapl_prices$diff > 0 -->
+<!-- head(aapl_prices, n = 10) -->
+<!-- ``` -->
+<!-- Now according to the frequency notion of probability we could attach the probability of an -->
+<!-- inter day up move of the Apple stock price by computing the share of up moves (diff positive) -->
+<!-- among all our change observations. -->
+
+<!-- Now we can use the R coercion rules. If we apply the mean function to our `diff_pos` column -->
+<!-- we get the share of up moves, since R will coerce the `TRUE` values to 1 and the `FALSE` values -->
+<!-- to 0. This is a new opportunity to practice our newly acquired subsetting rules: -->
+<!-- ```{r share-up} -->
+<!-- mean(aapl_prices$diff_pos, na.rm = T) -->
+<!-- ``` -->
+<!-- We see that the result is that the stock price has moved up about half of the days and not up  -->
+<!-- at the other days. -->
+
+<!-- Let me explain what is going on in the syntax of our R statement. We selected the column -->
+<!-- from our data frame that contained the differences. Then we apply the `mean()` function to this -->
+<!-- column. But since the column contains one value which is `NA` the mean  -->
+<!-- would return `NA` if we not -->
+<!-- correct for this fact. This is what the argument `na.rm = T ` does. It tells R to first remove -->
+<!-- `NA` form the observations and then compute the mean. -->
+
+<!-- Now from a frequency point of view $P(U) = 0.51$ and $P(D) = 0.49$ accordingly. -->
+
+<!-- Now **assume in addition** that the direction of a price move of the Apple stock  -->
+<!-- on the current trading day is -->
+<!-- **independent** of the direction of the Apple stock price move on the previous trading day for -->
+<!-- all days. This means -->
+<!-- that the probability of $U$-movements and of $D$-movements is unaffected by the number of -->
+<!-- previous $U$ and $D$ movements. This is - of course - an assumption. You may think about -->
+<!-- whether this assumption is reasonable.  -->
+
+<!-- Postponing this important discussion, consider now a week from Monday to Friday and ask: -->
+<!-- "What is the probability that the price of Apple will increase on each of the consecutive days?" -->
+
+<!-- There are five trading days, so we need to compute -->
+<!-- $P(U \cap U \cap U \cap U \cap U \cap U)$. This is by our assumption of independence equal -->
+<!-- to $P(U) \cdot P(U) \cdot P(U) \cdot P(U) \cdot P(U)$. By our probability estimate from -->
+<!-- relative frequency this amounts to $0.51^5$, which amounts to $0.035$. -->
+
+<!-- "What is the probability that the stock price will decrease either on Monday,  -->
+<!-- Tuesday, Wednesday, Thursday or Friday and will increase on the other four days?" -->
+
+<!-- The probability that the $D$ movement happens, say on a Monday, is -->
+<!-- $P(D \cap U \cap U \cap U \cap U)$ or $0.49*0.51^4$ which is $0.033$. -->
+<!-- We have in total five mutually exclusive scenarios: -->
+<!-- $P(D \cap U \cap U \cap U \cap U)$, $P(U \cap D \cap U \cap U \cap U)$, -->
+<!-- $P(U \cap U \cap D \cap U \cap U)$, $P(U \cap U \cap U \cap D \cap U)$, -->
+<!-- $P(U \cap U \cap U \cap U \cap D)$. Thus we have $0.033 + 0.033 + 0.033 + 0.033 + 0.033$ -->
+<!-- as the final probability of this event, which is $0.132$. -->
+
+<!-- Is this analysis any good? How could we possibly judge this? Interestingly the relative -->
+<!-- frequencies of up and down moves look similar to a random experiment of a few thousand tosses -->
+<!-- of a fair coin. But can we learn anything from this? Are the up and down moves independent? -->
+<!-- Independence - of course - does not follow from the result we just got. -->
+
+<!-- The idea that stock prices may fluctuate randomly was first discussed systematically by -->
+<!-- Louis Bachelier (1870 - 1946), a French mathematician who studied stock price movements -->
+<!-- mathematically. In 1965 the economist @Samuelson1965 published an article with the title -->
+<!-- "Proof that stock prices fluctuate randomly".  -->
+<!-- He argues in this paper that randomness -->
+<!-- comes about through the active participation of traders seeking to maximize their wealth.  -->
+<!-- A huge army of investors would aggressively use the smallest informational advantage  -->
+<!-- and in doing so, they incorporate the information into market prices, which  -->
+<!-- quickly eliminates this profit -->
+<!-- opportunity.  -->
+<!-- This lead to a cornerstone of modern Finance theory called the *random walk hypothesis* of  -->
+<!-- stock price fluctuations. -->
+
+<!-- If this theory was true, it would give an argument, why we might look at  -->
+<!-- the up and down movements -->
+<!-- in the stock price of apple as if it was the outcome of tossing a fair coin. In this case -->
+<!-- the probability of an up or a down movement should be 1/2 and with the number of trials -->
+<!-- approaching infinity the frequency of ups and downs should approach this probability. -->
+
+<!-- The literature on stock price fluctuations which came later, however, presented evidence that -->
+<!-- stock prices are predictable to a certain degree and do not fluctuate randomly. A good  -->
+<!-- reference summarizing this evidence is @LoMacKinlay1999 In this -->
+<!-- case our approach would perhaps produce a misleading answer. -->
+
+<!-- We cannot give a clear cut answer here. The point of this brief discussion is that you  -->
+<!-- just cannot apply a theoretical machinery mechanically without giving it further thought and -->
+<!-- without maintaining a healthy amount of skepticism. It is fascinating that there are  -->
+<!-- situations where abstract theories, like the theory of probability, show a robust relation -->
+<!-- to real world phenomena. But the nature, the precise meaning and the robustness of this -->
+<!-- relation has to be investigated for each single case. -->
 
 
-1. The empirical distribution of data points
-2. Measures of location and spread.
-3. Skewed data distributions are common and some summary statistics are very sensitive to outlying values. 
-4. Summaries always hide some detail. 
-5. How to summarize sets of numbers graphically (histograms and box plots)
-6. Useful transformations to reveal patterns
-7. Looking at pairs of numbers, scatter plots, time series as line graphs. 
-8. The primary aim in data exploration is to get an idea of the overall variation.
 
-## Next steps in R:
 
-- vectors and indices
-- extracting subsets from vectors
-- creating vectors using c()
-- subsetting vectors wit logicals
-- data frames
-- factor class
-- extracting data from data frames
-- tapply
+
+
+<!-- ## Contents  -->
+
+<!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
+<!-- chapter introduces the most important concepts. -->
+
+
+<!-- 1. The empirical distribution of data points -->
+<!-- 2. Measures of location and spread. -->
+<!-- 3. Skewed data distributions are common and some summary statistics are very sensitive to outlying values.  -->
+<!-- 4. Summaries always hide some detail.  -->
+<!-- 5. How to summarize sets of numbers graphically (histograms and box plots) -->
+<!-- 6. Useful transformations to reveal patterns -->
+<!-- 7. Looking at pairs of numbers, scatter plots, time series as line graphs.  -->
+<!-- 8. The primary aim in data exploration is to get an idea of the overall variation. -->
+
+<!-- ## Next steps in R: -->
+
+<!-- - vectors and indices -->
+<!-- - extracting subsets from vectors -->
+<!-- - creating vectors using c() -->
+<!-- - subsetting vectors wit logicals -->
+<!-- - data frames -->
+<!-- - factor class -->
+<!-- - extracting data from data frames -->
+<!-- - tapply -->
 
 
 
