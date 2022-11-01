@@ -233,10 +233,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"> <span class="header-section-number">3.1.3</span> Exercises: Now you try</a></li>
   <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"> <span class="header-section-number">3.1.4</span> Best practices for histograms</a></li>
   </ul></li>
-  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"> <span class="header-section-number">3.2</span> Some more concepts from R: Reading Data, R Objects, Subsetting and Modifying Values</a>
+  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"> <span class="header-section-number">3.2</span> Next steps in R: Reading Data, understanding R objects and selecting and modifying values</a>
   <ul class="collapse">
   <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"> <span class="header-section-number">3.2.1</span> Reading data in R</a></li>
   <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"> <span class="header-section-number">3.2.2</span> R objects</a></li>
+  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"> <span class="header-section-number">3.2.3</span> Data frames and R lists</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"> <span class="header-section-number">3.2.4</span> Data Frames</a></li>
+  <li><a href="#selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." id="toc-selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." class="nav-link" data-scroll-target="#selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use."> <span class="header-section-number">3.2.5</span> Selecting data from a dataframe: Asking some questions about per capita primary energy use.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -573,14 +576,14 @@ Now you try
 </section>
 </section>
 </section>
-<section id="sec-moreR" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.2</span> Some more concepts from R: Reading Data, R Objects, Subsetting and Modifying Values</h2>
-<p>Before we go on with learning the tools to summarize and communicate lost of data let us gain more skills for handling the tool that will actually enable us to handle large data sets. Building on what we learned in the last unit, we now expand our knowledge of R bit further.</p>
-<section id="sec-readingdata" class="level3" data-number="3.2.1">
+<section id="sec-moreR" class="level2 page-columns page-full" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.2</span> Next steps in R: Reading Data, understanding R objects and selecting and modifying values</h2>
+<p>Before we go on with learning the tools to summarize and communicate lots of data let us gain more skills for handling the tool that will actually enable you to handle large data sets yourself by making use of R. Building on what we learned in the last unit, lets now push your knowledge of R bit further.</p>
+<section id="sec-readingdata" class="level3 page-columns page-full" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.2.1</span> Reading data in R</h3>
-<p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this with comma separated text files. R provides packages for reading and writing from almost any other format, like data stored in Excel files and many more data formats that are used today. There is an option for every data format. Since in all those cases the same principles apply as in the csv case, it is sufficient if we stick to the csv case.</p>
-<p>We have discussed a data set of per capita primary energy use in countries around the globe before to produce a histogram of these data for the year 2019. How did I get these data into R?</p>
-<p>First of all I could access these data because helpful people at Oxford University in the UK who maintain and run the website “Our world in data”, which we have encountered before store these data on their website. In the concrete case of the energy data, they can currently be found at https://ourworldindata.org/grapher/per-capita-energy-use where you can download the data from the page.</p>
+<p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this for the case of <em>comma separated text files</em> or so called <em>csv</em> files. R provides functions for reading and writing from almost any other format, like data stored in Excel files and many more data formats that are used today. Since in all those different formats are read by R following the same principles as in the csv case, it is sufficient if we discuss here the the case of csv files only.</p>
+<p>We have discussed a data set of per capita primary energy use in countries around the globe to produce a histogram of these data for the year 2019. How did I get these data into R?</p>
+<p>First of all I could access these data because helpful people at Oxford University in the UK who maintain and run the website “Our world in data”, which we have encountered before, store these data on their website. In the concrete case of the energy data, they can currently be found at https://ourworldindata.org/grapher/per-capita-energy-use where you can download the datafile from the webpage and save it locally somewhere on your computer.</p>
 <p>I have taken a screenshot here</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -588,14 +591,16 @@ Now you try
 <p></p><figcaption class="figure-caption">Our World in Data website energy</figcaption><p></p>
 </figure>
 </div>
-<p>In the lower right corner you see a box called Data and a download button. This butto allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code> and I have stored the file in a subfolder to the directory in which I am writing these lecture notes. If you decide to download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps you have a folder for this course and in this folder you have a subfolder where you store all the data sets we are using in the course.</p>
-<p>To read a plain text or csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>.</p>
-<p>In the simplest form you read the data and write them to an object you can work with in R. For this you need to type something like this: Let’s call the object in which we save our data <code>energy_consumption</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. This allows us to refer to the data for doing further computations.</p>
+<div class="page-columns page-full"><p>In the lower right corner you see a box called Data and a download button. This button allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code>. From the extension of the file <code>csv</code>, you can see that it is a comma separated text file. This is a plain text file following certain formatting rules. In particular individual data points are separated by a comma<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.</p></li></div></div>
+<p>I have stored the file in a sub-folder to the directory in which I am writing these lecture notes. If you decide to download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps you have a folder for this course and in this folder you have a sub-folder where you store all the data sets we are using in the course.</p>
+<p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
+<p>In the simplest form you read the data and store them in an object you can work with in R. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
+<p>Let’s call the object in which we save our data <code>energy_consumption</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. This allows us to refer to the data for doing further computations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>energy_consumption <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/energy_use_per_capita/per-capita-energy-use.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function needs as an argument the file name. If the file is in a sub-folder of the current directory you need to also specify the path. To specify the correct path to the file you need to know in which part of your directory tree you are currently working.</p>
-<p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data subfolder has a further subfolder called <code>energy_use_per_capita</code> in my case and thus I specify the path relative to this location.</p>
+<p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data sub-folder has a further sub-folder called <code>energy_use_per_capita</code> in my case and thus I specify the path relative to this location.</p>
 <p>To find out what is your current R working directory, R provides the function <code>getwd()</code>. If I type this in my case, I will get</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -606,7 +611,8 @@ Now you try
 <p>the path of my project folder for this lecture notes. So if I type the string <code>"data/energy_use_per_capita/per-capita-energy-use.csv"</code> this specifies the path relative to my working directory.</p>
 <p>If you read the file on your computer, you need to specify the path appropriately from where you are working in R at the moment to where you have stored the csv file.</p>
 <p>Now <code>read.csv()</code> has many additional arguments, which provide you with lots of flexibility. I encourage you to check it out and play with it using the help function and the examples given therein by typing <code>?read.csv</code> at the prompt.</p>
-<p>We have now read the primary energy consumption data and written it to the R-object <code>energy_consumption</code>. Lets inspect the object a bit to see what we’ve got. I use the function <code>head()</code> with the parameter value <code>n = 10</code>. This will show me the first 10 rows of the datafile.</p>
+<p>We have now read the primary energy consumption data and written it to the R-object <code>energy_consumption</code>. Lets inspect the object a bit to see what we’ve got.</p>
+<p>I use the function <code>head()</code> with the parameter value <code>n = 10</code>. This will show me the first 10 rows of the data-file. So the value I give to the argument <code>n</code> contros how many rows will be displayed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -626,17 +632,19 @@ Now you try
 </div>
 <p>This gives you an idea what the data look like. There are four variables, called <code>Entity</code>, <code>Code</code>, <code>Year</code> and <code>Primary.energy.consumption.per.capita..kWh.person.</code> The last variable name is very informative but also very long and unpractical. We will learn how to change variable names soon. Because of the long name, I had to use the function <code>options()</code> before <code>heads()</code> to tell R to use a sufficiently wide display. Don’t worry for this detail at the moment.</p>
 </section>
-<section id="sec-robjects" class="level3" data-number="3.2.2">
+<section id="sec-robjects" class="level3 page-columns page-full" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-robjects"><span class="header-section-number">3.2.2</span> R objects</h3>
-<p>The most basic type of R objects are <strong>atomic vectors</strong>. Most structures in R are built from atomic vectors. The energy consumption data-file we have just loaded is an example of such a more complex structure built from atomic vectors. We have already encountered a few of those in our previous lecture.</p>
+<p>The most basic type of R objects are <strong>atomic vectors</strong>. Objects in R are built from atomic vectors.</p>
+<p>The energy consumption data-file we have just loaded is an example of such a more complex structure built from atomic vectors. We have already encountered a few of those in our previous lecture.</p>
 <section id="sec-atomic" class="level4" data-number="3.2.2.1">
 <h4 data-number="3.2.2.1" class="anchored" data-anchor-id="sec-atomic"><span class="header-section-number">3.2.2.1</span> Atomic vectors</h4>
-<p>An atomic vector is just a simple vector of data. For example remember when we typed the infant mortality data for some European countries for 1860 we typed</p>
+<p>An atomic vector is just a simple vector of data. For example remember when we typed the infant mortality data for eight European countries for 1860 we typed</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mr_1860 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.237</span>, <span class="fl">0.139</span>, <span class="fl">0.136</span>, <span class="fl">0.150</span>, <span class="fl">0.260</span>, <span class="fl">0.102</span>, <span class="fl">0.174</span>, <span class="fl">0.124</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this case <code>mr_1860</code> is an atomic vector.</p>
-<p>R has a function, which allows you to check whether an object is an atomic vector or not. This function is called <code>is.vector()</code>. It takes the object name as an argument and returns <code>TRUE</code> if the object is an atomic vector and <code>FALSE</code> if it is not. For example:</p>
+<p>R has a function, which allows you to check whether an object is an atomic vector or not. This function is called <code>is.vector()</code>. It takes the object name as an argument and returns <code>TRUE</code> if the object is an atomic vector and <code>FALSE</code> if it is not.</p>
+<p>For example:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(mr_1860)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -651,8 +659,11 @@ Now you try
 <pre><code>[1] 8</code></pre>
 </div>
 </div>
-<p>which is 9 as it should be. An atomic vector could also have only one element, in which case <code>lenght()</code>would return 1.</p>
-<p>Now altogether R has implemented six basic types of atomic vectors:</p>
+<p>which is 8 as it should be. An atomic vector could also have only one element, in which case <code>lenght()</code>would return 1.</p>
+</section>
+<section id="sec-datatypes" class="level4 page-columns page-full" data-number="3.2.2.2">
+<h4 data-number="3.2.2.2" class="anchored" data-anchor-id="sec-datatypes"><span class="header-section-number">3.2.2.2</span> Data types</h4>
+<p>Now altogether R has implemented <em>six basic types of atomic vectors</em>:</p>
 <ol type="1">
 <li><p>double</p></li>
 <li><p>integers</p></li>
@@ -661,435 +672,278 @@ Now you try
 <li><p>complex</p></li>
 <li><p>raw</p></li>
 </ol>
-<p>We will not encounter complex and raw data-types in this course, so let us skip those and discuss only the first 4 types.</p>
-<!-- If yo u go back to our stock data and look at the first three lines -->
-<!-- ```{r apple-price-1-3} -->
-<!-- head(aapl_prices, n=3) -->
-<!-- ``` -->
-<!-- The variables open, high, close, volume and adjusted are all stored  -->
-<!-- as the first R data type: **Doubles**. A double vector stores regular numbers. It seems -->
-<!-- natural to store such quantities as opening and closing prices as doubles. Doubles can be -->
-<!-- positive or negative, they can have digits right of the decimal place. If not -->
-<!-- explicitly told otherwise, R saves any number you give it as a double. Note that some functions -->
-<!-- refer to doubles with the more intuitive term numeric. It has an equivalent meaning in R. -->
-<!-- For example the number of traded shares in our apple stock price file is saved as a double. But -->
-<!-- arguably the number of shares could also have been saved as an **Integer**. This is the second -->
-<!-- data type in R for number which can be written without decimals. If you explicitly specify -->
-<!-- number as integers, you need to append the letter `L` to the number. Say, for example,  -->
-<!-- we would want to specifie the points shown on our die explicitly as integers, then we would type -->
-<!-- ```{r die-int} -->
-<!-- die_int <- c(1L,2L,3L,4L,5L,6L) -->
-<!-- ``` -->
-<!-- Now R will save the die with integer values. Before, since we did not explicitly specify it,  -->
-<!-- the values were stored probably as doubles. You can check the type always  -->
-<!-- with the function `typeof()`: -->
-<!-- ```{r check-type} -->
-<!-- typeof(die_int) -->
-<!-- ``` -->
-<!-- Now why should we care for distinguishing integers from doubles? This has to do with the -->
-<!-- way a computer does computations. Sometimes a difference in precision can have surprising effects. -->
-<!-- In your computer 64bits of memory are allocated for each double in an R program. While this  -->
-<!-- allows for a very precise representation of numbers not all numbers can be exactly represented  -->
-<!-- with 64-bits. The famous candidates are $\pi$, which has an infinite sequence of digits and must -->
-<!-- therefore be rounded by the computer. Usually the rounding error introduced into your -->
-<!-- computations will go unnoticed but sometimes surprises can occur. Take for instance: -->
-<!-- ```{r sqrt-4-minus-2} -->
-<!-- sqrt(2)^2 - 2 -->
-<!-- ``` -->
-<!-- Why is that? The square root of 2 can not be expresses precisely because, as already  -->
-<!-- the old Greeks -->
-<!-- knew, it is not a rational number. And voila, you have a small rounding error. Such errors -->
-<!-- are called *floating point errors* in computer science lingo and computing with such numbers is -->
-<!-- called *floating-point-arithmetic*.  -->
-<!-- With integers floating point errors are avoided, but for many applications this is not an  -->
-<!-- option. Luckily for most cases floating-point arithmetic provides sufficient precision -->
-<!-- for most of the applications we encounter in practice. -->
-<!-- When you look at the first column of our stock price data you see the ticker symbol of the  -->
-<!-- apple stock `AAPL`. This is the symbol of the -->
-<!-- third data type: **Character**. A character vector stores strings of text, which have to  -->
-<!-- be put between quotation marks `""`. Strings are the individual elements of a character vector. -->
-<!-- We have encountered character vectors already in this lecture, where we represented the -->
-<!-- fair coin with the vector `c("H", "T")` with the string `"H"` for head and the string -->
-<!-- `"T"` for tail. -->
-<!-- Note that a string can be more than just letters. If you type, for instance the number `1` with -->
-<!-- quotation marks, like `"1"` R would interpret the value as a string not as a number. Sometimes -->
-<!-- one can get confused in R because both objects and characters appear as text in R code. Object -->
-<!-- names are without quotation marks strings always are between quotation marks. -->
-<!-- The next data type in the list are: **Logicals**. Logical vectors store `TRUEs` and `FALSES`. They -->
-<!-- are extremely useful for doing comparisons and - as we will see shortly - also for -->
-<!-- subsetting. -->
-<!-- For example, if you type: -->
-<!-- ```{r comp} -->
-<!-- 0 > 1 -->
-<!-- ``` -->
-<!-- R tells you that this statement is False.  -->
-<!-- Whenever you type `TRUE` of `FALSE` without quotation marks, R will treat the -->
-<!-- input as logical data. For instance, the following statement yields: -->
-<!-- ```{r logical-inputs} -->
-<!-- logic <- c(TRUE, FALSE, TRUE) -->
-<!-- logic -->
-<!-- ``` -->
-<!-- You can check the type: -->
-<!-- ```{r check-logic} -->
-<!-- typeof(logic) -->
-<!-- ``` -->
-<!-- One important R-fact which you need to know about atomic vectors is that atomic vectors -->
-<!-- can have **attributes**. Attributes won't affect the values of an object but can hold -->
-<!-- and store object metadata. Normally we do not look at these metadata, but many R functions -->
-<!-- check for attributes and then do special things with the object depending on these  -->
-<!-- attributes. -->
-<!-- Attributes can be checked with the function `attributes()` using an R object as an argument. -->
-<!-- ```{r attrib} -->
-<!-- attributes(die) -->
-<!-- ``` -->
-<!-- Since `die`has no attributes R returns `NULL`. This value is often returned by functions whose  -->
-<!-- values are undefined. -->
-<!-- The most common attributes for atomic vectors are **names**, **dimensions** and **classes**. -->
-<!-- Each of these attributes has its own helper function that you can use to give attributes to -->
-<!-- the object.  -->
-<!-- When you look up the value for the die you will get -->
-<!-- ```{r names-of-die} -->
-<!-- names(die) -->
-<!-- ``` -->
-<!-- We see that our die object has no names, but we could assign some. For example: -->
-<!-- ```{r assign-names-to-die} -->
-<!-- names(die) <- c("one", "two", "three", "four", "five", "six") -->
-<!-- ``` -->
-<!-- Now the die has a name attribute: -->
-<!-- ```{r show-die-name} -->
-<!-- attributes(die) -->
-<!-- ``` -->
-<!-- Note that the values are not affected nor will the names be affected when the  -->
-<!-- values are manipulated. For instance, if you type -->
-<!-- ```{r increase-values} -->
-<!-- die + 1 -->
-<!-- ``` -->
-<!-- the names stay what they were and all values are increased by 1. To remove the names -->
-<!-- you can type: -->
-<!-- ```{r remove-names} -->
-<!-- names(die) <- NULL -->
-<!-- ``` -->
-<!-- One very important attribute, we will encounter all the time is **dimension**, with the -->
-<!-- helper function `dim()`. For example we can look at our data object of stock prices -->
-<!-- to get: -->
-<!-- ```{r dim-in-action} -->
-<!-- dim(aapl_prices) -->
-<!-- ``` -->
-<!-- which returns two numbers, which mean that the object has 8044 rows and 8 columns.  -->
-<!-- But with dim we can also transform our die into a matrix, with say two rows and three columns: -->
-<!-- ```{r transform-die-to-matrix} -->
-<!-- dim(die) <- c(2,3) -->
-<!-- die -->
-<!-- ``` -->
-<!-- R will always use the first value in dim for the rows and the second for the columns. dim can -->
-<!-- be generalized to higher dimensional array structures. -->
-<!-- If you want to have more control on how R fills up the values, you can use a richer -->
-<!-- helper function, which gives you more control. For two dimensional data arrays this -->
-<!-- is provide by the function `matrix()`. Say you type -->
-<!-- ```{r construct-matrix} -->
-<!-- m <- matrix(die, nrow = 2) -->
-<!-- m -->
-<!-- ``` -->
-<!-- the matrix will be filled up by column. You can change that behavior by setting the `byrow`  -->
-<!-- argument to `TRUE`. -->
-<!-- ```{r construct-matrix-with-byrow-true} -->
-<!-- m <- matrix(die, nrow = 2, byrow = TRUE) -->
-<!-- m -->
-<!-- ``` -->
-<!-- Notice that changing the dimensions of an object, will not change its type. But it will -->
-<!-- change the object's **class** attribute: -->
-<!-- ```{r class-attribute-behavior} -->
-<!-- dim(die) <- c(2,3) -->
-<!-- typeof(die) -->
-<!-- class(die) -->
-<!-- ``` -->
-<!-- A class in R is a special case of an atomic vector.  -->
-<!-- With the attribute system R allows you to represent more data types. R uses, for example -->
-<!-- a special class to represent dates and times. The data variable in our stock data is - for -->
-<!-- example - represents as a type of this kind. -->
-<!-- To illustrate this we take the R-function `Sys.time()`. This function returns the -->
-<!-- current time on your computer. It looks like a character string -->
-<!-- when you display it but it is actually a double with class `POSIXct`, `POSIXt` (it has -->
-<!-- two classes): -->
-<!-- ```{r time-type} -->
-<!-- now <- Sys.time() -->
-<!-- now -->
-<!-- typeof(now) -->
-<!-- class(now) -->
-<!-- ``` -->
-<!-- `POSIXct` is a widely used framework for representing dates and times. But we will skip the -->
-<!-- details here. -->
-<!-- R stores categorical data, such as nationality, sex etc. by using **factors**. If -->
-<!-- you take for instance, sex, it can have only two values - male or female - and these -->
-<!-- values may have their idiosyncratic order, for example that females go always first. -->
-<!-- To make a factor in R you have to pass an atomic vector to the `factor()` function. -->
-<!-- This function works by recoding the values in the vector as integers and store the  -->
-<!-- results in an integer vector. R also adds a `level` attribute which contains the set -->
-<!-- of labels and their order and a class attribute that says the vector is -->
-<!-- a factor. Example: -->
-<!-- ```{r sex-factor} -->
-<!-- sex <- factor(c("m", "f", "f", "m")) -->
-<!-- typeof(sex) -->
-<!-- attributes(sex) -->
-<!-- ``` -->
-<!-- Factors can be confusing since they look like characters but behave like integers. -->
-<!-- Note that R will often try to convert character strings to factors when you load and create data. -->
-<!-- I recommend that you do not allow R to make factors unless you explicitly ask for it. This -->
-<!-- can usually be controlled by an argument to whatever the data reader function is. For instance -->
-<!-- you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`.  -->
-<!-- R has an internal **coercion** behavior for data types, which you should know -->
-<!-- about if you work with R. With this knowledge you can do many useful things. -->
-<!-- If a character string is present in an atomic vector, R will automatically convert every -->
-<!-- other component in this vector to a character string. If a vector contains only logicals  -->
-<!-- and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and -->
-<!-- every `FALSE` becomes a 0. -->
-<!-- R also uses the coercion rules, when we do math with logicals, like for example -->
-<!-- ```{r math-with-logicals} -->
-<!-- sum(c(TRUE, TRUE, FALSE, FALSE)) -->
-<!-- ``` -->
-<!-- What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the  -->
-<!-- vector `c(1, 1, 0, 0)` and sums the components. -->
-<!-- Going back to our data set on the apple stock price, we see that this dataset stores  -->
-<!-- values of different types, characters, dates and doubles. How does R achieve this? -->
-<!-- The answer is that this is achieved by a data structure called a **list**. List are -->
-<!-- like atomic vectors, because the group data into a one-dimensional set. However, lists do -->
-<!-- no group together individual values. List group together R objects, such as atomic -->
-<!-- vectors or even other lists.  -->
-<!-- For example, you can create a list, which contains a numeric vector of length 31 in its -->
-<!-- first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this: -->
-<!-- ```{r create-list} -->
-<!-- list_example <- list(100:130, "R", list(TRUE, FALSE)) -->
-<!-- list_example -->
-<!-- ``` -->
-<!-- The double bracketed indices tell you which element of the list is being displayed. The -->
-<!-- single bracketed indices tell you which sub-element of the list is being displayed. For example -->
-<!-- 100 is the first subelement of the first element in the list. "R" is the first subelement of the -->
-<!-- second list element. -->
-<!-- **Data Frames** are the two dimensional version of a list. They are by far the most -->
-<!-- useful storage structure for data analysis. Indeed, our dataset on the Apple stock -->
-<!-- price we have loaded before is an instance of a data frame. Data frames group vectors -->
+<p>We will not encounter complex and raw data-types in this course, so let us skip those and discuss only the first 4 types, double, integer, character and logical.</p>
+<p>If yo u go back to our energy consumption data and look at the first three lines</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Entity Code Year Primary.energy.consumption.per.capita..kWh.person.
+1 Afghanistan  AFG 1980                                           583.2944
+2 Afghanistan  AFG 1981                                           666.3782
+3 Afghanistan  AFG 1982                                           725.6599</code></pre>
+</div>
+</div>
+<p>you will see the different variables in the object <code>energy_consumption</code>. Note that I had to fudge a bit with the display because of the unwieldy and long name of the last variable. We are soon going to fix this.</p>
+<p>The variables <code>Entity</code> and <code>Code</code> are both of type <em>character</em>. A character vector stores strings of text, which have to be put between quotation marks <code>""</code>. Strings are the individual elements of a character vector.</p>
+<p>Note that a string can be more than just letters. If you type, for instance the number <code>1</code> with quotation marks, like <code>"1"</code> R would interpret the value as a string not as a number. Sometimes one can get confused in R because both objects and characters appear as text in R code. Object names are without quotation marks strings always are between quotation marks.</p>
+<div class="page-columns page-full"><p>Character is the natural data type for country names - here “Afghanistan” and the international abbreviation “AFG” also called an ISO-country code<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6" role="doc-endnote"><p><sup>6</sup>&nbsp;ISO is the short name for International Organization for Standardization. International Organization for Standardization came into existence in the year 1946 in London. This organization was formed after a delegation of 65 members from 25 countries, met to discuss the future of International Standardization. In 1947, ISO was officially formed with 67 technical committees consisting of a group of experts focusing on a specific subject. ISO founders decided to give it an acronym ISO, which was based on the Greek word ‘isos’, which means ‘equal’.</p></li></div></div>
+<p>The variable <code>Year</code> encodes the year of a particular record or observation. Its type is <code>integer</code>, since years are integer values like 1980 or 2022. If yo want to specify a number explicitly as integer in R you have to type it as, say, <code>1980L</code>, the number followed without space by a big <code>L</code>.</p>
+<p>The variable with the very long name <code>Primary.energy.consumption.per.capita..kWh.person.</code> is of type double. This is the data type in R for encoding numbers that are decimal fractions, like <code>12.451</code></p>
+<p>Now why should we care for distinguishing integers from doubles? This has to do with the way a computer does computations. Sometimes a difference in precision can have surprising effects.</p>
+<div class="page-columns page-full"><p>In your computer 64bits of memory<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are <span class="math inline">\(\pi\)</span>, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.</p><div class="no-row-height column-margin column-container"><li id="fn7" role="doc-endnote"><p><sup>7</sup>&nbsp;A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64</p></li></div></div>
+<p>Take for instance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.440892e-16</code></pre>
+</div>
+</div>
+<div class="page-columns page-full"><p>Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn8" role="doc-endnote"><p><sup>8</sup>&nbsp;Let me invite you to a short digression into the history of science and the history of ideas. The discovery that <span class="math inline">\(\sqrt{2}\)</span> can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, where the sides with length <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from a right angle must fulfill the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span> or expressed in a picture <img src="pictures/pythagoras.png" id="fig-pyth" class="img-fluid" alt="The Pythagorean theorem"> The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that <span class="math inline">\(\text{(lenght of diagonal)}^2 = 1 + 1 = 2\)</span>. Thus the length of the diagonal must be <span class="math inline">\(\sqrt{2}\)</span>. <img src="pictures/unit_square.png" id="fig-usq" class="img-fluid" alt="Length of diagonal in a unit square"> Hence if the diagonal and side are in the ratio <span class="math inline">\(m/n\)</span> (where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> can be assumed to have no common divisor), we have <span class="math display">\[\begin{equation}
+m^2/n^2 = 2
+\end{equation}\]</span> thus <span class="math display">\[\begin{equation}
+m^2 = 2 n^2
+\end{equation}\]</span> This equation implies that <span class="math inline">\(m^2\)</span> must be an even number. So <span class="math inline">\(m\)</span> must be even too, say <span class="math inline">\(m = 2 p\)</span>. But if <span class="math display">\[\begin{equation}
+m = 2 p
+\end{equation}\]</span> then we have <span class="math display">\[\begin{equation}
+2 n^2 = m^2 = 4 p^2
+\end{equation}\]</span> hence <span class="math display">\[\begin{equation}
+n^2 = 2 p^2
+\end{equation}\]</span> which similarly implies that <span class="math inline">\(n\)</span> is even. But we began the chain of deductions by the assumption that <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> have no common divisor. So if both <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> were even they would have a common divisor, namely 2. We have arrived at a contradiction. This means the length of the diagonal of the unit square can not be a rational number. Legend has it that th first Pythagorean to make the result public was drowned at sea. But even if the Pythagoreans could not accept that <span class="math inline">\(\sqrt{2}\)</span> was a number, no one could deny that it was the length of the diagonal of the unit square.</p></li></div></div>
+<p>And you have a small rounding error. Let me explain to those of you who are puzzled by the meaning of this output. R displays the result of its computation in scientific notation. <code>4.440892e-16</code> means <span class="math inline">\(4.44089 \times 10^{-16}\)</span>.</p>
+<p>For those of you who forgot how exponential notation works, let me remind you that we write <span class="math inline">\(10^{-1}\)</span> for <span class="math inline">\(1/10\)</span> and <span class="math inline">\(10^{-2}\)</span> means <span class="math inline">\(1/10^2\)</span> or <span class="math inline">\(1/100\)</span>. Thus <span class="math inline">\(10^{-16}\)</span> means <span class="math inline">\(1/10.000.000.000.000.000\)</span>, a very small number but still different from 0. This is the error introduced by rounding <span class="math inline">\(\sqrt{2}\)</span>. Such errors are called <em>floating point errors</em> in computer science lingo and computing with such numbers is called <em>floating-point-arithmetic</em>.</p>
+<p>With integers floating point errors are avoided, but for many applications this is not an option. Luckily for most cases floating-point arithmetic provides sufficient precision for most of the applications we encounter in practice.</p>
+<p>The last data type in the list, we want to discuss here, are: <strong>Logicals</strong>. Logical vectors store <code>TRUE</code> and <code>FALSE</code>; logical values. They are extremely useful for doing comparisons and - as we will see shortly - also for selecting values from a data set.</p>
+<p>How logical data types work can best be understood by an example. If you type, for instance:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p>R tells you that this statement is false, by printing the logical value <code>FALSE</code> as an output.</p>
+<p>Whenever you type <code>TRUE</code> of <code>FALSE</code> without quotation marks, R will treat the input as logical data. Note, as an aside, if you typed <code>"TRUE"</code>and <code>"FALSE"</code> in quotation marks, R would treat this input as a string co characters, a different data type. When communicating with a computer, you need to be very precise or the machine will not understand what you want to tell it do.</p>
+<p>For instance, the following statement yields:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>logic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>logic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-attributes" class="level4" data-number="3.2.2.3">
+<h4 data-number="3.2.2.3" class="anchored" data-anchor-id="sec-attributes"><span class="header-section-number">3.2.2.3</span> Attributes</h4>
+<p>One important R-fact which you need to know about atomic vectors is that atomic vectors can have <strong>attributes</strong>. Attributes won’t affect the values of an object but can hold and store object metadata.</p>
+<p>Normally we do not look at these metadata, but many R functions check for attributes and then do special things with the object depending on these attributes. Attributes can be checked with the function <code>attributes()</code> using an R object as an argument. This will show you all the attributes that are attached to an R object.</p>
+<p>The most common attributes for atomic vectors as well as R objects built from atomic vectors are <strong>names</strong>, <strong>dimensions</strong> and <strong>classes</strong>. Each of these attributes has its own helper function that you can use to also assign attributes to the object. For what we need now we discuss <code>names</code> and <code>dimensions</code> and discuss <code>classes</code>, which is a more advanced topic later.</p>
+<p>Let us look how this works with the <code>enegrgy_consumption</code>data and check whether they have a names attribute:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Entity"                                             "Code"                                              
+[3] "Year"                                               "Primary.energy.consumption.per.capita..kWh.person."</code></pre>
+</div>
+</div>
+<p>We can now see the variable names. We can use the function <code>names()</code>also as a helper function to assign other names to our variables. This is a tool that could help us to get rid of the very long and unwieldy name <code>"Primary.energy.consumption.per.capita..kWh.person."</code>. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Entity"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Cons"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>will overwrite the name attribute by this new vector of names. When you now look for the names attribute, you will see</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Entity" "Code"   "Year"   "Cons"  </code></pre>
+</div>
+</div>
+<p>One very important attribute, we will encounter all the time is <strong>dimension</strong>, with the helper function <code>dim()</code>. For example we can look at our data object <code>energy_consumption</code> again to get:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10215     4</code></pre>
+</div>
+</div>
+<p>which returns two numbers, which mean that the object has 10215 rows and 4 columns.</p>
+</section>
+<section id="factors" class="level4" data-number="3.2.2.4">
+<h4 data-number="3.2.2.4" class="anchored" data-anchor-id="factors"><span class="header-section-number">3.2.2.4</span> Factors</h4>
+<p>R stores categorical data, such as nationality, sex etc. by using aspeical data type called <strong>factors</strong>. If you take for instance, sex, it can have only two values - male or female - and these values may have their idiosyncratic order, for example that females go always first.</p>
+<p>To make a factor in R you have to pass an atomic vector to the <code>factor()</code> function. This function works by recoding the values in the vector as integers and store the results in an integer vector. R also adds a <code>level</code> attribute which contains the set of labels and their order and a class attribute that says the vector is a factor. Example:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>))</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$levels
+[1] "f" "m"
 
-<!-- together in a two dimensional table. As a consequence each variable can, i.e. each column of the -->
-<!-- data frame can contain a different data type. Within a column, however, we can have only -->
-<!-- one data type. -->
-<!-- if you look at the type of a data frame, you will see that it is indeed a list and the class is  -->
-<!-- a data frame. -->
-<!-- ```{r type-of-data-frame} -->
-<!-- typeof(aapl_prices) -->
-<!-- class(aapl_prices) -->
-<!-- ``` -->
-<!-- Now armed with our new knowledge of R and probability lets ask a question to -->
-<!-- our new data set. -->
-<!-- ### Example: Will the stock price of Apple move up or down? {#apple-up-down} -->
-<!-- Let us look at the first lines of our data once again: -->
-<!-- ```{r fist-lines-again} -->
-<!-- head(aapl_prices, n = 10) -->
-<!-- ``` -->
-<!-- Let us check what kind of object `aapl_prices` is. -->
-<!-- ```{r} -->
-<!-- typeof(aapl_prices) -->
-<!-- class(aapl_prices) -->
-<!-- ``` -->
-<!-- As expected the object is a list. The class shows that our -->
-<!-- object is a `data.frame`. Since the object is of class data-frame we can use the `dim` function -->
-<!-- to see the number of daily observations in our data set. -->
-<!-- ```{r dim-aapl} -->
-<!-- dim(aapl_prices) -->
-<!-- ``` -->
-<!-- We see that our data store price information about 8044 trading days.  -->
-<!-- We could now -->
-<!-- approach the question about the probability of the Apple stock price moving up -->
-<!-- tomorrow by taking a frequency-approach. This would require us first to count the -->
-<!-- number of up-movements in our data. How do we do that? -->
-<!-- Now we need to know know how we address and work with individual values in our data-set. Let's say -->
-<!-- we measure the movement of the close price. R has a notation system to extract a value -->
-<!-- or subset of values from an object: You write the name of the object first, followed  -->
-<!-- by a pair of hard brackets. Between the brackets goes a `,`separating row and column -->
-<!-- indices. The notation is thus like `aapl_prices[ , ]`. -->
-<!-- When it comes to writing the indices you have six different ways to do this, all of them -->
-<!-- very simple. You can use: -->
-<!-- 1. Positive integers -->
-<!-- 2. Negative integers -->
-<!-- 3. Zero -->
-<!-- 4. Blank spaces -->
-<!-- 5. Logical values -->
-<!-- 6. Names -->
-<!-- The simplest are **positive integers**. For example if you choose -->
-<!-- ```{r select-values-by-integers} -->
-<!-- aapl_prices[1,6] -->
-<!-- ``` -->
-<!-- you see that the first value in the sixth column is selected. You thus get the first closing -->
-<!-- price of the Apple stock recorded in our dataset. You can extract more than one value, for instance -->
-<!-- by typing: -->
-<!-- ```{r selection-from-apple} -->
-<!-- aapl_prices[1:10, 6] -->
-<!-- ``` -->
-<!-- which gives you the first 10 closing prices. -->
-<!-- Note that R's notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two -->
-<!-- things have to be kept in mind. In R indexing begins at 1. In some other programming languages -->
-<!-- indexing begins at 0. The indexing convention in R is just like in linear algebra. The second -->
-<!-- thing to note is that if you select two or more columns from a data frame, R will return a new data -->
-<!-- frame, like in -->
-<!-- ```{r select-block} -->
-<!-- aapl_prices[1:10,1:8] -->
-<!-- ``` -->
-<!-- However, if you select a single column, R will return a vector: -->
-<!-- ```{r select-single-column} -->
-<!-- aapl_prices[1:10, 6] -->
-<!-- ``` -->
-<!-- If you prefer to get returned a data frame in this case, you have to add the argument -->
-<!-- `drop = FALSE`, like: -->
-<!-- ```{r drop-false} -->
-<!-- aapl_prices[1:10, 6, drop = FALSE] -->
-<!-- ``` -->
-<!-- **Negative integers** work exactly opposite to positive integers. If you type: -->
-<!-- ```{r negative-integers} -->
-<!-- head(aapl_prices[-1,6], n = 10) -->
-<!-- ``` -->
-<!-- R will return the sixth column of the data frame *except* the first row. We just display the -->
-<!-- first 10 values. -->
-<!-- If you try to pair a negative and a positive integer in an index, R will return an error. -->
-<!-- However, you can use both negative and positive integers if you use them in *different* -->
-<!-- indices. -->
-<!-- **Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing -->
-<!-- from a dimension with index 0. The following syntax for instance creates an empty object -->
-<!-- ```{r empty-object} -->
-<!-- aapl_prices[0,0] -->
-<!-- ``` -->
-<!-- **Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for -->
-<!-- instance, if you type: -->
-<!-- ```{r select one column} -->
-<!-- sel <- aapl_prices[ , 6] -->
-<!-- ``` -->
-<!-- R will select the entire column of closing prices. You can check that the length of this -->
-<!-- vector is -->
-<!-- ```{r length-sel} -->
-<!-- length(sel) -->
-<!-- ``` -->
-<!-- as expected. -->
-<!-- **Logical Values** can also be used for subsetting. If you type for instance -->
-<!-- ```{r logical subsetting} -->
-<!-- aapl_prices[1, c(F,F,F,F,F,T,F,F)] -->
-<!-- ``` -->
-<!-- R will select the first closing price. Note that here we used the R convention that `TRUE`and `T` -->
-<!-- as well as `FALSE`and `F` have an equivalent meaning. -->
-<!-- Finally, you can ask for the elements, you want by name. On our case, you could select the first -->
-<!-- closing price by -->
-<!-- ```{r first-value-by-name} -->
-<!-- aapl_prices[1, "close"] -->
-<!-- ``` -->
-<!-- Finally, note that two types of object in R obey an optional second system of notation. You can -->
-<!-- extract values from data frames and lists with th `$`syntax. It works as follows: For example -->
-<!-- ```{r select-dollar-notation} -->
-<!-- mean(aapl_prices$close) -->
-<!-- ``` -->
-<!-- would select the column of closing prices and compute their mean. -->
-<!-- Now lets try to solve the counting problem for our data set. To see whether the price went up -->
-<!-- we need to subtract the closing price of the first data from the second, and see whether it is -->
-<!-- larger than zero. This we would have to do for every observation in the whole frame. -->
-<!-- Now let us bring our indexing rules into action. We create two new objects, one ranging from -->
-<!-- observation 2 of the close price until the end of the data frame, the other ranging from 1 to but the last -->
-<!-- element, then we subtract and write the result in a new object. Finally we inspect -->
-<!-- the first 10 elements of the result -->
-<!-- ```{r differencing} -->
-<!-- aux_1 <- aapl_prices[2:8044, "close"] -->
-<!-- aux_2 <- aapl_prices[1:8043 , "close"] -->
-<!-- diff_close <- (aux_1 - aux_2) -->
-<!-- diff_close[1:10] -->
-<!-- ``` -->
-<!-- Now this works but it is not very elegant. Actually R has a built in function, called -->
-<!-- `diff()` which will do the job for us. We can even append the result to the frame we have -->
-<!-- using the `$` notation as follows: Let us call the new variable `diff`. But now we have to -->
-<!-- be careful. Since we take first differences we will looe one observation. This will create a  -->
-<!-- mismatch in the dimenion of the dataframe. Since the data frame starts at some date (in our case 1990-01-02) we have no difference for the first observation. R's notation for a missing -->
-<!-- observation is `NA`. So we neet to put an `NA`ahead of our diff column: -->
-<!-- ```{r apply-diff-function} -->
-<!-- aapl_prices$diff <- c(NA, diff(aapl_prices$close, lag = 1)) -->
-<!-- head(aapl_prices, n= 5) -->
-<!-- ``` -->
-<!-- Let's check whether we get the same thing and compare with the values in `diff_close`. They  -->
-<!-- do indeed match. -->
-<!-- Now we can use a really cool feature to count the up moves, which shows you the power of R -->
-<!-- in a very nice example. We can test conditions by logical operators. In our case we want -->
-<!-- to know whether the diff between two consecutive closing prices is positive. We add another -->
-<!-- column to the dataframe which will then contain `TRUE` or `FALSE`values, when the condition -->
-<!-- holds. To see what happens, let us do this and look at the first 5 rows of our new data frame: -->
-<!-- ```{r logical-test} -->
-<!-- aapl_prices$diff_pos <- aapl_prices$diff > 0 -->
-<!-- head(aapl_prices, n = 10) -->
-<!-- ``` -->
-<!-- Now according to the frequency notion of probability we could attach the probability of an -->
-<!-- inter day up move of the Apple stock price by computing the share of up moves (diff positive) -->
-<!-- among all our change observations. -->
-<!-- Now we can use the R coercion rules. If we apply the mean function to our `diff_pos` column -->
-<!-- we get the share of up moves, since R will coerce the `TRUE` values to 1 and the `FALSE` values -->
-<!-- to 0. This is a new opportunity to practice our newly acquired subsetting rules: -->
-<!-- ```{r share-up} -->
-<!-- mean(aapl_prices$diff_pos, na.rm = T) -->
-<!-- ``` -->
-<!-- We see that the result is that the stock price has moved up about half of the days and not up  -->
-<!-- at the other days. -->
-<!-- Let me explain what is going on in the syntax of our R statement. We selected the column -->
-<!-- from our data frame that contained the differences. Then we apply the `mean()` function to this -->
-<!-- column. But since the column contains one value which is `NA` the mean  -->
-<!-- would return `NA` if we not -->
-<!-- correct for this fact. This is what the argument `na.rm = T ` does. It tells R to first remove -->
-<!-- `NA` form the observations and then compute the mean. -->
-<!-- Now from a frequency point of view $P(U) = 0.51$ and $P(D) = 0.49$ accordingly. -->
-<!-- Now **assume in addition** that the direction of a price move of the Apple stock  -->
-<!-- on the current trading day is -->
-<!-- **independent** of the direction of the Apple stock price move on the previous trading day for -->
-<!-- all days. This means -->
-<!-- that the probability of $U$-movements and of $D$-movements is unaffected by the number of -->
-<!-- previous $U$ and $D$ movements. This is - of course - an assumption. You may think about -->
-<!-- whether this assumption is reasonable.  -->
-<!-- Postponing this important discussion, consider now a week from Monday to Friday and ask: -->
-<!-- "What is the probability that the price of Apple will increase on each of the consecutive days?" -->
-<!-- There are five trading days, so we need to compute -->
-<!-- $P(U \cap U \cap U \cap U \cap U \cap U)$. This is by our assumption of independence equal -->
-<!-- to $P(U) \cdot P(U) \cdot P(U) \cdot P(U) \cdot P(U)$. By our probability estimate from -->
-<!-- relative frequency this amounts to $0.51^5$, which amounts to $0.035$. -->
-<!-- "What is the probability that the stock price will decrease either on Monday,  -->
-<!-- Tuesday, Wednesday, Thursday or Friday and will increase on the other four days?" -->
-<!-- The probability that the $D$ movement happens, say on a Monday, is -->
-<!-- $P(D \cap U \cap U \cap U \cap U)$ or $0.49*0.51^4$ which is $0.033$. -->
-<!-- We have in total five mutually exclusive scenarios: -->
-<!-- $P(D \cap U \cap U \cap U \cap U)$, $P(U \cap D \cap U \cap U \cap U)$, -->
-<!-- $P(U \cap U \cap D \cap U \cap U)$, $P(U \cap U \cap U \cap D \cap U)$, -->
-<!-- $P(U \cap U \cap U \cap U \cap D)$. Thus we have $0.033 + 0.033 + 0.033 + 0.033 + 0.033$ -->
-<!-- as the final probability of this event, which is $0.132$. -->
-<!-- Is this analysis any good? How could we possibly judge this? Interestingly the relative -->
-<!-- frequencies of up and down moves look similar to a random experiment of a few thousand tosses -->
-<!-- of a fair coin. But can we learn anything from this? Are the up and down moves independent? -->
-<!-- Independence - of course - does not follow from the result we just got. -->
-<!-- The idea that stock prices may fluctuate randomly was first discussed systematically by -->
-<!-- Louis Bachelier (1870 - 1946), a French mathematician who studied stock price movements -->
-<!-- mathematically. In 1965 the economist @Samuelson1965 published an article with the title -->
-<!-- "Proof that stock prices fluctuate randomly".  -->
-<!-- He argues in this paper that randomness -->
-<!-- comes about through the active participation of traders seeking to maximize their wealth.  -->
-<!-- A huge army of investors would aggressively use the smallest informational advantage  -->
-<!-- and in doing so, they incorporate the information into market prices, which  -->
-<!-- quickly eliminates this profit -->
-<!-- opportunity.  -->
-<!-- This lead to a cornerstone of modern Finance theory called the *random walk hypothesis* of  -->
-<!-- stock price fluctuations. -->
-<!-- If this theory was true, it would give an argument, why we might look at  -->
-<!-- the up and down movements -->
-<!-- in the stock price of apple as if it was the outcome of tossing a fair coin. In this case -->
-<!-- the probability of an up or a down movement should be 1/2 and with the number of trials -->
-<!-- approaching infinity the frequency of ups and downs should approach this probability. -->
-<!-- The literature on stock price fluctuations which came later, however, presented evidence that -->
+$class
+[1] "factor"</code></pre>
+</div>
+</div>
+<p>Factors can be confusing since they look like characters but behave like integers.</p>
+<p>Note that R will often try to convert character strings to factors when you load and create data. I recommend that you do not allow R to make factors unless you explicitly ask for it. This can usually be controlled by an argument to whatever the data reader function is. For instance you can give the <code>read.csv()</code> function the argument <code>stringsAsFactors = FALSE</code>.</p>
+<p>R has an internal <strong>coercion</strong> behavior for data types, which you should know about if you work with R. With this knowledge you can do many useful things.</p>
+<p>If a character string is present in an atomic vector, R will automatically convert every other component in this vector to a character string. If a vector contains only logicals and numbers, R will convert the logicals to numbers. In this case every <code>TRUE</code> becomes a 1 and every <code>FALSE</code> becomes a 0.</p>
+<p>R also uses the coercion rules, when we do math with logicals, like for example</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>What happens here is that R coerces the vector <code>c(TRUE, TRUE, FALSE, FALSE)</code> to the vector <code>c(1, 1, 0, 0)</code> and sums the components.</p>
+</section>
+</section>
+<section id="sec-data_frame" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="sec-data_frame"><span class="header-section-number">3.2.3</span> Data frames and R lists</h3>
+<p>Going back to our data set on the enegry consumption data, we see that this data set stores values of different types, characters, integers and doubles. How does R achieve this?</p>
+<p>The answer is that this is achieved by a data structure called a <strong>list</strong>. List are like atomic vectors, because the group data into a one-dimensional set. However, lists do not group together individual values. List group together R objects, such as atomic vectors or even other lists.</p>
+<p>For example, you can create a list, which contains a numeric vector of length 31 in its first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the <code>list()</code>function of R, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">130</span>, <span class="st">"R"</span>, <span class="fu">list</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>list_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ [1] 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128
+[30] 129 130
 
-<!-- stock prices are predictable to a certain degree and do not fluctuate randomly. A good  -->
-<!-- reference summarizing this evidence is @LoMacKinlay1999 In this -->
-<!-- case our approach would perhaps produce a misleading answer. -->
-<!-- We cannot give a clear cut answer here. The point of this brief discussion is that you  -->
-<!-- just cannot apply a theoretical machinery mechanically without giving it further thought and -->
-<!-- without maintaining a healthy amount of skepticism. It is fascinating that there are  -->
-<!-- situations where abstract theories, like the theory of probability, show a robust relation -->
-<!-- to real world phenomena. But the nature, the precise meaning and the robustness of this -->
-<!-- relation has to be investigated for each single case. -->
+[[2]]
+[1] "R"
+
+[[3]]
+[[3]][[1]]
+[1] TRUE
+
+[[3]][[2]]
+[1] FALSE</code></pre>
+</div>
+</div>
+<p>The double bracketed indices tell you which element of the list is being displayed. The single bracketed indices tell you which sub-element of the list is being displayed. For example 100 is the first sub element of the first element in the list. “R” is the first sub element of the second list element.</p>
+<p>There is lots to say about lists. But this is an advanced topics. We mentioned it here to introduce one of the most important data structres for our course the R dataframe.</p>
+</section>
+<section id="data-frames" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.2.4</span> Data Frames</h3>
+<p><strong>Data Frames</strong> are the two dimensional version of a list. They are by far the most useful storage structure for data analysis. Indeed, our dataset on energy consumption data we have loaded before is an instance of a data frame. Data frames group vectors together in a two dimensional table. As a consequence each variable can have a different type, i.e.&nbsp;each column of the data frame can contain a different data type. Within a column, however, we can have only one data type. The energy consumption data are a typical example of a dataframe.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Entity Code Year      Cons
+1  Afghanistan  AFG 1980  583.2944
+2  Afghanistan  AFG 1981  666.3782
+3  Afghanistan  AFG 1982  725.6599
+4  Afghanistan  AFG 1983  912.1396
+5  Afghanistan  AFG 1984  941.3926
+6  Afghanistan  AFG 1985  939.6124
+7  Afghanistan  AFG 1986  976.6691
+8  Afghanistan  AFG 1987 1592.7023
+9  Afghanistan  AFG 1988 2805.6096
+10 Afghanistan  AFG 1989 2700.4739</code></pre>
+</div>
+</div>
+<p>Every column in this tabular array of data can be considered as a vector.</p>
+</section>
+<section id="selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use."><span class="header-section-number">3.2.5</span> Selecting data from a dataframe: Asking some questions about per capita primary energy use.</h3>
+<p>Asking questions about a dataframe and in particular about our energy data requires that we are able to adress particular values in the dataframe. We now learn the most important techniques to do so.</p>
+<p>R has a notation system to address individual values. You write the object name first, followed by a pair of had brackets <code>[]</code>. Between the brackets goes a <code>,</code> separating row and column indices. The notation is thus like <code>energy_consumption[,]</code>.</p>
+<p>When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:</p>
+<ol type="1">
+<li>Positive integers</li>
+<li>Negative integers</li>
+<li>Zero</li>
+<li>Blank spaces</li>
+<li>Logical values</li>
+<li>Names</li>
+</ol>
+<p>The simplest are positive integers. When you want to extract the energy consumption in kwh per person in one year - the value of the variable Cons - you would adress for instance the 3rd value in the Cons column, which is in our case the 4th column as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">3</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 725.6599</code></pre>
+</div>
+</div>
+<p>You can - of course extract more than one value. If you write for instance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 583.2944 666.3782 725.6599 912.1396 941.3926</code></pre>
+</div>
+</div>
+<p>you will get the first 5 values of the consumption numbers in the dataframe. The colon operator <code>:</code> used here is a very useful R operator. It creates sequences of whole numbers. Thus if you create a vector with the name, say <code>n10</code> containing the sequence of the first 10 whole numbers, you would write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>n10 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now clearly the indexing rules work in the same way as with dataframes, only that now you have only 1 dimension. Say you want to extract the first three numbers from <code>n10</code> you would write</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n10[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3</code></pre>
+</div>
+</div>
+<p>Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Year     Cons
+1 1980 583.2944
+2 1981 666.3782
+3 1982 725.6599
+4 1983 912.1396
+5 1984 941.3926</code></pre>
+</div>
+</div>
+<p>R will always return a dataframe.</p>
+<p>However, if you select a single column, R will return a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 583.2944 666.3782 725.6599 912.1396 941.3926</code></pre>
+</div>
+</div>
+<p>if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Cons
+1 583.2944
+2 666.3782
+3 725.6599
+4 912.1396
+5 941.3926</code></pre>
+</div>
+</div>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
@@ -1115,7 +969,6 @@ Now you try
 <!-- computer. -->
 
 
-</section>
 </section>
 </section>
 

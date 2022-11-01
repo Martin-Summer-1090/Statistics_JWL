@@ -1,0 +1,42 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+
+\definecolor{LightYellow}{rgb}{1.,1.,0.88}
+\definecolor{Peach}      {rgb}{1,.859,.780}
+\definecolor{MyGray}     {gray}{.93}
+
+\begin{document}
+\begin{pspicture}(14,14)
+
+%\psgrid
+
+\psline(4,4)(4,7)
+\psline(4,4)(8,4)
+\psline(4,7)(8,4)
+
+\psframe[fillstyle=solid,fillcolor=Peach](4,4)(1,7)
+
+\psframe[fillstyle=solid,fillcolor=LightYellow](4,4)(8,0)
+
+
+\psline(4,7)(7,11)
+\psline(8,4)(11,8)
+\psline(7,11)(11,8)
+
+\rput(3.6,5.4){$a$}
+\rput(6,3.6){$b$}
+\rput(6,6){$c$}
+
+\psarc(4,4){0.5}{0}{90}
+\psdot[dotsize = 0.05](4.2,4.2)
+
+
+
+
+
+\end{pspicture}
+
+
+\end{document}
