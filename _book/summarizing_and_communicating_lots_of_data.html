@@ -239,7 +239,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"> <span class="header-section-number">3.2.2</span> R objects</a></li>
   <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"> <span class="header-section-number">3.2.3</span> Data frames and R lists</a></li>
   <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"> <span class="header-section-number">3.2.4</span> Data Frames</a></li>
-  <li><a href="#selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." id="toc-selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." class="nav-link" data-scroll-target="#selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use."> <span class="header-section-number">3.2.5</span> Selecting data from a dataframe: Asking some questions about per capita primary energy use.</a></li>
+  <li><a href="#selecting-data-from-r-onjects-a-toolbox." id="toc-selecting-data-from-r-onjects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-onjects-a-toolbox."> <span class="header-section-number">3.2.5</span> Selecting data from R onjects: A toolbox.</a></li>
+  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."> <span class="header-section-number">3.2.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
+  </ul></li>
+  <li><a href="#the-average-and-the-standard-deviation" id="toc-the-average-and-the-standard-deviation" class="nav-link" data-scroll-target="#the-average-and-the-standard-deviation"> <span class="header-section-number">3.3</span> The average and the standard deviation</a>
+  <ul class="collapse">
+  <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"> <span class="header-section-number">3.3.1</span> The average</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -871,8 +876,8 @@ $class
 </div>
 <p>Every column in this tabular array of data can be considered as a vector.</p>
 </section>
-<section id="selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use." class="level3" data-number="3.2.5">
-<h3 data-number="3.2.5" class="anchored" data-anchor-id="selecting-data-from-a-dataframe-asking-some-questions-about-per-capita-primary-energy-use."><span class="header-section-number">3.2.5</span> Selecting data from a dataframe: Asking some questions about per capita primary energy use.</h3>
+<section id="selecting-data-from-r-onjects-a-toolbox." class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="selecting-data-from-r-onjects-a-toolbox."><span class="header-section-number">3.2.5</span> Selecting data from R onjects: A toolbox.</h3>
 <p>Asking questions about a dataframe and in particular about our energy data requires that we are able to adress particular values in the dataframe. We now learn the most important techniques to do so.</p>
 <p>R has a notation system to address individual values. You write the object name first, followed by a pair of had brackets <code>[]</code>. Between the brackets goes a <code>,</code> separating row and column indices. The notation is thus like <code>energy_consumption[,]</code>.</p>
 <p>When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:</p>
@@ -944,6 +949,204 @@ $class
 5 941.3926</code></pre>
 </div>
 </div>
+<p><strong>Negative integers</strong> work exactly opposite to positive integers. If you type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption[<span class="sc">-</span><span class="dv">1</span>,<span class="dv">4</span>], <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  666.3782  725.6599  912.1396  941.3926  939.6124  976.6691 1592.7023 2805.6096 2700.4739 2557.5864</code></pre>
+</div>
+</div>
+<p>R will return the fourth column of the data frame <em>except</em> the first row. We just display the first 10 values using the <code>head()</code> function.</p>
+<p>If you try to pair a negative and a positive integer in an index, R will return an error. However, you can use both negative and positive integers if you use them in <em>different</em> indices.</p>
+<p><strong>Zero</strong> is neither positive nor negative, If you use 0 as an index, R will return nothing from a dimension with index 0. The following syntax for instance creates an empty object</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">0</span>,<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data frame with 0 columns and 0 rows</code></pre>
+</div>
+</div>
+<p><strong>Blank spaces</strong> are used if you want to ask R to select <em>every</em> value in a dimension. So for instance, if you type:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>sel <span class="ot">&lt;-</span> energy_consumption[ , <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>R will select the entire column of energy consumption. You can check that the length of this vector is</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10215</code></pre>
+</div>
+</div>
+<p>as expected.</p>
+<p><strong>Logical Values</strong> can also be used for subsetting. If you type for instance</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span>, <span class="fu">c</span>(F,F,F,T)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 583.2944</code></pre>
+</div>
+</div>
+<p>R will select the energy consumption value of the first observation. Note that here we used the R convention that <code>TRUE</code>and <code>T</code> as well as <code>FALSE</code>and <code>F</code> have an equivalent meaning.</p>
+<p>Finally, you can ask for the elements, you want by name. On our case, you could select the first energy_consumption value by the syntax</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span>, <span class="st">"Cons"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 583.2944</code></pre>
+</div>
+</div>
+<p>Finally, note that two types of object in R obey an optional second system of notation. You can extract values from data frames and lists with th <code>$</code>syntax.</p>
+<p>It works as follows: For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> energy_consumption<span class="sc">$</span>Cons</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 583.2944 666.3782 725.6599 912.1396</code></pre>
+</div>
+</div>
+<p>would select the column of energy consumption numbers in our dataframe, save them in an object names <code>test</code>and then subsequently extract the first four values from the object.</p>
+</section>
+<section id="application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="header-section-number">3.2.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</h3>
+<p>This was a lot of abstract and dry instruction about some data extraction tools. It will require lost of practice and concrete examples before you get some natural acquaintance with these techniques which belong to the everday routines of data analysis.</p>
+<p>To see the concept in action, let me take you step by step through an example by showing you how you can produce a histogram, like we discussed in the first section of this chapter starting from the raw data.</p>
+<p>We have already read the data from the csv file and stored it in an object we have called <code>energy_consumption</code>. We would like to plot a histogram of the annual per capita energy consumption in different countries around the globe for the year 2019.</p>
+<p>Let us look again at the first 10 observations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Entity Code Year      Cons
+1  Afghanistan  AFG 1980  583.2944
+2  Afghanistan  AFG 1981  666.3782
+3  Afghanistan  AFG 1982  725.6599
+4  Afghanistan  AFG 1983  912.1396
+5  Afghanistan  AFG 1984  941.3926
+6  Afghanistan  AFG 1985  939.6124
+7  Afghanistan  AFG 1986  976.6691
+8  Afghanistan  AFG 1987 1592.7023
+9  Afghanistan  AFG 1988 2805.6096
+10 Afghanistan  AFG 1989 2700.4739</code></pre>
+</div>
+</div>
+<p>How would we extract the observations that refer to the year 2019 only? Here is the first practical use case of logical data types, which will immediately show you their power. Let me suggest the following code and then explain step by step what it does.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> energy_consumption[energy_consumption<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2019</span>, ]</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Entity Code Year       Cons
+40          Afghanistan  AFG 2019   945.6454
+95               Africa      2019  4245.7188
+137             Albania  ALB 2019 11266.2578
+192             Algeria  DZA 2019 16140.1963
+234      American Samoa  ASM 2019 26023.6699
+274              Angola  AGO 2019  3429.5928
+314 Antigua and Barbuda  ATG 2019 31384.8633
+369           Argentina  ARG 2019 20785.9141
+399             Armenia  ARM 2019 15538.2012
+433               Aruba  ABW 2019 51178.5859</code></pre>
+</div>
+</div>
+<p>Let me explain what is going on here: We have used the indexing rules and logical subsetting. In the first index we have written a logical condition, namely <code>energy_consumption$Year == 2019</code>. This means that R selects all the rows for which the year variable of energy_consumption is equal to 2019. The logical sign for identical in R is <code>==</code>. So what R does then is checking for each value of the Year variable whether it is identical to 2019 - in which case the logical comparison results in <code>TRUE</code> or not, in which case the result would be <code>FALSE</code>. Then by logical subsetting all rows for which the comparison vector is <code>TRUE</code> will be selected. Note that we had to tell R that it needs to compare the Year variable. Year is selected in a data frame by <code>energy_consumption$Year</code>. We have then stored all the data in a vector I have called dat and then looked at the first 10 rows. You see that only the observations where the Year is 2019 have been kept, as we had intended.</p>
+<p>Now we see from the output that the <code>Entity</code> variable apparently not only contains individual countries but also whole regions or continents, like <code>Africa</code> in our example. It seems that the regions have no ISO code but instead an empty character.</p>
+<p>Let’s try to apply the logical subsetting logic and our knowledge of character types to filter out Entities which have no value in the <code>Code</code>variable. One way to achieve this would be, for example the code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>dat_countries <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>Code<span class="sc">!=</span><span class="st">""</span>, ]</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_countries, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 Entity Code Year       Cons
+40          Afghanistan  AFG 2019   945.6454
+137             Albania  ALB 2019 11266.2578
+192             Algeria  DZA 2019 16140.1963
+234      American Samoa  ASM 2019 26023.6699
+274              Angola  AGO 2019  3429.5928
+314 Antigua and Barbuda  ATG 2019 31384.8633
+369           Argentina  ARG 2019 20785.9141
+399             Armenia  ARM 2019 15538.2012
+433               Aruba  ABW 2019 51178.5859
+545           Australia  AUS 2019 66614.8828</code></pre>
+</div>
+</div>
+<p>Now Africa is out. Of course this is no proof that I have now only entities with ISO-codes left but it is an indication. We can check this. But let me first expalin what is going on here.</p>
+<p>I now work with the object <code>dat</code>, the object we have created before by filtering for the observations in which the <code>Year</code>variable is equal to 2019. Now we tell R compare the entries in the <code>Code</code>variable, i.e. in <code>dat$code</code> with the condition that they are not equal to an empty string. The symbol for <code>not identical</code> in R is <code>!=</code>. We know that the variable <code>Code</code> is of type character hence all codes are strings within quotation marks. An empty string is thus written as <code>" "</code>.</p>
+<p>How could we check - by the way that the <code>Code</code> variable does not contain any empty string anymore? Here is how:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dat_countries<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Here I have used two rules we have dicussed before, logical data types and coercion. First we ask R to check whether any Code variable in <code>dat_counties</code>still has any empty string. This will create a vector of logicals like (showing only the first five entries)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_countries<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">""</span>, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>Now I use coercion rules by summing over this vector. The function <code>sum()</code> in R is a function for summation. For example, if I have the vector <code>c(1,2,3,4,5,6,7,8,9,10)</code> and type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 55</code></pre>
+</div>
+</div>
+<p>R will add up the numbers.</p>
+<p>Now if I have a vector of logicals and apply a numerical function to it, R will by its coercion rules, force <code>TRUE</code> into 1 and <code>FALSE</code> into 0. The result that <code>sum(dat_countries$Code == "")</code> equals 0 means that the vector for our logical test contained <code>FALSE</code> only. So indeed there is no empty <code>Code</code> variable anymore.</p>
+<p>Now we are ready to do a histogram of the per capita primary annual energy consumption by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat_countries<span class="sc">$</span>Cons, </span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>,</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>I have here used the <code>xlab</code>and <code>main</code>arguments with a character value to have a nicer description of the histogram. Otherwise the x axis would have been labeled <code>dat_countries$Cons</code> and the title would have been <code>Histogram of dat_countries$Cons</code>. Note that we have here a histogram in the absolute frequency scale.</p>
+</section>
+</section>
+<section id="the-average-and-the-standard-deviation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-average-and-the-standard-deviation"><span class="header-section-number">3.3</span> The average and the standard deviation</h2>
+<p>With a histogram we can summarize a large amount of data and get some insights about the variation in the data. Often we can summarize data much more drastically by just one number describing the center of the histogram and the spread around this center. When I write center an spread here, these are just ordinary words with no special technical meaning.</p>
+<p>Let me show for a start two histograms, both have the same center, but the second one is more spread out, there are more observations farther away from the center.</p>
+<div id="fig-example-hist" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ex-hist-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/example_histogram1.png" class="img-fluid figure-img" data-ref-parent="fig-example-hist"></p>
+<p></p><figcaption class="figure-caption">(a) Histogram 1</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ex-hist-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/example_histogram2.png" class="img-fluid figure-img" data-ref-parent="fig-example-hist"></p>
+<p></p><figcaption class="figure-caption">(b) Histogram 2</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure 3.3: Histogram 1 and Histogram 2 have the same center but Histogram 2 is more spread out</figcaption><p></p>
+</figure>
+</div>
+<p>These distributions can be summarized by the center and the spread. But what about a situation like this?</p>
+<div id="fig-ex-hist-bm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/bimodal.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure 3.4: A bimodal distribution</figcaption><p></p>
+</figure>
+</div>
+<p>In some cases such distribution can occur naturally. Think, for example, about the distribution of the elevation data of surface area of the earth. Most of the surface area of the earth is taken by the sea floor at about three miles below the sea level or the continental planes around sea level. If we would report only the center an the spread of this histogram, plotted in the picture as the red and blue vertical lines,<br>
+we would miss these peaks.</p>
+<section id="the-average" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="the-average"><span class="header-section-number">3.3.1</span> The average</h3>
+<p>When we do statistics we need precise definitions and we will study and learn these definitions in this section. The <strong>average</strong> is often used to find the center. Another measure to find the center is the <strong>median</strong>. The <strong>standard</strong> deviation measures spread around the average. The <strong>interquartile range</strong> is another measure of spreads.</p>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
