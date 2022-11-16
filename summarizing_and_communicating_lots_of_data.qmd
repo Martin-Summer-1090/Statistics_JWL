@@ -1103,12 +1103,25 @@ In some cases such distribution can occur naturally.
 Think, for example, about the distribution of the elevation data of surface area of the earth.
 Most of the surface area of the earth is taken by the sea floor at about three miles below the sea level 
 or the continental planes around sea level. If we would report only the center an the spread
-of this histogram, plotted in the picture as the red and blue vertical lines,  
-we would miss these peaks.
+of this histogram, plotted in the picture as the red and blue vertical lines, we would miss these peaks.
 
 ### The average
 
+Human growth depends on good nutrition and the availability of medical services to 
+effectively treat illness. Thus human height in a population has for a long time been
+a subject of study. The average human height in a population varies with the general 
+living standards. In statistical terminology this is expressed by saying that human height
+and growth are positively correlated. This fact makes data on human height especially interesting
+for historians who study the history of living conditions. Because humans tend to get taller when
+they have good living conditions, human height can reveal some information on living conditions, height
+data can be an indirect measure of living conditions. This is especially interesting for
+periods when very little or no data were collected and recorded.
 
+As we see from the class activity in the introductory unit where we collected data in your class
+on height and hand span, we learned that usually heights different quite a in a group. This is
+also true in a population. The many different height data, which are usually collected in 
+survey studies on health are usually summarized by studying average height. Height data
+are thus also interesting for us as one specific context to study height data.
 
 
 <!-- ## Contents  -->
