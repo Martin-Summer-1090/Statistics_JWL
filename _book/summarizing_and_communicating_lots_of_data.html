@@ -1108,7 +1108,7 @@ $class
 <p>I have here used the <code>xlab</code>and <code>main</code>arguments with a character value to have a nicer description of the histogram. Otherwise the x axis would have been labeled <code>dat_countries$Cons</code> and the title would have been <code>Histogram of dat_countries$Cons</code>. Note that we have here a histogram in the absolute frequency scale.</p>
 </section>
 </section>
-<section id="the-average-and-the-standard-deviation" class="level2" data-number="3.3">
+<section id="the-average-and-the-standard-deviation" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="the-average-and-the-standard-deviation"><span class="header-section-number">3.3</span> The average and the standard deviation</h2>
 <p>With a histogram we can summarize a large amount of data and get some insights about the variation in the data. Often we can summarize data much more drastically by just one number describing the center of the histogram and the spread around this center. When I write center an spread here, these are just ordinary words with no special technical meaning.</p>
 <p>When we do statistics we need precise definitions and we will study and learn these definitions in this section. The <strong>average</strong> is often used to find the center. Another measure to find the center is the <strong>median</strong>. The <strong>standard</strong> deviation measures spread around the average. The <strong>interquartile range</strong> is another measure of spreads.</p>
@@ -1144,10 +1144,199 @@ $class
 </figure>
 </div>
 <p>In some cases such distribution can occur naturally. Think, for example, about the distribution of the elevation data of surface area of the earth. Most of the surface area of the earth is taken by the sea floor at about three miles below the sea level or the continental planes around sea level. If we would report only the center an the spread of this histogram, plotted in the picture as the red and blue vertical lines, we would miss these peaks.</p>
-<section id="the-average" class="level3" data-number="3.3.1">
+<section id="the-average" class="level3 page-columns page-full" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="the-average"><span class="header-section-number">3.3.1</span> The average</h3>
 <p>Human growth depends on good nutrition and the availability of medical services to effectively treat illness. Thus human height in a population has for a long time been a subject of study. The average human height in a population varies with the general living standards. In statistical terminology this is expressed by saying that human height and growth are positively correlated. This fact makes data on human height especially interesting for historians who study the history of living conditions. Because humans tend to get taller when they have good living conditions, human height can reveal some information on living conditions, height data can be an indirect measure of living conditions. This is especially interesting for periods when very little or no data were collected and recorded.</p>
-<p>As we see from the class activity in the introductory unit where we collected data in your class on height and hand span, we learned that usually heights different quite a in a group. This is also true in a population. The many different height data, which are usually collected in survey studies on health are usually summarized by studying average height. Height data are thus also interesting for us as one specific context to study height data.</p>
+<p>As we see from the class activity in the introductory unit where we collected data in your class on height and hand span, we learned that usually heights differ quite a bit within a group. This is also true in a population. The many different height data, which are usually collected in survey studies on health are usually summarized by studying average height. Height data are thus also interesting for us as one specific context to study height data.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Average
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The average of a list of numbers is defined as their sum, divided by how many numbers their are in the list.</p>
+</div>
+</div>
+<p>For example the average of the list <span class="math inline">\(L\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>would be computed as:</p>
+<p><span class="math display">\[\begin{equation}
+\frac{(9+1+2+2+0)}{5} = \frac{14}{5} = 2.8
+\end{equation}\]</span></p>
+<p>By now it will be no surprise for you that R provides a function for computing averages. This function is known by the alternative name for the average, called the mean.</p>
+<p>Here is how you would compute the mean using R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.8</code></pre>
+</div>
+</div>
+<p>which is indeed what we should get as a result.</p>
+<div class="page-columns page-full"><p>Let’s go back to the issue of human height data. Let us first look at a sample of height data and how they look like. This is a data set from the statistics Online Computational Resource (SOCR) of the university of California Los Angeles.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> for details.] The dataset contains 25,000 synthetic records of human heights and weights of 18 years old children.</p><div class="no-row-height column-margin column-container"><li id="fn9" role="doc-endnote"><p><sup>9</sup>&nbsp;See http://www.socr.ucla.edu/</p></li></div></div>
+<p>Let us look at the histogram first. But before we do this, let me briefly explain a feature of R that will be very useful for us in the remainder of this course.</p>
+<section id="a-brief-digression-installing-and-using-r-packages" class="level4" data-number="3.3.1.1">
+<h4 data-number="3.3.1.1" class="anchored" data-anchor-id="a-brief-digression-installing-and-using-r-packages"><span class="header-section-number">3.3.1.1</span> A brief digression: Installing and using R packages</h4>
+<p>When we install R we get a version the program which is called <code>base-r</code>. This is the term for the basic version, which comes with any R installation. The base version contains all the important functions. The <code>hist()</code>function is part of <code>base-r</code> for example, but also <code>mean()</code>, <code>lenght()</code> etc.</p>
+<p>Base R can be extended by adding so called packages. A package contains additional functions for doing computations or other things like graphics with R written by other people or by yourself, once you have learned how to write a package. Packages have to be installed and then they need to be loaded to make the functions of the package available to R. You have to install a new package only once, but you have to load it in every new session of R if you want to use it.</p>
+<p>The first package, you will encounter in this course is a package that I have prepared when preparing the course. It contains all the data sets we use here. When the package is loaded these data sets are available for use. The package that contains our data is called <code>JWL</code>. You need to install it first. As you might guess there is an R function to install packages. The function is called <code>install.packages()</code>. This function works if the package is beeing made available via the R CRAN-server at https://cran.r-project.org/. Our package is a package that I have assembled for this course and it was installed from a private archive. It is not on CRAN. For you taking this course the package is already installed.</p>
+<p>To be able to make the funcions and the data contained in the package available to R you need to laod the package first. This is done with the function <code>library()</code>. Now assume we want to load the package <code>JWL</code> we need to type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now all the datasets bundled in the JWL-package are available for use to you. This includes the data sets on human height data I have prepared for this course.</p>
+<p>The data set is called <code>socr_height_weight</code> and you can study the details and description of the data by typing <code>?socr_height_weight</code> at the prompt.</p>
+<p>Let us start by first saving the <code>socr_height_weight</code> data in an R object which we call - say - <code>height_dat</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>height_dat <span class="ot">&lt;-</span> socr_height_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can inspect the R object, using the R function <code>str()</code>. This function compactly displays the internal structure of an R object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(height_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   25000 obs. of  3 variables:
+ $ Index : num  1 2 3 4 5 6 7 8 9 10 ...
+ $ Height: num  65.8 71.5 69.4 68.2 67.8 ...
+ $ Weight: num  113 136 153 142 144 ...</code></pre>
+</div>
+</div>
+<p>We see that <code>height_dat</code> is a data frame with three variables Index, Height and Weight. All variables are of type numeric.</p>
+<p>From the help information on the dataset we know that the units of the Height variable is inches. Inches are used in the English speaking countries but in many other parts of the world the more common units are metric units. Human height in metric units would be measured in cm rather than in inches. This is an excellent opportunity to practice some of the R knowlegde you have learned in this unit.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The variable <code>Height</code> in the dataframe <code>height_dat</code> is measured in inches. 1 inch is 2.54 cm. Transform the Height variable such that it shows the Height in cm rather than in inches,</p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the hight data are in inches and the weight data are in pounds. Convert to metric</span></span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># units cm</span></span>
+<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>height_dat<span class="sc">$</span>Height <span class="ot">&lt;-</span> height_dat<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Once you have done this little transformation of units, let us plot a histogram first. Let us also lable the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use R to plot a histogram of the Height variabe in the height_dat dataframe. Label the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_dat<span class="sc">$</span>Height, <span class="at">xlab =</span> <span class="st">"Height in kg"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The distribution looks symmetric. If we summarize these data by taking an average in one number we will capture the center of the distribution fairly well. Let us compute the average, using the mean funcion.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use R to compute the average or mean of the Height variable in the height_dat dataframe.</p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.7025</code></pre>
+</div>
+</div>
+<p>The average height in this dataset is about 173 cm. The average is a very powerful way of communicating data by compressing many observations - in this example 25000 - into ons single number, the mean.</p>
+<p>This compression is, however, only achieved by loosing some information on individual differences. For example in our dataset the average height is 173 cm. But there are about 4 % who are larger than 180.9 and there are also about 4 % who are smaller than 164.2. With 25000 individuals these are 1000 individuals who are beyond these thresholds. This diversity is hidden in the aggregation.</p>
+<p>This is a good opportunity to show you a cool feature or trick in R how we could in one line compute such percentages. Assume we want to compute the percentage of individuals in our data who are larger than the mean of 172.7025. How can we do this?</p>
+<p>Logicals are a powerful data type to make such a computation. Say we have 10 numbers, given by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we could ask R which entries of x are larger than 2 by typing</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
+</div>
+</div>
+<p>The output is a vector of logicals where R compares each entry in <code>x</code>with 2 and if it is larger it returns <code>TRUE</code> and otherwise <code>FALSE</code> (this includes all entries which are exactly 2).</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Replace every <code>TRUE</code> value with 1 and every <code>FALSE</code> value with 0 and compute the mean. What do you get? Compute the percentage of values in <code>x</code>which are larger than 2. What did you get? Explain!</p>
+</div>
+</div>
+<p>Note that, when you apply the function <code>mean()</code> to a vector of data of type logical the coercion rules of R will coerce TRUE to 1 and FALSE to 0 automatically. So if you apply <code>mean()</code> to <code>x</code> you will get the result you have computed before.</p>
+<p>This insight can be used to compute the percentage of values that fulfill a certain condition in R. Here the condition is that the Height is larger than the mean.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compute the percentage of Heights in <code>height_dat</code> which are larger and the percentage of Heights that are smaller than the mean of 172.7025.</p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height <span class="sc">&gt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5006</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height <span class="sc">&lt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4994</code></pre>
+</div>
+</div>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
@@ -1173,6 +1362,7 @@ $class
 <!-- computer. -->
 
 
+</section>
 </section>
 </section>
 

@@ -1118,10 +1118,227 @@ data can be an indirect measure of living conditions. This is especially interes
 periods when very little or no data were collected and recorded.
 
 As we see from the class activity in the introductory unit where we collected data in your class
-on height and hand span, we learned that usually heights different quite a in a group. This is
+on height and hand span, we learned that usually heights differ quite a bit within a group. This is
 also true in a population. The many different height data, which are usually collected in 
 survey studies on health are usually summarized by studying average height. Height data
 are thus also interesting for us as one specific context to study height data.
+
+::: {.callout-note icon=false}
+
+## Average
+
+The average of a list of numbers is defined as their sum, divided by how
+many numbers their are in the list.
+
+:::
+
+For example the average of the list $L$
+
+```{r}
+#| code-fold: false
+L <- c(9,1,2,2,0)
+```
+
+would be computed as:
+
+\begin{equation}
+\frac{(9+1+2+2+0)}{5} = \frac{14}{5} = 2.8
+\end{equation}
+
+By now it will be no surprise for you that R provides a function for computing averages.
+This function is known by the alternative name for the average, called the mean.
+
+Here is how you would compute the mean using R.
+
+```{r}
+#| code-fold: false
+
+mean(L)
+```
+
+which is indeed what we should get as a result.
+
+Let's go back to the issue of human height data.  Let us first look at a sample of height data
+and how they look like. This is a data set from the statistics Online Computational Resource (SOCR) of
+the university of California Los Angeles.^[See http://www.socr.ucla.edu/] for details.] 
+The dataset contains 25,000 synthetic records of human heights and weights of 18 years old children.
+
+Let us look at the histogram first. But before we do this, let me briefly explain a feature
+of R that will be very useful for us in the remainder of this course. 
+
+#### A brief digression: Installing and using R packages
+
+When we install R we get
+a version the program which is called `base-r`. This is the term for the basic version, which comes
+with any R installation. The base version contains all the important functions. The `hist()`function
+is part of `base-r` for example, but also `mean()`, `lenght()` etc. 
+
+Base R can be extended by adding so called packages. A package contains additional functions for
+doing computations or other things like graphics with R written by other people or 
+by yourself, once you have learned how to write a package. Packages have to be installed and then
+they need to be loaded to make the functions of the package available to R. You have to install
+a new package only once, but you have to load it in every new session of R if you want to use it.
+
+The first package, you will encounter in this course is a package that I have prepared when
+preparing the course. It contains all the data sets we use here. When the package is loaded
+these data sets are available for use. The package that contains our data is called `JWL`. 
+You need to install it first. As you might guess there is an R function to install packages.
+The function is called `install.packages()`. This function works if the package is beeing made
+available via the R CRAN-server at https://cran.r-project.org/. Our package is a package that I have
+assembled for this course and it was installed from a private archive. It is not on CRAN. For
+you taking this course the package is already installed. 
+
+To be able to make the funcions and the data contained in the
+package available to R you need to laod the package first. This is done with the
+function `library()`. Now assume we want to load the package `JWL` we need to 
+type
+
+```{r}
+#| code-fold: false
+library(JWL)
+```
+
+Now all the datasets bundled in the JWL-package are available for use to you. This includes
+the data sets on human height data I have prepared for this course.
+
+The data set is called `socr_height_weight` and you can study the details and 
+description of the data by typing `?socr_height_weight` at the prompt.
+
+Let us start by first saving the `socr_height_weight` data in an R object which we call - say -
+`height_dat`.
+
+```{r}
+#| code-fold: false
+height_dat <- socr_height_weight
+```
+
+We can inspect the R object, using the R function `str()`. This function compactly displays the
+internal structure of an R object.
+
+```{r}
+#| code-fold: false
+
+str(height_dat)
+```
+
+We see that `height_dat` is a data frame with three variables Index, Height and Weight. 
+All variables are of type numeric.
+
+From the help information on the dataset we know that the units of the Height variable is
+inches. Inches are used in the English speaking countries but in many other parts of the
+world the more common units are metric units. Human height in metric units would be
+measured in cm rather than in inches. This is an excellent opportunity to practice some
+of the R knowlegde you have learned in this unit.
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+The variable `Height` in the dataframe `height_dat` is measured in inches. 1 inch is 2.54 cm.
+Transform the Height variable such that it shows the Height in cm rather than in inches,
+
+:::
+
+```{r}
+# the hight data are in inches and the weight data are in pounds. Convert to metric
+# units cm
+
+height_dat$Height <- height_dat$Height*2.54
+```
+
+Once you have done this little transformation of units, let us plot a histogram first. Let us
+also lable the x-axes as "Height in cm" and write as a title of the histogram "Height of 
+18 year old humans"
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Use R to plot a histogram of the Height variabe in the height_dat dataframe.
+Label the x-axes as "Height in cm" and write as a title of the histogram "Height of 
+18 year old humans"
+
+:::
+
+```{r}
+hist(height_dat$Height, xlab = "Height in kg", main = "Height of 18 year old humans")
+```
+
+The distribution looks symmetric. If we summarize these data by taking an average in one number
+we will capture the center of the distribution fairly well. Let us compute the average, using the
+mean funcion. 
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Use R to compute the average or mean of the Height variable in the height_dat dataframe.
+
+:::
+
+```{r}
+mean(height_dat$Height)
+```
+
+The average height in this dataset is about 173 cm. The average is a very powerful way of
+communicating data by compressing many observations - in this example 25000 - into ons single
+number, the mean. 
+
+This compression is, however, only achieved by loosing some information on individual differences.
+For example in our dataset the average height is 173 cm. But there are about 4 % who are larger than
+180.9 and there are also about 4 % who are smaller than 164.2. With 25000 individuals these are
+1000 individuals who are beyond these thresholds. This diversity is hidden in the aggregation.
+
+This is a good opportunity to show you a cool feature or trick in R how we could in one line
+compute such percentages. Assume we want to compute the percentage of individuals in our data
+who are larger than the mean of 172.7025. How can we do this?
+
+Logicals are a powerful data type to make such a computation. Say we have 10 numbers, given by
+
+```{r}
+#| code-fold: false
+x <- c(4,5,1,2,4,2,0,10,11,6)
+```
+
+Now we could ask R which entries of x are larger than 2 by typing
+
+```{r}
+x > 2
+```
+
+The output is a vector of logicals where R compares each entry in `x`with 2 and if it is larger it 
+returns `TRUE` and otherwise `FALSE` (this includes all entries which are exactly 2). 
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Replace every `TRUE` value with 1 and every `FALSE` value with 0 and compute the mean.
+What do you get? Compute the percentage of values in `x`which are larger than 2. What did you get?
+Explain!
+
+:::
+
+Note that, when you apply the function `mean()` to a vector of data of type logical the coercion rules
+of R will coerce TRUE to 1 and FALSE to 0 automatically. So if you apply `mean()` to `x` you will
+get the result you have computed before.
+
+This insight can be used to compute the percentage of values that fulfill a certain condition in R.
+Here the condition is that the Height is larger than the mean.
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Compute the percentage of Heights in `height_dat` which are larger and the
+percentage of Heights that are smaller than the mean of 172.7025.
+
+:::
+
+```{r}
+mean(height_dat$Height > 172.7025)
+mean(height_dat$Height < 172.7025)
+```
 
 
 <!-- ## Contents  -->
