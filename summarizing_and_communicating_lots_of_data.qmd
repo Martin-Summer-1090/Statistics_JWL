@@ -1205,11 +1205,11 @@ The data set is called `socr_height_weight` and you can study the details and
 description of the data by typing `?socr_height_weight` at the prompt.
 
 Let us start by first saving the `socr_height_weight` data in an R object which we call - say -
-`height_dat`.
+`´dat`.
 
 ```{r}
 #| code-fold: false
-height_dat <- socr_height_weight
+dat <- socr_height_weight
 ```
 
 We can inspect the R object, using the R function `str()`. This function compactly displays the
@@ -1218,10 +1218,10 @@ internal structure of an R object.
 ```{r}
 #| code-fold: false
 
-str(height_dat)
+str(dat)
 ```
 
-We see that `height_dat` is a data frame with three variables Index, Height and Weight. 
+We see that `dat` is a data frame with three variables Index, Height and Weight. 
 All variables are of type numeric.
 
 From the help information on the dataset we know that the units of the Height variable is
@@ -1234,7 +1234,7 @@ of the R knowlegde you have learned in this unit.
 
 ## Now you try
 
-The variable `Height` in the dataframe `height_dat` is measured in inches. 1 inch is 2.54 cm.
+The variable `Height` in the dataframe `dat` is measured in inches. 1 inch is 2.54 cm.
 Transform the Height variable such that it shows the Height in cm rather than in inches,
 
 :::
@@ -1243,7 +1243,7 @@ Transform the Height variable such that it shows the Height in cm rather than in
 # the hight data are in inches and the weight data are in pounds. Convert to metric
 # units cm
 
-height_dat$Height <- height_dat$Height*2.54
+dat$Height <- dat$Height*2.54
 ```
 
 Once you have done this little transformation of units, let us plot a histogram first. Let us
@@ -1254,14 +1254,14 @@ also lable the x-axes as "Height in cm" and write as a title of the histogram "H
 
 ## Now you try
 
-Use R to plot a histogram of the Height variabe in the height_dat dataframe.
+Use R to plot a histogram of the Height variabe in the dat dataframe.
 Label the x-axes as "Height in cm" and write as a title of the histogram "Height of 
 18 year old humans"
 
 :::
 
 ```{r}
-hist(height_dat$Height, xlab = "Height in kg", main = "Height of 18 year old humans")
+hist(dat$Height, xlab = "Height in kg", main = "Height of 18 year old humans")
 ```
 
 The distribution looks symmetric. If we summarize these data by taking an average in one number
@@ -1272,12 +1272,12 @@ mean funcion.
 
 ## Now you try
 
-Use R to compute the average or mean of the Height variable in the height_dat dataframe.
+Use R to compute the average or mean of the Height variable in the dat dataframe.
 
 :::
 
 ```{r}
-mean(height_dat$Height)
+mean(dat$Height)
 ```
 
 The average height in this dataset is about 173 cm. The average is a very powerful way of
@@ -1303,6 +1303,7 @@ x <- c(4,5,1,2,4,2,0,10,11,6)
 Now we could ask R which entries of x are larger than 2 by typing
 
 ```{r}
+#| code-fold: false
 x > 2
 ```
 
@@ -1330,16 +1331,105 @@ Here the condition is that the Height is larger than the mean.
 
 ## Now you try
 
-Compute the percentage of Heights in `height_dat` which are larger and the
+Compute the percentage of Heights in `dat` which are larger and the
 percentage of Heights that are smaller than the mean of 172.7025.
 
 :::
 
 ```{r}
-mean(height_dat$Height > 172.7025)
-mean(height_dat$Height < 172.7025)
+mean(dat$Height > 172.7025)
+mean(dat$Height < 172.7025)
 ```
 
+The value of a distribution where 50 % of all values are larger than this given value and 50
+% are smaller is another one number summary you can give for a large set of data which describes
+the center of a distribution in another way. It is called the median. R also has a built in
+function for the median, which is called - as you might already guess - `median()`. Let us compute
+the median height in our data.
+
+```{r}
+#| code-fold: false
+
+median(dat$Height)
+```
+
+In this case the median and the mean give the same value up to the third digit. They are for 
+practical reasons identical. The reason is that in the case of the measure of Height the distribution
+is highly symmetric. In practice you will encounter many situations where the distribution of
+a variable is not even approximately symmetric.
+
+A typical case of a distribution that us typically not symmetric but skewed - as it is called 
+in statistical terminology - is income. The following histogram which is scaled in
+relative frequencies shows the data for the
+global income distribution in the year 2013 as reported by two economists @HelMau2015 from the Peterson
+Institute, a US based research institution.^[We have used the data they provide to
+simulate a sample of 100.000 observations consisten with the numbers they report. Thus
+our data used here are a simulation reproducing the characteristics of the data reported in 
+this paper. We will soon learn how to do simulations using R. For the moment we need you to
+trust that we have done this correctly.] The unit of measurement is US dollars in 
+so called purchasing power parity, a concept economists use to make income 
+figures comparable in terms of the amount
+of goods they can buy.^[When reporting income figures we could translate all national figures gathered from around the world into one common currency (for instance, US dollars) using exchange rates from currency markets. But because market exchange rates do not always reflect the different price levels between countries, economists often opt for a different alternative. They create a hypothetical currency, called ‘international dollars’, and use this as a common unit of measure. The idea is that a given amount of international dollars should buy roughly the same amount – and quality – of goods and services in any country. This way of measuring monetary amounts is called dollars in purchasing power parity or PPP.]
+
+```{r}
+library(readxl)
+aux <- read_excel("~/R/Statistics_JWL/data/income/wp15-7.xlsx", sheet = 5, range = "B1:D1401")
+inc <- aux[-1 ,c(1,3)]
+names(inc) <- c("Income", "Percent")
+inc$Income <- as.numeric(unlist(inc$Income))
+inc$Percent <- as.numeric(unlist(inc$Percent))
+
+inc_trunc <- inc$Income[inc$Income<=14000]
+
+data <- sample(inc_trunc, 10^5, replace = TRUE, prob = inc$Percent[0:701])
+
+hist(data, breaks = 27, xlab = "Income in purchasing parity power dollars", main = "Global income distribution")
+```
+Now the mean and the median of these data would give us:
+
+```{r}
+mean(data)
+median(data)
+```
+
+There is a big difference in both numbers as you can see even better when we show the mean (red line) and the median (blue) income value of our data in the graph.
+
+```{r}
+hist(data, breaks = 27, xlab = "Income in purchasing parity power dollars", main = "Global income distribution")
+abline(v = mean(data),                       # Add red line for mean
+       col = "red")
+abline(v = median(data),                     # Add blue line for median
+       col = "blue")
+
+```
+
+When the distribution is not symmetric the mean does not capture the center of the distribution well. 
+We have stored the data of our histogram in an object we have chosen to call `data`. Let us verify
+that the median is actually the value above that is in the middle of all values and compare this
+with the mean for these skewed distribution.
+
+Let's check the median first
+
+```{r}
+#| code-fold: false
+
+mean(data > 1700)
+mean(data < 1700)
+```
+
+Now let us do the same check for the mean
+
+```{r}
+#| code-fold: false
+
+mean(data > 3012.174)
+mean(data < 3012.174)
+
+```
+
+You see that the mean now does not capture the center of the distribution well. Only 32 % have incomes
+above the mean income and 68 % have incomes below. The point where 50% are above and 50 % are below is 
+actually at 1700, as expressed by the median.
 
 <!-- ## Contents  -->
 

@@ -78,6 +78,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -1180,7 +1199,7 @@ Average
 <p>which is indeed what we should get as a result.</p>
 <div class="page-columns page-full"><p>Let’s go back to the issue of human height data. Let us first look at a sample of height data and how they look like. This is a data set from the statistics Online Computational Resource (SOCR) of the university of California Los Angeles.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> for details.] The dataset contains 25,000 synthetic records of human heights and weights of 18 years old children.</p><div class="no-row-height column-margin column-container"><li id="fn9" role="doc-endnote"><p><sup>9</sup>&nbsp;See http://www.socr.ucla.edu/</p></li></div></div>
 <p>Let us look at the histogram first. But before we do this, let me briefly explain a feature of R that will be very useful for us in the remainder of this course.</p>
-<section id="a-brief-digression-installing-and-using-r-packages" class="level4" data-number="3.3.1.1">
+<section id="a-brief-digression-installing-and-using-r-packages" class="level4 page-columns page-full" data-number="3.3.1.1">
 <h4 data-number="3.3.1.1" class="anchored" data-anchor-id="a-brief-digression-installing-and-using-r-packages"><span class="header-section-number">3.3.1.1</span> A brief digression: Installing and using R packages</h4>
 <p>When we install R we get a version the program which is called <code>base-r</code>. This is the term for the basic version, which comes with any R installation. The base version contains all the important functions. The <code>hist()</code>function is part of <code>base-r</code> for example, but also <code>mean()</code>, <code>lenght()</code> etc.</p>
 <p>Base R can be extended by adding so called packages. A package contains additional functions for doing computations or other things like graphics with R written by other people or by yourself, once you have learned how to write a package. Packages have to be installed and then they need to be loaded to make the functions of the package available to R. You have to install a new package only once, but you have to load it in every new session of R if you want to use it.</p>
@@ -1191,13 +1210,13 @@ Average
 </div>
 <p>Now all the datasets bundled in the JWL-package are available for use to you. This includes the data sets on human height data I have prepared for this course.</p>
 <p>The data set is called <code>socr_height_weight</code> and you can study the details and description of the data by typing <code>?socr_height_weight</code> at the prompt.</p>
-<p>Let us start by first saving the <code>socr_height_weight</code> data in an R object which we call - say - <code>height_dat</code>.</p>
+<p>Let us start by first saving the <code>socr_height_weight</code> data in an R object which we call - say - <code>´dat</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>height_dat <span class="ot">&lt;-</span> socr_height_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> socr_height_weight</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can inspect the R object, using the R function <code>str()</code>. This function compactly displays the internal structure of an R object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(height_dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   25000 obs. of  3 variables:
  $ Index : num  1 2 3 4 5 6 7 8 9 10 ...
@@ -1205,7 +1224,7 @@ Average
  $ Weight: num  113 136 153 142 144 ...</code></pre>
 </div>
 </div>
-<p>We see that <code>height_dat</code> is a data frame with three variables Index, Height and Weight. All variables are of type numeric.</p>
+<p>We see that <code>dat</code> is a data frame with three variables Index, Height and Weight. All variables are of type numeric.</p>
 <p>From the help information on the dataset we know that the units of the Height variable is inches. Inches are used in the English speaking countries but in many other parts of the world the more common units are metric units. Human height in metric units would be measured in cm rather than in inches. This is an excellent opportunity to practice some of the R knowlegde you have learned in this unit.</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -1217,7 +1236,7 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The variable <code>Height</code> in the dataframe <code>height_dat</code> is measured in inches. 1 inch is 2.54 cm. Transform the Height variable such that it shows the Height in cm rather than in inches,</p>
+<p>The variable <code>Height</code> in the dataframe <code>dat</code> is measured in inches. 1 inch is 2.54 cm. Transform the Height variable such that it shows the Height in cm rather than in inches,</p>
 </div>
 </div>
 <div class="cell">
@@ -1226,7 +1245,7 @@ Now you try
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the hight data are in inches and the weight data are in pounds. Convert to metric</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="co"># units cm</span></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>height_dat<span class="sc">$</span>Height <span class="ot">&lt;-</span> height_dat<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb94-4"><a href="#cb94-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Height <span class="ot">&lt;-</span> dat<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Once you have done this little transformation of units, let us plot a histogram first. Let us also lable the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
@@ -1240,13 +1259,13 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use R to plot a histogram of the Height variabe in the height_dat dataframe. Label the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
+<p>Use R to plot a histogram of the Height variabe in the dat dataframe. Label the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
 </div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(height_dat<span class="sc">$</span>Height, <span class="at">xlab =</span> <span class="st">"Height in kg"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">xlab =</span> <span class="st">"Height in kg"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
@@ -1263,13 +1282,13 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use R to compute the average or mean of the Height variable in the height_dat dataframe.</p>
+<p>Use R to compute the average or mean of the Height variable in the dat dataframe.</p>
 </div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 172.7025</code></pre>
@@ -1284,10 +1303,7 @@ Now you try
 </div>
 <p>Now we could ask R which entries of x are larger than 2 by typing</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">&gt;</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE</code></pre>
 </div>
@@ -1318,23 +1334,106 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Compute the percentage of Heights in <code>height_dat</code> which are larger and the percentage of Heights that are smaller than the mean of 172.7025.</p>
+<p>Compute the percentage of Heights in <code>dat</code> which are larger and the percentage of Heights that are smaller than the mean of 172.7025.</p>
 </div>
 </div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height <span class="sc">&gt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height <span class="sc">&gt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5006</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(height_dat<span class="sc">$</span>Height <span class="sc">&lt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height <span class="sc">&lt;</span> <span class="fl">172.7025</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4994</code></pre>
+</div>
+</div>
+<p>The value of a distribution where 50 % of all values are larger than this given value and 50 % are smaller is another one number summary you can give for a large set of data which describes the center of a distribution in another way. It is called the median. R also has a built in function for the median, which is called - as you might already guess - <code>median()</code>. Let us compute the median height in our data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.7091</code></pre>
+</div>
+</div>
+<p>In this case the median and the mean give the same value up to the third digit. They are for practical reasons identical. The reason is that in the case of the measure of Height the distribution is highly symmetric. In practice you will encounter many situations where the distribution of a variable is not even approximately symmetric.</p>
+<div class="page-columns page-full"><p>A typical case of a distribution that us typically not symmetric but skewed - as it is called in statistical terminology - is income. The following histogram which is scaled in relative frequencies shows the data for the global income distribution in the year 2013 as reported by two economists <span class="citation" data-cites="HelMau2015">Hellebrand and Mauro (<a href="references.html#ref-HelMau2015" role="doc-biblioref">2015</a>)</span> from the Peterson Institute, a US based research institution.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> The unit of measurement is US dollars in so called purchasing power parity, a concept economists use to make income figures comparable in terms of the amount of goods they can buy.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10" role="doc-endnote"><p><sup>10</sup>&nbsp;We have used the data they provide to simulate a sample of 100.000 observations consisten with the numbers they report. Thus our data used here are a simulation reproducing the characteristics of the data reported in this paper. We will soon learn how to do simulations using R. For the moment we need you to trust that we have done this correctly.</p></li><li id="fn11" role="doc-endnote"><p><sup>11</sup>&nbsp;When reporting income figures we could translate all national figures gathered from around the world into one common currency (for instance, US dollars) using exchange rates from currency markets. But because market exchange rates do not always reflect the different price levels between countries, economists often opt for a different alternative. They create a hypothetical currency, called ‘international dollars’, and use this as a common unit of measure. The idea is that a given amount of international dollars should buy roughly the same amount – and quality – of goods and services in any country. This way of measuring monetary amounts is called dollars in purchasing power parity or PPP.</p></li></div></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>aux <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"~/R/Statistics_JWL/data/income/wp15-7.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">5</span>, <span class="at">range =</span> <span class="st">"B1:D1401"</span>)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>inc <span class="ot">&lt;-</span> aux[<span class="sc">-</span><span class="dv">1</span> ,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(inc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Income"</span>, <span class="st">"Percent"</span>)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a>inc<span class="sc">$</span>Income <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(inc<span class="sc">$</span>Income))</span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>inc<span class="sc">$</span>Percent <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">unlist</span>(inc<span class="sc">$</span>Percent))</span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a>inc_trunc <span class="ot">&lt;-</span> inc<span class="sc">$</span>Income[inc<span class="sc">$</span>Income<span class="sc">&lt;=</span><span class="dv">14000</span>]</span>
+<span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-10"><a href="#cb107-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">sample</span>(inc_trunc, <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> inc<span class="sc">$</span>Percent[<span class="dv">0</span><span class="sc">:</span><span class="dv">701</span>])</span>
+<span id="cb107-11"><a href="#cb107-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-12"><a href="#cb107-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">breaks =</span> <span class="dv">27</span>, <span class="at">xlab =</span> <span class="st">"Income in purchasing parity power dollars"</span>, <span class="at">main =</span> <span class="st">"Global income distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now the mean and the median of these data would give us:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3012.174</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1700</code></pre>
+</div>
+</div>
+<p>There is a big difference in both numbers as you can see even better when we show the mean (red line) and the median (blue) income value of our data in the graph.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data, <span class="at">breaks =</span> <span class="dv">27</span>, <span class="at">xlab =</span> <span class="st">"Income in purchasing parity power dollars"</span>, <span class="at">main =</span> <span class="st">"Global income distribution"</span>)</span>
+<span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(data),                       <span class="co"># Add red line for mean</span></span>
+<span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">median</span>(data),                     <span class="co"># Add blue line for median</span></span>
+<span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>When the distribution is not symmetric the mean does not capture the center of the distribution well. We have stored the data of our histogram in an object we have chosen to call <code>data</code>. Let us verify that the median is actually the value above that is in the middle of all values and compare this with the mean for these skewed distribution.</p>
+<p>Let’s check the median first</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data <span class="sc">&gt;</span> <span class="dv">1700</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.49616</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data <span class="sc">&lt;</span> <span class="dv">1700</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.49998</code></pre>
+</div>
+</div>
+<p>Now let us do the same check for the mean</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data <span class="sc">&gt;</span> <span class="fl">3012.174</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.32447</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data <span class="sc">&lt;</span> <span class="fl">3012.174</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.67553</code></pre>
 </div>
 </div>
 <!-- ## Contents  -->
@@ -1362,6 +1461,11 @@ Now you try
 <!-- computer. -->
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-HelMau2015" class="csl-entry" role="doc-biblioentry">
+Hellebrand, Tomas, and Paolo Mauro. 2015. <span>“The Future of Worldwide Income Distribution.”</span> <em>Brooking Institution Working Paper Series</em> 7 (15). <a href="file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf">file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf</a>.
+</div>
+</div>
 </section>
 </section>
 </section>
