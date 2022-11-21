@@ -1431,6 +1431,80 @@ You see that the mean now does not capture the center of the distribution well. 
 above the mean income and 68 % have incomes below. The point where 50% are above and 50 % are below is 
 actually at 1700, as expressed by the median.
 
+Discuss the difference between a cross section and longitudinal data, discuss that a gap in averages can
+hide substantial overlap in distribution (needs microdata, though; DHS?). To do
+
+### Exercises for the Average
+
+Exercise 1:
+
+(a) The number 3 and 5 are marked by crosses on  the horizontal line below. Find the average of 
+    these two numbers and mark it by an arrow.
+    
+    ![](pictures/average_a.png)
+    
+(b) Repeat (a) for the list 3,5,5
+
+    ![](pictures/average_b.png)
+    
+(c) Two numbers are shown below by crosses on a horizontal axis. Draw an arrow
+    pointing to their average.
+    
+    ![](pictures/average_c.png)
+    
+Exercise 2: 
+
+A list has 10 entries. Each entry is either 1, 2 or 3. What must the list be of the average is
+1? if the average is 3? Can the average be 4?
+
+Exercise 3:
+
+Which of the following lists has a bigger average? Or are they the same? try 
+to answer without doing arithmetic.
+
+(i) 10, 7, 8, 3, 5, 9   (ii) 10, 7, 8, 3, 5, 9, 11
+
+Exercise 4:
+
+Ten people in a room have an average height of 1.69 m. An 11th person is 1.96 enters
+the room. Find the average height of all 11 people.
+
+Exercise 5:
+
+Twenty-one people in a room have an average height of 1.68. A 22nd person who is 1.96
+enters the room. Find the average height of all 22 people. Compare with exercise 4.
+
+Exercise 6:
+
+Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. 
+How tall would he have to be to raise the average height by 1 inch.
+
+Exercise 7:
+
+If you go back to figure @fig-ex-hist-bm, where in the Histogram would be mountains?
+Where would you find planes? Where would the trenches in the sea floor show?
+
+Exercise 8: 
+
+Diastolic blood pressure is considered a better indicator of heart trouble than systolic
+pressure. The figure below shows age-specific average diastolic blood pressure for
+men age 20 and over in a health survey from the US (HANES5 (2003-04)). True or fales: The
+data show that as men age, their diastolic blood pressure increases until age 45
+or so. and then decreases. If false, how do you explain the pattern in  the graph?
+(Blood pressure is measured in "mm" that is millimeter of mercury)
+
+![](pictures/blood_pressure.png)
+
+
+Exercise 9:
+
+Average hourly earnings in the US are computed each month by the Bureau fo Labor statistics using 
+payroll data from commercial establishments. The Bureau figures the total 
+wages paid out to non-supervisory personnel, and divides
+by the total hours worked. During recessions, average hourly earnings typically go up. 
+When the recession ends, average hourly earnings often start going down. How can this be?
+
+
 <!-- ## Contents  -->
 
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
