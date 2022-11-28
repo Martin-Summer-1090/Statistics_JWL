@@ -1261,7 +1261,7 @@ Label the x-axes as "Height in cm" and write as a title of the histogram "Height
 :::
 
 ```{r}
-hist(dat$Height, xlab = "Height in kg", main = "Height of 18 year old humans")
+hist(dat$Height, xlab = "Height in cm", main = "Height of 18 year old humans")
 ```
 
 The distribution looks symmetric. If we summarize these data by taking an average in one number
@@ -1503,6 +1503,88 @@ payroll data from commercial establishments. The Bureau figures the total
 wages paid out to non-supervisory personnel, and divides
 by the total hours worked. During recessions, average hourly earnings typically go up. 
 When the recession ends, average hourly earnings often start going down. How can this be?
+
+## The standard deviation
+
+When summarizing and communicating lots of data, it is useful not only to report 
+at which value the center of the distribution is. It is often helpful to also 
+think about the way how the values spread around the average. The quantity which
+measures this spread is called the standard deviation. It can be interpreted as 
+an average deviation. In this section you will learn to interpret the standard
+deviation in the context of real data and then learn how it is computed both
+by hand and by using the computer.
+
+Le us go back to our data on the height of 18 year old humans. There were 25.000 observations
+in our sample. The average height was
+```{r}
+mean(dat$Height)
+```
+This average tells us that most of the humans measured in the sample had a height of
+around 1 m and 73 cm. But there were deviations from this average. Some humans were
+taller and others were smaller. We can ask how big these deviations are? In answering 
+this question we need the concept of the standard deviation.
+
+::: {.callout-note icon=false}
+
+## Standard deviation
+
+The standard deviation says how far away numbers on a list are from their
+average. Most entries on the list will usually be somewhat around one
+standard deviation from the average. Very few will be more than two or three
+standard deviations away.
+
+:::
+
+In R you can compute the standard deviation by using the function `sd()`. So let us
+compute the standard deviation of our height data using the `sd()`function.
+
+```{r}
+#| code-fold: false
+
+sd(dat$Height)
+```
+
+So the standard deviation is at about 4.8 cm. That means that many humans differed from the
+average height by about 1, 2, 3, 4 or about 5 cm. Let us use R to compute the percent
+of observation that are within one standard deviation from the average. 
+
+Let us use the trick of combining logical subsetting and the coercion rules of R to
+compute this percentage here:
+
+```{r}
+#| code-fold: false
+
+aux <- dat$Height >= mean(dat$Height) - sd(dat$Height) & dat$Height <= mean(dat$Height) + sd(dat$Height)
+
+mean(aux)
+
+```
+Let me explain what we have computed here. First we have checked for all the entries in 
+the vector `dat$Height` whether they were larger than the average minus one standard deviation and
+smaller than the average plus one standard deviation. These are all the values that are within
+one standard deviation away from the average. For all values that are in this range R returns the
+value `TRUE` and for all the other values that are outside of this range, R returns the value `FALSE`.
+We have stored the vector recording all these logical values in a new object called `aux`.
+Now we computed the mean of aux. When the mean function of R gets a vector of logical values it
+coerces all the `TRUE` values to 1 and al the `FALSE` values to 0. When we take the mean we get the
+share of values for which the condition is TRUE. In our case this is around 68 %. The other 32 % are
+farther away. 
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+Compute the percentage of observations of our height data that are within 
+two standard deviations from the average.
+
+:::
+
+This is a rule of thumb that applies to many (but not all) data sets. For many distributions
+roughly 68 % of observations are within one standard deviation from the average. 95 % are within
+two standard deviations from the average. We will learn later in the course where this rule
+comes from. Let us illustrate the rules graphically using the histogram.
+
+
 
 
 <!-- ## Contents  -->
