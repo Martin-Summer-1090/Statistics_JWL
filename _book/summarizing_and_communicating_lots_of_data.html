@@ -248,7 +248,7 @@ div.csl-indent {
   <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"> <span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</a>
   <ul class="collapse">
   <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"> <span class="header-section-number">3.1.1</span> Constructing a Histogram</a></li>
-  <li><a href="#the-density-scale-absolute-versus-relative-frequency" id="toc-the-density-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-density-scale-absolute-versus-relative-frequency"> <span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</a></li>
+  <li><a href="#the-relative-frequency-scale-absolute-versus-relative-frequency" id="toc-the-relative-frequency-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-relative-frequency-scale-absolute-versus-relative-frequency"> <span class="header-section-number">3.1.2</span> The relative frequency scale: Absolute versus relative frequency</a></li>
   <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"> <span class="header-section-number">3.1.3</span> Exercises: Now you try</a></li>
   <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"> <span class="header-section-number">3.1.4</span> Best practices for histograms</a></li>
   </ul></li>
@@ -265,6 +265,9 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"> <span class="header-section-number">3.3.1</span> The average</a></li>
   <li><a href="#exercises-for-the-average" id="toc-exercises-for-the-average" class="nav-link" data-scroll-target="#exercises-for-the-average"> <span class="header-section-number">3.3.2</span> Exercises for the Average</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"> <span class="header-section-number">3.3.3</span> The standard deviation</a></li>
+  <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"> <span class="header-section-number">3.3.4</span> Exercises for the standard deviation</a></li>
+  <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"> <span class="header-section-number">3.3.5</span> Computing the standard deviation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -425,8 +428,8 @@ Now you try
 </div>
 </div>
 </section>
-<section id="the-density-scale-absolute-versus-relative-frequency" class="level3 page-columns page-full" data-number="3.1.2">
-<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-density-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The density scale: Absolute versus relative frequency</h3>
+<section id="the-relative-frequency-scale-absolute-versus-relative-frequency" class="level3 page-columns page-full" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="the-relative-frequency-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The relative frequency scale: Absolute versus relative frequency</h3>
 <p>Sometimes it might be useful, to choose a different scale for the y axes of your histogram. Instead of absolute frequencies (or counts) it might be useful to show relative frequencies, the proportion of occurrences in each bin. The type of scale you choose will depend on what kind of comparisons you want to emphasize about your data.</p>
 <div class="page-columns page-full"><p>Let us look at this issue by an example. The numbers we want to look at report energy consumption per capita in kwh per person per year for different countries around the world.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The energy numbers refer to primary energy – the energy input before the transformation to forms of energy for end-use (such as electricity or petrol for transport).</p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;A kilowatt-hour, known as Kwh is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt vs.&nbsp;kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a measure of the amount of energy a certain machine needs to run for one hour. So, if you have a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. Obviously, every appliance will use a different amount of power. Here are some of the usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour, electric water heater: 380-500 kWh per month</p></li></div></div>
 <p>Let us look at the year 2019.</p>
@@ -1266,7 +1269,7 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">xlab =</span> <span class="st">"Height in kg"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
@@ -1472,6 +1475,210 @@ Now you try
 <p><img src="pictures/blood_pressure.png" class="img-fluid"></p>
 <p>Exercise 9:</p>
 <p>Average hourly earnings in the US are computed each month by the Bureau fo Labor statistics using payroll data from commercial establishments. The Bureau figures the total wages paid out to non-supervisory personnel, and divides by the total hours worked. During recessions, average hourly earnings typically go up. When the recession ends, average hourly earnings often start going down. How can this be?</p>
+</section>
+<section id="the-standard-deviation" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">3.3.3</span> The standard deviation</h3>
+<p>When summarizing and communicating lots of data, it is useful not only to report at which value the center of the distribution is. It is often helpful to also think about the way how the values spread around the average. The quantity which measures this spread is called the standard deviation. It can be interpreted as an average deviation. In this section you will learn to interpret the standard deviation in the context of real data and then learn how it is computed both by hand and by using the computer.</p>
+<p>Le us go back to our data on the height of 18 year old humans. There were 25.000 observations in our sample. The average height was</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.7025</code></pre>
+</div>
+</div>
+<p>This average tells us that most of the humans measured in the sample had a height of around 1 m and 73 cm. But there were deviations from this average. Some humans were taller and others were smaller. We can ask how big these deviations are? In answering this question we need the concept of the standard deviation.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Standard deviation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The standard deviation says how far away numbers on a list are from their average. Most entries on the list will usually be somewhat around one standard deviation from the average. Very few will be more than two or three standard deviations away.</p>
+</div>
+</div>
+<p>In R you can compute the standard deviation by using the function <code>sd()</code>. So let us compute the standard deviation of our height data using the <code>sd()</code>function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.830264</code></pre>
+</div>
+</div>
+<p>So the standard deviation is at about 4.8 cm. That means that many humans differed from the average height by about 1, 2, 3, 4 or about 5 cm. Let us use R to compute the percent of observation that are within one standard deviation from the average.</p>
+<p>Let us use the trick of combining logical subsetting and the coercion rules of R to compute this percentage here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>aux <span class="ot">&lt;-</span> dat<span class="sc">$</span>Height <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height) <span class="sc">&amp;</span> dat<span class="sc">$</span>Height <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(aux)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.68356</code></pre>
+</div>
+</div>
+<p>Let me explain what we have computed here. First we have checked for all the entries in the vector <code>dat$Height</code> whether they were larger than the average minus one standard deviation and smaller than the average plus one standard deviation. These are all the values that are within one standard deviation away from the average. For all values that are in this range R returns the value <code>TRUE</code> and for all the other values that are outside of this range, R returns the value <code>FALSE</code>. We have stored the vector recording all these logical values in a new object called <code>aux</code>. Now we computed the mean of aux. When the mean function of R gets a vector of logical values it coerces all the <code>TRUE</code> values to 1 and al the <code>FALSE</code> values to 0. When we take the mean we get the share of values for which the condition is TRUE. In our case this is around 68 %. The other 32 % are farther away.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compute the percentage of observations of our height data that are within two standard deviations from the average.</p>
+</div>
+</div>
+<p>This is a rule of thumb that applies to many (but not all) data sets. For many distributions roughly 68 % of observations are within one standard deviation from the average. 95 % are within two standard deviations from the average. We will learn later in the course where this rule comes from. Let us illustrate the rules graphically using the histogram.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>hist_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">61</span>, <span class="dv">62</span>, <span class="dv">63</span>, <span class="dv">64</span>, <span class="dv">65</span>, <span class="fl">66.89479</span>, <span class="dv">67</span>, <span class="dv">68</span>, <span class="fl">69.89479</span>, <span class="dv">70</span>, <span class="dv">71</span>, <span class="dv">72</span>, <span class="dv">73</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">76</span>)</span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>color_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'#C6E2FF'</span>, <span class="fu">length</span>(hist_breaks))</span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#6C7B8B'</span></span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#C6E2FF'</span></span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
+<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The next figure shows the same histogram. Now the area within two standard deviations from the mean is colored differently</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>hist_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">61</span>, <span class="dv">62</span>, <span class="dv">63</span>, <span class="fl">64.18976</span>, <span class="dv">65</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">68</span>, <span class="dv">69</span>, <span class="dv">70</span>, <span class="fl">71.79647</span>, <span class="dv">72</span>, <span class="dv">73</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">76</span>)</span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>color_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'#C6E2FF'</span>, <span class="fu">length</span>(hist_breaks))</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#6C7B8B'</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#C6E2FF'</span></span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-69-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="exercises-for-the-standard-deviation" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="exercises-for-the-standard-deviation"><span class="header-section-number">3.3.4</span> Exercises for the standard deviation</h3>
+<p>Exercise 1:</p>
+<p>The <code>socr_height_weight</code> about the height and weight of 18 year old humans, we had used in the lecture before the average height in inches was about 173 cm and the standard deviation was about 5 cm.</p>
+<ol type="i">
+<li>One individual was 188 cm. He was above average by how many standard deviations?</li>
+<li>Another individual was 174.66 cm. She was above average by how many standard deviations?</li>
+<li>A third individual was 1.5 standard deviations below the average height. He was how many cm?</li>
+<li>If an individual was within 2.25 standard deviations of average height, the shortest height for this individual would be how many cm? The highest height would be how many cm?</li>
+</ol>
+<p>Exercise 2:</p>
+<ol type="a">
+<li>Here are the heights of 4 individuals. 150 cm, 130 cm, 180 cm, 172 cm. Match the heights with the description. A description may be used twice.</li>
+</ol>
+<p>unusually short, about average, unusually tall</p>
+<ol start="2" type="a">
+<li>About what percentage of individuals in the data had heights between 170.2 and 173.2 ? Between 165.5 and 179.2?</li>
+</ol>
+<p>Exercise 3:</p>
+<p>Each of the following lists has an average of 50. For which one is the spread of the numbers around the average biggest? Smallest?</p>
+<ol type="i">
+<li><pre><code>0, 20, 40, 50, 60, 80, 100</code></pre></li>
+<li>0, 48, 49, 50, 51, 52, 100</li>
+<li>0,1,2,50,98, 99, 100</li>
+</ol>
+<p>Exercise 4:</p>
+<p>Each of the following lists has an average of 50. For each one, guess whether the standard deviation is around 1, 2, or 10. (This does not require any arithmetic.)</p>
+<ol type="a">
+<li>49, 51, 49, 51, 49, 51, 49, 51, 49, 51</li>
+<li>48, 52, 48, 52, 48, 52, 48, 52, 48, 52</li>
+<li>48, 51, 49, 52, 47, 52, 46, 51, 53, 51</li>
+<li>54, 49, 46, 49, 51, 53, 50, 50, 49, 49</li>
+<li>60, 36, 31, 50, 48, 50, 54, 56, 62, 53</li>
+</ol>
+<p>Exercise 5:</p>
+<p>Below are three sketches of a histogram (we call them “sketches” because they display a schematic shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) Match the sketch with the description. Some descriptions will be left over. Give your reasoning in each case. The symbol <span class="math inline">\(\approx\)</span> is the mathematical notation for <em>approximately</em>.</p>
+<ol type="i">
+<li>ave <span class="math inline">\(\approx\)</span> 3.5, sd <span class="math inline">\(\approx\)</span> 1 (iv) ave <span class="math inline">\(\approx\)</span> 2.5, sd <span class="math inline">\(\approx\)</span> 1</li>
+<li>ave <span class="math inline">\(\approx\)</span> 3.5, sd <span class="math inline">\(\approx\)</span> 0.5 (v) ave <span class="math inline">\(\approx\)</span> 2.5, sd <span class="math inline">\(\approx\)</span> 0.5</li>
+<li>ave <span class="math inline">\(\approx\)</span> 3.4, sd <span class="math inline">\(\approx\)</span> 2 (vi) ave <span class="math inline">\(\approx\)</span> 4.5, sd <span class="math inline">\(\approx\)</span> 0.5</li>
+</ol>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hist_ex_1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hist_ex_1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure 3.5: (a)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="pictures/hist_ex_2.png" id="fig-hist_ex_2" class="img-fluid" alt="(b)"> <img src="pictures/hist_ex_3.png" id="fig-hist_ex_3" class="img-fluid" alt="(c)"></p>
+</div>
+</div>
+</div>
+<p>Exercise 6:</p>
+<p>One investigator takes a sample of 100 men age 18 - 24 in a certain town. Another one takes a sample of 1000 such men.</p>
+<ol type="a">
+<li><p>Which investigator will get a bigger average for the heights of the men in his sample? Or should the average be about the same?</p></li>
+<li><p>Which investigator will get a bigger standard deviation for the heights of the men in his sample? or should the standard deviation be about the same for both investigators?</p></li>
+<li><p>Which investigator is likely to get the tallest of the sample men? Or are the chances about the same for both investigators?</p></li>
+<li><p>Which investigator is likely to get the shortest of the sample men? Or are the chances about the same for both investigators?</p></li>
+</ol>
+</section>
+<section id="computing-the-standard-deviation" class="level3" data-number="3.3.5">
+<h3 data-number="3.3.5" class="anchored" data-anchor-id="computing-the-standard-deviation"><span class="header-section-number">3.3.5</span> Computing the standard deviation</h3>
+<p>Usually we will compute the standard deviation using the computer and only in rare cases will we ever compute a standard deviation by hand. Still it is important that you understand how the computation works and what is actually been computed. Here is how.</p>
+<p>Example 1: Find the standard deviation of the list 20, 10, 15, 15</p>
+<p>Step 1: We first need to find the average, which is <span class="math display">\[\begin{equation}
+\frac{20 + 10 + 15 + 15}{4} = 15
+\end{equation}\]</span></p>
+<p>Step 2: We next need to find the deviation from the average. In order to do so, we just subtract the average from each entry <span class="math display">\[\begin{eqnarray}
+(20-15)&amp;=5\\
+(10-15)&amp;=&amp;-5\\
+(15-15)&amp;=&amp;0\\
+(15-15)&amp;=&amp;0
+\end{eqnarray}\]</span></p>
+<p>Step 3: Now we have to square each one of these differences and take the square root, which is often called the root mean square</p>
+<p><span class="math display">\[\begin{eqnarray}
+sd&amp;=&amp;\sqrt{\frac{5^2 + (-5)^2 + 0^2 + 0^2}{4}} \\
+&amp;=&amp; \sqrt{\frac{25 + 25 + 0 + 0}{4}} \\
+&amp;=&amp; \sqrt{\frac{50}{4}}\\
+&amp;=&amp; \sqrt{12.4}\\
+&amp;\approx&amp; 3.5
+\end{eqnarray}\]</span></p>
+<p>The standard deviation has the same units as the data. For example, when we measure height in cm then at the squaring step the units change to <span class="math inline">\(cm^2\)</span> but the suqre root returns <span class="math inline">\(cm\)</span> again.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Guess which of the following two lists has the larger standard deviation. Check your guess by computing the standard deviation for both lists.</li>
+</ol>
+<ol type="i">
+<li>9,9,10,10,12</li>
+<li>7,8,10,11,11,13</li>
+</ol>
+<ol start="2" type="1">
+<li><p>Can the standard deviation ever be negative?</p></li>
+<li><p>For a list of positive numbers can the standard deviation ever be larger than the average?</p></li>
+</ol>
+</div>
+</div>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
