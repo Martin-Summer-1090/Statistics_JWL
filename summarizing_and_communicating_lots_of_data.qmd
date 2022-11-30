@@ -1431,8 +1431,47 @@ You see that the mean now does not capture the center of the distribution well. 
 above the mean income and 68 % have incomes below. The point where 50% are above and 50 % are below is 
 actually at 1700, as expressed by the median.
 
-Discuss the difference between a cross section and longitudinal data, discuss that a gap in averages can
-hide substantial overlap in distribution (needs microdata, though; DHS?). To do
+There is another important difference between the mean and the median. Let us illustrate this difference
+with the example of primary energy consumption across the countries in the world. This distribution
+turned out to be highly skewed. Remember the histogram
+
+```{r}
+hist(dat_countries$Cons, 
+     xlab = "Primary energy consumption in kilowatt-hours per person per year.",
+     main = "Primary energy Consuption per Capita 2019")
+```
+
+The mean is:
+```{r}
+mean(dat_countries$Cons)
+```
+and the median is
+```{r}
+median(dat_countries$Cons)
+```
+
+Now let us assume we add a fictitious large value to the data set, say 400.000 kwh per person per year and
+recalculate the mean.
+
+```{r}
+#| code-fold: false
+
+mean(c(dat_countries$Cons, 400000))
+```
+Now the mean per capita consumption is quite a bit larger actually - just from this one extreme observation - it is larger by more than 6 %.
+
+What happens to the median?
+
+```{r}
+#| code-fold: false
+
+median(c(dat_countries$Cons, 400000))
+```
+
+It stays about the same.
+
+The take away here is that the mean is a summary measure that is sensitive to outliers. The median
+on the other hand is a more robust measure. One or a a few outliers can not move the median.
 
 ### Exercises for the Average
 
@@ -1585,7 +1624,8 @@ two standard deviations from the average. We will learn later in the course wher
 comes from. Let us illustrate the rules graphically using the histogram.
 
 ```{r}
-hist_breaks <- c(60, 61, 62, 63, 64, 65, 66.89479, 67, 68, 69.89479, 70, 71, 72, 73, 74, 75, 76)
+#| include: false
+hist_breaks <- hist(dat$Height)$breaks
 color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - sd(dat$Height)] <- '#C6E2FF'
@@ -1597,11 +1637,17 @@ abline(v = mean(dat$Height),                       # Add red line for mean
 
 ```
 
+![The observations around one standard deviation from the mean.](pictures/hist_68.png){#fig-hist_68}
+
+
+
+
 The next figure shows the same histogram. Now the area within two standard deviations from
 the mean is colored differently
 
 ```{r}
-hist_breaks <- c(60, 61, 62, 63, 64.18976, 65, 66, 67, 68, 69, 70, 71.79647, 72, 73, 74, 75, 76)
+#| include: false
+hist_breaks <- hist(dat$Height)$breaks
 color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + 2*sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - 2*sd(dat$Height)] <- '#C6E2FF'
@@ -1610,6 +1656,10 @@ hist(dat$Height, col = color_list, xlab = "Height in cm", main = "Height of 18 y
 abline(v = mean(dat$Height),                       # Add red line for mean
        col = "red")
 ```
+
+
+![The observations around two standard deviation from the mean.](pictures/hist_95.png){#fig-hist_95}
+
 ### Exercises for the standard deviation
 
 Exercise 1:
@@ -1655,20 +1705,26 @@ Each of the following lists has an average of 50. For each one, guess whether th
 
 Exercise 5:
 
-Below are three sketches of a histogram (we call them "sketches" because they display a schematic
-shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) Match the sketch with the description. Some descriptions will be left over. Give your reasoning in each case. The
+Below are three sketches of three stylized histograms 
+(we call them "sketches" because they display a schematic
+shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) 
+Match the sketch with the description. Some descriptions will be left over. 
+Give your reasoning in each case. The
 symbol $\approx$ is the mathematical notation for *approximately*.
 
 (i)   ave $\approx$ 3.5, sd $\approx$ 1       (iv) ave $\approx$ 2.5, sd $\approx$ 1
 (ii)  ave $\approx$ 3.5, sd $\approx$ 0.5     (v)  ave $\approx$ 2.5, sd $\approx$ 0.5
-(iii) ave $\approx$ 3.4, sd $\approx$ 2         (vi) ave $\approx$ 4.5, sd $\approx$ 0.5 
+(iii) ave $\approx$ 3.4, sd $\approx$ 2       (vi) ave $\approx$ 4.5, sd $\approx$ 0.5 
 
-::: {layout-ncol=3}
+::: {#fig-histograms layout-ncol=3}
 
-![(a)](pictures/hist_ex_1.png){#fig-hist_ex_1}
+![Histogram 1](pictures/hist_ex_1.png){#fig-hist_ex_1}
 
-![(b)](pictures/hist_ex_2.png){#fig-hist_ex_2}
-![(c)](pictures/hist_ex_3.png){#fig-hist_ex_3}
+![Histogram 2](pictures/hist_ex_2.png){#fig-hist_ex_2}
+
+![Histogram 3](pictures/hist_ex_3.png){#fig-hist_ex_3}
+
+Three stylized histograms
 :::
 
 Exercise 6:
@@ -1737,6 +1793,37 @@ guess by computing the standard deviation for both lists.
 average?
 
 :::
+
+Note that for skewed distributions the standard deviation is also not a very good measure of the spread,
+because it measures the variation about the mean and the mean does not capture the center of the
+distribution very well in this case.
+
+Moreover the standard deviation - like the mean - is sensitive to outliers and is therefore
+not a robust measure of the spread of a distribution.
+
+A measure that is more appropriate in this case is the inter-quartile range or IQR. It is the distance
+between the 25th and the 75th percentile of the data and contains the central half of the data. The
+25th percentile is the range of the data where 25 % of observations have a lower value and 75 have a higher one. The median, for example, could equivalently be termed the 50 % percentile.
+
+R had a function to compute the inter-quartile range, which is called `IQR()`. For example in the
+case of our income data, which we showed are skewed, we would get, for example a mean and a standard
+deviation of
+
+```{r}
+mean(data)
+sd(data)
+```
+and a median and inter quartile range of
+
+```{r}
+median(data)
+IQR(data)
+```
+
+Alternatively you could use the R function `summary()`, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can
+compute the IQR from this.
+
+
 
 
 <!-- ## Contents  -->

@@ -1441,7 +1441,55 @@ Now you try
 </div>
 </div>
 <p>You see that the mean now does not capture the center of the distribution well. Only 32 % have incomes above the mean income and 68 % have incomes below. The point where 50% are above and 50 % are below is actually at 1700, as expressed by the median.</p>
-<p>Discuss the difference between a cross section and longitudinal data, discuss that a gap in averages can hide substantial overlap in distribution (needs microdata, though; DHS?). To do</p>
+<p>There is another important difference between the mean and the median. Let us illustrate this difference with the example of primary energy consumption across the countries in the world. This distribution turned out to be highly skewed. Remember the histogram</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat_countries<span class="sc">$</span>Cons, </span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>,</span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-65-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The mean is:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_countries<span class="sc">$</span>Cons)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26767.75</code></pre>
+</div>
+</div>
+<p>and the median is</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dat_countries<span class="sc">$</span>Cons)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16525.11</code></pre>
+</div>
+</div>
+<p>Now let us assume we add a fictitious large value to the data set, say 400.000 kwh per person per year and recalculate the mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(dat_countries<span class="sc">$</span>Cons, <span class="dv">400000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 28479.82</code></pre>
+</div>
+</div>
+<p>Now the mean per capita consumption is quite a bit larger actually - just from this one extreme observation - it is larger by more than 6 %.</p>
+<p>What happens to the median?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(dat_countries<span class="sc">$</span>Cons, <span class="dv">400000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16525.53</code></pre>
+</div>
+</div>
+<p>It stays about the same.</p>
+<p>The take away here is that the mean is a summary measure that is sensitive to outliers. The median on the other hand is a more robust measure. One or a a few outliers can not move the median.</p>
 </section>
 </section>
 <section id="exercises-for-the-average" class="level3" data-number="3.3.2">
@@ -1483,7 +1531,7 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 172.7025</code></pre>
@@ -1505,7 +1553,7 @@ Standard deviation
 </div>
 <p>In R you can compute the standard deviation by using the function <code>sd()</code>. So let us compute the standard deviation of our height data using the <code>sd()</code>function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.830264</code></pre>
 </div>
@@ -1513,9 +1561,9 @@ Standard deviation
 <p>So the standard deviation is at about 4.8 cm. That means that many humans differed from the average height by about 1, 2, 3, 4 or about 5 cm. Let us use R to compute the percent of observation that are within one standard deviation from the average.</p>
 <p>Let us use the trick of combining logical subsetting and the coercion rules of R to compute this percentage here:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>aux <span class="ot">&lt;-</span> dat<span class="sc">$</span>Height <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height) <span class="sc">&amp;</span> dat<span class="sc">$</span>Height <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span>
-<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(aux)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>aux <span class="ot">&lt;-</span> dat<span class="sc">$</span>Height <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height) <span class="sc">&amp;</span> dat<span class="sc">$</span>Height <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(aux)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.68356</code></pre>
 </div>
@@ -1535,38 +1583,18 @@ Now you try
 </div>
 </div>
 <p>This is a rule of thumb that applies to many (but not all) data sets. For many distributions roughly 68 % of observations are within one standard deviation from the average. 95 % are within two standard deviations from the average. We will learn later in the course where this rule comes from. Let us illustrate the rules graphically using the histogram.</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>hist_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">61</span>, <span class="dv">62</span>, <span class="dv">63</span>, <span class="dv">64</span>, <span class="dv">65</span>, <span class="fl">66.89479</span>, <span class="dv">67</span>, <span class="dv">68</span>, <span class="fl">69.89479</span>, <span class="dv">70</span>, <span class="dv">71</span>, <span class="dv">72</span>, <span class="dv">73</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">76</span>)</span>
-<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>color_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'#C6E2FF'</span>, <span class="fu">length</span>(hist_breaks))</span>
-<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#6C7B8B'</span></span>
-<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#C6E2FF'</span></span>
-<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
-<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
-<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid" width="672"></p>
-</div>
+<div id="fig-hist_68" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hist_68.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure 3.5: The observations around one standard deviation from the mean.</figcaption><p></p>
+</figure>
 </div>
 <p>The next figure shows the same histogram. Now the area within two standard deviations from the mean is colored differently</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>hist_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">61</span>, <span class="dv">62</span>, <span class="dv">63</span>, <span class="fl">64.18976</span>, <span class="dv">65</span>, <span class="dv">66</span>, <span class="dv">67</span>, <span class="dv">68</span>, <span class="dv">69</span>, <span class="dv">70</span>, <span class="fl">71.79647</span>, <span class="dv">72</span>, <span class="dv">73</span>, <span class="dv">74</span>, <span class="dv">75</span>, <span class="dv">76</span>)</span>
-<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>color_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'#C6E2FF'</span>, <span class="fu">length</span>(hist_breaks))</span>
-<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#6C7B8B'</span></span>
-<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>color_list[hist_breaks <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Height)] <span class="ot">&lt;-</span> <span class="st">'#C6E2FF'</span></span>
-<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
-<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
-<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-69-1.png" class="img-fluid" width="672"></p>
-</div>
+<div id="fig-hist_95" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hist_95.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure 3.6: The observations around two standard deviation from the mean.</figcaption><p></p>
+</figure>
 </div>
 </section>
 <section id="exercises-for-the-standard-deviation" class="level3" data-number="3.3.4">
@@ -1604,26 +1632,42 @@ Now you try
 <li>60, 36, 31, 50, 48, 50, 54, 56, 62, 53</li>
 </ol>
 <p>Exercise 5:</p>
-<p>Below are three sketches of a histogram (we call them “sketches” because they display a schematic shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) Match the sketch with the description. Some descriptions will be left over. Give your reasoning in each case. The symbol <span class="math inline">\(\approx\)</span> is the mathematical notation for <em>approximately</em>.</p>
+<p>Below are three sketches of three stylized histograms (we call them “sketches” because they display a schematic shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) Match the sketch with the description. Some descriptions will be left over. Give your reasoning in each case. The symbol <span class="math inline">\(\approx\)</span> is the mathematical notation for <em>approximately</em>.</p>
 <ol type="i">
 <li>ave <span class="math inline">\(\approx\)</span> 3.5, sd <span class="math inline">\(\approx\)</span> 1 (iv) ave <span class="math inline">\(\approx\)</span> 2.5, sd <span class="math inline">\(\approx\)</span> 1</li>
 <li>ave <span class="math inline">\(\approx\)</span> 3.5, sd <span class="math inline">\(\approx\)</span> 0.5 (v) ave <span class="math inline">\(\approx\)</span> 2.5, sd <span class="math inline">\(\approx\)</span> 0.5</li>
 <li>ave <span class="math inline">\(\approx\)</span> 3.4, sd <span class="math inline">\(\approx\)</span> 2 (vi) ave <span class="math inline">\(\approx\)</span> 4.5, sd <span class="math inline">\(\approx\)</span> 0.5</li>
 </ol>
-<div class="quarto-layout-panel">
+<div id="fig-histograms" class="quarto-layout-panel">
+<figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-hist_ex_1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/hist_ex_1.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3.5: (a)</figcaption><p></p>
+<p><img src="pictures/hist_ex_1.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
+<p></p><figcaption class="figure-caption">(a) Histogram 1</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img src="pictures/hist_ex_2.png" id="fig-hist_ex_2" class="img-fluid" alt="(b)"> <img src="pictures/hist_ex_3.png" id="fig-hist_ex_3" class="img-fluid" alt="(c)"></p>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hist_ex_2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hist_ex_2.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
+<p></p><figcaption class="figure-caption">(b) Histogram 2</figcaption><p></p>
+</figure>
 </div>
 </div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-hist_ex_3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/hist_ex_3.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
+<p></p><figcaption class="figure-caption">(c) Histogram 3</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure 3.7: Three stylized histograms</figcaption><p></p>
+</figure>
 </div>
 <p>Exercise 6:</p>
 <p>One investigator takes a sample of 100 men age 18 - 24 in a certain town. Another one takes a sample of 1000 such men.</p>
@@ -1679,6 +1723,44 @@ Now you try
 </ol>
 </div>
 </div>
+<p>Note that for skewed distributions the standard deviation is also not a very good measure of the spread, because it measures the variation about the mean and the mean does not capture the center of the distribution very well in this case.</p>
+<p>Moreover the standard deviation - like the mean - is sensitive to outliers and is therefore not a robust measure of the spread of a distribution.</p>
+<p>A measure that is more appropriate in this case is the inter-quartile range or IQR. It is the distance between the 25th and the 75th percentile of the data and contains the central half of the data. The 25th percentile is the range of the data where 25 % of observations have a lower value and 75 have a higher one. The median, for example, could equivalently be termed the 50 % percentile.</p>
+<p>R had a function to compute the inter-quartile range, which is called <code>IQR()</code>. For example in the case of our income data, which we showed are skewed, we would get, for example a mean and a standard deviation of</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3012.174</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3160.662</code></pre>
+</div>
+</div>
+<p>and a median and inter quartile range of</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1700</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3220</code></pre>
+</div>
+</div>
+<p>Alternatively you could use the R function <code>summary()</code>, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can compute the IQR from this.</p>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
