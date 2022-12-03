@@ -268,6 +268,7 @@ div.csl-indent {
   <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"> <span class="header-section-number">3.3.3</span> The standard deviation</a></li>
   <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"> <span class="header-section-number">3.3.4</span> Exercises for the standard deviation</a></li>
   <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"> <span class="header-section-number">3.3.5</span> Computing the standard deviation</a></li>
+  <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"> <span class="header-section-number">3.3.6</span> Interquartile range and the boxplot</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1723,6 +1724,9 @@ Now you try
 </ol>
 </div>
 </div>
+</section>
+<section id="interquartile-range-and-the-boxplot" class="level3" data-number="3.3.6">
+<h3 data-number="3.3.6" class="anchored" data-anchor-id="interquartile-range-and-the-boxplot"><span class="header-section-number">3.3.6</span> Interquartile range and the boxplot</h3>
 <p>Note that for skewed distributions the standard deviation is also not a very good measure of the spread, because it measures the variation about the mean and the mean does not capture the center of the distribution very well in this case.</p>
 <p>Moreover the standard deviation - like the mean - is sensitive to outliers and is therefore not a robust measure of the spread of a distribution.</p>
 <p>A measure that is more appropriate in this case is the inter-quartile range or IQR. It is the distance between the 25th and the 75th percentile of the data and contains the central half of the data. The 25th percentile is the range of the data where 25 % of observations have a lower value and 75 have a higher one. The median, for example, could equivalently be termed the 50 % percentile.</p>
@@ -1761,6 +1765,119 @@ Now you try
 </div>
 </div>
 <p>Alternatively you could use the R function <code>summary()</code>, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can compute the IQR from this.</p>
+<p>Let us illustrate the use of <code>summary()</code> with the income data discussed in this section. To compute the describtives in one go for these data, you would tell R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+     20     820    1700    3012    4040   14000 </code></pre>
+</div>
+</div>
+<p>The <code>summary()</code>function will give you the minimium, the first quartile, the median and the mean, the 4th quartile and the maximum. The interquartile range can be computed from these data as <span class="math inline">\(4040 - 820\)</span> which is equal to <span class="math inline">\(3220\)</span>. When you use <code>IQR()</code>you will get</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3220</code></pre>
+</div>
+</div>
+<p>as indeed it should be.</p>
+<p>Note that is you summarize our human height data we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  153.1   169.4   172.7   172.7   176.0   190.9 </code></pre>
+</div>
+</div>
+<p>Since the median and the mean give you the same value, you can see already from these data that the distribution of the data is symmetric, as we have already seen before.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the list of numbers:</p>
+<p>2, -1, 1, -1, 1, -2, 1.5, -0.2, 1.37, -1.37, 3</p>
+<ol type="1">
+<li>Compute the mean, the standard deviation, the median and the inter quartile range.</li>
+<li>Draw a histogram</li>
+</ol>
+</div>
+</div>
+<p>A standard graphical tool that summarizes the data in an anology to the <code>summary()</code>function is the boxplot. The boxplot summarizes the variation of data graphically through quartiles. It draws a box, where one side corresponds to the lower quartile, while the opposie side corresponds to the upper quartile. The median is displayed as a line crossing the box. The boxplot also contains lines, which are called the <em>whiskers</em> extending the box indication variability outside the two quartiles. These observations are at the extremes of the variation of the data. Data points that differ significantly from the other data, often calles <em>outliers</em> are shown as individual points.</p>
+<p>Let us show some of the datasets we have discussed in this section to illustrate this very useful tool which gives you a compact and very informative summary of a huge data set. Let us start with Nile river data we had looked at in the beginning of the section. T R function for making a boxplot is called <code>boxplot()</code> and is used like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here the box shows you the maximum and the minimum flow (the whiskers), the box surrounding the first and the fourth quartile as well as the median as the black line within the box. If you look up the help function of <code>boxplot()</code> you can learn about various ways to control the look of the plot.</p>
+<p>You can display the boxplot vertically or horizontally, whatever seems more convenient in the given context. Assume for instance we would like to show the Nile river data in one graph displaying both the boxplot and the histogram at the same time, then it would be more informative to have the boxplot as a horizontal graph.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
+<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># First and second row relative heights</span></span>
+<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-81-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>But you could, of course, also choose a different layout. Lets take the primary energy consumption data we used before</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
+<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># First and second row relative heights</span></span>
+<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hist_info<span class="sc">$</span>density)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This graph show you in one picture the extreme asymmetry of primary energy consumption across the globe. Very few countries are heavy consumers of primary energy whereas the a huge share of countries consume very little in comparison. In the context of the debate on climate change, this observation might be an interesting starting point for discussing the sharing of the burdens of getting out of fossile fuels between the countries in the world.</p>
+<p>Let us finally look at the Nile river data once more combining the display of the raw data, the histogram as well as the boxplot. This shows you at the same time the raw data, and two ways of summarizing them. When the datapoints are huge, the display of the raw data will not show you very much, because the points will be so packed that you can not distinguish different datapoints easily. Withe the Nile river flow data, where we have 100 observations the situation is different. So this is how the picture of all three graphs combined looks like.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb154-5"><a href="#cb154-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">byrow =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb154-6"><a href="#cb154-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb154-7"><a href="#cb154-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">heights  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">respect =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb154-8"><a href="#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top and right margin of the main plot</span></span>
+<span id="cb154-10"><a href="#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb154-11"><a href="#cb154-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(Nile), <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Flow"</span>)</span>
+<span id="cb154-12"><a href="#cb154-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-13"><a href="#cb154-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Left margin of the histogram</span></span>
+<span id="cb154-14"><a href="#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb154-15"><a href="#cb154-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile, <span class="at">main =</span> <span class="st">""</span>, <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb154-16"><a href="#cb154-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb154-17"><a href="#cb154-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-18"><a href="#cb154-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom margin of the boxplot</span></span>
+<span id="cb154-19"><a href="#cb154-19" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb154-20"><a href="#cb154-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-21"><a href="#cb154-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without plot region box</span></span>
+<span id="cb154-22"><a href="#cb154-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb154-23"><a href="#cb154-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-24"><a href="#cb154-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without axes</span></span>
+<span id="cb154-25"><a href="#cb154-25" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-83-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->

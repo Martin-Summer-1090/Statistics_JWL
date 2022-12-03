@@ -1794,6 +1794,8 @@ average?
 
 :::
 
+### Interquartile range and the boxplot
+
 Note that for skewed distributions the standard deviation is also not a very good measure of the spread,
 because it measures the variation about the mean and the mean does not capture the center of the
 distribution very well in this case.
@@ -1822,6 +1824,165 @@ IQR(data)
 
 Alternatively you could use the R function `summary()`, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can
 compute the IQR from this.
+
+Let us illustrate the use of `summary()` with the income data discussed in this section. To
+compute the describtives in one go for these data, you would tell R:
+
+```{r}
+#| code-fold: false
+
+summary(data)
+```
+
+The `summary()`function will give you the minimium, the first quartile, the median and the mean, the
+4th quartile and the maximum. The interquartile range can be computed from these data as $4040 - 820$ 
+which is equal to $3220$. When you use `IQR()`you will get
+```{r}
+#| code-fold: false
+IQR(data)
+```
+as indeed it should be.
+
+Note that is you summarize our human height data we get:
+
+```{r}
+#| code-fold: false
+
+summary(dat$Height)
+```
+Since the median and the mean give you the same value, you can see already from these data that the
+distribution of the data is symmetric, as we have already seen before.
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+For the list of numbers:
+
+2, -1, 1, -1, 1, -2, 1.5, -0.2, 1.37, -1.37, 3
+
+1. Compute the mean, the standard deviation, the median and the inter quartile range.
+2. Draw a histogram
+
+:::
+
+A standard graphical tool that summarizes the data in an anology to the `summary()`function is
+the boxplot. The boxplot summarizes the variation of data graphically through quartiles. It draws
+a box, where one side corresponds to the lower quartile, while the opposie side corresponds to
+the upper quartile. The median is displayed as a line crossing the box. The boxplot also contains
+lines, which are called the *whiskers* extending the box indication variability outside the
+two quartiles. These observations are at the extremes of the variation of the data. Data points
+that differ significantly from the other data, often calles *outliers* are shown as individual points.
+
+Let us show some of the datasets we have discussed in this section to illustrate this very useful
+tool which gives you a compact and very informative summary of a huge data set. Let us start
+with Nile river data we had looked at in the beginning of the section. T R function for making
+a boxplot is called `boxplot()` and is used like this:
+
+```{r}
+#| code-fold: false
+
+boxplot(Nile)
+```
+
+Here the box shows you the maximum and the minimum flow (the whiskers), the box surrounding the
+first and the fourth quartile as well as the median as the black line within the box. If you
+look up the help function of `boxplot()` you can learn about various ways to control the
+look of the plot. 
+
+You can display the boxplot vertically or horizontally, whatever seems more convenient
+in the given context. Assume for instance we would like to show the Nile river data in 
+one graph displaying both the boxplot and the histogram at the same time, then it would
+be more informative to have the boxplot as a horizontal graph.
+
+```{r}
+mat <- matrix(c(1, 2), nrow = 2, ncol = 1, byrow = TRUE) # first and second plot
+layout(mat = mat, heights = c(1, 1)) # First and second row relative heights
+boxplot(Nile, horizontal = TRUE)
+hist(Nile)
+```
+But you could, of course, also choose a different layout. Lets take the primary energy 
+consumption data we used before
+
+```{r}
+mat <- matrix(c(2, 1), nrow = 1, ncol = 2, byrow = TRUE) # first and second plot
+layout(mat = mat, widths = c(1, 2)) # First and second row relative heights
+plot(hist_info, freq = FALSE, xlab = "", ylab = "Percent", main = " ")
+boxplot(hist_info$density)
+```
+
+This graph show you in one picture the extreme asymmetry of primary energy consumption 
+across the globe. Very few countries are heavy consumers of primary energy whereas the
+a huge share of countries consume very little in comparison. In the context of
+the debate on climate change, this observation might be an interesting starting point
+for discussing the sharing of the burdens of getting out of fossile fuels between
+the countries in the world. 
+
+Let us finally look at the Nile river data once more combining the display of the raw data,
+the histogram as well as the boxplot. This shows you at the same time the raw data, and two
+ways of summarizing them. When the datapoints are huge, the display of the raw data will
+not show you very much, because the points will be so packed that you can not distinguish
+different datapoints easily. Withe the Nile river flow data, where we have 100 observations
+the situation is different. So this is how the picture of all  three graphs combined
+looks like.
+
+```{r}
+# Data
+
+layout(matrix(c(2, 0, 1, 3),
+              nrow = 2, ncol = 2,
+              byrow = TRUE),
+       widths = c(3, 1),
+       heights  = c(1, 3), respect = TRUE)
+
+# Top and right margin of the main plot
+par(mar = c(5.1, 4.1, 0, 0))
+plot(as.numeric(Nile), xlab = "", ylab = "Flow")
+
+# Left margin of the histogram
+par(mar = c(0, 4.1, 0, 0))
+hist(Nile, main = "", bty = "n",
+     axes = FALSE, ylab = "")
+
+# Bottom margin of the boxplot
+par(mar = c(5.1, 0, 0, 0))
+
+# Boxplot without plot region box
+par(bty = "n")
+
+# Boxplot without axes
+boxplot(Nile, axes = FALSE)
+```
+
+## Describing differences between groups of numbers
+
+I would like to use survey data on height to compare the height of men and women.
+The main didactical point will be to show that the height of men and women differ 
+on average. But when we bring in the distribution we see there is lot of overlap.
+Lessons to be learned: Avoid the gap instinct. Discuss the analogy of math scores
+between boys and girls.
+
+I have not yet completed this section because I need to learn how to download and
+process the height and weight microdata which can be accessed through DHL. But I have
+not yet learned how to do so.
+
+## Describing Relationships between data
+
+I use height and weight when I have the DHL data to show an example of correlation
+patterns and the tool of a scatterplot. This finishes our toolset of 
+exploratory graphical data display tools.
+
+
+## Describing Trends
+
+Here we can again use the DHL data to end this section with a positive message.
+There is a positive trend in human height around the world. This is an indicator
+that over time living conditions have improved globally. 
+
+
+## Summary
+
+## Computer exercises
 
 
 
