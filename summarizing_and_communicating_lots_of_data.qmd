@@ -1625,7 +1625,7 @@ comes from. Let us illustrate the rules graphically using the histogram.
 
 ```{r}
 #| include: false
-hist_breaks <- hist(dat$Height)$breaks
+hist_breaks <- hist(dat$Height, plot = FALSE)$breaks
 color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - sd(dat$Height)] <- '#C6E2FF'
@@ -1637,7 +1637,7 @@ abline(v = mean(dat$Height),                       # Add red line for mean
 
 ```
 
-![The observations around one standard deviation from the mean.](pictures/hist_68.png){#fig-hist_68}
+
 
 
 
@@ -1647,7 +1647,7 @@ the mean is colored differently
 
 ```{r}
 #| include: false
-hist_breaks <- hist(dat$Height)$breaks
+hist_breaks <- hist(dat$Height, plot = FALSE)$breaks
 color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + 2*sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - 2*sd(dat$Height)] <- '#C6E2FF'
@@ -1657,8 +1657,6 @@ abline(v = mean(dat$Height),                       # Add red line for mean
        col = "red")
 ```
 
-
-![The observations around two standard deviation from the mean.](pictures/hist_95.png){#fig-hist_95}
 
 ### Exercises for the standard deviation
 
@@ -1956,22 +1954,75 @@ boxplot(Nile, axes = FALSE)
 
 ## Describing differences between groups of numbers
 
-I would like to use survey data on height to compare the height of men and women.
-The main didactical point will be to show that the height of men and women differ 
-on average. But when we bring in the distribution we see there is lot of overlap.
-Lessons to be learned: Avoid the gap instinct. Discuss the analogy of math scores
-between boys and girls.
+Groups of numbers are often compared by using summary statistics. Summary statistics
+can answer the question: How do the groups differ *on average*, how do they differ with
+respect to how spread out the observations are.
 
-I have not yet completed this section because I need to learn how to download and
-process the height and weight microdata which can be accessed through DHL. But I have
-not yet learned how to do so.
+By this stage of the chapter on summarizing and communicating lost of data
+it should be clear that when we conduct such comparisons, we have to be mindful
+of the fact that summary measures hide information that depending on the way the
+data are distributed some summary measures are more appropriate than others. 
+
+Let us use data on human height to illustrate these points. Our data includes
+a set of anthropometric data from a textbook by the anthropologist Richard McElrath (@McElr2020).
+If we summarize the height data of men and women in  this dataset using the R summary function we
+get
+```{r}
+
+mh <- height_weight$height[height_weight$sex == 1 & height_weight$age >= 18] |> na.omit()
+fh <- height_weight$height[height_weight$sex == 0 & height_weight$age >= 18] |> na.omit()
+
+lapply(list(Male = mh, Female = fh), summary)
+```
+
+The summary statistics shows as a few facts about these data. First of all we see that 
+both for the male height data as well as for the female height data the mean and the
+median are about the same and thus the distributions are roughly symmetric. The mean
+thus actually captures the "center" of the distribution in a meaningful way. On average
+men are taller than women. The variation in terms of the inter quartile range is about 
+the same between 6 and 7 cm.
+
+Note that this does not mean that all men are taller than women. Let's look at the full data
+in terms of the histogram.
+
+```{r}
+
+hist(mh, col=rgb(1,0,0,.5), border=NA, xlab = "Height in cm", main = "Comparative histogram male and female height", breaks = 14)
+hist(fh, col=rgb(0,0,1,.5), border=NA, breaks = 9, add=TRUE)
+```
+We have colored the female height distribution in blue and the male height distribution in red
+and overlayed the histograms. Now you can see that men tend to be taller than women as
+expressed in the differences in the averages there is also a substantial amount of
+overlap in the distributions. For each male in this overlap region you will find
+a female with a matching height, and some who are taller than a given male individual. About
+10 % of women in this dataset have a male twin in height. 
+
+If you describe data and compare them by summary measures there is no substitute for looking at 
+the data properly. It is usually a good idea to look at the distribution as well as on
+the summary measures.
 
 ## Describing Relationships between data
 
-I use height and weight when I have the DHL data to show an example of correlation
-patterns and the tool of a scatterplot. This finishes our toolset of 
-exploratory graphical data display tools.
+Are taller people also heavier? This is another way in which we can look at large 
+sets of data and describe their pattern. We try to describe the relationship between
+data. A standard tool to do so is the so called scatterplot.
 
+Let us show how a scatterplot works by using the data on height and weight of humans older
+than 18 years. If you give two numeric vectors of equal length to the function `plot()` in R
+R will produce a scatterplot.
+
+```{r}
+H <- socr_height_weight$Height*2.54
+W <- socr_height_weight$Weight*0.4535924
+
+plot(H,W, xlab = "Height in cm", ylab = "Weight in kg", main = "Relation between height and weight of adult humans")
+```
+What you see here is a dense cloud of 25.000 pairs of height and weight measurements. For any given 
+height you see a whole range of observations with different weights. And for any given weight
+you see many observations with differing heights. But the cloud as a whole shows an
+increasing 
+
+correlation, pearson, spearman depndent variable, independent variable
 
 ## Describing Trends
 

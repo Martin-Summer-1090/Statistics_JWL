@@ -270,6 +270,11 @@ div.csl-indent {
   <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"> <span class="header-section-number">3.3.5</span> Computing the standard deviation</a></li>
   <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"> <span class="header-section-number">3.3.6</span> Interquartile range and the boxplot</a></li>
   </ul></li>
+  <li><a href="#describing-differences-between-groups-of-numbers" id="toc-describing-differences-between-groups-of-numbers" class="nav-link" data-scroll-target="#describing-differences-between-groups-of-numbers"> <span class="header-section-number">3.4</span> Describing differences between groups of numbers</a></li>
+  <li><a href="#describing-relationships-between-data" id="toc-describing-relationships-between-data" class="nav-link" data-scroll-target="#describing-relationships-between-data"> <span class="header-section-number">3.5</span> Describing Relationships between data</a></li>
+  <li><a href="#describing-trends" id="toc-describing-trends" class="nav-link" data-scroll-target="#describing-trends"> <span class="header-section-number">3.6</span> Describing Trends</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">3.7</span> Summary</a></li>
+  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"> <span class="header-section-number">3.8</span> Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -1584,19 +1589,7 @@ Now you try
 </div>
 </div>
 <p>This is a rule of thumb that applies to many (but not all) data sets. For many distributions roughly 68 % of observations are within one standard deviation from the average. 95 % are within two standard deviations from the average. We will learn later in the course where this rule comes from. Let us illustrate the rules graphically using the histogram.</p>
-<div id="fig-hist_68" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/hist_68.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3.5: The observations around one standard deviation from the mean.</figcaption><p></p>
-</figure>
-</div>
 <p>The next figure shows the same histogram. Now the area within two standard deviations from the mean is colored differently</p>
-<div id="fig-hist_95" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/hist_95.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3.6: The observations around two standard deviation from the mean.</figcaption><p></p>
-</figure>
-</div>
 </section>
 <section id="exercises-for-the-standard-deviation" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="exercises-for-the-standard-deviation"><span class="header-section-number">3.3.4</span> Exercises for the standard deviation</h3>
@@ -1667,7 +1660,7 @@ Now you try
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure 3.7: Three stylized histograms</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure 3.5: Three stylized histograms</figcaption><p></p>
 </figure>
 </div>
 <p>Exercise 6:</p>
@@ -1878,6 +1871,74 @@ Now you try
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-83-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+</section>
+<section id="describing-differences-between-groups-of-numbers" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="describing-differences-between-groups-of-numbers"><span class="header-section-number">3.4</span> Describing differences between groups of numbers</h2>
+<p>Groups of numbers are often compared by using summary statistics. Summary statistics can answer the question: How do the groups differ <em>on average</em>, how do they differ with respect to how spread out the observations are.</p>
+<p>By this stage of the chapter on summarizing and communicating lost of data it should be clear that when we conduct such comparisons, we have to be mindful of the fact that summary measures hide information that depending on the way the data are distributed some summary measures are more appropriate than others.</p>
+<p>Let us use data on human height to illustrate these points. Our data includes a set of anthropometric data from a textbook by the anthropologist Richard McElrath (<span class="citation" data-cites="McElr2020">McElrath (<a href="references.html#ref-McElr2020" role="doc-biblioref">2020</a>)</span>). If we summarize the height data of men and women in this dataset using the R summary function we get</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
+<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
+<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="at">Male =</span> mh, <span class="at">Female =</span> fh), summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  139.7   157.5   160.7   160.4   163.8   179.1 
+
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  136.5   146.1   149.9   149.5   153.0   162.6 </code></pre>
+</div>
+</div>
+<p>The summary statistics shows as a few facts about these data. First of all we see that both for the male height data as well as for the female height data the mean and the median are about the same and thus the distributions are roughly symmetric. The mean thus actually captures the “center” of the distribution in a meaningful way. On average men are taller than women. The variation in terms of the inter quartile range is about the same between 6 and 7 cm.</p>
+<p>Note that this does not mean that all men are taller than women. Let’s look at the full data in terms of the histogram.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Comparative histogram male and female height"</span>, <span class="at">breaks =</span> <span class="dv">14</span>)</span>
+<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">breaks =</span> <span class="dv">9</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We have colored the female height distribution in blue and the male height distribution in red and overlayed the histograms. Now you can see that men tend to be taller than women as expressed in the differences in the averages there is also a substantial amount of overlap in the distributions. For each male in this overlap region you will find a female with a matching height, and some who are taller than a given male individual. About 10 % of women in this dataset have a male twin in height.</p>
+<p>If you describe data and compare them by summary measures there is no substitute for looking at the data properly. It is usually a good idea to look at the distribution as well as on the summary measures.</p>
+</section>
+<section id="describing-relationships-between-data" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="describing-relationships-between-data"><span class="header-section-number">3.5</span> Describing Relationships between data</h2>
+<p>Are taller people also heavier? This is another way in which we can look at large sets of data and describe their pattern. We try to describe the relationship between data. A standard tool to do so is the so called scatterplot.</p>
+<p>Let us show how a scatterplot works by using the data on height and weight of humans older than 18 years. If you give two numeric vectors of equal length to the function <code>plot()</code> in R R will produce a scatterplot.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span>
+<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(H,W, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">ylab =</span> <span class="st">"Weight in kg"</span>, <span class="at">main =</span> <span class="st">"Relation between height and weight of adult humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What you see here is a dense cloud of 25000 pairs of height and weight measurements. For any given height you see a whole range of observations with different weights. And for any given weight you see many observations with differing heights. But the cloud as a whole shows an increasing</p>
+<p>correlation, pearson, spearman depndent variable, independent variable</p>
+</section>
+<section id="describing-trends" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="describing-trends"><span class="header-section-number">3.6</span> Describing Trends</h2>
+<p>Here we can again use the DHL data to end this section with a positive message. There is a positive trend in human height around the world. This is an indicator that over time living conditions have improved globally.</p>
+</section>
+<section id="summary" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.7</span> Summary</h2>
+</section>
+<section id="computer-exercises" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.8</span> Computer exercises</h2>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->
@@ -1907,8 +1968,10 @@ Now you try
 <div id="ref-HelMau2015" class="csl-entry" role="doc-biblioentry">
 Hellebrand, Tomas, and Paolo Mauro. 2015. <span>“The Future of Worldwide Income Distribution.”</span> <em>Brooking Institution Working Paper Series</em> 7 (15). <a href="file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf">file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf</a>.
 </div>
+<div id="ref-McElr2020" class="csl-entry" role="doc-biblioentry">
+McElrath, Richard. 2020. <em>Statistical Resthinking</em>. CRC Press. <a href="https://github.com/rmcelreath/rethinking">https://github.com/rmcelreath/rethinking</a>.
 </div>
-</section>
+</div>
 </section>
 
 
