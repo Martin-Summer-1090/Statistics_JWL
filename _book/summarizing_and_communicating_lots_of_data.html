@@ -1927,12 +1927,41 @@ $Female
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>What you see here is a dense cloud of 25000 pairs of height and weight measurements. For any given height you see a whole range of observations with different weights. And for any given weight you see many observations with differing heights. But the cloud as a whole shows an increasing</p>
-<p>correlation, pearson, spearman depndent variable, independent variable</p>
+<p>What you see here is a dense cloud of 25.000 pairs of height and weight measurements. For any given height you see a whole range of observations with different weights. And for any given weight you see many observations with differing heights. But the cloud as a whole shows an increasing relation. This makes also intuitive sense. People who are taller tend to be also heavier.</p>
+<p>It is sometimes convenient to summarize such increasing (or decreasing) relationships between two variables or the pairs of numbers shown in a scatterplot with a single number. The general choice for doing this is the <em>Pearson correlation coefficient</em> or simply the correlation.</p>
+<p>The Pearson correlation coefficient is a number that can be between -1 and 1. It epresses how close to a straight line the data-points in the scatterplot fall. If the correlation coerfficient is 1 all points lie on an upward sloping straight line. If the coeficcient is - 1 all the points fall on a downward sloping straight line. A correlation coefficient of 0 can come from points scattered at random or any other pattern in which there is no systematic upward or downward trend.</p>
+<p>R provides a function for the Pearson correlation coefficient, which is called <code>cor()</code>. For our height-weight pairs data used for the scatterplot this coefficient computes as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(H,W)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5028585</code></pre>
+</div>
+</div>
+<p>suggesting an association of increasing weight with increasing height.</p>
+<p>A correlation coefficient is simply a one number summary of association or co-variation. It can not be used to conclude that there is definitely an underlying relationship between height and weight - in this example - nor can it say anything about why such a relationship may exist.</p>
 </section>
-<section id="describing-trends" class="level2" data-number="3.6">
+<section id="describing-trends" class="level2 page-columns page-full" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="describing-trends"><span class="header-section-number">3.6</span> Describing Trends</h2>
-<p>Here we can again use the DHL data to end this section with a positive message. There is a positive trend in human height around the world. This is an indicator that over time living conditions have improved globally.</p>
+<p>Let us come back to the data on human height. One reason why data on height have always been interesting to researchers is that average height is strongly correlated with living standards in a population. This is because poor nutrition and poor medical support limit human growth. Because better living conditions tend to make humans taller they are an indirect measure of living stanrdards. Height is - of course - not a direct measure of well beeing. The variation of height in a given population is largely determined by genetic fatcors.</p>
+<p>Looking at the trend of average height over time helps us to indirectly track progress especially with respect to conditions of nutrition and disease prevention. The time trends in average human height are therefore data that can tell interesting stories or open our interest for further exploration.</p>
+<div class="page-columns page-full"><p>Let us use a dataset on the average height of men and women accross countries around the world from 1896 to 1996 which we retrieve from the site our world in data which we have now encountered several times by now<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn12" role="doc-endnote"><p><sup>12</sup>&nbsp;https://ourworldindata.org/human-height</p></li></div></div>
+<p>Let us study, for instance the data for the world as a whole</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_men</span>
+<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_women</span>
+<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>mh_w <span class="ot">&lt;-</span> height_men[height_men<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
+<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>fh_w <span class="ot">&lt;-</span> height_women[height_women<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
+<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mh_w<span class="sc">$</span>Year,  mh_w<span class="sc">$</span>Height, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mh_w<span class="sc">$</span>Year, fh_w<span class="sc">$</span>Height, <span class="at">type =</span> <span class="st">"l"</span>,  <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 <section id="summary" class="level2" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.7</span> Summary</h2>
