@@ -2082,11 +2082,11 @@ y1 <- mh_w$Height
 y2 <- fh_w$Height
 
 #plot the first data series using plot()
-plot(x, y1, type="l", col="blue", ylab="y", lty=1)
+plot(x, y1, type="l", col="blue", ylab="y", lty=1, ylim=range( c(150, 180) ) )
 
 #add second data series to the same chart using points() and lines()
 
-lines(x, y2, col="red",lty=2)
+lines(x, y2, type = "l", col="red",lty=2)
 
 ```
 

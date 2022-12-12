@@ -1955,8 +1955,16 @@ $Female
 <span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>mh_w <span class="ot">&lt;-</span> height_men[height_men<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
 <span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>fh_w <span class="ot">&lt;-</span> height_women[height_women<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
 <span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mh_w<span class="sc">$</span>Year,  mh_w<span class="sc">$</span>Height, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span>
-<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mh_w<span class="sc">$</span>Year, fh_w<span class="sc">$</span>Height, <span class="at">type =</span> <span class="st">"l"</span>,  <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Year</span>
+<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Height</span>
+<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> fh_w<span class="sc">$</span>Height</span>
+<span id="cb161-10"><a href="#cb161-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-11"><a href="#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the first data series using plot()</span></span>
+<span id="cb161-12"><a href="#cb161-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y1, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">ylab=</span><span class="st">"y"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">ylim=</span><span class="fu">range</span>( <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">180</span>) ) )</span>
+<span id="cb161-13"><a href="#cb161-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-14"><a href="#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="co">#add second data series to the same chart using points() and lines()</span></span>
+<span id="cb161-15"><a href="#cb161-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb161-16"><a href="#cb161-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y2, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid" width="672"></p>
