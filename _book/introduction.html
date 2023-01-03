@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.18">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -240,24 +245,24 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#experiencing-the-world-through-data" id="toc-experiencing-the-world-through-data" class="nav-link active" data-scroll-target="#experiencing-the-world-through-data"> <span class="header-section-number">1.1</span> Experiencing the world through data</a>
+  <li><a href="#experiencing-the-world-through-data" id="toc-experiencing-the-world-through-data" class="nav-link active" data-scroll-target="#experiencing-the-world-through-data"><span class="toc-section-number">1.1</span>  Experiencing the world through data</a>
   <ul class="collapse">
-  <li><a href="#what-are-the-major-sources-of-electricity-production-in-kenya" id="toc-what-are-the-major-sources-of-electricity-production-in-kenya" class="nav-link" data-scroll-target="#what-are-the-major-sources-of-electricity-production-in-kenya"> <span class="header-section-number">1.1.1</span> What are the major sources of electricity production in Kenya?</a></li>
-  <li><a href="#how-many-trees-are-there-on-the-planet" id="toc-how-many-trees-are-there-on-the-planet" class="nav-link" data-scroll-target="#how-many-trees-are-there-on-the-planet"> <span class="header-section-number">1.1.2</span> How many trees are there on the planet?</a></li>
-  <li><a href="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" id="toc-what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" class="nav-link" data-scroll-target="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years"> <span class="header-section-number">1.1.3</span> What has happened to extreme poverty on the globe in the last 20 years?</a></li>
-  <li><a href="#does-taking-your-time-in-college-pay-off" id="toc-does-taking-your-time-in-college-pay-off" class="nav-link" data-scroll-target="#does-taking-your-time-in-college-pay-off"> <span class="header-section-number">1.1.4</span> Does taking your time in college pay off?</a></li>
+  <li><a href="#what-are-the-major-sources-of-electricity-production-in-kenya" id="toc-what-are-the-major-sources-of-electricity-production-in-kenya" class="nav-link" data-scroll-target="#what-are-the-major-sources-of-electricity-production-in-kenya"><span class="toc-section-number">1.1.1</span>  What are the major sources of electricity production in Kenya?</a></li>
+  <li><a href="#how-many-trees-are-there-on-the-planet" id="toc-how-many-trees-are-there-on-the-planet" class="nav-link" data-scroll-target="#how-many-trees-are-there-on-the-planet"><span class="toc-section-number">1.1.2</span>  How many trees are there on the planet?</a></li>
+  <li><a href="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" id="toc-what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" class="nav-link" data-scroll-target="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years"><span class="toc-section-number">1.1.3</span>  What has happened to extreme poverty on the globe in the last 20 years?</a></li>
+  <li><a href="#does-taking-your-time-in-college-pay-off" id="toc-does-taking-your-time-in-college-pay-off" class="nav-link" data-scroll-target="#does-taking-your-time-in-college-pay-off"><span class="toc-section-number">1.1.4</span>  Does taking your time in college pay off?</a></li>
   </ul></li>
-  <li><a href="#the-three-basic-skills-you-will-learn-in-this-course" id="toc-the-three-basic-skills-you-will-learn-in-this-course" class="nav-link" data-scroll-target="#the-three-basic-skills-you-will-learn-in-this-course"> <span class="header-section-number">1.2</span> The three basic skills you will learn in this course</a></li>
-  <li><a href="#on-the-use-of-the-computer" id="toc-on-the-use-of-the-computer" class="nav-link" data-scroll-target="#on-the-use-of-the-computer"> <span class="header-section-number">1.3</span> On the use of the computer</a></li>
-  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"> <span class="header-section-number">1.4</span> Activities in the study center</a>
+  <li><a href="#the-three-basic-skills-you-will-learn-in-this-course" id="toc-the-three-basic-skills-you-will-learn-in-this-course" class="nav-link" data-scroll-target="#the-three-basic-skills-you-will-learn-in-this-course"><span class="toc-section-number">1.2</span>  The three basic skills you will learn in this course</a></li>
+  <li><a href="#on-the-use-of-the-computer" id="toc-on-the-use-of-the-computer" class="nav-link" data-scroll-target="#on-the-use-of-the-computer"><span class="toc-section-number">1.3</span>  On the use of the computer</a></li>
+  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="toc-section-number">1.4</span>  Activities in the study center</a>
   <ul class="collapse">
-  <li><a href="#visualizing-the-share-of-extremely-poor-people-for-different-countries" id="toc-visualizing-the-share-of-extremely-poor-people-for-different-countries" class="nav-link" data-scroll-target="#visualizing-the-share-of-extremely-poor-people-for-different-countries"> <span class="header-section-number">1.4.1</span> Visualizing the share of extremely poor people for different countries</a></li>
-  <li><a href="#guessing-ages" id="toc-guessing-ages" class="nav-link" data-scroll-target="#guessing-ages"> <span class="header-section-number">1.4.2</span> Guessing ages</a></li>
-  <li><a href="#collect-data-from-students." id="toc-collect-data-from-students." class="nav-link" data-scroll-target="#collect-data-from-students."> <span class="header-section-number">1.4.3</span> Collect data from students.</a></li>
+  <li><a href="#visualizing-the-share-of-extremely-poor-people-for-different-countries" id="toc-visualizing-the-share-of-extremely-poor-people-for-different-countries" class="nav-link" data-scroll-target="#visualizing-the-share-of-extremely-poor-people-for-different-countries"><span class="toc-section-number">1.4.1</span>  Visualizing the share of extremely poor people for different countries</a></li>
+  <li><a href="#guessing-ages" id="toc-guessing-ages" class="nav-link" data-scroll-target="#guessing-ages"><span class="toc-section-number">1.4.2</span>  Guessing ages</a></li>
+  <li><a href="#collect-data-from-students." id="toc-collect-data-from-students." class="nav-link" data-scroll-target="#collect-data-from-students."><span class="toc-section-number">1.4.3</span>  Collect data from students.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -275,6 +280,7 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -317,7 +323,7 @@ Accessing IEA data on the internet
 </div>
 </div>
 <div class="callout-body-container callout-body page-columns page-full">
-<div class="page-columns page-full"><p>If you have access to the internet, you can look up data and reports by the IEA on it’s website https://www.iea.org/<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;A screenshot I have taken in August 2022 shows the website like this. In the upperm right part of the website there is a link called <em>data</em> which will bring you to the data collected by IEA. <img src="pictures/IEA-website-as-of-2022-08.png" class="img-fluid" alt="iea-website"></p></li></div></div>
+<div class="page-columns page-full"><p>If you have access to the internet, you can look up data and reports by the IEA on it’s website https://www.iea.org/<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;A screenshot I have taken in August 2022 shows the website like this. In the upperm right part of the website there is a link called <em>data</em> which will bring you to the data collected by IEA. <img src="pictures/IEA-website-as-of-2022-08.png" class="img-fluid" alt="iea-website"></p></li></div></div>
 </div>
 </div>
 <p>Now let’s take a quiz and guess. What do you think is actually the biggest source of electricity production in Kenya?</p>
@@ -342,7 +348,7 @@ Seitwerk: Expand for reading comment.
 </div>
 </div>
 </div>
-<div class="page-columns page-full"><p>Consulting the IEA data, you will find that the correct answer is <em>renewable energy</em>. A very interesting website called <em>gapminder</em>, which analyzes the answers of many people to this question, finds that 61 % give a wrong answer to this question. Maybe they find it hard to imagine that 80 % of energy production in Kenya is already fossil free thanks to huge sources of geothermal- and hydropower.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Even if you break the answers down by country you see that 38 % of people from Kenya get the answer wrong. Among the people from the UK, who answer this question even 72 % answer wrongly.</p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;Geothermal electricity generation uses the earth’s natural heating energy - geothermal energy. A country needs to be located on a geothermal hot spot to make effective use of this energy source for electricity generation. At such a hotspot there are high temperatures beneath the earth’s surface which naturally produces steam. This steam can be used to spin turbines connected to a generator. This mechanism then produces electricity. Hydropower uses the water cycle to generate electricity by using dams to alter the flow of a river. The kinetic energy of the water spins turbines connected to a generator which produces electricity.</p></li></div></div>
+<div class="page-columns page-full"><p>Consulting the IEA data, you will find that the correct answer is <em>renewable energy</em>. A very interesting website called <em>gapminder</em>, which analyzes the answers of many people to this question, finds that 61 % give a wrong answer to this question. Maybe they find it hard to imagine that 80 % of energy production in Kenya is already fossil free thanks to huge sources of geothermal- and hydropower.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Even if you break the answers down by country you see that 38 % of people from Kenya get the answer wrong. Among the people from the UK, who answer this question even 72 % answer wrongly.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Geothermal electricity generation uses the earth’s natural heating energy - geothermal energy. A country needs to be located on a geothermal hot spot to make effective use of this energy source for electricity generation. At such a hotspot there are high temperatures beneath the earth’s surface which naturally produces steam. This steam can be used to spin turbines connected to a generator. This mechanism then produces electricity. Hydropower uses the water cycle to generate electricity by using dams to alter the flow of a river. The kinetic energy of the water spins turbines connected to a generator which produces electricity.</p></li></div></div>
 <p>If you are not familiar with the details of electricity production using geothermal- and hydropower or if you are not completely sure how to interpret a number like 38 %, don’t worry for now. The point here is that you see that one useful consequence of being able to access, read and interpret data is that it can help to establish facts about the world. In this way data can help us to perhaps correct misconceptions we might have had about these facts.</p>
 <div class="callout-tip callout callout-style-default callout-captioned page-columns page-full">
 <div class="callout-header d-flex align-content-center">
@@ -354,7 +360,7 @@ The gapminder webpage
 </div>
 </div>
 <div class="callout-body-container callout-body page-columns page-full">
-<div class="page-columns page-full"><p>If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/. I encourage you to visit this page at an occasion when you have access to the internet. You will be surprised how often you might have a wrong guess about basic facts in the world.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Here is how the website looks like as of August 2022: <img src="pictures/gapminder-website-as-of-2022-08.png" class="img-fluid" alt="gapminder-website"></p></li></div></div>
+<div class="page-columns page-full"><p>If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/. I encourage you to visit this page at an occasion when you have access to the internet. You will be surprised how often you might have a wrong guess about basic facts in the world.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Here is how the website looks like as of August 2022: <img src="pictures/gapminder-website-as-of-2022-08.png" class="img-fluid" alt="gapminder-website"></p></li></div></div>
 </div>
 </div>
 <p>In this course you will learn how to work with data and how to learn from these data in a systematic way.</p>
@@ -377,7 +383,7 @@ Question:
 </div>
 </div>
 <p>It is clear that answering this question is more challenging than the task the IEA had to solve when listing energy sources by country around the world in a given time period. But before you go about to think how you might count all the trees on the planet, you have to answer an even more basic question, namely: What is a tree?</p>
-<div class="page-columns page-full"><p>Some of you might think this is a silly and obvious question, which every child can answer. But what some might consider a tree others will consider just a shrub. Turning experience into data requires rigorous definitions. It turns out that such definitions can be given for trees. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;For example the forestry expert Michael Kuhns writes: “…<em>Though no scientific definition exists to separate trees and shrubs, a useful definition for a tree is a woody plant having one erect perennial stem (trunk) at least three inches in diameter at a point 4-1/2 feet above the ground, a definitely formed crown of foliage, and a mature height of at least 13 feet. This definition works fine, though some trees may have more than one stem and young trees obviously don’t meet the size criteria. A shrub can then be defined as a woody plant with several perennial stems that may be erect or may lay close to the ground. It will usually have a height less than 13 feet and stems no more than about three inches in diameter.</em>” <span class="citation" data-cites="Kuh">(<a href="references.html#ref-Kuh" role="doc-biblioref">Kuhns, n.d.</a>)</span></p></li></div></div>
+<div class="page-columns page-full"><p>Some of you might think this is a silly and obvious question, which every child can answer. But what some might consider a tree others will consider just a shrub. Turning experience into data requires rigorous definitions. It turns out that such definitions can be given for trees. <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;For example the forestry expert Michael Kuhns writes: “…<em>Though no scientific definition exists to separate trees and shrubs, a useful definition for a tree is a woody plant having one erect perennial stem (trunk) at least three inches in diameter at a point 4-1/2 feet above the ground, a definitely formed crown of foliage, and a mature height of at least 13 feet. This definition works fine, though some trees may have more than one stem and young trees obviously don’t meet the size criteria. A shrub can then be defined as a woody plant with several perennial stems that may be erect or may lay close to the ground. It will usually have a height less than 13 feet and stems no more than about three inches in diameter.</em>” <span class="citation" data-cites="Kuh">(<a href="references.html#ref-Kuh" role="doc-biblioref">Kuhns, n.d.</a>)</span></p></li></div></div>
 <p>But even with the definition at hand you cannot just go around the planet and count every plant that meets the criteria. So this is what the researchers investigating that question did according to <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>:</p>
 <p>“…<em>They first took a series of of areas with a common type of landscape, known as a biome and counted the average number of trees per square kilometer. They then used satellite imaging to estimate the total area of the planet covered by each type of biome, carried out some complex statistical modelling, and eventually came up with an estimate of 3.04 trillion (3,040,000,000,000) trees on the planet. This sounds a lot, except that they reckoned there used to be twice this number</em>.”</p>
 <p>Now imagine that if long expert discussions are needed to precisely define something so seemingly obvious as a tree, clearly more complex concepts such as unemployment or the definition of the total value of goods and services produced in a country in a given year, known as Gross Domestic Product or GDP, is even more challenging.</p>
@@ -406,7 +412,7 @@ Comment for Seitwerk: Please uncollapse
 <p>One of the limitations of data as a source of knowledge about the world is that anything we choose to measure will differ across places, across persons or across time. When analyzing and trying to understand data we will always face the problem how we can extract meaningful insights from this apparent random variation. One challenge faced by statistics and one core topic in this course will thus be how we can distinguish in data the important relationships from the unimportant background variability.</p>
 <p>Exploring and finding such meaningful relationships or patterns in data using the science of statistics and computational tools is one of the skills you will learn in this course.</p>
 <p>An example of a pattern in data is if we can spot a trend, data values which are for example increasing or decreasing.</p>
-<div class="page-columns page-full"><p>Consider the following data from the World Bank, reporting the share of people in the world who are living in extreme poverty. Extreme poverty is defined by the World Bank, an international development finance organisation for low and middle income countries located in the US<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> as the percentage of people in the world who have to live on less that $ 1.90 per day. Hans Rosling in his great book Factfullness <span class="citation" data-cites="Ros2018">(<a href="references.html#ref-Ros2018" role="doc-biblioref">Rosling, Rosling, and Rosling-Rönnlund 2018</a>)</span>, gives a concrete description of what it means in concrete terms to live on this income level, which Rosling calls level 1. I quote from his book:</p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;The Worldbank is an international financial institution founded along with the International Monetary Fund in the Bretton Wods conference in 1944. It is located in Washington D.C. and finances projects in low and middle income countries. It also collects and processes data globally to support its activities and conduct development research. The Worldbank makes its data public in print or through its website https://www.worldbank.org/en/home</p></li></div></div>
+<div class="page-columns page-full"><p>Consider the following data from the World Bank, reporting the share of people in the world who are living in extreme poverty. Extreme poverty is defined by the World Bank, an international development finance organisation for low and middle income countries located in the US<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> as the percentage of people in the world who have to live on less that $ 1.90 per day. Hans Rosling in his great book Factfullness <span class="citation" data-cites="Ros2018">(<a href="references.html#ref-Ros2018" role="doc-biblioref">Rosling, Rosling, and Rosling-Rönnlund 2018</a>)</span>, gives a concrete description of what it means in concrete terms to live on this income level, which Rosling calls level 1. I quote from his book:</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The Worldbank is an international financial institution founded along with the International Monetary Fund in the Bretton Wods conference in 1944. It is located in Washington D.C. and finances projects in low and middle income countries. It also collects and processes data globally to support its activities and conduct development research. The Worldbank makes its data public in print or through its website https://www.worldbank.org/en/home</p></li></div></div>
 <p><em>“… Your five children have to spend hours walking barefoot with your single plastic bucket, back and forth, to fetch water from a dirty mud hole and hour’s walk away. On their way home they gather firewood, and you prepare the same gray porridge that you have been eating at every meal, every day, for your whole life - except during the months when the meager soil yielded no crops and you went to bed hungry. One day your youngest daughter develops a nasty cough. Smoke from the indoor fire is weakening her lungs. You can’t afford antibiotics, and one month later she is dead. Yet you keep struggling on. If you are lucky and the yields are good, you can maybe sell some surplus crops and manage to earn more than 2 $ a day, which would move you to the next level…(Roughly 1 billion people live like this today).</em></p>
 <p>Let us have a look at a table showing the first 10 observations of this share</p>
 <div class="cell">
@@ -428,7 +434,7 @@ Comment for Seitwerk: Please uncollapse
 <div class="cell-output-display">
 <div id="tbl-example-poverty" class="anchored">
 <table class="table table-sm table-striped">
-<caption>Table 1.1: Share of world polpulation living in extreme poverty, Source: World Bank</caption>
+<caption>Table&nbsp;1.1: Share of world polpulation living in extreme poverty, Source: World Bank</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Year</th>
@@ -506,13 +512,13 @@ Comment for Seitwerk: Please uncollapse
 <div id="fig-share-of-people-in-extreme-poverty-world" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/fig-share-of-people-in-extreme-poverty-world-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure 1.1: Share of world population living in extreme poverty from 2000 - 2017</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Share of world population living in extreme poverty from 2000 - 2017</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Visualizing trends in world extreme poverty as an example of data exploration. In this case the data pattern reveals a stunning fact. Over almost two decades we can see a sharp fall in the share of extremely poor people when looked at from a global perspective.</p>
-<div class="page-columns page-full"><p>Of course when we drill down to the level of individual countries this trend will not look the same everywhere and there might be countries where the share has actually increased. But overall we have seen a breathtaking steady decline. This is good news.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6" role="doc-endnote"><p><sup>6</sup>&nbsp;When you have access to the internet you can have a closer look at these data at the very interesting website “our world in data” maintained by a consortium of Oxford University and University College London. See https://ourworldindata.org/extreme-poverty. The website has many interesting visualizations and options to select individual countries, country aggregates and make other selections of the data.</p></li></div></div>
+<div class="page-columns page-full"><p>Of course when we drill down to the level of individual countries this trend will not look the same everywhere and there might be countries where the share has actually increased. But overall we have seen a breathtaking steady decline. This is good news.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;When you have access to the internet you can have a closer look at these data at the very interesting website “our world in data” maintained by a consortium of Oxford University and University College London. See https://ourworldindata.org/extreme-poverty. The website has many interesting visualizations and options to select individual countries, country aggregates and make other selections of the data.</p></li></div></div>
 <p>But does this trend mean that extreme poverty must disappear some years down the road? No, because nobody can tell whether the trend of the last two decades will go on also in the future.</p>
 <p>Statistics can help us to think more systematically about patterns and in making systematic guesses how a pattern might continue in the future. This is another core skill you will learn in this course: Making predictions, which means using available data and information to make informed guesses about data and information we do not have.</p>
 <p>Let us go back to the share of people in the world living in extreme poverty. As reported in our data the last actual observation for the global share in extreme poverty from the world bank is from 2017. There are more recent data for some regions but the global data since then are by now forecasts based on statistical techniques. The basic ideas of these techniques and how to apply them to data is a core skill you will learn in this course.</p>
@@ -543,18 +549,18 @@ Comment for Seitwerk: Please uncollapse
 <div id="fig-share-of-people-in-extreme-poverty-world-forecast" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/fig-share-of-people-in-extreme-poverty-world-forecast-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure 1.2: Share of world population living in extreme poverty from 2000 - 2017 with predictions until 2021</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Share of world population living in extreme poverty from 2000 - 2017 with predictions until 2021</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Observe that the line showing the share of extreme poverty in the world takes different distinct future paths as we make predictions. What does this mean?</p>
-<div class="page-columns page-full"><p>At the root of the predictions is an abstract model<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, how the share of poverty changes over time. If the underlying data would correspond to a world before Covid the falling trend in poverty would just continue to fall, as it has done continuously from 2000 onward. In the graph you can see this scenario if you follow the black and the blue line. But taking the pandemic and the consequences into account the prediction of the World Bank is that extreme poverty after a almost two decades downward trend will rise again. This you can see by following the green and the red line. How much, this rise actually will be in the end depends on data we can not yet know.</p><div class="no-row-height column-margin column-container"><li id="fn7" role="doc-endnote"><p><sup>7</sup>&nbsp;If you have difficulties now to imagine what this means, don’t worry. We will learn in detail what a model is and how it can be interpret. In practice a model is usually an equation which provides a low-dimensional summary of a dataset. This summary is then used to make predictions.</p></li></div></div>
+<div class="page-columns page-full"><p>At the root of the predictions is an abstract model<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, how the share of poverty changes over time. If the underlying data would correspond to a world before Covid the falling trend in poverty would just continue to fall, as it has done continuously from 2000 onward. In the graph you can see this scenario if you follow the black and the blue line. But taking the pandemic and the consequences into account the prediction of the World Bank is that extreme poverty after a almost two decades downward trend will rise again. This you can see by following the green and the red line. How much, this rise actually will be in the end depends on data we can not yet know.</p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;If you have difficulties now to imagine what this means, don’t worry. We will learn in detail what a model is and how it can be interpret. In practice a model is usually an equation which provides a low-dimensional summary of a dataset. This summary is then used to make predictions.</p></li></div></div>
 <p>When we make informed guesses based on observed data on information we do not yet have there is uncertainty involved. Using the theory of probability in combination with statistics we can quantify this uncertainty. Quantifying the uncertainty attached to predictions is the third basic skill you will learn in this course.</p>
 </section>
 <section id="does-taking-your-time-in-college-pay-off" class="level3 page-columns page-full" data-number="1.1.4">
 <h3 data-number="1.1.4" class="anchored" data-anchor-id="does-taking-your-time-in-college-pay-off"><span class="header-section-number">1.1.4</span> Does taking your time in college pay off?</h3>
-<div class="page-columns page-full"><p>A newspaper in Germany reported that the more semesters needed to complete an academic program at the university the greater the starting salary in the first year of a job. The report was based on a study that used a random sample<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> of 24 people who had recently completed an academic program.</p><div class="no-row-height column-margin column-container"><li id="fn8" role="doc-endnote"><p><sup>8</sup>&nbsp;We will later in the course learn in detail what a random sample is. For the moment imagine that there is a mechanism which allows to select these 24 students at random from the large population of all university students in Germany. When a sample is random, every member in the sample has the same probability of beeing chosen from the population.</p></li></div></div>
+<div class="page-columns page-full"><p>A newspaper in Germany reported that the more semesters needed to complete an academic program at the university the greater the starting salary in the first year of a job. The report was based on a study that used a random sample<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> of 24 people who had recently completed an academic program.</p><div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;We will later in the course learn in detail what a random sample is. For the moment imagine that there is a mechanism which allows to select these 24 students at random from the large population of all university students in Germany. When a sample is random, every member in the sample has the same probability of beeing chosen from the population.</p></li></div></div>
 <p>Information was collected on the number of semesters each person in the sample needed to complete the program and the starting salary, in thousand Euros, at the beginning of the job.</p>
 <p>The data are shown in the following plot</p>
 <div class="cell">
@@ -591,7 +597,7 @@ Comment for Seitwerk: Please uncollapse
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="introduction_files/figure-html/Years%20in%20college%20versus%20starting%20salary%20with%20trend-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="introduction_files/figure-html/Years in college versus starting salary with trend-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job with a linear trend fitted to data.</figcaption><p></p>
 </figure>
 </div>
@@ -977,7 +983,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   const toggleBodyColorPrimary = () => {
-    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
   }
   toggleBodyColorPrimary();  
   const icon = "";
@@ -1001,7 +1010,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1029,31 +1055,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

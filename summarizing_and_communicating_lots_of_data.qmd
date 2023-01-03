@@ -2,11 +2,13 @@
 
 When we analyze data, we usually have to look at lots of them. An example might be
 income data gained from household surveys. Such a survey will contain a huge number of
-data points, in the order of magnitude of ten thousands of data. These data need to be
+data points, in the order of magnitude of thousands or even ten thousands of data, depending
+on the size of the population on which the survey is taken.
+These data need to be
 summarized, to understand their main characteristics. 
 
 In this unit you will learn the
-most important tools for summarizing and communicating lost of data. You are going to
+most important tools for summarizing and communicating lots of data. You are going to
 learn the principles how data summaries are constructed, what are the properties of
 these summaries and what needs to be carefully considered. 
 
@@ -26,7 +28,7 @@ where we have about 100 data points, which is a lot but not that large that we c
 by hand.
 
 The data we want to look at come from measurements of the annual flow of the river Nile at 
-Aswan (formerly) Assuan in Egypt from 1871 to 1970. The units of these measurement in which the
+Aswan in Egypt from 1871 to 1970. The units of these measurement in which the
 annual flow is recorded are 100 millions of cubic meters, i.e. $10^8 m^3$. 
 
 This is one of the data sets that is bundled with the R distribution and is available to all users of R. 
@@ -139,7 +141,8 @@ of absolute frequencies (or counts) it might be useful to show relative frequenc
 of occurrences in each bin. The type of scale you choose will depend on what kind of 
 comparisons you want to emphasize about your data.
 
-Let us look at this issue by an example. The numbers we want to look at report energy consumption per
+Let us look at this issue by an example. The numbers we want to look at report primary
+energy consumption per
 capita in kwh per person per year for different countries around the world.^[A kilowatt-hour, known as Kwh
 is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if
 a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb 
@@ -160,7 +163,7 @@ year 2019.
 
 ```{r}
 library(JWL)
-library(ggplot2)
+
 
 dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year == 2019, ])
 
@@ -175,21 +178,22 @@ In this histogram you see the distribution of per capita primary energy consumpt
 For example, you see from the graph that roughly 55 % of countries have a primary energy consumption 
 smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already 
 roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This
-means that there is a relatively small share of counrties, around 20 %, which have a large
+means that there is a relatively small share of countries, around 20 %, which have a large
 primary energy consumption per capita. One says in the language of statistics that the
-distribution of per capita primary energy consumption is skewed. 
-
-When you have a histogram with a density or relative frequency scale, the total area sums to 100 (or to 1
-depending on how you express the percentages, i.e. whether you express them as 10 % or as 0.1.).
+distribution of per capita primary energy consumption is skewed. When you have a 
+histogram with a relative frequency scale the lengths of the bars must sum to 1 (or to 100 
+depending whether the relative frequency is expressed in decimal fractions or in percentages).
 
 ### Exercises: Now you try
 
-1. A histogram of monthly wages for part-time employees is shown below (densities are marked in
+1. A histogram of monthly wages for part-time employees is shown below (relative frequencies
+are marked in
 parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200
 to 300 is missing. How tall must it be?
 
 ![Wages](pictures/wages.png)
-2. Three people plot histograms for the weights of subjects in a study, using the density scale. Only one is right. Which one and why?
+2. Three people plot histograms for the weights of subjects in a study, using the relative
+frequency scale. Only one is right. Which one and why?
 
 ```{r}
 
@@ -229,10 +233,13 @@ Three versions of a hight histogram of males over age 18
 :::
 
 3. An investigator draws a histogram for some height data, using the metric system. She is working in
-centimeters (cm). The vertical axes shows density and the top of the vertical axes is 10 percent per cem. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the 
+centimeters (cm). She wants to draw the histogram in a so called density scale, i.e. in a scale that the area of all the bars sum to 1. The vertical axes shows relative frequency
+and the top of the vertical axes is 10 percent per cm. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the 
 horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.
 
-4. In a Public Health Service study, a histogram was plotted showing the number of cigarettes per day smoked by each subject (male current smokers), as shown in the histogram below. The density is marked in
+4. In a Public Health Service study, a histogram was plotted showing the number of 
+cigarettes per day smoked by each subject (male current smokers), as shown in the 
+histogram below. The density is marked in
 parentheses. The class interval include the right endpoint, not the left.
 
    (a) The percentage who smoked 10 cigarettes or less per day is around:
@@ -293,7 +300,7 @@ hist(Nile, breaks = seq(min(Nile), max(Nile), length.out = 3))
 ```
 Here the histogram is too coarse and we do not see the variation pattern either. 
 
-The computer usually has a built in rule of thumb for the histgram which will work well in most
+The computer usually has a built in rule of thumb for the histogram which will work well in most
 of the cases. Still for individual datasets it is sometimes better to choose a different bin size
 that more adequately mirrors the variation in the data.
 
@@ -681,6 +688,7 @@ results in an integer vector. R also adds a `level` attribute which contains the
 of labels and their order and a class attribute that says the vector is
 a factor. Example:
 ```{r sex-factor}
+#| code-fold: false 
 sex <- factor(c("m", "f", "f", "m"))
 typeof(sex)
 attributes(sex)
@@ -702,6 +710,7 @@ every `FALSE` becomes a 0.
 
 R also uses the coercion rules, when we do math with logicals, like for example
 ```{r math-with-logicals}
+#| code-fold: false
 sum(c(TRUE, TRUE, FALSE, FALSE))
 ```
 What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the
@@ -749,7 +758,7 @@ head(energy_consumption, n = 10)
 Every column in this tabular array of data can be considered as a vector. 
 
 
-### Selecting data from R onjects: A toolbox.
+### Selecting data from R objects: A toolbox.
 
 Asking questions about a dataframe and in particular about our energy data requires that 
 we are able to adress particular values in the dataframe. We now learn the most 

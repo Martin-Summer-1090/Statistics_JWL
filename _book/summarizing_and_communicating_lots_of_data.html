@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.18">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -241,40 +246,40 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"> <span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</a>
+  <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"><span class="toc-section-number">3.1</span>  Understanding variation in a single variable using histograms</a>
   <ul class="collapse">
-  <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"> <span class="header-section-number">3.1.1</span> Constructing a Histogram</a></li>
-  <li><a href="#the-relative-frequency-scale-absolute-versus-relative-frequency" id="toc-the-relative-frequency-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-relative-frequency-scale-absolute-versus-relative-frequency"> <span class="header-section-number">3.1.2</span> The relative frequency scale: Absolute versus relative frequency</a></li>
-  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"> <span class="header-section-number">3.1.3</span> Exercises: Now you try</a></li>
-  <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"> <span class="header-section-number">3.1.4</span> Best practices for histograms</a></li>
+  <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"><span class="toc-section-number">3.1.1</span>  Constructing a Histogram</a></li>
+  <li><a href="#the-relative-frequency-scale-absolute-versus-relative-frequency" id="toc-the-relative-frequency-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-relative-frequency-scale-absolute-versus-relative-frequency"><span class="toc-section-number">3.1.2</span>  The relative frequency scale: Absolute versus relative frequency</a></li>
+  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="toc-section-number">3.1.3</span>  Exercises: Now you try</a></li>
+  <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"><span class="toc-section-number">3.1.4</span>  Best practices for histograms</a></li>
   </ul></li>
-  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"> <span class="header-section-number">3.2</span> Next steps in R: Reading Data, understanding R objects and selecting and modifying values</a>
+  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="toc-section-number">3.2</span>  Next steps in R: Reading Data, understanding R objects and selecting and modifying values</a>
   <ul class="collapse">
-  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"> <span class="header-section-number">3.2.1</span> Reading data in R</a></li>
-  <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"> <span class="header-section-number">3.2.2</span> R objects</a></li>
-  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"> <span class="header-section-number">3.2.3</span> Data frames and R lists</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"> <span class="header-section-number">3.2.4</span> Data Frames</a></li>
-  <li><a href="#selecting-data-from-r-onjects-a-toolbox." id="toc-selecting-data-from-r-onjects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-onjects-a-toolbox."> <span class="header-section-number">3.2.5</span> Selecting data from R onjects: A toolbox.</a></li>
-  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."> <span class="header-section-number">3.2.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
+  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="toc-section-number">3.2.1</span>  Reading data in R</a></li>
+  <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"><span class="toc-section-number">3.2.2</span>  R objects</a></li>
+  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"><span class="toc-section-number">3.2.3</span>  Data frames and R lists</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="toc-section-number">3.2.4</span>  Data Frames</a></li>
+  <li><a href="#selecting-data-from-r-onjects-a-toolbox." id="toc-selecting-data-from-r-onjects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-onjects-a-toolbox."><span class="toc-section-number">3.2.5</span>  Selecting data from R onjects: A toolbox.</a></li>
+  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="toc-section-number">3.2.6</span>  Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
   </ul></li>
-  <li><a href="#the-average-and-the-standard-deviation" id="toc-the-average-and-the-standard-deviation" class="nav-link" data-scroll-target="#the-average-and-the-standard-deviation"> <span class="header-section-number">3.3</span> The average and the standard deviation</a>
+  <li><a href="#the-average-and-the-standard-deviation" id="toc-the-average-and-the-standard-deviation" class="nav-link" data-scroll-target="#the-average-and-the-standard-deviation"><span class="toc-section-number">3.3</span>  The average and the standard deviation</a>
   <ul class="collapse">
-  <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"> <span class="header-section-number">3.3.1</span> The average</a></li>
-  <li><a href="#exercises-for-the-average" id="toc-exercises-for-the-average" class="nav-link" data-scroll-target="#exercises-for-the-average"> <span class="header-section-number">3.3.2</span> Exercises for the Average</a></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"> <span class="header-section-number">3.3.3</span> The standard deviation</a></li>
-  <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"> <span class="header-section-number">3.3.4</span> Exercises for the standard deviation</a></li>
-  <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"> <span class="header-section-number">3.3.5</span> Computing the standard deviation</a></li>
-  <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"> <span class="header-section-number">3.3.6</span> Interquartile range and the boxplot</a></li>
+  <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"><span class="toc-section-number">3.3.1</span>  The average</a></li>
+  <li><a href="#exercises-for-the-average" id="toc-exercises-for-the-average" class="nav-link" data-scroll-target="#exercises-for-the-average"><span class="toc-section-number">3.3.2</span>  Exercises for the Average</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="toc-section-number">3.3.3</span>  The standard deviation</a></li>
+  <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"><span class="toc-section-number">3.3.4</span>  Exercises for the standard deviation</a></li>
+  <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"><span class="toc-section-number">3.3.5</span>  Computing the standard deviation</a></li>
+  <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"><span class="toc-section-number">3.3.6</span>  Interquartile range and the boxplot</a></li>
   </ul></li>
-  <li><a href="#describing-differences-between-groups-of-numbers" id="toc-describing-differences-between-groups-of-numbers" class="nav-link" data-scroll-target="#describing-differences-between-groups-of-numbers"> <span class="header-section-number">3.4</span> Describing differences between groups of numbers</a></li>
-  <li><a href="#describing-relationships-between-data" id="toc-describing-relationships-between-data" class="nav-link" data-scroll-target="#describing-relationships-between-data"> <span class="header-section-number">3.5</span> Describing Relationships between data</a></li>
-  <li><a href="#describing-trends" id="toc-describing-trends" class="nav-link" data-scroll-target="#describing-trends"> <span class="header-section-number">3.6</span> Describing Trends</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"> <span class="header-section-number">3.7</span> Summary</a></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"> <span class="header-section-number">3.8</span> Computer exercises</a></li>
+  <li><a href="#describing-differences-between-groups-of-numbers" id="toc-describing-differences-between-groups-of-numbers" class="nav-link" data-scroll-target="#describing-differences-between-groups-of-numbers"><span class="toc-section-number">3.4</span>  Describing differences between groups of numbers</a></li>
+  <li><a href="#describing-relationships-between-data" id="toc-describing-relationships-between-data" class="nav-link" data-scroll-target="#describing-relationships-between-data"><span class="toc-section-number">3.5</span>  Describing Relationships between data</a></li>
+  <li><a href="#describing-trends" id="toc-describing-trends" class="nav-link" data-scroll-target="#describing-trends"><span class="toc-section-number">3.6</span>  Describing Trends</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">3.7</span>  Summary</a></li>
+  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="toc-section-number">3.8</span>  Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -291,22 +296,23 @@ div.csl-indent {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header>
 
-<p>When we analyze data, we usually have to look at lots of them. An example might be income data gained from household surveys. Such a survey will contain a huge number of data points, in the order of magnitude of ten thousands of data. These data need to be summarized, to understand their main characteristics.</p>
-<p>In this unit you will learn the most important tools for summarizing and communicating lost of data. You are going to learn the principles how data summaries are constructed, what are the properties of these summaries and what needs to be carefully considered.</p>
+<p>When we analyze data, we usually have to look at lots of them. An example might be income data gained from household surveys. Such a survey will contain a huge number of data points, in the order of magnitude of thousands or even ten thousands of data, depending on the size of the population on which the survey is taken. These data need to be summarized, to understand their main characteristics.</p>
+<p>In this unit you will learn the most important tools for summarizing and communicating lots of data. You are going to learn the principles how data summaries are constructed, what are the properties of these summaries and what needs to be carefully considered.</p>
 <p>When we need to deal with really large data sets, and most modern data sets are too large to be handled manually, we will need the computer. We already did some first steps in R. In this unit we will build on these first steps but enlarge them in a way that will enable you to deal and manipulate large datasets on the computer.</p>
 <section id="understanding-variation-in-a-single-variable-using-histograms" class="level2 page-columns page-full" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="understanding-variation-in-a-single-variable-using-histograms"><span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</h2>
 <section id="constructing-a-histogram" class="level3 page-columns page-full" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="constructing-a-histogram"><span class="header-section-number">3.1.1</span> Constructing a Histogram</h3>
 <p>To summarize data, statisticians often use a graph which is called a <strong>histogram</strong>. In this section we will discuss all you have to know about histograms and how to use them. Let us start by an example, where we have about 100 data points, which is a lot but not that large that we can not handle them by hand.</p>
-<p>The data we want to look at come from measurements of the annual flow of the river Nile at Aswan (formerly) Assuan in Egypt from 1871 to 1970. The units of these measurement in which the annual flow is recorded are 100 millions of cubic meters, i.e.&nbsp;<span class="math inline">\(10^8 m^3\)</span>.</p>
-<div class="page-columns page-full"><p>This is one of the data sets that is bundled with the R distribution and is available to all users of R. They are stored in an R object called <code>Nile</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1" role="doc-endnote"><p><sup>1</sup>&nbsp;When you type <code>data()</code> at the R console, you get a list of all datasets that are available with the current distribution of R.</p></li></div></div>
+<p>The data we want to look at come from measurements of the annual flow of the river Nile at Aswan in Egypt from 1871 to 1970. The units of these measurement in which the annual flow is recorded are 100 millions of cubic meters, i.e.&nbsp;<span class="math inline">\(10^8 m^3\)</span>.</p>
+<div class="page-columns page-full"><p>This is one of the data sets that is bundled with the R distribution and is available to all users of R. They are stored in an R object called <code>Nile</code>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;When you type <code>data()</code> at the R console, you get a list of all datasets that are available with the current distribution of R.</p></li></div></div>
 <p>This is how the data look like, when we print them to the R console using the R command <code>print()</code>. The R function <code>options()</code> with the argument <code>width</code>just controls how the numbers are printed. Here I made sure that they will fit in the width of the page.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">70</span>)</span>
@@ -326,8 +332,8 @@ Frequency = 1
  [92]  906  901 1170  912  746  919  718  714  740</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>We start the construction of a histogram by choosing for the horizontal axes ranges of numerical values - in our case of the river flow data - which are called <em>bins</em> or <em>classes</em>. There is no fixed rule as to how to choose the size of these ranges. These ranges should neither be too fine, nor too coarse. While there are lists of mechanical rules, which you can for example find on Wikipedia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, it is usually best to use your domain knowledge and some experimentation to find out the bin size that works best for your data.</p><div class="no-row-height column-margin column-container"><li id="fn2" role="doc-endnote"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width</p></li></div></div>
-<div class="page-columns page-full"><p>For this example, assume we had chosen a bin size of 100<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. When you study the list, you will find that the lowest value is at 456 while the highest value is at 1370. This is already quite tedious to find out by eyeballing the numbers with the small number of values we have chosen for this example. It is impossible to do for really large data sets.</p><div class="no-row-height column-margin column-container"><li id="fn3" role="doc-endnote"><p><sup>3</sup>&nbsp;Note that this will mean <span class="math inline">\(100\times 10^8 m^3\)</span> per year.</p></li></div></div>
+<div class="page-columns page-full"><p>We start the construction of a histogram by choosing for the horizontal axes ranges of numerical values - in our case of the river flow data - which are called <em>bins</em> or <em>classes</em>. There is no fixed rule as to how to choose the size of these ranges. These ranges should neither be too fine, nor too coarse. While there are lists of mechanical rules, which you can for example find on Wikipedia<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, it is usually best to use your domain knowledge and some experimentation to find out the bin size that works best for your data.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;See https://en.wikipedia.org/wiki/Histogram#Number_of_bins_and_width</p></li></div></div>
+<div class="page-columns page-full"><p>For this example, assume we had chosen a bin size of 100<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. When you study the list, you will find that the lowest value is at 456 while the highest value is at 1370. This is already quite tedious to find out by eyeballing the numbers with the small number of values we have chosen for this example. It is impossible to do for really large data sets.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Note that this will mean <span class="math inline">\(100\times 10^8 m^3\)</span> per year.</p></li></div></div>
 <p>Now lets make a distribution table like this:</p>
 <table class="table">
 <thead>
@@ -437,7 +443,7 @@ Now you try
 <section id="the-relative-frequency-scale-absolute-versus-relative-frequency" class="level3 page-columns page-full" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="the-relative-frequency-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The relative frequency scale: Absolute versus relative frequency</h3>
 <p>Sometimes it might be useful, to choose a different scale for the y axes of your histogram. Instead of absolute frequencies (or counts) it might be useful to show relative frequencies, the proportion of occurrences in each bin. The type of scale you choose will depend on what kind of comparisons you want to emphasize about your data.</p>
-<div class="page-columns page-full"><p>Let us look at this issue by an example. The numbers we want to look at report energy consumption per capita in kwh per person per year for different countries around the world.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The energy numbers refer to primary energy – the energy input before the transformation to forms of energy for end-use (such as electricity or petrol for transport).</p><div class="no-row-height column-margin column-container"><li id="fn4" role="doc-endnote"><p><sup>4</sup>&nbsp;A kilowatt-hour, known as Kwh is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt vs.&nbsp;kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a measure of the amount of energy a certain machine needs to run for one hour. So, if you have a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. Obviously, every appliance will use a different amount of power. Here are some of the usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour, electric water heater: 380-500 kWh per month</p></li></div></div>
+<div class="page-columns page-full"><p>Let us look at this issue by an example. The numbers we want to look at report primary energy consumption per capita in kwh per person per year for different countries around the world.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The energy numbers refer to primary energy – the energy input before the transformation to forms of energy for end-use (such as electricity or petrol for transport).</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;A kilowatt-hour, known as Kwh is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt vs.&nbsp;kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a measure of the amount of energy a certain machine needs to run for one hour. So, if you have a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. Obviously, every appliance will use a different amount of power. Here are some of the usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour, electric water heater: 380-500 kWh per month</p></li></div></div>
 <p>Let us look at the year 2019.</p>
 <div class="cell">
 <details>
@@ -457,8 +463,7 @@ Now you try
 </div>
 </div>
 <p>In this histogram you see the distribution of per capita primary energy consumption for the year 2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.</p>
-<p>For example, you see from the graph that roughly 55 % of countries have a primary energy consumption smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This means that there is a relatively small share of counrties, around 20 %, which have a large primary energy consumption per capita. One says in the language of statistics that the distribution of per capita primary energy consumption is skewed.</p>
-<p>When you have a histogram with a density or relative frequency scale, the total area sums to 100 (or to 1 depending on how you express the percentages, i.e.&nbsp;whether you express them as 10 % or as 0.1.).</p>
+<p>For example, you see from the graph that roughly 55 % of countries have a primary energy consumption smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This means that there is a relatively small share of countries, around 20 %, which have a large primary energy consumption per capita. One says in the language of statistics that the distribution of per capita primary energy consumption is skewed. When you have a histogram with a relative frequency scale the lengths of the bars must sum to 1 (or to 100 depending whether the relative frequency is expressed in decimal fractions or in percentages).</p>
 </section>
 <section id="exercises-now-you-try" class="level3" data-number="3.1.3">
 <h3 data-number="3.1.3" class="anchored" data-anchor-id="exercises-now-you-try"><span class="header-section-number">3.1.3</span> Exercises: Now you try</h3>
@@ -521,7 +526,7 @@ Now you try
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure 3.1: Three versions of a hight histogram of males over age 18</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.1: Three versions of a hight histogram of males over age 18</figcaption><p></p>
 </figure>
 </div>
 <ol start="3" type="1">
@@ -543,7 +548,7 @@ Now you try
 <div id="fig-hight-cigarettes" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/cigarettes.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3.2: Number of cigarettes</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: Number of cigarettes</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -625,7 +630,7 @@ Now you try
 <p></p><figcaption class="figure-caption">Our World in Data website energy</figcaption><p></p>
 </figure>
 </div>
-<div class="page-columns page-full"><p>In the lower right corner you see a box called Data and a download button. This button allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code>. From the extension of the file <code>csv</code>, you can see that it is a comma separated text file. This is a plain text file following certain formatting rules. In particular individual data points are separated by a comma<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5" role="doc-endnote"><p><sup>5</sup>&nbsp;The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.</p></li></div></div>
+<div class="page-columns page-full"><p>In the lower right corner you see a box called Data and a download button. This button allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code>. From the extension of the file <code>csv</code>, you can see that it is a comma separated text file. This is a plain text file following certain formatting rules. In particular individual data points are separated by a comma<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.</p></li></div></div>
 <p>I have stored the file in a sub-folder to the directory in which I am writing these lecture notes. If you decide to download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps you have a folder for this course and in this folder you have a sub-folder where you store all the data sets we are using in the course.</p>
 <p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
 <p>In the simplest form you read the data and store them in an object you can work with in R. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
@@ -724,11 +729,11 @@ Now you try
 <p>you will see the different variables in the object <code>energy_consumption</code>. Note that I had to fudge a bit with the display because of the unwieldy and long name of the last variable. We are soon going to fix this.</p>
 <p>The variables <code>Entity</code> and <code>Code</code> are both of type <em>character</em>. A character vector stores strings of text, which have to be put between quotation marks <code>""</code>. Strings are the individual elements of a character vector.</p>
 <p>Note that a string can be more than just letters. If you type, for instance the number <code>1</code> with quotation marks, like <code>"1"</code> R would interpret the value as a string not as a number. Sometimes one can get confused in R because both objects and characters appear as text in R code. Object names are without quotation marks strings always are between quotation marks.</p>
-<div class="page-columns page-full"><p>Character is the natural data type for country names - here “Afghanistan” and the international abbreviation “AFG” also called an ISO-country code<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6" role="doc-endnote"><p><sup>6</sup>&nbsp;ISO is the short name for International Organization for Standardization. International Organization for Standardization came into existence in the year 1946 in London. This organization was formed after a delegation of 65 members from 25 countries, met to discuss the future of International Standardization. In 1947, ISO was officially formed with 67 technical committees consisting of a group of experts focusing on a specific subject. ISO founders decided to give it an acronym ISO, which was based on the Greek word ‘isos’, which means ‘equal’.</p></li></div></div>
+<div class="page-columns page-full"><p>Character is the natural data type for country names - here “Afghanistan” and the international abbreviation “AFG” also called an ISO-country code<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;ISO is the short name for International Organization for Standardization. International Organization for Standardization came into existence in the year 1946 in London. This organization was formed after a delegation of 65 members from 25 countries, met to discuss the future of International Standardization. In 1947, ISO was officially formed with 67 technical committees consisting of a group of experts focusing on a specific subject. ISO founders decided to give it an acronym ISO, which was based on the Greek word ‘isos’, which means ‘equal’.</p></li></div></div>
 <p>The variable <code>Year</code> encodes the year of a particular record or observation. Its type is <code>integer</code>, since years are integer values like 1980 or 2022. If yo want to specify a number explicitly as integer in R you have to type it as, say, <code>1980L</code>, the number followed without space by a big <code>L</code>.</p>
 <p>The variable with the very long name <code>Primary.energy.consumption.per.capita..kWh.person.</code> is of type double. This is the data type in R for encoding numbers that are decimal fractions, like <code>12.451</code></p>
 <p>Now why should we care for distinguishing integers from doubles? This has to do with the way a computer does computations. Sometimes a difference in precision can have surprising effects.</p>
-<div class="page-columns page-full"><p>In your computer 64bits of memory<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are <span class="math inline">\(\pi\)</span>, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.</p><div class="no-row-height column-margin column-container"><li id="fn7" role="doc-endnote"><p><sup>7</sup>&nbsp;A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64</p></li></div></div>
+<div class="page-columns page-full"><p>In your computer 64bits of memory<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are <span class="math inline">\(\pi\)</span>, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.</p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64</p></li></div></div>
 <p>Take for instance:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -736,7 +741,7 @@ Now you try
 <pre><code>[1] 4.440892e-16</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn8" role="doc-endnote"><p><sup>8</sup>&nbsp;Let me invite you to a short digression into the history of science and the history of ideas. The discovery that <span class="math inline">\(\sqrt{2}\)</span> can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, where the sides with length <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from a right angle must fulfill the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span> or expressed in a picture <img src="pictures/pythagoras.png" id="fig-pyth" class="img-fluid" alt="The Pythagorean theorem"> The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that <span class="math inline">\(\text{(lenght of diagonal)}^2 = 1 + 1 = 2\)</span>. Thus the length of the diagonal must be <span class="math inline">\(\sqrt{2}\)</span>. <img src="pictures/unit_square.png" id="fig-usq" class="img-fluid" alt="Length of diagonal in a unit square"> Hence if the diagonal and side are in the ratio <span class="math inline">\(m/n\)</span> (where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> can be assumed to have no common divisor), we have <span class="math display">\[\begin{equation}
+<div class="page-columns page-full"><p>Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;Let me invite you to a short digression into the history of science and the history of ideas. The discovery that <span class="math inline">\(\sqrt{2}\)</span> can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, where the sides with length <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from a right angle must fulfill the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span> or expressed in a picture <img src="pictures/pythagoras.png" id="fig-pyth" class="img-fluid" alt="The Pythagorean theorem"> The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that <span class="math inline">\(\text{(lenght of diagonal)}^2 = 1 + 1 = 2\)</span>. Thus the length of the diagonal must be <span class="math inline">\(\sqrt{2}\)</span>. <img src="pictures/unit_square.png" id="fig-usq" class="img-fluid" alt="Length of diagonal in a unit square"> Hence if the diagonal and side are in the ratio <span class="math inline">\(m/n\)</span> (where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> can be assumed to have no common divisor), we have <span class="math display">\[\begin{equation}
 m^2/n^2 = 2
 \end{equation}\]</span> thus <span class="math display">\[\begin{equation}
 m^2 = 2 n^2
@@ -1162,14 +1167,14 @@ $class
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure 3.3: Histogram 1 and Histogram 2 have the same center but Histogram 2 is more spread out</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.3: Histogram 1 and Histogram 2 have the same center but Histogram 2 is more spread out</figcaption><p></p>
 </figure>
 </div>
 <p>These distributions can be summarized by the center and the spread. But what about a situation like this?</p>
 <div id="fig-ex-hist-bm" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/bimodal.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure 3.4: A bimodal distribution</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: A bimodal distribution</figcaption><p></p>
 </figure>
 </div>
 <p>In some cases such distribution can occur naturally. Think, for example, about the distribution of the elevation data of surface area of the earth. Most of the surface area of the earth is taken by the sea floor at about three miles below the sea level or the continental planes around sea level. If we would report only the center an the spread of this histogram, plotted in the picture as the red and blue vertical lines, we would miss these peaks.</p>
@@ -1207,7 +1212,7 @@ Average
 </div>
 </div>
 <p>which is indeed what we should get as a result.</p>
-<div class="page-columns page-full"><p>Let’s go back to the issue of human height data. Let us first look at a sample of height data and how they look like. This is a data set from the statistics Online Computational Resource (SOCR) of the university of California Los Angeles.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> for details.] The dataset contains 25,000 synthetic records of human heights and weights of 18 years old children.</p><div class="no-row-height column-margin column-container"><li id="fn9" role="doc-endnote"><p><sup>9</sup>&nbsp;See http://www.socr.ucla.edu/</p></li></div></div>
+<div class="page-columns page-full"><p>Let’s go back to the issue of human height data. Let us first look at a sample of height data and how they look like. This is a data set from the statistics Online Computational Resource (SOCR) of the university of California Los Angeles.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> for details.] The dataset contains 25,000 synthetic records of human heights and weights of 18 years old children.</p><div class="no-row-height column-margin column-container"><li id="fn9"><p><sup>9</sup>&nbsp;See http://www.socr.ucla.edu/</p></li></div></div>
 <p>Let us look at the histogram first. But before we do this, let me briefly explain a feature of R that will be very useful for us in the remainder of this course.</p>
 <section id="a-brief-digression-installing-and-using-r-packages" class="level4 page-columns page-full" data-number="3.3.1.1">
 <h4 data-number="3.3.1.1" class="anchored" data-anchor-id="a-brief-digression-installing-and-using-r-packages"><span class="header-section-number">3.3.1.1</span> A brief digression: Installing and using R packages</h4>
@@ -1371,7 +1376,7 @@ Now you try
 </div>
 </div>
 <p>In this case the median and the mean give the same value up to the third digit. They are for practical reasons identical. The reason is that in the case of the measure of Height the distribution is highly symmetric. In practice you will encounter many situations where the distribution of a variable is not even approximately symmetric.</p>
-<div class="page-columns page-full"><p>A typical case of a distribution that us typically not symmetric but skewed - as it is called in statistical terminology - is income. The following histogram which is scaled in relative frequencies shows the data for the global income distribution in the year 2013 as reported by two economists <span class="citation" data-cites="HelMau2015">Hellebrand and Mauro (<a href="references.html#ref-HelMau2015" role="doc-biblioref">2015</a>)</span> from the Peterson Institute, a US based research institution.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> The unit of measurement is US dollars in so called purchasing power parity, a concept economists use to make income figures comparable in terms of the amount of goods they can buy.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10" role="doc-endnote"><p><sup>10</sup>&nbsp;We have used the data they provide to simulate a sample of 100.000 observations consisten with the numbers they report. Thus our data used here are a simulation reproducing the characteristics of the data reported in this paper. We will soon learn how to do simulations using R. For the moment we need you to trust that we have done this correctly.</p></li><li id="fn11" role="doc-endnote"><p><sup>11</sup>&nbsp;When reporting income figures we could translate all national figures gathered from around the world into one common currency (for instance, US dollars) using exchange rates from currency markets. But because market exchange rates do not always reflect the different price levels between countries, economists often opt for a different alternative. They create a hypothetical currency, called ‘international dollars’, and use this as a common unit of measure. The idea is that a given amount of international dollars should buy roughly the same amount – and quality – of goods and services in any country. This way of measuring monetary amounts is called dollars in purchasing power parity or PPP.</p></li></div></div>
+<div class="page-columns page-full"><p>A typical case of a distribution that us typically not symmetric but skewed - as it is called in statistical terminology - is income. The following histogram which is scaled in relative frequencies shows the data for the global income distribution in the year 2013 as reported by two economists <span class="citation" data-cites="HelMau2015">Hellebrand and Mauro (<a href="references.html#ref-HelMau2015" role="doc-biblioref">2015</a>)</span> from the Peterson Institute, a US based research institution.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> The unit of measurement is US dollars in so called purchasing power parity, a concept economists use to make income figures comparable in terms of the amount of goods they can buy.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10"><p><sup>10</sup>&nbsp;We have used the data they provide to simulate a sample of 100.000 observations consisten with the numbers they report. Thus our data used here are a simulation reproducing the characteristics of the data reported in this paper. We will soon learn how to do simulations using R. For the moment we need you to trust that we have done this correctly.</p></li><li id="fn11"><p><sup>11</sup>&nbsp;When reporting income figures we could translate all national figures gathered from around the world into one common currency (for instance, US dollars) using exchange rates from currency markets. But because market exchange rates do not always reflect the different price levels between countries, economists often opt for a different alternative. They create a hypothetical currency, called ‘international dollars’, and use this as a common unit of measure. The idea is that a given amount of international dollars should buy roughly the same amount – and quality – of goods and services in any country. This way of measuring monetary amounts is called dollars in purchasing power parity or PPP.</p></li></div></div>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -1660,7 +1665,7 @@ Now you try
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure 3.5: Three stylized histograms</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.5: Three stylized histograms</figcaption><p></p>
 </figure>
 </div>
 <p>Exercise 6:</p>
@@ -1944,7 +1949,7 @@ $Female
 <h2 data-number="3.6" class="anchored" data-anchor-id="describing-trends"><span class="header-section-number">3.6</span> Describing Trends</h2>
 <p>Let us come back to the data on human height. One reason why data on height have always been interesting to researchers is that average height is strongly correlated with living standards in a population. This is because poor nutrition and poor medical support limit human growth. Because better living conditions tend to make humans taller they are an indirect measure of living stanrdards. Height is - of course - not a direct measure of well beeing. The variation of height in a given population is largely determined by genetic fatcors.</p>
 <p>Looking at the trend of average height over time helps us to indirectly track progress especially with respect to conditions of nutrition and disease prevention. The time trends in average human height are therefore data that can tell interesting stories or open our interest for further exploration.</p>
-<div class="page-columns page-full"><p>Let us use a dataset on the average height of men and women accross countries around the world from 1896 to 1996 which we retrieve from the site our world in data which we have now encountered several times by now<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn12" role="doc-endnote"><p><sup>12</sup>&nbsp;https://ourworldindata.org/human-height</p></li></div></div>
+<div class="page-columns page-full"><p>Let us use a dataset on the average height of men and women accross countries around the world from 1896 to 1996 which we retrieve from the site our world in data which we have now encountered several times by now<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn12"><p><sup>12</sup>&nbsp;https://ourworldindata.org/human-height</p></li></div></div>
 <p>Let us study, for instance the data for the world as a whole</p>
 <div class="cell">
 <details>
@@ -2027,7 +2032,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   const toggleBodyColorPrimary = () => {
-    toggleBodyColorMode(window.document.querySelector("link#quarto-bootstrap"));
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
   }
   toggleBodyColorPrimary();  
   const icon = "";
@@ -2051,7 +2059,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -2079,31 +2104,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
