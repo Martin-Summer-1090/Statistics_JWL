@@ -454,9 +454,9 @@ Now you try
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">with</span>(energy_consumption_per_capita, energy_consumption_per_capita[Year <span class="sc">==</span> <span class="dv">2019</span>, ])</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>hist_info <span class="ot">&lt;-</span> <span class="fu">hist</span>(dat<span class="sc">$</span>Cons, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>hist_info<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_info<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>hist_info<span class="sc">$</span>counts <span class="ot">&lt;-</span> hist_info<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute relative frequency values</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_info<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)              <span class="co"># Plot histogram with percentages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)              <span class="co"># Plot histogram with percentages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -1581,11 +1581,108 @@ Now you try
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Compute the percentage of observations of our height data that are within two standard deviations from the average.</p>
+<ol type="1">
+<li><p>Compute the percentage of observations of our height data that are within two standard deviations from the average.</p></li>
+<li><p>Compute the percentage of observations of our height data that are within three standard deviations from the average.</p></li>
+</ol>
 </div>
 </div>
-<p>This is a rule of thumb that applies to many (but not all) data sets. For many distributions roughly 68 % of observations are within one standard deviation from the average. 95 % are within two standard deviations from the average. We will learn later in the course where this rule comes from. Let us illustrate the rules graphically using the histogram.</p>
+<p>This is a rule of thumb that applies to many (but not all) data sets. For many distributions roughly 68 % of observations are within one standard deviation from the average. 95 % are within two standard deviations from the average and 99.7 % are within three standard deviations from the average. There is a deeper mathematical reason why this rule applies to many symmetric distributions. For the moment we can use this information as a sort of rile of thumb for symmetric, bell shaped distributions. We will learn later in the course where this rule comes from. Let us illustrate the rules graphically using the histogram.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <p>The next figure shows the same histogram. Now the area within two standard deviations from the mean is colored differently</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat<span class="sc">$</span>Height, <span class="at">col =</span> color_list, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Height of 18 year old humans"</span>)</span>
+<span id="cb137-2"><a href="#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height),                       <span class="co"># Add red line for mean</span></span>
+<span id="cb137-3"><a href="#cb137-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let us note a final point about this rule of thumb for symmetric distribution, you frequently encounter in practice. Often it is common to report a distribution of a variable not in its orginal units - height in cm - for example but in a standardized form where the units are changed such that the mean is at 0 and the standard deviation is at 1.</p>
+<p>How is this possible? Let us consider the following example.</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the following 10 values, which we write into a vector <span class="math inline">\(x\)</span> and compute its mean <span class="math inline">\(\mu\)</span> and its standard deviation <span class="math inline">\(\sigma\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">14</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">11</span>,<span class="dv">13</span>)</span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb138-3"><a href="#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.282786</code></pre>
+</div>
+</div>
+<p>Thus <span class="math inline">\(\mu = 11.1\)</span> and <span class="math inline">\(\sigma = 2.282786\)</span>. Now let us change the units according to the formula <span class="math display">\[\begin{equation*}
+z_i = \frac{x_i - \mu}{\sigma}
+\end{equation*}\]</span> and compute the mean of <span class="math inline">\(z_i\)</span> and its standard deviation. We can use R to do that:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span><span class="fu">sd</span>(x)</span>
+<span id="cb142-2"><a href="#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.422473e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
+<p>Now you see that the mean is 0 and the standard deviation is 1. The mean in the R computation is not exactly 0, but this comes from the rounding errors made by the computer. For practical purposed <span class="math inline">\(1.4 \times 10^{-16}\)</span> is as good as zero. This must be the case as a consequence of how we changed the units. The mathematically inclined among you might try to derive this fact more generally using the definition of the mean and the standard deviation.</p>
+<p>Now see what happens when we standardize our height data</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Z <span class="ot">&lt;-</span> (dat<span class="sc">$</span>Height <span class="sc">-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Height))<span class="sc">/</span><span class="fu">sd</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We want to see how many of the transformed values fall within 1 standard deviation, 2 standard deviations or three standard deviations from the mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a>check1 <span class="ot">&lt;-</span> dat<span class="sc">$</span>Z <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Z) <span class="sc">&amp;</span> dat<span class="sc">$</span>Z <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">+</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Z)</span>
+<span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a>check2 <span class="ot">&lt;-</span> dat<span class="sc">$</span>Z <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Z) <span class="sc">&amp;</span> dat<span class="sc">$</span>Z <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Z)</span>
+<span id="cb147-3"><a href="#cb147-3" aria-hidden="true" tabindex="-1"></a>check3 <span class="ot">&lt;-</span> dat<span class="sc">$</span>Z <span class="sc">&gt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">-</span> <span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Z) <span class="sc">&amp;</span> dat<span class="sc">$</span>Z <span class="sc">&lt;=</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Z) <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(dat<span class="sc">$</span>Z)</span>
+<span id="cb147-4"><a href="#cb147-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb147-5"><a href="#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(check1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.68356</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(check2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9546</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(check3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.99796</code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>So the rule of thumb applies all the same: About 65 % of observations are within one standard deviation from the mean, 95 % within 2 and 99.7 within three standard devaitions. The transformation has only changed the units in which we measure our values not the way they are distributed.</p>
 </section>
 <section id="exercises-for-the-standard-deviation" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="exercises-for-the-standard-deviation"><span class="header-section-number">3.3.4</span> Exercises for the standard deviation</h3>
@@ -1723,14 +1820,14 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3012.174</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb156"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3160.662</code></pre>
@@ -1740,14 +1837,14 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb141"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1700</code></pre>
 </div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb143"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb160"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb160-1"><a href="#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3220</code></pre>
@@ -1756,7 +1853,7 @@ Now you try
 <p>Alternatively you could use the R function <code>summary()</code>, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can compute the IQR from this.</p>
 <p>Let us illustrate the use of <code>summary()</code> with the income data discussed in this section. To compute the describtives in one go for these data, you would tell R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb162"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb162-1"><a href="#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
      20     820    1700    3012    4040   14000 </code></pre>
@@ -1764,7 +1861,7 @@ Now you try
 </div>
 <p>The <code>summary()</code>function will give you the minimium, the first quartile, the median and the mean, the 4th quartile and the maximum. The interquartile range can be computed from these data as <span class="math inline">\(4040 - 820\)</span> which is equal to <span class="math inline">\(3220\)</span>. When you use <code>IQR()</code>you will get</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb147"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb164"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb164-1"><a href="#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3220</code></pre>
 </div>
@@ -1772,7 +1869,7 @@ Now you try
 <p>as indeed it should be.</p>
 <p>Note that is you summarize our human height data we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb149"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb166"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb166-1"><a href="#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(dat<span class="sc">$</span>Height)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   153.1   169.4   172.7   172.7   176.0   190.9 </code></pre>
@@ -1800,9 +1897,9 @@ Now you try
 <p>A standard graphical tool that summarizes the data in an anology to the <code>summary()</code>function is the boxplot. The boxplot summarizes the variation of data graphically through quartiles. It draws a box, where one side corresponds to the lower quartile, while the opposie side corresponds to the upper quartile. The median is displayed as a line crossing the box. The boxplot also contains lines, which are called the <em>whiskers</em> extending the box indication variability outside the two quartiles. These observations are at the extremes of the variation of the data. Data points that differ significantly from the other data, often calles <em>outliers</em> are shown as individual points.</p>
 <p>Let us show some of the datasets we have discussed in this section to illustrate this very useful tool which gives you a compact and very informative summary of a huge data set. Let us start with Nile river data we had looked at in the beginning of the section. T R function for making a boxplot is called <code>boxplot()</code> and is used like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb151"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb168"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb168-1"><a href="#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Here the box shows you the maximum and the minimum flow (the whiskers), the box surrounding the first and the fourth quartile as well as the median as the black line within the box. If you look up the help function of <code>boxplot()</code> you can learn about various ways to control the look of the plot.</p>
@@ -1810,26 +1907,26 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
-<span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># First and second row relative heights</span></span>
-<span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">1</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
+<span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">heights =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># First and second row relative heights</span></span>
+<span id="cb169-3"><a href="#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">horizontal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb169-4"><a href="#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-81-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-87-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>But you could, of course, also choose a different layout. Lets take the primary energy consumption data we used before</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb153"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
-<span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># First and second row relative heights</span></span>
-<span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hist_info<span class="sc">$</span>density)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb170"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb170-1"><a href="#cb170-1" aria-hidden="true" tabindex="-1"></a>mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>) <span class="co"># first and second plot</span></span>
+<span id="cb170-2"><a href="#cb170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="at">mat =</span> mat, <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># First and second row relative heights</span></span>
+<span id="cb170-3"><a href="#cb170-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb170-4"><a href="#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(hist_info<span class="sc">$</span>density)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This graph show you in one picture the extreme asymmetry of primary energy consumption across the globe. Very few countries are heavy consumers of primary energy whereas the a huge share of countries consume very little in comparison. In the context of the debate on climate change, this observation might be an interesting starting point for discussing the sharing of the burdens of getting out of fossile fuels between the countries in the world.</p>
@@ -1837,34 +1934,34 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-3"><a href="#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
-<span id="cb154-4"><a href="#cb154-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>,</span>
-<span id="cb154-5"><a href="#cb154-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">byrow =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb154-6"><a href="#cb154-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>),</span>
-<span id="cb154-7"><a href="#cb154-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">heights  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">respect =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb154-8"><a href="#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-9"><a href="#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top and right margin of the main plot</span></span>
-<span id="cb154-10"><a href="#cb154-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb154-11"><a href="#cb154-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(Nile), <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Flow"</span>)</span>
-<span id="cb154-12"><a href="#cb154-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-13"><a href="#cb154-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Left margin of the histogram</span></span>
-<span id="cb154-14"><a href="#cb154-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb154-15"><a href="#cb154-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile, <span class="at">main =</span> <span class="st">""</span>, <span class="at">bty =</span> <span class="st">"n"</span>,</span>
-<span id="cb154-16"><a href="#cb154-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">ylab =</span> <span class="st">""</span>)</span>
-<span id="cb154-17"><a href="#cb154-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-18"><a href="#cb154-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom margin of the boxplot</span></span>
-<span id="cb154-19"><a href="#cb154-19" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
-<span id="cb154-20"><a href="#cb154-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-21"><a href="#cb154-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without plot region box</span></span>
-<span id="cb154-22"><a href="#cb154-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty =</span> <span class="st">"n"</span>)</span>
-<span id="cb154-23"><a href="#cb154-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb154-24"><a href="#cb154-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without axes</span></span>
-<span id="cb154-25"><a href="#cb154-25" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>),</span>
+<span id="cb171-4"><a href="#cb171-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>,</span>
+<span id="cb171-5"><a href="#cb171-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">byrow =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb171-6"><a href="#cb171-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb171-7"><a href="#cb171-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">heights  =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">respect =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb171-8"><a href="#cb171-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-9"><a href="#cb171-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top and right margin of the main plot</span></span>
+<span id="cb171-10"><a href="#cb171-10" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb171-11"><a href="#cb171-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.numeric</span>(Nile), <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">"Flow"</span>)</span>
+<span id="cb171-12"><a href="#cb171-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-13"><a href="#cb171-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Left margin of the histogram</span></span>
+<span id="cb171-14"><a href="#cb171-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">4.1</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb171-15"><a href="#cb171-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Nile, <span class="at">main =</span> <span class="st">""</span>, <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb171-16"><a href="#cb171-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">ylab =</span> <span class="st">""</span>)</span>
+<span id="cb171-17"><a href="#cb171-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-18"><a href="#cb171-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom margin of the boxplot</span></span>
+<span id="cb171-19"><a href="#cb171-19" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="fl">5.1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb171-20"><a href="#cb171-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-21"><a href="#cb171-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without plot region box</span></span>
+<span id="cb171-22"><a href="#cb171-22" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb171-23"><a href="#cb171-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-24"><a href="#cb171-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot without axes</span></span>
+<span id="cb171-25"><a href="#cb171-25" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Nile, <span class="at">axes =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-83-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -1877,10 +1974,10 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb155"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
-<span id="cb155-2"><a href="#cb155-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
-<span id="cb155-3"><a href="#cb155-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-4"><a href="#cb155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="at">Male =</span> mh, <span class="at">Female =</span> fh), summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb172"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb172-1"><a href="#cb172-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
+<span id="cb172-2"><a href="#cb172-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_weight<span class="sc">$</span>height[height_weight<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> height_weight<span class="sc">$</span>age <span class="sc">&gt;=</span> <span class="dv">18</span>] <span class="sc">|&gt;</span> <span class="fu">na.omit</span>()</span>
+<span id="cb172-3"><a href="#cb172-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-4"><a href="#cb172-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">list</span>(<span class="at">Male =</span> mh, <span class="at">Female =</span> fh), summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>$Male
@@ -1897,11 +1994,11 @@ $Female
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb157"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Comparative histogram male and female height"</span>, <span class="at">breaks =</span> <span class="dv">14</span>)</span>
-<span id="cb157-2"><a href="#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">breaks =</span> <span class="dv">9</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb174"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb174-1"><a href="#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">main =</span> <span class="st">"Comparative histogram male and female height"</span>, <span class="at">breaks =</span> <span class="dv">14</span>)</span>
+<span id="cb174-2"><a href="#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(fh, <span class="at">col=</span><span class="fu">rgb</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,.<span class="dv">5</span>), <span class="at">border=</span><span class="cn">NA</span>, <span class="at">breaks =</span> <span class="dv">9</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-91-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We have colored the female height distribution in blue and the male height distribution in red and overlayed the histograms. Now you can see that men tend to be taller than women as expressed in the differences in the averages there is also a substantial amount of overlap in the distributions. For each male in this overlap region you will find a female with a matching height, and some who are taller than a given male individual. About 10 % of women in this dataset have a male twin in height.</p>
@@ -1914,13 +2011,13 @@ $Female
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb158"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb158-1"><a href="#cb158-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
-<span id="cb158-2"><a href="#cb158-2" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span>
-<span id="cb158-3"><a href="#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb158-4"><a href="#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(H,W, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">ylab =</span> <span class="st">"Weight in kg"</span>, <span class="at">main =</span> <span class="st">"Relation between height and weight of adult humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb175"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb175-1"><a href="#cb175-1" aria-hidden="true" tabindex="-1"></a>H <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb175-2"><a href="#cb175-2" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> socr_height_weight<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span>
+<span id="cb175-3"><a href="#cb175-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-4"><a href="#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(H,W, <span class="at">xlab =</span> <span class="st">"Height in cm"</span>, <span class="at">ylab =</span> <span class="st">"Weight in kg"</span>, <span class="at">main =</span> <span class="st">"Relation between height and weight of adult humans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-92-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>What you see here is a dense cloud of 25.000 pairs of height and weight measurements. For any given height you see a whole range of observations with different weights. And for any given weight you see many observations with differing heights. But the cloud as a whole shows an increasing relation. This makes also intuitive sense. People who are taller tend to be also heavier.</p>
@@ -1928,7 +2025,7 @@ $Female
 <p>The Pearson correlation coefficient is a number that can be between -1 and 1. It epresses how close to a straight line the data-points in the scatterplot fall. If the correlation coerfficient is 1 all points lie on an upward sloping straight line. If the coeficcient is - 1 all the points fall on a downward sloping straight line. A correlation coefficient of 0 can come from points scattered at random or any other pattern in which there is no systematic upward or downward trend.</p>
 <p>R provides a function for the Pearson correlation coefficient, which is called <code>cor()</code>. For our height-weight pairs data used for the scatterplot this coefficient computes as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(H,W)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb176"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb176-1"><a href="#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(H,W)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5028585</code></pre>
 </div>
@@ -1945,25 +2042,25 @@ $Female
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb161"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_men</span>
-<span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_women</span>
-<span id="cb161-3"><a href="#cb161-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-4"><a href="#cb161-4" aria-hidden="true" tabindex="-1"></a>mh_w <span class="ot">&lt;-</span> height_men[height_men<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
-<span id="cb161-5"><a href="#cb161-5" aria-hidden="true" tabindex="-1"></a>fh_w <span class="ot">&lt;-</span> height_women[height_women<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
-<span id="cb161-6"><a href="#cb161-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-7"><a href="#cb161-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Year</span>
-<span id="cb161-8"><a href="#cb161-8" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Height</span>
-<span id="cb161-9"><a href="#cb161-9" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> fh_w<span class="sc">$</span>Height</span>
-<span id="cb161-10"><a href="#cb161-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-11"><a href="#cb161-11" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the first data series using plot()</span></span>
-<span id="cb161-12"><a href="#cb161-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y1, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">ylab=</span><span class="st">"y"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">ylim=</span><span class="fu">range</span>( <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">180</span>) ) )</span>
-<span id="cb161-13"><a href="#cb161-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-14"><a href="#cb161-14" aria-hidden="true" tabindex="-1"></a><span class="co">#add second data series to the same chart using points() and lines()</span></span>
-<span id="cb161-15"><a href="#cb161-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb161-16"><a href="#cb161-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y2, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb178"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb178-1"><a href="#cb178-1" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> height_men</span>
+<span id="cb178-2"><a href="#cb178-2" aria-hidden="true" tabindex="-1"></a>fh <span class="ot">&lt;-</span> height_women</span>
+<span id="cb178-3"><a href="#cb178-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-4"><a href="#cb178-4" aria-hidden="true" tabindex="-1"></a>mh_w <span class="ot">&lt;-</span> height_men[height_men<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
+<span id="cb178-5"><a href="#cb178-5" aria-hidden="true" tabindex="-1"></a>fh_w <span class="ot">&lt;-</span> height_women[height_women<span class="sc">$</span>Entity <span class="sc">==</span> <span class="st">"World"</span>, ]</span>
+<span id="cb178-6"><a href="#cb178-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-7"><a href="#cb178-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Year</span>
+<span id="cb178-8"><a href="#cb178-8" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> mh_w<span class="sc">$</span>Height</span>
+<span id="cb178-9"><a href="#cb178-9" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> fh_w<span class="sc">$</span>Height</span>
+<span id="cb178-10"><a href="#cb178-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-11"><a href="#cb178-11" aria-hidden="true" tabindex="-1"></a><span class="co">#plot the first data series using plot()</span></span>
+<span id="cb178-12"><a href="#cb178-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y1, <span class="at">type=</span><span class="st">"l"</span>, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">ylab=</span><span class="st">"y"</span>, <span class="at">lty=</span><span class="dv">1</span>, <span class="at">ylim=</span><span class="fu">range</span>( <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">180</span>) ) )</span>
+<span id="cb178-13"><a href="#cb178-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-14"><a href="#cb178-14" aria-hidden="true" tabindex="-1"></a><span class="co">#add second data series to the same chart using points() and lines()</span></span>
+<span id="cb178-15"><a href="#cb178-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb178-16"><a href="#cb178-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y2, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid" width="672"></p>
+<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-94-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -1972,6 +2069,7 @@ $Female
 </section>
 <section id="computer-exercises" class="level2" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.8</span> Computer exercises</h2>
+<p>Open the notebook <code>exercises_summarizing_and_communicating_lots_of_data.ipynb</code> and work on the exercises. Write your solutions into the notebook. You will need the computer to do this work.</p>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
 <!-- chapter introduces the most important concepts. -->

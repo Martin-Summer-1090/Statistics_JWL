@@ -168,9 +168,9 @@ library(JWL)
 dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year == 2019, ])
 
 hist_info <- hist(dat$Cons, plot = FALSE)         # Store output of hist function
-hist_info$density <- hist_info$counts /    # Compute density values
+hist_info$counts <- hist_info$counts /    # Compute relative frequency values
   sum(hist_info$counts) * 100
-plot(hist_info, freq = FALSE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Primary energy Consuption per Capita 2019")              # Plot histogram with percentages
+plot(hist_info, freq = TRUE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Primary energy Consuption per Capita 2019")              # Plot histogram with percentages
 ```
 In this histogram you see the distribution of per capita primary energy consumption for the year
 2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.
@@ -1622,14 +1622,21 @@ farther away.
 
 ## Now you try
 
-Compute the percentage of observations of our height data that are within 
-two standard deviations from the average.
+1. Compute the percentage of observations of our height data that are within 
+   two standard deviations from the average.
+
+2. Compute the percentage of observations of our height data that are within 
+   three standard deviations from the average.
 
 :::
 
 This is a rule of thumb that applies to many (but not all) data sets. For many distributions
 roughly 68 % of observations are within one standard deviation from the average. 95 % are within
-two standard deviations from the average. We will learn later in the course where this rule
+two standard deviations from the average and 99.7 % are within three standard deviations 
+from the average. There is a deeper mathematical reason why this rule applies to 
+many symmetric distributions. For the moment we can 
+use this information as a sort of rile of thumb for symmetric, bell shaped
+distributions. We will learn later in the course where this rule
 comes from. Let us illustrate the rules graphically using the histogram.
 
 ```{r}
@@ -1638,17 +1645,13 @@ hist_breaks <- hist(dat$Height, plot = FALSE)$breaks
 color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - sd(dat$Height)] <- '#C6E2FF'
+```
 
+```{r}
 hist(dat$Height, col = color_list, xlab = "Height in cm", main = "Height of 18 year old humans")
 abline(v = mean(dat$Height),                       # Add red line for mean
        col = "red")
-
-
 ```
-
-
-
-
 
 
 The next figure shows the same histogram. Now the area within two standard deviations from
@@ -1661,11 +1664,77 @@ color_list <- rep('#C6E2FF', length(hist_breaks))
 color_list[hist_breaks <= mean(dat$Height) + 2*sd(dat$Height)] <- '#6C7B8B'
 color_list[hist_breaks <= mean(dat$Height) - 2*sd(dat$Height)] <- '#C6E2FF'
 
+```
+
+```{r}
 hist(dat$Height, col = color_list, xlab = "Height in cm", main = "Height of 18 year old humans")
 abline(v = mean(dat$Height),                       # Add red line for mean
        col = "red")
 ```
 
+Let us note a final point about this rule of thumb for symmetric distribution, you
+frequently encounter in practice. Often it is common to report a distribution of
+a variable not in its orginal units - height in cm - for example but in a standardized
+form where the units are changed such that the mean is at 0 and the standard deviation is
+at 1.
+
+How is this possible? Let us consider the following example.
+
+::: {.callout-note appearance="simple"}
+
+## Example
+
+Consider the following 10 values, which we write into a vector $x$ and compute its mean
+$\mu$ and its standard deviation $\sigma$:
+```{r}
+#| code-fold: false
+x <- c(9,14,9,11,11,10,15,8,11,13)
+
+mean(x)
+sd(x)
+```
+Thus $\mu = 11.1$ and $\sigma = 2.282786$. Now let us change the units according to the
+formula
+\begin{equation*}
+z_i = \frac{x_i - \mu}{\sigma}
+\end{equation*}
+and compute the mean of $z_i$ and its standard deviation. We can use R to do that:
+```{r}
+#| code-fold: false
+z <- (x - mean(x))/sd(x)
+
+mean(z)
+sd(z)
+```
+Now you see that the mean is 0 and the standard deviation is 1. The mean in the R computation is not exactly 0, but this comes from the rounding errors made by the computer. For practical purposed $1.4 \times 10^{-16}$ is as good as zero. This must be the case as a 
+consequence of how we changed the units. The mathematically inclined among you might
+try to derive this fact more generally using the definition of the mean and the standard
+deviation.
+
+Now see what happens when we standardize our height data
+```{r}
+#|code-fold: false
+
+dat$Z <- (dat$Height - mean(dat$Height))/sd(dat$Height)
+```
+We want to see how many of the transformed values fall within 1 standard deviation, 2 standard deviations or three standard deviations from the mean.
+```{r}
+#| code-fold: false
+
+check1 <- dat$Z >= mean(dat$Z) - sd(dat$Z) & dat$Z <= mean(dat$Z) + sd(dat$Z)
+check2 <- dat$Z >= mean(dat$Z) - 2*sd(dat$Z) & dat$Z <= mean(dat$Z) + 2*sd(dat$Z)
+check3 <- dat$Z >= mean(dat$Z) - 3*sd(dat$Z) & dat$Z <= mean(dat$Z) + 3*sd(dat$Z)
+
+mean(check1)
+mean(check2)
+mean(check3)
+```
+:::
+
+So the rule of thumb applies all the same: About 65 % of observations are within one
+standard deviation from the mean, 95 % within 2 and 99.7 within three standard devaitions.
+The transformation has only changed the units in which we measure our values not the
+way they are distributed.
 
 ### Exercises for the standard deviation
 
@@ -2105,6 +2174,9 @@ lines(x, y2, type = "l", col="red",lty=2)
 
 ## Computer exercises
 
+Open the notebook `exercises_summarizing_and_communicating_lots_of_data.ipynb` 
+and work on the exercises. Write your solutions into the notebook. You will
+need the computer to do this work.
 
 
 
