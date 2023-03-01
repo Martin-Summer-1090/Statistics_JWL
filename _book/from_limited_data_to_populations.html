@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -64,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -163,17 +226,10 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents"><span class="toc-section-number">4.1</span>  Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="toc-section-number">4.2</span>  Outcome</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -192,17 +248,118 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="contents" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="contents"><span class="header-section-number">4.1</span> Contents</h2>
-<p>Inductive inference requires working from data to study sample and study population to target population.</p>
-<p>At each stage bias can crop up. The best way to proceed from sample to study population is if you have drawn a random sample. Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population Populations can be summarized using parameters that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.</p>
-</section>
-<section id="outcome" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="outcome"><span class="header-section-number">4.2</span> Outcome</h2>
-<p>Make the concept of a random sample and a probability distribution tangible by using the computer.</p>
+<div class="page-columns page-full"><p>In the last exercise we analyzed data from the Demographic and Health Survey<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to look at data supporting the monitoring the nutritional state of children using anthropometric data.¶</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;To learn more about this survey, please visit the DHS website at https://dhsprogram.com/</p></li></div></div>
+<p>The data allow for producing tables like - for example - the following from the DHS model data set we also used for the exercise.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data  <span class="ot">&lt;-</span> children_nutrition_data</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>stunting_by_region <span class="ot">&lt;-</span> <span class="fu">by</span>(data, data<span class="sc">$</span>region, with, <span class="fu">weighted.mean</span>(nt_ch_stunt, wt)) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>() <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>wasting_by_region <span class="ot">&lt;-</span>  <span class="fu">by</span>(data, data<span class="sc">$</span>region, with, <span class="fu">weighted.mean</span>(nt_ch_wast, wt)) <span class="sc">|&gt;</span> <span class="fu">as.numeric</span>() <span class="sc">|&gt;</span> <span class="fu">round</span>(<span class="dv">2</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Region =</span> <span class="fu">c</span>(<span class="st">"Region 1"</span>, <span class="st">"Region 2"</span>, <span class="st">"Region 3"</span>, <span class="st">"Region 4"</span>),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                             <span class="at">Stunted =</span> stunting_by_region, <span class="at">Wasted =</span> wasting_by_region)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab, <span class="at">caption =</span> <span class="st">"Percentage of stunted and wasted children by Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Percentage of stunted and wasted children by Region</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Region</th>
+<th style="text-align: right;">Stunted</th>
+<th style="text-align: right;">Wasted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Region 1</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Region 2</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Region 3</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Region 4</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>If we look at the data we see that these percentages are calculated from measurements of a group of 2494 households. Now even a small region in a thinly populated area will have more children than that. For instance the tiny European state of Liechtenstein, a small 62 square miles sliver of land between Austria and Switzerland has currently about 38.000 inhabitants. To a rough approximation even there the number of children under 59 month - the group among the anthropometric measurments of the DHS were done is about this size or larger.</p>
+<p>The data of the demographic and health survey are collected by selecting some households in a country. Surveys are huge and expensive projects which require a complex logistic to work properly. The researchers in such a project are not interested in what particular respondents say or what are their particular anthropometric data. In fact the individual respondents are anonymous in the collected data set. The questions are asked to find overall patterns in - for example - the nutritional status of children and infants in a country or in an administrative region.</p>
+<p>But how can we say something about such a pattern in a country or a region by just asking a group of people or by taking some measurements from them? How can we be confident about the results beyond just claiming that we can generalize from the data of people we asked to the population pattern we are ultimately interested in? How can we ask or measure people in a way that the analysis of data from this subset allows to learn something about these measures in the entire population?</p>
+<p>In this chapter we discuss how such a seemingly magical generalization can work at all and what needs to be considered before making such sweeping generalizations with some level of confidence.</p>
+<!-- @Spi2019 explains how the process of going from raw response data in a survey to -->
+<!-- patterns in a country or a region can be broken down into a series of different stages. -->
+<!-- Stage 1: When we record data on weight and height of children among our survey participants, the so called -->
+<!-- **raw data** this gives us information about . . . -->
+<!-- Stage 2: The **true numbers** of height and weight in our **sample**, which contains  -->
+<!-- information about ... -->
+<!-- Stage 3: The height and weight numbers in the **study population** the people that could have -->
+<!-- potentially been included in the survey, which contains information about ... -->
+<!-- Stage 4: The height and weight numbers in the country or region which is our **target population**. -->
+<!-- At all these stages errors can creep into our data. For example, when we go from the raw data to -->
+<!-- the numbers in our sample, i.e. when we go from stage 1 to stage 2 we need to make assumptions about -->
+<!-- how accurately people respond to our questions or how accurately the field workers in the survey have -->
+<!-- taken their anthropmetric measurements.  -->
+<!-- When we go from the sample to the study population, from stage 2 to stage 3. The -->
+<!-- first thing we need to be confident about is that the group of people asked to  -->
+<!-- take part in the survey is a random sample from those who could be asked in principle.  -->
+<!-- Now what this means exactly - being random and why it is important - is something we will look into  -->
+<!-- more closely in this part of our course. For the moment it is enough to rely on your intutive  -->
+<!-- understanding what we mean when we say we pick something at random, like a card from a deck of  -->
+<!-- playing cards, for example. -->
+<!-- If a survey is done properly like the DHS, this is usually something you can assume. But then -->
+<!-- we also need to assume that the people who agree to take part in the survey are representative. This is -->
+<!-- more difficult. If the people who agree to participate differ systematically from those who do not -->
+<!-- participate this can be a problem for the sample data to be representative. This is an issue that needs -->
+<!-- to be addressed in a systematic way. -->
+<!-- Finally, going from the study population to the target population, going from stage 3 to stage 4 is more -->
+<!-- straightforward, if we can assume that the people who could potentially have been asked to participate in the -->
+<!-- survey represent the population of a country or a region. This can usually be achieved by a careful -->
+<!-- sampling but it is not easy in practice. -->
+<!-- ## Learning from data and the process of inductive inference. -->
+<!-- ## What is random sampling and why it is important -->
+<!-- To better understand why random sampling is important to make inferences from sample to -->
+<!-- the population, let us start with a simple example from games of chance. -->
+<!-- ## How does the DHS sample its data -->
+<!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
+<!-- national level, for urban and rural areas and for the first administrative subunit. -->
+<!-- population based: data are collected through interviews of a representative sample of  -->
+<!-- households. Interviewers visit selcetd households, collecting data from the household. -->
+<!-- cross-sectional: A snapshot of an area at a particular point in time. -->
+<!-- first government level below the national unit, such as region, state or zone -->
+<!-- target population: women and men of reproductive age (15-49) of all backgrounds -->
+<!-- 4 stages in the DHS survey process: -->
+<!-- Stage 1 survey design and questionnaire six months -->
+<!-- Stage 2 training interviewers and collecting data 6 month -->
+<!-- Stage 3 data editing, tabulation and report writing 1 year -->
+<!-- Stage 4 Dissemination and analysis 6-7 months -->
+<!-- ## Contents -->
+<!-- Inductive inference requires working from data to study sample and study population to target population. -->
+<!-- At each stage bias can crop up. -->
+<!-- The best way to proceed from sample to study population is if you have drawn a random sample. -->
+<!-- Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population -->
+<!-- Populations can be summarized using parameters that mirror the summary statistics of sample data. -->
+<!-- It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t. -->
+<!-- ## Outcome -->
+<!-- Make the concept of a random sample and a probability distribution tangible by using the computer. -->
 
 
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
