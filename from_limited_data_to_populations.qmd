@@ -1,10 +1,10 @@
 # From limited data to populations
 
 In the last exercise we analyzed data from the Demographic and Health Survey^[To learn more about this survey, please visit the DHS website at https://dhsprogram.com/] to look at data supporting the 
-monitoring the nutritional state of children using anthropometric data.¶
+monitoring of the nutritional state of children by using anthropometric data.¶
 
 The data allow for producing tables like - for example - the following from the DHS model
-data set we also used for the exercise.
+data set we also used for an exercise in the previous section.
 ```{r}
 library(JWL)
 data  <- children_nutrition_data
@@ -16,17 +16,18 @@ tab <- data.frame(Region = c("Region 1", "Region 2", "Region 3", "Region 4"),
                              Stunted = stunting_by_region, Wasted = wasting_by_region)
 knitr::kable(tab, caption = "Percentage of stunted and wasted children by Region")
 ```
-If we look at the data we see that these percentages are calculated from measurements of 
-a group of 2494 households. Now even a small region in a thinly populated area will have more children than
+These percentages are calculated from measurements of 2494 observations. 
+Now even a small region in a thinly populated area will have more children than
 that. For instance the tiny European state of Liechtenstein, a small 62 square miles sliver of land
 between Austria and Switzerland has currently about 38.000 inhabitants. To a rough approximation even there
-the number of children under 59 month - the group among the anthropometric measurments of the DHS were done
+the number of children under 59 month - the group for which the anthropometric measurments of the DHS were taken -
 is about this size or larger.
 
-The data of the demographic and health survey are collected by selecting some households in a country.
-Surveys are huge and expensive projects which require a complex logistic to work properly.
+The data of the demographic and health survey are collected by selecting some households in a country and
+asking them questions to their members or by taking measurements from them.
+Surveys are huge and expensive projects which require complex logistics to work properly.
 The researchers in such a project are not interested
-in what particular respondents say or what are their particular anthropometric data. In fact the
+in what particular respondents say or what are their particular anthropometric data are. In fact the
 individual respondents are anonymous in the collected data set. The questions are asked to find
 overall patterns in - for example - the nutritional status of children and infants in a country
 or in an administrative region.
@@ -42,49 +43,81 @@ In this chapter we discuss how such a seemingly
 magical generalization can work at all and what needs to be considered before making such 
 sweeping generalizations with some level of confidence.
 
+The process of going from responses or measurements in a survey to patterns in a country of region
+proceeds in four stages as explained in @Spi2019. 
+
+Let us take the DHS as an example. 
+
+Stage 1:
+
+In the first stage of the data collection process the DHS a group of
+households is selected from the larger population about which we want to learn 
+something. In technical
+terms the selected group is called a **sample** and the larger population about we
+ultimately hope to learn something is called the **target population**. The sample
+and all the successful and failed measurements in the sample will give us the
+**raw data**. From this we can get information about ...
+
+Stage 2:
+
+The **true** numbers of height and weight in our sample, which contains
+information about ...
+
+Stage 3:
+
+The height and weight in the **study population**, the people that could have potentially
+been included in the survey, which contains information about ...
+
+Stage 4: 
+
+The height and weight of children in our **target population**.
+
+It is important to understand that at all these stages errors can occur. 
+
+For example
+on the way from the raw data to our sample - the step from stage 1 to stage 2 -
+we have to make assumptions on how accurately
+the field workers have taken their height and weight measurements. Or if we ask questions, 
+we need to make assumptions on how accurately people respond. 
+
+When we go from the sample to the study population - from stage 2 to stage 3 - we need to
+be confident that the people asked or measured are a **random sample** from those who could be
+asked in principle. We have not yet introduced probability and what we mean exactly with 
+a random sample. But at this stage it is sufficient to rely on our intuitive understanding
+of what random means and why it is important. Assume the sample had not been selected at random. Say
+the DHS survey team would drive through a region and stop here and there to interview households. This
+method risks that some households are much more likely to be in the sample than others - for example the 
+ones who are easy to reach on the road. Then in going from 2 to 3 we will make mistakes because we will
+measure using a sample that is not comparable to the study population. Even worse we can not even quantify the
+error we are making.
+
+Now if a survey is done properly and professionally, as we can be confident with the DHS, this is
+something we can usually assume. But even then we need to assume that the people who agree to take
+part in the survey, those in our sample that cooperate with the survey team, i.e. answer questions, 
+agree to have anthropocentric measurements taken of their children, are representative. Otherwise
+comparisons with the larger group about which we ultimately want to say something, will be problematic.
+Assuring that the people in the sample who cooperate are representative is more difficult to assure.
+There are methods and procedures to address this difficulty systematically. For the moment it is 
+important for you to recognize this as a potential source of error.
+
+When we assume that the people who could potentially have been asked to participate in the survey
+represent the population of a country or a region, then the last step - going from stage 3 to stage 4 - 
+is more straightforward. If the sample has been chosen with sufficient care this will be
+possible. It is, however, not easy in practice.
+
+Considering all these potential sources of error you might become sceptical whether it is
+possible to say something reliable at all. The good news is that statistics as a science and the
+methods you are going to learn during this course can smooth and control the process of
+going through these four steps where you indeed can say something very reliable and you
+can even precisely quantify the uncertainty that remains in what you are saying. 
 
 
-<!-- @Spi2019 explains how the process of going from raw response data in a survey to -->
-<!-- patterns in a country or a region can be broken down into a series of different stages. -->
+## Learning from data and the process of inductive inference.
 
-<!-- Stage 1: When we record data on weight and height of children among our survey participants, the so called -->
-<!-- **raw data** this gives us information about . . . -->
-<!-- Stage 2: The **true numbers** of height and weight in our **sample**, which contains  -->
-<!-- information about ... -->
-<!-- Stage 3: The height and weight numbers in the **study population** the people that could have -->
-<!-- potentially been included in the survey, which contains information about ... -->
-<!-- Stage 4: The height and weight numbers in the country or region which is our **target population**. -->
+In this section we can discuss the importance of random sampling by demonstrations using R
+a good example for this is in data08.
 
-<!-- At all these stages errors can creep into our data. For example, when we go from the raw data to -->
-<!-- the numbers in our sample, i.e. when we go from stage 1 to stage 2 we need to make assumptions about -->
-<!-- how accurately people respond to our questions or how accurately the field workers in the survey have -->
-<!-- taken their anthropmetric measurements.  -->
-
-<!-- When we go from the sample to the study population, from stage 2 to stage 3. The -->
-<!-- first thing we need to be confident about is that the group of people asked to  -->
-<!-- take part in the survey is a random sample from those who could be asked in principle.  -->
-<!-- Now what this means exactly - being random and why it is important - is something we will look into  -->
-<!-- more closely in this part of our course. For the moment it is enough to rely on your intutive  -->
-<!-- understanding what we mean when we say we pick something at random, like a card from a deck of  -->
-<!-- playing cards, for example. -->
-
-<!-- If a survey is done properly like the DHS, this is usually something you can assume. But then -->
-<!-- we also need to assume that the people who agree to take part in the survey are representative. This is -->
-<!-- more difficult. If the people who agree to participate differ systematically from those who do not -->
-<!-- participate this can be a problem for the sample data to be representative. This is an issue that needs -->
-<!-- to be addressed in a systematic way. -->
-
-<!-- Finally, going from the study population to the target population, going from stage 3 to stage 4 is more -->
-<!-- straightforward, if we can assume that the people who could potentially have been asked to participate in the -->
-<!-- survey represent the population of a country or a region. This can usually be achieved by a careful -->
-<!-- sampling but it is not easy in practice. -->
-
-<!-- ## Learning from data and the process of inductive inference. -->
-
-<!-- ## What is random sampling and why it is important -->
-
-<!-- To better understand why random sampling is important to make inferences from sample to -->
-<!-- the population, let us start with a simple example from games of chance. -->
+Maybe explain the DHS sampling process.
 
 <!-- ## How does the DHS sample its data -->
 

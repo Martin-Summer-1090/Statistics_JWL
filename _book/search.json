@@ -249,14 +249,14 @@
     "href": "from_limited_data_to_populations.html#learning-from-data-and-the-process-of-inductive-inference.",
     "title": "4  From limited data to populations",
     "section": "4.1 Learning from data and the process of inductive inference.",
-    "text": "4.1 Learning from data and the process of inductive inference."
+    "text": "4.1 Learning from data and the process of inductive inference.\nIn this section we can discuss the importance of random sampling by demonstrations using R a good example for this is in data08.\nMaybe explain the DHS sampling process.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpiegelhalter, David. 2019. The Art of Statistcis: Learning from Data. Pelican Books."
   },
   {
     "objectID": "from_limited_data_to_populations.html#what-is-random-sampling-and-why-it-is-important",
     "href": "from_limited_data_to_populations.html#what-is-random-sampling-and-why-it-is-important",
     "title": "4  From limited data to populations",
     "section": "4.2 What is random sampling and why it is important",
-    "text": "4.2 What is random sampling and why it is important\nTo better understand why random sampling is important to make inferences from sample to the population, let us start with a simple example from games of chance."
+    "text": "4.2 What is random sampling and why it is important\nTo better understand why random sampling is important to make inferences from sample to the population, let us start with a simple example from games of chance.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpiegelhalter, David. 2019. The Art of Statistcis: Learning from Data. Pelican Books."
   },
   {
     "objectID": "from_limited_data_to_populations.html#how-does-the-dhs-sample-its-data",
