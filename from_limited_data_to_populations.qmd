@@ -1,6 +1,6 @@
 # From limited data to populations
 
-In the last exercise we analyzed data from the Demographic and Health Survey^[To learn more about this survey, please visit the DHS website at https://dhsprogram.com/] to look at data supporting the 
+In the last exercise we analyzed data from the Demographic and Health Survey.^[To learn more about this survey, please visit the DHS website at https://dhsprogram.com/] We looked at data 
 monitoring of the nutritional state of children by using anthropometric data.¶
 
 The data allow for producing tables like - for example - the following from the DHS model
@@ -43,10 +43,9 @@ In this chapter we discuss how such a seemingly
 magical generalization can work at all and what needs to be considered before making such 
 sweeping generalizations with some level of confidence.
 
-The process of going from responses or measurements in a survey to patterns in a country of region
-proceeds in four stages as explained in @Spi2019. 
-
-Let us take the DHS as an example. 
+The process of going from responses or measurements in a survey to patterns in a country or region
+proceeds in four stages as explained in @Spi2019. We follow here his four stages taking the
+he DHS as an example. 
 
 Stage 1:
 
@@ -114,10 +113,99 @@ can even precisely quantify the uncertainty that remains in what you are saying.
 
 ## Learning from data and the process of inductive inference.
 
-In this section we can discuss the importance of random sampling by demonstrations using R
-a good example for this is in data08.
+In the preceding chapters we have looked at examples where we had given data. Analysis of this
+data was sufficient if we just appropriately summarized them or displayed the data in an
+insightful way.
 
-Maybe explain the DHS sampling process.
+Sometimes this is really all there is to do. For instance when we studies the time trend in
+extreme world poverty we just looked at the time series of the share of people in the world
+who have to live on an income of below 1.90 $ a day and a plot showed us the complete answer.
+The data show a steady decrease since 2000 starting from a share of roughly 27 % down to a share
+below 10 % in 2017.
+
+```{r}
+library(ggplot2)
+library(JWL)
+
+demo_data <- povdat_by_country
+
+names(demo_data) <- c("Country", "Code", "Year", "Share")
+
+pl_dat <- with(demo_data, demo_data[Country == "World" & Year >= 2000, ])
+
+p <- ggplot(pl_dat, aes(x = Year, y = Share)) +
+     geom_point() +
+     geom_line() +
+     xlab("") +
+     ylab("Share of extreme poverty in percent")
+
+p
+```
+
+But sometimes we want to say more about the data. We would like - for instance - to make
+predictions on how, for example, the trend in this share is going to look like in the future
+where we do not yet have data. Remember Figure 1.2 in section 1, where we showed three such predictions
+that were made then for 2021.
+![Predictions of extreme poverty share](figures/fig-share-of-people-in-extreme-poverty-world-forecast.png)
+Or maybe we would like to say something more basic. For example why is the share predicted to rise after so
+many years?
+
+Such generalisations, where we try to learn something about the world outside of our observations, based on these
+observations are called in statistics **inductive inference**. Inductive inference is challenging idea and it had
+been the topic of many philosophical amd methodological controversies among scholars in the past.
+
+Deductive reasoning derives particular conclusions from general premises using the rules of logic.
+In this way if the assumptions hold and the reasoning is done correctly, i.e. the rules of logic are
+properly applied the conclusions is certain and irrefutable. A toy example of deductive reasoning would for
+instance be:
+
+Major Premise: All plants perform photoynthesis.
+Minor Premise: A cactus is a plant.
+Conclusion: A cactus performs photosynthesis.
+
+Modern mathematical reasoning is all built on deduction, allowing to come up with 
+actual proofs of certain statements given a set of axioms or assumptions. A proof is 
+possible because deduction is logically certain.
+
+Inductive reasoning works differently. It starts from particular instances and tries to work out
+generalisations from there. It goes from data to hypothesis. A simple toy example for inductive
+reasoning would be:
+
+Data: I see fireflies in my garden every summer.
+Hypothesis: This summer I will probably see fireflies in my garden.
+
+Induction does not allows to proof a hypothesis because it is generally uncertain.
+
+Let us go back to the entire process of going from the raw data to the statements about the
+entire country or region in the DHS survey. 
+
+When we go from the sample to the true data about the units in the sample, the step from stage 1 to
+stage 2, we have to think careful about issues or problems of measurement. We want to know
+whether our data are reliable. They should have a low variability from occasion to occasion and
+should measure the same thing when we repeat a measurement. They should also measure what we intend or
+want to measure. This is called validity. We do not want our data to have a systematic bias.
+
+When we take again the DHS as an example, where people are asked many questions and quite a few
+measurements are taken on individuals, questions should be such that people give the same or a similar 
+answer each time they are asked this question. To some extend this can be tested but these tests are not
+perfect. We also need to assume that people answer honestly to questions. With measurements things are
+similar. We want that we get the same or a very similar result if we repeat a measurement and we need to
+assume that the survey field workers who take the measurements do their job diligently. 
+
+If questions would be biased towards a particular answer a survey would also not be valid. This needs
+special care in developing questions. In lecture 1 we have learned about framing effects. Framing
+effects are often used in marketing. For example in meat packaging it is well known that how
+you report certain facts about the packaged meat influences sales. If the same piece of meat is
+one time packaged with the text "75 % lean meat" and with the text "25 % fat", which is logically
+the same information, several studies showed that on average the first package is preferred. This and
+other details have to be considered when elicting information from the sample.
+
+Now going from the second stage - from the sample - to the third stage - the study population requires
+particular care. We have to be confident that the sample observed accurately reflects characteristics of
+the larger group we are ultimatly interested in and from which the sample has been taken. Technicalls this
+is also often called **internal validity**.
+
+Here we come to a crucial idea how bias can be avoided, the idea of **random sampling**.
 
 <!-- ## How does the DHS sample its data -->
 
