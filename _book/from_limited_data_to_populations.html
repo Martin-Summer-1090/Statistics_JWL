@@ -143,6 +143,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -342,7 +343,7 @@ div.csl-indent {
 <p>Now if a survey is done properly and professionally, as we can be confident with the DHS, this is something we can usually assume. But even then we need to assume that the people who agree to take part in the survey, those in our sample that cooperate with the survey team, i.e.&nbsp;answer questions, agree to have anthropocentric measurements taken of their children, are representative. Otherwise comparisons with the larger group about which we ultimately want to say something, will be problematic. Assuring that the people in the sample who cooperate are representative is more difficult to assure. There are methods and procedures to address this difficulty systematically. For the moment it is important for you to recognize this as a potential source of error.</p>
 <p>When we assume that the people who could potentially have been asked to participate in the survey represent the population of a country or a region, then the last step - going from stage 3 to stage 4 - is more straightforward. If the sample has been chosen with sufficient care this will be possible. It is, however, not easy in practice.</p>
 <p>Considering all these potential sources of error you might become sceptical whether it is possible to say something reliable at all. The good news is that statistics as a science and the methods you are going to learn during this course can smooth and control the process of going through these four steps where you indeed can say something very reliable and you can even precisely quantify the uncertainty that remains in what you are saying.</p>
-<section id="learning-from-data-and-the-process-of-inductive-inference." class="level2" data-number="4.1">
+<section id="learning-from-data-and-the-process-of-inductive-inference." class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="learning-from-data-and-the-process-of-inductive-inference."><span class="header-section-number">4.1</span> Learning from data and the process of inductive inference.</h2>
 <p>In the preceding chapters we have looked at examples where we had given data. Analysis of this data was sufficient if we just appropriately summarized them or displayed the data in an insightful way.</p>
 <p>Sometimes this is really all there is to do. For instance when we studies the time trend in extreme world poverty we just looked at the time series of the share of people in the world who have to live on an income of below 1.90 $ a day and a plot showed us the complete answer. The data show a steady decrease since 2000 starting from a share of roughly 27 % down to a share below 10 % in 2017.</p>
@@ -382,8 +383,150 @@ div.csl-indent {
 <p>When we go from the sample to the true data about the units in the sample, the step from stage 1 to stage 2, we have to think careful about issues or problems of measurement. We want to know whether our data are reliable. They should have a low variability from occasion to occasion and should measure the same thing when we repeat a measurement. They should also measure what we intend or want to measure. This is called validity. We do not want our data to have a systematic bias.</p>
 <p>When we take again the DHS as an example, where people are asked many questions and quite a few measurements are taken on individuals, questions should be such that people give the same or a similar answer each time they are asked this question. To some extend this can be tested but these tests are not perfect. We also need to assume that people answer honestly to questions. With measurements things are similar. We want that we get the same or a very similar result if we repeat a measurement and we need to assume that the survey field workers who take the measurements do their job diligently.</p>
 <p>If questions would be biased towards a particular answer a survey would also not be valid. This needs special care in developing questions. In lecture 1 we have learned about framing effects. Framing effects are often used in marketing. For example in meat packaging it is well known that how you report certain facts about the packaged meat influences sales. If the same piece of meat is one time packaged with the text “75 % lean meat” and with the text “25 % fat”, which is logically the same information, several studies showed that on average the first package is preferred. This and other details have to be considered when elicting information from the sample.</p>
-<p>Now going from the second stage - from the sample - to the third stage - the study population requires particular care. We have to be confident that the sample observed accurately reflects characteristics of the larger group we are ultimatly interested in and from which the sample has been taken. Technicalls this is also often called <strong>internal validity</strong>.</p>
-<p>Here we come to a crucial idea how bias can be avoided, the idea of <strong>random sampling</strong>.</p>
+<p>Now going from the second stage - from the sample - to the third stage - the study population requires particular care. We have to be confident that the sample observed accurately reflects characteristics of the larger group we are ultimately interested in and from which the sample has been taken. Technically this is also often called <strong>internal validity</strong>.</p>
+<p>Here we come to a crucial idea how bias can be avoided, the idea of <strong>random sampling</strong>. Let us explain exactly what a random sample is. Using R will support us in developing this understanding. As an example data set of our population we use as an illustration in the following discussion, let us take the dataset on the height and weight of adult humans, we used in the previous section.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> socr_height_weight</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Height <span class="ot">&lt;-</span> dat<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>Weight <span class="ot">&lt;-</span> dat<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="page-columns page-full"><p>Remember that this was a data set with 25.000 observations and three variables, an index for each individual a number of height in cm and weight in kg.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Let’s look at the first 10 rows in this dataset.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Note that the original data set <code>socr_height_weight</code> measures height in inches and weight in lbs. To get cm from inches, we have to multiply by 2.54 and to get kg from lbs we have to multiply the numbers by 0.4535924. In the data we use here we use units of cm and kg</p></li></div></div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>show <span class="ot">&lt;-</span> <span class="fu">head</span>(dat, <span class="at">n=</span> <span class="dv">10</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(show) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(show, <span class="at">n=</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Index</th>
+<th style="text-align: right;">Height</th>
+<th style="text-align: right;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">167.0896</td>
+<td style="text-align: right;">51.25254</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">181.6486</td>
+<td style="text-align: right;">61.90960</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">176.2728</td>
+<td style="text-align: right;">69.41184</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">173.2702</td>
+<td style="text-align: right;">64.56226</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">172.1810</td>
+<td style="text-align: right;">65.45207</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">174.4925</td>
+<td style="text-align: right;">55.92903</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">177.2972</td>
+<td style="text-align: right;">64.18092</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">177.8374</td>
+<td style="text-align: right;">61.89826</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">172.4727</td>
+<td style="text-align: right;">50.97122</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">169.6272</td>
+<td style="text-align: right;">54.73372</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Each row of this table represents an individual. Each individual here is an adult person age 18 or more for which a measure of height and weight has been taken. So if we sample from the rows of this table, we get values for the index, the height and the weight of individuals.</p>
+<p>We could now take samples of rows from the table by selecting every 50th row. Here is a way of how we could implement this in R. If you go back to our last section and remember what we have learned about subsetting, you might get an idea how to approach such a problem.</p>
+<p>Let us first create a sequence of numbers starting from 1 and going until the last row in steps of length 5. This can be done without problems because 25000 rows are divisible by 50 and this procedure will select exactly 500 rows. Here is the R code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="fu">nrow</span>(dat), <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sample_1 <span class="ot">&lt;-</span> dat[idx, ]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(sample_1) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(sample_1, <span class="at">n =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Index</th>
+<th style="text-align: right;">Height</th>
+<th style="text-align: right;">Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">167.0896</td>
+<td style="text-align: right;">51.25254</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">174.4925</td>
+<td style="text-align: right;">55.92903</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">168.8787</td>
+<td style="text-align: right;">57.81108</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">180.5727</td>
+<td style="text-align: right;">63.50180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">172.2978</td>
+<td style="text-align: right;">64.08385</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let me explain. <code>seq()</code> is an R function which creates a regular sequence of numbers. The arguments specify where the sequence begins and where it ends as well as the step length it takes. We write this sequence into a variable <code>idx</code>. Since we do not want row names we delete these. Then we apply the subsetting rules we have learned in the last section to select all rows with index <code>idx</code> with all its variables.</p>
+<p>While this is a sample from our population, this is not a random sample because there is no chance involved in selecting the rows. Random sampling is a sampling method that uses a random mechanism. This means that the probability of each unit in the population to become part of the sample is known.</p>
+<p>We have not yet discussed the concept of probability. We will learn about probability later in the course. But we have all am intuitive notion of probability from simple games of chance, such as from rolling a die. If we throw a die the probability of each of the points - 1, 2, 3, 4, 5 or 6 - showing up is <span class="math inline">\(\frac{1}{6}\)</span>. When we can give a probability for each outcome of throwing a die, we have a probability distribution, which is in this particular example very simple. The probability of each number showing up is the same, <span class="math inline">\(\frac{1}{6}\)</span>. We can show this in the form of a bar-plot, where each bar stands for an outcome and its height showing the probability of this outcome.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>outc <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>,<span class="dv">6</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">names.arg =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, outc, <span class="at">xlab =</span> <span class="st">"Face"</span>, <span class="at">ylab =</span> <span class="st">"Probability"</span>, <span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">pretty</span>(<span class="fu">c</span>(<span class="dv">0</span>, outc))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In contrast to this theoretical probability distribution and empirical distribution is the distribution of observed data. We encountered many such distributions in the previous sections and summarized them graphically be histograms.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->

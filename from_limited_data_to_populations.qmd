@@ -202,10 +202,72 @@ other details have to be considered when elicting information from the sample.
 
 Now going from the second stage - from the sample - to the third stage - the study population requires
 particular care. We have to be confident that the sample observed accurately reflects characteristics of
-the larger group we are ultimatly interested in and from which the sample has been taken. Technicalls this
+the larger group we are ultimately interested in and from which the sample has been taken. Technically this
 is also often called **internal validity**.
 
-Here we come to a crucial idea how bias can be avoided, the idea of **random sampling**.
+Here we come to a crucial idea how bias can be avoided, the idea of **random sampling**. Let us explain exactly
+what a random sample is. Using R will support us in developing this understanding. As an example
+data set of our population we use as an illustration in the following discussion, let us take the
+dataset on the height and weight of adult humans, we used in the previous section.
+```{r}
+library(JWL)
+dat <- socr_height_weight
+dat$Height <- dat$Height*2.54
+dat$Weight <- dat$Weight*0.4535924
+```
+Remember that this was a data set with 25.000 observations and three variables, an index for each individual a number of height in cm and weight in kg.^[Note that the original data set `socr_height_weight` measures height in inches and weight in lbs. To get cm from inches, we have to multiply by 2.54 and to get kg from lbs we have to multiply the numbers by 0.4535924. In the data we use here we use units of cm and kg]. Let's look at the first
+10 rows in this dataset.
+```{r}
+show <- head(dat, n= 10)
+rownames(show) <- NULL
+knitr::kable(head(show, n= 10))
+```
+Each row of this table represents an individual. Each individual here is an adult person age 18 or
+more for which a measure of height and weight has been taken. So if we sample from the rows of this
+table, we get values for the index, the height and the weight of individuals.
+
+We could now take samples of rows from the table by selecting every 50th row. Here is a way
+of how we could implement this in R. If you go back to our last section and remember what we
+have learned about subsetting, you might get an idea how to approach such a problem.
+
+Let us first create a sequence of numbers starting from 1 and going until the last row in steps of
+length 5. This can be done without problems because 25000 rows are divisible by 50 and this procedure will
+select exactly 500 rows. Here is the R code:
+```{r}
+#| code-fold: false
+idx <- seq(from = 1, to = nrow(dat), by = 5)
+sample_1 <- dat[idx, ]
+rownames(sample_1) <- NULL
+knitr::kable(head(sample_1, n = 5))
+```
+Let me explain. `seq()` is an R function which creates a regular sequence of numbers. The arguments specify
+where the sequence begins and where it ends as well as the step length it takes. We write this sequence
+into a variable `idx`. Since we do not want row names we delete these. Then we apply the subsetting 
+rules we have learned in the last section to select
+all rows with index `idx` with all its variables.
+
+While this is a sample from our population, this is not a random sample because there
+is no chance involved in selecting the rows. Random sampling is a sampling method 
+that uses a random mechanism. This means that the probability of each unit in the
+population to become part of the sample is known.
+
+We have not yet discussed the concept of probability. We will learn about probability later in the
+course. But we have all am intuitive notion of probability from simple games of chance, such as from
+rolling a die. If we throw a die the probability of each of the points - 1, 2, 3, 4, 5 or 6 - showing up
+is $\frac{1}{6}$. When we can give a probability for each outcome of throwing a die, we have
+a probability distribution, which is in this particular example very simple. The probability of each number
+showing up is the same, $\frac{1}{6}$. We can show this in the form of a bar-plot, where each bar stands for
+an outcome and its height showing the probability of this outcome.
+```{r}
+outc <- rep(1/6,6)
+barplot(names.arg = 1:6, outc, xlab = "Face", ylab = "Probability", ylim=range(pretty(c(0, outc))))
+```
+In contrast to this theoretical probability distribution and empirical distribution is the
+distribution of observed data. We encountered many such distributions in the previous sections
+and summarized them graphically be histograms. 
+
+
+
 
 <!-- ## How does the DHS sample its data -->
 
