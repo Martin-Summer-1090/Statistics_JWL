@@ -24,7 +24,7 @@ the number of children under 59 month - the group for which the anthropometric m
 is about this size or larger.
 
 The data of the demographic and health survey are collected by selecting some households in a country and
-asking them questions to their members or by taking measurements from them.
+asking questions to their members or by taking measurements from them.
 Surveys are huge and expensive projects which require complex logistics to work properly.
 The researchers in such a project are not interested
 in what particular respondents say or what are their particular anthropometric data are. In fact the
@@ -90,8 +90,8 @@ ones who are easy to reach on the road. Then in going from 2 to 3 we will make m
 measure using a sample that is not comparable to the study population. Even worse we can not even quantify the
 error we are making.
 
-Now if a survey is done properly and professionally, as we can be confident with the DHS, this is
-something we can usually assume. But even then we need to assume that the people who agree to take
+Now if a survey is done properly and professionally, as we can be confident with the DHS, we can 
+usually assume that a proper random sample has been chosen. But even then we need to assume that the people who agree to take
 part in the survey, those in our sample that cooperate with the survey team, i.e. answer questions, 
 agree to have anthropocentric measurements taken of their children, are representative. Otherwise
 comparisons with the larger group about which we ultimately want to say something, will be problematic.
@@ -104,8 +104,9 @@ represent the population of a country or a region, then the last step - going fr
 is more straightforward. If the sample has been chosen with sufficient care this will be
 possible. It is, however, not easy in practice.
 
-Considering all these potential sources of error you might become sceptical whether it is
-possible to say something reliable at all. The good news is that statistics as a science and the
+Considering all these potential sources of error you might become skeptical whether it is
+possible to say something reliable from limited data about the population at all. 
+The good news is that statistics as a science and the
 methods you are going to learn during this course can smooth and control the process of
 going through these four steps where you indeed can say something very reliable and you
 can even precisely quantify the uncertainty that remains in what you are saying. 
@@ -117,64 +118,60 @@ In the preceding chapters we have looked at examples where we had given data. An
 data was sufficient if we just appropriately summarized them or displayed the data in an
 insightful way.
 
-Sometimes this is really all there is to do. For instance when we studies the time trend in
-extreme world poverty we just looked at the time series of the share of people in the world
-who have to live on an income of below 1.90 $ a day and a plot showed us the complete answer.
-The data show a steady decrease since 2000 starting from a share of roughly 27 % down to a share
-below 10 % in 2017.
+Sometimes this is really all there is to do. For instance when we studied the time trend in
+infant mortality we just looked at the time series of mortality data and a plot showed us the complete answer.
+The data we previously plotted for Ghana and Kenya - for example - show a steady decrease since 1965 starting from a share of roughly 12 % down below 2 % in 2020. These are data from public registers and not samples. The data
+are based from a complete set of observations in a country. 
 
 ```{r}
 library(ggplot2)
 library(JWL)
 
-demo_data <- povdat_by_country
+pl_dat <- with(infant_mortality_data, infant_mortality_data[Country %in% c("Ghana","Kenya") & 
+                                                            Year >= 1965, ])
 
-names(demo_data) <- c("Country", "Code", "Year", "Share")
-
-pl_dat <- with(demo_data, demo_data[Country == "World" & Year >= 2000, ])
-
-p <- ggplot(pl_dat, aes(x = Year, y = Share)) +
+p <- ggplot(pl_dat, aes(x = Year, y = Mortality, color = Country)) +
      geom_point() +
      geom_line() +
      xlab("") +
-     ylab("Share of extreme poverty in percent")
+     scale_y_continuous(labels = scales::percent)
 
 p
 ```
 
 But sometimes we want to say more about the data. We would like - for instance - to make
 predictions on how, for example, the trend in this share is going to look like in the future
-where we do not yet have data. Remember Figure 1.2 in section 1, where we showed three such predictions
-that were made then for 2021.
-![Predictions of extreme poverty share](figures/fig-share-of-people-in-extreme-poverty-world-forecast.png)
-Or maybe we would like to say something more basic. For example why is the share predicted to rise after so
-many years?
+where we do not yet have data. 
+
+Or maybe we would like to say something more basic. For example why did the share show a long term 
+downward trend in those countries. 
 
 Such generalisations, where we try to learn something about the world outside of our observations, based on these
-observations are called in statistics **inductive inference**. Inductive inference is challenging idea and it had
-been the topic of many philosophical amd methodological controversies among scholars in the past.
+observations are called in statistics **inductive inference**. Inductive inference is a 
+challenging idea and it had
+been the topic of many philosophical and methodological controversies among scholars in the past.
 
-Deductive reasoning derives particular conclusions from general premises using the rules of logic.
+**Deductive reasoning** derives particular conclusions from general premises using the rules of logic.
 In this way if the assumptions hold and the reasoning is done correctly, i.e. the rules of logic are
 properly applied the conclusions is certain and irrefutable. A toy example of deductive reasoning would for
 instance be:
 
-Major Premise: All plants perform photoynthesis.
-Minor Premise: A cactus is a plant.
-Conclusion: A cactus performs photosynthesis.
+- Major Premise: All plants perform photosynthesis.
+- Minor Premise: A cactus is a plant.
+- Conclusion: A cactus performs photosynthesis.
 
 Modern mathematical reasoning is all built on deduction, allowing to come up with 
 actual proofs of certain statements given a set of axioms or assumptions. A proof is 
 possible because deduction is logically certain.
 
-Inductive reasoning works differently. It starts from particular instances and tries to work out
-generalisations from there. It goes from data to hypothesis. A simple toy example for inductive
+**Inductive reasoning** works differently. It starts from particular instances and tries to work out
+generalizations from there. It goes from data to hypothesis. A simple toy example for inductive
 reasoning would be:
 
-Data: I see fireflies in my garden every summer.
-Hypothesis: This summer I will probably see fireflies in my garden.
+- Data: I see fireflies in my garden every summer.
+- Hypothesis: This summer I will probably see fireflies in my garden.
 
-Induction does not allows to proof a hypothesis because it is generally uncertain.
+Induction does not allow to proof a hypothesis because it is generally uncertain.
 
 Let us go back to the entire process of going from the raw data to the statements about the
 entire country or region in the DHS survey. 
@@ -196,7 +193,7 @@ If questions would be biased towards a particular answer a survey would also not
 special care in developing questions. In lecture 1 we have learned about framing effects. Framing
 effects are often used in marketing. For example in meat packaging it is well known that how
 you report certain facts about the packaged meat influences sales. If the same piece of meat is
-one time packaged with the text "75 % lean meat" and with the text "25 % fat", which is logically
+one time packaged with the text "75 % lean meat" and the other time with the text "25 % fat", which is logically
 the same information, several studies showed that on average the first package is preferred. This and
 other details have to be considered when elicting information from the sample.
 
@@ -262,11 +259,89 @@ an outcome and its height showing the probability of this outcome.
 outc <- rep(1/6,6)
 barplot(names.arg = 1:6, outc, xlab = "Face", ylab = "Probability", ylim=range(pretty(c(0, outc))))
 ```
-In contrast to this theoretical probability distribution and empirical distribution is the
+In contrast to this theoretical probability distribution an empirical distribution is the
 distribution of observed data. We encountered many such distributions in the previous sections
-and summarized them graphically be histograms. 
+and and we have learned how to summarize them graphically by histograms.
 
+The computer allows us to create empirical distributions of results from 
+throwing a virtual die. It is a simulation of a real situation where you would 
+actually roll a six sided die. This is an example which allows us to 
+introduce some new functions and concepts in R, which we will need in the rest of the
+course.
 
+First we create a virtual die by defining an appropriate R object. This die
+should represent a physical die, which you know from games of chance.
+
+![A die](pictures/die_picture.jpg){width=50% height=50%}
+
+The essential 
+feature of the die is that it has six faces each showing different points
+starting from 1 to 6. In R we implemeng this by creating a vector of integers 1 to 6, like this
+```{r}
+#| code-fold: false
+
+die <- 1:6
+```
+
+Now R has a buit in function, called `sample()` which can pick values at random from an object. We can tell
+R by using this function for instance that it should randmoly pick a number from the six possible numbers of
+`die`. This is how it works:
+
+```{r}
+#| code-fold: false
+
+sample(x=die, size = 1)
+```
+
+The R-function `sample()` takes an object as argument. The second argument, called `size`, specifies the number of
+random picks or draws from the object. If we give the value 1 to `size` it is as if we threw the die once.
+
+One feature that makes R so very powerful is that you can not only use built in functions, like `mean`, `hist` `sample` etc. but you can also write your own functions. We could for instance write a function which rolls
+a die if we call it.
+
+Each function in R has the same elements: A **name**, a **function body** of code and a set of **arguments**. 
+To write your own function, you have to write up all of these parts and save them in an R object. 
+
+The syntax is given like this:
+
+`my_function <- function() {}`
+
+The name here is `my_function`, next comes the expression `function()` which needs to be assigned. The names of the function arguments have to be written between the parentheses. Then we have to write the actual code within the braces `{}`.
+
+To do this for the die, lets write a function named `roll_die`
+
+```{r}
+#| code-fold: false
+
+roll_die <- function(){die <- 1:6 
+                         sample(die, size = 1)}
+```
+
+Now we have written the function and saved it as an R-object we can call it like this. Let's
+call it three times for example:
+
+```{r}
+
+#| code-fold: false
+
+roll_die()
+roll_die()
+roll_die()
+```
+Now we are interested in an empirical distribution of points if we roll the die many times. A built
+in R function that would help us to do this is the function `replicate()`. This function needs two arguments,
+how many times it should do something and of course what it should do precisely. 
+
+So if we roll our virtual die 10 times, we would tell R to do this:
+```{r}
+#| code-fold: false
+
+r10 <- replicate(10, roll_die())
+r10
+```
+
+which gives us the sequence of results from these 10 rolls. Now let's plot the
+empirical distribution.
 
 
 <!-- ## How does the DHS sample its data -->

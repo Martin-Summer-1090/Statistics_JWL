@@ -325,7 +325,7 @@ div.csl-indent {
 </div>
 </div>
 <p>These percentages are calculated from measurements of 2494 observations. Now even a small region in a thinly populated area will have more children than that. For instance the tiny European state of Liechtenstein, a small 62 square miles sliver of land between Austria and Switzerland has currently about 38.000 inhabitants. To a rough approximation even there the number of children under 59 month - the group for which the anthropometric measurments of the DHS were taken - is about this size or larger.</p>
-<p>The data of the demographic and health survey are collected by selecting some households in a country and asking them questions to their members or by taking measurements from them. Surveys are huge and expensive projects which require complex logistics to work properly. The researchers in such a project are not interested in what particular respondents say or what are their particular anthropometric data are. In fact the individual respondents are anonymous in the collected data set. The questions are asked to find overall patterns in - for example - the nutritional status of children and infants in a country or in an administrative region.</p>
+<p>The data of the demographic and health survey are collected by selecting some households in a country and asking questions to their members or by taking measurements from them. Surveys are huge and expensive projects which require complex logistics to work properly. The researchers in such a project are not interested in what particular respondents say or what are their particular anthropometric data are. In fact the individual respondents are anonymous in the collected data set. The questions are asked to find overall patterns in - for example - the nutritional status of children and infants in a country or in an administrative region.</p>
 <p>But how can we say something about such a pattern in a country or a region by just asking a group of people or by taking some measurements from them? How can we be confident about the results beyond just claiming that we can generalize from the data of people we asked to the population pattern we are ultimately interested in? How can we ask or measure people in a way that the analysis of data from this subset allows to learn something about these measures in the entire population?</p>
 <p>In this chapter we discuss how such a seemingly magical generalization can work at all and what needs to be considered before making such sweeping generalizations with some level of confidence.</p>
 <p>The process of going from responses or measurements in a survey to patterns in a country or region proceeds in four stages as explained in <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>. We follow here his four stages taking the he DHS as an example.</p>
@@ -340,49 +340,54 @@ div.csl-indent {
 <p>It is important to understand that at all these stages errors can occur.</p>
 <p>For example on the way from the raw data to our sample - the step from stage 1 to stage 2 - we have to make assumptions on how accurately the field workers have taken their height and weight measurements. Or if we ask questions, we need to make assumptions on how accurately people respond.</p>
 <p>When we go from the sample to the study population - from stage 2 to stage 3 - we need to be confident that the people asked or measured are a <strong>random sample</strong> from those who could be asked in principle. We have not yet introduced probability and what we mean exactly with a random sample. But at this stage it is sufficient to rely on our intuitive understanding of what random means and why it is important. Assume the sample had not been selected at random. Say the DHS survey team would drive through a region and stop here and there to interview households. This method risks that some households are much more likely to be in the sample than others - for example the ones who are easy to reach on the road. Then in going from 2 to 3 we will make mistakes because we will measure using a sample that is not comparable to the study population. Even worse we can not even quantify the error we are making.</p>
-<p>Now if a survey is done properly and professionally, as we can be confident with the DHS, this is something we can usually assume. But even then we need to assume that the people who agree to take part in the survey, those in our sample that cooperate with the survey team, i.e.&nbsp;answer questions, agree to have anthropocentric measurements taken of their children, are representative. Otherwise comparisons with the larger group about which we ultimately want to say something, will be problematic. Assuring that the people in the sample who cooperate are representative is more difficult to assure. There are methods and procedures to address this difficulty systematically. For the moment it is important for you to recognize this as a potential source of error.</p>
+<p>Now if a survey is done properly and professionally, as we can be confident with the DHS, we can usually assume that a proper random sample has been chosen. But even then we need to assume that the people who agree to take part in the survey, those in our sample that cooperate with the survey team, i.e.&nbsp;answer questions, agree to have anthropocentric measurements taken of their children, are representative. Otherwise comparisons with the larger group about which we ultimately want to say something, will be problematic. Assuring that the people in the sample who cooperate are representative is more difficult to assure. There are methods and procedures to address this difficulty systematically. For the moment it is important for you to recognize this as a potential source of error.</p>
 <p>When we assume that the people who could potentially have been asked to participate in the survey represent the population of a country or a region, then the last step - going from stage 3 to stage 4 - is more straightforward. If the sample has been chosen with sufficient care this will be possible. It is, however, not easy in practice.</p>
-<p>Considering all these potential sources of error you might become sceptical whether it is possible to say something reliable at all. The good news is that statistics as a science and the methods you are going to learn during this course can smooth and control the process of going through these four steps where you indeed can say something very reliable and you can even precisely quantify the uncertainty that remains in what you are saying.</p>
+<p>Considering all these potential sources of error you might become skeptical whether it is possible to say something reliable from limited data about the population at all. The good news is that statistics as a science and the methods you are going to learn during this course can smooth and control the process of going through these four steps where you indeed can say something very reliable and you can even precisely quantify the uncertainty that remains in what you are saying.</p>
 <section id="learning-from-data-and-the-process-of-inductive-inference." class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="learning-from-data-and-the-process-of-inductive-inference."><span class="header-section-number">4.1</span> Learning from data and the process of inductive inference.</h2>
 <p>In the preceding chapters we have looked at examples where we had given data. Analysis of this data was sufficient if we just appropriately summarized them or displayed the data in an insightful way.</p>
-<p>Sometimes this is really all there is to do. For instance when we studies the time trend in extreme world poverty we just looked at the time series of the share of people in the world who have to live on an income of below 1.90 $ a day and a plot showed us the complete answer. The data show a steady decrease since 2000 starting from a share of roughly 27 % down to a share below 10 % in 2017.</p>
+<p>Sometimes this is really all there is to do. For instance when we studied the time trend in infant mortality we just looked at the time series of mortality data and a plot showed us the complete answer. The data we previously plotted for Ghana and Kenya - for example - show a steady decrease since 1965 starting from a share of roughly 12 % down below 2 % in 2020. These are data from public registers and not samples. The data are based from a complete set of observations in a country.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>demo_data <span class="ot">&lt;-</span> povdat_by_country</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demo_data) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Share"</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pl_dat <span class="ot">&lt;-</span> <span class="fu">with</span>(demo_data, demo_data[Country <span class="sc">==</span> <span class="st">"World"</span> <span class="sc">&amp;</span> Year <span class="sc">&gt;=</span> <span class="dv">2000</span>, ])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pl_dat, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Share)) <span class="sc">+</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>     <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ylab</span>(<span class="st">"Share of extreme poverty in percent"</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pl_dat <span class="ot">&lt;-</span> <span class="fu">with</span>(infant_mortality_data, infant_mortality_data[Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Ghana"</span>,<span class="st">"Kenya"</span>) <span class="sc">&amp;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                                            Year <span class="sc">&gt;=</span> <span class="dv">1965</span>, ])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(pl_dat, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Mortality, <span class="at">color =</span> Country)) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>But sometimes we want to say more about the data. We would like - for instance - to make predictions on how, for example, the trend in this share is going to look like in the future where we do not yet have data. Remember Figure 1.2 in section 1, where we showed three such predictions that were made then for 2021. <img src="figures/fig-share-of-people-in-extreme-poverty-world-forecast.png" class="img-fluid" alt="Predictions of extreme poverty share"> Or maybe we would like to say something more basic. For example why is the share predicted to rise after so many years?</p>
-<p>Such generalisations, where we try to learn something about the world outside of our observations, based on these observations are called in statistics <strong>inductive inference</strong>. Inductive inference is challenging idea and it had been the topic of many philosophical amd methodological controversies among scholars in the past.</p>
-<p>Deductive reasoning derives particular conclusions from general premises using the rules of logic. In this way if the assumptions hold and the reasoning is done correctly, i.e.&nbsp;the rules of logic are properly applied the conclusions is certain and irrefutable. A toy example of deductive reasoning would for instance be:</p>
-<p>Major Premise: All plants perform photoynthesis. Minor Premise: A cactus is a plant. Conclusion: A cactus performs photosynthesis.</p>
+<p>But sometimes we want to say more about the data. We would like - for instance - to make predictions on how, for example, the trend in this share is going to look like in the future where we do not yet have data.</p>
+<p>Or maybe we would like to say something more basic. For example why did the share show a long term downward trend in those countries.</p>
+<p>Such generalisations, where we try to learn something about the world outside of our observations, based on these observations are called in statistics <strong>inductive inference</strong>. Inductive inference is a challenging idea and it had been the topic of many philosophical and methodological controversies among scholars in the past.</p>
+<p><strong>Deductive reasoning</strong> derives particular conclusions from general premises using the rules of logic. In this way if the assumptions hold and the reasoning is done correctly, i.e.&nbsp;the rules of logic are properly applied the conclusions is certain and irrefutable. A toy example of deductive reasoning would for instance be:</p>
+<ul>
+<li>Major Premise: All plants perform photosynthesis.</li>
+<li>Minor Premise: A cactus is a plant.</li>
+<li>Conclusion: A cactus performs photosynthesis.</li>
+</ul>
 <p>Modern mathematical reasoning is all built on deduction, allowing to come up with actual proofs of certain statements given a set of axioms or assumptions. A proof is possible because deduction is logically certain.</p>
-<p>Inductive reasoning works differently. It starts from particular instances and tries to work out generalisations from there. It goes from data to hypothesis. A simple toy example for inductive reasoning would be:</p>
-<p>Data: I see fireflies in my garden every summer. Hypothesis: This summer I will probably see fireflies in my garden.</p>
-<p>Induction does not allows to proof a hypothesis because it is generally uncertain.</p>
+<p><strong>Inductive reasoning</strong> works differently. It starts from particular instances and tries to work out generalizations from there. It goes from data to hypothesis. A simple toy example for inductive reasoning would be:</p>
+<ul>
+<li>Data: I see fireflies in my garden every summer.</li>
+<li>Hypothesis: This summer I will probably see fireflies in my garden.</li>
+</ul>
+<p>Induction does not allow to proof a hypothesis because it is generally uncertain.</p>
 <p>Let us go back to the entire process of going from the raw data to the statements about the entire country or region in the DHS survey.</p>
 <p>When we go from the sample to the true data about the units in the sample, the step from stage 1 to stage 2, we have to think careful about issues or problems of measurement. We want to know whether our data are reliable. They should have a low variability from occasion to occasion and should measure the same thing when we repeat a measurement. They should also measure what we intend or want to measure. This is called validity. We do not want our data to have a systematic bias.</p>
 <p>When we take again the DHS as an example, where people are asked many questions and quite a few measurements are taken on individuals, questions should be such that people give the same or a similar answer each time they are asked this question. To some extend this can be tested but these tests are not perfect. We also need to assume that people answer honestly to questions. With measurements things are similar. We want that we get the same or a very similar result if we repeat a measurement and we need to assume that the survey field workers who take the measurements do their job diligently.</p>
-<p>If questions would be biased towards a particular answer a survey would also not be valid. This needs special care in developing questions. In lecture 1 we have learned about framing effects. Framing effects are often used in marketing. For example in meat packaging it is well known that how you report certain facts about the packaged meat influences sales. If the same piece of meat is one time packaged with the text “75 % lean meat” and with the text “25 % fat”, which is logically the same information, several studies showed that on average the first package is preferred. This and other details have to be considered when elicting information from the sample.</p>
+<p>If questions would be biased towards a particular answer a survey would also not be valid. This needs special care in developing questions. In lecture 1 we have learned about framing effects. Framing effects are often used in marketing. For example in meat packaging it is well known that how you report certain facts about the packaged meat influences sales. If the same piece of meat is one time packaged with the text “75 % lean meat” and the other time with the text “25 % fat”, which is logically the same information, several studies showed that on average the first package is preferred. This and other details have to be considered when elicting information from the sample.</p>
 <p>Now going from the second stage - from the sample - to the third stage - the study population requires particular care. We have to be confident that the sample observed accurately reflects characteristics of the larger group we are ultimately interested in and from which the sample has been taken. Technically this is also often called <strong>internal validity</strong>.</p>
 <p>Here we come to a crucial idea how bias can be avoided, the idea of <strong>random sampling</strong>. Let us explain exactly what a random sample is. Using R will support us in developing this understanding. As an example data set of our population we use as an illustration in the following discussion, let us take the dataset on the height and weight of adult humans, we used in the previous section.</p>
 <div class="cell">
@@ -526,7 +531,73 @@ div.csl-indent {
 <p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>In contrast to this theoretical probability distribution and empirical distribution is the distribution of observed data. We encountered many such distributions in the previous sections and summarized them graphically be histograms.</p>
+<p>In contrast to this theoretical probability distribution an empirical distribution is the distribution of observed data. We encountered many such distributions in the previous sections and and we have learned how to summarize them graphically by histograms.</p>
+<p>The computer allows us to create empirical distributions of results from throwing a virtual die. It is a simulation of a real situation where you would actually roll a six sided die. This is an example which allows us to introduce some new functions and concepts in R, which we will need in the rest of the course.</p>
+<p>First we create a virtual die by defining an appropriate R object. This die should represent a physical die, which you know from games of chance.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/die_picture.jpg" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">A die</figcaption><p></p>
+</figure>
+</div>
+<p>The essential feature of the die is that it has six faces each showing different points starting from 1 to 6. In R we implemeng this by creating a vector of integers 1 to 6, like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now R has a buit in function, called <code>sample()</code> which can pick values at random from an object. We can tell R by using this function for instance that it should randmoly pick a number from the six possible numbers of <code>die</code>. This is how it works:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once.</p>
+<p>One feature that makes R so very powerful is that you can not only use built in functions, like <code>mean</code>, <code>hist</code> <code>sample</code> etc. but you can also write your own functions. We could for instance write a function which rolls a die if we call it.</p>
+<p>Each function in R has the same elements: A <strong>name</strong>, a <strong>function body</strong> of code and a set of <strong>arguments</strong>. To write your own function, you have to write up all of these parts and save them in an R object.</p>
+<p>The syntax is given like this:</p>
+<p><code>my_function &lt;- function() {}</code></p>
+<p>The name here is <code>my_function</code>, next comes the expression <code>function()</code> which needs to be assigned. The names of the function arguments have to be written between the parentheses. Then we have to write the actual code within the braces <code>{}</code>.</p>
+<p>To do this for the die, lets write a function named <code>roll_die</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>roll_die <span class="ot">&lt;-</span> <span class="cf">function</span>(){die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">sample</span>(die, <span class="at">size =</span> <span class="dv">1</span>)}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have written the function and saved it as an R-object we can call it like this. Let’s call it three times for example:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>Now we are interested in an empirical distribution of points if we roll the die many times. A built in R function that would help us to do this is the function <code>replicate()</code>. This function needs two arguments, how many times it should do something and of course what it should do precisely.</p>
+<p>So if we roll our virtual die 10 times, we would tell R to do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r10 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">roll_die</span>())</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>r10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 3 1 6 6 6 4 4 4 4 3</code></pre>
+</div>
+</div>
+<p>which gives us the sequence of results from these 10 rolls. Now let’s plot the empirical distribution.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->
