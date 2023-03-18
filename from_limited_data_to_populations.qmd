@@ -206,6 +206,9 @@ Here we come to a crucial idea how bias can be avoided, the idea of **random sam
 what a random sample is. Using R will support us in developing this understanding. As an example
 data set of our population we use as an illustration in the following discussion, let us take the
 dataset on the height and weight of adult humans, we used in the previous section.
+
+## Why does random sampling help avoiding bias?
+
 ```{r}
 library(JWL)
 dat <- socr_height_weight
@@ -256,8 +259,23 @@ a probability distribution, which is in this particular example very simple. The
 showing up is the same, $\frac{1}{6}$. We can show this in the form of a bar-plot, where each bar stands for
 an outcome and its height showing the probability of this outcome.
 ```{r}
-outc <- rep(1/6,6)
-barplot(names.arg = 1:6, outc, xlab = "Face", ylab = "Probability", ylim=range(pretty(c(0, outc))))
+die_out <- c(rep(1,10), rep(2,10), rep(3,10),rep(4,10), rep(5,10), rep(6,10))
+
+# create a histogram with 6 columns
+hist(die_out, 
+     breaks = seq(0.5, 6.5, by = 1), 
+     col = "lightblue",  
+     freq = FALSE,
+     xlab = "Face", 
+     ylab = "Percent per unit", 
+     main = "Probability Distribution Fair Die",
+     yaxt = "n")         
+
+# add labels below each column
+axis(1, at = 1:6, labels = 1:6)
+yvals <- seq(0, 0.18, by = 0.03)*100
+axis(2, at = yvals, labels = paste0(yvals, "%"))
+
 ```
 In contrast to this theoretical probability distribution an empirical distribution is the
 distribution of observed data. We encountered many such distributions in the previous sections
@@ -337,11 +355,205 @@ So if we roll our virtual die 10 times, we would tell R to do this:
 #| code-fold: false
 
 r10 <- replicate(10, roll_die())
-r10
 ```
 
 which gives us the sequence of results from these 10 rolls. Now let's plot the
 empirical distribution.
+
+```{r}
+hist(r10, 
+     breaks = seq(0.5, 6.5, by = 1), 
+     col = "lightblue",  
+     freq = FALSE,
+     xlab = "Face", 
+     ylab = "Percent per unit", 
+     main = "Probability Distribution Fair Die",
+     yaxt = "n")         
+
+# add labels below each column
+axis(1, at = 1:6, labels = 1:6)
+yvals <- seq(0, 0.18, by = 0.03)*100
+axis(2, at = pretty(yvals), labels = paste0(pretty(yvals), "%"))
+
+```
+This does not look quite different from the theoretical distribution, where each bar had the same length.
+
+When we increase the sample size the empirical distribution starts to look more similar to the
+theoretical distribution. Lets roll our die 100 times
+
+```{r}
+r100 <- replicate(100, roll_die())
+
+hist(r100, 
+     breaks = seq(0.5, 6.5, by = 1), 
+     col = "lightblue",  
+     freq = FALSE,
+     xlab = "Face", 
+     ylab = "Percent per unit", 
+     main = "Probability Distribution Fair Die",
+     yaxt = "n")         
+
+# add labels below each column
+axis(1, at = 1:6, labels = 1:6)
+yvals <- seq(0, 0.18, by = 0.03)*100
+axis(2, at = pretty(yvals), labels = paste0(pretty(yvals), "%"))
+
+```
+Looks better. What about 1000 rolls?
+```{r}
+r1000 <- replicate(1000, roll_die())
+
+hist(r1000, 
+     breaks = seq(0.5, 6.5, by = 1), 
+     col = "lightblue",  
+     freq = FALSE,
+     xlab = "Face", 
+     ylab = "Percent per unit", 
+     main = "Probability Distribution Fair Die",
+     yaxt = "n")         
+
+# add labels below each column
+axis(1, at = 1:6, labels = 1:6)
+yvals <- seq(0, 0.18, by = 0.03)*100
+axis(2, at = pretty(yvals), labels = paste0(pretty(yvals), "%"))
+
+```
+As we increase the number of rolls in the simulation, the area of each bar 
+gets closer to 16.67%, which is the area of each bar in the probability histogram.
+
+Let's do a last example with 100.000 rolls to show this
+
+```{r}
+r100000 <- replicate(100000, roll_die())
+
+hist(r100000, 
+     breaks = seq(0.5, 6.5, by = 1), 
+     col = "lightblue",  
+     freq = FALSE,
+     xlab = "Face", 
+     ylab = "Percent per unit", 
+     main = "Probability Distribution Fair Die",
+     yaxt = "n")         
+
+# add labels below each column
+axis(1, at = 1:6, labels = 1:6)
+yvals <- seq(0, 0.18, by = 0.03)*100
+axis(2, at = pretty(yvals), labels = paste0(pretty(yvals), "%"))
+
+```
+Now we are almost there.
+
+What we have just observed is a demonstration of a famous result of probability theory. We are going
+to learn about probabilities later in the course. This result, sometimes referred to as
+the law of averages.^[Technically the result is called the weak law of arge numbers and was discovered by the
+Mathematician Jacob Bernoulli in 1713] 
+
+the law says that if a chance experiment - such as throwing a fair die - is repeated independently and under
+identical conditions, then as we repeat the experiment long enough, we get closer to the theoretical
+probability of the event. This means that every reptition is performed in the same way regardless of the
+other repetitions.
+
+In the example of the die, we just studied by using the simulation capacities of R, we saw that the 
+proportion that the die will land on a face showing 6 will happen in about 1/6 of all rolls.
+
+This law also holds when a random sample is drawn from units of a large population. Let us use the 
+table of heights in cm and weights in kg of 25.000 adults we studied in the last unit. Here we show
+the fist 10 rows.
+```{r}
+library(JWL)
+data <- socr_height_weight
+# transfrom to metric units from inches to cm and from lbs to kg
+data$Height <- data$Height*2.54
+data$Weight <- data$Weight*0.4535924
+head(data, n=10)
+```
+Let us remind ourselves, how the histogram of the height-data looked like.
+```{r}
+h <- hist(data$Height, 
+     breaks = 30, 
+     plot = F)
+
+h$counts <- h$counts/sum(h$counts)*100
+
+plot(h, xlab = "Height", ylab = "Percent", main = "Height distribution of adults")
+```
+
+Let us now think about the 25.000 adults in our data as a population. We draw a random 
+sample from it. When we draw from the population we draw with replacement. This means
+when a particular individual is selected at one draw, it could in principle be selected 
+also at the next one.
+
+Let us write an R function for this:
+
+```{r}
+#| code-fold: false
+
+emp_distr_height <- function(n){
+  
+  data[sample(x = 1:nrow(data), size = n, replace = T), ]
+
+  }
+```
+This function draws `n` random row from our dataframe. Note that `n` is an argument for the
+function. The random draws are a dataframe with N row indices, say 10, and then
+this gives the row index to the dataframe according to the subsetting rules we have learned in the
+previous section `data[rowindex, ]`. Since there is no index in the second slot the entire rows will be selected.
+
+Now in analogy to the dice example we can see, that when we increase the number of draws 
+into our sample we come closer to the distribution of the population. By this mechanism 
+a random sample generates a subpopulation with similar distributional properties when the sample
+is large enough. How much is large enough? For this we need probability theory which we 
+will encounter later in the course.
+
+As with the die, let us start with 10 draws:
+
+```{r}
+hs10 <- emp_distr_height(10)
+
+h <- hist(hs10$Height, 
+     breaks = 30, 
+     plot = F)
+
+h$counts <- h$counts/sum(h$counts)*100
+
+plot(h, xlab = "Height", ylab = "Percent", main = "Height distribution of adults")
+```
+
+This does not look very similar to the population distribution. What about a sample with size 100?
+
+```{r}
+
+hs100 <- emp_distr_height(100)
+
+h <- hist(hs100$Height, 
+     breaks = 30, 
+     plot = F)
+
+h$counts <- h$counts/sum(h$counts)*100
+
+plot(h, xlab = "Height", ylab = "Percent", main = "Height distribution of adults")
+
+```
+Now lets increase to 2500, 10 % of the population.
+
+```{r}
+hs2500 <- emp_distr_height(2500)
+
+h <- hist(hs2500$Height, 
+     breaks = 30, 
+     plot = F)
+
+h$counts <- h$counts/sum(h$counts)*100
+
+plot(h, xlab = "Height", ylab = "Percent", main = "Height distribution of adults")
+
+```
+
+This looks already pretty close. You should by now see what random sampling does for
+the process of inductive inference. For a large enough random sample, the empirical
+distribution of the sample resembles the histogram of the population with high
+probability.
+
 
 
 <!-- ## How does the DHS sample its data -->

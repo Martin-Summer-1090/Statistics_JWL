@@ -251,6 +251,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#learning-from-data-and-the-process-of-inductive-inference." id="toc-learning-from-data-and-the-process-of-inductive-inference." class="nav-link active" data-scroll-target="#learning-from-data-and-the-process-of-inductive-inference."><span class="toc-section-number">4.1</span>  Learning from data and the process of inductive inference.</a></li>
+  <li><a href="#why-does-random-sampling-help-avoiding-bias" id="toc-why-does-random-sampling-help-avoiding-bias" class="nav-link" data-scroll-target="#why-does-random-sampling-help-avoiding-bias"><span class="toc-section-number">4.2</span>  Why does random sampling help avoiding bias?</a></li>
   </ul>
 </nav>
     </div>
@@ -343,7 +344,7 @@ div.csl-indent {
 <p>Now if a survey is done properly and professionally, as we can be confident with the DHS, we can usually assume that a proper random sample has been chosen. But even then we need to assume that the people who agree to take part in the survey, those in our sample that cooperate with the survey team, i.e.&nbsp;answer questions, agree to have anthropocentric measurements taken of their children, are representative. Otherwise comparisons with the larger group about which we ultimately want to say something, will be problematic. Assuring that the people in the sample who cooperate are representative is more difficult to assure. There are methods and procedures to address this difficulty systematically. For the moment it is important for you to recognize this as a potential source of error.</p>
 <p>When we assume that the people who could potentially have been asked to participate in the survey represent the population of a country or a region, then the last step - going from stage 3 to stage 4 - is more straightforward. If the sample has been chosen with sufficient care this will be possible. It is, however, not easy in practice.</p>
 <p>Considering all these potential sources of error you might become skeptical whether it is possible to say something reliable from limited data about the population at all. The good news is that statistics as a science and the methods you are going to learn during this course can smooth and control the process of going through these four steps where you indeed can say something very reliable and you can even precisely quantify the uncertainty that remains in what you are saying.</p>
-<section id="learning-from-data-and-the-process-of-inductive-inference." class="level2 page-columns page-full" data-number="4.1">
+<section id="learning-from-data-and-the-process-of-inductive-inference." class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="learning-from-data-and-the-process-of-inductive-inference."><span class="header-section-number">4.1</span> Learning from data and the process of inductive inference.</h2>
 <p>In the preceding chapters we have looked at examples where we had given data. Analysis of this data was sufficient if we just appropriately summarized them or displayed the data in an insightful way.</p>
 <p>Sometimes this is really all there is to do. For instance when we studied the time trend in infant mortality we just looked at the time series of mortality data and a plot showed us the complete answer. The data we previously plotted for Ghana and Kenya - for example - show a steady decrease since 1965 starting from a share of roughly 12 % down below 2 % in 2020. These are data from public registers and not samples. The data are based from a complete set of observations in a country.</p>
@@ -390,6 +391,9 @@ div.csl-indent {
 <p>If questions would be biased towards a particular answer a survey would also not be valid. This needs special care in developing questions. In lecture 1 we have learned about framing effects. Framing effects are often used in marketing. For example in meat packaging it is well known that how you report certain facts about the packaged meat influences sales. If the same piece of meat is one time packaged with the text “75 % lean meat” and the other time with the text “25 % fat”, which is logically the same information, several studies showed that on average the first package is preferred. This and other details have to be considered when elicting information from the sample.</p>
 <p>Now going from the second stage - from the sample - to the third stage - the study population requires particular care. We have to be confident that the sample observed accurately reflects characteristics of the larger group we are ultimately interested in and from which the sample has been taken. Technically this is also often called <strong>internal validity</strong>.</p>
 <p>Here we come to a crucial idea how bias can be avoided, the idea of <strong>random sampling</strong>. Let us explain exactly what a random sample is. Using R will support us in developing this understanding. As an example data set of our population we use as an illustration in the following discussion, let us take the dataset on the height and weight of adult humans, we used in the previous section.</p>
+</section>
+<section id="why-does-random-sampling-help-avoiding-bias" class="level2 page-columns page-full" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="why-does-random-sampling-help-avoiding-bias"><span class="header-section-number">4.2</span> Why does random sampling help avoiding bias?</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -524,8 +528,22 @@ div.csl-indent {
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>outc <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>,<span class="dv">6</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">names.arg =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, outc, <span class="at">xlab =</span> <span class="st">"Face"</span>, <span class="at">ylab =</span> <span class="st">"Probability"</span>, <span class="at">ylim=</span><span class="fu">range</span>(<span class="fu">pretty</span>(<span class="fu">c</span>(<span class="dv">0</span>, outc))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>die_out <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">3</span>,<span class="dv">10</span>),<span class="fu">rep</span>(<span class="dv">4</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">5</span>,<span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">6</span>,<span class="dv">10</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create a histogram with 6 columns</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(die_out, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Face"</span>, </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per unit"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Fair Die"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>)         </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.18</span>, <span class="at">by =</span> <span class="fl">0.03</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> yvals, <span class="at">labels =</span> <span class="fu">paste0</span>(yvals, <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
@@ -548,7 +566,7 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once.</p>
@@ -571,33 +589,235 @@ div.csl-indent {
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>Now we are interested in an empirical distribution of points if we roll the die many times. A built in R function that would help us to do this is the function <code>replicate()</code>. This function needs two arguments, how many times it should do something and of course what it should do precisely.</p>
 <p>So if we roll our virtual die 10 times, we would tell R to do this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r10 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">roll_die</span>())</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>r10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 3 1 6 6 6 4 4 4 4 3</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>r10 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">roll_die</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which gives us the sequence of results from these 10 rolls. Now let’s plot the empirical distribution.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(r10, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Face"</span>, </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per unit"</span>, </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Fair Die"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>)         </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.18</span>, <span class="at">by =</span> <span class="fl">0.03</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">pretty</span>(yvals), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">pretty</span>(yvals), <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This does not look quite different from the theoretical distribution, where each bar had the same length.</p>
+<p>When we increase the sample size the empirical distribution starts to look more similar to the theoretical distribution. Lets roll our die 100 times</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>r100 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">roll_die</span>())</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(r100, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Face"</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per unit"</span>, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Fair Die"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>)         </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.18</span>, <span class="at">by =</span> <span class="fl">0.03</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">pretty</span>(yvals), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">pretty</span>(yvals), <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Looks better. What about 1000 rolls?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>r1000 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">roll_die</span>())</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(r1000, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Face"</span>, </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per unit"</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Fair Die"</span>,</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>)         </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.18</span>, <span class="at">by =</span> <span class="fl">0.03</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">pretty</span>(yvals), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">pretty</span>(yvals), <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As we increase the number of rolls in the simulation, the area of each bar gets closer to 16.67%, which is the area of each bar in the probability histogram.</p>
+<p>Let’s do a last example with 100.000 rolls to show this</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>r100000 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100000</span>, <span class="fu">roll_die</span>())</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(r100000, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="at">by =</span> <span class="dv">1</span>), </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,  </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Face"</span>, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per unit"</span>, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Probability Distribution Fair Die"</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>)         </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fl">0.18</span>, <span class="at">by =</span> <span class="fl">0.03</span>)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">pretty</span>(yvals), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">pretty</span>(yvals), <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we are almost there.</p>
+<div class="page-columns page-full"><p>What we have just observed is a demonstration of a famous result of probability theory. We are going to learn about probabilities later in the course. This result, sometimes referred to as the law of averages.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Technically the result is called the weak law of arge numbers and was discovered by the Mathematician Jacob Bernoulli in 1713</p></li></div></div>
+<p>the law says that if a chance experiment - such as throwing a fair die - is repeated independently and under identical conditions, then as we repeat the experiment long enough, we get closer to the theoretical probability of the event. This means that every reptition is performed in the same way regardless of the other repetitions.</p>
+<p>In the example of the die, we just studied by using the simulation capacities of R, we saw that the proportion that the die will land on a face showing 6 will happen in about 1/6 of all rolls.</p>
+<p>This law also holds when a random sample is drawn from units of a large population. Let us use the table of heights in cm and weights in kg of 25.000 adults we studied in the last unit. Here we show the fist 10 rows.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> socr_height_weight</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># transfrom to metric units from inches to cm and from lbs to kg</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Height <span class="ot">&lt;-</span> data<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Weight <span class="ot">&lt;-</span> data<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data, <span class="at">n=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Index   Height   Weight
+2      1 167.0896 51.25254
+3      2 181.6486 61.90960
+4      3 176.2728 69.41184
+5      4 173.2702 64.56226
+6      5 172.1810 65.45207
+7      6 174.4925 55.92903
+8      7 177.2972 64.18092
+9      8 177.8374 61.89826
+10     9 172.4727 50.97122
+11    10 169.6272 54.73372</code></pre>
+</div>
+</div>
+<p>Let us remind ourselves, how the histogram of the height-data looked like.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>Height, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">xlab =</span> <span class="st">"Height"</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Height distribution of adults"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let us now think about the 25.000 adults in our data as a population. We draw a random sample from it. When we draw from the population we draw with replacement. This means when a particular individual is selected at one draw, it could in principle be selected also at the next one.</p>
+<p>Let us write an R function for this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>emp_distr_height <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  data[<span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data), <span class="at">size =</span> n, <span class="at">replace =</span> T), ]</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This function draws <code>n</code> random row from our dataframe. Note that <code>n</code> is an argument for the function. The random draws are a dataframe with N row indices, say 10, and then this gives the row index to the dataframe according to the subsetting rules we have learned in the previous section <code>data[rowindex, ]</code>. Since there is no index in the second slot the entire rows will be selected.</p>
+<p>Now in analogy to the dice example we can see, that when we increase the number of draws into our sample we come closer to the distribution of the population. By this mechanism a random sample generates a subpopulation with similar distributional properties when the sample is large enough. How much is large enough? For this we need probability theory which we will encounter later in the course.</p>
+<p>As with the die, let us start with 10 draws:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>hs10 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">10</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(hs10<span class="sc">$</span>Height, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">xlab =</span> <span class="st">"Height"</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Height distribution of adults"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This does not look very similar to the population distribution. What about a sample with size 100?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hs100 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">100</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(hs100<span class="sc">$</span>Height, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">xlab =</span> <span class="st">"Height"</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Height distribution of adults"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now lets increase to 2500, 10 % of the population.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hs2500 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">2500</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(hs2500<span class="sc">$</span>Height, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>h<span class="sc">$</span>counts <span class="ot">&lt;-</span> h<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h<span class="sc">$</span>counts)<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">xlab =</span> <span class="st">"Height"</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Height distribution of adults"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This looks already pretty close. You should by now see what random sampling does for the process of inductive inference. For a large enough random sample, the empirical distribution of the sample resembles the histogram of the population with high probability.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->
