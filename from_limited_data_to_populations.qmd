@@ -785,15 +785,15 @@ The normal curve has a slightly intimidating equation, which looks as follows
 y = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left( \frac{x - \mu}{\sigma}\right)^2}
 \end{equation}
 
-But don't be intimated or afraid. You do not have to be able to understand the details of this 
-curve nor do you have to be able to manipulate this equation. These things is something that R
-can do for you and we will learn how we work with the normal curve in R.
+But don't be afraid. You do not have to be able to manipulate this equation. 
+This is something that R. We will learn how to do this.^[The mathematical formula for the normal curve is very interesting, since it contains the most famous numbers in mathematics. We have already encountered $\sqrt{2}$, the diagonal of the unit square, which is the first so called irrational number detected by the Pythagoreans in antiquity. For them it was quite a shock to discover that there are numbers which can not be represented as a fraction of whole numbers. There is the famous number $\pi$ also known since antiquity. This number represents the ratio of the circumference of any
+circle to its diameter and is also an irrational number. Finally there is the
+number $e$ or sometimes also known as Euler's number. It is the limit of the sequence $(1+\frac{1}{n})^n$ and plays a fundamental role all over mathematics.]
 
 ```{r}
-data <- rnorm(1000, mean = 0, sd = 1)
 x <- seq(-4, 4, length.out = 1000)
 y <- dnorm(x, mean = 0, sd = 1)
-plot(x, y, type = "l", lwd = 2, xlab = "Standard units", ylab = "Percent per standard unit", main = "The Normal Curve")
+plot(x, y, type = "l", lwd = 2, xlab = "Standard units", ylab = "Percent per standard unit", main = "The Normal Curve", col = "red")
 
 ```
 There are several features of this graph that are important to note:
@@ -805,6 +805,103 @@ curve to the left.
 only because the distance from the horizontal axis becomes too tiny to visualize. Only about 0.00006 of the area
 under the curve is outside of this interval.
 
+It will be important and helpful to find areas under the normal curve between
+specified values. For instance:
+
+1. the area under the normal curve between +1 and - 1 standard deviations from the
+mean is about 68 %.
+2. the area under the normal curve between -2 and +2 standard deviations is about 95 %.
+3. the area under the normal curve between -3 and +3 standard deviations is about 99.7%
+
+Does this look familiar? If you followed the course until now, you will remember that
+these are the numbers we encountered with the data on human height. This is because for these data the empirical distribution is such that the respective histogram is very closely approximated by a normal curve. 
+
+### Units and standard units
+
+Often it is convenient to express the units for the normal curve not in the
+direct unit in which observations are measures - as for example cm for human height - but in units of standard deviations from the mean.
+
+::: {.callout-tip}
+## Conversion to standard units
+
+A value is converted to standard units by checking how many standard deviations it is above or below the average. Values above the average are given a plus sign, values below the average are given a minus sign.
+:::
+
+Take an example from our human height data and draw 4 random values from these data, using the `emp_distr_height()` function we wrote earlier in this chapter
+say
+```{r}
+#| code-fold: false
+
+example <- emp_distr_height(4)
+example$Height
+```
+
+Let us convert these values to standard units. Let us compute again the
+mean and the standard deviation of the height data.
+
+```{r}
+#| code-fold: false
+
+m <- mean(data$Height)
+std <- sd(data$Height)
+
+m
+std
+```
+
+`r round(example$Height[1],4)` is `r round((example$Height[1] - m)/std,4)` from the average. In standard units therefore `r round(example$Height[1],4)` is `r round((example$Height[1] - m)/std,4)`.
+
+:::{.callout-note icon=false}
+
+### Now you try
+Convert the other values to standard units. Find the height which is 2.4 in standard
+units.
+:::
+
+Standard units are used in the DHS data on nutrition of children and adults which
+we worked with in the last exercise of chapter 3. Standard units are also
+often referred to as the **z-score**. Let us go back to these data and look at
+them more closely again.
+
+Let us go back to the histogram of human height we already discussed in the chapter 3.
+```{r}
+h <- hist(data$Height, plot = F, breaks = 30)
+
+ hist_breaks <- h$breaks
+ color_list <- rep('#C6E2FF', length(hist_breaks))
+ color_list[hist_breaks <= m + std] <- '#6C7B8B'
+ color_list[hist_breaks <= m - std] <- '#C6E2FF'
+
+par(mar = c(5, 4, 4, 4) + 0.3)  
+plot(h, col = color_list, freq = FALSE, xlab = " ", ylab = "Percent per cm ", main = "Height distribution of adults", axes = F)
+
+par(new = TRUE) 
+## Define x and y coordinates for normal curve
+ x <- seq(min(data$Height), max(data$Height), length.out = 100)
+ y <- dnorm(x, m, std)
+ 
+# Add normal curve to histogram plot
+ lines(x, y, col = "red", lwd = 2,  xlab = " ", ylab = " ")
+ axis(side = 4, at =c(0,0.02,0.04,0.06,0.08), labels = c("0%", "9.7 %", "19.3 %", "29.0 %", "38.6 %"))
+ 
+
+axis(1, at = c(153.38, 158.21, 163.04, 167.87, 172.70, 177.53, 182.36, 187.19, 192.02), 
+     labels = c("153.38 cm", "158.21 cm", "163.04 cm", "167.87 cm", "172.70 cm", "177.53 cm", "182.36 cm", "187.19 cm", "192.02 cm"))
+
+axis(1, at = c(153.38, 158.21, 163.04, 167.87, 172.70, 177.53, 182.36, 187.19, 192.02), 
+     labels = c("-4", "-3", "-2", "-1", "0", "1", "2", "3", "4"), line = 2.5)
+
+
+
+axis(2, at =c(0,0.02,0.04,0.06,0.08), labels = c("0 %", "2 %", "4 %", "6 %", "8 %"))
+```
+
+There are two x-axis in this figure. On the upper x-axis you see the height in cm. On the lower x-axis you see the height in standard units. Standard unit 1 is at 172.70 + 4.83 or at 177.53 and
+standard unit -1 is at 172.70 - 4.83 or 167.87.
+
+There are two vertical axis in this figure, one on the left and one on the right. The histogram is drawn relative to the left y-axis, which is in percent per cm. The normal curve is drawn relative to the right one. To see how the scale on the right y-axis matches up, take the top value on each of the two axes: 38.6 % per standard unit matches 8% per cm because there are 4.8 cm to the standard unit. Spreading 38.6 % over one standard deviation is the same as spreading 38.6 % over 4.8cm and that comes to 8% per cm.
+
+We explained before that the area under the normal curve between - 1 and 1 standard deviation from the mean is 68 %. In histogram the area between these values is colored in gray. The historgam follows the normal curve very closely. Sometimes it is a bit above, sometimes a bit below the curve but these deviations balance out. Indeed, if you go back to the previous chapter you see that in the empirical distribution we have indeed 68% of observations exactly between these bounds. So the shaded area in the histogram is to a very good approximation equal to the area under the normal curve and this is where the 68 % come from.
 
 <!-- ## How does the DHS sample its data -->
 

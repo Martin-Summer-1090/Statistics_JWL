@@ -262,6 +262,7 @@ div.csl-indent {
   <li><a href="#the-normal-approximation-for-data" id="toc-the-normal-approximation-for-data" class="nav-link" data-scroll-target="#the-normal-approximation-for-data"><span class="toc-section-number">4.4</span>  The normal approximation for data</a>
   <ul class="collapse">
   <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="toc-section-number">4.4.1</span>  The normal curve</a></li>
+  <li><a href="#units-and-standard-units" id="toc-units-and-standard-units" class="nav-link" data-scroll-target="#units-and-standard-units"><span class="toc-section-number">4.4.2</span>  Units and standard units</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -670,15 +671,15 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -697,7 +698,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -708,7 +709,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -980,14 +981,13 @@ Now you try
 <p>The normal curve has a slightly intimidating equation, which looks as follows <span class="math display">\[\begin{equation}
 y = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left( \frac{x - \mu}{\sigma}\right)^2}
 \end{equation}\]</span></p>
-<p>But don’t be intimated or afraid. You do not have to be able to understand the details of this curve nor do you have to be able to manipulate this equation. These things is something that R can do for you and we will learn how we work with the normal curve in R.</p>
+<div class="page-columns page-full"><p>But don’t be afraid. You do not have to be able to manipulate this equation. This is something that R. We will learn how to do this.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;The mathematical formula for the normal curve is very interesting, since it contains the most famous numbers in mathematics. We have already encountered <span class="math inline">\(\sqrt{2}\)</span>, the diagonal of the unit square, which is the first so called irrational number detected by the Pythagoreans in antiquity. For them it was quite a shock to discover that there are numbers which can not be represented as a fraction of whole numbers. There is the famous number <span class="math inline">\(\pi\)</span> also known since antiquity. This number represents the ratio of the circumference of any circle to its diameter and is also an irrational number. Finally there is the number <span class="math inline">\(e\)</span> or sometimes also known as Euler’s number. It is the limit of the sequence <span class="math inline">\((1+\frac{1}{n})^n\)</span> and plays a fundamental role all over mathematics.</p></li></div></div>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">"Standard units"</span>, <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>, <span class="at">main =</span> <span class="st">"The Normal Curve"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">"Standard units"</span>, <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>, <span class="at">main =</span> <span class="st">"The Normal Curve"</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
@@ -999,6 +999,108 @@ y = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left( \frac{x - \mu}{\sigma}\ri
 <li>The total area under the curve equals 1 or 100 %.</li>
 <li>The curve is always above the horizontal axis. It appears to get equal to zero between 3 and 4 but this is only because the distance from the horizontal axis becomes too tiny to visualize. Only about 0.00006 of the area under the curve is outside of this interval.</li>
 </ol>
+<p>It will be important and helpful to find areas under the normal curve between specified values. For instance:</p>
+<ol type="1">
+<li>the area under the normal curve between +1 and - 1 standard deviations from the mean is about 68 %.</li>
+<li>the area under the normal curve between -2 and +2 standard deviations is about 95 %.</li>
+<li>the area under the normal curve between -3 and +3 standard deviations is about 99.7%</li>
+</ol>
+<p>Does this look familiar? If you followed the course until now, you will remember that these are the numbers we encountered with the data on human height. This is because for these data the empirical distribution is such that the respective histogram is very closely approximated by a normal curve.</p>
+</section>
+<section id="units-and-standard-units" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="units-and-standard-units"><span class="header-section-number">4.4.2</span> Units and standard units</h3>
+<p>Often it is convenient to express the units for the normal curve not in the direct unit in which observations are measures - as for example cm for human height - but in units of standard deviations from the mean.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Conversion to standard units
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A value is converted to standard units by checking how many standard deviations it is above or below the average. Values above the average are given a plus sign, values below the average are given a minus sign.</p>
+</div>
+</div>
+<p>Take an example from our human height data and draw 4 random values from these data, using the <code>emp_distr_height()</code> function we wrote earlier in this chapter say</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 171.8143 167.5751 169.4843 174.8867</code></pre>
+</div>
+</div>
+<p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(data<span class="sc">$</span>Height)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> <span class="fu">sd</span>(data<span class="sc">$</span>Height)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.7025</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.830264</code></pre>
+</div>
+</div>
+<p>171.8143 is -0.1839 from the average. In standard units therefore 171.8143 is -0.1839.</p>
+<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Convert the other values to standard units. Find the height which is 2.4 in standard units.</p>
+</div>
+</div>
+<p>Standard units are used in the DHS data on nutrition of children and adults which we worked with in the last exercise of chapter 3. Standard units are also often referred to as the <strong>z-score</strong>. Let us go back to these data and look at them more closely again.</p>
+<p>Let us go back to the histogram of human height we already discussed in the chapter 3.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>Height, <span class="at">plot =</span> F, <span class="at">breaks =</span> <span class="dv">30</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a> hist_breaks <span class="ot">&lt;-</span> h<span class="sc">$</span>breaks</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a> color_list <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">'#C6E2FF'</span>, <span class="fu">length</span>(hist_breaks))</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a> color_list[hist_breaks <span class="sc">&lt;=</span> m <span class="sc">+</span> std] <span class="ot">&lt;-</span> <span class="st">'#6C7B8B'</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a> color_list[hist_breaks <span class="sc">&lt;=</span> m <span class="sc">-</span> std] <span class="ot">&lt;-</span> <span class="st">'#C6E2FF'</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>) <span class="sc">+</span> <span class="fl">0.3</span>)  </span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">col =</span> color_list, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">"Percent per cm "</span>, <span class="at">main =</span> <span class="st">"Height distribution of adults"</span>, <span class="at">axes =</span> F)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Define x and y coordinates for normal curve</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a> x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>Height), <span class="fu">max</span>(data<span class="sc">$</span>Height), <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a> y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, m, std)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add normal curve to histogram plot</span></span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a> <span class="fu">lines</span>(x, y, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>)</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.02</span>,<span class="fl">0.04</span>,<span class="fl">0.06</span>,<span class="fl">0.08</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0%"</span>, <span class="st">"9.7 %"</span>, <span class="st">"19.3 %"</span>, <span class="st">"29.0 %"</span>, <span class="st">"38.6 %"</span>))</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">153.38</span>, <span class="fl">158.21</span>, <span class="fl">163.04</span>, <span class="fl">167.87</span>, <span class="fl">172.70</span>, <span class="fl">177.53</span>, <span class="fl">182.36</span>, <span class="fl">187.19</span>, <span class="fl">192.02</span>), </span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"153.38 cm"</span>, <span class="st">"158.21 cm"</span>, <span class="st">"163.04 cm"</span>, <span class="st">"167.87 cm"</span>, <span class="st">"172.70 cm"</span>, <span class="st">"177.53 cm"</span>, <span class="st">"182.36 cm"</span>, <span class="st">"187.19 cm"</span>, <span class="st">"192.02 cm"</span>))</span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">153.38</span>, <span class="fl">158.21</span>, <span class="fl">163.04</span>, <span class="fl">167.87</span>, <span class="fl">172.70</span>, <span class="fl">177.53</span>, <span class="fl">182.36</span>, <span class="fl">187.19</span>, <span class="fl">192.02</span>), </span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"-4"</span>, <span class="st">"-3"</span>, <span class="st">"-2"</span>, <span class="st">"-1"</span>, <span class="st">"0"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>), <span class="at">line =</span> <span class="fl">2.5</span>)</span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.02</span>,<span class="fl">0.04</span>,<span class="fl">0.06</span>,<span class="fl">0.08</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"2 %"</span>, <span class="st">"4 %"</span>, <span class="st">"6 %"</span>, <span class="st">"8 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There are two x-axis in this figure. On the upper x-axis you see the height in cm. On the lower x-axis you see the height in standard units. Standard unit 1 is at 172.70 + 4.83 or at 177.53 and standard unit -1 is at 172.70 - 4.83 or 167.87.</p>
+<p>There are two vertical axis in this figure, one on the left and one on the right. The histogram is drawn relative to the left y-axis, which is in percent per cm. The normal curve is drawn relative to the right one. To see how the scale on the right y-axis matches up, take the top value on each of the two axes: 38.6 % per standard unit matches 8% per cm because there are 4.8 cm to the standard unit. Spreading 38.6 % over one standard deviation is the same as spreading 38.6 % over 4.8cm and that comes to 8% per cm.</p>
+<p>We explained before that the area under the normal curve between - 1 and 1 standard deviation from the mean is 68 %. In histogram the area between these values is colored in gray. The historgam follows the normal curve very closely. Sometimes it is a bit above, sometimes a bit below the curve but these deviations balance out. Indeed, if you go back to the previous chapter you see that in the empirical distribution we have indeed 68% of observations exactly between these bounds. So the shaded area in the histogram is to a very good approximation equal to the area under the normal curve and this is where the 68 % come from.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->
