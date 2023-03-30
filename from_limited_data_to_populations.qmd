@@ -735,11 +735,11 @@ Now that we have discussed random sampling, why it is important and how it works
 step in the inductive inference chain, going from the study population to the target population. Even if we have a perfect random sample, it might be the case  that we were not able to ask the people who we were ultimately interested in. When we can make conclusions on the target population from the study population, we say that 
 we have not only internal but also **external validity**.
 
-@Spie2019, whom we have already cited before gives an example where this problem is particularly extreme. 
+@Spi2019, whom we have already cited before gives an example where this problem is particularly extreme. 
 Often scientist who are ultimately interested in humans could onl study animals, as it is often the case
 in pharmaceutical research. 
 
-A bit less extreme but related is a second example @Spie2019 gives is the case of drugs tested say only on adults but it is then used also by children. These are problems which cannot entiely be solved by statistical methods but need caution and particular care and caution.
+A bit less extreme but related is a second example @Spi2019 gives is the case of drugs tested say only on adults but it is then used also by children. These are problems which cannot entiely be solved by statistical methods but need caution and particular care and caution.
 
 ## When all data are available
 
@@ -760,7 +760,7 @@ policy making, research and statistical analysis. In this case you have all the 
 Having all the data means that the stage of the induction process where we go from a sample to a study
 population collapses because the sample and the study population are the same.
 
-Still problems can occur. @Spie2019 mentions the problem that the police systematically misses cases which the
+Still problems can occur. @Spi2019 mentions the problem that the police systematically misses cases which the
 police does not record as a crime or which have not been reported by a victim. These problems make the step of drawing conclusions from the study population to the target population difficult. It is not only police records on crimes. You have analogous problems in all other register data as well. Take population register, as one example. Often certain groups such as homeless people or undocumented immigrants who may be hesitant to register or provide personal information are under-counted. Or you can have inaccuracies in property ownership data in land registers due to incomplete or outdated records, fraudulent transactions, or illegal land occupations. Or in health registers you could have missing or incomplete data on certain health conditions, especially those that are stigmatized or poorly understood, or patients who do not seek medical attention due to lack of access or fear of discrimination.
 
 Of course if we have all the data it is a straightforward process to produce statistics that 
@@ -882,7 +882,7 @@ par(new = TRUE)
  
 # Add normal curve to histogram plot
  lines(x, y, col = "red", lwd = 2,  xlab = " ", ylab = " ")
- axis(side = 4, at =c(0,0.02,0.04,0.06,0.08), labels = c("0%", "9.7 %", "19.3 %", "29.0 %", "38.6 %"))
+ axis(side = 4, at =c(0,0.02,0.04,0.06,0.08), labels = c("0%", "9.7 %", "19.3 %", "29.0 %", "38.6 %"), ylab = "Percent per standard unit")
  
 
 axis(1, at = c(153.38, 158.21, 163.04, 167.87, 172.70, 177.53, 182.36, 187.19, 192.02), 
@@ -902,6 +902,187 @@ standard unit -1 is at 172.70 - 4.83 or 167.87.
 There are two vertical axis in this figure, one on the left and one on the right. The histogram is drawn relative to the left y-axis, which is in percent per cm. The normal curve is drawn relative to the right one. To see how the scale on the right y-axis matches up, take the top value on each of the two axes: 38.6 % per standard unit matches 8% per cm because there are 4.8 cm to the standard unit. Spreading 38.6 % over one standard deviation is the same as spreading 38.6 % over 4.8cm and that comes to 8% per cm.
 
 We explained before that the area under the normal curve between - 1 and 1 standard deviation from the mean is 68 %. In histogram the area between these values is colored in gray. The historgam follows the normal curve very closely. Sometimes it is a bit above, sometimes a bit below the curve but these deviations balance out. Indeed, if you go back to the previous chapter you see that in the empirical distribution we have indeed 68% of observations exactly between these bounds. So the shaded area in the histogram is to a very good approximation equal to the area under the normal curve and this is where the 68 % come from.
+
+### Exercises: Now you try
+
+1. On a cetrain exam, the average of the scores was 50 and the standard deviation was 10.
+   a) Convert each of the following scores to standard units: 60, 45, 75.
+   b) Find the scores which in standard units are: 0, 1.5, -2.8
+
+2. Convert each entry on the following list to standard units (using the average and standard deviation of the list): 13, 9, 11, 7, 10. Find the average and the standard devition of the converted list.
+
+## Finding areas under the normal curve with R
+
+Before the computer became a widely available tool, statisticians used standard tables for finding areas under the curve. Today this is done with a computer. R has built in standard function you can use for this purpose. In this section I show you how. 
+
+Example 1: 
+
+Say we want to find the area under the normal curve between 0 an 1. Now one way to
+find this area is to use you knowledge that 68 % of the area under the nomal curve are between
+- 1 and 1. By the symmetry of the normal curve thus the area between 0 and 1 must be half of this area or 34 %.
+
+When you use R to do this calculation the built in function is called `pnorm()`. This 
+function gives you the area under the normal curve smaller or equal to a given 
+value $x$. The default value for
+the mean $\mu$ and the standard deviation $\sigma$ is $\mu = 0$ and $\sigma = 1$.
+
+So what we would do is to compute:
+```{r}
+#| code-fold: false
+
+pnorm(1) - pnorm(0)
+```
+which gives 0.34 or 34 %.
+
+![Example 1: Area under the normal curve between 0 and 1](pictures/normal_curve_34.png)
+
+Example 2:
+
+Find the area between -2 and 1 under the normal curve with $\mu = 0$ and $\sigma = 1$.
+
+This problem can be broken down by first computing the area under the normal curve for all
+values lower than 1 and then the area under the curve for all values lower than - 2 and subtract
+the latter from the former. In R:
+
+```{r}
+#| code-fold: false
+
+pnorm(1) - pnorm(-2)
+
+```
+
+or 82 %.
+
+![Example 1: Area under the normal curve between -2 and 1](pictures/normal_curve_84.png)
+
+Example 3:
+
+Find the area to the right of 1 under the normal curve. This can be done by finding the
+area under the normal curve left from 1 first. Since the total area is 1, it must be the case
+that 1 minus the value of the area left from 1 is the same as the area right of 1.
+
+
+```{r}
+1 - pnorm(1)
+```
+
+or 16 %.
+
+![Example 1: Area under the normal curve right of 1](pictures/normal_curve_16.png)
+
+### Exercises: Now you try
+
+1. Find the area under the normal curve:
+
+a) to the right of 1.25
+b) to the left of 0.80
+c) between -0.3 and 0.9
+d) to the left of -0.4
+e) between 0.4 and 1.3
+f) outside -1.5 to 1.5
+
+2. Fill in the blanks:
+
+a) The area between +/-    under the normal curve equals 68%
+b) The area between +/-    under the normal curve equals 75 %.
+
+## The normal approximation for data
+
+In certain cases the normal curve may be used to approximate data. We go back to our
+example with the data on the height of adult humans.
+
+Say we have the information that the height of adult humans were on average
+`r round(mean(data$Height),2)` cm with a standard deviation of `r round(sd(data$Height), 2)` cm. 
+Assuming the distribution of the data can be approximated by a normal curve. What is the
+estimated percentage of humans with a height between 168 and 178 cm?
+
+We can proceed in two steps. First we convert to standard units:
+
+```{r}
+#| code-fold: false
+
+l <- (168 - 172.7)/4.83
+u <- (178 - 172.7)/4.83
+l
+u
+```
+
+Then use the `pnorm()` function to estimate the area:
+
+```{r}
+#| code-fold: false
+
+pnorm(u) - pnorm(l)
+```
+which is about 70 %.
+
+Let us check this approximation with the real data. We use logical subsetting to count the
+share of height values between $l$ and $u$.
+
+```{r}
+#| code-fold: false
+
+idx <- (data$Height >= 168 & data$Height <= 178)
+mean(idx)
+```
+You see that in this case the approximation works really well. So using the normal approximation
+we can get a fairly precise generalization from study population to the target population, even 
+though the target population is larger than our study population. What we have done is that 
+we have replaced the histogram of the empirical data by a normal curve before computing areas.
+
+Not all histograms follow a normal curve. But it is a remarkable fact, which we will explore in
+more detail later in the course, that many histograms do. In this case the mean and the
+standard deviation are good summary statistics.
+
+## Percentiles
+
+While the mean and the standard deviation are good statistics to summarize data
+which follow a normal distribution, they are not so suited to summarize
+other distributions.
+
+Let us go back to one of these distributions we have encountered before: Primary energy
+consumption per capita in the world in the year 2019.
+
+```{r}
+library(JWL)
+dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year == 2019, ])
+
+hist_info <- hist(dat$Cons, plot = FALSE)         # Store output of hist function
+hist_info$counts <- hist_info$counts /    # Compute relative frequency values
+  sum(hist_info$counts) * 100
+plot(hist_info, freq = TRUE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Primary energy Consuption per Capita 2019")              # Plot histogram with percentages
+```
+
+The average primary energy consumption was `r format(round(mean(dat$Cons),2), scientific = F)` 
+kwh per person per year and a standard deviation of `r format(round(sd(dat$Cons),2), scientific = F)` kwh per person per year. 
+
+If we would just blindly apply a normal approximation using these statistics we would conclude that
+21.15 % of countries in the world had a negative primary energy consumption. This does not make
+sense. 
+
+The reason for this nonsensical result is that the distribution depicted by the histogram
+does not follow a normal distribution. To summarize such distributions, statisticians often
+use so called **percentiles**. 
+
+```{r}
+#| code-fold: false
+
+round(quantile(dat$Cons, c(0.01,0.10,0.25,0.50,0.75,0.90,0.99)),2)
+```
+
+Let us first explain what you see in the code snippet. R has a built in functions to
+compute percentiles. This function is called `quantile()`and takes the data as the first
+argumente and then a vector of percentiles in decimal form. For example `quantile(dat$Cons, 0.01)`
+would compute the 1 % percentile. 
+
+What does this mean? The first percentile in our primary energy consumption distribution is
+249.66. This means that in about 1 % of the countries of the world the primiary energy consumption per person per year is 250 kwh or less. 99 % of the countries had a primary energy consumption above that level. The 50 % percentile (0.5) is just the median. The interquartile range is the 
+difference between the 75 % percentile (0.75) and the 25 % percentile (0.25). This is
+sometimes used as a measure of spread for distributions with long tails, such as in this example.
+
+Sometimes data are distributed like a normal curve and sometimes they are not. We will later
+discuss a theoretical argument which helps to explain when precisely  historgrams should be
+approximated well by a normal curve.
 
 <!-- ## How does the DHS sample its data -->
 

@@ -263,7 +263,14 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="toc-section-number">4.4.1</span>  The normal curve</a></li>
   <li><a href="#units-and-standard-units" id="toc-units-and-standard-units" class="nav-link" data-scroll-target="#units-and-standard-units"><span class="toc-section-number">4.4.2</span>  Units and standard units</a></li>
+  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="toc-section-number">4.4.3</span>  Exercises: Now you try</a></li>
   </ul></li>
+  <li><a href="#finding-areas-under-the-normal-curve-with-r" id="toc-finding-areas-under-the-normal-curve-with-r" class="nav-link" data-scroll-target="#finding-areas-under-the-normal-curve-with-r"><span class="toc-section-number">4.5</span>  Finding areas under the normal curve with R</a>
+  <ul class="collapse">
+  <li><a href="#exercises-now-you-try-1" id="toc-exercises-now-you-try-1" class="nav-link" data-scroll-target="#exercises-now-you-try-1"><span class="toc-section-number">4.5.1</span>  Exercises: Now you try</a></li>
+  </ul></li>
+  <li><a href="#the-normal-approximation-for-data-1" id="toc-the-normal-approximation-for-data-1" class="nav-link" data-scroll-target="#the-normal-approximation-for-data-1"><span class="toc-section-number">4.6</span>  The normal approximation for data</a></li>
+  <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles"><span class="toc-section-number">4.7</span>  Percentiles</a></li>
   </ul>
 </nav>
     </div>
@@ -671,15 +678,15 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -698,7 +705,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -709,7 +716,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -959,8 +966,8 @@ Now you try
 </div>
 </div>
 <p>Now that we have discussed random sampling, why it is important and how it works, let us finally discuss the last step in the inductive inference chain, going from the study population to the target population. Even if we have a perfect random sample, it might be the case that we were not able to ask the people who we were ultimately interested in. When we can make conclusions on the target population from the study population, we say that we have not only internal but also <strong>external validity</strong>.</p>
-<p><span class="citation" data-cites="Spie2019">(<a href="references.html#ref-Spie2019" role="doc-biblioref"><strong>Spie2019?</strong></a>)</span>, whom we have already cited before gives an example where this problem is particularly extreme. Often scientist who are ultimately interested in humans could onl study animals, as it is often the case in pharmaceutical research.</p>
-<p>A bit less extreme but related is a second example <span class="citation" data-cites="Spie2019">(<a href="references.html#ref-Spie2019" role="doc-biblioref"><strong>Spie2019?</strong></a>)</span> gives is the case of drugs tested say only on adults but it is then used also by children. These are problems which cannot entiely be solved by statistical methods but need caution and particular care and caution.</p>
+<p><span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>, whom we have already cited before gives an example where this problem is particularly extreme. Often scientist who are ultimately interested in humans could onl study animals, as it is often the case in pharmaceutical research.</p>
+<p>A bit less extreme but related is a second example <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> gives is the case of drugs tested say only on adults but it is then used also by children. These are problems which cannot entiely be solved by statistical methods but need caution and particular care and caution.</p>
 </section>
 </section>
 <section id="when-all-data-are-available" class="level2" data-number="4.3">
@@ -969,7 +976,7 @@ Now you try
 <p>Many data, especially from online commerce are available to platform firms and online shops, for example. The new field of data science git a big push from the attempt to get hold of data created through interactions on the internet and to gain information from these data.</p>
 <p>The public sector also collects and stores lots of administrative data in a systematic manner. These are for example data needed to run a social security or pension system, police records, health records, demographic data, land registers and business registers, also data on crime, voters and education. These data are used for policy making, research and statistical analysis. In this case you have all the data.</p>
 <p>Having all the data means that the stage of the induction process where we go from a sample to a study population collapses because the sample and the study population are the same.</p>
-<p>Still problems can occur. <span class="citation" data-cites="Spie2019">(<a href="references.html#ref-Spie2019" role="doc-biblioref"><strong>Spie2019?</strong></a>)</span> mentions the problem that the police systematically misses cases which the police does not record as a crime or which have not been reported by a victim. These problems make the step of drawing conclusions from the study population to the target population difficult. It is not only police records on crimes. You have analogous problems in all other register data as well. Take population register, as one example. Often certain groups such as homeless people or undocumented immigrants who may be hesitant to register or provide personal information are under-counted. Or you can have inaccuracies in property ownership data in land registers due to incomplete or outdated records, fraudulent transactions, or illegal land occupations. Or in health registers you could have missing or incomplete data on certain health conditions, especially those that are stigmatized or poorly understood, or patients who do not seek medical attention due to lack of access or fear of discrimination.</p>
+<p>Still problems can occur. <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> mentions the problem that the police systematically misses cases which the police does not record as a crime or which have not been reported by a victim. These problems make the step of drawing conclusions from the study population to the target population difficult. It is not only police records on crimes. You have analogous problems in all other register data as well. Take population register, as one example. Often certain groups such as homeless people or undocumented immigrants who may be hesitant to register or provide personal information are under-counted. Or you can have inaccuracies in property ownership data in land registers due to incomplete or outdated records, fraudulent transactions, or illegal land occupations. Or in health registers you could have missing or incomplete data on certain health conditions, especially those that are stigmatized or poorly understood, or patients who do not seek medical attention due to lack of access or fear of discrimination.</p>
 <p>Of course if we have all the data it is a straightforward process to produce statistics that describe what we have measured. But for broader conclusions we need to be very careful and we need to think about systematic biases and how we can potentially control for them. This always needs our special attention because systematic bias can jeopardize or even invalidate the reliability of our claims.</p>
 </section>
 <section id="the-normal-approximation-for-data" class="level2 page-columns page-full" data-number="4.4">
@@ -1028,7 +1035,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 171.8143 167.5751 169.4843 174.8867</code></pre>
+<pre><code>[1] 177.2659 164.5859 167.0652 160.1181</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1045,7 +1052,7 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>171.8143 is -0.1839 from the average. In standard units therefore 171.8143 is -0.1839.</p>
+<p>177.2659 is 0.9448 from the average. In standard units therefore 177.2659 is 0.9448.</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1081,7 +1088,7 @@ Now you try
 <span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add normal curve to histogram plot</span></span>
 <span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a> <span class="fu">lines</span>(x, y, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,  <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>)</span>
-<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.02</span>,<span class="fl">0.04</span>,<span class="fl">0.06</span>,<span class="fl">0.08</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0%"</span>, <span class="st">"9.7 %"</span>, <span class="st">"19.3 %"</span>, <span class="st">"29.0 %"</span>, <span class="st">"38.6 %"</span>))</span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.02</span>,<span class="fl">0.04</span>,<span class="fl">0.06</span>,<span class="fl">0.08</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0%"</span>, <span class="st">"9.7 %"</span>, <span class="st">"19.3 %"</span>, <span class="st">"29.0 %"</span>, <span class="st">"38.6 %"</span>), <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>)</span>
 <span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="fl">153.38</span>, <span class="fl">158.21</span>, <span class="fl">163.04</span>, <span class="fl">167.87</span>, <span class="fl">172.70</span>, <span class="fl">177.53</span>, <span class="fl">182.36</span>, <span class="fl">187.19</span>, <span class="fl">192.02</span>), </span>
@@ -1101,6 +1108,163 @@ Now you try
 <p>There are two x-axis in this figure. On the upper x-axis you see the height in cm. On the lower x-axis you see the height in standard units. Standard unit 1 is at 172.70 + 4.83 or at 177.53 and standard unit -1 is at 172.70 - 4.83 or 167.87.</p>
 <p>There are two vertical axis in this figure, one on the left and one on the right. The histogram is drawn relative to the left y-axis, which is in percent per cm. The normal curve is drawn relative to the right one. To see how the scale on the right y-axis matches up, take the top value on each of the two axes: 38.6 % per standard unit matches 8% per cm because there are 4.8 cm to the standard unit. Spreading 38.6 % over one standard deviation is the same as spreading 38.6 % over 4.8cm and that comes to 8% per cm.</p>
 <p>We explained before that the area under the normal curve between - 1 and 1 standard deviation from the mean is 68 %. In histogram the area between these values is colored in gray. The historgam follows the normal curve very closely. Sometimes it is a bit above, sometimes a bit below the curve but these deviations balance out. Indeed, if you go back to the previous chapter you see that in the empirical distribution we have indeed 68% of observations exactly between these bounds. So the shaded area in the histogram is to a very good approximation equal to the area under the normal curve and this is where the 68 % come from.</p>
+</section>
+<section id="exercises-now-you-try" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="exercises-now-you-try"><span class="header-section-number">4.4.3</span> Exercises: Now you try</h3>
+<ol type="1">
+<li>On a cetrain exam, the average of the scores was 50 and the standard deviation was 10.
+<ol type="a">
+<li>Convert each of the following scores to standard units: 60, 45, 75.</li>
+<li>Find the scores which in standard units are: 0, 1.5, -2.8</li>
+</ol></li>
+<li>Convert each entry on the following list to standard units (using the average and standard deviation of the list): 13, 9, 11, 7, 10. Find the average and the standard devition of the converted list.</li>
+</ol>
+</section>
+</section>
+<section id="finding-areas-under-the-normal-curve-with-r" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="finding-areas-under-the-normal-curve-with-r"><span class="header-section-number">4.5</span> Finding areas under the normal curve with R</h2>
+<p>Before the computer became a widely available tool, statisticians used standard tables for finding areas under the curve. Today this is done with a computer. R has built in standard function you can use for this purpose. In this section I show you how.</p>
+<p>Example 1:</p>
+<p>Say we want to find the area under the normal curve between 0 an 1. Now one way to find this area is to use you knowledge that 68 % of the area under the nomal curve are between - 1 and 1. By the symmetry of the normal curve thus the area between 0 and 1 must be half of this area or 34 %.</p>
+<p>When you use R to do this calculation the built in function is called <code>pnorm()</code>. This function gives you the area under the normal curve smaller or equal to a given value <span class="math inline">\(x\)</span>. The default value for the mean <span class="math inline">\(\mu\)</span> and the standard deviation <span class="math inline">\(\sigma\)</span> is <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>.</p>
+<p>So what we would do is to compute:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3413447</code></pre>
+</div>
+</div>
+<p>which gives 0.34 or 34 %.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/normal_curve_34.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve between 0 and 1</figcaption><p></p>
+</figure>
+</div>
+<p>Example 2:</p>
+<p>Find the area between -2 and 1 under the normal curve with <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>.</p>
+<p>This problem can be broken down by first computing the area under the normal curve for all values lower than 1 and then the area under the curve for all values lower than - 2 and subtract the latter from the former. In R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8185946</code></pre>
+</div>
+</div>
+<p>or 82 %.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/normal_curve_84.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve between -2 and 1</figcaption><p></p>
+</figure>
+</div>
+<p>Example 3:</p>
+<p>Find the area to the right of 1 under the normal curve. This can be done by finding the area under the normal curve left from 1 first. Since the total area is 1, it must be the case that 1 minus the value of the area left from 1 is the same as the area right of 1.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1586553</code></pre>
+</div>
+</div>
+<p>or 16 %.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/normal_curve_16.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve right of 1</figcaption><p></p>
+</figure>
+</div>
+<section id="exercises-now-you-try-1" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="exercises-now-you-try-1"><span class="header-section-number">4.5.1</span> Exercises: Now you try</h3>
+<ol type="1">
+<li>Find the area under the normal curve:</li>
+</ol>
+<ol type="a">
+<li>to the right of 1.25</li>
+<li>to the left of 0.80</li>
+<li>between -0.3 and 0.9</li>
+<li>to the left of -0.4</li>
+<li>between 0.4 and 1.3</li>
+<li>outside -1.5 to 1.5</li>
+</ol>
+<ol start="2" type="1">
+<li>Fill in the blanks:</li>
+</ol>
+<ol type="a">
+<li>The area between +/- under the normal curve equals 68%</li>
+<li>The area between +/- under the normal curve equals 75 %.</li>
+</ol>
+</section>
+</section>
+<section id="the-normal-approximation-for-data-1" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="the-normal-approximation-for-data-1"><span class="header-section-number">4.6</span> The normal approximation for data</h2>
+<p>In certain cases the normal curve may be used to approximate data. We go back to our example with the data on the height of adult humans.</p>
+<p>Say we have the information that the height of adult humans were on average 172.7 cm with a standard deviation of 4.83 cm. Assuming the distribution of the data can be approximated by a normal curve. What is the estimated percentage of humans with a height between 168 and 178 cm?</p>
+<p>We can proceed in two steps. First we convert to standard units:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> (<span class="dv">168</span> <span class="sc">-</span> <span class="fl">172.7</span>)<span class="sc">/</span><span class="fl">4.83</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> (<span class="dv">178</span> <span class="sc">-</span> <span class="fl">172.7</span>)<span class="sc">/</span><span class="fl">4.83</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.9730849</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.097308</code></pre>
+</div>
+</div>
+<p>Then use the <code>pnorm()</code> function to estimate the area:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(u) <span class="sc">-</span> <span class="fu">pnorm</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6984912</code></pre>
+</div>
+</div>
+<p>which is about 70 %.</p>
+<p>Let us check this approximation with the real data. We use logical subsetting to count the share of height values between <span class="math inline">\(l\)</span> and <span class="math inline">\(u\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> (data<span class="sc">$</span>Height <span class="sc">&gt;=</span> <span class="dv">168</span> <span class="sc">&amp;</span> data<span class="sc">$</span>Height <span class="sc">&lt;=</span> <span class="dv">178</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(idx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.69868</code></pre>
+</div>
+</div>
+<p>You see that in this case the approximation works really well. So using the normal approximation we can get a fairly precise generalization from study population to the target population, even though the target population is larger than our study population. What we have done is that we have replaced the histogram of the empirical data by a normal curve before computing areas.</p>
+<p>Not all histograms follow a normal curve. But it is a remarkable fact, which we will explore in more detail later in the course, that many histograms do. In this case the mean and the standard deviation are good summary statistics.</p>
+</section>
+<section id="percentiles" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="percentiles"><span class="header-section-number">4.7</span> Percentiles</h2>
+<p>While the mean and the standard deviation are good statistics to summarize data which follow a normal distribution, they are not so suited to summarize other distributions.</p>
+<p>Let us go back to one of these distributions we have encountered before: Primary energy consumption per capita in the world in the year 2019.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">with</span>(energy_consumption_per_capita, energy_consumption_per_capita[Year <span class="sc">==</span> <span class="dv">2019</span>, ])</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>hist_info <span class="ot">&lt;-</span> <span class="fu">hist</span>(dat<span class="sc">$</span>Cons, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>hist_info<span class="sc">$</span>counts <span class="ot">&lt;-</span> hist_info<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute relative frequency values</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_info<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_info, <span class="at">freq =</span> <span class="cn">TRUE</span>, <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>, <span class="at">ylab =</span> <span class="st">"Percent"</span>, <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)              <span class="co"># Plot histogram with percentages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="from_limited_data_to_populations_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The average primary energy consumption was 26883.02 kwh per person per year and a standard deviation of 33562.48 kwh per person per year.</p>
+<p>If we would just blindly apply a normal approximation using these statistics we would conclude that 21.15 % of countries in the world had a negative primary energy consumption. This does not make sense.</p>
+<p>The reason for this nonsensical result is that the distribution depicted by the histogram does not follow a normal distribution. To summarize such distributions, statisticians often use so called <strong>percentiles</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">quantile</span>(dat<span class="sc">$</span>Cons, <span class="fu">c</span>(<span class="fl">0.01</span>,<span class="fl">0.10</span>,<span class="fl">0.25</span>,<span class="fl">0.50</span>,<span class="fl">0.75</span>,<span class="fl">0.90</span>,<span class="fl">0.99</span>)),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1%       10%       25%       50%       75%       90%       99% 
+   249.66   1147.96   3992.01  16516.14  33573.17  64784.08 165031.69 </code></pre>
+</div>
+</div>
+<p>Let us first explain what you see in the code snippet. R has a built in functions to compute percentiles. This function is called <code>quantile()</code>and takes the data as the first argumente and then a vector of percentiles in decimal form. For example <code>quantile(dat$Cons, 0.01)</code> would compute the 1 % percentile.</p>
+<p>What does this mean? The first percentile in our primary energy consumption distribution is 249.66. This means that in about 1 % of the countries of the world the primiary energy consumption per person per year is 250 kwh or less. 99 % of the countries had a primary energy consumption above that level. The 50 % percentile (0.5) is just the median. The interquartile range is the difference between the 75 % percentile (0.75) and the 25 % percentile (0.25). This is sometimes used as a measure of spread for distributions with long tails, such as in this example.</p>
+<p>Sometimes data are distributed like a normal curve and sometimes they are not. We will later discuss a theoretical argument which helps to explain when precisely historgrams should be approximated well by a normal curve.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->
@@ -1130,7 +1294,6 @@ Now you try
 Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
 </div>
 </div>
-</section>
 </section>
 
 

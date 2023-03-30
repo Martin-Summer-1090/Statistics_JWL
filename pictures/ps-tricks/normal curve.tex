@@ -1,0 +1,19 @@
+\documentclass{minimal}
+\usepackage{pst-func,pstricks-add}
+
+\begin{document}
+
+\psset{yunit=4cm,xunit=3}
+\begin{pspicture}(-2,-0.2)(2,1.4)
+	 % \psgrid[griddots=10,gridlabels=0pt, subgriddiv=0]
+	 \psaxes[Dy=0.25]{->}(0,0)(-2,0)(2,1.25)
+	 \uput[-90](6,0){x}\uput[0](0,1){y}
+	 \psGauss[linewidth=1pt]{-1.75}{1.75}%
+	 \end{pspicture}
+
+
+
+
+
+
+\end{document}
