@@ -1081,8 +1081,16 @@ difference between the 75 % percentile (0.75) and the 25 % percentile (0.25). Th
 sometimes used as a measure of spread for distributions with long tails, such as in this example.
 
 Sometimes data are distributed like a normal curve and sometimes they are not. We will later
-discuss a theoretical argument which helps to explain when precisely  historgrams should be
+discuss a theoretical argument which helps to explain when precisely  histograms should be
 approximated well by a normal curve.
+
+## Summary
+
+## Exercises 
+
+## Exercises with Computer
+
+Open the notebook from_limited_data_to_populations.ipynb and work on the exercises. Write your solutions into the notebook. You will need the computer to do.
 
 <!-- ## How does the DHS sample its data -->
 

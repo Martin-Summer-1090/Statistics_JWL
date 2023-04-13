@@ -644,7 +644,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
 <p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once. We have now implemented in the computer an equivalent to physically throwing a die.</p>
@@ -678,7 +678,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -705,7 +705,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -716,7 +716,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -1035,7 +1035,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 177.2659 164.5859 167.0652 160.1181</code></pre>
+<pre><code>[1] 170.6928 172.0204 179.4628 168.0772</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1052,7 +1052,7 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>177.2659 is 0.9448 from the average. In standard units therefore 177.2659 is 0.9448.</p>
+<p>170.6928 is -0.4161 from the average. In standard units therefore 170.6928 is -0.4161.</p>
 <div class="callout-note callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
