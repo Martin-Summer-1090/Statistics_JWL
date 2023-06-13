@@ -1,7 +1,6 @@
-#Categorical Data and Proportions
+# Categorical Data and Proportions
 
 ::: {.callout-note appearance="simple"}
-
 ## Overview
 
 1. In this chapter we will learn how to analyze and communicate binary variables. Binary
