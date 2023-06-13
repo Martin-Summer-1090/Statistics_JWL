@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics - 2&nbsp; Categorical Data and Proportions</title>
+<title>Statistics - 2&nbsp; Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -143,6 +114,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -151,11 +123,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./categorical_data_and_proportions.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,108 +140,122 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></a>
+  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></a>
+  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a>
+  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></a>
+  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a>
+  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></a>
+  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a>
+  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></a>
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></a>
+  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></a>
+  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"><span class="toc-section-number">2.1</span>  Communicating Counts and Proportions</a></li>
-  <li><a href="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates" id="toc-a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates"><span class="toc-section-number">2.2</span>  A first acquaintance with R: Visualizing infant mortality rates</a>
+  <li><a href="#communicating-counts-and-proportions" id="toc-communicating-counts-and-proportions" class="nav-link active" data-scroll-target="#communicating-counts-and-proportions"><span class="header-section-number">2.1</span> Communicating Counts and Proportions</a></li>
+  <li><a href="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates" id="toc-a-first-acquaintance-with-r-visualizing-infant-mortality-rates" class="nav-link" data-scroll-target="#a-first-acquaintance-with-r-visualizing-infant-mortality-rates"><span class="header-section-number">2.2</span> A first acquaintance with R: Visualizing infant mortality rates</a>
   <ul class="collapse">
-  <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"><span class="toc-section-number">2.2.1</span>  Starting an quitting R</a></li>
-  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"><span class="toc-section-number">2.2.2</span>  First steps</a></li>
-  <li><a href="#storing-and-reusing-results" id="toc-storing-and-reusing-results" class="nav-link" data-scroll-target="#storing-and-reusing-results"><span class="toc-section-number">2.2.3</span>  Storing and reusing results</a></li>
-  <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"><span class="toc-section-number">2.2.4</span>  A first data visualization</a></li>
+  <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
+  <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"><span class="header-section-number">2.2.2</span> First steps</a></li>
+  <li><a href="#storing-and-reusing-results" id="toc-storing-and-reusing-results" class="nav-link" data-scroll-target="#storing-and-reusing-results"><span class="header-section-number">2.2.3</span> Storing and reusing results</a></li>
+  <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"><span class="header-section-number">2.2.4</span> A first data visualization</a></li>
   </ul></li>
-  <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"><span class="toc-section-number">2.3</span>  Categorical variables: Causes of infant mortality</a></li>
-  <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"><span class="toc-section-number">2.4</span>  Compairing pairs of proportions</a></li>
-  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="toc-section-number">2.5</span>  Activities in the study center</a>
+  <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</a></li>
+  <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"><span class="header-section-number">2.4</span> Compairing pairs of proportions</a></li>
+  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="header-section-number">2.5</span> Activities in the study center</a>
   <ul class="collapse">
-  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"><span class="toc-section-number">2.5.1</span>  The story of infant mortality around the globe</a></li>
+  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.1</span> The story of infant mortality around the globe</a></li>
   </ul></li>
-  <li><a href="#a-data-collection-exercise-for-the-next-unit" id="toc-a-data-collection-exercise-for-the-next-unit" class="nav-link" data-scroll-target="#a-data-collection-exercise-for-the-next-unit"><span class="toc-section-number">2.6</span>  A data collection exercise for the next unit</a></li>
+  <li><a href="#a-data-collection-exercise-for-the-next-unit" id="toc-a-data-collection-exercise-for-the-next-unit" class="nav-link" data-scroll-target="#a-data-collection-exercise-for-the-next-unit"><span class="header-section-number">2.6</span> A data collection exercise for the next unit</a></li>
   </ul>
 </nav>
     </div>
@@ -273,7 +264,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></h1>
 </div>
 
 
@@ -288,16 +279,13 @@ div.csl-indent {
 
 </header>
 
-<div class="callout-note callout callout-style-simple callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<p>#Categorical Data and Proportions</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
-Overview
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <ol type="1">
 <li><p>In this chapter we will learn how to analyze and communicate binary variables. Binary variables express answers to yes-no questions. When we summarize many such answers we can express them as proportions or percentages.</p></li>
 <li><p>We will discuss these concepts within the examples of infant-mortality. This topic is not only interesting because it provides you a very important real world case where we work with counts and proportions of binary variables. It is also a great story of progress and positive global developments, where the data show you how much we have achieved together to better the life of children and infants.</p></li>
@@ -306,6 +294,7 @@ Overview
 <li><p>When a variable can take on not only two but more values we speak of categorical variables and we discuss and generalize the principles we learn about the display and communication of binary data to the case of categorical data.</p></li>
 <li><p>You will learn about the important notions of relative and absolute risks and what an odds ratio is. By the end of this section you will have learned some important principles of data visualization and communication that will be relevant and important also in other lessons.</p></li>
 </ol>
+</div>
 </div>
 </div>
 <p>The death of a child is a tragedy to its family. The numbers of such events across the globe add up to millions. Max Roser, in an article on the website “Our world in Data” <span class="citation" data-cites="Ros">(<a href="references.html#ref-Ros" role="doc-biblioref">Roser 2019</a>)</span>, reports that from 56 million people who died for example in the year 2017, 5.4 millions were children under the age of 5. This is a number of enormous scale that never makes the headlines.</p>
@@ -345,7 +334,7 @@ Overview
 </details>
 <div class="cell-output-display">
 <div id="tbl-infant-mortality-1860" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.1: Infant mortality in some European countries in 1860</caption>
 <thead>
 <tr class="header">
@@ -429,7 +418,7 @@ Overview
 </details>
 <div class="cell-output-display">
 <div id="tbl-infant-mortality-2020" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.2: Infant mortality in some European countries in 2020.</caption>
 <thead>
 <tr class="header">
@@ -490,12 +479,12 @@ Overview
 </div>
 <p>This is a spectacular improvement for this group of countries. By 2020 we have much more data, covering more regions and we will follow the global story later. But let us stick for the moment with this group of European Countries, which we followed over a time span of 160 year.</p>
 <p>Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 %. This amounts to a reduction by a factor of about 100. Isn’t this a stunning achievement?</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -522,7 +511,7 @@ Now you try
 </details>
 <div class="cell-output-display">
 <div id="tbl-infant-survivial-rate-1860" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;2.3: Infant survival rates in some European countries in 1860</caption>
 <thead>
 <tr class="header">
@@ -595,7 +584,7 @@ as percentages. In this way the risk can be imagined as an actual crowd of peopl
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="categorical_data_and_proportions_files/figure-html/infant-mortality-isotype-1860-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.</figcaption><p></p>
+<figcaption class="figure-caption">In 1860 in Germany among 1000 newborns 260 infants died in the first year of their life.</figcaption>
 </figure>
 </div>
 </div>
@@ -612,19 +601,19 @@ as percentages. In this way the risk can be imagined as an actual crowd of peopl
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="categorical_data_and_proportions_files/figure-html/infant-mortality-isotype-2020-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.</figcaption><p></p>
+<figcaption class="figure-caption">In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>From this perspective the improvement in infant mortality rates in Germany are truly spectacular.</p>
 <p>Still even at the low mortality rate this can mean a huge amount of individual tragedies. In 2020 Germany had 760.378 births. 0.31 % of this amounts to 2357 individual tragedies. Even if this rate could be brought down further, say to 0.28 % which sounds like a tiny improvement, it would mean 228 infant lives that could be saved.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -632,28 +621,28 @@ Now you try
 <p>David Spiegelhalter <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> whose book we have encountered when we discussed the question of how many trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers that riding on the London Underground is very safe. Try to imagine what this statement would mean when you think about this information in terms of crowds of young Londoners, assuming that “young” means between 15 and 25. Try to exlpain how the same information presented differently may have a different impact. What kind of communication tools we have just heard about, have been applied here?</p>
 </div>
 </div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Seitwerk: A remark on answer.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Turn a positive frame into a negative one and then imagine actual crowds of people instead of percentages. This or an answer like this I would have in mind that studnets come up with if they reflect this example. I think an answer to such a reflection is best placed in the interactive part of the course or in the study center meet ups.</p>
 </div>
 </div>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Be mindful of framing
 </div>
 </div>
@@ -676,17 +665,17 @@ Be mindful of framing
 <p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later.</p>
 <p>You start R by either typing <code>R</code> into the terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol that looks like this <code>&gt;</code>. When you see the prompt in the R console, R is ready to receive commands.</p>
 <p>To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Seitwerk: A remark on a demo.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This would be perhaps best shown in a brief video. Of course when producing the video it is important to think about which operating system the students will use, and the R version that they will have available. If this is open, so the demo for windows, mac and linux. It does only take marginally more time and effort. Maybe this whole intro is perfect for a video demo.</p>
 </div>
@@ -740,12 +729,12 @@ Seitwerk: A remark on a demo.
 </div>
 </div>
 <p>The comma is represented in R as a dot <code>.</code>. So the above output reads <code>1717</code>and one half or <code>0.5</code>.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -873,12 +862,12 @@ Now you try
 </div>
 </div>
 <p>Now we have visualized the information we had displayed in a table before. It is not yet perfect because the names of countries with longer names are cut off a bit. This could be fixed by additional function arguments, but let us not go too much in the details of the <code>barplot()</code>function at this stage. We will learn a lot about powerful visualization techniques in R as we go along.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -897,12 +886,12 @@ Now you try
 </div>
 </div>
 <p>Do you see that now the differences appear bigger? The choice of origin can have a big influence on the appearance of differences between the length of the bars. Always be mindful of this effect and reflect what happens if for some reason you have to choose a different origin for the bar chart than zero. Alberto Cairo, who is the author of an influential book on data visualization <span class="citation" data-cites="Cai2016">(<a href="references.html#ref-Cai2016" role="doc-biblioref">Cairo 2016</a>)</span> recommends to always choose a “…<em>logical and meaningful baseline</em>”.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Be mindful in choosing a logical and meaningful origin for barcharts
 </div>
 </div>
@@ -926,12 +915,12 @@ Be mindful in choosing a logical and meaningful origin for barcharts
 <p>Now the bar chart could suggests that the infant mortality rate is an important and meaningful way of comparing this particular group of countries.</p>
 <p>Such ranking comparisons are very popular in the media but they can be misleading. They can be misleading because the differences could be there just by chance.</p>
 <p>There could be also systematic differences between countries affecting infant mortality rates. For example, countries that are small with populations under 10 Million and that have very homogeneous populations and low birth rates tend to show lower infant mortality rates just because of these demographic features. So an ordering like the one presented in the graph might suggest a ranking that is in fact spurious and is not really substantial.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Be mindful about order in displaying the data
 </div>
 </div>
@@ -964,7 +953,7 @@ Be mindful about order in displaying the data
 <span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Cause</th>
@@ -1064,12 +1053,12 @@ Be mindful about order in displaying the data
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat, <span class="at">file =</span> <span class="st">"tables/table_2_4_infant_mortality_causes.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1077,17 +1066,17 @@ Now you try
 <p>Use R to visualize this table in a barchart. Don’t worry if some of the causes are cut off at the left of the graph. We will learn during the course how to better control the appearance of a visualization and control for details like this.</p>
 </div>
 </div>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 This is how an answer can look like.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Since students have not yet learned subsetting, they need to use the table and retype the values and the causes manually. This is intended because it will familiarize them with the <code>c()</code> function, the difference between numerical and character data type and is an excellent opportunity to review what we did on simple R bar-charts. In the example cause below I use - of course - the convenience of subsetting</p>
 <div class="cell">
@@ -1138,12 +1127,12 @@ This is how an answer can look like.
 </div>
 <p>Now it is even worse, because our visual system now has to additionally decode perspective on top of area, something it is naturally also not good at.</p>
 <p>There are ways to visually display data that work because they are naturally supported by our ability of visual perception and cognition, while others are not.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Don’t use pie charts to visually compare proportions
 </div>
 </div>
@@ -1185,12 +1174,12 @@ Don’t use pie charts to visually compare proportions
 </div>
 </div>
 <p>The risk increases now to three out of 10.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1251,23 +1240,23 @@ Now you try
 <!-- We will also have gathered data from an activity which will be used later in the course. -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-VolAtk2013" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-VolAtk2013" class="csl-entry" role="listitem">
 Antony, Volk, and Atkinson Jeremy. 2013. <span>“Infant and Child Death in the Human Environment of Evolutionary Adaptation.”</span> <em>Evolution and Human Behavior</em> 34: 182–92.
 </div>
-<div id="ref-Cai2016" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Cai2016" class="csl-entry" role="listitem">
 Cairo, Alberto. 2016. <em>The Truthful Art: Data, Charts, and Maps for Communication</em>. New Riders.
 </div>
-<div id="ref-Ros" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Ros" class="csl-entry" role="listitem">
 Roser, Max. 2019. <span>“Child Mortality Is an Everyday Tragedy of Enormous Scale That Rarely Makes the Headlines.”</span> <a href="https://ourworldindata.org/child-mortality-everyday-tragedy-no-headlines" class="uri">https://ourworldindata.org/child-mortality-everyday-tragedy-no-headlines</a>.
 </div>
-<div id="ref-Smil2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Smil2020" class="csl-entry" role="listitem">
 Smil, Vaclav. 2020. <em>Numbers Don’t Lie: 71 Things You Need to Know about the World</em>. Penguin Books.
 </div>
-<div id="ref-Spi2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Spi2019" class="csl-entry" role="listitem">
 Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
 </div>
-<div id="ref-JSSv059i10" class="csl-entry" role="doc-biblioentry">
+<div id="ref-JSSv059i10" class="csl-entry" role="listitem">
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 </div>
@@ -1302,9 +1291,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1369,6 +1372,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

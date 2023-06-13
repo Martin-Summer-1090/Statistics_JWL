@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -143,6 +114,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -151,11 +123,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./from_limited_data_to_populations.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,114 +140,131 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></a>
+  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></a>
+  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a>
+  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></a>
+  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a>
+  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></a>
+  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a>
+  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></a>
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></a>
+  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></a>
+  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-from-data-and-the-process-of-inductive-inference." id="toc-learning-from-data-and-the-process-of-inductive-inference." class="nav-link active" data-scroll-target="#learning-from-data-and-the-process-of-inductive-inference."><span class="toc-section-number">4.1</span>  Learning from data and the process of inductive inference.</a></li>
-  <li><a href="#why-does-random-sampling-help-avoiding-bias" id="toc-why-does-random-sampling-help-avoiding-bias" class="nav-link" data-scroll-target="#why-does-random-sampling-help-avoiding-bias"><span class="toc-section-number">4.2</span>  Why does random sampling help avoiding bias?</a>
+  <li><a href="#learning-from-data-and-the-process-of-inductive-inference." id="toc-learning-from-data-and-the-process-of-inductive-inference." class="nav-link active" data-scroll-target="#learning-from-data-and-the-process-of-inductive-inference."><span class="header-section-number">4.1</span> Learning from data and the process of inductive inference.</a></li>
+  <li><a href="#why-does-random-sampling-help-avoiding-bias" id="toc-why-does-random-sampling-help-avoiding-bias" class="nav-link" data-scroll-target="#why-does-random-sampling-help-avoiding-bias"><span class="header-section-number">4.2</span> Why does random sampling help avoiding bias?</a>
   <ul class="collapse">
-  <li><a href="#a-virtual-game-of-chance-rolling-a-die" id="toc-a-virtual-game-of-chance-rolling-a-die" class="nav-link" data-scroll-target="#a-virtual-game-of-chance-rolling-a-die"><span class="toc-section-number">4.2.1</span>  A virtual game of chance: Rolling a die</a></li>
-  <li><a href="#a-brief-digression-writing-r-functions-yourself" id="toc-a-brief-digression-writing-r-functions-yourself" class="nav-link" data-scroll-target="#a-brief-digression-writing-r-functions-yourself"><span class="toc-section-number">4.2.2</span>  A brief digression: Writing R functions yourself</a></li>
-  <li><a href="#going-back-to-simulating-die-rolls" id="toc-going-back-to-simulating-die-rolls" class="nav-link" data-scroll-target="#going-back-to-simulating-die-rolls"><span class="toc-section-number">4.2.3</span>  Going back to simulating die rolls</a></li>
-  <li><a href="#the-law-of-averages" id="toc-the-law-of-averages" class="nav-link" data-scroll-target="#the-law-of-averages"><span class="toc-section-number">4.2.4</span>  The law of averages</a></li>
+  <li><a href="#a-virtual-game-of-chance-rolling-a-die" id="toc-a-virtual-game-of-chance-rolling-a-die" class="nav-link" data-scroll-target="#a-virtual-game-of-chance-rolling-a-die"><span class="header-section-number">4.2.1</span> A virtual game of chance: Rolling a die</a></li>
+  <li><a href="#a-brief-digression-writing-r-functions-yourself" id="toc-a-brief-digression-writing-r-functions-yourself" class="nav-link" data-scroll-target="#a-brief-digression-writing-r-functions-yourself"><span class="header-section-number">4.2.2</span> A brief digression: Writing R functions yourself</a></li>
+  <li><a href="#going-back-to-simulating-die-rolls" id="toc-going-back-to-simulating-die-rolls" class="nav-link" data-scroll-target="#going-back-to-simulating-die-rolls"><span class="header-section-number">4.2.3</span> Going back to simulating die rolls</a></li>
+  <li><a href="#the-law-of-averages" id="toc-the-law-of-averages" class="nav-link" data-scroll-target="#the-law-of-averages"><span class="header-section-number">4.2.4</span> The law of averages</a></li>
   </ul></li>
-  <li><a href="#when-all-data-are-available" id="toc-when-all-data-are-available" class="nav-link" data-scroll-target="#when-all-data-are-available"><span class="toc-section-number">4.3</span>  When all data are available</a></li>
-  <li><a href="#the-normal-approximation-for-data" id="toc-the-normal-approximation-for-data" class="nav-link" data-scroll-target="#the-normal-approximation-for-data"><span class="toc-section-number">4.4</span>  The normal approximation for data</a>
+  <li><a href="#when-all-data-are-available" id="toc-when-all-data-are-available" class="nav-link" data-scroll-target="#when-all-data-are-available"><span class="header-section-number">4.3</span> When all data are available</a></li>
+  <li><a href="#the-normal-approximation-for-data" id="toc-the-normal-approximation-for-data" class="nav-link" data-scroll-target="#the-normal-approximation-for-data"><span class="header-section-number">4.4</span> The normal approximation for data</a>
   <ul class="collapse">
-  <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="toc-section-number">4.4.1</span>  The normal curve</a></li>
-  <li><a href="#units-and-standard-units" id="toc-units-and-standard-units" class="nav-link" data-scroll-target="#units-and-standard-units"><span class="toc-section-number">4.4.2</span>  Units and standard units</a></li>
-  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="toc-section-number">4.4.3</span>  Exercises: Now you try</a></li>
+  <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="header-section-number">4.4.1</span> The normal curve</a></li>
+  <li><a href="#units-and-standard-units" id="toc-units-and-standard-units" class="nav-link" data-scroll-target="#units-and-standard-units"><span class="header-section-number">4.4.2</span> Units and standard units</a></li>
+  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="header-section-number">4.4.3</span> Exercises: Now you try</a></li>
   </ul></li>
-  <li><a href="#finding-areas-under-the-normal-curve-with-r" id="toc-finding-areas-under-the-normal-curve-with-r" class="nav-link" data-scroll-target="#finding-areas-under-the-normal-curve-with-r"><span class="toc-section-number">4.5</span>  Finding areas under the normal curve with R</a>
+  <li><a href="#finding-areas-under-the-normal-curve-with-r" id="toc-finding-areas-under-the-normal-curve-with-r" class="nav-link" data-scroll-target="#finding-areas-under-the-normal-curve-with-r"><span class="header-section-number">4.5</span> Finding areas under the normal curve with R</a>
   <ul class="collapse">
-  <li><a href="#exercises-now-you-try-1" id="toc-exercises-now-you-try-1" class="nav-link" data-scroll-target="#exercises-now-you-try-1"><span class="toc-section-number">4.5.1</span>  Exercises: Now you try</a></li>
+  <li><a href="#exercises-now-you-try-1" id="toc-exercises-now-you-try-1" class="nav-link" data-scroll-target="#exercises-now-you-try-1"><span class="header-section-number">4.5.1</span> Exercises: Now you try</a></li>
   </ul></li>
-  <li><a href="#the-normal-approximation-for-data-1" id="toc-the-normal-approximation-for-data-1" class="nav-link" data-scroll-target="#the-normal-approximation-for-data-1"><span class="toc-section-number">4.6</span>  The normal approximation for data</a></li>
-  <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles"><span class="toc-section-number">4.7</span>  Percentiles</a></li>
+  <li><a href="#the-normal-approximation-for-data-1" id="toc-the-normal-approximation-for-data-1" class="nav-link" data-scroll-target="#the-normal-approximation-for-data-1"><span class="header-section-number">4.6</span> The normal approximation for data</a></li>
+  <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles"><span class="header-section-number">4.7</span> Percentiles</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.8</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.9</span> Exercises</a></li>
+  <li><a href="#exercises-with-computer" id="toc-exercises-with-computer" class="nav-link" data-scroll-target="#exercises-with-computer"><span class="header-section-number">4.10</span> Exercises with Computer</a></li>
   </ul>
 </nav>
     </div>
@@ -279,7 +273,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></h1>
 </div>
 
 
@@ -310,7 +304,7 @@ div.csl-indent {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab, <span class="at">caption =</span> <span class="st">"Percentage of stunted and wasted children by Region"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Percentage of stunted and wasted children by Region</caption>
 <thead>
 <tr class="header">
@@ -364,18 +358,18 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/random_sample.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Random Sample</figcaption><p></p>
+<figcaption class="figure-caption">Random Sample</figcaption>
 </figure>
 </div>
 <p>Now if a survey is done properly and professionally, as we can be confident with the DHS, we can usually assume that a proper random sample has been chosen. But even then we need to assume that the people who agree to take part in the survey, those in our sample that cooperate with the survey team, i.e.&nbsp;answer questions, agree to have anthropometrric measurements taken of their children, are representative. Otherwise comparisons with the larger group about which we ultimately want to say something, will be problematic. Assuring that the people in the sample who cooperate are representative is more difficult to assure. There are methods and procedures to address this difficulty systematically. For the moment it is important for you to recognize this as a potential source of error.</p>
 <p>When we assume that the people who could potentially have been asked to participate in the survey represent the population of a country or a region, then the last step - going from stage 3 to stage 4 - is more straightforward. If the sample has been chosen with sufficient care this will be possible. It is, however, not easy in practice.</p>
 <p>Considering all these potential sources of error you might become skeptical whether it is possible to say something reliable from limited data about the population at all. The good news is that statistics as a science and the methods you are going to learn during this course can smooth and control the process of going through these four steps where you indeed can say something very reliable and you can even precisely quantify the uncertainty that remains in what you are saying.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -428,12 +422,12 @@ Now you try
 <li>Hypothesis: This summer I will probably see fireflies in my garden.</li>
 </ul>
 <p>Induction does not allow to proof a hypothesis because it is generally uncertain.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -473,7 +467,7 @@ Now you try
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(show, <span class="at">n=</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Index</th>
@@ -545,7 +539,7 @@ Now you try
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(sample_1) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(sample_1, <span class="at">n =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: right;">Index</th>
@@ -584,12 +578,12 @@ Now you try
 </div>
 </div>
 <p>Let me explain. <code>seq()</code> is an R function which creates a regular sequence of numbers. The arguments specify where the sequence begins and where it ends as well as the step length it takes. We write this sequence into a variable <code>idx</code>. Since we do not want row names we delete these. Then we apply the subsetting rules we have learned in the last section to select all rows with index <code>idx</code> with all its variables.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -631,7 +625,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/die_picture.jpg" style="width:50.0%;height:50.0%" class="figure-img"></p>
-<p></p><figcaption class="figure-caption">A die</figcaption><p></p>
+<figcaption class="figure-caption">A die</figcaption>
 </figure>
 </div>
 <p>The essential feature of the die is that it has six faces each showing different points starting from 1 to 6. In R we implement this by creating a vector of integers 1 to 6, like this</p>
@@ -644,16 +638,16 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 3</code></pre>
 </div>
 </div>
 <p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once. We have now implemented in the computer an equivalent to physically throwing a die.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -678,15 +672,15 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -705,7 +699,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -716,7 +710,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -952,12 +946,12 @@ Now you try
 </div>
 <p>This looks already pretty close. You should by now see what random sampling does for the process of inductive inference. For a large enough random sample, the empirical distribution of the sample resembles the histogram of the population with high probability. Thus if you report summaries of the sample, like its mean and its standard deviation, you will be close to the true values in the population. You will not be exactly there. But since the random mechanism is based on a probability model, where the chance of each unit ending up in the sample is known, we can quantify the uncertainty and the error we make.</p>
 <p>How probability arguments work more precisely, we will learn later in the course. For now this brief discussion should have convinced you of the importance of random sampling for making inferences from sample to population and given you an intuition how this works. As a side effect of this discussion you have also learned how to write R functions.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1017,12 +1011,12 @@ y = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left( \frac{x - \mu}{\sigma}\ri
 <section id="units-and-standard-units" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="units-and-standard-units"><span class="header-section-number">4.4.2</span> Units and standard units</h3>
 <p>Often it is convenient to express the units for the normal curve not in the direct unit in which observations are measures - as for example cm for human height - but in units of standard deviations from the mean.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Conversion to standard units
 </div>
 </div>
@@ -1035,7 +1029,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 170.6928 172.0204 179.4628 168.0772</code></pre>
+<pre><code>[1] 180.2751 162.2271 170.6509 172.0579</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1052,13 +1046,13 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>170.6928 is -0.4161 from the average. In standard units therefore 170.6928 is -0.4161.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<p>180.2751 is 1.5677 from the average. In standard units therefore 180.2751 is 1.5677.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1138,7 +1132,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/normal_curve_34.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve between 0 and 1</figcaption><p></p>
+<figcaption class="figure-caption">Example 1: Area under the normal curve between 0 and 1</figcaption>
 </figure>
 </div>
 <p>Example 2:</p>
@@ -1154,7 +1148,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/normal_curve_84.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve between -2 and 1</figcaption><p></p>
+<figcaption class="figure-caption">Example 1: Area under the normal curve between -2 and 1</figcaption>
 </figure>
 </div>
 <p>Example 3:</p>
@@ -1172,7 +1166,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/normal_curve_16.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Example 1: Area under the normal curve right of 1</figcaption><p></p>
+<figcaption class="figure-caption">Example 1: Area under the normal curve right of 1</figcaption>
 </figure>
 </div>
 <section id="exercises-now-you-try-1" class="level3" data-number="4.5.1">
@@ -1264,7 +1258,17 @@ Now you try
 </div>
 <p>Let us first explain what you see in the code snippet. R has a built in functions to compute percentiles. This function is called <code>quantile()</code>and takes the data as the first argumente and then a vector of percentiles in decimal form. For example <code>quantile(dat$Cons, 0.01)</code> would compute the 1 % percentile.</p>
 <p>What does this mean? The first percentile in our primary energy consumption distribution is 249.66. This means that in about 1 % of the countries of the world the primiary energy consumption per person per year is 250 kwh or less. 99 % of the countries had a primary energy consumption above that level. The 50 % percentile (0.5) is just the median. The interquartile range is the difference between the 75 % percentile (0.75) and the 25 % percentile (0.25). This is sometimes used as a measure of spread for distributions with long tails, such as in this example.</p>
-<p>Sometimes data are distributed like a normal curve and sometimes they are not. We will later discuss a theoretical argument which helps to explain when precisely historgrams should be approximated well by a normal curve.</p>
+<p>Sometimes data are distributed like a normal curve and sometimes they are not. We will later discuss a theoretical argument which helps to explain when precisely histograms should be approximated well by a normal curve.</p>
+</section>
+<section id="summary" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.8</span> Summary</h2>
+</section>
+<section id="exercises" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.9</span> Exercises</h2>
+</section>
+<section id="exercises-with-computer" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="exercises-with-computer"><span class="header-section-number">4.10</span> Exercises with Computer</h2>
+<p>Open the notebook from_limited_data_to_populations.ipynb and work on the exercises. Write your solutions into the notebook. You will need the computer to do.</p>
 <!-- ## How does the DHS sample its data -->
 <!-- DHS is a nationally representative, population based cross sectional household survey. The survey is representative at the -->
 <!-- national level, for urban and rural areas and for the first administrative subunit. -->
@@ -1289,8 +1293,8 @@ Now you try
 <!-- Make the concept of a random sample and a probability distribution tangible by using the computer. -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-Spi2019" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Spi2019" class="csl-entry" role="listitem">
 Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
 </div>
 </div>
@@ -1325,9 +1329,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1392,6 +1410,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -150,11 +121,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">**Introduction**</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -162,107 +138,121 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></a>
+  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></a>
+  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a>
+  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></a>
+  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a>
+  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></a>
+  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a>
+  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></a>
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></a>
+  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></a>
+  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#experiencing-the-world-through-data" id="toc-experiencing-the-world-through-data" class="nav-link active" data-scroll-target="#experiencing-the-world-through-data"><span class="toc-section-number">1.1</span>  Experiencing the world through data</a>
+  <li><a href="#experiencing-the-world-through-data" id="toc-experiencing-the-world-through-data" class="nav-link active" data-scroll-target="#experiencing-the-world-through-data"><span class="header-section-number">1.1</span> Experiencing the world through data</a>
   <ul class="collapse">
-  <li><a href="#what-are-the-major-sources-of-electricity-production-in-kenya" id="toc-what-are-the-major-sources-of-electricity-production-in-kenya" class="nav-link" data-scroll-target="#what-are-the-major-sources-of-electricity-production-in-kenya"><span class="toc-section-number">1.1.1</span>  What are the major sources of electricity production in Kenya?</a></li>
-  <li><a href="#how-many-trees-are-there-on-the-planet" id="toc-how-many-trees-are-there-on-the-planet" class="nav-link" data-scroll-target="#how-many-trees-are-there-on-the-planet"><span class="toc-section-number">1.1.2</span>  How many trees are there on the planet?</a></li>
-  <li><a href="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" id="toc-what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" class="nav-link" data-scroll-target="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years"><span class="toc-section-number">1.1.3</span>  What has happened to extreme poverty on the globe in the last 20 years?</a></li>
-  <li><a href="#does-taking-your-time-in-college-pay-off" id="toc-does-taking-your-time-in-college-pay-off" class="nav-link" data-scroll-target="#does-taking-your-time-in-college-pay-off"><span class="toc-section-number">1.1.4</span>  Does taking your time in college pay off?</a></li>
+  <li><a href="#what-are-the-major-sources-of-electricity-production-in-kenya" id="toc-what-are-the-major-sources-of-electricity-production-in-kenya" class="nav-link" data-scroll-target="#what-are-the-major-sources-of-electricity-production-in-kenya"><span class="header-section-number">1.1.1</span> What are the major sources of electricity production in Kenya?</a></li>
+  <li><a href="#how-many-trees-are-there-on-the-planet" id="toc-how-many-trees-are-there-on-the-planet" class="nav-link" data-scroll-target="#how-many-trees-are-there-on-the-planet"><span class="header-section-number">1.1.2</span> How many trees are there on the planet?</a></li>
+  <li><a href="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" id="toc-what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years" class="nav-link" data-scroll-target="#what-has-happened-to-extreme-poverty-on-the-globe-in-the-last-20-years"><span class="header-section-number">1.1.3</span> What has happened to extreme poverty on the globe in the last 20 years?</a></li>
+  <li><a href="#does-taking-your-time-in-college-pay-off" id="toc-does-taking-your-time-in-college-pay-off" class="nav-link" data-scroll-target="#does-taking-your-time-in-college-pay-off"><span class="header-section-number">1.1.4</span> Does taking your time in college pay off?</a></li>
   </ul></li>
-  <li><a href="#the-three-basic-skills-you-will-learn-in-this-course" id="toc-the-three-basic-skills-you-will-learn-in-this-course" class="nav-link" data-scroll-target="#the-three-basic-skills-you-will-learn-in-this-course"><span class="toc-section-number">1.2</span>  The three basic skills you will learn in this course</a></li>
-  <li><a href="#on-the-use-of-the-computer" id="toc-on-the-use-of-the-computer" class="nav-link" data-scroll-target="#on-the-use-of-the-computer"><span class="toc-section-number">1.3</span>  On the use of the computer</a></li>
-  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="toc-section-number">1.4</span>  Activities in the study center</a>
+  <li><a href="#the-three-basic-skills-you-will-learn-in-this-course" id="toc-the-three-basic-skills-you-will-learn-in-this-course" class="nav-link" data-scroll-target="#the-three-basic-skills-you-will-learn-in-this-course"><span class="header-section-number">1.2</span> The three basic skills you will learn in this course</a></li>
+  <li><a href="#on-the-use-of-the-computer" id="toc-on-the-use-of-the-computer" class="nav-link" data-scroll-target="#on-the-use-of-the-computer"><span class="header-section-number">1.3</span> On the use of the computer</a></li>
+  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="header-section-number">1.4</span> Activities in the study center</a>
   <ul class="collapse">
-  <li><a href="#visualizing-the-share-of-extremely-poor-people-for-different-countries" id="toc-visualizing-the-share-of-extremely-poor-people-for-different-countries" class="nav-link" data-scroll-target="#visualizing-the-share-of-extremely-poor-people-for-different-countries"><span class="toc-section-number">1.4.1</span>  Visualizing the share of extremely poor people for different countries</a></li>
-  <li><a href="#guessing-ages" id="toc-guessing-ages" class="nav-link" data-scroll-target="#guessing-ages"><span class="toc-section-number">1.4.2</span>  Guessing ages</a></li>
-  <li><a href="#collect-data-from-students." id="toc-collect-data-from-students." class="nav-link" data-scroll-target="#collect-data-from-students."><span class="toc-section-number">1.4.3</span>  Collect data from students.</a></li>
+  <li><a href="#visualizing-the-share-of-extremely-poor-people-for-different-countries" id="toc-visualizing-the-share-of-extremely-poor-people-for-different-countries" class="nav-link" data-scroll-target="#visualizing-the-share-of-extremely-poor-people-for-different-countries"><span class="header-section-number">1.4.1</span> Visualizing the share of extremely poor people for different countries</a></li>
+  <li><a href="#guessing-ages" id="toc-guessing-ages" class="nav-link" data-scroll-target="#guessing-ages"><span class="header-section-number">1.4.2</span> Guessing ages</a></li>
+  <li><a href="#collect-data-from-students." id="toc-collect-data-from-students." class="nav-link" data-scroll-target="#collect-data-from-students."><span class="header-section-number">1.4.3</span> Collect data from students.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -272,7 +262,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></h1>
 </div>
 
 
@@ -289,12 +279,12 @@ div.csl-indent {
 
 <p>Welcome to the course <strong>Statistics: The art and science of learning from data</strong>. In this introductory chapter you will get an overview of the basic skills you will learn in this course by discussing a few examples.</p>
 <p>Over time and with your active participation these skills will add a powerful seventh sense to your ability of experiencing the world. It will allow you to experience the world through data. Understanding data by the art and science of statistics is an essential skill you will need to navigate the modern world and to study many fields in the sciences.</p>
-<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Overview
 </div>
 </div>
@@ -313,31 +303,31 @@ Overview
 <section id="what-are-the-major-sources-of-electricity-production-in-kenya" class="level3 page-columns page-full" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="what-are-the-major-sources-of-electricity-production-in-kenya"><span class="header-section-number">1.1.1</span> What are the major sources of electricity production in Kenya?</h3>
 <p>What is the biggest source of electricity production in Kenya? Answering this question needs data, listing and recording various forms of electricity production in specific countries. An internationally acknowledged organisation, which collects and reports these data is the International Energy Agency (IEA).</p>
-<div class="callout-tip callout callout-style-default callout-captioned page-columns page-full">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Accessing IEA data on the internet
 </div>
 </div>
-<div class="callout-body-container callout-body page-columns page-full">
-<div class="page-columns page-full"><p>If you have access to the internet, you can look up data and reports by the IEA on it’s website https://www.iea.org/<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;A screenshot I have taken in August 2022 shows the website like this. In the upperm right part of the website there is a link called <em>data</em> which will bring you to the data collected by IEA. <img src="pictures/IEA-website-as-of-2022-08.png" class="img-fluid" alt="iea-website"></p></li></div></div>
+<div class="callout-body-container callout-body">
+<p>If you have access to the internet, you can look up data and reports by the IEA on it’s website https://www.iea.org/<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </div>
 </div>
-<p>Now let’s take a quiz and guess. What do you think is actually the biggest source of electricity production in Kenya?</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;A screenshot I have taken in August 2022 shows the website like this. In the upperm right part of the website there is a link called <em>data</em> which will bring you to the data collected by IEA. <img src="pictures/IEA-website-as-of-2022-08.png" class="img-fluid" alt="iea-website"></p></li></div><p>Now let’s take a quiz and guess. What do you think is actually the biggest source of electricity production in Kenya?</p>
 <ol type="1">
 <li>Coal</li>
 <li>Renewable energy</li>
 <li>Natural gas</li>
 </ol>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Seitwerk: Expand for reading comment.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -350,31 +340,31 @@ Seitwerk: Expand for reading comment.
 </div>
 <div class="page-columns page-full"><p>Consulting the IEA data, you will find that the correct answer is <em>renewable energy</em>. A very interesting website called <em>gapminder</em>, which analyzes the answers of many people to this question, finds that 61 % give a wrong answer to this question. Maybe they find it hard to imagine that 80 % of energy production in Kenya is already fossil free thanks to huge sources of geothermal- and hydropower.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Even if you break the answers down by country you see that 38 % of people from Kenya get the answer wrong. Among the people from the UK, who answer this question even 72 % answer wrongly.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Geothermal electricity generation uses the earth’s natural heating energy - geothermal energy. A country needs to be located on a geothermal hot spot to make effective use of this energy source for electricity generation. At such a hotspot there are high temperatures beneath the earth’s surface which naturally produces steam. This steam can be used to spin turbines connected to a generator. This mechanism then produces electricity. Hydropower uses the water cycle to generate electricity by using dams to alter the flow of a river. The kinetic energy of the water spins turbines connected to a generator which produces electricity.</p></li></div></div>
 <p>If you are not familiar with the details of electricity production using geothermal- and hydropower or if you are not completely sure how to interpret a number like 38 %, don’t worry for now. The point here is that you see that one useful consequence of being able to access, read and interpret data is that it can help to establish facts about the world. In this way data can help us to perhaps correct misconceptions we might have had about these facts.</p>
-<div class="callout-tip callout callout-style-default callout-captioned page-columns page-full">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The gapminder webpage
 </div>
 </div>
-<div class="callout-body-container callout-body page-columns page-full">
-<div class="page-columns page-full"><p>If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/. I encourage you to visit this page at an occasion when you have access to the internet. You will be surprised how often you might have a wrong guess about basic facts in the world.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Here is how the website looks like as of August 2022: <img src="pictures/gapminder-website-as-of-2022-08.png" class="img-fluid" alt="gapminder-website"></p></li></div></div>
+<div class="callout-body-container callout-body">
+<p>If you have internet access you can reach the gapminder webpage at https://www.gapminder.org/. I encourage you to visit this page at an occasion when you have access to the internet. You will be surprised how often you might have a wrong guess about basic facts in the world.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 </div>
 </div>
-<p>In this course you will learn how to work with data and how to learn from these data in a systematic way.</p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Here is how the website looks like as of August 2022: <img src="pictures/gapminder-website-as-of-2022-08.png" class="img-fluid" alt="gapminder-website"></p></li></div><p>In this course you will learn how to work with data and how to learn from these data in a systematic way.</p>
 </section>
 <section id="how-many-trees-are-there-on-the-planet" class="level3 page-columns page-full" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="how-many-trees-are-there-on-the-planet"><span class="header-section-number">1.1.2</span> How many trees are there on the planet?</h3>
 <p>Learning from data entails more than just establishing facts. This might not always be possible, either because you cannot access the relevant data or you cannot completely access them, since doing so would be way too expensive. When working with data you also need rigorous definitions of concepts, so that you can actually transform your experience about the world into data</p>
 <p>Think for a moment about the following interesting example, which I learned from a wonderful book by the British statistician David Spiegelhalter <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span>. The example shows that even just categorizing and labeling things in the world to measure them and turn them into data can be challenging. A very basic question raised in the introduction of this book is:</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Question:
 </div>
 </div>
@@ -389,12 +379,12 @@ Question:
 <p>Now imagine that if long expert discussions are needed to precisely define something so seemingly obvious as a tree, clearly more complex concepts such as unemployment or the definition of the total value of goods and services produced in a country in a given year, known as Gross Domestic Product or GDP, is even more challenging.</p>
 <p>There is no automatism or mechanical receipt how we can turn experience into data and the statistics that we use and produce are constructed on the basis of judgement. It is a starting point for a deeper understanding of the world around us. This is one of the reasons why in this course statistics is not only referred to as science, which it arguably is to some degree, but also as an art.</p>
 <p>To guard against the trap of mindlessly fall into mechanical thinking or automatism it is sometimes helpful to make a rough plausibility estimates about the order of magnitude you might expect as a result for a really big number, like the number of trees on the globe.</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Comment for Seitwerk: Please uncollapse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -433,7 +423,7 @@ Comment for Seitwerk: Please uncollapse
 </details>
 <div class="cell-output-display">
 <div id="tbl-example-poverty" class="anchored">
-<table class="table table-sm table-striped">
+<table class="table table-sm table-striped small">
 <caption>Table&nbsp;1.1: Share of world polpulation living in extreme poverty, Source: World Bank</caption>
 <thead>
 <tr class="header">
@@ -512,7 +502,7 @@ Comment for Seitwerk: Please uncollapse
 <div id="fig-share-of-people-in-extreme-poverty-world" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/fig-share-of-people-in-extreme-poverty-world-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Share of world population living in extreme poverty from 2000 - 2017</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.1: Share of world population living in extreme poverty from 2000 - 2017</figcaption>
 </figure>
 </div>
 </div>
@@ -549,7 +539,7 @@ Comment for Seitwerk: Please uncollapse
 <div id="fig-share-of-people-in-extreme-poverty-world-forecast" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/fig-share-of-people-in-extreme-poverty-world-forecast-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Share of world population living in extreme poverty from 2000 - 2017 with predictions until 2021</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;1.2: Share of world population living in extreme poverty from 2000 - 2017 with predictions until 2021</figcaption>
 </figure>
 </div>
 </div>
@@ -579,7 +569,7 @@ Comment for Seitwerk: Please uncollapse
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/Years_in_college_versus_starting_salary-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job.</figcaption><p></p>
+<figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job.</figcaption>
 </figure>
 </div>
 </div>
@@ -598,7 +588,7 @@ Comment for Seitwerk: Please uncollapse
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/Years in college versus starting salary with trend-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job with a linear trend fitted to data.</figcaption><p></p>
+<figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm and the starting salary in the first year in the job with a linear trend fitted to data.</figcaption>
 </figure>
 </div>
 </div>
@@ -618,18 +608,18 @@ Comment for Seitwerk: Please uncollapse
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="introduction_files/figure-html/Years_in_college_versus_starting_salary_by_major-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm by major and the starting salary in the first year in the job.</figcaption><p></p>
+<figcaption class="figure-caption">Relation between the semesters needed by a random sample of 24 German students to complete an academic university programm by major and the starting salary in the first year in the job.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Now, looking at this plot, describe the relation for students with a major in business. How could the newspaper report be modified to describe the data?</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Comment for Seitwerk
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -647,12 +637,12 @@ Comment for Seitwerk
 </section>
 <section id="the-three-basic-skills-you-will-learn-in-this-course" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="the-three-basic-skills-you-will-learn-in-this-course"><span class="header-section-number">1.2</span> The three basic skills you will learn in this course</h2>
-<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 The three basic skills you will learn in this course
 </div>
 </div>
@@ -668,12 +658,12 @@ The three basic skills you will learn in this course
 <p>The course is split into 8 units in total. Units 1, 2 and 3 will be mostly be concerned with data exploration and with making comparisons based on data. You will also learn step by step how you can use the computer for data exploration and visualization. We assume no prior knowledge and start from scratch. We also do not strive for completeness. The idea is that you acquire the practically most important skills and get maturity to drill deeper for yourself after the course either in your further studies or on the job.</p>
 <p>Unit 4 and unit 5 will be predominantly be concerned with models and using models for prediction. Here you will learn how to spot trends in data, how you can discern actual information in data, so called signals, from random variation, called noise.</p>
 <p>Units 6, 7 and 8 will focus on how to quantify uncertainty related to prediction and inference from data. Here is the place where probability theory combines with statistics to provide analytically and practically powerful tools which ground data analysis in a firm scientific foundation. This is also the most challenging part of the course and it will require lots of practice and participation from you to acquire this important skill.</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Comment for Seitwerk
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -681,12 +671,12 @@ Comment for Seitwerk
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>In your template you suggest that in the introduction I give a minute overview of the details of topics learned in the course. I would prefer to abstain from this, because it contains lot of terms the students will learn step by step and it is probably boring at this stage. I would rather prefer the big picture approach outlined here with the three basic skills as the guiding posts. If listing the details is a must, it would look roughly like this:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 1: Overview; Categorical Data and Proportions
 </div>
 </div>
@@ -694,12 +684,12 @@ Unit 1: Overview; Categorical Data and Proportions
 <p>In unit 1 we will give an overview of the course and we begin with the analysis and understanding of binary variables, variables that can be imagined as simple yes or no questions and how they can be summarized as proportions or percentages. You will learn about how the idea of expected frequency will promote the understanding of the meaning of these shares and how this provides a basic understanding of the importance of these numbers.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 2: Summarizing and Communication lots of data; From limited data to populations
 </div>
 </div>
@@ -707,12 +697,12 @@ Unit 2: Summarizing and Communication lots of data; From limited data to populat
 <p>In unit 2 we learn how to deal with lots of data, the typical situation we will face when we do statistics. When there are lots of data we need instruments and tools to summarize them and to get an overview. This overview is usually also very important for communicating the data and the information they might contain. We will also learn how we can use statistics to learn properties about large populations by only making limited observations on some appropriately chosen subset of individuals from this population. The gold standard in making such inferences possible is the concept of a so called random sample. But at each step of the sampling procedure bias can crop up and invalidate our results leading to wrong conclusions. The circumstances under which inference from samples to populations can be made and how we can make sure to minimize bias we need a firm understanding of the opportunities and limits of this important technique.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 3: What causes what?
 </div>
 </div>
@@ -720,12 +710,12 @@ Unit 3: What causes what?
 <p>In unit 3 we discuss when data analysis allows us to say something about what causes what. We learn about the important concept of randomized trials. We will also learn what an observational study is and how it differs from a randomized trial. This is an important concept we will learn through the discussion of real world examples.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 4: Modelling relationships using regression and algorithmic predictions
 </div>
 </div>
@@ -733,12 +723,12 @@ Unit 4: Modelling relationships using regression and algorithmic predictions
 <p>In unit 4 we will learn a key concept needed to make predictions. The technical term for this concept in statistics is regression. It is a simple mathematical model describing how a set of explanatory variables varies systematically with a response variable. We will learn to construct such models and to interpret them correctly. We will also cover related techniques which have become very important recently and entered the statistical toolbox from the field of computer science. These methods are known under the notion of algorithmic prediction or machine learning.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 5: How sure can we be about what is going on: Estimates and Intervals.
 </div>
 </div>
@@ -746,12 +736,12 @@ Unit 5: How sure can we be about what is going on: Estimates and Intervals.
 <p>In unit 5 we encounter the first time tools for quantifying uncertainty. We learn how to determine and use uncertainty intervals by using a technique which is called the bootstrap. Being able to determine such intervals is extremely important in communicating statistics and for supporting a systematic and sound answer to the question: How sure can we be about an estimate.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 6: Probability: Quantifying uncertainty and variability
 </div>
 </div>
@@ -759,12 +749,12 @@ Unit 6: Probability: Quantifying uncertainty and variability
 <p>In unit 6 we deepen the knowledge how to quantify uncertainty by introducing basic ideas of probability theory. Probability theory provides a formal language and mathematics for dealing with chance phenomena. Probability is often counter intuitive but using the idea of expected frequency improves intuition. Probability ideas can be very useful in statistics even if there is no explicit use of a randomizing mechanism. Many social phenomena show a remarkable regularity in their overall pattern while individual events are entirely unpredictable.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 7: Putting Probability and Statistics together
 </div>
 </div>
@@ -772,12 +762,12 @@ Unit 7: Putting Probability and Statistics together
 <p>In unit 7 we put statistics and probability theory together. This allows us to both simplify ideas and techniques how to quantify uncertainty. The combination of the two field makes the tools for quantifying uncertainty at the same time more powerful. Combining statistics and probability theory is at the heart of statistics as a science. It makes all the ideas developed in unit 1 to 6 very versatile and powerful.</p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Unit 8: Answering questions and claiming discoveries
 </div>
 </div>
@@ -799,12 +789,12 @@ Unit 8: Answering questions and claiming discoveries
 <h2 data-number="1.4" class="anchored" data-anchor-id="activities-in-the-study-center"><span class="header-section-number">1.4</span> Activities in the study center</h2>
 <section id="visualizing-the-share-of-extremely-poor-people-for-different-countries" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="visualizing-the-share-of-extremely-poor-people-for-different-countries"><span class="header-section-number">1.4.1</span> Visualizing the share of extremely poor people for different countries</h3>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Comment for Seitwerk
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -818,12 +808,12 @@ Comment for Seitwerk
 </div>
 <p>Lets go back to figure <a href="#fig-share-of-people-in-extreme-poverty-world">Figure&nbsp;<span>1.1</span></a> for a moment. This figure has been created by the use of the computer.</p>
 <p>In the following box you see the computer code that has read the data from a file and then plotted the share for the world and for a particular country, say China. Don’t worry if you do not (yet) understand the details of the code. Think of it as a language that tells the computer what to do with the data. You can edit the code and delete China and insert another country instead. If you click the green arrow at the upper right corner of the box the computer will run the code again and generate a new graphic.</p>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Comment for Seitwerk
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -953,14 +943,14 @@ Comment for Seitwerk
 <p>One data collection exercise, which might be fun here is to collect the height and hand span from students in the class. Later when we teach regression we can compare to the data Pearson collected on university students over 100 years ago.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-Kuh" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Kuh" class="csl-entry" role="listitem">
 Kuhns, Michael. n.d. <span>“What Is a Tree?”</span> <a href="https://forestry.usu.edu/tree-identification/what-is-a-tree" class="uri">https://forestry.usu.edu/tree-identification/what-is-a-tree</a>.
 </div>
-<div id="ref-Ros2018" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Ros2018" class="csl-entry" role="listitem">
 Rosling, Hans, Ola Rosling, and Anna Rosling-Rönnlund. 2018. <em>Factfullness, 10 Reasons Why We Are Wrong about the World - and Why Things Are Better Than You Think</em>. Sceptre.
 </div>
-<div id="ref-Spi2019" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Spi2019" class="csl-entry" role="listitem">
 Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
 </div>
 </div>
@@ -996,9 +986,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1063,6 +1067,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1110,7 +1200,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./categorical_data_and_proportions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

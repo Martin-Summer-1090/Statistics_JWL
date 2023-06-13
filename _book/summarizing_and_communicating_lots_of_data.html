@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -143,6 +114,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
@@ -151,11 +123,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summarizing_and_communicating_lots_of_data.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -163,123 +140,137 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistics</a> 
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></a>
+  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></a>
+  <a href="./categorical_data_and_proportions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></a>
+  <a href="./summarizing_and_communicating_lots_of_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></a>
+  <a href="./from_limited_data_to_populations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">From limited data to populations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></a>
+  <a href="./what_causes_what.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">What causes what?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a>
+  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></a>
+  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a>
+  <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></a>
+  <a href="./probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></a>
+  <a href="./probability_and_statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Putting probability and statistics together</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></a>
+  <a href="./answering_questions_and_claiming_discoveries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Answering questions and claiming discoveries</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"><span class="toc-section-number">3.1</span>  Understanding variation in a single variable using histograms</a>
+  <li><a href="#understanding-variation-in-a-single-variable-using-histograms" id="toc-understanding-variation-in-a-single-variable-using-histograms" class="nav-link active" data-scroll-target="#understanding-variation-in-a-single-variable-using-histograms"><span class="header-section-number">3.1</span> Understanding variation in a single variable using histograms</a>
   <ul class="collapse">
-  <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"><span class="toc-section-number">3.1.1</span>  Constructing a Histogram</a></li>
-  <li><a href="#the-relative-frequency-scale-absolute-versus-relative-frequency" id="toc-the-relative-frequency-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-relative-frequency-scale-absolute-versus-relative-frequency"><span class="toc-section-number">3.1.2</span>  The relative frequency scale: Absolute versus relative frequency</a></li>
-  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="toc-section-number">3.1.3</span>  Exercises: Now you try</a></li>
-  <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"><span class="toc-section-number">3.1.4</span>  Best practices for histograms</a></li>
+  <li><a href="#constructing-a-histogram" id="toc-constructing-a-histogram" class="nav-link" data-scroll-target="#constructing-a-histogram"><span class="header-section-number">3.1.1</span> Constructing a Histogram</a></li>
+  <li><a href="#the-relative-frequency-scale-absolute-versus-relative-frequency" id="toc-the-relative-frequency-scale-absolute-versus-relative-frequency" class="nav-link" data-scroll-target="#the-relative-frequency-scale-absolute-versus-relative-frequency"><span class="header-section-number">3.1.2</span> The relative frequency scale: Absolute versus relative frequency</a></li>
+  <li><a href="#exercises-now-you-try" id="toc-exercises-now-you-try" class="nav-link" data-scroll-target="#exercises-now-you-try"><span class="header-section-number">3.1.3</span> Exercises: Now you try</a></li>
+  <li><a href="#best-practices-for-histograms" id="toc-best-practices-for-histograms" class="nav-link" data-scroll-target="#best-practices-for-histograms"><span class="header-section-number">3.1.4</span> Best practices for histograms</a></li>
   </ul></li>
-  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="toc-section-number">3.2</span>  Next steps in R: Reading Data, understanding R objects and selecting and modifying values</a>
+  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="header-section-number">3.2</span> Next steps in R: Reading Data, understanding R objects and selecting and modifying values</a>
   <ul class="collapse">
-  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="toc-section-number">3.2.1</span>  Reading data in R</a></li>
-  <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"><span class="toc-section-number">3.2.2</span>  R objects</a></li>
-  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"><span class="toc-section-number">3.2.3</span>  Data frames and R lists</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="toc-section-number">3.2.4</span>  Data Frames</a></li>
-  <li><a href="#selecting-data-from-r-objects-a-toolbox." id="toc-selecting-data-from-r-objects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-objects-a-toolbox."><span class="toc-section-number">3.2.5</span>  Selecting data from R objects: A toolbox.</a></li>
-  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="toc-section-number">3.2.6</span>  Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
+  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="header-section-number">3.2.1</span> Reading data in R</a></li>
+  <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"><span class="header-section-number">3.2.2</span> R objects</a></li>
+  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"><span class="header-section-number">3.2.3</span> Data frames and R lists</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.2.4</span> Data Frames</a></li>
+  <li><a href="#selecting-data-from-r-objects-a-toolbox." id="toc-selecting-data-from-r-objects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-objects-a-toolbox."><span class="header-section-number">3.2.5</span> Selecting data from R objects: A toolbox.</a></li>
+  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="header-section-number">3.2.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
   </ul></li>
-  <li><a href="#the-average-and-the-standard-deviation" id="toc-the-average-and-the-standard-deviation" class="nav-link" data-scroll-target="#the-average-and-the-standard-deviation"><span class="toc-section-number">3.3</span>  The average and the standard deviation</a>
+  <li><a href="#the-average-and-the-standard-deviation" id="toc-the-average-and-the-standard-deviation" class="nav-link" data-scroll-target="#the-average-and-the-standard-deviation"><span class="header-section-number">3.3</span> The average and the standard deviation</a>
   <ul class="collapse">
-  <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"><span class="toc-section-number">3.3.1</span>  The average</a></li>
-  <li><a href="#exercises-for-the-average" id="toc-exercises-for-the-average" class="nav-link" data-scroll-target="#exercises-for-the-average"><span class="toc-section-number">3.3.2</span>  Exercises for the Average</a></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="toc-section-number">3.3.3</span>  The standard deviation</a></li>
-  <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"><span class="toc-section-number">3.3.4</span>  Exercises for the standard deviation</a></li>
-  <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"><span class="toc-section-number">3.3.5</span>  Computing the standard deviation</a></li>
-  <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"><span class="toc-section-number">3.3.6</span>  Interquartile range and the boxplot</a></li>
+  <li><a href="#the-average" id="toc-the-average" class="nav-link" data-scroll-target="#the-average"><span class="header-section-number">3.3.1</span> The average</a></li>
+  <li><a href="#exercises-for-the-average" id="toc-exercises-for-the-average" class="nav-link" data-scroll-target="#exercises-for-the-average"><span class="header-section-number">3.3.2</span> Exercises for the Average</a></li>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">3.3.3</span> The standard deviation</a></li>
+  <li><a href="#exercises-for-the-standard-deviation" id="toc-exercises-for-the-standard-deviation" class="nav-link" data-scroll-target="#exercises-for-the-standard-deviation"><span class="header-section-number">3.3.4</span> Exercises for the standard deviation</a></li>
+  <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"><span class="header-section-number">3.3.5</span> Computing the standard deviation</a></li>
+  <li><a href="#interquartile-range-and-the-boxplot" id="toc-interquartile-range-and-the-boxplot" class="nav-link" data-scroll-target="#interquartile-range-and-the-boxplot"><span class="header-section-number">3.3.6</span> Interquartile range and the boxplot</a></li>
   </ul></li>
-  <li><a href="#describing-differences-between-groups-of-numbers" id="toc-describing-differences-between-groups-of-numbers" class="nav-link" data-scroll-target="#describing-differences-between-groups-of-numbers"><span class="toc-section-number">3.4</span>  Describing differences between groups of numbers</a></li>
-  <li><a href="#describing-relationships-between-data" id="toc-describing-relationships-between-data" class="nav-link" data-scroll-target="#describing-relationships-between-data"><span class="toc-section-number">3.5</span>  Describing Relationships between data</a></li>
-  <li><a href="#describing-trends" id="toc-describing-trends" class="nav-link" data-scroll-target="#describing-trends"><span class="toc-section-number">3.6</span>  Describing Trends</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="toc-section-number">3.7</span>  Summary</a></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="toc-section-number">3.8</span>  Computer exercises</a></li>
+  <li><a href="#describing-differences-between-groups-of-numbers" id="toc-describing-differences-between-groups-of-numbers" class="nav-link" data-scroll-target="#describing-differences-between-groups-of-numbers"><span class="header-section-number">3.4</span> Describing differences between groups of numbers</a></li>
+  <li><a href="#describing-relationships-between-data" id="toc-describing-relationships-between-data" class="nav-link" data-scroll-target="#describing-relationships-between-data"><span class="header-section-number">3.5</span> Describing Relationships between data</a></li>
+  <li><a href="#describing-trends" id="toc-describing-trends" class="nav-link" data-scroll-target="#describing-trends"><span class="header-section-number">3.6</span> Describing Trends</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.7</span> Summary</a></li>
+  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">3.8</span> Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -288,7 +279,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summarizing and communicating lots of data</span></h1>
 </div>
 
 
@@ -394,7 +385,7 @@ Frequency = 1
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/nile_hist.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Constructing the river flow histogram</figcaption><p></p>
+<figcaption class="figure-caption">Constructing the river flow histogram</figcaption>
 </figure>
 </div>
 <p>If we had just plotted all individual data points, we also got a picture, though you probably agree that it is not particularly useful.</p>
@@ -415,12 +406,12 @@ Frequency = 1
 <p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -434,7 +425,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/final_score.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Final Score</figcaption><p></p>
+<figcaption class="figure-caption">Final Score</figcaption>
 </figure>
 </div>
 </div>
@@ -505,7 +496,7 @@ Now you try
 <div id="fig-hight-hist-version1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hight_version1.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
-<p></p><figcaption class="figure-caption">(a) Version 1</figcaption><p></p>
+<figcaption class="figure-caption">(a) Version 1</figcaption>
 </figure>
 </div>
 </div>
@@ -513,7 +504,7 @@ Now you try
 <div id="fig-hight-hist-version2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hight_version2.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
-<p></p><figcaption class="figure-caption">(b) Version 2</figcaption><p></p>
+<figcaption class="figure-caption">(b) Version 2</figcaption>
 </figure>
 </div>
 </div>
@@ -521,7 +512,7 @@ Now you try
 <div id="fig-hight-hist-version3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hight_version3.png" class="img-fluid figure-img" data-ref-parent="fig-height_hist"></p>
-<p></p><figcaption class="figure-caption">(c) Version 3</figcaption><p></p>
+<figcaption class="figure-caption">(c) Version 3</figcaption>
 </figure>
 </div>
 </div>
@@ -548,7 +539,7 @@ Now you try
 <div id="fig-hight-cigarettes" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/cigarettes.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.2: Number of cigarettes</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;3.2: Number of cigarettes</figcaption>
 </figure>
 </div>
 </section>
@@ -627,7 +618,7 @@ Now you try
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/our_world_in_data_energy.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Our World in Data website energy</figcaption><p></p>
+<figcaption class="figure-caption">Our World in Data website energy</figcaption>
 </figure>
 </div>
 <div class="page-columns page-full"><p>In the lower right corner you see a box called Data and a download button. This button allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code>. From the extension of the file <code>csv</code>, you can see that it is a comma separated text file. This is a plain text file following certain formatting rules. In particular individual data points are separated by a comma<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.</p></li></div></div>
@@ -1145,7 +1136,7 @@ $class
 <div id="fig-ex-hist-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/example_histogram1.png" class="img-fluid figure-img" data-ref-parent="fig-example-hist"></p>
-<p></p><figcaption class="figure-caption">(a) Histogram 1</figcaption><p></p>
+<figcaption class="figure-caption">(a) Histogram 1</figcaption>
 </figure>
 </div>
 </div>
@@ -1153,7 +1144,7 @@ $class
 <div id="fig-ex-hist-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/example_histogram2.png" class="img-fluid figure-img" data-ref-parent="fig-example-hist"></p>
-<p></p><figcaption class="figure-caption">(b) Histogram 2</figcaption><p></p>
+<figcaption class="figure-caption">(b) Histogram 2</figcaption>
 </figure>
 </div>
 </div>
@@ -1165,7 +1156,7 @@ $class
 <div id="fig-ex-hist-bm" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/bimodal.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: A bimodal distribution</figcaption><p></p>
+<figcaption class="figure-caption">Figure&nbsp;3.4: A bimodal distribution</figcaption>
 </figure>
 </div>
 <p>In some cases such distribution can occur naturally. Think, for example, about the distribution of the elevation data of surface area of the earth. Most of the surface area of the earth is taken by the sea floor at about three miles below the sea level or the continental planes around sea level. If we would report only the center an the spread of this histogram, plotted in the picture as the red and blue vertical lines, we would miss these peaks.</p>
@@ -1173,12 +1164,12 @@ $class
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="the-average"><span class="header-section-number">3.3.1</span> The average</h3>
 <p>Human growth depends on good nutrition and the availability of medical services to effectively treat illness. Thus human height in a population has for a long time been a subject of study. The average human height in a population varies with the general living standards. In statistical terminology this is expressed by saying that human height and growth are positively correlated. This fact makes data on human height especially interesting for historians who study the history of living conditions. Because humans tend to get taller when they have good living conditions, human height can reveal some information on living conditions, height data can be an indirect measure of living conditions. This is especially interesting for periods when very little or no data were collected and recorded.</p>
 <p>As we see from the class activity in the introductory unit where we collected data in your class on height and hand span, we learned that usually heights differ quite a bit within a group. This is also true in a population. The many different height data, which are usually collected in survey studies on health are usually summarized by studying average height. Height data are thus also interesting for us as one specific context to study height data.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Average
 </div>
 </div>
@@ -1232,12 +1223,12 @@ Average
 </div>
 <p>We see that <code>dat</code> is a data frame with three variables Index, Height and Weight. All variables are of type numeric.</p>
 <p>From the help information on the dataset we know that the units of the Height variable is inches. Inches are used in the English speaking countries but in many other parts of the world the more common units are metric units. Human height in metric units would be measured in cm rather than in inches. This is an excellent opportunity to practice some of the R knowlegde you have learned in this unit.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1255,12 +1246,12 @@ Now you try
 </details>
 </div>
 <p>Once you have done this little transformation of units, let us plot a histogram first. Let us also lable the x-axes as “Height in cm” and write as a title of the histogram “Height of 18 year old humans”</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1278,12 +1269,12 @@ Now you try
 </div>
 </div>
 <p>The distribution looks symmetric. If we summarize these data by taking an average in one number we will capture the center of the distribution fairly well. Let us compute the average, using the mean funcion.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1315,12 +1306,12 @@ Now you try
 </div>
 </div>
 <p>The output is a vector of logicals where R compares each entry in <code>x</code>with 2 and if it is larger it returns <code>TRUE</code> and otherwise <code>FALSE</code> (this includes all entries which are exactly 2).</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1330,12 +1321,12 @@ Now you try
 </div>
 <p>Note that, when you apply the function <code>mean()</code> to a vector of data of type logical the coercion rules of R will coerce TRUE to 1 and FALSE to 0 automatically. So if you apply <code>mean()</code> to <code>x</code> you will get the result you have computed before.</p>
 <p>This insight can be used to compute the percentage of values that fulfill a certain condition in R. Here the condition is that the Height is larger than the mean.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1540,12 +1531,12 @@ Now you try
 </div>
 </div>
 <p>This average tells us that most of the humans measured in the sample had a height of around 1 m and 73 cm. But there were deviations from this average. Some humans were taller and others were smaller. We can ask how big these deviations are? In answering this question we need the concept of the standard deviation.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Standard deviation
 </div>
 </div>
@@ -1571,12 +1562,12 @@ Standard deviation
 </div>
 </div>
 <p>Let me explain what we have computed here. First we have checked for all the entries in the vector <code>dat$Height</code> whether they were larger than the average minus one standard deviation and smaller than the average plus one standard deviation. These are all the values that are within one standard deviation away from the average. For all values that are in this range R returns the value <code>TRUE</code> and for all the other values that are outside of this range, R returns the value <code>FALSE</code>. We have stored the vector recording all these logical values in a new object called <code>aux</code>. Now we computed the mean of aux. When the mean function of R gets a vector of logical values it coerces all the <code>TRUE</code> values to 1 and al the <code>FALSE</code> values to 0. When we take the mean we get the share of values for which the condition is TRUE. In our case this is around 68 %. The other 32 % are farther away.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1613,12 +1604,12 @@ Now you try
 </div>
 <p>Let us note a final point about this rule of thumb for symmetric distribution, you frequently encounter in practice. Often it is common to report a distribution of a variable not in its orginal units - height in cm - for example but in a standardized form where the units are changed such that the mean is at 0 and the standard deviation is at 1.</p>
 <p>How is this possible? Let us consider the following example.</p>
-<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Example
 </div>
 </div>
@@ -1732,7 +1723,7 @@ z_i = \frac{x_i - \mu}{\sigma}
 <div id="fig-hist_ex_1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hist_ex_1.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
-<p></p><figcaption class="figure-caption">(a) Histogram 1</figcaption><p></p>
+<figcaption class="figure-caption">(a) Histogram 1</figcaption>
 </figure>
 </div>
 </div>
@@ -1740,7 +1731,7 @@ z_i = \frac{x_i - \mu}{\sigma}
 <div id="fig-hist_ex_2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hist_ex_2.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
-<p></p><figcaption class="figure-caption">(b) Histogram 2</figcaption><p></p>
+<figcaption class="figure-caption">(b) Histogram 2</figcaption>
 </figure>
 </div>
 </div>
@@ -1748,7 +1739,7 @@ z_i = \frac{x_i - \mu}{\sigma}
 <div id="fig-hist_ex_3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/hist_ex_3.png" class="img-fluid figure-img" data-ref-parent="fig-histograms"></p>
-<p></p><figcaption class="figure-caption">(c) Histogram 3</figcaption><p></p>
+<figcaption class="figure-caption">(c) Histogram 3</figcaption>
 </figure>
 </div>
 </div>
@@ -1787,12 +1778,12 @@ sd&amp;=&amp;\sqrt{\frac{5^2 + (-5)^2 + 0^2 + 0^2}{4}} \\
 &amp;\approx&amp; 3.5
 \end{eqnarray}\]</span></p>
 <p>The standard deviation has the same units as the data. For example, when we measure height in cm then at the squaring step the units change to <span class="math inline">\(cm^2\)</span> but the suqre root returns <span class="math inline">\(cm\)</span> again.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -1876,12 +1867,12 @@ Now you try
 </div>
 </div>
 <p>Since the median and the mean give you the same value, you can see already from these data that the distribution of the data is symmetric, as we have already seen before.</p>
-<div class="callout-note callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Now you try
 </div>
 </div>
@@ -2095,11 +2086,11 @@ $Female
 <!-- computer. -->
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-HelMau2015" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-HelMau2015" class="csl-entry" role="listitem">
 Hellebrand, Tomas, and Paolo Mauro. 2015. <span>“The Future of Worldwide Income Distribution.”</span> <em>Brooking Institution Working Paper Series</em> 7 (15). <a href="file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf">file:///home/martinsummer/R/Statistics_JWL/data/income/Hellebrand_Mauro_wp15-7.pdf</a>.
 </div>
-<div id="ref-McElr2020" class="csl-entry" role="doc-biblioentry">
+<div id="ref-McElr2020" class="csl-entry" role="listitem">
 McElrath, Richard. 2020. <em>Statistical Resthinking</em>. CRC Press. <a href="https://github.com/rmcelreath/rethinking">https://github.com/rmcelreath/rethinking</a>.
 </div>
 </div>
@@ -2134,9 +2125,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -2201,6 +2206,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2243,7 +2334,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./categorical_data_and_proportions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Categorical Data and Proportions</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Overview</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
