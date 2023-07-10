@@ -14,3 +14,82 @@
 
 <!-- This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis. -->
 
+The last two centuries brought enormous advances in the expansion of education around the
+world. Quantitative measures such as literacy rates, school enrollment, the share of 
+education spending in gdp all point into the same direction: While access to education
+had been the privilege of a very small elite throughout history, things have changed
+in the direction of a very broad participation. This is a result of both economic
+necessities of modern production as well as of political struggles for human rights and
+equality. Today education is perceived as a right and it is seen as a government duty to
+provide broad access to basic education. A certain amount of schooling is even compulsory in
+most countries, although not all the countries have the capacity to broadly enforce such obligations.
+
+Despite all of these developments and efforts in the 
+expansion of education there are still about 8 % of children worldwide 
+which are not in school.
+Also progress has been heterogeneous across the globe, with literacy rates
+among the youth of sub Saharan Africa - for example - still below 50 %.
+
+Education policies have thus widely debated in international policy circles and 
+lead to debates as well as to seemingly unresolvable controveries about what is needed
+and what works.
+
+The majority view in international policy circles has been that the most urgent need is
+to bring children into the class room and let them be taught by well trained teachers and
+the rest will follow automatically. This entails policies to make sure that children have
+access to a school nearby and the free provision of basic education.
+
+But enrollment does not automatically mean that all the children enrolled actually attend.
+For example, we know from the DHS, the demographic an health survey you learned about
+in previous lectures, that there is a gap between enrollment and attendance. From the
+surveys we also know that the absence is not necessarily driven by the fact that the
+children are needed at home. 
+
+Look at this graph compiled from DHS data provided by Our World in Data:
+
+insert chart here.
+
+Another aspect that was debated is that enrollment does not necessarily mean that children
+actually learn something or that they learn at a sufficient quality. This problem of poor 
+learning outcomes in many parts of the globe was demonstrated in many cases.
+
+Does this mean these policies are wrong, as their critics claim. They point out that there
+is no point in all this educational supply if  there is no demand 
+for it, taking lack of attendance and lack of sufficient learning 
+outcomes as evidence. If there were demand, these
+critics argue, supply would follow and the demand arises by itself as soon as there are
+high enough returns to education.
+
+Why can't controversies like these not simply be resolved by looking at the data?
+
+## Correlation does not imply causation
+
+Many data sources we have just rely on education policy outcomes somebody has observed and
+recorder, so called observational studies. For instance there is a large literature, 
+mainly from before the mid 1990ies in education research, which tried to answer 
+the following question: Do increased financial resources for public 
+schools improve educational outcomes as measured by standard education achievement tests?
+
+A look across countries would - for instance - give the following picture.
+
+insert picture here
+
+Indeed a study by @Hedgesetal1994 confirmed patterns like these. There is strong
+evidence that education spending and educational outcomes are positively correlated.
+Remember our discussion of measuring the relation between two variables in section 3.5?
+
+But does this evidence support the conclusion that there is a causal relation between 
+increased educational spending and student outcomes? There is a straightforward reason why
+this can not be the case. We compare very different students or schools accross countries in
+the scatterplot we produced before. In the study by @Hedgesetal1994 the variables that were
+related were students from different households across different schools. For
+the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different
+levels of spending does not tell us whether the different spending levels are causal for the
+variation in outcomes we observe. There may be many other differences between countries and
+students that are shaping this relationship.
+
+Statisticians have summarized this observation in the mantra 
+that **"correlation does not imply causation"**. If we want to 
+establish a causal relation from data we need to work harder.
+
+## What does it mean that a variable is "causal"?

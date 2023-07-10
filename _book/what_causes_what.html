@@ -182,7 +182,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#correlation-does-not-imply-causation" id="toc-correlation-does-not-imply-causation" class="nav-link active" data-scroll-target="#correlation-does-not-imply-causation"><span class="header-section-number">5.1</span> Correlation does not imply causation</a></li>
+  <li><a href="#what-does-it-mean-that-a-variable-is-causal" id="toc-what-does-it-mean-that-a-variable-is-causal" class="nav-link" data-scroll-target="#what-does-it-mean-that-a-variable-is-causal"><span class="header-section-number">5.2</span> What does it mean that a variable is “causal”?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,8 +220,30 @@ ul.task-list li input[type="checkbox"] {
 <!-- 5. Statistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed. -->
 <!-- ## Outcome -->
 <!-- This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis. -->
+<p>The last two centuries brought enormous advances in the expansion of education around the world. Quantitative measures such as literacy rates, school enrollment, the share of education spending in gdp all point into the same direction: While access to education had been the privilege of a very small elite throughout history, things have changed in the direction of a very broad participation. This is a result of both economic necessities of modern production as well as of political struggles for human rights and equality. Today education is perceived as a right and it is seen as a government duty to provide broad access to basic education. A certain amount of schooling is even compulsory in most countries, although not all the countries have the capacity to broadly enforce such obligations.</p>
+<p>Despite all of these developments and efforts in the expansion of education there are still about 8 % of children worldwide which are not in school. Also progress has been heterogeneous across the globe, with literacy rates among the youth of sub Saharan Africa - for example - still below 50 %.</p>
+<p>Education policies have thus widely debated in international policy circles and lead to debates as well as to seemingly unresolvable controveries about what is needed and what works.</p>
+<p>The majority view in international policy circles has been that the most urgent need is to bring children into the class room and let them be taught by well trained teachers and the rest will follow automatically. This entails policies to make sure that children have access to a school nearby and the free provision of basic education.</p>
+<p>But enrollment does not automatically mean that all the children enrolled actually attend. For example, we know from the DHS, the demographic an health survey you learned about in previous lectures, that there is a gap between enrollment and attendance. From the surveys we also know that the absence is not necessarily driven by the fact that the children are needed at home.</p>
+<p>Look at this graph compiled from DHS data provided by Our World in Data:</p>
+<p>insert chart here.</p>
+<p>Another aspect that was debated is that enrollment does not necessarily mean that children actually learn something or that they learn at a sufficient quality. This problem of poor learning outcomes in many parts of the globe was demonstrated in many cases.</p>
+<p>Does this mean these policies are wrong, as their critics claim. They point out that there is no point in all this educational supply if there is no demand for it, taking lack of attendance and lack of sufficient learning outcomes as evidence. If there were demand, these critics argue, supply would follow and the demand arises by itself as soon as there are high enough returns to education.</p>
+<p>Why can’t controversies like these not simply be resolved by looking at the data?</p>
+<section id="correlation-does-not-imply-causation" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="correlation-does-not-imply-causation"><span class="header-section-number">5.1</span> Correlation does not imply causation</h2>
+<p>Many data sources we have just rely on education policy outcomes somebody has observed and recorder, so called observational studies. For instance there is a large literature, mainly from before the mid 1990ies in education research, which tried to answer the following question: Do increased financial resources for public schools improve educational outcomes as measured by standard education achievement tests?</p>
+<p>A look across countries would - for instance - give the following picture.</p>
+<p>insert picture here</p>
+<p>Indeed a study by <span class="citation" data-cites="Hedgesetal1994">(<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref"><strong>Hedgesetal1994?</strong></a>)</span> confirmed patterns like these. There is strong evidence that education spending and educational outcomes are positively correlated. Remember our discussion of measuring the relation between two variables in section 3.5?</p>
+<p>But does this evidence support the conclusion that there is a causal relation between increased educational spending and student outcomes? There is a straightforward reason why this can not be the case. We compare very different students or schools accross countries in the scatterplot we produced before. In the study by <span class="citation" data-cites="Hedgesetal1994">(<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref"><strong>Hedgesetal1994?</strong></a>)</span> the variables that were related were students from different households across different schools. For the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.</p>
+<p>Statisticians have summarized this observation in the mantra that <strong>“correlation does not imply causation”</strong>. If we want to establish a causal relation from data we need to work harder.</p>
+</section>
+<section id="what-does-it-mean-that-a-variable-is-causal" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="what-does-it-mean-that-a-variable-is-causal"><span class="header-section-number">5.2</span> What does it mean that a variable is “causal”?</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
