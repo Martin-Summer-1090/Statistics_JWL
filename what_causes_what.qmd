@@ -13,3 +13,4 @@
 <!-- ## Outcome -->
 
 <!-- This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis. -->
+
