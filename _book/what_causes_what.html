@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -64,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -192,7 +245,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -220,13 +273,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- 5. Statistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed. -->
 <!-- ## Outcome -->
 <!-- This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis. -->
-<p>The last two centuries brought enormous advances in the expansion of education around the world. Quantitative measures such as literacy rates, school enrollment, the share of education spending in gdp all point into the same direction: While access to education had been the privilege of a very small elite throughout history, things have changed in the direction of a very broad participation. This is a result of both economic necessities of modern production as well as of political struggles for human rights and equality. Today education is perceived as a right and it is seen as a government duty to provide broad access to basic education. A certain amount of schooling is even compulsory in most countries, although not all the countries have the capacity to broadly enforce such obligations.</p>
-<p>Despite all of these developments and efforts in the expansion of education there are still about 8 % of children worldwide which are not in school. Also progress has been heterogeneous across the globe, with literacy rates among the youth of sub Saharan Africa - for example - still below 50 %.</p>
-<p>Education policies have thus widely debated in international policy circles and lead to debates as well as to seemingly unresolvable controveries about what is needed and what works.</p>
-<p>The majority view in international policy circles has been that the most urgent need is to bring children into the class room and let them be taught by well trained teachers and the rest will follow automatically. This entails policies to make sure that children have access to a school nearby and the free provision of basic education.</p>
-<p>But enrollment does not automatically mean that all the children enrolled actually attend. For example, we know from the DHS, the demographic an health survey you learned about in previous lectures, that there is a gap between enrollment and attendance. From the surveys we also know that the absence is not necessarily driven by the fact that the children are needed at home.</p>
+<p>The last two centuries brought enormous advances in the expansion of education around the world. Quantitative measures such as literacy rates, school enrollment, the share of education spending in gdp all point into the same direction: While access to education had been the privilege of a very small elite throughout history, things have changed in the direction of a very broad participation.</p>
+<p>This is a result of both economic necessities of modern production as well as of political struggles for human rights and equality. Today education is perceived as a right and it is seen as a government duty to provide broad access to basic education. A certain amount of schooling is even compulsory in most countries, although not all the countries have the capacity to broadly enforce such obligations.</p>
+<div class="page-columns page-full"><p>Despite all of these developments and efforts in the expansion of education there are still about 8 % of children worldwide which are not in school. Also progress has been heterogeneous across the globe, with literacy rates among the youth of sub Saharan Africa - for example - still below 50 %.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The data and an interesting analysis can be found in <span class="citation" data-cites="Roser2021">Roser (<a href="references.html#ref-Roser2021" role="doc-biblioref">2021</a>)</span> at https://ourworldindata.org/children-not-in-school</p></li></div></div>
+<p>Education policies have thus been widely debated in international policy circles and have spurred debates as well as to seemingly unresolvable controversies about what is needed to further improve education for those who are still behind and precisely which policies would and would not work towards this goal.</p>
+<p>For example, the majority view in international policy circles has been that the focus of education policy should be to get children into the class room and provide the necessary teachers. This entails policies to make sure that children have access to a school nearby as well as the free provision of basic education. Once this is assured, according to this approach, the rest will more or less follow automatically.</p>
+<p>But enrollment does not automatically mean that all the children enrolled actually attend. For example, we know from the DHS, the demographic an health survey you learned about in previous lectures, that there is a gap between enrollment and attendance in the countries that have the most urgent need for improved education policies. From the surveys we also know that the absence is not necessarily driven by the fact that the children are needed at home.</p>
 <p>Look at this graph compiled from DHS data provided by Our World in Data:</p>
-<p>insert chart here.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(enrol_attend_dat<span class="sc">$</span>Enrolment, enrol_attend_dat<span class="sc">$</span>Attendance, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> (<span class="st">"Enrollment versus Attendance"</span>), <span class="at">xlab =</span> (<span class="st">"Enrollment rate primary school"</span>), <span class="at">ylab =</span> (<span class="st">"Attendance rate primary school"</span>), <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="what_causes_what_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <p>Another aspect that was debated is that enrollment does not necessarily mean that children actually learn something or that they learn at a sufficient quality. This problem of poor learning outcomes in many parts of the globe was demonstrated in many cases.</p>
 <p>Does this mean these policies are wrong, as their critics claim. They point out that there is no point in all this educational supply if there is no demand for it, taking lack of attendance and lack of sufficient learning outcomes as evidence. If there were demand, these critics argue, supply would follow and the demand arises by itself as soon as there are high enough returns to education.</p>
 <p>Why can’t controversies like these not simply be resolved by looking at the data?</p>
@@ -234,7 +300,21 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.1" class="anchored" data-anchor-id="correlation-does-not-imply-causation"><span class="header-section-number">5.1</span> Correlation does not imply causation</h2>
 <p>Many data sources we have just rely on education policy outcomes somebody has observed and recorder, so called observational studies. For instance there is a large literature, mainly from before the mid 1990ies in education research, which tried to answer the following question: Do increased financial resources for public schools improve educational outcomes as measured by standard education achievement tests?</p>
 <p>A look across countries would - for instance - give the following picture.</p>
-<p>insert picture here</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(expenditure_outcome_dat<span class="sc">$</span>Expenditure, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     expenditure_outcome_dat<span class="sc">$</span>Outcome, </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> (<span class="st">"Average learning outcomes by total education expenditure per capita"</span>), </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> (<span class="st">"Public and private per capita expenditure on education (PPP, constant 2011-intl $)"</span>), </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> (<span class="st">"Average harmonized learning outcome in 2005 - 2015"</span>), <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">500</span>, <span class="dv">3500</span>, <span class="at">by =</span> <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="what_causes_what_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <p>Indeed a study by <span class="citation" data-cites="Hedgesetal1994">(<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref"><strong>Hedgesetal1994?</strong></a>)</span> confirmed patterns like these. There is strong evidence that education spending and educational outcomes are positively correlated. Remember our discussion of measuring the relation between two variables in section 3.5?</p>
 <p>But does this evidence support the conclusion that there is a causal relation between increased educational spending and student outcomes? There is a straightforward reason why this can not be the case. We compare very different students or schools accross countries in the scatterplot we produced before. In the study by <span class="citation" data-cites="Hedgesetal1994">(<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref"><strong>Hedgesetal1994?</strong></a>)</span> the variables that were related were students from different households across different schools. For the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.</p>
 <p>Statisticians have summarized this observation in the mantra that <strong>“correlation does not imply causation”</strong>. If we want to establish a causal relation from data we need to work harder.</p>
@@ -243,7 +323,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5.2" class="anchored" data-anchor-id="what-does-it-mean-that-a-variable-is-causal"><span class="header-section-number">5.2</span> What does it mean that a variable is “causal”?</h2>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Roser2021" class="csl-entry" role="listitem">
+Roser, Max. 2021. <span>“Access to Basic Education: Almost 60 Million Children of Primary School Age Are Not in School.”</span> <a href="https://ourworldindata.org/children-not-in-school">https://ourworldindata.org/children-not-in-school</a>.
+</div>
+</div>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

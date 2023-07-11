@@ -18,7 +18,9 @@ The last two centuries brought enormous advances in the expansion of education a
 world. Quantitative measures such as literacy rates, school enrollment, the share of 
 education spending in gdp all point into the same direction: While access to education
 had been the privilege of a very small elite throughout history, things have changed
-in the direction of a very broad participation. This is a result of both economic
+in the direction of a very broad participation. 
+
+This is a result of both economic
 necessities of modern production as well as of political struggles for human rights and
 equality. Today education is perceived as a right and it is seen as a government duty to
 provide broad access to basic education. A certain amount of schooling is even compulsory in
@@ -28,26 +30,46 @@ Despite all of these developments and efforts in the
 expansion of education there are still about 8 % of children worldwide 
 which are not in school.
 Also progress has been heterogeneous across the globe, with literacy rates
-among the youth of sub Saharan Africa - for example - still below 50 %.
+among the youth of sub Saharan Africa - for example - still below 50 %.^[The data and an interesting analysis can be found in @Roser2021 at https://ourworldindata.org/children-not-in-school]
 
-Education policies have thus widely debated in international policy circles and 
-lead to debates as well as to seemingly unresolvable controveries about what is needed
-and what works.
+Education policies have thus been widely debated 
+in international policy circles and 
+have spurred debates as well as to 
+seemingly unresolvable controversies about 
+what is needed to further improve education for 
+those who are still behind and precisely which policies would and
+would not work towards this goal.
 
-The majority view in international policy circles has been that the most urgent need is
-to bring children into the class room and let them be taught by well trained teachers and
-the rest will follow automatically. This entails policies to make sure that children have
-access to a school nearby and the free provision of basic education.
+For example, the majority view in international policy circles has been that the focus of education policy should be to
+get children into the class room and provide the
+necessary teachers. This entails policies to 
+make sure that children have
+access to a school nearby as well as the 
+free provision of basic education. Once this is
+assured, according to this approach, the rest will
+more or less follow automatically.
 
 But enrollment does not automatically mean that all the children enrolled actually attend.
-For example, we know from the DHS, the demographic an health survey you learned about
-in previous lectures, that there is a gap between enrollment and attendance. From the
-surveys we also know that the absence is not necessarily driven by the fact that the
+For example, we know from the DHS, the 
+demographic an health survey you learned about
+in previous lectures, that there is a gap 
+between enrollment and attendance in the countries 
+that have the most urgent need for
+improved education policies. From the
+surveys we also know that the absence is not 
+necessarily driven by the fact that the
 children are needed at home. 
 
 Look at this graph compiled from DHS data provided by Our World in Data:
 
-insert chart here.
+```{r}
+library(JWL)
+plot(enrol_attend_dat$Enrolment, enrol_attend_dat$Attendance, 
+     main = ("Enrollment versus Attendance"), xlab = ("Enrollment rate primary school"), ylab = ("Attendance rate primary school"), pch = 16)
+
+abline(1,1, col = "blue")
+```
+
 
 Another aspect that was debated is that enrollment does not necessarily mean that children
 actually learn something or that they learn at a sufficient quality. This problem of poor 
@@ -72,7 +94,16 @@ schools improve educational outcomes as measured by standard education achieveme
 
 A look across countries would - for instance - give the following picture.
 
-insert picture here
+```{r}
+plot(expenditure_outcome_dat$Expenditure, 
+     expenditure_outcome_dat$Outcome, 
+     main = ("Average learning outcomes by total education expenditure per capita"), 
+     xlab = ("Public and private per capita expenditure on education (PPP, constant 2011-intl $)"), 
+     ylab = ("Average harmonized learning outcome in 2005 - 2015"), pch = 16)
+
+axis(1, at = seq(500, 3500, by = 500))
+```
+
 
 Indeed a study by @Hedgesetal1994 confirmed patterns like these. There is strong
 evidence that education spending and educational outcomes are positively correlated.
