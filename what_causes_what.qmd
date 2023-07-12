@@ -70,10 +70,15 @@ plot(enrol_attend_dat$Enrolment, enrol_attend_dat$Attendance,
 abline(1,1, col = "blue")
 ```
 
+In the graph you see the enrolment rate in primary school at the x-axes and the
+attendance rate on the y-axes. If all children who are enrolled would also attend
+all the points would be on the blue line, showing all the points where the enrollment rate
+is equal to the attendance rate. In the data you see many observations where the attendance 
+rate is below the enrolment rate and these observations are quite heterogeneous.
 
 Another aspect that was debated is that enrollment does not necessarily mean that children
 actually learn something or that they learn at a sufficient quality. This problem of poor 
-learning outcomes in many parts of the globe was demonstrated in many cases.
+learning outcomes in many parts of the globe was demonstrated in many cases.^[For details on the evidence you can for instance look at chapter 4 in the excellent book by @BanerjeeDuflo2012]
 
 Does this mean these policies are wrong, as their critics claim. They point out that there
 is no point in all this educational supply if  there is no demand 
@@ -87,7 +92,7 @@ Why can't controversies like these not simply be resolved by looking at the data
 ## Correlation does not imply causation
 
 Many data sources we have just rely on education policy outcomes somebody has observed and
-recorder, so called observational studies. For instance there is a large literature, 
+recorded, so called observational studies. For instance, there is a large literature, 
 mainly from before the mid 1990ies in education research, which tried to answer 
 the following question: Do increased financial resources for public 
 schools improve educational outcomes as measured by standard education achievement tests?
@@ -111,16 +116,169 @@ Remember our discussion of measuring the relation between two variables in secti
 
 But does this evidence support the conclusion that there is a causal relation between 
 increased educational spending and student outcomes? There is a straightforward reason why
-this can not be the case. We compare very different students or schools accross countries in
-the scatterplot we produced before. In the study by @Hedgesetal1994 the variables that were
-related were students from different households across different schools. For
+this can not be the case. 
+
+We compare very different students or schools across countries in
+the scatter plot we produced before. In the study by @Hedgesetal1994 the variables that were
+related were students from different households across different schools. In the
+plot we show here it is students from different households accross different counties. For
 the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different
 levels of spending does not tell us whether the different spending levels are causal for the
 variation in outcomes we observe. There may be many other differences between countries and
-students that are shaping this relationship.
+students that are shaping this relationship.^[There are whole websites documenting examples where two variables are highly correlated but it is obvious that there can not be a causal
+relation. These examples are quite funny. One site you can find for example here:
+https://tylervigen.com/spurious-correlations]
 
 Statisticians have summarized this observation in the mantra 
 that **"correlation does not imply causation"**. If we want to 
 establish a causal relation from data we need to work harder.
 
 ## What does it mean that a variable is "causal"?
+
+When you ask a doctor today about the risks of smoking, he will usually give
+you a warning and advise against it. One of the arguments will be that the evidence
+shows that smoking causes lung cancer.
+
+But assume you have been a smoker and now come into the unfortunate 
+situation that you are diagnosed with
+lung cancer. How do you know that your lung cancer occurred, because you
+were smoking and you would not have got lung cancer anyway, perhaps for an
+entirely different reason?
+
+It took the medical profession decades to accept the causality of smoking of lung cancer?
+The many studies that were undertaken on this subject since the 1930es usually compared
+people who smoke with non-smokers and tried to take conclusions about the effect from this
+comparison. In this comparisons the smokers came out badly, showing among many other things
+higher incidence of lung cancer. So many studies together established a strong correlation
+between smoking and lung cancer. If smoking cause lung cancer, this would be an explanation
+of the association between smoking and lung cancer. But this evidence is only circumstantial.
+There could be some hidden factor - so called **confounding factor** - which makes 
+people smoke and also makes them get lung
+cancer. In this case there would be no point in quitting smoking.
+
+The famous statistician Sir R.A. Fisher doubted the causal role of cigarettes for lung cancer 
+and suggested possible confounding factors. Epidemiologists conducted careful studies that
+accumulated evidence that these confounding factors were not plausible. Over time the
+evidence taken together convinced the medical community that smoking is indeed causal for
+lung cancer. But causal here has a meaning that takes into account the unavoidable variability that underlies real life.
+
+The statistical notion of causation or causality is not deterministic. If statisticians say
+there is evidence that smoking is causal for lung cancer it does not mean that every smoker will
+end up with lung cancer. It does also not mean that lung cancer can occur 
+only if you are a smoker. It rather means that among the group of smokers lung cancer will occur
+more often. Thus we can not use statistical methods to establish causation in 
+a specific case. The only thing we can possibly establish by data is that 
+smoking increases the proportion of times lung cancer will occur in a population.
+
+This has two important consequences for what needs to be done if we want to find out what
+causes what. We need to intervene, that is consciously change a variable, and 
+perform experiments. But since we are in a situation of uncertainty we need to intervene
+more than once, to establish strong enough evidence.
+
+For this reason much of research in medicine and epidemiology today relies on 
+evidence gained from so called controlled experiments. Let us explain next what
+the ideas behind such an approach is. These ideas have also been extended to other
+field, like the research on what works in policies attempting to improve
+education and to other fields.
+
+## Controlled experiments
+
+## Field trials for early polio vaccines in the US in the 1950ies
+
+Let us take an example from medicine first. Suppose a new drug is found and we
+would like to introduce it as a medication that can be prescribed by doctors to their
+patients.
+
+The basic idea of testing the effectiveness of the medicine is **comparison**. An
+experiment is designed in which the medicine is given to a **treatment group**. But there
+are other subjects that are not treated and form another group, the **control group**.
+Then the responses of the two groups are compared. The assignemt of subjects to both 
+groups should be **random** and  the experiment should be run double blind: Neither the subjects
+nor the researchers who measure the response should know who was in the control group.
+
+The key of randomization in this protocol is that it keeps the two groups equal except for
+the treatment. Then, if you measure different outcomes you can conclude with some
+confidence that the observed difference must be the result of the treatment. This would then
+establish causality.
+
+One of the first epidemiological studies implementing these ideas was a randomized controlled
+experiment to show the effectiveness of a vaccine against polio in the US in 1954 . 
+It was conducted by the Public Health Service and the National Foundation for 
+Infantile Paralysis (NFPI).
+
+The field trial was conducted in select school districts among the children in the 
+age group most vulnerable. Children could, however, only be vaccinated with their 
+parents consent, so only children whose parents agreed to the vaccination could 
+go into the treatment group. Since parents with higher income would were more 
+likely to consent to treatment. This biases the design against the vaccine, since polio is
+a disease of hygiene. Children in more hygienic surroundings have less exposure to mild
+cases of polio in early childhood. This prevents the generation of antibodies which protect
+them against severe infections at a later age.
+
+Many experts recognized the flaw in the design. The assignment to treatment and control was
+not random and thus the treatment and control group were systematically different. The 
+idea, however, is that both groups should be as similar as possible except for treatment. If the
+two groups differ to some factor other than treatment this factor my **confound** or get
+mixed up with the effect of treatment.
+
+To exclude the bias in assignment introduced by parental consent in the NFPI design, 
+it was suggested that the
+control group has to chosen from the same population as the treatment group using an impartial chance procedure. Such an approach is called **randomized controlled**.
+
+The idea of double blindness was also already used in a new improved design. The children 
+in the control group were given an injection of salt dissolved in water rather than 
+the vaccine, a so called **placebo**. During the experiment therefore the subjects 
+did not know whether they were in the control group or in the treatment group. Also 
+the doctors were not told which group the child belonged to and neither knew 
+those who evaluated the responses.
+
+A subsequent program evaluation published in a scientific journal (@Francis1955), showed the
+bias in the NFPI study in comparison with the randomized controlled double blind
+experiment:
+
+```{r}
+#| tbl-cap: Results of the 1954 polio vaccine trials
+#| tbl-subcap: ["Randomized Trial", "NFPI study"]
+#| layout-ncol: 2
+
+RCT <- data.frame(Group = c("Treatment", "Control", "No consent"), Size = c(200000, 200000, 350000), Rate = c(28, 71, 46))
+
+NFIP <- data.frame(Group = c("Grade 2 (vaccine)", "Grades 1 and 2 (control)", "Grade 2 (no consent"), Size = c(225000, 725000, 125000), Rate = c(25, 54, 44))
+
+library(knitr)
+
+# table on the left
+kable(RCT)
+
+# table on the right
+kable(NFIP)
+```
+
+The two tables show the results of the randomized trial design with the NFPI design. The size
+of groups and the rates of polio cases per 100.000 in each group are shown in the columns
+Size and Rate.
+
+In the randomized controlled trial the vaccination cut the polio rate from 71 to 28 per 
+hundred thousand. The NFPI study - by contrast - shows  a reduction from 54 to 25 per 
+hundred thousand.
+The source of the bias which accounts for the difference was confounding. The NFPI 
+treatment group contained only  only children whose partents consented to the 
+vaccination. However the
+control group contained also children whose partents would not have consented. 
+Therefore control and treatment group were not comparable.
+
+
+## School subsidies for the poor: The Mexican progresa poverty program
+
+Use article by Schultz in the JDE: Illustrate the core elements of a RCT again in this
+case.
+
+
+# Observational studies
+
+## How do randomized controlled trials differ from observational studies?
+
+## Labor market consequences of schooling: Data from Indonesia
+
+Use article by Esther Duflo in AER to show what is needed to establish causality in
+an observational study.
