@@ -183,7 +183,7 @@ education and to other fields.
 
 ## Controlled experiments
 
-## Field trials for early polio vaccines in the US in the 1950ies
+### Field trials for early polio vaccines in the US in the 1950ies
 
 Let us take an example from medicine first. Suppose a new drug is found and we
 would like to introduce it as a medication that can be prescribed by doctors to their
@@ -268,17 +268,76 @@ control group contained also children whose partents would not have consented.
 Therefore control and treatment group were not comparable.
 
 
-## School subsidies for the poor: The Mexican progresa poverty program
+### School subsidies for the poor: The Mexican progresa poverty program
 
-Use article by Schultz in the JDE: Illustrate the core elements of a RCT again in this
-case.
+While randomized controlled trials have their origin in medical research and
+epidemiology, this is an approach that can be applied in other contexts to establish
+a causal effect. In such fortunate cases, it is possible to produce actual
+evidence that a certain policy works or not.
 
+As an example consider an education policy program for the poor designed in Mexico
+in the 1990 called Progresa. The problem Progresa tried to address was how a reasonable 
+support program could be designed to increase school enrollment among the poor.
 
-# Observational studies
+It was known that school enrollment among the poor was low and that one reason for this
+low enrollment was that children needed to work to help supporting their families rather
+than going to school. This situation could be characterized as a kind of poverty trap
+because the income of the poor families is so low that they cannot afford to enrol
+the children in school which prevents them to get enough training and eventually 
+higher incomes which can raise them out of poverty.
 
-## How do randomized controlled trials differ from observational studies?
+The Finance minister at that time Santiago Levy initiated a program trying to address
+this problem by designing education grants to poor mothers to support the increase of school
+enrollment of their children. The Progresa program tried to avoid some known
+problems of past poverty alleviation programs. If a transfer conditions on current
+income. If a receipient of the transfer joins paid labor force the transfer is lost as
+earnings increase. This can lead to disincentives to attempts of joining the paid labor force.
 
-## Labor market consequences of schooling: Data from Indonesia
+The Progresa Program therefore tried to minimize disincentives to work by not conditioning the
+tranfer on current income but only on an initial assessment of houshold poverty information.
+This approach was tried as an alternative to build more schools  and augment other 
+educational ressources such as teachers and teaching quality. While there was 
+evidence that this approach
+would increase enrollment it was known that such supply policies were not 
+effective for increasing enrolment amongt the poor. So Santiago Levy took a 
+household demand approach providing subsidies which can administratvely 
+targeted to the poor and thereby perhaps help increase the enrolment rates 
+in these groups. But would this work?
+
+Santiago Levy conducted a randomized controlled trial on a set of villages, selecting
+some of them at random for receiving Progresa benefits. To provide additional
+incentives for child enrolment the transfers were conditioned on whether children 
+attended school regularly and the family used preventive health care. More money was given 
+to children in secondary school than to children in primary school to compensate
+for lost wages (from going to school rather than taking up paid work) and also more
+money was given for enroling girls than for enroling boys. 
+
+Through the selection of all potentially eligible households based on geographical and
+household poverty information all of these households share similar characteristics. The
+random allocation of Progresa recipients splits this population into a 
+treatment group (the Progresa recipients) and a control group ( the
+households which did not receive Progresa transfers). If the groups are then
+compared with respect to enrolment rates we can say that they are similar in
+all dimensions except treatment. Differences in enrolment rates between the groups
+can then be understood as causally linked to the treatment. There is no
+confounding. This is the basic idea
+of a randomized controlled trial.
+
+It could indeed be established that Progresa worked to increas school enrolment among
+the poor in Mexico. Here are the numbers: For boys the enrolment increased from 73 % in the
+control group to 77 % in  the Progresa group. For girls the increase was even bigger, from
+67 % in the contril group to 75 % in the Progresa group.
+
+The evidence for the success of the Progresa Program also helped that the program
+survived when political power was transferred to a new government in the next election.
+Although Santiago Levy was not prime minister any more, the new government continued the
+program under the new name Oppordunitades.
+
+## Observational studies
+
+### How do randomized controlled trials differ from observational studies?
+
+### Labor market consequences of schooling: Data from Indonesia
 
 Use article by Esther Duflo in AER to show what is needed to establish causality in
 an observational study.
