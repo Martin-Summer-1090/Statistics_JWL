@@ -16,7 +16,7 @@
 
 The last two centuries brought enormous advances in the expansion of education around the
 world. Quantitative measures such as literacy rates, school enrollment, the share of 
-education spending in gdp all point into the same direction: While access to education
+education spending in GDP all point into the same direction: While access to education
 had been the privilege of a very small elite throughout history, things have changed
 in the direction of a very broad participation. 
 
@@ -51,7 +51,7 @@ more or less follow automatically.
 
 But enrollment does not automatically mean that all the children enrolled actually attend.
 For example, we know from the DHS, the 
-demographic an health survey you learned about
+demographic and health survey you learned about
 in previous lectures, that there is a gap 
 between enrollment and attendance in the countries 
 that have the most urgent need for
@@ -145,7 +145,7 @@ lung cancer. How do you know that your lung cancer occurred, because you
 were smoking and you would not have got lung cancer anyway, perhaps for an
 entirely different reason?
 
-It took the medical profession decades to accept the causality of smoking of lung cancer?
+It took the medical profession decades to accept the causality of smoking of lung cancer.
 The many studies that were undertaken on this subject since the 1930es usually compared
 people who smoke with non-smokers and tried to take conclusions about the effect from this
 comparison. In this comparisons the smokers came out badly, showing among many other things
@@ -193,7 +193,7 @@ The basic idea of testing the effectiveness of the medicine is **comparison**. A
 experiment is designed in which the medicine is given to a **treatment group**. But there
 are other subjects that are not treated and form another group, the **control group**.
 Then the responses of the two groups are compared. The assignemt of subjects to both 
-groups should be **random** and  the experiment should be run double blind: Neither the subjects
+groups should be **random** and  the experiment should be run **double blind**: Neither the subjects
 nor the researchers who measure the response should know who was in the control group.
 
 The key of randomization in this protocol is that it keeps the two groups equal except for
@@ -209,7 +209,7 @@ Infantile Paralysis (NFPI).
 The field trial was conducted in select school districts among the children in the 
 age group most vulnerable. Children could, however, only be vaccinated with their 
 parents consent, so only children whose parents agreed to the vaccination could 
-go into the treatment group. Since parents with higher income would were more 
+go into the treatment group. Since parents with higher income were more 
 likely to consent to treatment. This biases the design against the vaccine, since polio is
 a disease of hygiene. Children in more hygienic surroundings have less exposure to mild
 cases of polio in early childhood. This prevents the generation of antibodies which protect
@@ -282,31 +282,31 @@ support program could be designed to increase school enrollment among the poor.
 It was known that school enrollment among the poor was low and that one reason for this
 low enrollment was that children needed to work to help supporting their families rather
 than going to school. This situation could be characterized as a kind of poverty trap
-because the income of the poor families is so low that they cannot afford to enrol
+because the income of the poor families is so low that they cannot afford to enroll
 the children in school which prevents them to get enough training and eventually 
 higher incomes which can raise them out of poverty.
 
-The Finance minister at that time Santiago Levy initiated a program trying to address
+The Finance minister at that time, Santiago Levy, initiated a program trying to address
 this problem by designing education grants to poor mothers to support the increase of school
 enrollment of their children. The Progresa program tried to avoid some known
 problems of past poverty alleviation programs. If a transfer conditions on current
-income. If a receipient of the transfer joins paid labor force the transfer is lost as
+income. If a recipient of the transfer joins the paid labor force the transfer is lost as
 earnings increase. This can lead to disincentives to attempts of joining the paid labor force.
 
 The Progresa Program therefore tried to minimize disincentives to work by not conditioning the
-tranfer on current income but only on an initial assessment of houshold poverty information.
+transfer on current income but only on an initial assessment of household poverty information.
 This approach was tried as an alternative to build more schools  and augment other 
-educational ressources such as teachers and teaching quality. While there was 
+educational resources such as teachers and teaching quality. While there was 
 evidence that this approach
 would increase enrollment it was known that such supply policies were not 
-effective for increasing enrolment amongt the poor. So Santiago Levy took a 
-household demand approach providing subsidies which can administratvely 
-targeted to the poor and thereby perhaps help increase the enrolment rates 
+effective for increasing enrollment amongt the poor. So Santiago Levy took a 
+household demand approach providing subsidies which can administratively 
+targeted to the poor and thereby perhaps help increase the enrollment rates 
 in these groups. But would this work?
 
 Santiago Levy conducted a randomized controlled trial on a set of villages, selecting
 some of them at random for receiving Progresa benefits. To provide additional
-incentives for child enrolment the transfers were conditioned on whether children 
+incentives for child enrollment the transfers were conditioned on whether children 
 attended school regularly and the family used preventive health care. More money was given 
 to children in secondary school than to children in primary school to compensate
 for lost wages (from going to school rather than taking up paid work) and also more
