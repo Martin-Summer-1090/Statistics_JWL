@@ -335,6 +335,120 @@ program under the new name Oppordunitades.
 
 ## Observational studies
 
+Controlled experiments are different from **observational** studies. In a controlled 
+experiment the investigator decides who will be in the treatment group and who will be
+in the control group. In an observational study, by contrast, the investigator can
+just observe what happens and he has no control over assigning subjects to different
+groups. In an observational study the subjects assign themselves to treatment and
+control.
+
+This terminology can be confusing because it uses the word control in two meanings: On the
+one hand, as we discussed in the previous sections a control is a subject who did not get
+the treatment. A controlled experiment is a study where the investigator decides who will be
+in the treatment group and who will be in the control group.
+
+Going back to studies on the effects of smoking, which we discussed earlier in this
+lecture, we can see that such studies must necessarily be observational. We can not 
+make some people smoke for a decade or more just to fulfill a statistically satisfactory
+research design.
+
+Note, however, that the basic idea of treatment and control groups is still used. The
+statistician in an observational study on the effects of smoking would
+compare the smokers - the treatment group with exposure to smoking - with the non-smokers,
+the control group. The idea is that we can learn something about the effects from 
+smoking by such a comparison.
+
+In this comparison, in the many observational studies that have been done on smoking since
+the early 20th century, smokers come out pretty badly. They suffer more frequently than
+non-smokers from heart attacks, lung cancer and other diseases. If smoking would cause
+these higher rates, this would explain the correlation observed in the data of the
+observational studies.
+
+However, observing this association, is incomplete as a proof for causation. There might
+be a hidden factor, not included in the observational study, which makes people smoke and at the
+same time makes people ill. Such hidden factors are called **confounding factors** or
+**confounders** in the technical jargon of statisticians.
+
+To think about potential problems of confounding, it is helpful to ask yourselve how
+the controls were selected. The question is whether the control group is really 
+similar to the treatment group apart from the exposure of interest. If there is
+confounding something has to be done to deal with it. Statisticians often talk about
+controlling for confounding factors in an observational study. This is yet another, a
+third sense in which the word control is used in statistics.
+
+The meaning of the term control in this case is that in the case where subjects 
+differ among themselves in an observational study in crucial ways 
+beside treatment, the statistician adjusts
+the sample by comparing smaller and more homogemous groups.
+
+A famous example illustrating this point and featured in many textbooks^[I follow here the
+discussion in the textbook by @FrePisPur2009 pp. 18-19] is an
+observational study on sex bias in admission to graduate studies at the University
+of California in Berkeley in the 1975. During the study period, 8442 men and 4321 women applied for admission to graduate school. The acceptance rate among men was 44 % and that of
+women 35 %. 
+
+Assuming that men and women overall were equally well qualified this difference in the
+admission rate looks like evidence of a different treatment of men and women. 
+
+Since each subject did its own admission to graduate studies, the university should
+have been able to identify the subjects which discriminated against women. But at that
+point a puzzle appeared. If subjects were looked at seperately subject by subject there
+didn't seem to be any bias against women.If there was a bias it was a bias against men.
+How is this possible?
+
+Over a hundred subjects were involved. However, the six largest together 
+accounted for over one-third of the total number of applicants. The pattern 
+for these subjects was typical of the whole campus.
+
+These are the data for men:
+
+| Subject | Number of Applicants| Percent admitted |
+|---------|---------------------|------------------|
+| A       | 825                 | 62               | 
+| B       | 560                 | 63               | 
+| C       | 325                 | 37               |
+| D       | 417                 | 33               |
+| E       | 191                 | 28               |
+| F       | 373                 |  6               |
+
+
+: Admissions data for men graduate programs in the six largest 
+subjects at University of California, Berkeley {.striped .hover}
+
+And these are the data for women:
+
+| Subject | Number of Applicants| Percent admitted |
+|---------|---------------------|------------------|
+| A       | 108                 | 82               | 
+| B       |  25                 | 68               | 
+| C       | 593                 | 34               |
+| D       | 375                 | 35               |
+| E       | 393                 | 24               |
+| F       | 341                 |  7               |
+
+: Admissions data for women graduate programs in the six largest 
+subjects at University of California, Berkeley {.striped .hover}
+
+In each subject, the percentage of female applicants who were admitted is 
+roughly equal to the percentage of male applicants. Subject A is an exception. 
+It appears to discriminate against men because it admitted 82 % of the
+women and only 62 % of the men. The subject that looks most biased against women is E.
+But the difference here is only 4 percentage points. When we take all six
+subjects together they admitted 44% of the male applicants and only 30 % of the 
+females. The difference amounts to 14 percentage points.
+
+There is, however an explanation for this seemingly paradox situation. The first
+two subjects A and B were easy to get into. Over 50% of men applied to these
+two subjects. The other four were much harder to get into. Over 90% of the women
+applied to these subjects. 
+
+This means that men applied to the easy subjects whereas women applied for the hard ones. 
+there was a confounding effect. The effect due to the choice of 
+subject was confounded with the effect due to sex. When the choice of the subject is
+controlled for there is little difference between admission rates of men and women.
+(Simpson paradox)
+
+
 ### How do randomized controlled trials differ from observational studies?
 
 ### Labor market consequences of schooling: Data from Indonesia

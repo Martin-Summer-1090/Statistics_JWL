@@ -368,9 +368,9 @@ div.csl-indent {
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># table on the right</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(NFIP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="tbl-anonymous-4078702" class="cell tbl-parent quarto-layout-panel anchored">
+<div id="tbl-anonymous-779678" class="cell tbl-parent quarto-layout-panel anchored">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-4078702-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-4078702" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-779678-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-779678" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
 <caption>Randomized Trial</caption>
 <thead>
@@ -399,7 +399,7 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-4078702-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-4078702" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-anonymous-779678-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-779678" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
 <caption>NFPI study</caption>
 <thead>
@@ -450,8 +450,109 @@ div.csl-indent {
 <p>The evidence for the success of the Progresa Program also helped that the program survived when political power was transferred to a new government in the next election. Although Santiago Levy was not prime minister any more, the new government continued the program under the new name Oppordunitades.</p>
 </section>
 </section>
-<section id="observational-studies" class="level2" data-number="5.4">
+<section id="observational-studies" class="level2 page-columns page-full" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">5.4</span> Observational studies</h2>
+<p>Controlled experiments are different from <strong>observational</strong> studies. In a controlled experiment the investigator decides who will be in the treatment group and who will be in the control group. In an observational study, by contrast, the investigator can just observe what happens and he has no control over assigning subjects to different groups. In an observational study the subjects assign themselves to treatment and control.</p>
+<p>This terminology can be confusing because it uses the word control in two meanings: On the one hand, as we discussed in the previous sections a control is a subject who did not get the treatment. A controlled experiment is a study where the investigator decides who will be in the treatment group and who will be in the control group.</p>
+<p>Going back to studies on the effects of smoking, which we discussed earlier in this lecture, we can see that such studies must necessarily be observational. We can not make some people smoke for a decade or more just to fulfill a statistically satisfactory research design.</p>
+<p>Note, however, that the basic idea of treatment and control groups is still used. The statistician in an observational study on the effects of smoking would compare the smokers - the treatment group with exposure to smoking - with the non-smokers, the control group. The idea is that we can learn something about the effects from smoking by such a comparison.</p>
+<p>In this comparison, in the many observational studies that have been done on smoking since the early 20th century, smokers come out pretty badly. They suffer more frequently than non-smokers from heart attacks, lung cancer and other diseases. If smoking would cause these higher rates, this would explain the correlation observed in the data of the observational studies.</p>
+<p>However, observing this association, is incomplete as a proof for causation. There might be a hidden factor, not included in the observational study, which makes people smoke and at the same time makes people ill.&nbsp;Such hidden factors are called <strong>confounding factors</strong> or <strong>confounders</strong> in the technical jargon of statisticians.</p>
+<p>To think about potential problems of confounding, it is helpful to ask yourselve how the controls were selected. The question is whether the control group is really similar to the treatment group apart from the exposure of interest. If there is confounding something has to be done to deal with it. Statisticians often talk about controlling for confounding factors in an observational study. This is yet another, a third sense in which the word control is used in statistics.</p>
+<p>The meaning of the term control in this case is that in the case where subjects differ among themselves in an observational study in crucial ways beside treatment, the statistician adjusts the sample by comparing smaller and more homogemous groups.</p>
+<div class="page-columns page-full"><p>A famous example illustrating this point and featured in many textbooks<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is an observational study on sex bias in admission to graduate studies at the University of California in Berkeley in the 1975. During the study period, 8442 men and 4321 women applied for admission to graduate school. The acceptance rate among men was 44 % and that of women 35 %.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;I follow here the discussion in the textbook by <span class="citation" data-cites="FrePisPur2009">Freedman, Pisani, and Purves (<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">2009</a>)</span> pp.&nbsp;18-19</p></li></div></div>
+<p>Assuming that men and women overall were equally well qualified this difference in the admission rate looks like evidence of a different treatment of men and women.</p>
+<p>Since each subject did its own admission to graduate studies, the university should have been able to identify the subjects which discriminated against women. But at that point a puzzle appeared. If subjects were looked at seperately subject by subject there didn’t seem to be any bias against women.If there was a bias it was a bias against men. How is this possible?</p>
+<p>Over a hundred subjects were involved. However, the six largest together accounted for over one-third of the total number of applicants. The pattern for these subjects was typical of the whole campus.</p>
+<p>These are the data for men:</p>
+<table class="table-striped table-hover table">
+<caption>Admissions data for men graduate programs in the six largest subjects at University of California, Berkeley</caption>
+<thead>
+<tr class="header">
+<th>Subject</th>
+<th>Number of Applicants</th>
+<th>Percent admitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>825</td>
+<td>62</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>560</td>
+<td>63</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>325</td>
+<td>37</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>417</td>
+<td>33</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>191</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>373</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p>And these are the data for women:</p>
+<table class="table-striped table-hover table">
+<caption>Admissions data for women graduate programs in the six largest subjects at University of California, Berkeley</caption>
+<thead>
+<tr class="header">
+<th>Subject</th>
+<th>Number of Applicants</th>
+<th>Percent admitted</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>108</td>
+<td>82</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>25</td>
+<td>68</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>593</td>
+<td>34</td>
+</tr>
+<tr class="even">
+<td>D</td>
+<td>375</td>
+<td>35</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>393</td>
+<td>24</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>341</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>In each subject, the percentage of female applicants who were admitted is roughly equal to the percentage of male applicants. Subject A is an exception. It appears to discriminate against men because it admitted 82 % of the women and only 62 % of the men. The subject that looks most biased against women is E. But the difference here is only 4 percentage points. When we take all six subjects together they admitted 44% of the male applicants and only 30 % of the females. The difference amounts to 14 percentage points.</p>
+<p>There is, however an explanation for this seemingly paradox situation. The first two subjects A and B were easy to get into. Over 50% of men applied to these two subjects. The other four were much harder to get into. Over 90% of the women applied to these subjects.</p>
+<p>This means that men applied to the easy subjects whereas women applied for the hard ones. there was a confounding effect. The effect due to the choice of subject was confounded with the effect due to sex. When the choice of the subject is controlled for there is little difference between admission rates of men and women. (Simpson paradox)</p>
 <section id="how-do-randomized-controlled-trials-differ-from-observational-studies" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="how-do-randomized-controlled-trials-differ-from-observational-studies"><span class="header-section-number">5.4.1</span> How do randomized controlled trials differ from observational studies?</h3>
 </section>
@@ -466,6 +567,9 @@ Banerjee, Abhijit, and Esther Duflo. 2012. <em>Poor Economics: A Radical Rethink
 </div>
 <div id="ref-Francis1955" class="csl-entry" role="listitem">
 Francis, Thomas. 1955. <span>“An Evaluation of the 1954 Poliomyelitis Vaccine Trials - Summary Report.”</span> <em>American Journal of Public Health</em> 45: 1–63.
+</div>
+<div id="ref-FrePisPur2009" class="csl-entry" role="listitem">
+Freedman, David, Robert Pisani, and Roger Purves. 2009. <em>Statistics</em>. Fourth. Viva-Norton.
 </div>
 <div id="ref-Hedgesetal1994" class="csl-entry" role="listitem">
 Larry Hedges, Rob Greenwald, Richard Laine. 1994. <span>“Does Money Matter? A Meta-Analysis of Studies of the Effects of Differential School Inputs on Student Outcomes.”</span> <em>Educational Researcher</em> 3 (23): 5–14.
