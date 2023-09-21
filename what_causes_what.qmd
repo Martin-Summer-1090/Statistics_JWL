@@ -70,6 +70,23 @@ plot(enrol_attend_dat$Enrolment, enrol_attend_dat$Attendance,
 abline(1,1, col = "blue")
 ```
 
+:::{.callout-note icon=false}
+
+### Now you try
+
+This is an excellent opportunity to refresh some of the R skills you have required in this
+course so far. The data that were used to produce this picture are in the JWL-package.
+
+1. Load the JWL package
+2. The dataset is called `enrol_attend_dat`. Use the R help function to study the
+   data an the meaning of the variables as well as the original data source.
+3. Can you write an R code reproducing the graphics? (Hint: Not everything you need to
+   reproduce this plot was contained in the lectures. Try to use an internet search to find
+   out for instance how to draw the blue line)
+
+:::
+
+
 In the graph you see the enrolment rate in primary school at the x-axes and the
 attendance rate on the y-axes. If all children who are enrolled would also attend
 all the points would be on the blue line, showing all the points where the enrollment rate
@@ -80,7 +97,7 @@ Another aspect that was debated is that enrollment does not necessarily mean tha
 actually learn something or that they learn at a sufficient quality. This problem of poor 
 learning outcomes in many parts of the globe was demonstrated in many cases.^[For details on the evidence you can for instance look at chapter 4 in the excellent book by @BanerjeeDuflo2012]
 
-Does this mean these policies are wrong, as their critics claim. They point out that there
+Does this mean these policies are wrong, as their critics claim? They point out that there
 is no point in all this educational supply if  there is no demand 
 for it, taking lack of attendance and lack of sufficient learning 
 outcomes as evidence. If there were demand, these
@@ -91,8 +108,8 @@ Why can't controversies like these not simply be resolved by looking at the data
 
 ## Correlation does not imply causation
 
-Many data sources we have just rely on education policy outcomes somebody has observed and
-recorded, so called observational studies. For instance, there is a large literature, 
+Many data sources we have, just rely on education policy outcomes somebody has observed and
+recorded, so called **observational studies**. For instance, there is a large literature, 
 mainly from before the mid 1990ies in education research, which tried to answer 
 the following question: Do increased financial resources for public 
 schools improve educational outcomes as measured by standard education achievement tests?
@@ -114,6 +131,18 @@ Indeed a study by @Hedgesetal1994 confirmed patterns like these. There is strong
 evidence that education spending and educational outcomes are positively correlated.
 Remember our discussion of measuring the relation between two variables in section 3.5?
 
+:::{.callout-note icon=false}
+
+### Now you try
+
+This is another excellent opportunity to refresh some of the R skills you have required in this
+course so far. The data that were used to produce this picture are in the JWL-package.
+
+The dataset is called `expenditure_outcome_dat`. Use R to compute the correlation coefficient
+between public and private per capita expenditure of education and the average harmonized learning outcome. Explain what this number means.
+
+:::
+
 But does this evidence support the conclusion that there is a causal relation between 
 increased educational spending and student outcomes? There is a straightforward reason why
 this can not be the case. 
@@ -121,13 +150,13 @@ this can not be the case.
 We compare very different students or schools across countries in
 the scatter plot we produced before. In the study by @Hedgesetal1994 the variables that were
 related were students from different households across different schools. In the
-plot we show here it is students from different households accross different counties. For
+plot we show here it is students from different households across different countries. For
 the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different
 levels of spending does not tell us whether the different spending levels are causal for the
 variation in outcomes we observe. There may be many other differences between countries and
 students that are shaping this relationship.^[There are whole websites documenting examples where two variables are highly correlated but it is obvious that there can not be a causal
 relation. These examples are quite funny. One site you can find for example here:
-https://tylervigen.com/spurious-correlations]
+https://tylervigen.com/spurious-correlations Try it out!]
 
 Statisticians have summarized this observation in the mantra 
 that **"correlation does not imply causation"**. If we want to 
@@ -178,7 +207,7 @@ more than once, to establish strong enough evidence.
 For this reason much of research in medicine and epidemiology today relies on 
 evidence gained from so called controlled experiments. Let us explain next what
 the ideas behind such an approach is. These ideas have also been extended to other
-field, like the research on what works in policies attempting to improve
+fields, like the research on what works in policies attempting to improve
 education and to other fields.
 
 ## Controlled experiments
@@ -187,7 +216,7 @@ education and to other fields.
 
 Let us take an example from medicine first. Suppose a new drug is found and we
 would like to introduce it as a medication that can be prescribed by doctors to their
-patients.
+patients.^[This discussion follows @FrePisPur2009]
 
 The basic idea of testing the effectiveness of the medicine is **comparison**. An
 experiment is designed in which the medicine is given to a **treatment group**. But there
@@ -206,10 +235,14 @@ experiment to show the effectiveness of a vaccine against polio in the US in 195
 It was conducted by the Public Health Service and the National Foundation for 
 Infantile Paralysis (NFPI).
 
-The field trial was conducted in select school districts among the children in the 
-age group most vulnerable. Children could, however, only be vaccinated with their 
+The field trial was conducted in select school districts throughout the country where the
+risk of polio was high. Two million children were involved and half a million were
+vaccinated. A million were deliberately left unvaccinated as controls, half a million refused 
+vaccination.
+
+Children could, however, only be vaccinated with their 
 parents consent, so only children whose parents agreed to the vaccination could 
-go into the treatment group. Since parents with higher income were more 
+go into the treatment group. Parents with higher income were more 
 likely to consent to treatment. This biases the design against the vaccine, since polio is
 a disease of hygiene. Children in more hygienic surroundings have less exposure to mild
 cases of polio in early childhood. This prevents the generation of antibodies which protect
@@ -240,6 +273,7 @@ experiment:
 #| tbl-cap: Results of the 1954 polio vaccine trials
 #| tbl-subcap: ["Randomized Trial", "NFPI study"]
 #| layout-ncol: 2
+#| label: tbl-salk-vaccine-field-trials
 
 RCT <- data.frame(Group = c("Treatment", "Control", "No consent"), Size = c(200000, 200000, 350000), Rate = c(28, 71, 46))
 
@@ -262,9 +296,9 @@ In the randomized controlled trial the vaccination cut the polio rate from 71 to
 hundred thousand. The NFPI study - by contrast - shows  a reduction from 54 to 25 per 
 hundred thousand.
 The source of the bias which accounts for the difference was confounding. The NFPI 
-treatment group contained only  only children whose partents consented to the 
+treatment group contained only  only children whose parents consented to the 
 vaccination. However the
-control group contained also children whose partents would not have consented. 
+control group contained also children whose parents would not have consented. 
 Therefore control and treatment group were not comparable.
 
 
@@ -290,7 +324,9 @@ The Finance minister at that time, Santiago Levy, initiated a program trying to 
 this problem by designing education grants to poor mothers to support the increase of school
 enrollment of their children. The Progresa program tried to avoid some known
 problems of past poverty alleviation programs. If a transfer conditions on current
-income. If a recipient of the transfer joins the paid labor force the transfer is lost as
+income, this can for instance create an incentive against taking up a job. This 
+can happen because if a 
+recipient of the transfer joins the paid labor force the transfer is lost as
 earnings increase. This can lead to disincentives to attempts of joining the paid labor force.
 
 The Progresa Program therefore tried to minimize disincentives to work by not conditioning the
@@ -304,7 +340,8 @@ household demand approach providing subsidies which can administratively
 targeted to the poor and thereby perhaps help increase the enrollment rates 
 in these groups. But would this work?
 
-Santiago Levy conducted a randomized controlled trial on a set of villages, selecting
+To find out the ministry of Finance 
+conducted a randomized controlled trial on a set of villages, selecting
 some of them at random for receiving Progresa benefits. To provide additional
 incentives for child enrollment the transfers were conditioned on whether children 
 attended school regularly and the family used preventive health care. More money was given 
@@ -317,14 +354,14 @@ household poverty information all of these households share similar characterist
 random allocation of Progresa recipients splits this population into a 
 treatment group (the Progresa recipients) and a control group ( the
 households which did not receive Progresa transfers). If the groups are then
-compared with respect to enrolment rates we can say that they are similar in
-all dimensions except treatment. Differences in enrolment rates between the groups
+compared with respect to enrollment rates we can say that they are similar in
+all dimensions except treatment. Differences in enrollment rates between the groups
 can then be understood as causally linked to the treatment. There is no
 confounding. This is the basic idea
 of a randomized controlled trial.
 
-It could indeed be established that Progresa worked to increas school enrolment among
-the poor in Mexico. Here are the numbers: For boys the enrolment increased from 73 % in the
+It could indeed be established that Progresa worked to increase school enrollment among
+the poor in Mexico. Here are the numbers: For boys the enrollment increased from 73 % in the
 control group to 77 % in  the Progresa group. For girls the increase was even bigger, from
 67 % in the contril group to 75 % in the Progresa group.
 
@@ -332,6 +369,21 @@ The evidence for the success of the Progresa Program also helped that the progra
 survived when political power was transferred to a new government in the next election.
 Although Santiago Levy was not prime minister any more, the new government continued the
 program under the new name Oppordunitades.
+
+## Exercises:
+
+1. Data from the polio vaccine studies discussed in the text suggest that in 1954, the
+   school districts in the NFIP trial and in the randomized controlled experiment had
+   similar exposure to the polio virus.
+     (a) The data also show that children in the two vaccine groups (for the randomized    controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table @tbl-salk-vaccine-field-trials confirm
+     this finding?
+     (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?
+     (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?
+     (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
+     (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What's wrong with these data?
+     
+2. The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of
+polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.
 
 ## Observational studies
 
@@ -459,6 +511,9 @@ example which showed Simpson's Paradox in a different context ? Which example wa
 Explain.
 
 :::
+
+## Exercises
+
 
 
 ## Can we ever conclude causation from observational data ?

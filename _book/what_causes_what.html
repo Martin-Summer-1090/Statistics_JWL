@@ -246,8 +246,10 @@ div.csl-indent {
   <li><a href="#field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" id="toc-field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" class="nav-link" data-scroll-target="#field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies"><span class="header-section-number">5.3.1</span> Field trials for early polio vaccines in the US in the 1950ies</a></li>
   <li><a href="#school-subsidies-for-the-poor-the-mexican-progresa-poverty-program" id="toc-school-subsidies-for-the-poor-the-mexican-progresa-poverty-program" class="nav-link" data-scroll-target="#school-subsidies-for-the-poor-the-mexican-progresa-poverty-program"><span class="header-section-number">5.3.2</span> School subsidies for the poor: The Mexican progresa poverty program</a></li>
   </ul></li>
-  <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.4</span> Observational studies</a></li>
-  <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.4</span> Exercises:</a></li>
+  <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.5</span> Observational studies</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.6</span> Exercises</a></li>
+  <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.7</span> Can we ever conclude causation from observational data ?</a></li>
   </ul>
 </nav>
     </div>
@@ -300,13 +302,31 @@ div.csl-indent {
 <p><img src="what_causes_what_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an excellent opportunity to refresh some of the R skills you have required in this course so far. The data that were used to produce this picture are in the JWL-package.</p>
+<ol type="1">
+<li>Load the JWL package</li>
+<li>The dataset is called <code>enrol_attend_dat</code>. Use the R help function to study the data an the meaning of the variables as well as the original data source.</li>
+<li>Can you write an R code reproducing the graphics? (Hint: Not everything you need to reproduce this plot was contained in the lectures. Try to use an internet search to find out for instance how to draw the blue line)</li>
+</ol>
+</div>
+</div>
 <p>In the graph you see the enrolment rate in primary school at the x-axes and the attendance rate on the y-axes. If all children who are enrolled would also attend all the points would be on the blue line, showing all the points where the enrollment rate is equal to the attendance rate. In the data you see many observations where the attendance rate is below the enrolment rate and these observations are quite heterogeneous.</p>
 <div class="page-columns page-full"><p>Another aspect that was debated is that enrollment does not necessarily mean that children actually learn something or that they learn at a sufficient quality. This problem of poor learning outcomes in many parts of the globe was demonstrated in many cases.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;For details on the evidence you can for instance look at chapter 4 in the excellent book by <span class="citation" data-cites="BanerjeeDuflo2012">Banerjee and Duflo (<a href="references.html#ref-BanerjeeDuflo2012" role="doc-biblioref">2012</a>)</span></p></li></div></div>
-<p>Does this mean these policies are wrong, as their critics claim. They point out that there is no point in all this educational supply if there is no demand for it, taking lack of attendance and lack of sufficient learning outcomes as evidence. If there were demand, these critics argue, supply would follow and the demand arises by itself as soon as there are high enough returns to education.</p>
+<p>Does this mean these policies are wrong, as their critics claim? They point out that there is no point in all this educational supply if there is no demand for it, taking lack of attendance and lack of sufficient learning outcomes as evidence. If there were demand, these critics argue, supply would follow and the demand arises by itself as soon as there are high enough returns to education.</p>
 <p>Why can’t controversies like these not simply be resolved by looking at the data?</p>
 <section id="correlation-does-not-imply-causation" class="level2 page-columns page-full" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="correlation-does-not-imply-causation"><span class="header-section-number">5.1</span> Correlation does not imply causation</h2>
-<p>Many data sources we have just rely on education policy outcomes somebody has observed and recorded, so called observational studies. For instance, there is a large literature, mainly from before the mid 1990ies in education research, which tried to answer the following question: Do increased financial resources for public schools improve educational outcomes as measured by standard education achievement tests?</p>
+<p>Many data sources we have, just rely on education policy outcomes somebody has observed and recorded, so called <strong>observational studies</strong>. For instance, there is a large literature, mainly from before the mid 1990ies in education research, which tried to answer the following question: Do increased financial resources for public schools improve educational outcomes as measured by standard education achievement tests?</p>
 <p>A look across countries would - for instance - give the following picture.</p>
 <div class="cell">
 <details>
@@ -324,8 +344,22 @@ div.csl-indent {
 </div>
 </div>
 <p>Indeed a study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span> confirmed patterns like these. There is strong evidence that education spending and educational outcomes are positively correlated. Remember our discussion of measuring the relation between two variables in section 3.5?</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is another excellent opportunity to refresh some of the R skills you have required in this course so far. The data that were used to produce this picture are in the JWL-package.</p>
+<p>The dataset is called <code>expenditure_outcome_dat</code>. Use R to compute the correlation coefficient between public and private per capita expenditure of education and the average harmonized learning outcome. Explain what this number means.</p>
+</div>
+</div>
 <p>But does this evidence support the conclusion that there is a causal relation between increased educational spending and student outcomes? There is a straightforward reason why this can not be the case.</p>
-<div class="page-columns page-full"><p>We compare very different students or schools across countries in the scatter plot we produced before. In the study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span> the variables that were related were students from different households across different schools. In the plot we show here it is students from different households accross different counties. For the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;There are whole websites documenting examples where two variables are highly correlated but it is obvious that there can not be a causal relation. These examples are quite funny. One site you can find for example here: https://tylervigen.com/spurious-correlations</p></li></div></div>
+<div class="page-columns page-full"><p>We compare very different students or schools across countries in the scatter plot we produced before. In the study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span> the variables that were related were students from different households across different schools. In the plot we show here it is students from different households across different countries. For the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;There are whole websites documenting examples where two variables are highly correlated but it is obvious that there can not be a causal relation. These examples are quite funny. One site you can find for example here: https://tylervigen.com/spurious-correlations Try it out!</p></li></div></div>
 <p>Statisticians have summarized this observation in the mantra that <strong>“correlation does not imply causation”</strong>. If we want to establish a causal relation from data we need to work harder.</p>
 </section>
 <section id="what-does-it-mean-that-a-variable-is-causal" class="level2" data-number="5.2">
@@ -336,17 +370,18 @@ div.csl-indent {
 <p>The famous statistician Sir R.A. Fisher doubted the causal role of cigarettes for lung cancer and suggested possible confounding factors. Epidemiologists conducted careful studies that accumulated evidence that these confounding factors were not plausible. Over time the evidence taken together convinced the medical community that smoking is indeed causal for lung cancer. But causal here has a meaning that takes into account the unavoidable variability that underlies real life.</p>
 <p>The statistical notion of causation or causality is not deterministic. If statisticians say there is evidence that smoking is causal for lung cancer it does not mean that every smoker will end up with lung cancer. It does also not mean that lung cancer can occur only if you are a smoker. It rather means that among the group of smokers lung cancer will occur more often. Thus we can not use statistical methods to establish causation in a specific case. The only thing we can possibly establish by data is that smoking increases the proportion of times lung cancer will occur in a population.</p>
 <p>This has two important consequences for what needs to be done if we want to find out what causes what. We need to intervene, that is consciously change a variable, and perform experiments. But since we are in a situation of uncertainty we need to intervene more than once, to establish strong enough evidence.</p>
-<p>For this reason much of research in medicine and epidemiology today relies on evidence gained from so called controlled experiments. Let us explain next what the ideas behind such an approach is. These ideas have also been extended to other field, like the research on what works in policies attempting to improve education and to other fields.</p>
+<p>For this reason much of research in medicine and epidemiology today relies on evidence gained from so called controlled experiments. Let us explain next what the ideas behind such an approach is. These ideas have also been extended to other fields, like the research on what works in policies attempting to improve education and to other fields.</p>
 </section>
-<section id="controlled-experiments" class="level2" data-number="5.3">
+<section id="controlled-experiments" class="level2 page-columns page-full" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="controlled-experiments"><span class="header-section-number">5.3</span> Controlled experiments</h2>
-<section id="field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" class="level3" data-number="5.3.1">
+<section id="field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" class="level3 page-columns page-full" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies"><span class="header-section-number">5.3.1</span> Field trials for early polio vaccines in the US in the 1950ies</h3>
-<p>Let us take an example from medicine first. Suppose a new drug is found and we would like to introduce it as a medication that can be prescribed by doctors to their patients.</p>
+<div class="page-columns page-full"><p>Let us take an example from medicine first. Suppose a new drug is found and we would like to introduce it as a medication that can be prescribed by doctors to their patients.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;This discussion follows <span class="citation" data-cites="FrePisPur2009">Freedman, Pisani, and Purves (<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">2009</a>)</span></p></li></div></div>
 <p>The basic idea of testing the effectiveness of the medicine is <strong>comparison</strong>. An experiment is designed in which the medicine is given to a <strong>treatment group</strong>. But there are other subjects that are not treated and form another group, the <strong>control group</strong>. Then the responses of the two groups are compared. The assignemt of subjects to both groups should be <strong>random</strong> and the experiment should be run <strong>double blind</strong>: Neither the subjects nor the researchers who measure the response should know who was in the control group.</p>
 <p>The key of randomization in this protocol is that it keeps the two groups equal except for the treatment. Then, if you measure different outcomes you can conclude with some confidence that the observed difference must be the result of the treatment. This would then establish causality.</p>
 <p>One of the first epidemiological studies implementing these ideas was a randomized controlled experiment to show the effectiveness of a vaccine against polio in the US in 1954 . It was conducted by the Public Health Service and the National Foundation for Infantile Paralysis (NFPI).</p>
-<p>The field trial was conducted in select school districts among the children in the age group most vulnerable. Children could, however, only be vaccinated with their parents consent, so only children whose parents agreed to the vaccination could go into the treatment group. Since parents with higher income were more likely to consent to treatment. This biases the design against the vaccine, since polio is a disease of hygiene. Children in more hygienic surroundings have less exposure to mild cases of polio in early childhood. This prevents the generation of antibodies which protect them against severe infections at a later age.</p>
+<p>The field trial was conducted in select school districts throughout the country where the risk of polio was high. Two million children were involved and half a million were vaccinated. A million were deliberately left unvaccinated as controls, half a million refused vaccination.</p>
+<p>Children could, however, only be vaccinated with their parents consent, so only children whose parents agreed to the vaccination could go into the treatment group. Parents with higher income were more likely to consent to treatment. This biases the design against the vaccine, since polio is a disease of hygiene. Children in more hygienic surroundings have less exposure to mild cases of polio in early childhood. This prevents the generation of antibodies which protect them against severe infections at a later age.</p>
 <p>Many experts recognized the flaw in the design. The assignment to treatment and control was not random and thus the treatment and control group were systematically different. The idea, however, is that both groups should be as similar as possible except for treatment. If the two groups differ to some factor other than treatment this factor my <strong>confound</strong> or get mixed up with the effect of treatment.</p>
 <p>To exclude the bias in assignment introduced by parental consent in the NFPI design, it was suggested that the control group has to chosen from the same population as the treatment group using an impartial chance procedure. Such an approach is called <strong>randomized controlled</strong>.</p>
 <p>The idea of double blindness was also already used in a new improved design. The children in the control group were given an injection of salt dissolved in water rather than the vaccine, a so called <strong>placebo</strong>. During the experiment therefore the subjects did not know whether they were in the control group or in the treatment group. Also the doctors were not told which group the child belonged to and neither knew those who evaluated the responses.</p>
@@ -365,11 +400,11 @@ div.csl-indent {
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># table on the right</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(NFIP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div id="tbl-anonymous-6175900" class="cell tbl-parent quarto-layout-panel anchored">
+<div id="tbl-salk-vaccine-field-trials" class="cell tbl-parent quarto-layout-panel anchored">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div id="tbl-anonymous-6175900-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-6175900" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-salk-vaccine-field-trials-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-salk-vaccine-field-trials" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption>Randomized Trial</caption>
+<caption>(a) Randomized Trial</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Group</th>
@@ -396,9 +431,9 @@ div.csl-indent {
 </tbody>
 </table>
 </div>
-<div id="tbl-anonymous-6175900-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-anonymous-6175900" style="flex-basis: 50.0%;justify-content: center;">
+<div id="tbl-salk-vaccine-field-trials-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-salk-vaccine-field-trials" style="flex-basis: 50.0%;justify-content: center;">
 <table class="table table-sm table-striped small">
-<caption>NFPI study</caption>
+<caption>(b) NFPI study</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Group</th>
@@ -427,28 +462,42 @@ div.csl-indent {
 </div>
 </div>
 <div class="panel-caption table-caption">
-<p>Results of the 1954 polio vaccine trials</p>
+<p>Table&nbsp;5.1: Results of the 1954 polio vaccine trials</p>
 </div>
 </div>
 </div>
 <p>The two tables show the results of the randomized trial design with the NFPI design. The size of groups and the rates of polio cases per 100.000 in each group are shown in the columns Size and Rate.</p>
-<p>In the randomized controlled trial the vaccination cut the polio rate from 71 to 28 per hundred thousand. The NFPI study - by contrast - shows a reduction from 54 to 25 per hundred thousand. The source of the bias which accounts for the difference was confounding. The NFPI treatment group contained only only children whose partents consented to the vaccination. However the control group contained also children whose partents would not have consented. Therefore control and treatment group were not comparable.</p>
+<p>In the randomized controlled trial the vaccination cut the polio rate from 71 to 28 per hundred thousand. The NFPI study - by contrast - shows a reduction from 54 to 25 per hundred thousand. The source of the bias which accounts for the difference was confounding. The NFPI treatment group contained only only children whose parents consented to the vaccination. However the control group contained also children whose parents would not have consented. Therefore control and treatment group were not comparable.</p>
 </section>
 <section id="school-subsidies-for-the-poor-the-mexican-progresa-poverty-program" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="school-subsidies-for-the-poor-the-mexican-progresa-poverty-program"><span class="header-section-number">5.3.2</span> School subsidies for the poor: The Mexican progresa poverty program</h3>
 <p>While randomized controlled trials have their origin in medical research and epidemiology, this is an approach that can be applied in other contexts to establish a causal effect. In such fortunate cases, it is possible to produce actual evidence that a certain policy works or not.</p>
 <p>As an example consider an education policy program for the poor designed in Mexico in the 1990 called Progresa. The problem Progresa tried to address was how a reasonable support program could be designed to increase school enrollment among the poor.</p>
 <p>It was known that school enrollment among the poor was low and that one reason for this low enrollment was that children needed to work to help supporting their families rather than going to school. This situation could be characterized as a kind of poverty trap because the income of the poor families is so low that they cannot afford to enroll the children in school which prevents them to get enough training and eventually higher incomes which can raise them out of poverty.</p>
-<p>The Finance minister at that time, Santiago Levy, initiated a program trying to address this problem by designing education grants to poor mothers to support the increase of school enrollment of their children. The Progresa program tried to avoid some known problems of past poverty alleviation programs. If a transfer conditions on current income. If a recipient of the transfer joins the paid labor force the transfer is lost as earnings increase. This can lead to disincentives to attempts of joining the paid labor force.</p>
+<p>The Finance minister at that time, Santiago Levy, initiated a program trying to address this problem by designing education grants to poor mothers to support the increase of school enrollment of their children. The Progresa program tried to avoid some known problems of past poverty alleviation programs. If a transfer conditions on current income, this can for instance create an incentive against taking up a job. This can happen because if a recipient of the transfer joins the paid labor force the transfer is lost as earnings increase. This can lead to disincentives to attempts of joining the paid labor force.</p>
 <p>The Progresa Program therefore tried to minimize disincentives to work by not conditioning the transfer on current income but only on an initial assessment of household poverty information. This approach was tried as an alternative to build more schools and augment other educational resources such as teachers and teaching quality. While there was evidence that this approach would increase enrollment it was known that such supply policies were not effective for increasing enrollment amongt the poor. So Santiago Levy took a household demand approach providing subsidies which can administratively targeted to the poor and thereby perhaps help increase the enrollment rates in these groups. But would this work?</p>
-<p>Santiago Levy conducted a randomized controlled trial on a set of villages, selecting some of them at random for receiving Progresa benefits. To provide additional incentives for child enrollment the transfers were conditioned on whether children attended school regularly and the family used preventive health care. More money was given to children in secondary school than to children in primary school to compensate for lost wages (from going to school rather than taking up paid work) and also more money was given for enroling girls than for enroling boys.</p>
-<p>Through the selection of all potentially eligible households based on geographical and household poverty information all of these households share similar characteristics. The random allocation of Progresa recipients splits this population into a treatment group (the Progresa recipients) and a control group ( the households which did not receive Progresa transfers). If the groups are then compared with respect to enrolment rates we can say that they are similar in all dimensions except treatment. Differences in enrolment rates between the groups can then be understood as causally linked to the treatment. There is no confounding. This is the basic idea of a randomized controlled trial.</p>
-<p>It could indeed be established that Progresa worked to increas school enrolment among the poor in Mexico. Here are the numbers: For boys the enrolment increased from 73 % in the control group to 77 % in the Progresa group. For girls the increase was even bigger, from 67 % in the contril group to 75 % in the Progresa group.</p>
+<p>To find out the ministry of Finance conducted a randomized controlled trial on a set of villages, selecting some of them at random for receiving Progresa benefits. To provide additional incentives for child enrollment the transfers were conditioned on whether children attended school regularly and the family used preventive health care. More money was given to children in secondary school than to children in primary school to compensate for lost wages (from going to school rather than taking up paid work) and also more money was given for enroling girls than for enroling boys.</p>
+<p>Through the selection of all potentially eligible households based on geographical and household poverty information all of these households share similar characteristics. The random allocation of Progresa recipients splits this population into a treatment group (the Progresa recipients) and a control group ( the households which did not receive Progresa transfers). If the groups are then compared with respect to enrollment rates we can say that they are similar in all dimensions except treatment. Differences in enrollment rates between the groups can then be understood as causally linked to the treatment. There is no confounding. This is the basic idea of a randomized controlled trial.</p>
+<p>It could indeed be established that Progresa worked to increase school enrollment among the poor in Mexico. Here are the numbers: For boys the enrollment increased from 73 % in the control group to 77 % in the Progresa group. For girls the increase was even bigger, from 67 % in the contril group to 75 % in the Progresa group.</p>
 <p>The evidence for the success of the Progresa Program also helped that the program survived when political power was transferred to a new government in the next election. Although Santiago Levy was not prime minister any more, the new government continued the program under the new name Oppordunitades.</p>
 </section>
 </section>
-<section id="observational-studies" class="level2 page-columns page-full" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">5.4</span> Observational studies</h2>
+<section id="exercises" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.4</span> Exercises:</h2>
+<ol type="1">
+<li>Data from the polio vaccine studies discussed in the text suggest that in 1954, the school districts in the NFIP trial and in the randomized controlled experiment had similar exposure to the polio virus.
+<ol type="a">
+<li>The data also show that children in the two vaccine groups (for the randomized controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table <a href="#tbl-salk-vaccine-field-trials">Table&nbsp;<span>5.1</span></a> confirm this finding?</li>
+<li>The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?</li>
+<li>The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?</li>
+<li>In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?</li>
+<li>To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What’s wrong with these data?</li>
+</ol></li>
+<li>The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.</li>
+</ol>
+</section>
+<section id="observational-studies" class="level2 page-columns page-full" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">5.5</span> Observational studies</h2>
 <p>Controlled experiments are different from <strong>observational</strong> studies. In a controlled experiment the investigator decides who will be in the treatment group and who will be in the control group. In an observational study, by contrast, the investigator can just observe what happens and he has no control over assigning subjects to different groups. In an observational study the subjects assign themselves to treatment and control.</p>
 <p>This terminology can be confusing because it uses the word control in two meanings: On the one hand, as we discussed in the previous sections a control is a subject who did not get the treatment. A controlled experiment is a study where the investigator decides who will be in the treatment group and who will be in the control group.</p>
 <p>Going back to studies on the effects of smoking, which we discussed earlier in this lecture, we can see that such studies must necessarily be observational. We can not make some people smoke for a decade or more just to fulfill a statistically satisfactory research design.</p>
@@ -457,7 +506,7 @@ div.csl-indent {
 <p>However, observing this association, is incomplete as a proof for causation. There might be a hidden factor, not included in the observational study, which makes people smoke and at the same time makes people ill.&nbsp;Such hidden factors are called <strong>confounding factors</strong> or <strong>confounders</strong> in the technical jargon of statisticians.</p>
 <p>To think about potential problems of confounding, it is helpful to ask yourselve how the controls were selected. The question is whether the control group is really similar to the treatment group apart from the exposure of interest. If there is confounding something has to be done to deal with it. Statisticians often talk about controlling for confounding factors in an observational study. This is yet another, a third sense in which the word control is used in statistics.</p>
 <p>The meaning of the term control in this case is that in the case where subjects differ among themselves in an observational study in crucial ways beside treatment, the statistician adjusts the sample by comparing smaller and more homogemous groups.</p>
-<div class="page-columns page-full"><p>A famous example illustrating this point and featured in many textbooks<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> is an observational study on sex bias in admission to graduate studies at the University of California in Berkeley in the 1975. During the study period, 8442 men and 4321 women applied for admission to graduate school. The acceptance rate among men was 44 % and that of women 35 %.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;I follow here the discussion in the textbook by <span class="citation" data-cites="FrePisPur2009">Freedman, Pisani, and Purves (<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">2009</a>)</span> pp.&nbsp;18-19</p></li></div></div>
+<div class="page-columns page-full"><p>A famous example illustrating this point and featured in many textbooks<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> is an observational study on sex bias in admission to graduate studies at the University of California in Berkeley in the 1975. During the study period, 8442 men and 4321 women applied for admission to graduate school. The acceptance rate among men was 44 % and that of women 35 %.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;I follow here the discussion in the textbook by <span class="citation" data-cites="FrePisPur2009">Freedman, Pisani, and Purves (<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">2009</a>)</span> pp.&nbsp;18-19</p></li></div></div>
 <p>Assuming that men and women overall were equally well qualified this difference in the admission rate looks like evidence of a different treatment of men and women.</p>
 <p>Since each subject did its own admission to graduate studies, the university should have been able to identify the subjects which discriminated against women. But at that point a puzzle appeared. If subjects were looked at seperately subject by subject there didn’t seem to be any bias against women.If there was a bias it was a bias against men. How is this possible?</p>
 <p>Over a hundred subjects were involved. However, the six largest together accounted for over one-third of the total number of applicants. The pattern for these subjects was typical of the whole campus.</p>
@@ -565,8 +614,11 @@ Now you try
 </div>
 </div>
 </section>
-<section id="can-we-ever-conclude-causation-from-observational-data" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</h2>
+<section id="exercises-1" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">5.6</span> Exercises</h2>
+</section>
+<section id="can-we-ever-conclude-causation-from-observational-data" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.7</span> Can we ever conclude causation from observational data ?</h2>
 <p><span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> discusses a list of criteria first suggested by the British applied statistician Austin Bradford Hill in 1965. These criteria should be considered before concluding that an observed link between an outcome and an exposure was causal. These criteria were much debated and we show here a version of the list presented in <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> and which is due to Jermey Howick - a clinical epidemiologist form the University of Oxford in the UK - and his colleagues.</p>
 <p>These criteria are separated in three categories: Direct, mechanistic and parallel evidence. I reproduce the list from the book of <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> here:</p>
 <ul>
