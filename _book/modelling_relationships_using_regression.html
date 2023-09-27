@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics - 6&nbsp; Modelling relationships using regression</title>
+<title>Statistics - 6&nbsp; Modelling relationships part 1: Some basic mathematical ideas</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -61,10 +95,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -73,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,17 +222,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents"><span class="header-section-number">6.1</span> Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">6.2</span> Outcome</a></li>
+  <li><a href="#statistical-models" id="toc-statistical-models" class="nav-link active" data-scroll-target="#statistical-models"><span class="header-section-number">6.1</span> Statistical models</a></li>
+  <li><a href="#plotting-points-and-lines" id="toc-plotting-points-and-lines" class="nav-link" data-scroll-target="#plotting-points-and-lines"><span class="header-section-number">6.2</span> Plotting points and lines</a>
+  <ul class="collapse">
+  <li><a href="#reading-points-off-a-graph" id="toc-reading-points-off-a-graph" class="nav-link" data-scroll-target="#reading-points-off-a-graph"><span class="header-section-number">6.2.1</span> Reading points off a graph</a></li>
+  <li><a href="#plotting-points" id="toc-plotting-points" class="nav-link" data-scroll-target="#plotting-points"><span class="header-section-number">6.2.2</span> Plotting Points</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships using regression</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></h1>
 </div>
 
 
@@ -211,23 +251,115 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="contents" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="contents"><span class="header-section-number">6.1</span> Contents</h2>
-<p>Regression models provide a mathematical representation between a set of explanatory variables and a response.</p>
+<!-- ## Contents  -->
+<!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
+<!-- 1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.  -->
+<!-- 2. Regression to the mean -->
+<!-- 3. Regression models can incorporate different types of response variable -->
+<!-- 4. Explanatory variables and non-linear relationships -->
+<!-- 5. Be cautious in interpreting models and don’t take them literally. -->
+<!-- ## Outcome -->
+<!-- The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect.  -->
+<section id="statistical-models" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="statistical-models"><span class="header-section-number">6.1</span> Statistical models</h2>
+<p>In our course so far we have encountered various methods which allow us to visualize and summarize data consisting of a single set of numbers. We have alos learned how to look at associations between pairs of variables. These simple techniques have already taken us quite far and allowed us to look at various interesting real world questions.</p>
+<p>In general modern data are much more complex. In such more complex situations, involving whole lists of related variables, we need more powerful tools. In this chapter we are going to take a first step in introducing the idea of a <strong>statistical model</strong>.</p>
+<p>A statistical model is a mathematical representation of the relationship between variables which we can use for the prediction of the value of one variable using the value of another variable or the values of a list of other variables. It also allows us a more precise description of the relationship between variables.</p>
+<p>Statistical models inevitably involve some mathematical ideas, which you need to understand to confidently work with these models and use them. In this chapter we will introduce you to these ideas step by step, going into actual statistical models and its most important form, regression analysis in the next chapter.</p>
+</section>
+<section id="plotting-points-and-lines" class="level2 page-columns page-full" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="plotting-points-and-lines"><span class="header-section-number">6.2</span> Plotting points and lines</h2>
+<p>In this section we review some ideas about plotting points and lines which we will need for understanding statistical models. For some of you this might be a refresher of concepts you have already encountered in school, for others this material might be new.</p>
+<section id="reading-points-off-a-graph" class="level3 page-columns page-full" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="reading-points-off-a-graph"><span class="header-section-number">6.2.1</span> Reading points off a graph</h3>
+<p><a href="#fig-coordinates">Figure&nbsp;<span>6.1</span></a> shows two coordinate systems, coordinatesystem 1 and coordinatesystem 2. The graphs of the coordinate systems have a horizontal axis, the <span class="math inline">\(x\)</span>-axis and a vertical axis, the <span class="math inline">\(y\)</span>-axis. Each point in the plane can be described by its coordinates, given by an <span class="math inline">\(x\)</span> value and a <span class="math inline">\(y\)</span> value.</p>
+<p>For example, the point shown in coordinatesystem 1 is the point <span class="math inline">\((x,y) = (2,3)\)</span>. This is the point you get in the plane, if you move from the origin <span class="math inline">\((0,0)\)</span> 2 units to the right on the <span class="math inline">\(x\)</span>-axis and then 3 units up on the <span class="math inline">\(y\)</span>-axis.</p>
+<div class="page-columns page-full"><p>In the second coordinate system, cordinatesystem b, you see the plot of a point <span class="math inline">\((x,y) = (-1.5, -0.8)\)</span> with the coordinates <span class="math inline">\((-1.5,-0.8)\)</span>. The idea to represent points in a plane by pairs of numbers (their coordinates) is very powerful because it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects. This idea goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is why the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates are often referred as “cartesian coordinates”. 3 units u</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portait painted by the Dutch painter Frans Hals. <img src="pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg" class="img-fluid" alt="Descartes"></p></li></div></div>
+<div id="fig-coordinates" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-coorda" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/coordinates_a.png" class="img-fluid figure-img" data-ref-parent="fig-coordinates"></p>
+<figcaption class="figure-caption">(a) Coordinatesystem 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-coordb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/coordinates_b.png" class="img-fluid figure-img" data-ref-parent="fig-coordinates"></p>
+<figcaption class="figure-caption">(b) Coordinatesystem 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Coordinate Systems</figcaption><p></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="fig-coordc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/coordinates_c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.2: Five points in a coordinate system</figcaption>
+</figure>
+</div>
+<p><a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a> shows 5 points plotted in a coordinate system.</p>
 <ol type="1">
-<li>The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.</li>
-<li>Regression to the mean</li>
-<li>Regression models can incorporate different types of response variable</li>
-<li>Explanatory variables and non-linear relationships</li>
-<li>Be cautious in interpreting models and don’t take them literally.</li>
+<li>Write down the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinate for each point.</li>
+<li>As you move from point A to point B in <a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a>, explain by how mauch your <span class="math inline">\(x\)</span>-coordinate and your <span class="math inline">\(y\)</span>-coordinate goes up.</li>
+<li>One point in <a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a> has a <span class="math inline">\(y\)</span>-coordinate 1 bigger than the <span class="math inline">\(y\)</span>-coordinate of point E. Which point is this?</li>
 </ol>
+</div>
+</div>
 </section>
-<section id="outcome" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="outcome"><span class="header-section-number">6.2</span> Outcome</h2>
-<p>The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect.</p>
+<section id="plotting-points" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="plotting-points"><span class="header-section-number">6.2.2</span> Plotting Points</h3>
+<p>Assume we want to plot a point <span class="math inline">\((x,y) = (2,3)\)</span>.</p>
+<p><img src="pictures/plot_point_a.png" id="fig-plota" class="img-fluid" alt="Plotting point (2,3): The coordinate system"> Here is a step by step procedure. We start with a coordinate system as depicted in <span class="quarto-unresolved-ref">?fig-plota</span></p>
+<div id="fig-plotb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/plot_point_b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.3: Plotting point (2,3): The x-coordinate</figcaption>
+</figure>
+</div>
+<p>The <span class="math inline">\(x\)</span> coordinate is at 2. We could imagine a dotted line starting at <span class="math inline">\(x=s\)</span> and extending vertically through the coordinate system as shown in <a href="#fig-plotb">Figure&nbsp;<span>6.3</span></a>.</p>
+<div id="fig-plotc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/plot_point_c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.4: Plotting point (2,3): The y-coordinate</figcaption>
+</figure>
+</div>
+<p>Finally the <span class="math inline">\(y\)</span> coordinate has value 3. We could imagine a dashed line starting at the <span class="math inline">\(y\)</span> coordinate parallel to the <span class="math inline">\(x\)</span> axes as shown in <a href="#fig-plotc">Figure&nbsp;<span>6.4</span></a></p>
+<p>The point <span class="math inline">\((2,3)\)</span> is where both of the dashed lines intersect.</p>
+<p>With the help of the computer, you can of course plot points automatically. Let me show you how.</p>
+<p>Say we want to plot the points <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((3,3)\)</span> and <span class="math inline">\((4,4)\)</span> with R. The way we plot these data would be that we represent the coordinates in R as a dataframe (see 3.2.4) like this.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>points <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">y=</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first column in the dataframe which we named <code>points</code> contains all the values of the x-coordinates, the second column contains all the values of the y-coordinates.</p>
+<p>Now if we give the object <code>points</code>as an argument to the plot function of R we get a plot of the points in the appropriate coordinate system. Let’s try this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

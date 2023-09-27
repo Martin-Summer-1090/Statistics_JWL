@@ -1,0 +1,32 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(-1,-1)(6,6)
+	\psaxes{->}(0,0)(0,0)(6,6)
+	
+	\psdot(1,2)
+	\rput(1.2,2.2){A}
+	
+	\psdot(4,4)
+	\rput(4.2,4.2){B}
+	
+	\psdot(5,3)
+	\rput(5.2,3.2){C}
+	
+	\psdot(5,1)
+	\rput(5.2,1.2){D}
+	
+	\psdot(3,0)
+	\rput(3.2,0.2){E}
+	
+
+\end{pspicture}
+
+\end{document}

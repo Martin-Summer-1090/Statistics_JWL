@@ -1,0 +1,23 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(-1,-1)(4.4,4.4)
+	\psaxes{->}(0,0)(0,0)(4,4)
+	
+	\psdot[](2,3)
+	\psline[linestyle = dashed](0,3)(2,3)
+	\psline[linestyle = dashed](2,0)(2,3)
+	
+	\rput(4.2,0){$x$}
+	\rput(0,4.2){$y$}
+	\rput(2.6,3){$(2,3)$}
+\end{pspicture}
+
+\end{document}

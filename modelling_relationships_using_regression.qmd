@@ -1,17 +1,134 @@
-# Modelling relationships using regression
+# Modelling relationships part 1: Some basic mathematical ideas
 
-## Contents 
-
-Regression models provide a mathematical representation between a set of explanatory variables and a response. 
-
-
-1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change. 
-2. Regression to the mean
-3. Regression models can incorporate different types of response variable
-4. Explanatory variables and non-linear relationships
-5. Be cautious in interpreting models and don’t take them literally.
+<!-- ## Contents  -->
+<!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
 
 
-## Outcome
+<!-- 1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.  -->
+<!-- 2. Regression to the mean -->
+<!-- 3. Regression models can incorporate different types of response variable -->
+<!-- 4. Explanatory variables and non-linear relationships -->
+<!-- 5. Be cautious in interpreting models and don’t take them literally. -->
 
-The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect. 
+
+<!-- ## Outcome -->
+
+<!-- The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect.  -->
+
+## Statistical models
+
+In our course so far we have encountered various methods which allow us to visualize and
+summarize data consisting of a single set of numbers. We have alos learned how to look at
+associations between pairs of variables. These simple techniques have already taken us 
+quite far and allowed us to look at various interesting real world questions.
+
+In general modern data are much more complex. In such more complex situations, involving 
+whole lists of related variables, we need more powerful tools. In this chapter we are going to
+take a first step in introducing the idea of a **statistical model**.
+
+A statistical model is a mathematical representation of the relationship between variables
+which we can use for the prediction of the value of one variable using the
+value of another variable or the values of a list of other
+variables. It also allows us a more precise description of the relationship between
+variables.
+
+Statistical models inevitably involve some mathematical ideas, which you need to understand 
+to confidently work with these models and use them. In this chapter we will introduce you
+to these ideas step by step, going into actual statistical models and its most
+important form, regression analysis in the next chapter.
+
+## Plotting points and lines
+
+In this section we review some ideas about plotting points and lines which we will need
+for understanding statistical models. For some of you this might be a refresher of
+concepts you have already encountered in school, for others this material might be new.
+
+### Reading points off a graph
+
+@fig-coordinates shows two coordinate systems, coordinatesystem 1 and coordinatesystem 2. The
+graphs of the coordinate systems have a horizontal axis, the $x$-axis and a vertical axis,
+the $y$-axis. Each point in the plane can be described by its coordinates, given by an $x$ value
+and a $y$ value.
+
+For example, the point shown in coordinatesystem 1 is the point $(x,y) = (2,3)$. This is
+the point you get in the plane, if you move from the origin $(0,0)$ 2 units to the right on the $x$-axis and then 3 units up on the $y$-axis.
+
+In the second coordinate system, cordinatesystem b, you see the plot of a point 
+$(x,y) = (-1.5, -0.8)$ with the coordinates $(-1.5,-0.8)$. The idea to represent
+points in a plane by pairs of numbers (their coordinates) is very powerful because
+it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects. This idea
+goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).^[Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portait painted by the Dutch painter Frans Hals. 
+![Descartes](pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg)] This
+is why the $x$ and $y$ coordinates are often referred as "cartesian coordinates".
+3 units u
+
+::: {#fig-coordinates layout-ncol=2}
+
+![Coordinatesystem 1](pictures/coordinates_a.png){#fig-coorda}
+
+![Coordinatesystem 2](pictures/coordinates_b.png){#fig-coordb}
+
+Coordinate Systems
+:::
+
+:::{.callout-note icon=false}
+
+### Now you try
+
+
+![Five points in a coordinate system](pictures/coordinates_c.png){#fig-coordc}
+
+@fig-coordc shows 5 points plotted in a coordinate system.
+
+1. Write down the $x$ and $y$ coordinate for each point.
+2. As you move from point A to point B in @fig-coordc, explain by how mauch your $x$-coordinate and your $y$-coordinate goes up.
+3. One point in @fig-coordc has a $y$-coordinate 1 bigger than the $y$-coordinate of 
+point E. Which point is this?
+:::
+
+### Plotting Points
+
+Assume we want to plot a point $(x,y) = (2,3)$. 
+
+![Plotting point (2,3): The coordinate system](pictures/plot_point_a.png){#fig-plota}
+Here is a step by step procedure.
+We start with a coordinate system as depicted in @fig-plota
+
+
+![Plotting point (2,3): The x-coordinate](pictures/plot_point_b.png){#fig-plotb}
+
+The $x$ coordinate is at 2. We could imagine a dotted line starting at $x=s$ and extending 
+vertically through the coordinate system as shown in @fig-plotb.
+
+![Plotting point (2,3): The y-coordinate](pictures/plot_point_c.png){#fig-plotc}
+
+Finally the $y$ coordinate has value 3. We could imagine a dashed line starting at the
+$y$ coordinate parallel to the $x$ axes as shown in @fig-plotc
+
+The point $(2,3)$ is where both of the dashed lines intersect.
+
+With the help of the computer, you can of course plot points automatically. Let me show
+you how.
+
+Say we want to plot the points $(1,1)$, $(2,2)$, $(3,3)$ and $(4,4)$ with R. The way 
+we plot these data would be that we represent the coordinates in R as a dataframe (see 3.2.4)
+like this.
+```{r}
+#| code-fold: false
+
+points <- data.frame(x = c(1,2,3,4), y= c(1,2,3,4))
+```
+
+The first column in the dataframe which we named `points` contains all the values of
+the x-coordinates, the second column contains all the values of the y-coordinates.
+
+Now if we give the object `points`as an argument to the plot function of R we get a plot of the
+points in the appropriate coordinate system. Let's try this:
+
+```{r}
+#| code-fold: false
+
+plot(points)
+
+```
+

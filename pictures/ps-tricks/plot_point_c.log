@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  27 SEP 2023 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  27 SEP 2023 20:00
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
  %&-line parsing enabled.
-**average_a.tex
-(./average_a.tex
+**plot_point_c.tex
+(./plot_point_c.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -229,47 +229,126 @@ File: pstricks.tex 2022/01/09 v3.13 `PSTricks' (tvz,hv)
 `pst-fp' v0.06, 2020/11/20 (hv))
 File: pst-fp.tex 2020/11/20 v0.06 `PST-fp' (hv)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/pst-plot/pst-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/pst-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multido/multido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/multido/multido.tex
+ v1.42, 2010/05/14 <tvz>
+\multido@count=\count293
+\multidocount=\count294
+\multido@stuff=\toks30
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2021/09/23 package wrapper for pst-plot.tex (hv)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pst-plot/pst-plot.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pst-tools/pst-tools.tex
+`PST-tools' v0.12, 2021/09/23 (hv)
+\randomi=\count295
+\ranval=\count296
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.43, 2022/01/31
+\psrow=\count297
+\pscol=\count298
+\psmatrixcnt=\count299
+\psrowsep=\skip50
+\pscolsep=\skip51
+\pst@args=\count300
+\num@pts=\count301
+\pst@argcnt=\count302
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pst-arrow/pst-arrow.tex
+`pst-arrow' v0.05, 2021/11/16 (dr,hv))
+(/usr/share/texlive/texmf-dist/tex/generic/pst-3d/pst-3d.tex
+`PST-3d' v1.11, 2010/02/14 (tvz))
+(/usr/share/texlive/texmf-dist/tex/generic/pst-math/pst-math.tex
+`pst-math' v0.64 , (CJ,hv)) `pstricks-add' v3.92, 2021/12/25 (dr,hv)
+\psparallelogramsep=\dimen179
+\pst@cntC=\count303
+\pst@stepcount=\count304
+\chart@ColorIndex=\dimen180
+\chart@ColorStep=\dimen181
+\pst@chartHeight=\dimen182
+\pst@chartStackDepth=\dimen183
+\pst@chartStackWidth=\dimen184
+\chart@Toggle=\count305
+\psVectorCtr=\count306
+)
+ v1.93, 2021/09/23 (tvz,hv)
+\pstRadUnit=\dimen185
+\pstRadUnitInv=\dimen186
+\pst@linecnt=\count307
+\RCD@file=\read2
+\psxlabelsep=\dimen187
+\psylabelsep=\dimen188
+\psk@subticksize=\dimen189
+\pst@xticksizeA=\dimen190
+\pst@xticksizeB=\dimen191
+\pst@xticksizeC=\dimen192
+\pst@yticksizeA=\dimen193
+\pst@yticksizeB=\dimen194
+\pst@yticksizeC=\dimen195
+\@digitcounter=\count308
+\psk@llx=\dimen196
+\psk@lly=\dimen197
+\psk@urx=\dimen198
+\psk@ury=\dimen199
+\pst@xunit=\dimen256
+\pst@yunit=\dimen257
+)
+File: pst-plot.tex 2021/09/23 1.93 `pst-plot' (tvz,hv)
+)
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2022-01-12 L3 backend support: dvips
 \l__pdf_internal_box=\box55
-\g__pdf_backend_object_int=\count293
+\g__pdf_backend_object_int=\count309
 \l__pdf_backend_content_box=\box56
 \l__pdf_backend_model_box=\box57
-\g__pdf_backend_annotation_int=\count294
-\g__pdf_backend_link_int=\count295
-\g__pdf_backend_link_sf_int=\count296
+\g__pdf_backend_annotation_int=\count310
+\g__pdf_backend_link_int=\count311
+\g__pdf_backend_link_sf_int=\count312
 )
-(./average_a.aux)
-\openout1 = `average_a.aux'.
+(./plot_point_c.aux)
+\openout1 = `plot_point_c.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 16.
+(Font)              <7> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 16.
+(Font)              <5> on input line 13.
  [1
 
-] (./average_a.aux) ) 
+] (./plot_point_c.aux) ) 
 Here is how much of TeX's memory you used:
- 8213 strings out of 478288
- 154856 string characters out of 5849315
- 443256 words of memory out of 5000000
- 26358 multiletter control sequences out of 15000+600000
+ 10259 strings out of 478288
+ 190241 string characters out of 5849315
+ 544603 words of memory out of 5000000
+ 28365 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,5n,71p,390b,202s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,6n,71p,643b,292s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on average_a.dvi (1 page, 2384 bytes).
+Output written on plot_point_c.dvi (1 page, 19032 bytes).
