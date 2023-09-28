@@ -1,0 +1,27 @@
+\documentclass[margin = 3pt]{standalone}
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-fill}
+\usepackage{pstcol}
+
+\begin{document}
+
+	\begin{pspicture}(-1,-1)(4,4) % Adjust the dimensions as needed
+		
+		% Draw axes
+		\psaxes[]{->}(0,0)(0,0)(4,4)[$x$,0][$y$,90]
+		
+		% Draw vertical lines at x=1.5 and x=2.5
+		\psline[linestyle=dashed](0,1.5)(3,1.5)
+		\psline[linestyle=dashed](0,2.5)(3, 2.5)
+		
+		% Hatch the area between the vertical lines
+		\psframe*[linecolor=white](0,1.5)(3,2.5)
+		
+	
+
+
+		
+	\end{pspicture}
+\end{document}

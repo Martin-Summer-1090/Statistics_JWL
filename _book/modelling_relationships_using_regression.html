@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,7 +91,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -112,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -274,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="reading-points-off-a-graph"><span class="header-section-number">6.2.1</span> Reading points off a graph</h3>
 <p><a href="#fig-coordinates">Figure&nbsp;<span>6.1</span></a> shows two coordinate systems, coordinatesystem 1 and coordinatesystem 2. The graphs of the coordinate systems have a horizontal axis, the <span class="math inline">\(x\)</span>-axis and a vertical axis, the <span class="math inline">\(y\)</span>-axis. Each point in the plane can be described by its coordinates, given by an <span class="math inline">\(x\)</span> value and a <span class="math inline">\(y\)</span> value.</p>
 <p>For example, the point shown in coordinatesystem 1 is the point <span class="math inline">\((x,y) = (2,3)\)</span>. This is the point you get in the plane, if you move from the origin <span class="math inline">\((0,0)\)</span> 2 units to the right on the <span class="math inline">\(x\)</span>-axis and then 3 units up on the <span class="math inline">\(y\)</span>-axis.</p>
-<div class="page-columns page-full"><p>In the second coordinate system, cordinatesystem b, you see the plot of a point <span class="math inline">\((x,y) = (-1.5, -0.8)\)</span> with the coordinates <span class="math inline">\((-1.5,-0.8)\)</span>. The idea to represent points in a plane by pairs of numbers (their coordinates) is very powerful because it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects. This idea goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is why the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates are often referred as “cartesian coordinates”. 3 units u</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portait painted by the Dutch painter Frans Hals. <img src="pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg" class="img-fluid" alt="Descartes"></p></li></div></div>
+<div class="page-columns page-full"><p>In the second coordinate system, cordinatesystem b, you see the plot of a point <span class="math inline">\((x,y) = (-1.5, -0.8)\)</span> with the coordinates <span class="math inline">\((-1.5,-0.8)\)</span>. The idea to represent points in a plane by pairs of numbers (their coordinates) is very powerful because it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects. This idea goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is why the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates are often referred as “cartesian coordinates”.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portait painted by the Dutch painter Frans Hals. <img src="pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg" class="img-fluid" alt="Descartes"></p></li></div></div>
 <div id="fig-coordinates" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -323,25 +324,41 @@ Now you try
 </div>
 </div>
 </section>
-<section id="plotting-points" class="level3" data-number="6.2.2">
+<section id="plotting-points" class="level3 page-columns page-full" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="plotting-points"><span class="header-section-number">6.2.2</span> Plotting Points</h3>
 <p>Assume we want to plot a point <span class="math inline">\((x,y) = (2,3)\)</span>.</p>
-<p><img src="pictures/plot_point_a.png" id="fig-plota" class="img-fluid" alt="Plotting point (2,3): The coordinate system"> Here is a step by step procedure. We start with a coordinate system as depicted in <span class="quarto-unresolved-ref">?fig-plota</span></p>
+<div id="fig-plot-points" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-plota" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/plot_point_a.png" class="img-fluid figure-img" data-ref-parent="fig-plot-points"></p>
+<figcaption class="figure-caption">(a) Plotting point (2,3): The coordinate system</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-plotb" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/plot_point_b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.3: Plotting point (2,3): The x-coordinate</figcaption>
+<p><img src="pictures/plot_point_b.png" class="img-fluid figure-img" data-ref-parent="fig-plot-points"></p>
+<figcaption class="figure-caption">(b) Plotting point (2,3): The x-coordinate</figcaption>
 </figure>
 </div>
-<p>The <span class="math inline">\(x\)</span> coordinate is at 2. We could imagine a dotted line starting at <span class="math inline">\(x=s\)</span> and extending vertically through the coordinate system as shown in <a href="#fig-plotb">Figure&nbsp;<span>6.3</span></a>.</p>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-plotc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/plot_point_c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.4: Plotting point (2,3): The y-coordinate</figcaption>
+<p><img src="pictures/plot_point_c.png" class="img-fluid figure-img" data-ref-parent="fig-plot-points"></p>
+<figcaption class="figure-caption">(c) Plotting point (2,3): The y-coordinate combined with the x-coordinate</figcaption>
 </figure>
 </div>
-<p>Finally the <span class="math inline">\(y\)</span> coordinate has value 3. We could imagine a dashed line starting at the <span class="math inline">\(y\)</span> coordinate parallel to the <span class="math inline">\(x\)</span> axes as shown in <a href="#fig-plotc">Figure&nbsp;<span>6.4</span></a></p>
-<p>The point <span class="math inline">\((2,3)\)</span> is where both of the dashed lines intersect.</p>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: Plotting a point.</figcaption><p></p>
+</figure>
+</div>
+<p>Here is a step by step procedure outlined in <a href="#fig-plot-points">Figure&nbsp;<span>6.3</span></a>. We start with a coordinate system as depicted in <a href="#fig-plota">Figure&nbsp;<span>6.3 (a)</span></a>. The <span class="math inline">\(x\)</span> coordinate is at 2. We could imagine a dotted line starting at <span class="math inline">\(x=2\)</span> and extending vertically through the coordinate system as shown in <a href="#fig-plotb">Figure&nbsp;<span>6.3 (b)</span></a>. Finally the <span class="math inline">\(y\)</span> coordinate has value 3. We could imagine a dashed line starting at the <span class="math inline">\(y = 3\)</span> coordinate parallel to the <span class="math inline">\(x\)</span> axes as shown in <a href="#fig-plotc">Figure&nbsp;<span>6.3 (c)</span></a> The point <span class="math inline">\((2,3)\)</span> is where both of the dashed lines intersect.</p>
 <p>With the help of the computer, you can of course plot points automatically. Let me show you how.</p>
 <p>Say we want to plot the points <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((3,3)\)</span> and <span class="math inline">\((4,4)\)</span> with R. The way we plot these data would be that we represent the coordinates in R as a dataframe (see 3.2.4) like this.</p>
 <div class="cell">
@@ -350,9 +367,55 @@ Now you try
 <p>The first column in the dataframe which we named <code>points</code> contains all the values of the x-coordinates, the second column contains all the values of the y-coordinates.</p>
 <p>Now if we give the object <code>points</code>as an argument to the plot function of R we get a plot of the points in the appropriate coordinate system. Let’s try this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(points)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(points, <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="modelling_relationships_using_regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="page-columns page-full"><p>As an aside the argument <code>pch = 19</code> given to the plot function tells R to show the dots filled instead as unfilled circles. This is a bit opaque and difficult to remember. The default values also vary depending on which object is plotted. You do not have to remember such details. They are usually recovered as needed from the help function.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Here is the full list of possible values for the <code>pch</code> argument and what they do. The default value in <code>plot</code> is <code>pch = 1</code>. <img src="pictures/r-plot-pch-symbols-points-in-r.png" class="img-fluid" alt="Possible values for pch"></p></li></div></div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try: Exercises
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Three out of the following four points lie on a line. Which one does not? It is above or below the line? <span class="math inline">\((0,0), (0.5,0.5), (1,2), (2.5, 2.5)\)</span> You can try to answer this with pencil and paper or using R. Try both ways.</p></li>
+<li><p>The table below shows four points. In each case the y-coordinate is computed from the x-coordinate by the rule <span class="math inline">\(y = 2x + 1\)</span>. Fill in the blanks and then plot the four points. What can you say about them?</p></li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>Look at the following shaded regions. Which of the following two points is in the region (1,2) or (2,1)? Answer this question for all three figures.</li>
+</ol>
 </div>
 </div>
 
