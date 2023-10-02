@@ -3,25 +3,29 @@
 \usepackage{pstricks}
 \usepackage{pst-plot}
 \usepackage{pst-fill}
-\usepackage{pstcol}
+
 
 \begin{document}
+\begin{pspicture}(-1,-1)(5,5) % Define the coordinate system
 
-	\begin{pspicture}(-1,-1)(4,4) % Adjust the dimensions as needed
-		
-		% Draw axes
-		\psaxes[]{->}(0,0)(0,0)(4,4)[$x$,0][$y$,90]
-		
-		% Draw vertical lines at x=1.5 and x=2.5
-		\psline[linestyle=dashed](1.5,0)(1.5,3)
-		\psline[linestyle=dashed](2.5,0)(2.5,3)
-		
-		% Hatch the area between the vertical lines
-		\psframe*[linecolor=white](1.5,0)(2.5,3)
-		
-	
+% Draw the coordinate axes
+\psaxes[Dx=1, Dy=1, arrows=->](0,0)(0,0)(4,4)
+\rput(4.2,0){$x$}
+\rput(0,4.2){$y$}
+
+\psline(1.5,0)(1.5,4)
+
+% Define the custom path for the hatch pattern
+\pscustom[linestyle=none,fillstyle=solid,fillcolor=lightgray]{
+	\psline(1.53,4)(2.5,4) % Top horizontal line
+	\psline(2.5,4)(2.5,0.03) % Right vertical line
+	\psline(2.5,0.03)(1.53,0.03) % Bottom horizontal line
+	\closepath
+}
 
 
-		
-	\end{pspicture}
+\psline(2.5,0)(2.5,4)
+
+\end{pspicture}
+
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  28 SEP 2023 23:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  2 OCT 2023 20:44
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -317,17 +317,7 @@ Package: pst-fill 2010/03/20 package wrapper for pst-fill.tex (hv)
 )
 File: pst-fill.tex 2021/10/01 v1.02 `PST-fill' (tvz,dg,hv)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/pstricks/pstcol.sty
-Package: pstcol 2007/04/11 v1.3 LaTeX wrapper for `PSTricks' (RN,HV)
-
-
-Package pstcol Warning: ************************************ 
-(pstcol)                The package `pstcol' is obsolet! 
-(pstcol)                You should use `pstricks' directly: 
-(pstcol)                    \usepackage{pstricks}
-(pstcol)                ************************************.
-
-) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2022-01-12 L3 backend support: dvips
 \l__pdf_internal_box=\box56
 \g__pdf_backend_object_int=\count309
@@ -362,12 +352,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] (./shaded_b.aux) ) 
 Here is how much of TeX's memory you used:
- 10343 strings out of 478288
- 192290 string characters out of 5849315
- 547834 words of memory out of 5000000
- 28439 multiletter control sequences out of 15000+600000
+ 10322 strings out of 478288
+ 191679 string characters out of 5849315
+ 551569 words of memory out of 5000000
+ 28421 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,71p,641b,290s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,6n,71p,641b,306s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on shaded_b.dvi (1 page, 19632 bytes).
+Output written on shaded_b.dvi (1 page, 22492 bytes).

@@ -228,6 +228,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#reading-points-off-a-graph" id="toc-reading-points-off-a-graph" class="nav-link" data-scroll-target="#reading-points-off-a-graph"><span class="header-section-number">6.2.1</span> Reading points off a graph</a></li>
   <li><a href="#plotting-points" id="toc-plotting-points" class="nav-link" data-scroll-target="#plotting-points"><span class="header-section-number">6.2.2</span> Plotting Points</a></li>
+  <li><a href="#slope-and-intercept" id="toc-slope-and-intercept" class="nav-link" data-scroll-target="#slope-and-intercept"><span class="header-section-number">6.2.3</span> Slope and Intercept</a></li>
+  <li><a href="#how-to-plot-a-line" id="toc-how-to-plot-a-line" class="nav-link" data-scroll-target="#how-to-plot-a-line"><span class="header-section-number">6.2.4</span> How to plot a line</a></li>
+  <li><a href="#the-algebraic-equation-for-a-line" id="toc-the-algebraic-equation-for-a-line" class="nav-link" data-scroll-target="#the-algebraic-equation-for-a-line"><span class="header-section-number">6.2.5</span> The algebraic equation for a line</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -416,8 +419,202 @@ Now you try: Exercises
 <ol start="3" type="1">
 <li>Look at the following shaded regions. Which of the following two points is in the region (1,2) or (2,1)? Answer this question for all three figures.</li>
 </ol>
+<div id="fig-plot-regions" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-shadea" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/shaded_a.png" class="img-fluid figure-img" data-ref-parent="fig-plot-regions"></p>
+<figcaption class="figure-caption">(a) Figure 1</figcaption>
+</figure>
 </div>
 </div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-shadeb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/shaded_b.png" class="img-fluid figure-img" data-ref-parent="fig-plot-regions"></p>
+<figcaption class="figure-caption">(b) Figure 2</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
+<div id="fig-shadec" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/shaded_c.png" class="img-fluid figure-img" data-ref-parent="fig-plot-regions"></p>
+<figcaption class="figure-caption">(c) Figure 3</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.4: Where is the point.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="slope-and-intercept" class="level3 page-columns page-full" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="slope-and-intercept"><span class="header-section-number">6.2.3</span> Slope and Intercept</h3>
+<p>The following figure shows a line.</p>
+<div id="fig-slope" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/slope_a.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.5: Line</figcaption>
+</figure>
+</div>
+<p>Take any point on this line, say point A. Now move up the line to any other point, say B. When you make such a move, your <span class="math inline">\(x\)</span>-coordinate has increased by some amount. We call this increase <span class="math inline">\(\Delta x\)</span>.^{is a greek letter and in mathematical notation it is often used to symbolize change} In our picture <span class="math inline">\(\Delta x = 2\)</span> because we moved two units to the right. At the same time you <span class="math inline">\(y\)</span>-coordinate has increased by some other amount which we call <span class="math inline">\(\Delta y\)</span>. In our picture <span class="math inline">\(\Delta y = 1\)</span>. The ratio <span class="math inline">\(\Delta y/ \Delta x\)</span> is called the <strong>slope</strong> of the line. Whatever points you take on this line the slope will always be 1/2.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>slope = <span class="math inline">\(\frac{\Delta y}{\Delta x}\)</span></p>
+</div>
+</div>
+<p>The slope is the rate at which <span class="math inline">\(y\)</span> increases with <span class="math inline">\(x\)</span> along the line.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the slope of these two lines?</p>
+<div id="fig-plot-slopes" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-slopeb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/slope_b.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
+<figcaption class="figure-caption">(a) Slope 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-slopec" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/slope_c.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
+<figcaption class="figure-caption">(b) Slope 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.6: Different slopes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="page-columns page-full"><p>The <strong>intercept</strong> of a line is the value of the <span class="math inline">\(y\)</span>-coordinate at <span class="math inline">\(x = 0\)</span>. You could also say that the intercept is the point where the line crosses the <span class="math inline">\(y\)</span>-axis.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;We have to be careful with this rule of thumb because this intersection property is true only if the <span class="math inline">\(x\)</span>-axis and the <span class="math inline">\(y\)</span>-axis cross at the origin <span class="math inline">\((0,0)\)</span></p></li></div></div>
+<p>For example in <a href="#fig-slope">Figure&nbsp;<span>6.5</span></a> the intercept is 1, in <a href="#fig-slopeb">Figure&nbsp;<span>6.6 (a)</span></a> is 2 and in <a href="#fig-slopec">Figure&nbsp;<span>6.6 (b)</span></a> the intercept is 3.</p>
+</section>
+<section id="how-to-plot-a-line" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="how-to-plot-a-line"><span class="header-section-number">6.2.4</span> How to plot a line</h3>
+<p>Assume you have to plot a line which passes through the point <span class="math inline">\((2,1)\)</span> and has a slope of <span class="math inline">\(\frac{1}{2}\)</span>. How would we plot this line?</p>
+<p>The first step is that we draw the point <span class="math inline">\((2,1)\)</span> into the coordinate system, like this:</p>
+<div id="fig-linesa" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/line_a.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.7: Coordinate system with point (2,1)</figcaption>
+</figure>
+</div>
+<p>Next you move any convenient distance <span class="math inline">\(\Delta x\)</span> to the right like this, say we move 3 units. Make a point at this location like this</p>
+<div id="fig-linesb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/line_b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.8: Coordinate system with point (2,1) and construction point (5,1)</figcaption>
+</figure>
+</div>
+<p>Since the line slopes up - the slope is positive an 1/2 - the line passes above this point. The question is, how far?. To find the answer to the question ho much will the line rise in a <span class="math inline">\(\Delta x\)</span> of 3? The answer can be found from the formula of the slope. The line rises at the rate of half a vertical unit per horizontal unit. Thus we have <span class="math display">\[\begin{equation}
+\Delta y = \Delta x \times \text{slope}
+\end{equation}\]</span> In our case this means <span class="math inline">\(3 \times \frac{1}{2} = 1.5\)</span> Thus from the contruction point <span class="math inline">\((5,1)\)</span> we have to go up 1.5 units and mark a new point there. Now if you join these two points using a ruler you get the line like this</p>
+<div id="fig-linesc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/line_c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.9: The third point</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Now you try
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Draw lines through the point (2,1) with the following slopes: 1, -1, 0</li>
+<li>Start at point (2,1). If you move 2 to the right and 1 up will you be on the line, above the line or below the line?</li>
+<li>Draw the line with intercept 2 and slope -1.</li>
+<li>Draw the line with intercept 2 and slope 1.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="the-algebraic-equation-for-a-line" class="level3" data-number="6.2.5">
+<h3 data-number="6.2.5" class="anchored" data-anchor-id="the-algebraic-equation-for-a-line"><span class="header-section-number">6.2.5</span> The algebraic equation for a line</h3>
+<p>Here is a rule for computing the coordinate <span class="math inline">\(y\)</span> of a point from its <span class="math inline">\(x\)</span> coordinate <span class="math display">\[\begin{equation}
+y = \frac{1}{2}x + 1
+\end{equation}\]</span></p>
+<p>Let us make a table from this equation</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">2.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3.0</td>
+</tr>
+</tbody>
+</table>
+<p>If you plot these points, they all fall on a line. Any point whose <span class="math inline">\(y\)</span>-coordinate is related to its <span class="math inline">\(x\)</span>-coordinate by the same equation <span class="math inline">\(y = \frac{1}{2}x + 1\)</span> will be on this line. This line is called the <strong>graph</strong> of the equation. The slope is 1/2, the coefficient of <span class="math inline">\(x\)</span> in the equation. The intercept is 1, the constant term in the equation. We can draw a picture illustrating the situation</p>
+<div id="fig-linesd" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/line_d.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.10: The line through (2,2) with slope 1/2</figcaption>
+</figure>
+</div>
+<p>Using a general formulation we can say</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The graph of equation <span class="math inline">\(y = kx + d\)</span> is a straight line with slope <span class="math inline">\(k\)</span> and intercept <span class="math inline">\(d\)</span></p>
+</div>
+</div>
+<p>Exercises to be added</p>
 
 
 </section>

@@ -1,0 +1,37 @@
+\documentclass[margin = 3pt]{standalone}
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-fill}
+
+
+\begin{document}
+\begin{pspicture}(-1,-1)(5,5) % Define the coordinate system
+
+% Draw the coordinate axes
+\psaxes[Dx=1, Dy=1, arrows=->](0,0)(0,0)(4,4)
+\rput(4.2,0){$x$}
+\rput(0,4.2){$y$}
+
+\psline(0,1)(4,3)
+\psline[linestyle = dashed, linecolor = blue](1,1.5)(3,1.5)
+\psline[linestyle = dashed, linecolor = orange](3,1.5)(3,2.5)
+
+\psdot[linecolor=red](1,1.5)
+\psdot[linecolor=red](3,2.5)
+\psdot[linecolor=red](3,1.5)
+
+\rput(2,1){\color{blue} $\Delta x = 2$}
+\rput(4,2){\color{orange} $\Delta y = 1$}
+
+\rput(1,1.8){A}
+\rput(3,2.8){B}
+
+
+
+
+
+
+\end{pspicture}
+
+\end{document}

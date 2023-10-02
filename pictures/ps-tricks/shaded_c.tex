@@ -13,18 +13,19 @@
 \rput(4.2,0){$x$}
 \rput(0,4.2){$y$}
 
-\psline(0,1.5)(4,1.5)
-
 % Define the custom path for the hatch pattern
 \pscustom[linestyle=none,fillstyle=solid,fillcolor=lightgray]{
-	\psline(4,1.53)(4,2.5) % Top horizontal line
-	\psline(4,2.5)(0.03, 2.5) % Right vertical line
-	\psline(0.03, 2.5)(0.03, 1.53) % Bottom horizontal line
+	\psline(4,4)(0.03,4) % Top horizontal line
+	\psline(0.03,4)(0.03,0.03) % Right vertical line
+	\psline(0.03,0.03)(4,4) % Bottom horizontal line
 	\closepath
 }
 
+\psline(0,0)(4,4)
 
-\psline(0,2.5)(4,2.5)
+
+
+
 
 \end{pspicture}
 

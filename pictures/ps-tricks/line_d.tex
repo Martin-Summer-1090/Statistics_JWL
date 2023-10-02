@@ -1,0 +1,38 @@
+\documentclass[margin = 3pt]{standalone}
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-fill}
+
+
+\begin{document}
+\begin{pspicture}(-1,-1)(7,7) % Define the coordinate system
+
+% Draw the coordinate axes
+\psaxes[Dx=1, Dy=1, arrows=->](0,0)(0,0)(5,5)
+\rput(5.2,0){$x$}
+\rput(0,5.2){$y$}
+
+
+\psline(0,1)(4,3)
+
+\psline(2,2)(4,2)
+\psline(4,2)(4,3)
+
+\psdot(1,1.5)
+\psdot(2,2)
+\psdot(3,2.5)
+\psdot(4,3)
+
+\rput(3,1.5){$\Delta x = 2$}
+\rput(4.8,2.5){$\Delta y = 1$}
+
+\psline[linecolor = orange]{<->}(0,0)(0,1)
+\rput(0.8,0.5){\color{orange} intercept}
+
+
+
+
+\end{pspicture}
+
+\end{document}

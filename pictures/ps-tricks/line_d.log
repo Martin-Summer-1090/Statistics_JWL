@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  2 OCT 2023 20:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  2 OCT 2023 23:35
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
  %&-line parsing enabled.
-**shaded_a.tex
-(./shaded_a.tex
+**line_d.tex
+(./line_d.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
@@ -327,8 +327,8 @@ File: l3backend-dvips.def 2022-01-12 L3 backend support: dvips
 \g__pdf_backend_link_int=\count311
 \g__pdf_backend_link_sf_int=\count312
 )
-(./shaded_a.aux)
-\openout1 = `shaded_a.aux'.
+(./line_d.aux)
+\openout1 = `line_d.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
 LaTeX Font Info:    ... okay on input line 8.
@@ -350,14 +350,14 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 13.
  [1
 
-] (./shaded_a.aux) ) 
+] (./line_d.aux) ) 
 Here is how much of TeX's memory you used:
  10322 strings out of 478288
- 191679 string characters out of 5849315
- 551565 words of memory out of 5000000
+ 191657 string characters out of 5849315
+ 555079 words of memory out of 5000000
  28421 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,6n,71p,641b,306s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,6n,71p,639b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on shaded_a.dvi (1 page, 22492 bytes).
+Output written on line_d.dvi (1 page, 24592 bytes).
