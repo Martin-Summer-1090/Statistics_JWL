@@ -14,8 +14,8 @@ book:
     - summarizing_and_communicating_lots_of_data.qmd
     - from_limited_data_to_populations.qmd
     - what_causes_what.qmd
-    - modelling_relationships_using_regression.qmd
-    - algorithmic_prediction.qmd
+    - modelling_relationships_using_regression_part_1.qmd
+    - modelling_relationships_using_regression_part_2.qmd
     - how_sure_can_we_be.qmd
     - probability.qmd
     - probability_and_statistics.qmd

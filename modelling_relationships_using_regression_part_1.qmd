@@ -289,4 +289,96 @@ Using a general formulation we can say
 The graph of equation $y = kx + d$ is a straight line with slope $k$ and intercept $d$
 :::
 
-Exercises to be added
+:::{.callout-note icon=false}
+
+### Exercises:
+
+1. Plot the graphs of the following equations
+\begin{eqnarray}
+y &=& 2 x + 1 \\
+y &=& \frac{1}{2}x + 2
+\end{eqnarray}
+In each case, determine the slope and the intercept and give the height of the line
+at $x = 2$.
+
+2. Plot four different points whose $y$-coordinate are double their $x$-coordinates. Do these
+points lie on a line? What is the equation of this line?
+
+3. Plot the points $(1,1)$, $(2,2)$, $(3,3)$ and $(4,4)$ on the same graph. These points
+all lie on a line. What is the equation of this line?
+
+4. True of false:
+   (a) If $y$ is bigger than $x$, then the point $(x,y)$ is above the line of exercise 3.
+   (b) If $y = x$ then the point $(x,y)$ is on the line of exercise 3.
+   (c) If $y$ is smaller than $x$, then the point $(x,y)$ is below the line of 
+       exercise 3.
+       
+:::
+       
+### Plotting lines, using R
+
+The examples we discussed so far helped you understand how to draw equations
+like $y = kx + d$ by hand and to switch between the algebraic and geometric
+description of such equations. Of course you can use R to do such plots.
+
+We briefly discuss how. Let us generate some example data for the case of
+the first equation in exercise 1.
+
+```{r}
+#| code-fold: false
+
+x <- 0:10      # generate values of x-coordinate
+y <- 2*x + 1   # generate values of y-coordinate
+
+plot(x,y, type = "l")
+
+```
+
+In this graph R chose the coordinate system automatically for the display of the data.
+Therefore the x coordinates start at 0 and the ticks increase in units of two whereas
+the y coordinate starts at 5 and increases in units of 5. We can change this manually
+by using the graphics parameters `xlim` and `ylim`. Let#s do this for our data
+
+```{r}
+#| code-fold: false
+
+plot(x,y, type = "l", xlim = c(0,10), ylim = c(0,21))
+```
+
+This looks more familiar. Now assume you want to show the ticks by units of 1. This
+can also be adjusted, using the plot parameters `xaxp` and `yaxp`. `xaxp` (X-axis) 
+and `yaxp` (Y-axis) arguments allow customizing where the ticks of each axis start 
+and end and the number of regions to divide the axis specifying vectors of the 
+form `c(start, end, number_regions)`. 
+
+```{r}
+#| code-fold: false
+
+plot(x,y, type = "l", xlim = c(0,10), ylim = c(0,21), 
+     xaxp = c(0,10,10), yaxp = c(0,21,21))
+```
+
+Finally, you might want to add a line to a scatterplot in some cases. For this
+case R provides the function `abline()` which adds a line to a scatterplot.
+
+Assume we have plotted our `x`and `y` values as points.
+
+```{r}
+#| code-fold: false
+
+plot(x,y, xlim = c(0,10), ylim = c(0,21), 
+     xaxp = c(0,10,10), yaxp = c(0,21,21), pch = 19)
+```
+
+Now we want to add a line with slope 2 and intercept 1. This would be implemented in R
+as follows:
+
+```{r}
+#| code-fold: false
+
+plot(x,y, xlim = c(0,10), ylim = c(0,21), 
+     xaxp = c(0,10,10), yaxp = c(0,21,21), pch = 19)
+abline(1,2)
+
+```
+

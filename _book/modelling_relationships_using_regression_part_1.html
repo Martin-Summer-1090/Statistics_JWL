@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./algorithmic_prediction.html" rel="next">
+<link href="./modelling_relationships_using_regression_part_2.html" rel="next">
 <link href="./what_causes_what.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression_part_1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -173,13 +173,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./modelling_relationships_using_regression.html" class="sidebar-item-text sidebar-link active">
+  <a href="./modelling_relationships_using_regression_part_1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./algorithmic_prediction.html" class="sidebar-item-text sidebar-link">
+  <a href="./modelling_relationships_using_regression_part_2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span></a>
   </div>
 </li>
@@ -231,6 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#slope-and-intercept" id="toc-slope-and-intercept" class="nav-link" data-scroll-target="#slope-and-intercept"><span class="header-section-number">6.2.3</span> Slope and Intercept</a></li>
   <li><a href="#how-to-plot-a-line" id="toc-how-to-plot-a-line" class="nav-link" data-scroll-target="#how-to-plot-a-line"><span class="header-section-number">6.2.4</span> How to plot a line</a></li>
   <li><a href="#the-algebraic-equation-for-a-line" id="toc-the-algebraic-equation-for-a-line" class="nav-link" data-scroll-target="#the-algebraic-equation-for-a-line"><span class="header-section-number">6.2.5</span> The algebraic equation for a line</a></li>
+  <li><a href="#plotting-lines-using-r" id="toc-plotting-lines-using-r" class="nav-link" data-scroll-target="#plotting-lines-using-r"><span class="header-section-number">6.2.6</span> Plotting lines, using R</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -372,7 +373,7 @@ Now you try
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(points, <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="modelling_relationships_using_regression_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="page-columns page-full"><p>As an aside the argument <code>pch = 19</code> given to the plot function tells R to show the dots filled instead as unfilled circles. This is a bit opaque and difficult to remember. The default values also vary depending on which object is plotted. You do not have to remember such details. They are usually recovered as needed from the help function.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Here is the full list of possible values for the <code>pch</code> argument and what they do. The default value in <code>plot</code> is <code>pch = 1</code>. <img src="pictures/r-plot-pch-symbols-points-in-r.png" class="img-fluid" alt="Possible values for pch"></p></li></div></div>
@@ -614,7 +615,79 @@ Important
 <p>The graph of equation <span class="math inline">\(y = kx + d\)</span> is a straight line with slope <span class="math inline">\(k\)</span> and intercept <span class="math inline">\(d\)</span></p>
 </div>
 </div>
-<p>Exercises to be added</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercises:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Plot the graphs of the following equations <span class="math display">\[\begin{eqnarray}
+y &amp;=&amp; 2 x + 1 \\
+y &amp;=&amp; \frac{1}{2}x + 2
+\end{eqnarray}\]</span> In each case, determine the slope and the intercept and give the height of the line at <span class="math inline">\(x = 2\)</span>.</p></li>
+<li><p>Plot four different points whose <span class="math inline">\(y\)</span>-coordinate are double their <span class="math inline">\(x\)</span>-coordinates. Do these points lie on a line? What is the equation of this line?</p></li>
+<li><p>Plot the points <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((3,3)\)</span> and <span class="math inline">\((4,4)\)</span> on the same graph. These points all lie on a line. What is the equation of this line?</p></li>
+<li><p>True of false:</p>
+<ol type="a">
+<li>If <span class="math inline">\(y\)</span> is bigger than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is above the line of exercise 3.</li>
+<li>If <span class="math inline">\(y = x\)</span> then the point <span class="math inline">\((x,y)\)</span> is on the line of exercise 3.</li>
+<li>If <span class="math inline">\(y\)</span> is smaller than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is below the line of exercise 3.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="plotting-lines-using-r" class="level3" data-number="6.2.6">
+<h3 data-number="6.2.6" class="anchored" data-anchor-id="plotting-lines-using-r"><span class="header-section-number">6.2.6</span> Plotting lines, using R</h3>
+<p>The examples we discussed so far helped you understand how to draw equations like <span class="math inline">\(y = kx + d\)</span> by hand and to switch between the algebraic and geometric description of such equations. Of course you can use R to do such plots.</p>
+<p>We briefly discuss how. Let us generate some example data for the case of the first equation in exercise 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>      <span class="co"># generate values of x-coordinate</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">1</span>   <span class="co"># generate values of y-coordinate</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In this graph R chose the coordinate system automatically for the display of the data. Therefore the x coordinates start at 0 and the ticks increase in units of two whereas the y coordinate starts at 5 and increases in units of 5. We can change this manually by using the graphics parameters <code>xlim</code> and <code>ylim</code>. Let#s do this for our data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This looks more familiar. Now assume you want to show the ticks by units of 1. This can also be adjusted, using the plot parameters <code>xaxp</code> and <code>yaxp</code>. <code>xaxp</code> (X-axis) and <code>yaxp</code> (Y-axis) arguments allow customizing where the ticks of each axis start and end and the number of regions to divide the axis specifying vectors of the form <code>c(start, end, number_regions)</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">10</span>), <span class="at">yaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>,<span class="dv">21</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Finally, you might want to add a line to a scatterplot in some cases. For this case R provides the function <code>abline()</code> which adds a line to a scatterplot.</p>
+<p>Assume we have plotted our <code>x</code>and <code>y</code> values as points.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>), </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">10</span>), <span class="at">yaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>,<span class="dv">21</span>), <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we want to add a line with slope 2 and intercept 1. This would be implemented in R as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>), </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">10</span>), <span class="at">yaxp =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">21</span>,<span class="dv">21</span>), <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
@@ -862,7 +935,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./algorithmic_prediction.html" class="pagination-link">
+      <a href="./modelling_relationships_using_regression_part_2.html" class="pagination-link">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Algorithmic prediction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
