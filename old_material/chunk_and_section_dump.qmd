@@ -1,0 +1,589 @@
+---
+title: "older_material"
+author: "Martin Summer"
+editor: visual
+---
+
+I record here text chunks an sections, which were first in the main text and later 
+taken out. They are in the Git-record as well but for practical purposed it 
+is convenient to have them assembled here.
+
+#From summarizing and communicating lots of data
+
+The data we want to look at come from measurements of the annual flow of the river Nile at 
+Aswan in Egypt from 1871 to 1970. The units of these measurement in which the
+annual flow is recorded are 100 millions of cubic meters, i.e. $10^8 m^3$. 
+
+This is one of the data sets that is bundled with the R distribution and is available to all users of R. 
+They are stored in an R object called `Nile`.^[When you type `data()` at the R console, you get a list
+of all datasets that are available with the current distribution of R.]
+
+This is how the data look like, when we print them to the R console using the R command
+`print()`. The R function `options()` with the argument `width`just controls how the
+numbers are printed. Here I made sure that they will fit in the width of the page.
+
+```{r}
+#| code-fold: false
+options(width = 70)
+print(Nile)
+```
+
+For this example, assume we had chosen a bin size of 100^[Note that this will mean $100\times 10^8 m^3$ per year.]. When you study the list, you will find that the lowest value is at 456 while the highest value
+is at 1370. This is already quite tedious to find out by eyeballing the numbers with the small 
+number of values we have chosen for this example. It is impossible to do for really large data sets.
+
+Now lets make a distribution table like this:
+
+| Flow-bin   | Frequency |
+|-----------:|----------:|
+| 400 -  500 |          1|
+| 500 -  600 |          0|
+| 600 -  700 |          5|
+| 700 -  800 |         20|
+| 800 -  900 |         25|
+| 900 - 1000 |         19|
+|1000 - 1100 |         12|
+|1100 - 1200 |         11|
+|1200 - 1300 |          6|
+|1300 - 1400 |          1|
+
+In the column Flow-bin we have recorded the bins in steps of 100 and in the right column, Frequency, we
+have recorded the count of values that are in this bin. 
+
+When we make such a tabulation we have to agree on an endpoint convention. This is important, since 
+when a flow value would for instance be measured as exactly 500, in which bin should it be counted:
+400-500 or 500-600? You, the constructor of the histogram, has to take this decision. Let us
+agree on the convention that when a value falls exactly at the endpoint of the bin, we
+put it in the next bin. In practice you
+will usually do a histogram by computer. The code of the computer program has to specify an endpoint
+convention, so the computer knows what to do when a value coincides with an endpoint.
+
+On the Frequency axes you put the frequency scale: Counts of values. Then for each bin, you plot
+a bar, which has the width of the bin and the height of the frequency. 
+
+Do this for all the bins
+you have tabulated and you are ready.
+
+The histogram provides a certain aggregation of the data because it sorts the 100 data points into 10
+bins, in our example. While loosing some local information on individual data points the global information
+conveyed by the summary gives us a pretty good idea of the overall pattern of variation on the Nile river
+flow data. 
+
+We can see, for instance, that the most frequent flow is between 800 and 900 and that the
+variation is fairly symmetric around this bin. In the extremes this most frequent value can half or almost
+double, so there is quite some spread in the data.
+
+![Constructing the river flow histogram](pictures/nile_hist.png)
+
+If we had just plotted all individual data points, we also got a picture, though you probably agree
+that it is not particularly useful.
+
+```{r}
+plot(as.numeric(Nile), xlab = "Observation", ylab = "Annual Flow", pch = 16)
+```
+
+Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how
+it is roughly distributed that every statistical software has functions to produce histograms. In R, the
+language we use in this course, there is also such a function. The function name is called `hist()` and it
+takes the data as an argument. This is the second graphic function of R you encounter in this course
+after we played with the `barplot()`function in the last lecture. 
+
+To produce a histogram from the river flow data, we type at the console
+
+```{r}
+#| code-fold: false
+
+hist(Nile)
+```
+
+![Constructing the river flow histogram](pictures/nile_hist.png)
+
+
+## primary energy consumotion
+
+Let us look at this issue by an example. The numbers we want to look at report primary
+energy consumption per
+capita in kwh per person per year for different countries around the world.^[A kilowatt-hour, known as Kwh
+is a way to measure how much energy is used. A kilowatt-hour is the amount of energy used if
+a 100 watt appliance is kept running for an hour. For instance, if you turned on a 100 watt bulb 
+for one hour you are using a kilowatt-hour of energy. What’s the difference between kilowatt 
+vs. kilowatt-hour? A kilowatt is 1,000 watts, which is a measure of power. A kilowatt-hour is a 
+measure of the amount of energy a certain machine needs to run for one hour. So, if you have 
+a 1,000 watt drill, it takes 1,000 watts (or one kW) to make it work. If you run that 
+drill for one hour, you’ll have used up one kilowatt of energy for that hour, or one kWh. 
+Obviously, every appliance will use a different amount of power. Here are some of the 
+usages for some items in a home: 50″ LED Television: around 0.016 kWh per hour,
+electric water heater: 380-500 kWh per month] 
+The energy numbers 
+refer to primary energy – the energy input before the transformation to forms of energy for 
+end-use (such as electricity or petrol for transport).
+
+Let us look at the
+year 2019.
+
+```{r}
+library(JWL)
+
+
+dat <- with(energy_consumption_per_capita, energy_consumption_per_capita[Year == 2019, ])
+
+hist_info <- hist(dat$Cons, plot = FALSE)         # Store output of hist function
+hist_info$counts <- hist_info$counts /    # Compute relative frequency values
+  sum(hist_info$counts) * 100
+plot(hist_info, freq = TRUE, xlab = "Primary energy consumption in kilowatt-hours per person per year.", ylab = "Percent", main = "Primary energy Consuption per Capita 2019")              # Plot histogram with percentages
+```
+In this histogram you see the distribution of per capita primary energy consumption for the year
+2019 for countries around the globe. But now the y axes shows relative frequencies instead of counts.
+
+For example, you see from the graph that roughly 55 % of countries have a primary energy consumption 
+smaller that 20.000 kilowatt hours per person in this year. The next larger bucket contains already 
+roughly half or 24 %. The biggest buckets are then a very small fraction of countries in the world. This
+means that there is a relatively small share of countries, around 20 %, which have a large
+primary energy consumption per capita. One says in the language of statistics that the
+distribution of per capita primary energy consumption is skewed. When you have a 
+histogram with a relative frequency scale the lengths of the bars must sum to 1 (or to 100 
+depending whether the relative frequency is expressed in decimal fractions or in percentages).
+
+## reading files with R
+
+
+
+
+Before we can do anything with data, we need first to learn how  to load data into R and how
+to save them. We will discuss now how to do this for the case of *comma separated text files* or 
+so called *csv* files. R provides functions 
+for reading and writing from almost any other format, like data stored in
+Excel files and many more data formats that are used today.
+Since in all those different formats are read by R following the same principles 
+as in the csv case, it is sufficient if we discuss here the the case of csv files only.
+
+We have discussed a data set of per capita primary energy use in countries around the globe to
+produce a histogram of these data for the year 2019. How did I get these data into R?
+
+First of all I could access these data because helpful people at Oxford University in the UK who maintain
+and run the website "Our world in data", which we have encountered before, store these data on their
+website. In the concrete case of the energy data, they can currently be found at
+https://ourworldindata.org/grapher/per-capita-energy-use
+where you can download the datafile from the webpage and save it locally somewhere on your
+computer. 
+
+I have taken a screenshot here
+
+![Our World in Data website energy](pictures/our_world_in_data_energy.png)
+
+In the lower right corner you see a box called Data and a download button. This button allows you to 
+download the dataset to your machine. The file is called `per-capita-energy-use.csv`. From the extension
+of the file `csv`, you can see that it is a comma separated text file. This is a plain text file following
+certain formatting rules. In particular individual data points are separated by a comma^[The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization
+it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.]
+
+I have stored
+the file in a sub-folder to the directory in which I am writing these lecture notes. If you decide to
+download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps
+you have a folder for this course and in this folder you have a sub-folder where you store all the
+data sets we are using in the course.
+
+To read a csv file, R provides the function `read.csv()`. If the csv file
+comes with a European instead of an US decimal format (`,` instead of `.` for the
+decimal sign.) you need to use the function `read.csv2()`. Please check out the documentation
+of these functions by typing `?read.csv` at the R prompt.
+
+In the simplest form you read the data and store them in an object
+you can work with in R. How to store data in an R object, we have already learned
+in the previous lecture. You invent a name and assign the values to this name using the 
+assignment operator `<-`.
+
+Let's call the
+object in which we save our data `energy_consumption`, then by calling the function `read.csv()` with the
+path to your file as an argument will read the data from your local folder and store them in the
+object we have created. This allows us to refer to the data for doing further computations.
+```{r}
+#| code-fold: false
+energy_consumption <- read.csv("data/energy_use_per_capita/per-capita-energy-use.csv")
+```
+The function needs as an argument the file name. If the file is in a sub-folder
+of  the current directory you need to also specify the path.
+To specify the correct path to the file
+you need to know in which part of your directory tree you are currently working.
+
+In my
+case I am working in the project folder for my lecture notes, which has a sub-folder called
+`data`. The data sub-folder has a further sub-folder called `energy_use_per_capita` in my case
+and thus I specify the path relative to this location. 
+
+To find out what is your current
+R working directory, R provides the function `getwd()`. If I type this in my case, I will get
+```{r}
+#| code-fold: false
+getwd()
+```
+the path of my project folder for this lecture notes. So if I type the string
+`"data/energy_use_per_capita/per-capita-energy-use.csv"` this specifies the path relative to my working directory.
+
+If you read the file on your computer, you need to specify the path appropriately from where
+you are working in R at the moment to where you have stored the csv file.
+
+Now `read.csv()` has many additional arguments, which provide you with lots of
+flexibility. I encourage you to check it out and play with it using the help function and
+the examples given therein by typing `?read.csv` at the prompt.
+
+We have now read the primary energy consumption data and written it to the 
+R-object `energy_consumption`. Lets
+inspect the object a bit to see what we've got. 
+
+I use the function `head()` with
+the parameter value `n = 10`. This will show me the first 10 rows of the data-file.
+So the value I give to the argument `n` contros how many rows will be displayed.
+```{r}
+#| code-fold: false
+options(width = 120)
+head(energy_consumption, n = 10)
+```
+This gives you an idea what the data look like. There are four variables, called `Entity`, `Code`, `Year` and `Primary.energy.consumption.per.capita..kWh.person.` The last variable name is very informative
+but also very long and unpractical. We will learn how to change variable names soon. Because of the
+long name, I had to use the function `options()` before `heads()` to tell R to use a sufficiently wide
+display. Don't worry for this detail at the moment.
+
+### Interquartile range and the boxplot
+
+Note that for skewed distributions the standard deviation is also not a very good measure of the spread,
+because it measures the variation about the mean and the mean does not capture the center of the
+distribution very well in this case.
+
+Moreover the standard deviation - like the mean - is sensitive to outliers and is therefore
+not a robust measure of the spread of a distribution.
+
+A measure that is more appropriate in this case is the inter-quartile range or IQR. It is the distance
+between the 25th and the 75th percentile of the data and contains the central half of the data. The
+25th percentile is the range of the data where 25 % of observations have a lower value and 75 have a higher one. The median, for example, could equivalently be termed the 50 % percentile.
+
+R had a function to compute the inter-quartile range, which is called `IQR()`. For example in the
+case of our income data, which we showed are skewed, we would get, for example a mean and a standard
+deviation of
+
+```{r}
+mean(data)
+sd(data)
+```
+and a median and inter quartile range of
+
+```{r}
+median(data)
+IQR(data)
+```
+
+Alternatively you could use the R function `summary()`, which computes in one go the minimum and maximum value of your data, as well as the median the mean and the 25 and 75 percentile of the data. You can
+compute the IQR from this.
+
+Let us illustrate the use of `summary()` with the income data discussed in this section. To
+compute the describtives in one go for these data, you would tell R:
+
+```{r}
+#| code-fold: false
+
+summary(data)
+```
+
+The `summary()`function will give you the minimium, the first quartile, the median and the mean, the
+4th quartile and the maximum. The interquartile range can be computed from these data as $4040 - 820$ 
+which is equal to $3220$. When you use `IQR()`you will get
+```{r}
+#| code-fold: false
+IQR(data)
+```
+as indeed it should be.
+
+Note that is you summarize our human height data we get:
+
+```{r}
+#| code-fold: false
+
+summary(dat$Height)
+```
+Since the median and the mean give you the same value, you can see already from these data that the
+distribution of the data is symmetric, as we have already seen before.
+
+::: {.callout-note icon=false}
+
+## Now you try
+
+For the list of numbers:
+
+2, -1, 1, -1, 1, -2, 1.5, -0.2, 1.37, -1.37, 3
+
+1. Compute the mean, the standard deviation, the median and the inter quartile range.
+2. Draw a histogram
+
+:::
+
+A standard graphical tool that summarizes the data in an anology to the `summary()`function is
+the boxplot. The boxplot summarizes the variation of data graphically through quartiles. It draws
+a box, where one side corresponds to the lower quartile, while the opposie side corresponds to
+the upper quartile. The median is displayed as a line crossing the box. The boxplot also contains
+lines, which are called the *whiskers* extending the box indication variability outside the
+two quartiles. These observations are at the extremes of the variation of the data. Data points
+that differ significantly from the other data, often calles *outliers* are shown as individual points.
+
+Let us show some of the datasets we have discussed in this section to illustrate this very useful
+tool which gives you a compact and very informative summary of a huge data set. Let us start
+with Nile river data we had looked at in the beginning of the section. T R function for making
+a boxplot is called `boxplot()` and is used like this:
+
+```{r}
+#| code-fold: false
+
+boxplot(Nile)
+```
+
+Here the box shows you the maximum and the minimum flow (the whiskers), the box surrounding the
+first and the fourth quartile as well as the median as the black line within the box. If you
+look up the help function of `boxplot()` you can learn about various ways to control the
+look of the plot. 
+
+You can display the boxplot vertically or horizontally, whatever seems more convenient
+in the given context. Assume for instance we would like to show the Nile river data in 
+one graph displaying both the boxplot and the histogram at the same time, then it would
+be more informative to have the boxplot as a horizontal graph.
+
+```{r}
+mat <- matrix(c(1, 2), nrow = 2, ncol = 1, byrow = TRUE) # first and second plot
+layout(mat = mat, heights = c(1, 1)) # First and second row relative heights
+boxplot(Nile, horizontal = TRUE)
+hist(Nile)
+```
+But you could, of course, also choose a different layout. Lets take the primary energy 
+consumption data we used before
+
+```{r}
+mat <- matrix(c(2, 1), nrow = 1, ncol = 2, byrow = TRUE) # first and second plot
+layout(mat = mat, widths = c(1, 2)) # First and second row relative heights
+plot(hist_info, freq = FALSE, xlab = "", ylab = "Percent", main = " ")
+boxplot(hist_info$density)
+```
+
+This graph show you in one picture the extreme asymmetry of primary energy consumption 
+across the globe. Very few countries are heavy consumers of primary energy whereas the
+a huge share of countries consume very little in comparison. In the context of
+the debate on climate change, this observation might be an interesting starting point
+for discussing the sharing of the burdens of getting out of fossile fuels between
+the countries in the world. 
+
+Let us finally look at the Nile river data once more combining the display of the raw data,
+the histogram as well as the boxplot. This shows you at the same time the raw data, and two
+ways of summarizing them. When the datapoints are huge, the display of the raw data will
+not show you very much, because the points will be so packed that you can not distinguish
+different datapoints easily. Withe the Nile river flow data, where we have 100 observations
+the situation is different. So this is how the picture of all  three graphs combined
+looks like.
+
+```{r}
+# Data
+
+layout(matrix(c(2, 0, 1, 3),
+              nrow = 2, ncol = 2,
+              byrow = TRUE),
+       widths = c(3, 1),
+       heights  = c(1, 3), respect = TRUE)
+
+# Top and right margin of the main plot
+par(mar = c(5.1, 4.1, 0, 0))
+plot(as.numeric(Nile), xlab = "", ylab = "Flow")
+
+# Left margin of the histogram
+par(mar = c(0, 4.1, 0, 0))
+hist(Nile, main = "", bty = "n",
+     axes = FALSE, ylab = "")
+
+# Bottom margin of the boxplot
+par(mar = c(5.1, 0, 0, 0))
+
+# Boxplot without plot region box
+par(bty = "n")
+
+# Boxplot without axes
+boxplot(Nile, axes = FALSE)
+```
+
+## Describing differences between groups of numbers
+
+Groups of numbers are often compared by using summary statistics. Summary statistics
+can answer the question: How do the groups differ *on average*, how do they differ with
+respect to how spread out the observations are.
+
+By this stage of the chapter on summarizing and communicating lost of data
+it should be clear that when we conduct such comparisons, we have to be mindful
+of the fact that summary measures hide information that depending on the way the
+data are distributed some summary measures are more appropriate than others. 
+
+Let us use data on human height to illustrate these points. Our data includes
+a set of anthropometric data from a textbook by the anthropologist Richard McElrath (@McElr2020).
+If we summarize the height data of men and women in  this dataset using the R summary function we
+get
+```{r}
+
+mh <- height_weight$height[height_weight$sex == 1 & height_weight$age >= 18] |> na.omit()
+fh <- height_weight$height[height_weight$sex == 0 & height_weight$age >= 18] |> na.omit()
+
+lapply(list(Male = mh, Female = fh), summary)
+```
+
+The summary statistics shows as a few facts about these data. First of all we see that 
+both for the male height data as well as for the female height data the mean and the
+median are about the same and thus the distributions are roughly symmetric. The mean
+thus actually captures the "center" of the distribution in a meaningful way. On average
+men are taller than women. The variation in terms of the inter quartile range is about 
+the same between 6 and 7 cm.
+
+Note that this does not mean that all men are taller than women. Let's look at the full data
+in terms of the histogram.
+
+```{r}
+
+hist(mh, col=rgb(1,0,0,.5), border=NA, xlab = "Height in cm", main = "Comparative histogram male and female height", breaks = 14)
+hist(fh, col=rgb(0,0,1,.5), border=NA, breaks = 9, add=TRUE)
+```
+We have colored the female height distribution in blue and the male height distribution in red
+and overlayed the histograms. Now you can see that men tend to be taller than women as
+expressed in the differences in the averages there is also a substantial amount of
+overlap in the distributions. For each male in this overlap region you will find
+a female with a matching height, and some who are taller than a given male individual. About
+10 % of women in this dataset have a male twin in height. 
+
+If you describe data and compare them by summary measures there is no substitute for looking at 
+the data properly. It is usually a good idea to look at the distribution as well as on
+the summary measures.
+
+## Describing Relationships between data
+
+Are taller people also heavier? This is another way in which we can look at large 
+sets of data and describe their pattern. We try to describe the relationship between
+data. A standard tool to do so is the so called scatterplot.
+
+Let us show how a scatterplot works by using the data on height and weight of humans older
+than 18 years. If you give two numeric vectors of equal length to the function `plot()` in R
+R will produce a scatterplot.
+
+```{r}
+H <- socr_height_weight$Height*2.54
+W <- socr_height_weight$Weight*0.4535924
+
+plot(H,W, xlab = "Height in cm", ylab = "Weight in kg", main = "Relation between height and weight of adult humans")
+```
+What you see here is a dense cloud of 25.000 pairs of height and weight measurements. For any given 
+height you see a whole range of observations with different weights. And for any given weight
+you see many observations with differing heights. But the cloud as a whole shows an
+increasing relation. This makes also intuitive sense. People who are taller tend 
+to be also heavier.
+
+It is sometimes convenient to summarize such increasing (or decreasing) relationships between
+two variables or the pairs of numbers shown in a scatterplot with a single number. The general
+choice for doing this is the *Pearson correlation coefficient* or simply the correlation.
+
+The Pearson correlation coefficient is a number that can be between -1 and 1. It epresses how close
+to a straight line the data-points in the scatterplot fall. If the correlation coerfficient is 1 all
+points lie on an upward sloping straight line. If the coeficcient is - 1 all the points
+fall on a downward sloping straight line. A correlation coefficient of 0 can come from
+points scattered at random or any other pattern in which there is no systematic upward or
+downward trend.
+
+R provides a function for the Pearson correlation coefficient, which is called `cor()`. For our
+height-weight pairs data used for the scatterplot this coefficient computes as
+
+```{r}
+#| code-fold: false
+
+cor(H,W)
+```
+
+suggesting an association of increasing weight with increasing height. 
+
+A correlation coefficient is simply a one number summary of association or co-variation. It can
+not be used to conclude that there is definitely an underlying relationship between height and
+weight - in this example - nor can it say anything about why such a relationship may exist.
+
+## Describing Trends
+
+Let us come back to the data on human height. One reason why data on height have
+always been interesting to researchers is that average height is strongly correlated
+with living standards in a population. This is because poor nutrition and poor
+medical support limit human growth. Because better living conditions tend to make
+humans taller they are an indirect measure of living stanrdards. Height is - of course - 
+not a direct measure of well beeing. The variation of height in a given population is
+largely determined by genetic fatcors. 
+
+Looking at the trend of average height over time helps us to indirectly track
+progress especially with respect to conditions of nutrition and disease
+prevention. The time trends in average human height are therefore data that
+can tell interesting stories or open our interest for further exploration.
+
+Let us use a dataset on the average height of men and women accross countries
+around the world from 1896 to 1996 which we retrieve from the site our world in data
+which we have now encountered several times by now^[https://ourworldindata.org/human-height].
+
+Let us study, for instance the data for the world as a whole
+
+```{r}
+mh <- height_men
+fh <- height_women
+
+mh_w <- height_men[height_men$Entity == "World", ]
+fh_w <- height_women[height_women$Entity == "World", ]
+
+x <- mh_w$Year
+y1 <- mh_w$Height
+y2 <- fh_w$Height
+
+#plot the first data series using plot()
+plot(x, y1, type="l", col="blue", ylab="y", lty=1, ylim=range( c(150, 180) ) )
+
+#add second data series to the same chart using points() and lines()
+
+lines(x, y2, type = "l", col="red",lty=2)
+
+```
+
+## mean and median
+
+Let us illustrate this difference
+with the example of primary energy consumption across the countries in the world. This distribution
+turned out to be highly skewed. Remember the histogram
+
+```{r}
+hist(dat_countries$Cons, 
+     xlab = "Primary energy consumption in kilowatt-hours per person per year.",
+     main = "Primary energy Consuption per Capita 2019")
+```
+
+The mean is:
+```{r}
+mean(dat_countries$Cons)
+```
+and the median is
+```{r}
+median(dat_countries$Cons)
+```
+
+Now let us assume we add a fictitious large value to the data set, say 400.000 kwh per person per year and
+recalculate the mean.
+
+```{r}
+#| code-fold: false
+
+mean(c(dat_countries$Cons, 400000))
+```
+Now the mean per capita consumption is quite a bit larger actually - just from this one extreme observation - it is larger by more than 6 %.
+
+What happens to the median?
+
+```{r}
+#| code-fold: false
+
+median(c(dat_countries$Cons, 400000))
+```
+
+It stays about the same.
+
+The take away here is that the mean is a summary measure that is sensitive to outliers. The median
+on the other hand is a more robust measure. One or a a few outliers can not move the median.
+
+
