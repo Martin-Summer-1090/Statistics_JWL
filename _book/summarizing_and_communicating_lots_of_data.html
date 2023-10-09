@@ -239,10 +239,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="header-section-number">3.3.1</span> Reading data in R</a></li>
   <li><a href="#sec-robjects" id="toc-sec-robjects" class="nav-link" data-scroll-target="#sec-robjects"><span class="header-section-number">3.3.2</span> R objects</a></li>
-  <li><a href="#sec-data_frame" id="toc-sec-data_frame" class="nav-link" data-scroll-target="#sec-data_frame"><span class="header-section-number">3.3.3</span> Data frames and R lists</a></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.3.4</span> Data Frames</a></li>
-  <li><a href="#selecting-data-from-r-objects-a-toolbox." id="toc-selecting-data-from-r-objects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-objects-a-toolbox."><span class="header-section-number">3.3.5</span> Selecting data from R objects: A toolbox.</a></li>
-  <li><a href="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." id="toc-application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="nav-link" data-scroll-target="#application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="header-section-number">3.3.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</a></li>
   </ul></li>
   <li><a href="#exercises-histograms" id="toc-exercises-histograms" class="nav-link" data-scroll-target="#exercises-histograms"><span class="header-section-number">3.4</span> Exercises: Histograms</a>
   <ul class="collapse">
@@ -899,28 +895,17 @@ Now you try
 </table>
 <p>Prevalence is the proportion of a population who have a specific characteristic in a given time period. In a survey prevalence is measured by the number of people in a sample who have the characteristic divided by all people in the sample.</p>
 <p>Before we go on with learning the tools to summarize and communicate lots of data let us gain more skills for handling the tool that will actually enable you to handle large data sets yourself by making use of R. Building on what we learned in the last unit, lets now push your knowledge of R bit further.</p>
-<section id="sec-readingdata" class="level3 page-columns page-full" data-number="3.3.1">
+<section id="sec-readingdata" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.3.1</span> Reading data in R</h3>
 <p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this for the case of <em>comma separated text files</em> or so called <em>csv</em> files. R provides functions for reading and writing from almost any other format, like data stored in Excel files and many more data formats that are used today. Since in all those different formats are read by R following the same principles as in the csv case, it is sufficient if we discuss here the the case of csv files only.</p>
-<p>We have discussed a data set of per capita primary energy use in countries around the globe to produce a histogram of these data for the year 2019. How did I get these data into R?</p>
-<p>First of all I could access these data because helpful people at Oxford University in the UK who maintain and run the website “Our world in data”, which we have encountered before, store these data on their website. In the concrete case of the energy data, they can currently be found at https://ourworldindata.org/grapher/per-capita-energy-use where you can download the datafile from the webpage and save it locally somewhere on your computer.</p>
-<p>I have taken a screenshot here</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pictures/our_world_in_data_energy.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Our World in Data website energy</figcaption>
-</figure>
-</div>
-<div class="page-columns page-full"><p>In the lower right corner you see a box called Data and a download button. This button allows you to download the dataset to your machine. The file is called <code>per-capita-energy-use.csv</code>. From the extension of the file <code>csv</code>, you can see that it is a comma separated text file. This is a plain text file following certain formatting rules. In particular individual data points are separated by a comma<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.</p></li></div></div>
-<p>I have stored the file in a sub-folder to the directory in which I am writing these lecture notes. If you decide to download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps you have a folder for this course and in this folder you have a sub-folder where you store all the data sets we are using in the course.</p>
 <p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
 <p>In the simplest form you read the data and store them in an object you can work with in R. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
-<p>Let’s call the object in which we save our data <code>energy_consumption</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. This allows us to refer to the data for doing further computations.</p>
+<p>Let’s call the object in which we save our data <code>dhs_data</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. The csv-data-file, we will need for our analysis is called <code>household_member_recode.csv</code> This allows us to refer to the data for doing further computations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>energy_consumption <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/energy_use_per_capita/per-capita-energy-use.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/DHS/household_member_recode.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function needs as an argument the file name. If the file is in a sub-folder of the current directory you need to also specify the path. To specify the correct path to the file you need to know in which part of your directory tree you are currently working.</p>
-<p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data sub-folder has a further sub-folder called <code>energy_use_per_capita</code> in my case and thus I specify the path relative to this location.</p>
+<p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data sub-folder has a further sub-folder called <code>DHS</code> in my case and thus I specify the path relative to this location.</p>
 <p>To find out what is your current R working directory, R provides the function <code>getwd()</code>. If I type this in my case, I will get</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -928,26 +913,257 @@ Now you try
 <pre><code>[1] "/home/martinsummer/R/Statistics_JWL"</code></pre>
 </div>
 </div>
-<p>the path of my project folder for this lecture notes. So if I type the string <code>"data/energy_use_per_capita/per-capita-energy-use.csv"</code> this specifies the path relative to my working directory.</p>
+<p>the path of my project folder for this lecture notes. So if I type the string <code>"data/DHS/household_member_recode.csv"</code> this specifies the path relative to my working directory.</p>
 <p>If you read the file on your computer, you need to specify the path appropriately from where you are working in R at the moment to where you have stored the csv file.</p>
 <p>Now <code>read.csv()</code> has many additional arguments, which provide you with lots of flexibility. I encourage you to check it out and play with it using the help function and the examples given therein by typing <code>?read.csv</code> at the prompt.</p>
-<p>We have now read the primary energy consumption data and written it to the R-object <code>energy_consumption</code>. Lets inspect the object a bit to see what we’ve got.</p>
-<p>I use the function <code>head()</code> with the parameter value <code>n = 10</code>. This will show me the first 10 rows of the data-file. So the value I give to the argument <code>n</code> contros how many rows will be displayed.</p>
+<p>We have now read the main data file and written it to the R-object <code>dhs_data</code>. Lets inspect the object a bit to see what we’ve got.</p>
+<p>I use the function <code>head()</code> with the parameter value <code>n = 10</code>. This will show me the first 10 rows of the data-file. So the value I give to the argument <code>n</code> controls how many rows will be displayed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        Entity Code Year Primary.energy.consumption.per.capita..kWh.person.
-1  Afghanistan  AFG 1980                                           583.2944
-2  Afghanistan  AFG 1981                                           666.3782
-3  Afghanistan  AFG 1982                                           725.6599
-4  Afghanistan  AFG 1983                                           912.1396
-5  Afghanistan  AFG 1984                                           941.3926
-6  Afghanistan  AFG 1985                                           939.6124
-7  Afghanistan  AFG 1986                                           976.6691
-8  Afghanistan  AFG 1987                                          1592.7023
-9  Afghanistan  AFG 1988                                          2805.6096
-10 Afghanistan  AFG 1989                                          2700.4739</code></pre>
+<pre><code>           hhid hvidx hv000 hv001 hv002 hv003 hv004   hv005 hv006 hv007 hv008 hv009 hv010 hv011 hv012 hv013 hv014
+1          1  1     1   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+2          1  1     2   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+3          1  1     3   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+4          1  1     4   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+5          1  1     5   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+6          1  1     6   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+7          1  2     1   ZZ6     1     2     1     1 1049502     6  2015  1386     7     0     4     7     7     0
+8          1  2     2   ZZ6     1     2     1     1 1049502     6  2015  1386     7     0     4     7     7     0
+9          1  2     3   ZZ6     1     2     1     1 1049502     6  2015  1386     7     0     4     7     7     0
+10         1  2     4   ZZ6     1     2     1     1 1049502     6  2015  1386     7     0     4     7     7     0
+       hv015 hv016 hv017 hv018 hv019            hv020 hv021 hv022            hv023    hv024 hv025 hv026        hv027
+1  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+2  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+3  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+4  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+5  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+6  completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+7  completed    29     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA men's survey
+8  completed    29     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA men's survey
+9  completed    29     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA men's survey
+10 completed    29     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA men's survey
+     hv028 hv030 hv031 hv032 hv035 hv040 hv041        hv042              hv044
+1        0   221   222     1     0    NA     0 not selected household selected
+2        0   221   222     1     0    NA     0 not selected household selected
+3        0   221   222     1     0    NA     0 not selected household selected
+4        0   221   222     1     0    NA     0 not selected household selected
+5        0   221   222     1     0    NA     0 not selected household selected
+6        0   221   222     1     0    NA     0 not selected household selected
+7  1204911   221   222     1     0    NA     4     selected household selected
+8  1204911   221   222     1     0    NA     4     selected household selected
+9  1204911   221   222     1     0    NA     4     selected household selected
+10 1204911   221   222     1     0    NA     4     selected household selected
+                                                  hv201 hv202 hv204                                 hv205 hv206 hv207
+1                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+2                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+3                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+4                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+5                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+6                                      unprotected well    NA    20     pit latrine without slab/open pit    no    no
+7  river/dam/lake/ponds/stream/canal/irrigation channel    NA    25 ventilated improved pit latrine (vip)    no   yes
+8  river/dam/lake/ponds/stream/canal/irrigation channel    NA    25 ventilated improved pit latrine (vip)    no   yes
+9  river/dam/lake/ponds/stream/canal/irrigation channel    NA    25 ventilated improved pit latrine (vip)    no   yes
+10 river/dam/lake/ponds/stream/canal/irrigation channel    NA    25 ventilated improved pit latrine (vip)    no   yes
+   hv208 hv209 hv210 hv211 hv212       hv213  hv214              hv215 hv216                    hv217 hv218 hv219 hv220
+1     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+2     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+3     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+4     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+5     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+6     no    no    no    no    no earth, sand   dirt thatch / palm leaf     2 two adults, opposite sex     1  male    49
+7     no    no    no    no    no earth, sand cement       metal sheets     5    three+ related adults     1  male    63
+8     no    no    no    no    no earth, sand cement       metal sheets     5    three+ related adults     1  male    63
+9     no    no    no    no    no earth, sand cement       metal sheets     5    three+ related adults     1  male    63
+10    no    no    no    no    no earth, sand cement       metal sheets     5    three+ related adults     1  male    63
+   hv221 hv225 hv226 hv227        hv228                     hv230a hv230b hv232 hv232b hv232c hv232d hv232e hv232y
+1     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+2     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+3     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+4     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+5     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+6     no   yes  wood   yes all children not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+7     no    no  wood   yes         &lt;NA&gt; not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+8     no    no  wood   yes         &lt;NA&gt; not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+9     no    no  wood   yes         &lt;NA&gt; not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+10    no    no  wood   yes         &lt;NA&gt; not observed: other reason   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;
+   hv234    hv234a     hv235 hv236 hv237 hv237a hv237b hv237c hv237d hv237e hv237f hv237g hv237h hv237i hv237j hv237k
+1     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+2     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+3     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+4     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+5     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+6     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+7     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+8     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+9     NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+10    NA no iodine elsewhere    NA    no     no     no     no     no     no     no     NA     NA     NA     NA     NA
+   hv237x hv237z hv238 hv239 hv240                  hv241 hv242 hv243a hv243b hv243c hv243d hv244 hv245 hv246 hv246a
+1      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+2      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+3      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+4      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+5      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+6      no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no     no     no     no   yes   998   yes     NA
+7      no     no    NA  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;    yes     no     no     no   yes    16   yes     NA
+8      no     no    NA  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;    yes     no     no     no   yes    16   yes     NA
+9      no     no    NA  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;    yes     no     no     no   yes    16   yes     NA
+10     no     no    NA  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;    yes     no     no     no   yes    16   yes     NA
+   hv246b hv246c hv246d hv246e hv246f hv246g hv246h hv246i hv246j hv246k hv247 hv252 hv253 hv253a hv253b hv253c hv253d
+1       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+2       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+3       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+4       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+5       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+6       0      0      0      0     12      0      0      0      0     NA    no never    no     no     no     no     NA
+7       0      0     10      0     18      0      0      0      0     NA    no never    no     no     no     no     NA
+8       0      0     10      0     18      0      0      0      0     NA    no never    no     no     no     no     NA
+9       0      0     10      0     18      0      0      0      0     NA    no never    no     no     no     no     NA
+10      0      0     10      0     18      0      0      0      0     NA    no never    no     no     no     no     NA
+   hv253e hv253f hv253g hv253h hv253x hv253z   hv270   hv271 hml1 hml1a hml2 chl0  shzone    shhreg           hv101
+1      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery            head
+2      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery wife or husband
+3      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery    son/daughter
+4      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery    son/daughter
+5      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery    son/daughter
+6      NA     NA     NA     NA     no     no poorest -128996    1     1    2    2 central periphery    son/daughter
+7      NA     NA     NA     NA     no     no  middle   -3165    2     2    0    1 central periphery            head
+8      NA     NA     NA     NA     no     no  middle   -3165    2     2    0    1 central periphery wife or husband
+9      NA     NA     NA     NA     no     no  middle   -3165    2     2    0    1 central periphery    son/daughter
+10     NA     NA     NA     NA     no     no  middle   -3165    2     2    0    1 central periphery    son/daughter
+   hv102 hv103  hv104 hv105                   hv106 hv107 hv108              hv109 hv110 hv111 hv112 hv113 hv114
+1    yes    no   male    49 no education, preschool    NA     0       no education    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+2    yes   yes female    30 no education, preschool    NA     0       no education    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+3    yes   yes female     0 no education, preschool    NA     0       no education    NA   yes     2   yes     1
+4    yes   yes   male    12                 primary     2     2 incomplete primary    NA   yes     2   yes     1
+5    yes   yes   male     7                 primary     0     0 incomplete primary    NA   yes     2   yes     1
+6    yes   yes   male     3 no education, preschool    NA     0       no education    NA   yes     2   yes     1
+7    yes   yes   male    63 no education, preschool    NA     0       no education    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+8    yes   yes female    50               secondary     6    12 complete secondary    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+9    yes   yes   male    28               secondary     6    12 complete secondary    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+10   yes   yes   male    24               secondary     6    12 complete secondary    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA
+           hv115                 hv116        hv117        hv118        hv120                 hv121
+1        married     currently married not eligible not eligible not eligible                    no
+2        married     currently married     eligible not eligible not eligible                    no
+3           &lt;NA&gt;                  &lt;NA&gt; not eligible not eligible not eligible                    no
+4           &lt;NA&gt;                  &lt;NA&gt; not eligible not eligible not eligible attended at some time
+5           &lt;NA&gt;                  &lt;NA&gt; not eligible not eligible not eligible                    no
+6           &lt;NA&gt;                  &lt;NA&gt; not eligible not eligible not eligible                    no
+7        married     currently married not eligible not eligible not eligible                    no
+8        married     currently married not eligible not eligible not eligible                    no
+9       divorced formerly/ever married not eligible     eligible not eligible                    no
+10 never married         never married not eligible     eligible not eligible                  &lt;NA&gt;
+                     hv122 hv123 hv124 hv125 hv126 hv127 hv128 hv129      hv140 idxh4 ha0 ha1 ha2 ha3 ha4 ha5 ha6 ha11
+1  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     1  NA  NA  NA  NA  NA  NA  NA   NA
+2  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     2  NA  NA  NA  NA  NA  NA  NA   NA
+3  no education, preschool    NA     0    NA    NA    NA    NA    NA registered     3  NA  NA  NA  NA  NA  NA  NA   NA
+4                  primary     3     3    NA    NA    NA    NA    NA       &lt;NA&gt;     4  NA  NA  NA  NA  NA  NA  NA   NA
+5  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     5  NA  NA  NA  NA  NA  NA  NA   NA
+6  no education, preschool    NA     0    NA    NA    NA    NA    NA registered     6  NA  NA  NA  NA  NA  NA  NA   NA
+7  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     1  NA  NA  NA  NA  NA  NA  NA   NA
+8  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     2  NA  NA  NA  NA  NA  NA  NA   NA
+9  no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     3  NA  NA  NA  NA  NA  NA  NA   NA
+10                    &lt;NA&gt;    NA    NA    NA    NA    NA    NA    NA       &lt;NA&gt;     4  NA  NA  NA  NA  NA  NA  NA   NA
+   ha12 ha12a ha12b ha13 ha32 ha33 ha35 ha40 ha41 ha50 ha51 ha52 ha53 ha54 ha55 ha56 ha57 ha58 ha60 ha61 ha62 ha63 ha64
+1    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+2    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+3    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+4    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+5    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+6    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+7    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+8    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+9    NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+10   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+   ha65 ha66 ha67 ha68 ha69 ha70 hc0 hc1 hc2 hc3 hc4 hc5 hc6 hc7 hc8 hc9 hc10 hc11 hc12 hc13 hc15 hc16 hc17 hc18 hc19
+1  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+2  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+3  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+4  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+5  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+6  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+7  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+8  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+9  &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+10 &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+   hc27 hc30 hc31 hc32 hc33 hc51 hc52 hc53 hc55 hc56 hc57 hc58 hc60 hc61 hc62 hc63 hc64 hc68 hc70 hc71 hc72 hc73 hb0
+1  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+2  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+3  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+4  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+5  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+6  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+7  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+8  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA
+9  &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA   3
+10 &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA   4
+   hb1 hb2  hb3  hb4 hb5   hb6 hb11 hb12 hb12a hb12b     hb13 hb32                                  hb33 hb35 hb40 hb41
+1   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+2   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+3   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+4   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+5   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+6   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+7   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+8   NA  NA   NA   NA  NA    NA   NA   NA    NA    NA     &lt;NA&gt;   NA                                  &lt;NA&gt;   NA   NA   NA
+9   27 587 1773 9887 228 10830 -138 8172  9047  8821 measured 1051 month and year - information complete    0 1867 1053
+10  23 585 1742 9608 176 10641  -86 8826  9318  9276 measured 1108 month and year - information complete    0 1928 1107
+              hb50 hb51    hb52 hb53     hb55 hb56       hb57 hb58 hb60    hb61  hb62        hb63    hb64      hb65
+1             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+2             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+3             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+4             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+5             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+6             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+7             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+8             &lt;NA&gt;   NA    &lt;NA&gt;   NA     &lt;NA&gt;   NA       &lt;NA&gt;   NA &lt;NA&gt;    &lt;NA&gt;              &lt;NA&gt;    &lt;NA&gt;      &lt;NA&gt;
+9  age 18 or older   NA granted  146 measured  146 not anemic   NA &lt;NA&gt; granted V4Q1R blood taken granted completed
+10 age 18 or older   NA granted  130 measured  130 not anemic   NA &lt;NA&gt; granted P7Y8E blood taken granted completed
+        hb66 hb67              hb68    hb69 hb70 hmlidx      hml3 hml4 hml5                            hml6   hml7
+1       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+2       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+3       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+4       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+5       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+6       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+7       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+8       &lt;NA&gt;   NA              &lt;NA&gt;      NA   NA     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+9  secondary    3 secondary level 1 1406041  223     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+10 secondary   NA secondary level 2 1406041  223     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+            hml8 hml9 hml10 hml11 hml21 hmla hmlb hmlc hmld hmle hmhidx                     hml12 hml13 hml14 hml15
+1           &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      1 did not sleep under a net     0    NA    NA
+2  permanent net   NA   yes     4   yes    2    3    5    6   NA      2   only treated (itn) nets     1    NA    NA
+3  permanent net   NA   yes     4   yes    2    3    5    6   NA      3   only treated (itn) nets     1    NA    NA
+4           &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      4 did not sleep under a net     0    NA    NA
+5  permanent net   NA   yes     4   yes    2    3    5    6   NA      5   only treated (itn) nets     1    NA    NA
+6  permanent net   NA   yes     4   yes    2    3    5    6   NA      6   only treated (itn) nets     1    NA    NA
+7           &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      1 did not sleep under a net     0    NA    NA
+8           &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      2 did not sleep under a net     0    NA    NA
+9           &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      3 did not sleep under a net     0    NA    NA
+10          &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      4 did not sleep under a net     0    NA    NA
+   hml16 hml16a                                 hml17                    hml18 hml19 hml20 hml30 hml31 hml32 hml32a
+1     49     NA          no data from individual file                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+2     30     NA month and year - information complete not pregnant, don't know   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+3      0     NA month and year - information complete                     &lt;NA&gt;   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+4     12     NA          no data from individual file                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+5      7     NA          no data from individual file                     &lt;NA&gt;   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+6      3     NA month and year - information complete                     &lt;NA&gt;   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+7     63     NA          no data from individual file                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+8     50     NA          no data from individual file                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+9     27     NA month and year - information complete                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+10    23     NA month and year - information complete                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+   hml32b hml32c hml32d hml32e hml32f hml32g hml33 hml34 hml35 idxchl chl1 chl2 chl3 chl4 chl5 chl6 chl7 chl8
+1    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+2    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+3    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+4    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;      4   no   NA   NA   NA   no   NA  yes   20
+5    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;      5   no   NA   NA   NA   no   NA   no   NA
+6    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+7    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+8    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+9    &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+10   &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA</code></pre>
 </div>
 </div>
 <p>This gives you an idea what the data look like. There are four variables, called <code>Entity</code>, <code>Code</code>, <code>Year</code> and <code>Primary.energy.consumption.per.capita..kWh.person.</code> The last variable name is very informative but also very long and unpractical. We will learn how to change variable names soon. Because of the long name, I had to use the function <code>options()</code> before <code>heads()</code> to tell R to use a sufficiently wide display. Don’t worry for this detail at the moment.</p>
@@ -998,23 +1214,99 @@ Now you try
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">120</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data, <span class="at">n=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>       Entity Code Year Primary.energy.consumption.per.capita..kWh.person.
-1 Afghanistan  AFG 1980                                           583.2944
-2 Afghanistan  AFG 1981                                           666.3782
-3 Afghanistan  AFG 1982                                           725.6599</code></pre>
+<pre><code>          hhid hvidx hv000 hv001 hv002 hv003 hv004   hv005 hv006 hv007 hv008 hv009 hv010 hv011 hv012 hv013 hv014
+1         1  1     1   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+2         1  1     2   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+3         1  1     3   ZZ6     1     1     2     1 1049502     6  2015  1386     6     1     0     6     5     2
+      hv015 hv016 hv017 hv018 hv019            hv020 hv021 hv022            hv023    hv024 hv025 hv026        hv027
+1 completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+2 completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+3 completed    28     1   225     7 all woman sample     1    26 region 2 - rural region 2 rural    NA not selected
+  hv028 hv030 hv031 hv032 hv035 hv040 hv041        hv042              hv044            hv201 hv202 hv204
+1     0   221   222     1     0    NA     0 not selected household selected unprotected well    NA    20
+2     0   221   222     1     0    NA     0 not selected household selected unprotected well    NA    20
+3     0   221   222     1     0    NA     0 not selected household selected unprotected well    NA    20
+                              hv205 hv206 hv207 hv208 hv209 hv210 hv211 hv212       hv213 hv214              hv215
+1 pit latrine without slab/open pit    no    no    no    no    no    no    no earth, sand  dirt thatch / palm leaf
+2 pit latrine without slab/open pit    no    no    no    no    no    no    no earth, sand  dirt thatch / palm leaf
+3 pit latrine without slab/open pit    no    no    no    no    no    no    no earth, sand  dirt thatch / palm leaf
+  hv216                    hv217 hv218 hv219 hv220 hv221 hv225 hv226 hv227        hv228                     hv230a
+1     2 two adults, opposite sex     1  male    49    no   yes  wood   yes all children not observed: other reason
+2     2 two adults, opposite sex     1  male    49    no   yes  wood   yes all children not observed: other reason
+3     2 two adults, opposite sex     1  male    49    no   yes  wood   yes all children not observed: other reason
+  hv230b hv232 hv232b hv232c hv232d hv232e hv232y hv234    hv234a     hv235 hv236 hv237 hv237a hv237b hv237c hv237d
+1   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;    NA no iodine elsewhere    NA    no     no     no     no     no
+2   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;    NA no iodine elsewhere    NA    no     no     no     no     no
+3   &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA   &lt;NA&gt;    NA no iodine elsewhere    NA    no     no     no     no     no
+  hv237e hv237f hv237g hv237h hv237i hv237j hv237k hv237x hv237z hv238 hv239 hv240                  hv241 hv242 hv243a
+1     no     no     NA     NA     NA     NA     NA     no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no
+2     no     no     NA     NA     NA     NA     NA     no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no
+3     no     no     NA     NA     NA     NA     NA     no     no     2  &lt;NA&gt;  &lt;NA&gt; in a separate building  &lt;NA&gt;     no
+  hv243b hv243c hv243d hv244 hv245 hv246 hv246a hv246b hv246c hv246d hv246e hv246f hv246g hv246h hv246i hv246j hv246k
+1     no     no     no   yes   998   yes     NA      0      0      0      0     12      0      0      0      0     NA
+2     no     no     no   yes   998   yes     NA      0      0      0      0     12      0      0      0      0     NA
+3     no     no     no   yes   998   yes     NA      0      0      0      0     12      0      0      0      0     NA
+  hv247 hv252 hv253 hv253a hv253b hv253c hv253d hv253e hv253f hv253g hv253h hv253x hv253z   hv270   hv271 hml1 hml1a
+1    no never    no     no     no     no     NA     NA     NA     NA     NA     no     no poorest -128996    1     1
+2    no never    no     no     no     no     NA     NA     NA     NA     NA     no     no poorest -128996    1     1
+3    no never    no     no     no     no     NA     NA     NA     NA     NA     no     no poorest -128996    1     1
+  hml2 chl0  shzone    shhreg           hv101 hv102 hv103  hv104 hv105                   hv106 hv107 hv108        hv109
+1    2    2 central periphery            head   yes    no   male    49 no education, preschool    NA     0 no education
+2    2    2 central periphery wife or husband   yes   yes female    30 no education, preschool    NA     0 no education
+3    2    2 central periphery    son/daughter   yes   yes female     0 no education, preschool    NA     0 no education
+  hv110 hv111 hv112 hv113 hv114   hv115             hv116        hv117        hv118        hv120 hv121
+1    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA married currently married not eligible not eligible not eligible    no
+2    NA  &lt;NA&gt;    NA  &lt;NA&gt;    NA married currently married     eligible not eligible not eligible    no
+3    NA   yes     2   yes     1    &lt;NA&gt;              &lt;NA&gt; not eligible not eligible not eligible    no
+                    hv122 hv123 hv124 hv125 hv126 hv127 hv128 hv129      hv140 idxh4 ha0 ha1 ha2 ha3 ha4 ha5 ha6 ha11
+1 no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     1  NA  NA  NA  NA  NA  NA  NA   NA
+2 no education, preschool    NA     0    NA    NA    NA    NA    NA       &lt;NA&gt;     2  NA  NA  NA  NA  NA  NA  NA   NA
+3 no education, preschool    NA     0    NA    NA    NA    NA    NA registered     3  NA  NA  NA  NA  NA  NA  NA   NA
+  ha12 ha12a ha12b ha13 ha32 ha33 ha35 ha40 ha41 ha50 ha51 ha52 ha53 ha54 ha55 ha56 ha57 ha58 ha60 ha61 ha62 ha63 ha64
+1   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+2   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+3   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt; &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt;
+  ha65 ha66 ha67 ha68 ha69 ha70 hc0 hc1 hc2 hc3 hc4 hc5 hc6 hc7 hc8 hc9 hc10 hc11 hc12 hc13 hc15 hc16 hc17 hc18 hc19
+1 &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+2 &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+3 &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA  NA  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA &lt;NA&gt; &lt;NA&gt;   NA   NA   NA   NA
+  hc27 hc30 hc31 hc32 hc33 hc51 hc52 hc53 hc55 hc56 hc57 hc58 hc60 hc61 hc62 hc63 hc64 hc68 hc70 hc71 hc72 hc73 hb0 hb1
+1 &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA  NA
+2 &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA  NA
+3 &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA   NA   NA   NA  NA  NA
+  hb2 hb3 hb4 hb5 hb6 hb11 hb12 hb12a hb12b hb13 hb32 hb33 hb35 hb40 hb41 hb50 hb51 hb52 hb53 hb55 hb56 hb57 hb58 hb60
+1  NA  NA  NA  NA  NA   NA   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;
+2  NA  NA  NA  NA  NA   NA   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;
+3  NA  NA  NA  NA  NA   NA   NA    NA    NA &lt;NA&gt;   NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;   NA &lt;NA&gt;
+  hb61 hb62 hb63 hb64 hb65 hb66 hb67 hb68 hb69 hb70 hmlidx      hml3 hml4 hml5                            hml6   hml7
+1 &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA     NA      &lt;NA&gt;   NA &lt;NA&gt;                            &lt;NA&gt;   &lt;NA&gt;
+2 &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+3 &lt;NA&gt;      &lt;NA&gt; &lt;NA&gt; &lt;NA&gt; &lt;NA&gt;   NA &lt;NA&gt;   NA   NA      1 yes, seen   12 &lt;NA&gt; pretreated, permanent treatment olyset
+           hml8 hml9 hml10 hml11 hml21 hmla hmlb hmlc hmld hmle hmhidx                     hml12 hml13 hml14 hml15
+1          &lt;NA&gt;   NA  &lt;NA&gt;    NA  &lt;NA&gt;   NA   NA   NA   NA   NA      1 did not sleep under a net     0    NA    NA
+2 permanent net   NA   yes     4   yes    2    3    5    6   NA      2   only treated (itn) nets     1    NA    NA
+3 permanent net   NA   yes     4   yes    2    3    5    6   NA      3   only treated (itn) nets     1    NA    NA
+  hml16 hml16a                                 hml17                    hml18 hml19 hml20 hml30 hml31 hml32 hml32a
+1    49     NA          no data from individual file                     &lt;NA&gt;    no    no    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+2    30     NA month and year - information complete not pregnant, don't know   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+3     0     NA month and year - information complete                     &lt;NA&gt;   yes   yes    NA  &lt;NA&gt;  &lt;NA&gt;   &lt;NA&gt;
+  hml32b hml32c hml32d hml32e hml32f hml32g hml33 hml34 hml35 idxchl chl1 chl2 chl3 chl4 chl5 chl6 chl7 chl8
+1   &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+2   &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA
+3   &lt;NA&gt;   &lt;NA&gt;     NA     NA     NA     NA  &lt;NA&gt;        &lt;NA&gt;     NA &lt;NA&gt;   NA   NA   NA &lt;NA&gt;   NA &lt;NA&gt;   NA</code></pre>
 </div>
 </div>
 <p>you will see the different variables in the object <code>energy_consumption</code>. Note that I had to fudge a bit with the display because of the unwieldy and long name of the last variable. We are soon going to fix this.</p>
 <p>The variables <code>Entity</code> and <code>Code</code> are both of type <em>character</em>. A character vector stores strings of text, which have to be put between quotation marks <code>""</code>. Strings are the individual elements of a character vector.</p>
 <p>Note that a string can be more than just letters. If you type, for instance the number <code>1</code> with quotation marks, like <code>"1"</code> R would interpret the value as a string not as a number. Sometimes one can get confused in R because both objects and characters appear as text in R code. Object names are without quotation marks strings always are between quotation marks.</p>
-<div class="page-columns page-full"><p>Character is the natural data type for country names - here “Afghanistan” and the international abbreviation “AFG” also called an ISO-country code<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn9"><p><sup>9</sup>&nbsp;ISO is the short name for International Organization for Standardization. International Organization for Standardization came into existence in the year 1946 in London. This organization was formed after a delegation of 65 members from 25 countries, met to discuss the future of International Standardization. In 1947, ISO was officially formed with 67 technical committees consisting of a group of experts focusing on a specific subject. ISO founders decided to give it an acronym ISO, which was based on the Greek word ‘isos’, which means ‘equal’.</p></li></div></div>
+<div class="page-columns page-full"><p>Character is the natural data type for country names - here “Afghanistan” and the international abbreviation “AFG” also called an ISO-country code<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;ISO is the short name for International Organization for Standardization. International Organization for Standardization came into existence in the year 1946 in London. This organization was formed after a delegation of 65 members from 25 countries, met to discuss the future of International Standardization. In 1947, ISO was officially formed with 67 technical committees consisting of a group of experts focusing on a specific subject. ISO founders decided to give it an acronym ISO, which was based on the Greek word ‘isos’, which means ‘equal’.</p></li></div></div>
 <p>The variable <code>Year</code> encodes the year of a particular record or observation. Its type is <code>integer</code>, since years are integer values like 1980 or 2022. If yo want to specify a number explicitly as integer in R you have to type it as, say, <code>1980L</code>, the number followed without space by a big <code>L</code>.</p>
 <p>The variable with the very long name <code>Primary.energy.consumption.per.capita..kWh.person.</code> is of type double. This is the data type in R for encoding numbers that are decimal fractions, like <code>12.451</code></p>
 <p>Now why should we care for distinguishing integers from doubles? This has to do with the way a computer does computations. Sometimes a difference in precision can have surprising effects.</p>
-<div class="page-columns page-full"><p>In your computer 64bits of memory<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are <span class="math inline">\(\pi\)</span>, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.</p><div class="no-row-height column-margin column-container"><li id="fn10"><p><sup>10</sup>&nbsp;A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64</p></li></div></div>
+<div class="page-columns page-full"><p>In your computer 64bits of memory<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are <span class="math inline">\(\pi\)</span>, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.</p><div class="no-row-height column-margin column-container"><li id="fn9"><p><sup>9</sup>&nbsp;A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64</p></li></div></div>
 <p>Take for instance:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1022,7 +1314,7 @@ Now you try
 <pre><code>[1] 4.440892e-16</code></pre>
 </div>
 </div>
-<div class="page-columns page-full"><p>Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn11"><p><sup>11</sup>&nbsp;Let me invite you to a short digression into the history of science and the history of ideas. The discovery that <span class="math inline">\(\sqrt{2}\)</span> can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, where the sides with length <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from a right angle must fulfill the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span> or expressed in a picture <img src="pictures/pythagoras.png" id="fig-pyth" class="img-fluid" alt="The Pythagorean theorem"> The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that <span class="math inline">\(\text{(lenght of diagonal)}^2 = 1 + 1 = 2\)</span>. Thus the length of the diagonal must be <span class="math inline">\(\sqrt{2}\)</span>. <img src="pictures/unit_square.png" id="fig-usq" class="img-fluid" alt="Length of diagonal in a unit square"> Hence if the diagonal and side are in the ratio <span class="math inline">\(m/n\)</span> (where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> can be assumed to have no common divisor), we have <span class="math display">\[\begin{equation}
+<div class="page-columns page-full"><p>Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10"><p><sup>10</sup>&nbsp;Let me invite you to a short digression into the history of science and the history of ideas. The discovery that <span class="math inline">\(\sqrt{2}\)</span> can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> and <span class="math inline">\(c\)</span>, where the sides with length <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> from a right angle must fulfill the equation <span class="math inline">\(a^2 + b^2 = c^2\)</span> or expressed in a picture <img src="pictures/pythagoras.png" id="fig-pyth" class="img-fluid" alt="The Pythagorean theorem"> The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that <span class="math inline">\(\text{(lenght of diagonal)}^2 = 1 + 1 = 2\)</span>. Thus the length of the diagonal must be <span class="math inline">\(\sqrt{2}\)</span>. <img src="pictures/unit_square.png" id="fig-usq" class="img-fluid" alt="Length of diagonal in a unit square"> Hence if the diagonal and side are in the ratio <span class="math inline">\(m/n\)</span> (where <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> can be assumed to have no common divisor), we have <span class="math display">\[\begin{equation}
 m^2/n^2 = 2
 \end{equation}\]</span> thus <span class="math display">\[\begin{equation}
 m^2 = 2 n^2
@@ -1066,352 +1358,319 @@ n^2 = 2 p^2
 <p>The most common attributes for atomic vectors as well as R objects built from atomic vectors are <strong>names</strong>, <strong>dimensions</strong> and <strong>classes</strong>. Each of these attributes has its own helper function that you can use to also assign attributes to the object. For what we need now we discuss <code>names</code> and <code>dimensions</code> and discuss <code>classes</code>, which is a more advanced topic later.</p>
 <p>Let us look how this works with the <code>enegrgy_consumption</code>data and check whether they have a names attribute:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Entity"                                             "Code"                                              
-[3] "Year"                                               "Primary.energy.consumption.per.capita..kWh.person."</code></pre>
+<pre><code>  [1] "hhid"   "hvidx"  "hv000"  "hv001"  "hv002"  "hv003"  "hv004"  "hv005"  "hv006"  "hv007"  "hv008"  "hv009" 
+ [13] "hv010"  "hv011"  "hv012"  "hv013"  "hv014"  "hv015"  "hv016"  "hv017"  "hv018"  "hv019"  "hv020"  "hv021" 
+ [25] "hv022"  "hv023"  "hv024"  "hv025"  "hv026"  "hv027"  "hv028"  "hv030"  "hv031"  "hv032"  "hv035"  "hv040" 
+ [37] "hv041"  "hv042"  "hv044"  "hv201"  "hv202"  "hv204"  "hv205"  "hv206"  "hv207"  "hv208"  "hv209"  "hv210" 
+ [49] "hv211"  "hv212"  "hv213"  "hv214"  "hv215"  "hv216"  "hv217"  "hv218"  "hv219"  "hv220"  "hv221"  "hv225" 
+ [61] "hv226"  "hv227"  "hv228"  "hv230a" "hv230b" "hv232"  "hv232b" "hv232c" "hv232d" "hv232e" "hv232y" "hv234" 
+ [73] "hv234a" "hv235"  "hv236"  "hv237"  "hv237a" "hv237b" "hv237c" "hv237d" "hv237e" "hv237f" "hv237g" "hv237h"
+ [85] "hv237i" "hv237j" "hv237k" "hv237x" "hv237z" "hv238"  "hv239"  "hv240"  "hv241"  "hv242"  "hv243a" "hv243b"
+ [97] "hv243c" "hv243d" "hv244"  "hv245"  "hv246"  "hv246a" "hv246b" "hv246c" "hv246d" "hv246e" "hv246f" "hv246g"
+[109] "hv246h" "hv246i" "hv246j" "hv246k" "hv247"  "hv252"  "hv253"  "hv253a" "hv253b" "hv253c" "hv253d" "hv253e"
+[121] "hv253f" "hv253g" "hv253h" "hv253x" "hv253z" "hv270"  "hv271"  "hml1"   "hml1a"  "hml2"   "chl0"   "shzone"
+[133] "shhreg" "hv101"  "hv102"  "hv103"  "hv104"  "hv105"  "hv106"  "hv107"  "hv108"  "hv109"  "hv110"  "hv111" 
+[145] "hv112"  "hv113"  "hv114"  "hv115"  "hv116"  "hv117"  "hv118"  "hv120"  "hv121"  "hv122"  "hv123"  "hv124" 
+[157] "hv125"  "hv126"  "hv127"  "hv128"  "hv129"  "hv140"  "idxh4"  "ha0"    "ha1"    "ha2"    "ha3"    "ha4"   
+[169] "ha5"    "ha6"    "ha11"   "ha12"   "ha12a"  "ha12b"  "ha13"   "ha32"   "ha33"   "ha35"   "ha40"   "ha41"  
+[181] "ha50"   "ha51"   "ha52"   "ha53"   "ha54"   "ha55"   "ha56"   "ha57"   "ha58"   "ha60"   "ha61"   "ha62"  
+[193] "ha63"   "ha64"   "ha65"   "ha66"   "ha67"   "ha68"   "ha69"   "ha70"   "hc0"    "hc1"    "hc2"    "hc3"   
+[205] "hc4"    "hc5"    "hc6"    "hc7"    "hc8"    "hc9"    "hc10"   "hc11"   "hc12"   "hc13"   "hc15"   "hc16"  
+[217] "hc17"   "hc18"   "hc19"   "hc27"   "hc30"   "hc31"   "hc32"   "hc33"   "hc51"   "hc52"   "hc53"   "hc55"  
+[229] "hc56"   "hc57"   "hc58"   "hc60"   "hc61"   "hc62"   "hc63"   "hc64"   "hc68"   "hc70"   "hc71"   "hc72"  
+[241] "hc73"   "hb0"    "hb1"    "hb2"    "hb3"    "hb4"    "hb5"    "hb6"    "hb11"   "hb12"   "hb12a"  "hb12b" 
+[253] "hb13"   "hb32"   "hb33"   "hb35"   "hb40"   "hb41"   "hb50"   "hb51"   "hb52"   "hb53"   "hb55"   "hb56"  
+[265] "hb57"   "hb58"   "hb60"   "hb61"   "hb62"   "hb63"   "hb64"   "hb65"   "hb66"   "hb67"   "hb68"   "hb69"  
+[277] "hb70"   "hmlidx" "hml3"   "hml4"   "hml5"   "hml6"   "hml7"   "hml8"   "hml9"   "hml10"  "hml11"  "hml21" 
+[289] "hmla"   "hmlb"   "hmlc"   "hmld"   "hmle"   "hmhidx" "hml12"  "hml13"  "hml14"  "hml15"  "hml16"  "hml16a"
+[301] "hml17"  "hml18"  "hml19"  "hml20"  "hml30"  "hml31"  "hml32"  "hml32a" "hml32b" "hml32c" "hml32d" "hml32e"
+[313] "hml32f" "hml32g" "hml33"  "hml34"  "hml35"  "idxchl" "chl1"   "chl2"   "chl3"   "chl4"   "chl5"   "chl6"  
+[325] "chl7"   "chl8"  </code></pre>
 </div>
 </div>
-<p>We can now see the variable names. We can use the function <code>names()</code>also as a helper function to assign other names to our variables. This is a tool that could help us to get rid of the very long and unwieldy name <code>"Primary.energy.consumption.per.capita..kWh.person."</code>. For example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Entity"</span>, <span class="st">"Code"</span>, <span class="st">"Year"</span>, <span class="st">"Cons"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>will overwrite the name attribute by this new vector of names. When you now look for the names attribute, you will see</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Entity" "Code"   "Year"   "Cons"  </code></pre>
-</div>
-</div>
-<p>One very important attribute, we will encounter all the time is <strong>dimension</strong>, with the helper function <code>dim()</code>. For example we can look at our data object <code>energy_consumption</code> again to get:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(energy_consumption)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10215     4</code></pre>
-</div>
-</div>
-<p>which returns two numbers, which mean that the object has 10215 rows and 4 columns.</p>
-</section>
-<section id="factors" class="level4" data-number="3.3.2.4">
-<h4 data-number="3.3.2.4" class="anchored" data-anchor-id="factors"><span class="header-section-number">3.3.2.4</span> Factors</h4>
-<p>R stores categorical data, such as nationality, sex etc. by using aspeical data type called <strong>factors</strong>. If you take for instance, sex, it can have only two values - male or female - and these values may have their idiosyncratic order, for example that females go always first.</p>
-<p>To make a factor in R you have to pass an atomic vector to the <code>factor()</code> function. This function works by recoding the values in the vector as integers and store the results in an integer vector. R also adds a <code>level</code> attribute which contains the set of labels and their order and a class attribute that says the vector is a factor. Example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>))</span>
-<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$levels
-[1] "f" "m"
+<!-- We can now see the variable names. We can use the function `names()`also as a -->
+<!-- helper function to assign other names to our variables. This is a tool that could -->
+<!-- help us to get rid of the very long and -->
+<!-- unwieldy name `"Primary.energy.consumption.per.capita..kWh.person."`. For example: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- names(energy_consumption) <- c("Entity", "Code", "Year", "Cons") -->
+<!-- ``` -->
+<!-- will overwrite the name attribute by this new vector of names. When you now look for the -->
+<!-- names attribute, you will see -->
+<!-- ```{r} -->
+<!-- names(energy_consumption) -->
+<!-- ``` -->
+<!-- One very important attribute, we will encounter all the time is **dimension**, with the -->
+<!-- helper function `dim()`. For example we can look at our data object `energy_consumption` again -->
+<!-- to get: -->
+<!-- ```{r} -->
+<!-- dim(energy_consumption) -->
+<!-- ``` -->
+<!-- which returns two numbers, which mean that the object has 10215 rows and 4 columns. -->
+<!-- #### Factors -->
+<!-- R stores categorical data, such as nationality, sex etc. by using aspeical data type -->
+<!-- called **factors**. If -->
+<!-- you take for instance, sex, it can have only two values - male or female - and these -->
+<!-- values may have their idiosyncratic order, for example that females go always first. -->
+<!-- To make a factor in R you have to pass an atomic vector to the `factor()` function. -->
+<!-- This function works by recoding the values in the vector as integers and store the -->
+<!-- results in an integer vector. R also adds a `level` attribute which contains the set -->
+<!-- of labels and their order and a class attribute that says the vector is -->
+<!-- a factor. Example: -->
+<!-- ```{r sex-factor} -->
+<!-- #| code-fold: false  -->
+<!-- sex <- factor(c("m", "f", "f", "m")) -->
+<!-- typeof(sex) -->
+<!-- attributes(sex) -->
+<!-- ``` -->
+<!-- Factors can be confusing since they look like characters but behave like integers. -->
+<!-- Note that R will often try to convert character strings to factors when you load and create data. -->
+<!-- I recommend that you do not allow R to make factors unless you explicitly ask for it. This -->
+<!-- can usually be controlled by an argument to whatever the data reader function is. For instance -->
+<!-- you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`. -->
+<!-- R has an internal **coercion** behavior for data types, which you should know -->
+<!-- about if you work with R. With this knowledge you can do many useful things. -->
+<!-- If a character string is present in an atomic vector, R will automatically convert every -->
+<!-- other component in this vector to a character string. If a vector contains only logicals -->
+<!-- and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and -->
+<!-- every `FALSE` becomes a 0. -->
+<!-- R also uses the coercion rules, when we do math with logicals, like for example -->
+<!-- ```{r math-with-logicals} -->
+<!-- #| code-fold: false -->
+<!-- sum(c(TRUE, TRUE, FALSE, FALSE)) -->
+<!-- ``` -->
+<!-- What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the -->
+<!-- vector `c(1, 1, 0, 0)` and sums the components. -->
+<!-- ### Data frames and R lists {#sec-data_frame} -->
+<!-- Going back to our data set on the enegry consumption data, we see that this data set stores -->
+<!-- values of different types, characters, integers and doubles. How does R achieve this? -->
+<!-- The answer is that this is achieved by a data structure called a **list**. List are -->
+<!-- like atomic vectors, because the group data into a one-dimensional set. However, lists do -->
+<!-- not group together individual values. List group together R objects, such as atomic -->
+<!-- vectors or even other lists. -->
+<!-- For example, you can create a list, which contains a numeric vector of length 31 in its -->
+<!-- first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- list_example <- list(100:130, "R", list(TRUE, FALSE)) -->
+<!-- list_example -->
+<!-- ``` -->
+<!-- The double bracketed indices tell you which element of the list is being displayed. The -->
+<!-- single bracketed indices tell you which sub-element of the list is being displayed. For example -->
+<!-- 100 is the first sub element of the first element in the list. "R" is the first sub element of the -->
+<!-- second list element. -->
+<!-- There is lots to say about lists. But this is an advanced topics. We mentioned it here to -->
+<!-- introduce one of the most important data structres for our course the R dataframe. -->
+<!-- ### Data Frames -->
+<!-- **Data Frames** are the two dimensional version of a list. They are by far the most -->
+<!-- useful storage structure for data analysis. Indeed, our dataset on energy -->
+<!-- consumption data we have loaded before is an instance of a data frame. Data frames group vectors -->
 
-$class
-[1] "factor"</code></pre>
-</div>
-</div>
-<p>Factors can be confusing since they look like characters but behave like integers.</p>
-<p>Note that R will often try to convert character strings to factors when you load and create data. I recommend that you do not allow R to make factors unless you explicitly ask for it. This can usually be controlled by an argument to whatever the data reader function is. For instance you can give the <code>read.csv()</code> function the argument <code>stringsAsFactors = FALSE</code>.</p>
-<p>R has an internal <strong>coercion</strong> behavior for data types, which you should know about if you work with R. With this knowledge you can do many useful things.</p>
-<p>If a character string is present in an atomic vector, R will automatically convert every other component in this vector to a character string. If a vector contains only logicals and numbers, R will convert the logicals to numbers. In this case every <code>TRUE</code> becomes a 1 and every <code>FALSE</code> becomes a 0.</p>
-<p>R also uses the coercion rules, when we do math with logicals, like for example</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>What happens here is that R coerces the vector <code>c(TRUE, TRUE, FALSE, FALSE)</code> to the vector <code>c(1, 1, 0, 0)</code> and sums the components.</p>
+<!-- together in a two dimensional table. As a consequence each variable can have a different type,  -->
+<!-- i.e. each column of the -->
+<!-- data frame can contain a different data type. Within a column, however, we can have only -->
+<!-- one data type. The energy consumption data are a typical example of a dataframe. -->
+<!-- ```{r} -->
+<!-- head(energy_consumption, n = 10) -->
+<!-- ``` -->
+<!-- Every column in this tabular array of data can be considered as a vector.  -->
+<!-- ### Selecting data from R objects: A toolbox. -->
+<!-- Asking questions about a dataframe and in particular about our energy data requires that  -->
+<!-- we are able to adress particular values in the dataframe. We now learn the most  -->
+<!-- important techniques to do so. -->
+<!-- R has a notation system to address individual values. You write the object name first, followed by a  -->
+<!-- pair of had brackets `[]`. Between the brackets goes a `,` separating row and column indices. The -->
+<!-- notation is thus like `energy_consumption[,]`. -->
+<!-- When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use: -->
+<!-- 1. Positive integers -->
+<!-- 2. Negative integers -->
+<!-- 3. Zero -->
+<!-- 4. Blank spaces -->
+<!-- 5. Logical values -->
+<!-- 6. Names -->
+<!-- The simplest are positive integers. When you want to extract the energy consumption in kwh per person  -->
+<!-- in one year - the value of the variable Cons - you would adress for instance the 3rd value in the -->
+<!-- Cons column, which is in our case the 4th column as -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[3,4] -->
+<!-- ``` -->
+<!-- You can - of course extract more than one value. If you write for instance -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[1:5,4] -->
+<!-- ``` -->
+<!-- you will get the first 5 values of the consumption numbers in the dataframe. The colon -->
+<!-- operator `:` used here is a very useful R operator. It creates sequences of whole -->
+<!-- numbers. Thus if you create a vector with the name, say `n10` containing the sequence -->
+<!-- of the first 10 whole numbers, you would write -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- n10 <- 1:10 -->
+<!-- ``` -->
+<!-- Now clearly the indexing rules work in the same way as with dataframes, only that now you have  -->
+<!-- only 1 dimension. Say you want to extract the first three numbers from `n10` you would write -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- n10[1:3] -->
+<!-- ``` -->
+<!-- Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[1:5, 3:4] -->
+<!-- ``` -->
+<!--  R will always return a dataframe.  -->
+<!-- However, if you select a single column, R will return a vector: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[1:5, 4] -->
+<!-- ``` -->
+<!-- if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like: -->
+<!-- ```{r} -->
+<!-- energy_consumption[1:5, 4, drop = FALSE] -->
+<!-- ``` -->
+<!-- **Negative integers** work exactly opposite to positive integers. If you type: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- head(energy_consumption[-1,4], n = 10) -->
+<!-- ``` -->
+<!-- R will return the fourth column of the data frame *except* the first row. We just display the -->
+<!-- first 10 values using the `head()` function. -->
+<!-- If you try to pair a negative and a positive integer in an index, R will return an error. -->
+<!-- However, you can use both negative and positive integers if you use them in *different* -->
+<!-- indices. -->
+<!-- **Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing -->
+<!-- from a dimension with index 0. The following syntax for instance creates an empty object -->
+<!-- ```{r empty-object} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[0,0] -->
+<!-- ``` -->
+<!-- **Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for -->
+<!-- instance, if you type: -->
+<!-- ```{r} -->
+<!-- #|code-fold: false -->
+<!-- sel <- energy_consumption[ , 4] -->
+<!-- ``` -->
+<!-- R will select the entire column of energy consumption. You can check that the length of this -->
+<!-- vector is -->
+<!-- ```{r} -->
+<!-- #|code-fold: false -->
+<!-- length(sel) -->
+<!-- ``` -->
+<!-- as expected. -->
+<!-- **Logical Values** can also be used for subsetting. If you type for instance -->
+<!-- ```{r} -->
+<!-- #| code-fold: false  -->
+<!-- energy_consumption[1, c(F,F,F,T)] -->
+<!-- ``` -->
+<!-- R will select the energy consumption value of the first -->
+<!-- observation. Note that here we used the R convention that `TRUE`and `T` -->
+<!-- as well as `FALSE`and `F` have an equivalent meaning. -->
+<!-- Finally, you can ask for the elements, you want by name. On our case, you could select the first -->
+<!-- energy_consumption value by the syntax  -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[1, "Cons"] -->
+<!-- ``` -->
+<!-- Finally, note that two types of object in R obey an optional second system of notation. You can -->
+<!-- extract values from data frames and lists with th `$`syntax.  -->
+<!-- It works as follows: For example -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- test <- energy_consumption$Cons -->
+<!-- test[1:4] -->
+<!-- ``` -->
+<!-- would select the column of energy consumption numbers in our dataframe, save them in an object -->
+<!-- names `test`and then subsequently extract the first four values from the object. -->
+<!-- ### Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example. -->
+<!-- This was a lot of abstract and dry instruction about some data extraction tools. It will -->
+<!-- require lost of practice and concrete examples before you get some natural acquaintance with -->
+<!-- these techniques which belong to the everday routines of data analysis. -->
+<!-- To see the concept in action, let me take you step by step through an example by showing you how  -->
+<!-- you can produce a histogram, like we discussed in the first section of this chapter  -->
+<!-- starting from the raw data. -->
+<!-- We have already read the data from  the csv file and stored it in an object we have called -->
+<!-- `energy_consumption`. We would like to plot a histogram of the annual per capita energy consumption -->
+<!-- in different countries around the globe for the year 2019. -->
+<!-- Let us look again at the first 10 observations: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- head(energy_consumption, n = 10) -->
+<!-- ``` -->
+<!-- How would we extract the observations that refer to the year 2019 only? Here is the -->
+<!-- first practical use case of logical data types, which will immediately show you  -->
+<!-- their power. Let me suggest the following code and then explain step by step what it does. -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- dat <- energy_consumption[energy_consumption$Year == 2019, ] -->
+<!-- head(dat, n = 10) -->
+<!-- ``` -->
+<!-- Let me explain what is going on here: We have used the indexing rules and logical -->
+<!-- subsetting. In the first index we have written a logical condition, namely  -->
+<!-- `energy_consumption$Year == 2019`. This means that R selects all the rows for which the year variable of -->
+<!-- energy_consumption is equal to 2019. The logical sign for identical in R is `==`. So what R does then -->
+<!-- is checking for each value of the Year variable whether it is identical to 2019 - in which case the -->
+<!-- logical comparison results in `TRUE` or not, in which case the result would be `FALSE`. Then -->
+<!-- by logical subsetting all rows for which the comparison vector is `TRUE` will be selected. Note that -->
+<!-- we had to tell R that it needs to compare the Year variable. Year is selected in a data frame by -->
+<!-- `energy_consumption$Year`. We have then stored all the data in a vector I have called dat and then -->
+<!-- looked at the first 10 rows. You see that only the observations where the Year is 2019 have been -->
+<!-- kept, as we had intended. -->
+<!-- Now we see from the output that the `Entity` variable apparently not only contains individual countries -->
+<!-- but also whole regions or continents, like `Africa` in our example. It seems that the regions have -->
+<!-- no ISO code but instead an empty character. -->
+<!-- Let's try to apply the logical subsetting logic and our knowledge of character types to filter out -->
+<!-- Entities which have no value in the `Code`variable. One way to achieve this would be, for -->
+<!-- example the code: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- dat_countries <- dat[dat$Code!="", ] -->
+<!-- head(dat_countries, n = 10) -->
+<!-- ``` -->
+<!-- Now Africa is out. Of course this is no proof that I have now only entities with ISO-codes left but -->
+<!-- it is an indication. We can check this. But let me first expalin what is going on here. -->
+<!-- I now work with the object `dat`, the object we have created before by filtering for the observations -->
+<!-- in which the `Year`variable is equal to 2019. Now we tell R compare the entries in the `Code`variable, i.e. -->
+<!-- in `dat$code` with the condition that they are not equal to an empty string. The symbol for `not identical` -->
+<!-- in R is `!=`. We know that the variable `Code` is of type character hence all codes are strings within -->
+<!-- quotation marks. An empty string is thus written as `" "`. -->
+<!-- How could we check - by the way that the `Code` variable does not contain any empty string anymore? -->
+<!-- Here is how: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- sum(dat_countries$Code == "") -->
+<!-- ``` -->
+<!-- Here I have used two rules we have dicussed before, logical data types and coercion. First we ask -->
+<!-- R to check whether any Code variable in `dat_counties`still has any empty string. This will create -->
+<!-- a vector of logicals like (showing only  the first five entries) -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- head(dat_countries$Code == "", n = 5) -->
+<!-- ``` -->
+<!-- Now I use coercion rules by summing over this vector. The function `sum()` in R is a function for summation. For example, if I have the vector `c(1,2,3,4,5,6,7,8,9,10)` and type -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- sum(c(1,2,3,4,5,6,7,8,9,10)) -->
+<!-- ``` -->
+<!--  R will add up the numbers. -->
+<!-- Now if I have a vector of logicals and apply a numerical function to it, R will by its coercion -->
+<!-- rules, force `TRUE` into 1 and `FALSE` into 0. The result that `sum(dat_countries$Code == "")` equals -->
+<!-- 0 means that the vector for our logical test contained `FALSE` only. So indeed there is no empty  -->
+<!-- `Code` variable anymore. -->
+<!-- Now we are ready to do a histogram of the per capita primary annual energy consumption by -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- hist(dat_countries$Cons,  -->
+<!--      xlab = "Primary energy consumption in kilowatt-hours per person per year.", -->
+<!--      main = "Primary energy Consuption per Capita 2019") -->
+<!-- ``` -->
+<!-- I have here used the `xlab`and `main`arguments with a character value to have a nicer description -->
+<!-- of the histogram. Otherwise the x axis would have been labeled `dat_countries$Cons` and the title -->
+<!-- would have been `Histogram of dat_countries$Cons`. Note that we have here a histogram in the absolute frequency scale. -->
 </section>
-</section>
-<section id="sec-data_frame" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="sec-data_frame"><span class="header-section-number">3.3.3</span> Data frames and R lists</h3>
-<p>Going back to our data set on the enegry consumption data, we see that this data set stores values of different types, characters, integers and doubles. How does R achieve this?</p>
-<p>The answer is that this is achieved by a data structure called a <strong>list</strong>. List are like atomic vectors, because the group data into a one-dimensional set. However, lists do not group together individual values. List group together R objects, such as atomic vectors or even other lists.</p>
-<p>For example, you can create a list, which contains a numeric vector of length 31 in its first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the <code>list()</code>function of R, like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">130</span>, <span class="st">"R"</span>, <span class="fu">list</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>list_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
- [1] 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128
-[30] 129 130
-
-[[2]]
-[1] "R"
-
-[[3]]
-[[3]][[1]]
-[1] TRUE
-
-[[3]][[2]]
-[1] FALSE</code></pre>
-</div>
-</div>
-<p>The double bracketed indices tell you which element of the list is being displayed. The single bracketed indices tell you which sub-element of the list is being displayed. For example 100 is the first sub element of the first element in the list. “R” is the first sub element of the second list element.</p>
-<p>There is lots to say about lists. But this is an advanced topics. We mentioned it here to introduce one of the most important data structres for our course the R dataframe.</p>
-</section>
-<section id="data-frames" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.3.4</span> Data Frames</h3>
-<p><strong>Data Frames</strong> are the two dimensional version of a list. They are by far the most useful storage structure for data analysis. Indeed, our dataset on energy consumption data we have loaded before is an instance of a data frame. Data frames group vectors together in a two dimensional table. As a consequence each variable can have a different type, i.e.&nbsp;each column of the data frame can contain a different data type. Within a column, however, we can have only one data type. The energy consumption data are a typical example of a dataframe.</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>        Entity Code Year      Cons
-1  Afghanistan  AFG 1980  583.2944
-2  Afghanistan  AFG 1981  666.3782
-3  Afghanistan  AFG 1982  725.6599
-4  Afghanistan  AFG 1983  912.1396
-5  Afghanistan  AFG 1984  941.3926
-6  Afghanistan  AFG 1985  939.6124
-7  Afghanistan  AFG 1986  976.6691
-8  Afghanistan  AFG 1987 1592.7023
-9  Afghanistan  AFG 1988 2805.6096
-10 Afghanistan  AFG 1989 2700.4739</code></pre>
-</div>
-</div>
-<p>Every column in this tabular array of data can be considered as a vector.</p>
-</section>
-<section id="selecting-data-from-r-objects-a-toolbox." class="level3" data-number="3.3.5">
-<h3 data-number="3.3.5" class="anchored" data-anchor-id="selecting-data-from-r-objects-a-toolbox."><span class="header-section-number">3.3.5</span> Selecting data from R objects: A toolbox.</h3>
-<p>Asking questions about a dataframe and in particular about our energy data requires that we are able to adress particular values in the dataframe. We now learn the most important techniques to do so.</p>
-<p>R has a notation system to address individual values. You write the object name first, followed by a pair of had brackets <code>[]</code>. Between the brackets goes a <code>,</code> separating row and column indices. The notation is thus like <code>energy_consumption[,]</code>.</p>
-<p>When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:</p>
-<ol type="1">
-<li>Positive integers</li>
-<li>Negative integers</li>
-<li>Zero</li>
-<li>Blank spaces</li>
-<li>Logical values</li>
-<li>Names</li>
-</ol>
-<p>The simplest are positive integers. When you want to extract the energy consumption in kwh per person in one year - the value of the variable Cons - you would adress for instance the 3rd value in the Cons column, which is in our case the 4th column as</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">3</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 725.6599</code></pre>
-</div>
-</div>
-<p>You can - of course extract more than one value. If you write for instance</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 583.2944 666.3782 725.6599 912.1396 941.3926</code></pre>
-</div>
-</div>
-<p>you will get the first 5 values of the consumption numbers in the dataframe. The colon operator <code>:</code> used here is a very useful R operator. It creates sequences of whole numbers. Thus if you create a vector with the name, say <code>n10</code> containing the sequence of the first 10 whole numbers, you would write</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>n10 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now clearly the indexing rules work in the same way as with dataframes, only that now you have only 1 dimension. Say you want to extract the first three numbers from <code>n10</code> you would write</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>n10[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3</code></pre>
-</div>
-</div>
-<p>Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Year     Cons
-1 1980 583.2944
-2 1981 666.3782
-3 1982 725.6599
-4 1983 912.1396
-5 1984 941.3926</code></pre>
-</div>
-</div>
-<p>R will always return a dataframe.</p>
-<p>However, if you select a single column, R will return a vector:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 583.2944 666.3782 725.6599 912.1396 941.3926</code></pre>
-</div>
-</div>
-<p>if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>      Cons
-1 583.2944
-2 666.3782
-3 725.6599
-4 912.1396
-5 941.3926</code></pre>
-</div>
-</div>
-<p><strong>Negative integers</strong> work exactly opposite to positive integers. If you type:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption[<span class="sc">-</span><span class="dv">1</span>,<span class="dv">4</span>], <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  666.3782  725.6599  912.1396  941.3926  939.6124  976.6691 1592.7023 2805.6096 2700.4739 2557.5864</code></pre>
-</div>
-</div>
-<p>R will return the fourth column of the data frame <em>except</em> the first row. We just display the first 10 values using the <code>head()</code> function.</p>
-<p>If you try to pair a negative and a positive integer in an index, R will return an error. However, you can use both negative and positive integers if you use them in <em>different</em> indices.</p>
-<p><strong>Zero</strong> is neither positive nor negative, If you use 0 as an index, R will return nothing from a dimension with index 0. The following syntax for instance creates an empty object</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">0</span>,<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>data frame with 0 columns and 0 rows</code></pre>
-</div>
-</div>
-<p><strong>Blank spaces</strong> are used if you want to ask R to select <em>every</em> value in a dimension. So for instance, if you type:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>sel <span class="ot">&lt;-</span> energy_consumption[ , <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>R will select the entire column of energy consumption. You can check that the length of this vector is</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10215</code></pre>
-</div>
-</div>
-<p>as expected.</p>
-<p><strong>Logical Values</strong> can also be used for subsetting. If you type for instance</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span>, <span class="fu">c</span>(F,F,F,T)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 583.2944</code></pre>
-</div>
-</div>
-<p>R will select the energy consumption value of the first observation. Note that here we used the R convention that <code>TRUE</code>and <code>T</code> as well as <code>FALSE</code>and <code>F</code> have an equivalent meaning.</p>
-<p>Finally, you can ask for the elements, you want by name. On our case, you could select the first energy_consumption value by the syntax</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>energy_consumption[<span class="dv">1</span>, <span class="st">"Cons"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 583.2944</code></pre>
-</div>
-</div>
-<p>Finally, note that two types of object in R obey an optional second system of notation. You can extract values from data frames and lists with th <code>$</code>syntax.</p>
-<p>It works as follows: For example</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> energy_consumption<span class="sc">$</span>Cons</span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 583.2944 666.3782 725.6599 912.1396</code></pre>
-</div>
-</div>
-<p>would select the column of energy consumption numbers in our dataframe, save them in an object names <code>test</code>and then subsequently extract the first four values from the object.</p>
-</section>
-<section id="application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example." class="level3" data-number="3.3.6">
-<h3 data-number="3.3.6" class="anchored" data-anchor-id="application-reproduce-our-histogram-of-primary-per-capita-energy-consumption-around-the-globe-in-2019-by-a-worked-example."><span class="header-section-number">3.3.6</span> Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.</h3>
-<p>This was a lot of abstract and dry instruction about some data extraction tools. It will require lost of practice and concrete examples before you get some natural acquaintance with these techniques which belong to the everday routines of data analysis.</p>
-<p>To see the concept in action, let me take you step by step through an example by showing you how you can produce a histogram, like we discussed in the first section of this chapter starting from the raw data.</p>
-<p>We have already read the data from the csv file and stored it in an object we have called <code>energy_consumption</code>. We would like to plot a histogram of the annual per capita energy consumption in different countries around the globe for the year 2019.</p>
-<p>Let us look again at the first 10 observations:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(energy_consumption, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        Entity Code Year      Cons
-1  Afghanistan  AFG 1980  583.2944
-2  Afghanistan  AFG 1981  666.3782
-3  Afghanistan  AFG 1982  725.6599
-4  Afghanistan  AFG 1983  912.1396
-5  Afghanistan  AFG 1984  941.3926
-6  Afghanistan  AFG 1985  939.6124
-7  Afghanistan  AFG 1986  976.6691
-8  Afghanistan  AFG 1987 1592.7023
-9  Afghanistan  AFG 1988 2805.6096
-10 Afghanistan  AFG 1989 2700.4739</code></pre>
-</div>
-</div>
-<p>How would we extract the observations that refer to the year 2019 only? Here is the first practical use case of logical data types, which will immediately show you their power. Let me suggest the following code and then explain step by step what it does.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> energy_consumption[energy_consumption<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2019</span>, ]</span>
-<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                 Entity Code Year       Cons
-40          Afghanistan  AFG 2019   945.6454
-95               Africa      2019  4245.7188
-137             Albania  ALB 2019 11266.2578
-192             Algeria  DZA 2019 16140.1963
-234      American Samoa  ASM 2019 26023.6699
-274              Angola  AGO 2019  3429.5928
-314 Antigua and Barbuda  ATG 2019 31384.8633
-369           Argentina  ARG 2019 20785.9141
-399             Armenia  ARM 2019 15538.2012
-433               Aruba  ABW 2019 51178.5859</code></pre>
-</div>
-</div>
-<p>Let me explain what is going on here: We have used the indexing rules and logical subsetting. In the first index we have written a logical condition, namely <code>energy_consumption$Year == 2019</code>. This means that R selects all the rows for which the year variable of energy_consumption is equal to 2019. The logical sign for identical in R is <code>==</code>. So what R does then is checking for each value of the Year variable whether it is identical to 2019 - in which case the logical comparison results in <code>TRUE</code> or not, in which case the result would be <code>FALSE</code>. Then by logical subsetting all rows for which the comparison vector is <code>TRUE</code> will be selected. Note that we had to tell R that it needs to compare the Year variable. Year is selected in a data frame by <code>energy_consumption$Year</code>. We have then stored all the data in a vector I have called dat and then looked at the first 10 rows. You see that only the observations where the Year is 2019 have been kept, as we had intended.</p>
-<p>Now we see from the output that the <code>Entity</code> variable apparently not only contains individual countries but also whole regions or continents, like <code>Africa</code> in our example. It seems that the regions have no ISO code but instead an empty character.</p>
-<p>Let’s try to apply the logical subsetting logic and our knowledge of character types to filter out Entities which have no value in the <code>Code</code>variable. One way to achieve this would be, for example the code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>dat_countries <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>Code<span class="sc">!=</span><span class="st">""</span>, ]</span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_countries, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                 Entity Code Year       Cons
-40          Afghanistan  AFG 2019   945.6454
-137             Albania  ALB 2019 11266.2578
-192             Algeria  DZA 2019 16140.1963
-234      American Samoa  ASM 2019 26023.6699
-274              Angola  AGO 2019  3429.5928
-314 Antigua and Barbuda  ATG 2019 31384.8633
-369           Argentina  ARG 2019 20785.9141
-399             Armenia  ARM 2019 15538.2012
-433               Aruba  ABW 2019 51178.5859
-545           Australia  AUS 2019 66614.8828</code></pre>
-</div>
-</div>
-<p>Now Africa is out. Of course this is no proof that I have now only entities with ISO-codes left but it is an indication. We can check this. But let me first expalin what is going on here.</p>
-<p>I now work with the object <code>dat</code>, the object we have created before by filtering for the observations in which the <code>Year</code>variable is equal to 2019. Now we tell R compare the entries in the <code>Code</code>variable, i.e. in <code>dat$code</code> with the condition that they are not equal to an empty string. The symbol for <code>not identical</code> in R is <code>!=</code>. We know that the variable <code>Code</code> is of type character hence all codes are strings within quotation marks. An empty string is thus written as <code>" "</code>.</p>
-<p>How could we check - by the way that the <code>Code</code> variable does not contain any empty string anymore? Here is how:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dat_countries<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
-</div>
-</div>
-<p>Here I have used two rules we have dicussed before, logical data types and coercion. First we ask R to check whether any Code variable in <code>dat_counties</code>still has any empty string. This will create a vector of logicals like (showing only the first five entries)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat_countries<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">""</span>, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
-</div>
-</div>
-<p>Now I use coercion rules by summing over this vector. The function <code>sum()</code> in R is a function for summation. For example, if I have the vector <code>c(1,2,3,4,5,6,7,8,9,10)</code> and type</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>,<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 55</code></pre>
-</div>
-</div>
-<p>R will add up the numbers.</p>
-<p>Now if I have a vector of logicals and apply a numerical function to it, R will by its coercion rules, force <code>TRUE</code> into 1 and <code>FALSE</code> into 0. The result that <code>sum(dat_countries$Code == "")</code> equals 0 means that the vector for our logical test contained <code>FALSE</code> only. So indeed there is no empty <code>Code</code> variable anymore.</p>
-<p>Now we are ready to do a histogram of the per capita primary annual energy consumption by</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(dat_countries<span class="sc">$</span>Cons, </span>
-<span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Primary energy consumption in kilowatt-hours per person per year."</span>,</span>
-<span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Primary energy Consuption per Capita 2019"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="summarizing_and_communicating_lots_of_data_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>I have here used the <code>xlab</code>and <code>main</code>arguments with a character value to have a nicer description of the histogram. Otherwise the x axis would have been labeled <code>dat_countries$Cons</code> and the title would have been <code>Histogram of dat_countries$Cons</code>. Note that we have here a histogram in the absolute frequency scale.</p>
 </section>
 </section>
 <section id="exercises-histograms" class="level2" data-number="3.4">
@@ -1425,28 +1684,28 @@ $class
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
-<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
-<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
-<span id="cb111-6"><a href="#cb111-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-7"><a href="#cb111-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
-<span id="cb111-8"><a href="#cb111-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
-<span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
-<span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
-<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
-<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
-<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="fig-height_hist" class="quarto-layout-panel">

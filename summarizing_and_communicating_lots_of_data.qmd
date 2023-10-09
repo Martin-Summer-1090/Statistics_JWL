@@ -1183,362 +1183,362 @@ they have a names attribute:
 names(dhs_data)
 ```
 
-We can now see the variable names. We can use the function `names()`also as a
-helper function to assign other names to our variables. This is a tool that could
-help us to get rid of the very long and
-unwieldy name `"Primary.energy.consumption.per.capita..kWh.person."`. For example:
-```{r}
-#| code-fold: false
-names(energy_consumption) <- c("Entity", "Code", "Year", "Cons")
-```
-will overwrite the name attribute by this new vector of names. When you now look for the
-names attribute, you will see
-
-```{r}
-names(energy_consumption)
-```
-
-One very important attribute, we will encounter all the time is **dimension**, with the
-helper function `dim()`. For example we can look at our data object `energy_consumption` again
-to get:
-```{r}
-dim(energy_consumption)
-```
-which returns two numbers, which mean that the object has 10215 rows and 4 columns.
-
-#### Factors
-
-R stores categorical data, such as nationality, sex etc. by using aspeical data type
-called **factors**. If
-you take for instance, sex, it can have only two values - male or female - and these
-values may have their idiosyncratic order, for example that females go always first.
-
-To make a factor in R you have to pass an atomic vector to the `factor()` function.
-This function works by recoding the values in the vector as integers and store the
-results in an integer vector. R also adds a `level` attribute which contains the set
-of labels and their order and a class attribute that says the vector is
-a factor. Example:
-```{r sex-factor}
-#| code-fold: false 
-sex <- factor(c("m", "f", "f", "m"))
-typeof(sex)
-attributes(sex)
-```
-Factors can be confusing since they look like characters but behave like integers.
-
-Note that R will often try to convert character strings to factors when you load and create data.
-I recommend that you do not allow R to make factors unless you explicitly ask for it. This
-can usually be controlled by an argument to whatever the data reader function is. For instance
-you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`.
-
-R has an internal **coercion** behavior for data types, which you should know
-about if you work with R. With this knowledge you can do many useful things.
-
-If a character string is present in an atomic vector, R will automatically convert every
-other component in this vector to a character string. If a vector contains only logicals
-and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and
-every `FALSE` becomes a 0.
-
-R also uses the coercion rules, when we do math with logicals, like for example
-```{r math-with-logicals}
-#| code-fold: false
-sum(c(TRUE, TRUE, FALSE, FALSE))
-```
-What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the
-vector `c(1, 1, 0, 0)` and sums the components.
-
-### Data frames and R lists {#sec-data_frame}
-
-Going back to our data set on the enegry consumption data, we see that this data set stores
-values of different types, characters, integers and doubles. How does R achieve this?
-
-The answer is that this is achieved by a data structure called a **list**. List are
-like atomic vectors, because the group data into a one-dimensional set. However, lists do
-not group together individual values. List group together R objects, such as atomic
-vectors or even other lists.
-
-For example, you can create a list, which contains a numeric vector of length 31 in its
-first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this:
-```{r}
-#| code-fold: false
-list_example <- list(100:130, "R", list(TRUE, FALSE))
-list_example
-```
-The double bracketed indices tell you which element of the list is being displayed. The
-single bracketed indices tell you which sub-element of the list is being displayed. For example
-100 is the first sub element of the first element in the list. "R" is the first sub element of the
-second list element.
-
-There is lots to say about lists. But this is an advanced topics. We mentioned it here to
-introduce one of the most important data structres for our course the R dataframe.
-
-### Data Frames
-
-**Data Frames** are the two dimensional version of a list. They are by far the most
-useful storage structure for data analysis. Indeed, our dataset on energy
-consumption data we have loaded before is an instance of a data frame. Data frames group vectors
-together in a two dimensional table. As a consequence each variable can have a different type, 
-i.e. each column of the
-data frame can contain a different data type. Within a column, however, we can have only
-one data type. The energy consumption data are a typical example of a dataframe.
-
-```{r}
-head(energy_consumption, n = 10)
-```
+<!-- We can now see the variable names. We can use the function `names()`also as a -->
+<!-- helper function to assign other names to our variables. This is a tool that could -->
+<!-- help us to get rid of the very long and -->
+<!-- unwieldy name `"Primary.energy.consumption.per.capita..kWh.person."`. For example: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- names(energy_consumption) <- c("Entity", "Code", "Year", "Cons") -->
+<!-- ``` -->
+<!-- will overwrite the name attribute by this new vector of names. When you now look for the -->
+<!-- names attribute, you will see -->
+
+<!-- ```{r} -->
+<!-- names(energy_consumption) -->
+<!-- ``` -->
+
+<!-- One very important attribute, we will encounter all the time is **dimension**, with the -->
+<!-- helper function `dim()`. For example we can look at our data object `energy_consumption` again -->
+<!-- to get: -->
+<!-- ```{r} -->
+<!-- dim(energy_consumption) -->
+<!-- ``` -->
+<!-- which returns two numbers, which mean that the object has 10215 rows and 4 columns. -->
+
+<!-- #### Factors -->
+
+<!-- R stores categorical data, such as nationality, sex etc. by using aspeical data type -->
+<!-- called **factors**. If -->
+<!-- you take for instance, sex, it can have only two values - male or female - and these -->
+<!-- values may have their idiosyncratic order, for example that females go always first. -->
+
+<!-- To make a factor in R you have to pass an atomic vector to the `factor()` function. -->
+<!-- This function works by recoding the values in the vector as integers and store the -->
+<!-- results in an integer vector. R also adds a `level` attribute which contains the set -->
+<!-- of labels and their order and a class attribute that says the vector is -->
+<!-- a factor. Example: -->
+<!-- ```{r sex-factor} -->
+<!-- #| code-fold: false  -->
+<!-- sex <- factor(c("m", "f", "f", "m")) -->
+<!-- typeof(sex) -->
+<!-- attributes(sex) -->
+<!-- ``` -->
+<!-- Factors can be confusing since they look like characters but behave like integers. -->
+
+<!-- Note that R will often try to convert character strings to factors when you load and create data. -->
+<!-- I recommend that you do not allow R to make factors unless you explicitly ask for it. This -->
+<!-- can usually be controlled by an argument to whatever the data reader function is. For instance -->
+<!-- you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`. -->
+
+<!-- R has an internal **coercion** behavior for data types, which you should know -->
+<!-- about if you work with R. With this knowledge you can do many useful things. -->
+
+<!-- If a character string is present in an atomic vector, R will automatically convert every -->
+<!-- other component in this vector to a character string. If a vector contains only logicals -->
+<!-- and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and -->
+<!-- every `FALSE` becomes a 0. -->
+
+<!-- R also uses the coercion rules, when we do math with logicals, like for example -->
+<!-- ```{r math-with-logicals} -->
+<!-- #| code-fold: false -->
+<!-- sum(c(TRUE, TRUE, FALSE, FALSE)) -->
+<!-- ``` -->
+<!-- What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the -->
+<!-- vector `c(1, 1, 0, 0)` and sums the components. -->
+
+<!-- ### Data frames and R lists {#sec-data_frame} -->
+
+<!-- Going back to our data set on the enegry consumption data, we see that this data set stores -->
+<!-- values of different types, characters, integers and doubles. How does R achieve this? -->
+
+<!-- The answer is that this is achieved by a data structure called a **list**. List are -->
+<!-- like atomic vectors, because the group data into a one-dimensional set. However, lists do -->
+<!-- not group together individual values. List group together R objects, such as atomic -->
+<!-- vectors or even other lists. -->
+
+<!-- For example, you can create a list, which contains a numeric vector of length 31 in its -->
+<!-- first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- list_example <- list(100:130, "R", list(TRUE, FALSE)) -->
+<!-- list_example -->
+<!-- ``` -->
+<!-- The double bracketed indices tell you which element of the list is being displayed. The -->
+<!-- single bracketed indices tell you which sub-element of the list is being displayed. For example -->
+<!-- 100 is the first sub element of the first element in the list. "R" is the first sub element of the -->
+<!-- second list element. -->
+
+<!-- There is lots to say about lists. But this is an advanced topics. We mentioned it here to -->
+<!-- introduce one of the most important data structres for our course the R dataframe. -->
+
+<!-- ### Data Frames -->
+
+<!-- **Data Frames** are the two dimensional version of a list. They are by far the most -->
+<!-- useful storage structure for data analysis. Indeed, our dataset on energy -->
+<!-- consumption data we have loaded before is an instance of a data frame. Data frames group vectors -->
+<!-- together in a two dimensional table. As a consequence each variable can have a different type,  -->
+<!-- i.e. each column of the -->
+<!-- data frame can contain a different data type. Within a column, however, we can have only -->
+<!-- one data type. The energy consumption data are a typical example of a dataframe. -->
+
+<!-- ```{r} -->
+<!-- head(energy_consumption, n = 10) -->
+<!-- ``` -->
 
-Every column in this tabular array of data can be considered as a vector. 
+<!-- Every column in this tabular array of data can be considered as a vector.  -->
 
 
-### Selecting data from R objects: A toolbox.
+<!-- ### Selecting data from R objects: A toolbox. -->
 
-Asking questions about a dataframe and in particular about our energy data requires that 
-we are able to adress particular values in the dataframe. We now learn the most 
-important techniques to do so.
+<!-- Asking questions about a dataframe and in particular about our energy data requires that  -->
+<!-- we are able to adress particular values in the dataframe. We now learn the most  -->
+<!-- important techniques to do so. -->
 
-R has a notation system to address individual values. You write the object name first, followed by a 
-pair of had brackets `[]`. Between the brackets goes a `,` separating row and column indices. The
-notation is thus like `energy_consumption[,]`.
-
-When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:
-
-1. Positive integers
-2. Negative integers
-3. Zero
-4. Blank spaces
-5. Logical values
-6. Names
-
-The simplest are positive integers. When you want to extract the energy consumption in kwh per person 
-in one year - the value of the variable Cons - you would adress for instance the 3rd value in the
-Cons column, which is in our case the 4th column as
-
-```{r}
-#| code-fold: false
-energy_consumption[3,4]
-```
-
-You can - of course extract more than one value. If you write for instance
-
-```{r}
-#| code-fold: false
-
-energy_consumption[1:5,4]
-```
-you will get the first 5 values of the consumption numbers in the dataframe. The colon
-operator `:` used here is a very useful R operator. It creates sequences of whole
-numbers. Thus if you create a vector with the name, say `n10` containing the sequence
-of the first 10 whole numbers, you would write
-
-```{r}
-#| code-fold: false
-n10 <- 1:10
-```
-
-Now clearly the indexing rules work in the same way as with dataframes, only that now you have 
-only 1 dimension. Say you want to extract the first three numbers from `n10` you would write
-
-```{r}
-#| code-fold: false
-n10[1:3]
-```
-
-Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in
-
-```{r}
-#| code-fold: false
-
-energy_consumption[1:5, 3:4]
-```
-
- R will always return a dataframe. 
- 
-However, if you select a single column, R will return a vector:
-
-```{r}
-#| code-fold: false
-
-energy_consumption[1:5, 4]
-```
-
-if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like:
-
-```{r}
-energy_consumption[1:5, 4, drop = FALSE]
-```
-
-
-**Negative integers** work exactly opposite to positive integers. If you type:
-```{r}
-#| code-fold: false
-head(energy_consumption[-1,4], n = 10)
-```
-R will return the fourth column of the data frame *except* the first row. We just display the
-first 10 values using the `head()` function.
-
-If you try to pair a negative and a positive integer in an index, R will return an error.
-However, you can use both negative and positive integers if you use them in *different*
-indices.
-
-**Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing
-from a dimension with index 0. The following syntax for instance creates an empty object
-```{r empty-object}
-#| code-fold: false
-energy_consumption[0,0]
-```
-
-**Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for
-instance, if you type:
-```{r}
-#|code-fold: false
-sel <- energy_consumption[ , 4]
-```
-R will select the entire column of energy consumption. You can check that the length of this
-vector is
-```{r}
-#|code-fold: false
-length(sel)
-```
-as expected.
-
-**Logical Values** can also be used for subsetting. If you type for instance
-```{r}
-#| code-fold: false 
-energy_consumption[1, c(F,F,F,T)]
-```
-R will select the energy consumption value of the first
-observation. Note that here we used the R convention that `TRUE`and `T`
-as well as `FALSE`and `F` have an equivalent meaning.
-
-Finally, you can ask for the elements, you want by name. On our case, you could select the first
-energy_consumption value by the syntax 
-
-```{r}
-#| code-fold: false
-energy_consumption[1, "Cons"]
-```
-
-Finally, note that two types of object in R obey an optional second system of notation. You can
-extract values from data frames and lists with th `$`syntax. 
-
-It works as follows: For example
-```{r}
-#| code-fold: false
-test <- energy_consumption$Cons
-test[1:4]
-```
-would select the column of energy consumption numbers in our dataframe, save them in an object
-names `test`and then subsequently extract the first four values from the object.
-
-### Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example.
-
-This was a lot of abstract and dry instruction about some data extraction tools. It will
-require lost of practice and concrete examples before you get some natural acquaintance with
-these techniques which belong to the everday routines of data analysis.
-
-To see the concept in action, let me take you step by step through an example by showing you how 
-you can produce a histogram, like we discussed in the first section of this chapter 
-starting from the raw data.
-
-We have already read the data from  the csv file and stored it in an object we have called
-`energy_consumption`. We would like to plot a histogram of the annual per capita energy consumption
-in different countries around the globe for the year 2019.
-
-Let us look again at the first 10 observations:
-
-```{r}
-#| code-fold: false
-head(energy_consumption, n = 10)
-```
-
-How would we extract the observations that refer to the year 2019 only? Here is the
-first practical use case of logical data types, which will immediately show you 
-their power. Let me suggest the following code and then explain step by step what it does.
-
-```{r}
-#| code-fold: false
-dat <- energy_consumption[energy_consumption$Year == 2019, ]
-head(dat, n = 10)
-```
-
-Let me explain what is going on here: We have used the indexing rules and logical
-subsetting. In the first index we have written a logical condition, namely 
-`energy_consumption$Year == 2019`. This means that R selects all the rows for which the year variable of
-energy_consumption is equal to 2019. The logical sign for identical in R is `==`. So what R does then
-is checking for each value of the Year variable whether it is identical to 2019 - in which case the
-logical comparison results in `TRUE` or not, in which case the result would be `FALSE`. Then
-by logical subsetting all rows for which the comparison vector is `TRUE` will be selected. Note that
-we had to tell R that it needs to compare the Year variable. Year is selected in a data frame by
-`energy_consumption$Year`. We have then stored all the data in a vector I have called dat and then
-looked at the first 10 rows. You see that only the observations where the Year is 2019 have been
-kept, as we had intended.
-
-Now we see from the output that the `Entity` variable apparently not only contains individual countries
-but also whole regions or continents, like `Africa` in our example. It seems that the regions have
-no ISO code but instead an empty character.
-
-Let's try to apply the logical subsetting logic and our knowledge of character types to filter out
-Entities which have no value in the `Code`variable. One way to achieve this would be, for
-example the code:
-```{r}
-#| code-fold: false
-
-dat_countries <- dat[dat$Code!="", ]
-head(dat_countries, n = 10)
-```
-Now Africa is out. Of course this is no proof that I have now only entities with ISO-codes left but
-it is an indication. We can check this. But let me first expalin what is going on here.
-
-I now work with the object `dat`, the object we have created before by filtering for the observations
-in which the `Year`variable is equal to 2019. Now we tell R compare the entries in the `Code`variable, i.e.
-in `dat$code` with the condition that they are not equal to an empty string. The symbol for `not identical`
-in R is `!=`. We know that the variable `Code` is of type character hence all codes are strings within
-quotation marks. An empty string is thus written as `" "`.
-
-How could we check - by the way that the `Code` variable does not contain any empty string anymore?
-Here is how:
-
-```{r}
-#| code-fold: false
-
-sum(dat_countries$Code == "")
-```
-
-Here I have used two rules we have dicussed before, logical data types and coercion. First we ask
-R to check whether any Code variable in `dat_counties`still has any empty string. This will create
-a vector of logicals like (showing only  the first five entries)
-
-```{r}
-#| code-fold: false
-
-head(dat_countries$Code == "", n = 5)
-```
-
-Now I use coercion rules by summing over this vector. The function `sum()` in R is a function for summation. For example, if I have the vector `c(1,2,3,4,5,6,7,8,9,10)` and type
-
-```{r}
-#| code-fold: false
-
-sum(c(1,2,3,4,5,6,7,8,9,10))
-```
- R will add up the numbers.
- 
-Now if I have a vector of logicals and apply a numerical function to it, R will by its coercion
-rules, force `TRUE` into 1 and `FALSE` into 0. The result that `sum(dat_countries$Code == "")` equals
-0 means that the vector for our logical test contained `FALSE` only. So indeed there is no empty 
-`Code` variable anymore.
-
-Now we are ready to do a histogram of the per capita primary annual energy consumption by
-
-```{r}
-#| code-fold: false
-hist(dat_countries$Cons, 
-     xlab = "Primary energy consumption in kilowatt-hours per person per year.",
-     main = "Primary energy Consuption per Capita 2019")
-```
-
-I have here used the `xlab`and `main`arguments with a character value to have a nicer description
-of the histogram. Otherwise the x axis would have been labeled `dat_countries$Cons` and the title
-would have been `Histogram of dat_countries$Cons`. Note that we have here a histogram in the absolute frequency scale.
+<!-- R has a notation system to address individual values. You write the object name first, followed by a  -->
+<!-- pair of had brackets `[]`. Between the brackets goes a `,` separating row and column indices. The -->
+<!-- notation is thus like `energy_consumption[,]`. -->
+
+<!-- When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use: -->
+
+<!-- 1. Positive integers -->
+<!-- 2. Negative integers -->
+<!-- 3. Zero -->
+<!-- 4. Blank spaces -->
+<!-- 5. Logical values -->
+<!-- 6. Names -->
+
+<!-- The simplest are positive integers. When you want to extract the energy consumption in kwh per person  -->
+<!-- in one year - the value of the variable Cons - you would adress for instance the 3rd value in the -->
+<!-- Cons column, which is in our case the 4th column as -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[3,4] -->
+<!-- ``` -->
+
+<!-- You can - of course extract more than one value. If you write for instance -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- energy_consumption[1:5,4] -->
+<!-- ``` -->
+<!-- you will get the first 5 values of the consumption numbers in the dataframe. The colon -->
+<!-- operator `:` used here is a very useful R operator. It creates sequences of whole -->
+<!-- numbers. Thus if you create a vector with the name, say `n10` containing the sequence -->
+<!-- of the first 10 whole numbers, you would write -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- n10 <- 1:10 -->
+<!-- ``` -->
+
+<!-- Now clearly the indexing rules work in the same way as with dataframes, only that now you have  -->
+<!-- only 1 dimension. Say you want to extract the first three numbers from `n10` you would write -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- n10[1:3] -->
+<!-- ``` -->
+
+<!-- Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- energy_consumption[1:5, 3:4] -->
+<!-- ``` -->
+
+<!--  R will always return a dataframe.  -->
+
+<!-- However, if you select a single column, R will return a vector: -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- energy_consumption[1:5, 4] -->
+<!-- ``` -->
+
+<!-- if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like: -->
+
+<!-- ```{r} -->
+<!-- energy_consumption[1:5, 4, drop = FALSE] -->
+<!-- ``` -->
+
+
+<!-- **Negative integers** work exactly opposite to positive integers. If you type: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- head(energy_consumption[-1,4], n = 10) -->
+<!-- ``` -->
+<!-- R will return the fourth column of the data frame *except* the first row. We just display the -->
+<!-- first 10 values using the `head()` function. -->
+
+<!-- If you try to pair a negative and a positive integer in an index, R will return an error. -->
+<!-- However, you can use both negative and positive integers if you use them in *different* -->
+<!-- indices. -->
+
+<!-- **Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing -->
+<!-- from a dimension with index 0. The following syntax for instance creates an empty object -->
+<!-- ```{r empty-object} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[0,0] -->
+<!-- ``` -->
+
+<!-- **Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for -->
+<!-- instance, if you type: -->
+<!-- ```{r} -->
+<!-- #|code-fold: false -->
+<!-- sel <- energy_consumption[ , 4] -->
+<!-- ``` -->
+<!-- R will select the entire column of energy consumption. You can check that the length of this -->
+<!-- vector is -->
+<!-- ```{r} -->
+<!-- #|code-fold: false -->
+<!-- length(sel) -->
+<!-- ``` -->
+<!-- as expected. -->
+
+<!-- **Logical Values** can also be used for subsetting. If you type for instance -->
+<!-- ```{r} -->
+<!-- #| code-fold: false  -->
+<!-- energy_consumption[1, c(F,F,F,T)] -->
+<!-- ``` -->
+<!-- R will select the energy consumption value of the first -->
+<!-- observation. Note that here we used the R convention that `TRUE`and `T` -->
+<!-- as well as `FALSE`and `F` have an equivalent meaning. -->
+
+<!-- Finally, you can ask for the elements, you want by name. On our case, you could select the first -->
+<!-- energy_consumption value by the syntax  -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- energy_consumption[1, "Cons"] -->
+<!-- ``` -->
+
+<!-- Finally, note that two types of object in R obey an optional second system of notation. You can -->
+<!-- extract values from data frames and lists with th `$`syntax.  -->
+
+<!-- It works as follows: For example -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- test <- energy_consumption$Cons -->
+<!-- test[1:4] -->
+<!-- ``` -->
+<!-- would select the column of energy consumption numbers in our dataframe, save them in an object -->
+<!-- names `test`and then subsequently extract the first four values from the object. -->
+
+<!-- ### Application: Reproduce our histogram of primary per capita energy consumption around the globe in 2019 by a worked example. -->
+
+<!-- This was a lot of abstract and dry instruction about some data extraction tools. It will -->
+<!-- require lost of practice and concrete examples before you get some natural acquaintance with -->
+<!-- these techniques which belong to the everday routines of data analysis. -->
+
+<!-- To see the concept in action, let me take you step by step through an example by showing you how  -->
+<!-- you can produce a histogram, like we discussed in the first section of this chapter  -->
+<!-- starting from the raw data. -->
+
+<!-- We have already read the data from  the csv file and stored it in an object we have called -->
+<!-- `energy_consumption`. We would like to plot a histogram of the annual per capita energy consumption -->
+<!-- in different countries around the globe for the year 2019. -->
+
+<!-- Let us look again at the first 10 observations: -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- head(energy_consumption, n = 10) -->
+<!-- ``` -->
+
+<!-- How would we extract the observations that refer to the year 2019 only? Here is the -->
+<!-- first practical use case of logical data types, which will immediately show you  -->
+<!-- their power. Let me suggest the following code and then explain step by step what it does. -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- dat <- energy_consumption[energy_consumption$Year == 2019, ] -->
+<!-- head(dat, n = 10) -->
+<!-- ``` -->
+
+<!-- Let me explain what is going on here: We have used the indexing rules and logical -->
+<!-- subsetting. In the first index we have written a logical condition, namely  -->
+<!-- `energy_consumption$Year == 2019`. This means that R selects all the rows for which the year variable of -->
+<!-- energy_consumption is equal to 2019. The logical sign for identical in R is `==`. So what R does then -->
+<!-- is checking for each value of the Year variable whether it is identical to 2019 - in which case the -->
+<!-- logical comparison results in `TRUE` or not, in which case the result would be `FALSE`. Then -->
+<!-- by logical subsetting all rows for which the comparison vector is `TRUE` will be selected. Note that -->
+<!-- we had to tell R that it needs to compare the Year variable. Year is selected in a data frame by -->
+<!-- `energy_consumption$Year`. We have then stored all the data in a vector I have called dat and then -->
+<!-- looked at the first 10 rows. You see that only the observations where the Year is 2019 have been -->
+<!-- kept, as we had intended. -->
+
+<!-- Now we see from the output that the `Entity` variable apparently not only contains individual countries -->
+<!-- but also whole regions or continents, like `Africa` in our example. It seems that the regions have -->
+<!-- no ISO code but instead an empty character. -->
+
+<!-- Let's try to apply the logical subsetting logic and our knowledge of character types to filter out -->
+<!-- Entities which have no value in the `Code`variable. One way to achieve this would be, for -->
+<!-- example the code: -->
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- dat_countries <- dat[dat$Code!="", ] -->
+<!-- head(dat_countries, n = 10) -->
+<!-- ``` -->
+<!-- Now Africa is out. Of course this is no proof that I have now only entities with ISO-codes left but -->
+<!-- it is an indication. We can check this. But let me first expalin what is going on here. -->
+
+<!-- I now work with the object `dat`, the object we have created before by filtering for the observations -->
+<!-- in which the `Year`variable is equal to 2019. Now we tell R compare the entries in the `Code`variable, i.e. -->
+<!-- in `dat$code` with the condition that they are not equal to an empty string. The symbol for `not identical` -->
+<!-- in R is `!=`. We know that the variable `Code` is of type character hence all codes are strings within -->
+<!-- quotation marks. An empty string is thus written as `" "`. -->
+
+<!-- How could we check - by the way that the `Code` variable does not contain any empty string anymore? -->
+<!-- Here is how: -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- sum(dat_countries$Code == "") -->
+<!-- ``` -->
+
+<!-- Here I have used two rules we have dicussed before, logical data types and coercion. First we ask -->
+<!-- R to check whether any Code variable in `dat_counties`still has any empty string. This will create -->
+<!-- a vector of logicals like (showing only  the first five entries) -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- head(dat_countries$Code == "", n = 5) -->
+<!-- ``` -->
+
+<!-- Now I use coercion rules by summing over this vector. The function `sum()` in R is a function for summation. For example, if I have the vector `c(1,2,3,4,5,6,7,8,9,10)` and type -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+
+<!-- sum(c(1,2,3,4,5,6,7,8,9,10)) -->
+<!-- ``` -->
+<!--  R will add up the numbers. -->
+
+<!-- Now if I have a vector of logicals and apply a numerical function to it, R will by its coercion -->
+<!-- rules, force `TRUE` into 1 and `FALSE` into 0. The result that `sum(dat_countries$Code == "")` equals -->
+<!-- 0 means that the vector for our logical test contained `FALSE` only. So indeed there is no empty  -->
+<!-- `Code` variable anymore. -->
+
+<!-- Now we are ready to do a histogram of the per capita primary annual energy consumption by -->
+
+<!-- ```{r} -->
+<!-- #| code-fold: false -->
+<!-- hist(dat_countries$Cons,  -->
+<!--      xlab = "Primary energy consumption in kilowatt-hours per person per year.", -->
+<!--      main = "Primary energy Consuption per Capita 2019") -->
+<!-- ``` -->
+
+<!-- I have here used the `xlab`and `main`arguments with a character value to have a nicer description -->
+<!-- of the histogram. Otherwise the x axis would have been labeled `dat_countries$Cons` and the title -->
+<!-- would have been `Histogram of dat_countries$Cons`. Note that we have here a histogram in the absolute frequency scale. -->
 
 
 ## Exercises: Histograms
