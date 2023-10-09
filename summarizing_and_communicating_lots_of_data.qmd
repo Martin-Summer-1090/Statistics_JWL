@@ -6,36 +6,35 @@
 1. In this chapter we will learn how to summarize and communicate lots of data. Most
    datasets you will be working with in statistics are large and can contain thousands or
    even millions of observations. To understand these data and their pattern of
-   variation you need tools to summarize them in a meaningful and important way. In this
+   variation you need tools to summarize them in a meaningful and informative way. In this
    chapter you will learn the tools to do so.
 
 2. We first discuss a graphical tool to summarize the variation in a single variable by
-   organizing the data in a way that shows us a global picture of the distribution of these
+   organizing the data in a way that shows us a the distribution of these
    data. This tool is called a **histogram** and you will encounter it very often across
    all applied data work and across all of statistics. To get a good understanding how to
    construct and work with a histogram, we first work with an example you can in principle
    do without a computer. This is useful to understand the basic principles of constructing
    and reading a histogram.
-
-3. For larger datasets, which will be the usual case in practice, you will need to learn
-   how to summarize and communicate the information about variables with lost of different
-   values using the computer. This means in particular, that you need to understand how
-   to read large datafiles from a given source, how to select and modify particular variables.
-   You will thus learn some powerful tools from the R language that will help you to
-   do so.
    
-4. You will also learn to summarize large datasets by single numbers that provide information
+3. You will also learn to summarize large datasets by single numbers that provide information
    about the central tendency of the values of a variable. The **mean** is such a number, used
    over and over in statistics. You will learn what a mean is, what it tells you and when
-   it gives a meaningful summary about the central tendency of a dataset.
+   it gives a meaningful summary about the center of the distribution of a variable.
 
-5. For a summary of a large dataset by numbers, you need not only an idea of at which values
+4. For a summary of a large dataset by numbers, you need not only an idea of at which values
    of a variable the data are centered but also how much they are spread out around this value.
    Such a measure of spread is the **standard deviation**. Like the mean understanding and 
    working with standard deviations is fundamental and will be encountered over and over
    again throughout the large field of statistics and applied work with data. You need
    to gain a good understanding of what the standard deviation is and how to compute it.
 
+5. For larger datasets, which will be the usual case in practice, you will need to learn
+   how to summarize and communicate the information about variables with lost of different
+   values using the computer. This means in particular, that you need to understand how
+   to read large datafiles from a given source, how to select and modify particular variables.
+   You will thus learn some powerful tools from the R language that will help you to
+   do so.
 
 When you have worked through this unit you will be able to summarize large datasets
 graphically and numerically and understand what these measures tell you about the
@@ -53,7 +52,7 @@ In ancient greek anthropos means 'human', and métron means 'measure'. Anthropom
 refers to the measurement of the human individual. An early tool of physical 
 anthropology, it has been used for identification, for the 
 purposes of understanding human physical variation]. These data are usually gathered via
-large population survey like the Demographic and Health Survey abbreviated DHS^[The DHS 
+large population survey like the Demographic and Health Survey, abbreviated DHS^[The DHS 
 program, a US based program on demographics and health in various parts of the 
 developing world. The data are used to monitor demographic and health 
 developments to decide where policy action might be needed. The DHS website 
@@ -82,7 +81,7 @@ of seventeen interlinked objectives designed to serve as a "shared blueprint for
 and prosperity for people and the planet, now and into the future." 
 The goals were set and decided by the 
 United Nations General Assembly and are monitored through various data collection 
-efforts, including the DHD. The short titles of the 17 SDGs are: No poverty (SDG 1), 
+efforts, including the DHS. The short titles of the 17 SDGs are: No poverty (SDG 1), 
 Zero hunger (SDG 2), Good health and well-being (SDG 3),
 Quality education (SDG 4), Gender equality (SDG 5), 
 Clean water and sanitation (SDG 6), 
@@ -94,6 +93,7 @@ Responsible consumption and production (SDG 12),
 Climate action (SDG 13), Life below water (SDG 14), Life on land (SDG 15), 
 Peace, justice, and strong institutions (SDG 16), Partnerships for the goals (SDG 17).
 See also the website: https://sdgs.un.org/goals]
+
 The measurement of human height and weight are also important in the history of statistics.
 Especially important concepts describing the statistical relation between two variables,
 were detected in this context. We will learn about these concepts later, when we study the
@@ -104,8 +104,12 @@ use R to deal with large datasets. The number of observations in this case is 25
 is not very big but certainly too big to reasonably handle by hand. With a 
 computer this becomes realistic. 
 
-But before we do so, lets look at a smaller example and do some anthropometry of
-our own study group for this course.
+But before we do so, lets look at a smaller example of human height data.
+
+## The histogram
+
+To summarize data, statisticians often use a graph which is called a **histogram**. 
+In this section we will discuss all you have to know about histograms and how to use them.
 
 :::{.callout-caution collapse="true"}
 ## Seitwerk: Expand for reading comment.
@@ -113,18 +117,17 @@ Reda, I think it would be great that among the activities in the study center we
 some data about the students in the group. I would suggest height, weight. These
 varibles can be measured and recorded and the students could be asked to store these
 data in a text file, sow e can read them by R here. We could then
-use these data here to explain how a histogram is constructed.
+use these data here to explain how a histogram is constructed or give it as an exercise.
 :::
 
-### Constructing a Histogram
+### Constructing a histogram
 
-To summarize data, statisticians often use a graph which is called a **histogram**. 
-In this section we will discuss all you have to know about histograms and how to use them.
-
-Since real world examples in this exposition come from anthropomentry, let us 
+Since real world examples in this exposition come from anthropometry, let us 
 look at a sample of 100 observations from a set of real world data about human adults
 of age 18 and above, where the data record their height in cm.^[These data are collected from
-the internet. For details you can look at the source at http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights]
+the internet. For details you can look at the source at http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights] I have
+stored these values in an R object which I called `heights`. So in this discussion I refer
+to the 100 vaues shown below as `heights`.
 ```{r}
 library(JWL)
 dat <- socr_height_weight
@@ -192,25 +195,23 @@ the 100 data points into 6
 bins, in our example. While loosing some local information on 
 individual data points the global information
 conveyed by the summary gives us a pretty good idea of the overall 
-pattern of variation on the Nile river
-flow data. 
+pattern of variation on the human height data.
+
+:::{.callout-caution collapse="true"}
+## Seitwerk: Expand for reading comment.
+Reda, I think it would be great if you could do some animation that reproduces the 
+steps: Plot a height axis with bins from 160 to 190 in bin sizes of 5, then plot a frequency
+axes from 0 to 40 in steps of 10. Them from the list of 100 numbers, collect all that are
+recorded in the first bin and then make the height proportional to the count, then the next
+etc. The idea would be to realize something like my previous sketch for the Nile data
+![Constructing the river flow histogram](pictures/nile_hist.png)
+:::
 
 We can see, for instance, that the most frequent height is between 170 and 175 and that the
 variation is fairly symmetric around this bin. In the extremes this most frequent 
 value can half or shrink even more, so there is quite some spread in the data.
 
-:::{.callout-caution collapse="true"}
-## Seitwerk: Expand for reading comment.
-Reda, I think it would be great if you could do some animation that reproduces the 
-steps: Plot a hight axiss with bins from 160 t0 190 in bin sizes of 5, then plot a frequency
-axes from 0 to 40 in steps of 10. Them from the list of 100 numbers, collect all that are
-recorded in the first bin and then make the hight proportional to the count, then the next
-etc. 
-The idea would be to realize someting like my previous sketch for the Nile data
-![Constructing the river flow histogram](pictures/nile_hist.png)
-:::
-
-If we had just plotted all individual data points, we also got a picture like this.
+If we had just plotted all individual data points, we would have got a picture like this.
 
 ```{r}
 plot(as.numeric(heights), xlab = "Observation", ylab = "Height in cm", pch = 16)
@@ -308,7 +309,8 @@ histogram with a relative frequency scale. To produce a histogram like shown
 here we would need some more advanced coding than we know at the moment.^[The `hist()` function in R has an argument, called `freq`. It can take the value `TRUE` or `FALSE`. If the
 argument is set to `FALSE` the histogram is shown such that the y axis has yet another
 scale, the so called density scale. This scale is chosen such that the total area of
-the histogram is 1.]
+the histogram is 1.] I will come back to explain how to do a histogram with relative
+frequency scale in R as soon as we have learned the appropriate syntax to implement this.
 
 ### Best practices for histograms
 
@@ -498,7 +500,7 @@ of this histogram, plotted in the picture as the red and blue vertical lines, we
 
 ### The average
 
-Let us stick to the height data, we have analyzed in a histogram before as the
+Let us come back to the height data, we have analyzed in a histogram before as the
 context for which we study the concept of an average.
 
 ::: {.callout-note icon=false}
@@ -565,15 +567,26 @@ number, the mean.
 This compression is, however, only achieved by loosing some 
 information on individual differences.
 For example in our dataset the average height is `r average_height` cm. 
-But there are about  % who are larger than
- and there are also about 4 % who are smaller than . With 100 individuals these are
- individuals who are beyond these thresholds. This diversity is hidden in the aggregation.
+
+But there are about `r mean(heights > 180)*100` % who are larger than
+180 cm and there are also about `r mean(heights < 165)*100` % who are 
+smaller than 165 cm. With 100 individuals these are
+individuals who are beyond these thresholds. This diversity 
+is hidden in the aggregation.
+
+::: {.callout-tip}
+## Tip with Title
 
 This is a good opportunity to show you a cool feature or trick in R how we could in one line
 compute such percentages. Assume we want to compute the percentage of individuals in our data
 who are larger than the mean of `r average_height`. How can we do this?
 
-Logicals are a powerful data type to make such a computation. Say we have 10 numbers, given by
+Logicals are a powerful data type to make such a computation. A logical is
+a special data type, similar to the data type numerical, used for representing numbers, or
+the data type character, representing strings. A logical can 
+either be `TRUE` or `FALSE` and will be the output of an R operation testing a condition.
+
+Say we have 10 numbers, given by
 
 ```{r}
 #| code-fold: false
@@ -587,133 +600,47 @@ Now we could ask R which entries of x are larger than 2 by typing
 x > 2
 ```
 
-The output is a vector of logicals where R compares each entry in `x`with 2 and if it is larger it 
+The output is a vector of logicals where R compares 
+each entry in `x`with 2 and if it is larger it 
 returns `TRUE` and otherwise `FALSE` (this includes all entries which are exactly 2). 
 
-::: {.callout-note icon=false}
+Note that, when you apply the function `mean()` to a vector of data of 
+type logical R performs a computation by coercing `TRUE`to the number 1 and `FALSE` to the
+number 0. We will learn about the details of these R the coercion rules later in more detail.
+If you apply `mean()` to `x` you will get the proportion of values fulfilling a certain
+condition. So if you take the mean of
+```{r}
+x > 2
+```
+R would firts transfrom the vector
 
-## Now you try
+`TRUE`,  `TRUE`, `FALSE`, `FALSE`, `TRUE`,  `FALSE`,  `FALSE`,  `TRUE`,  `TRUE`,  `TRUE`
 
-Replace every `TRUE` value with 1 and every `FALSE` value with 0 and compute the mean.
-What do you get? Compute the percentage of values in `x`which are larger than 2. What did you get?
-Explain!
+into a vector
 
+1,1,0,0,1,0,0,1,1,1.
+
+When you take the mean
+\begin{equation}
+\frac{1+1+0+0+1+0+0+1+1+1}{10}
+\end{equation}
+you just get the proportion of 1, i.e. cases where the condition $x > 2$ is `TRUE`, because
+the 0-es do not contribute to the value of the sum, only the 1-s.
+
+This insight can be used to compute the percentage of values that 
+fulfill a certain condition in R.
+Here the proportions of heights larger and smaller than the mean.
+
+```{r}
+#| code-fold: false
+
+mean(heights > mean(heights))
+mean(heights < mean(heights))
+```
+Here you see the symmetry of the distribution numerically. About 50 % are larger and also 
+smaller than the mean.
 :::
 
-Note that, when you apply the function `mean()` to a vector of data of type logical the coercion rules
-of R will coerce TRUE to 1 and FALSE to 0 automatically. So if you apply `mean()` to `x` you will
-get the result you have computed before.
-
-This insight can be used to compute the percentage of values that fulfill a certain condition in R.
-Here the condition is that the Height is larger than the mean.
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-Compute the percentage of Heights in `dat` which are larger and the
-percentage of Heights that are smaller than the mean of 172.7025.
-
-:::
-
-```{r}
-mean(dat$Height > 172.7025)
-mean(dat$Height < 172.7025)
-```
-
-The value of a distribution where 50 % of all values are larger than this given value and 50
-% are smaller is another one number summary you can give for a large set of data which describes
-the center of a distribution in another way. It is called the median. R also has a built in
-function for the median, which is called - as you might already guess - `median()`. Let us compute
-the median height in our data.
-
-```{r}
-#| code-fold: false
-
-median(dat$Height)
-```
-
-In this case the median and the mean give the same value up to the third digit. They are for 
-practical reasons identical. The reason is that in the case of the measure of Height the distribution
-is highly symmetric. In practice you will encounter many situations where the distribution of
-a variable is not even approximately symmetric.
-
-A typical case of a distribution that us typically not symmetric but skewed - as it is called 
-in statistical terminology - is income. The following histogram which is scaled in
-relative frequencies shows the data for the
-global income distribution in the year 2013 as reported by two economists @HelMau2015 from the Peterson
-Institute, a US based research institution.^[We have used the data they provide to
-simulate a sample of 100.000 observations consisten with the numbers they report. Thus
-our data used here are a simulation reproducing the characteristics of the data reported in 
-this paper. We will soon learn how to do simulations using R. For the moment we need you to
-trust that we have done this correctly.] The unit of measurement is US dollars in 
-so called purchasing power parity, a concept economists use to make income 
-figures comparable in terms of the amount
-of goods they can buy.^[When reporting income figures we could translate all national figures gathered from around the world into one common currency (for instance, US dollars) using exchange rates from currency markets. But because market exchange rates do not always reflect the different price levels between countries, economists often opt for a different alternative. They create a hypothetical currency, called ‘international dollars’, and use this as a common unit of measure. The idea is that a given amount of international dollars should buy roughly the same amount – and quality – of goods and services in any country. This way of measuring monetary amounts is called dollars in purchasing power parity or PPP.]
-
-```{r}
-library(readxl)
-aux <- read_excel("~/R/Statistics_JWL/data/income/wp15-7.xlsx", sheet = 5, range = "B1:D1401")
-inc <- aux[-1 ,c(1,3)]
-names(inc) <- c("Income", "Percent")
-inc$Income <- as.numeric(unlist(inc$Income))
-inc$Percent <- as.numeric(unlist(inc$Percent))
-
-inc_trunc <- inc$Income[inc$Income<=14000]
-
-data <- sample(inc_trunc, 10^5, replace = TRUE, prob = inc$Percent[0:701])
-
-hist(data, breaks = 27, xlab = "Income in purchasing parity power dollars", main = "Global income distribution")
-```
-Now the mean and the median of these data would give us:
-
-```{r}
-mean(data)
-median(data)
-```
-
-There is a big difference in both numbers as you can see even better when we show the mean (red line) and the median (blue) income value of our data in the graph.
-
-```{r}
-hist(data, breaks = 27, xlab = "Income in purchasing parity power dollars", main = "Global income distribution")
-abline(v = mean(data),                       # Add red line for mean
-       col = "red")
-abline(v = median(data),                     # Add blue line for median
-       col = "blue")
-
-```
-
-When the distribution is not symmetric the mean does not capture the center of the distribution well. 
-We have stored the data of our histogram in an object we have chosen to call `data`. Let us verify
-that the median is actually the value above that is in the middle of all values and compare this
-with the mean for these skewed distribution.
-
-Let's check the median first
-
-```{r}
-#| code-fold: false
-
-mean(data > 1700)
-mean(data < 1700)
-```
-
-Now let us do the same check for the mean
-
-```{r}
-#| code-fold: false
-
-mean(data > 3012.174)
-mean(data < 3012.174)
-
-```
-
-You see that the mean now does not capture the center of the distribution well. Only 32 % have incomes
-above the mean income and 68 % have incomes below. The point where 50% are above and 50 % are below is 
-actually at 1700, as expressed by the median.
-
-There is another important difference between the mean and the median. 
-
-Do this with the income distribution example.
 
 ### The standard deviation
 
@@ -721,15 +648,11 @@ When summarizing and communicating lots of data, it is useful not only to report
 at which value the center of the distribution is. It is often helpful to also 
 think about the way how the values spread around the average. The quantity which
 measures this spread is called the standard deviation. It can be interpreted as 
-an average deviation. In this section you will learn to interpret the standard
-deviation in the context of real data and then learn how it is computed both
-by hand and by using the computer.
+an average deviation. 
 
-Le us go back to our data on the height of 18 year old humans. There were 25.000 observations
-in our sample. The average height was
-```{r}
-mean(dat$Height)
-```
+Le us go back to our data on human height. There were 100 observations
+in our sample. The average height was `r round(mean(heights),2)` cm.
+
 This average tells us that most of the humans measured in the sample had a height of
 around 1 m and 73 cm. But there were deviations from this average. Some humans were
 taller and others were smaller. We can ask how big these deviations are? In answering 
@@ -752,157 +675,77 @@ compute the standard deviation of our height data using the `sd()`function.
 ```{r}
 #| code-fold: false
 
-sd(dat$Height)
+sd(heights)
 ```
 
-So the standard deviation is at about 4.8 cm. That means that many humans differed from the
+The standard deviation is at about `r round(sd(heights),2)` cm. That means 
+that many humans differed from the
 average height by about 1, 2, 3, 4 or about 5 cm. Let us use R to compute the percent
-of observation that are within one standard deviation from the average. 
+of observation that are within one standard deviation from the average.
 
-Let us use the trick of combining logical subsetting and the coercion rules of R to
-compute this percentage here:
+Let us compute the percentage of observations, which are within 1 standard deviation
+from the mean height. Do you remember the trick with using logicals?
+
+Let us compute the percentage of observations which are larger than the average height minus
+und standard deviation and smaller than the average height plus one standard deviation. The
+R symbol for and is `&`. Let us use it to formulate the condition:
 
 ```{r}
 #| code-fold: false
 
-aux <- dat$Height >= mean(dat$Height) - sd(dat$Height) & dat$Height <= mean(dat$Height) + sd(dat$Height)
-
-mean(aux)
-
-```
-Let me explain what we have computed here. First we have checked for all the entries in 
-the vector `dat$Height` whether they were larger than the average minus one standard deviation and
-smaller than the average plus one standard deviation. These are all the values that are within
-one standard deviation away from the average. For all values that are in this range R returns the
-value `TRUE` and for all the other values that are outside of this range, R returns the value `FALSE`.
-We have stored the vector recording all these logical values in a new object called `aux`.
-Now we computed the mean of aux. When the mean function of R gets a vector of logical values it
-coerces all the `TRUE` values to 1 and al the `FALSE` values to 0. When we take the mean we get the
-share of values for which the condition is TRUE. In our case this is around 68 %. The other 32 % are
-farther away. 
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-1. Compute the percentage of observations of our height data that are within 
-   two standard deviations from the average.
-
-2. Compute the percentage of observations of our height data that are within 
-   three standard deviations from the average.
-
-:::
-
-This is a rule of thumb that applies to many (but not all) data sets. For many distributions
-roughly 68 % of observations are within one standard deviation from the average. 95 % are within
-two standard deviations from the average and 99.7 % are within three standard deviations 
-from the average. There is a deeper mathematical reason why this rule applies to 
-many symmetric distributions. For the moment we can 
-use this information as a sort of rile of thumb for symmetric, bell shaped
-distributions. We will learn later in the course where this rule
-comes from. Let us illustrate the rules graphically using the histogram.
-
-```{r}
-#| include: false
-hist_breaks <- hist(dat$Height, plot = FALSE)$breaks
-color_list <- rep('#C6E2FF', length(hist_breaks))
-color_list[hist_breaks <= mean(dat$Height) + sd(dat$Height)] <- '#6C7B8B'
-color_list[hist_breaks <= mean(dat$Height) - sd(dat$Height)] <- '#C6E2FF'
+mean(heights >= mean(heights) - sd(heights) & 
+     heights <= mean(heights) + sd(heights))
 ```
 
-```{r}
-hist(dat$Height, col = color_list, xlab = "Height in cm", main = "Height of 18 year old humans")
-abline(v = mean(dat$Height),                       # Add red line for mean
-       col = "red")
-```
+In our case these are 71 % of all observations.
 
+Sometimes it is convenient to subtract the mean from every observation and 
+and express the units in terms of standard deviations. By construction this
+is a variable with mean 0 and standard deviation 1. This is called standardization
+or normalization. Let me show you how this works.
 
-The next figure shows the same histogram. Now the area within two standard deviations from
-the mean is colored differently
-
-```{r}
-#| include: false
-hist_breaks <- hist(dat$Height, plot = FALSE)$breaks
-color_list <- rep('#C6E2FF', length(hist_breaks))
-color_list[hist_breaks <= mean(dat$Height) + 2*sd(dat$Height)] <- '#6C7B8B'
-color_list[hist_breaks <= mean(dat$Height) - 2*sd(dat$Height)] <- '#C6E2FF'
-
-```
-
-```{r}
-hist(dat$Height, col = color_list, xlab = "Height in cm", main = "Height of 18 year old humans")
-abline(v = mean(dat$Height),                       # Add red line for mean
-       col = "red")
-```
-
-Let us note a final point about this rule of thumb for symmetric distribution, you
-frequently encounter in practice. Often it is common to report a distribution of
-a variable not in its orginal units - height in cm - for example but in a standardized
-form where the units are changed such that the mean is at 0 and the standard deviation is
-at 1.
-
-How is this possible? Let us consider the following example.
-
-::: {.callout-note appearance="simple"}
-
-## Example
-
-Consider the following 10 values, which we write into a vector $x$ and compute its mean
-$\mu$ and its standard deviation $\sigma$:
-```{r}
-#| code-fold: false
-x <- c(9,14,9,11,11,10,15,8,11,13)
-
-mean(x)
-sd(x)
-```
-Thus $\mu = 11.1$ and $\sigma = 2.282786$. Now let us change the units according to the
-formula
+We transform our heights data to 
 \begin{equation*}
 z_i = \frac{x_i - \mu}{\sigma}
 \end{equation*}
 and compute the mean of $z_i$ and its standard deviation. We can use R to do that:
 ```{r}
 #| code-fold: false
-z <- (x - mean(x))/sd(x)
+z <- (heights - mean(heights))/sd(heights)
 
 mean(z)
 sd(z)
 ```
-Now you see that the mean is 0 and the standard deviation is 1. The mean in the R computation is not exactly 0, but this comes from the rounding errors made by the computer. For practical purposed $1.4 \times 10^{-16}$ is as good as zero. This must be the case as a 
+Now you see that the mean is 0 and the standard deviation is 1. 
+The mean in the R computation is not exactly 0. R says it is `2.699057e-15`. What does this
+mean? This is a way of writing 0.000000000000002699057 in a special notation. Do not worry for
+now how this notation works exactly. What you can see is that this is an very very small 
+number, practically the same as 0. In R it is not exactly zero because of rounding
+errors of the computer. For practical purposed the value is as good as zero. 
+This must be the case as a 
 consequence of how we changed the units. The mathematically inclined among you might
 try to derive this fact more generally using the definition of the mean and the standard
 deviation.
 
-Now see what happens when we standardize our height data
+Now if we ask the same question as before. Which proportions of $z$ are within
+-1 and + 1 standard deviation from the mean, we get
+
 ```{r}
-#|code-fold: false
-
-dat$Z <- (dat$Height - mean(dat$Height))/sd(dat$Height)
+mean(z >= mean(z) - sd(z) & 
+     z <= mean(z) + sd(z))
 ```
-We want to see how many of the transformed values fall within 1 standard deviation, 2 standard deviations or three standard deviations from the mean.
-```{r}
-#| code-fold: false
 
-check1 <- dat$Z >= mean(dat$Z) - sd(dat$Z) & dat$Z <= mean(dat$Z) + sd(dat$Z)
-check2 <- dat$Z >= mean(dat$Z) - 2*sd(dat$Z) & dat$Z <= mean(dat$Z) + 2*sd(dat$Z)
-check3 <- dat$Z >= mean(dat$Z) - 3*sd(dat$Z) & dat$Z <= mean(dat$Z) + 3*sd(dat$Z)
-
-mean(check1)
-mean(check2)
-mean(check3)
-```
-:::
-
-So the rule of thumb applies all the same: About 65 % of observations are within one
-standard deviation from the mean, 95 % within 2 and 99.7 within three standard devaitions.
-The transformation has only changed the units in which we measure our values not the
-way they are distributed.
-
+This is exactly the same value as we got before. Our transformation was just about
+changing the units in which our data are measured. This change of unit does not change
+the distribution. So no matter whether we work with $x$ the original heights in cm or
+with the $z$ the normalized data, the distributional properties do not change. In 
+statistics if data are normalized in this way the normalized values are also often
+referred to as the **z-score**.
 
 ### Computing the standard deviation
 
-Usually we will compute the standard deviation using the computer and only in rare cases will we
+Usually we will compute the standard deviation using the 
+computer and only in rare cases will we
 ever compute a standard deviation by hand. Still it is important that you understand how the
 computation works and what is actually been computed. Here is how.
 
@@ -933,7 +776,8 @@ sd&=&\sqrt{\frac{5^2 + (-5)^2 + 0^2 + 0^2}{4}} \\
  &\approx& 3.5
 \end{eqnarray}
 
-The standard deviation has the same units as the data. For example, when we measure height in cm then at the squaring step the units change to $cm^2$ but the suqre root returns $cm$ again. 
+The standard deviation has the same units as the data. 
+For example, when we measure height in cm then at the squaring step the units change to $cm^2$ but the squre root returns $cm$ again. 
 
 ::: {.callout-note icon=false}
 
@@ -952,38 +796,29 @@ average?
 
 :::
 
-
-
-## Summary
-
-
-
-
-## Summarizing and communicationg large datasets using the computer: Taking the next steps in R {#sec-moreR}
+## Using the computer to summarize: Taking the next steps in R {#sec-moreR}
 
 Anthropometric data can help a country to get a data driven picture on the nutritional status
 of its population. These data can help identify areas where policy action is needed. Since
 real world data sets, which will usually come from surveys, will be too large to be
-handles manually. For these datasets you need to be able to work with the computer.
+handled manually. For these datasets you need to be able to work with the computer.
 
-We will now learn these skills using data from the DHS survey. DHS is an abbreviation 
-for Demographic and Health Survey) program, a US based program on demographics and 
-health in various parts of the developing world. The data are used 
+We will now learn these skills using data from the DHS survey. The data are used 
 to monitor demographic and health developments to decide where policy action 
 might be needed.
 
 The data we are using are not from an actual survey but they are from a 
 synthetic model dataset provided by the DHS for teaching and training. 
 But they reflect realistic values and could come form an actual country
-survey. The DHS website can be found here: https://dhsprogram.com/ and the 
-raw model data sets can be found here https://dhsprogram.com/data/model-datasets.cfm
+survey.^[The DHS website can be found here: https://dhsprogram.com/ and the 
+raw model data sets can be found here https://dhsprogram.com/data/model-datasets.cfm]
 
 Before we go into the details of the data we need a bit of context to understand 
 what the data we are looking at here are precisely describing. In the 
 analysis we are going to produce a statistical table on the nutritional 
 status of children under five years.
 
-Anthropometry provides data on the human body and reveals information about a 
+The anthropometirc data reveal information about a 
 persons nutritional status. The nutritional status of children is observed to 
 monitor and measure malnutrition in a population. The nutritional 
 data of children are included in the United Nations development goals indicators.
@@ -995,17 +830,26 @@ Their growth rates are also age dependent.
 
 Four indicators on nutritional status are collected in DHS surveys:
 
-(a) Overweight: This indicates high weight for height and is a measure of excess weight. 
+(a) **Overweight**: This indicates high weight for height and is a measure of excess weight. 
 This results from an imbalance of energy consumed (too much) and energy 
 expended (too little). Children with this condition have an increased risk of 
-non-communicable diseaeses, such as hight blood pressure and diabetes and is 
-associcated with increased risk of being obese and overweight in adulthood.
+non-communicable diseases, such as high blood pressure and diabetes and is 
+associated with increased risk of being obese and overweight in adulthood.
 
-(b) Stunting: This is low height-for-age. It is a measure of growth faltering and may result from a deficient growth environment, recurrent infections, chronic deseases and other causes. It is associated with impaired brain development and reduced academic achievement in childhood and lower economic potential as an adult.
+(b) **Stunting**: This is low height-for-age. It is a measure of growth 
+faltering and may result from a deficient growth environment, recurrent 
+infections, chronic diseases and other causes. It is associated with 
+impaired brain development and reduced academic achievement in childhood 
+and lower economic potential as an adult.
 
-(c) Wasting: Is low weight-for-height and is a measure of acute weight loss. This may result from inadequate food intake or from illness or infection. With this condition children are more susceptible for disease and have a higher risk of death.
+(c) **Wasting**: Is low weight-for-height and is a measure of acute weight loss. 
+This may result from inadequate food intake or from illness or infection. With 
+this condition children are more susceptible for disease and have a 
+higher risk of death.
 
-(d) Underweight: Is low weight-for-age and is a measure of weight relative to a child's age. It refects children who are stunted or wasted or both.
+(d) **Underweight**: Is low weight-for-age and is a measure of weight 
+relative to a child's age. It reflects children who are stunted 
+or wasted or both.
 
 The World Health Organisation (WHO) child growth standards provide a single 
 international standard that describes the physiological growth for all children 
@@ -1018,7 +862,7 @@ about 67 % of all values, within 2 95 % and within 3 standard deviations 99.7%.
 Height for age, weight for height, and weight for age of children are expressed 
 in these units.
 
-Statistical cutoffs are used to measure malnutriton. If a child's height 
+Statistical cutoffs are used to measure malnutrition. If a child's height 
 for age is below minus two standard deviations from the 
 mean (expressed in z-scores), the child is considered stunted. If it is 
 below minus three standard deviations from the mean it is considered severely 
@@ -1038,7 +882,7 @@ stunting and wasting in a population of children:
 
 |Classification|stunting         |wasting and overweight |
 |:-------------|:----------------|:----------------------|
-|very high     |	30% or more	   | 15 % or more          |
+|very high     | 30% or more	   | 15 % or more          |
 |high	         | 20 - 29 %	     | 10 - 14 %             |
 |medium	       | 10 - 19 %	     |  5 - 9 %              |
 |low	         |  2.5 - 9 %	     |  2.5 - 4 %            |
@@ -1053,44 +897,18 @@ people in a sample who have the characteristic divided by all people in the samp
 Before we go on with learning the tools to summarize and communicate lots of data let us
 gain more skills for handling the tool that will actually enable you to handle
 large data sets yourself by making use of R. Building on what we learned in the last unit, 
-lets now push
-your knowledge of R bit further.
+lets now push your knowledge of R bit further.
 
 ### Reading data in R {#sec-readingdata}
 
 Before we can do anything with data, we need first to learn how  to load data into R and how
-to save them. We will discuss now how to do this for the case of *comma separated text files* or 
+to save them. 
+We will discuss now how to do this for the case of *comma separated text files* or 
 so called *csv* files. R provides functions 
 for reading and writing from almost any other format, like data stored in
 Excel files and many more data formats that are used today.
 Since in all those different formats are read by R following the same principles 
 as in the csv case, it is sufficient if we discuss here the the case of csv files only.
-
-We have discussed a data set of per capita primary energy use in countries around the globe to
-produce a histogram of these data for the year 2019. How did I get these data into R?
-
-First of all I could access these data because helpful people at Oxford University in the UK who maintain
-and run the website "Our world in data", which we have encountered before, store these data on their
-website. In the concrete case of the energy data, they can currently be found at
-https://ourworldindata.org/grapher/per-capita-energy-use
-where you can download the datafile from the webpage and save it locally somewhere on your
-computer. 
-
-I have taken a screenshot here
-
-![Our World in Data website energy](pictures/our_world_in_data_energy.png)
-
-In the lower right corner you see a box called Data and a download button. This button allows you to 
-download the dataset to your machine. The file is called `per-capita-energy-use.csv`. From the extension
-of the file `csv`, you can see that it is a comma separated text file. This is a plain text file following
-certain formatting rules. In particular individual data points are separated by a comma^[The standard format for csv can be looked up here https://www.ietf.org/rfc/rfc4180.txt. Despite this standardization
-it can occur that different files use different conventions for the notation of the decimal comma sign. In the most common specification this symbols is a dot (.) and in others it is a comma (,). For such speical cases R provides special functions, which we will explain in the text.]
-
-I have stored
-the file in a sub-folder to the directory in which I am writing these lecture notes. If you decide to
-download this file, you will save it somewhere on your machine where you find it appropriate. Perhaps
-you have a folder for this course and in this folder you have a sub-folder where you store all the
-data sets we are using in the course.
 
 To read a csv file, R provides the function `read.csv()`. If the csv file
 comes with a European instead of an US decimal format (`,` instead of `.` for the
@@ -1103,12 +921,15 @@ in the previous lecture. You invent a name and assign the values to this name us
 assignment operator `<-`.
 
 Let's call the
-object in which we save our data `energy_consumption`, then by calling the function `read.csv()` with the
-path to your file as an argument will read the data from your local folder and store them in the
-object we have created. This allows us to refer to the data for doing further computations.
+object in which we save our data `dhs_data`, then by calling the function `read.csv()` with the
+path to your file as an argument will read the data from your 
+local folder and store them in the
+object we have created. The csv-data-file, we will need for our analysis is called
+`household_member_recode.csv` This allows us to refer to the 
+data for doing further computations.
 ```{r}
 #| code-fold: false
-energy_consumption <- read.csv("data/energy_use_per_capita/per-capita-energy-use.csv")
+dhs_data <- read.csv("data/DHS/household_member_recode.csv")
 ```
 The function needs as an argument the file name. If the file is in a sub-folder
 of  the current directory you need to also specify the path.
@@ -1117,7 +938,7 @@ you need to know in which part of your directory tree you are currently working.
 
 In my
 case I am working in the project folder for my lecture notes, which has a sub-folder called
-`data`. The data sub-folder has a further sub-folder called `energy_use_per_capita` in my case
+`data`. The data sub-folder has a further sub-folder called `DHS` in my case
 and thus I specify the path relative to this location. 
 
 To find out what is your current
@@ -1127,7 +948,7 @@ R working directory, R provides the function `getwd()`. If I type this in my cas
 getwd()
 ```
 the path of my project folder for this lecture notes. So if I type the string
-`"data/energy_use_per_capita/per-capita-energy-use.csv"` this specifies the path relative to my working directory.
+`"data/DHS/household_member_recode.csv"` this specifies the path relative to my working directory.
 
 If you read the file on your computer, you need to specify the path appropriately from where
 you are working in R at the moment to where you have stored the csv file.
@@ -1136,17 +957,17 @@ Now `read.csv()` has many additional arguments, which provide you with lots of
 flexibility. I encourage you to check it out and play with it using the help function and
 the examples given therein by typing `?read.csv` at the prompt.
 
-We have now read the primary energy consumption data and written it to the 
-R-object `energy_consumption`. Lets
+We have now read the main data file and written it to the 
+R-object `dhs_data`. Lets
 inspect the object a bit to see what we've got. 
 
 I use the function `head()` with
 the parameter value `n = 10`. This will show me the first 10 rows of the data-file.
-So the value I give to the argument `n` contros how many rows will be displayed.
+So the value I give to the argument `n` controls how many rows will be displayed.
 ```{r}
 #| code-fold: false
 options(width = 120)
-head(energy_consumption, n = 10)
+head(dhs_data, n = 10)
 ```
 This gives you an idea what the data look like. There are four variables, called `Entity`, `Code`, `Year` and `Primary.energy.consumption.per.capita..kWh.person.` The last variable name is very informative
 but also very long and unpractical. We will learn how to change variable names soon. Because of the
@@ -1216,7 +1037,7 @@ only the first 4 types, double, integer, character and logical.
 If yo u go back to our energy consumption data and look at the first three lines
 ```{r}
 options(width = 120)
-head(energy_consumption, n=3)
+head(dhs_data, n=3)
 ```
 
 you will see the different variables in the object `energy_consumption`. Note that I had to fudge a bit
@@ -1359,7 +1180,7 @@ they have a names attribute:
 
 ```{r}
 #| code-fold: false
-names(energy_consumption)
+names(dhs_data)
 ```
 
 We can now see the variable names. We can use the function `names()`also as a
