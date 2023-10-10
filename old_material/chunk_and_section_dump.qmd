@@ -489,3 +489,36 @@ You see that the mean now does not capture the center of the distribution well. 
 There is another important difference between the mean and the median.
 
 Do this with the income distribution example.
+
+Sometimes a difference in precision can have surprising effects.
+
+In your computer 64bits of memory[^chunk_and_section_dump-8] are allocated for each double in an R program. While this allows for a very precise representation of numbers not all numbers can be exactly represented with 64-bits. The famous candidates are $\pi$, which has an infinite sequence of digits and must therefore be rounded by the computer. Usually the rounding error introduced into your computations will go unnoticed but sometimes surprises can occur.
+
+[^chunk_and_section_dump-8]: A bit is a binary digit, the smallest increment of data on a computer. A bit can hold only one of two values: 0 or 1, corresponding to the electrical values of off or on, respectively. So 64 bits are sequences of 0 or 1 with a length of 64
+
+Take for instance:
+
+```{r}
+#| code-fold: false
+sqrt(2)^2 - 2
+```
+
+Why is that? The square root of 2 can not be expresses precisely because, as already the old Greeks knew, it is not a rational number.[^chunk_and_section_dump-9]
+
+[^chunk_and_section_dump-9]: Let me invite you to a short digression into the history of science and the history of ideas. The discovery that $\sqrt{2}$ can not be rational was a shock discovery to the ancient Greeks. The Greek mathematician Pythagoras and his followers were fascinated by and devoted to whole numbers. They detected the fundamental role played by ratios of whole numbers for musical harmony. For example dividing a vibrating string in two half raises the pitch by an octave, dividing the string in three raises the pitch by one fifths and so on. This discovery gave them the clue that the physical world as a whole might have an underlying mathematical structure governed by whole-number patterns. It was thus quite a shock when they found out that one of their foundational discoveries the Pythagorean theorem logically implied that there were ratios of lengths that were incommensurable, that is, not measurable as integer multiples of the same unit. The ratio between such lengths is therefore not a ratio of whole numbers. This is why the Greeks called these numbers irrational. Some of you will remember from school that the Pythagorean theorem says that in a right angled triangle with lengths $a$, $b$ and $c$, where the sides with length $a$ and $b$ from a right angle must fulfill the equation $a^2 + b^2 = c^2$ or expressed in a picture ![The Pythagorean theorem](pictures/pythagoras.png){#fig-pyth} The incommensurable lengths disovered by one member of the pythagorean school was the side and the diagonal of the unit square. By the Pythagorean theorem in a square with side length of 1 it must be the case that $\text{(lenght of diagonal)}^2 = 1 + 1 = 2$. Thus the length of the diagonal must be $\sqrt{2}$. ![Length of diagonal in a unit square](pictures/unit_square.png){#fig-usq} Hence if the diagonal and side are in the ratio $m/n$ (where $m$ and $n$ can be assumed to have no common divisor), we have \begin{equation}
+    m^2/n^2 = 2
+    \end{equation} thus \begin{equation}
+    m^2 = 2 n^2
+    \end{equation} This equation implies that $m^2$ must be an even number. So $m$ must be even too, say $m = 2 p$. But if \begin{equation}
+    m = 2 p
+    \end{equation} then we have \begin{equation}
+    2 n^2 = m^2 = 4 p^2
+    \end{equation} hence \begin{equation}
+    n^2 = 2 p^2
+    \end{equation} which similarly implies that $n$ is even. But we began the chain of deductions by the assumption that $m$ and $n$ have no common divisor. So if both $m$ and $n$ were even they would have a common divisor, namely 2. We have arrived at a contradiction. This means the length of the diagonal of the unit square can not be a rational number. Legend has it that th first Pythagorean to make the result public was drowned at sea. But even if the Pythagoreans could not accept that $\sqrt{2}$ was a number, no one could deny that it was the length of the diagonal of the unit square.
+
+And you have a small rounding error. Let me explain to those of you who are puzzled by the meaning of this output. R displays the result of its computation in scientific notation. `4.440892e-16` means $4.44089 \times 10^{-16}$.
+
+For those of you who forgot how exponential notation works, let me remind you that we write $10^{-1}$ for $1/10$ and $10^{-2}$ means $1/10^2$ or $1/100$. Thus $10^{-16}$ means $1/10.000.000.000.000.000$, a very small number but still different from 0. This is the error introduced by rounding $\sqrt{2}$. Such errors are called *floating point errors* in computer science lingo and computing with such numbers is called *floating-point-arithmetic*.
+
+With integers floating point errors are avoided, but for many applications this is not an option. Luckily for most cases floating-point arithmetic provides sufficient precision for most of the applications we encounter in practice.
