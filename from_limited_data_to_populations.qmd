@@ -1,6 +1,6 @@
 # From limited data to populations
 
-In the last exercise of section 3 we analyzed data from the Demographic and Health Survey.^[To learn more about this survey, please visit the DHS website at https://dhsprogram.com/] We looked at data 
+In the last chapter we analyzed data from the Demographic and Health Survey.^[To learn more about this survey, please visit the DHS website at https://dhsprogram.com/] We looked at data 
 monitoring of the nutritional state of children by using anthropometric data.¶
 
 The data allow for producing tables like - for example - the following from the DHS model

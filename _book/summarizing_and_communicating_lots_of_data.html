@@ -235,20 +235,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">3.2.2</span> The standard deviation</a></li>
   <li><a href="#computing-the-standard-deviation" id="toc-computing-the-standard-deviation" class="nav-link" data-scroll-target="#computing-the-standard-deviation"><span class="header-section-number">3.2.3</span> Computing the standard deviation</a></li>
   </ul></li>
-  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="header-section-number">3.3</span> Using the computer to summarize data: Next steps in R</a>
+  <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="header-section-number">3.3</span> Bigger datasets and more R</a>
   <ul class="collapse">
-  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="header-section-number">3.3.1</span> Reading data in R</a></li>
-  <li><a href="#r-fundamental-building-blocks" id="toc-r-fundamental-building-blocks" class="nav-link" data-scroll-target="#r-fundamental-building-blocks"><span class="header-section-number">3.3.2</span> R fundamental building blocks</a></li>
-  <li><a href="#selecting-data-from-r-objects-a-toolbox." id="toc-selecting-data-from-r-objects-a-toolbox." class="nav-link" data-scroll-target="#selecting-data-from-r-objects-a-toolbox."><span class="header-section-number">3.3.3</span> Selecting data from R objects: A toolbox.</a></li>
-  <li><a href="#application-tabulate-malnutrition-in-children" id="toc-application-tabulate-malnutrition-in-children" class="nav-link" data-scroll-target="#application-tabulate-malnutrition-in-children"><span class="header-section-number">3.3.4</span> Application: Tabulate malnutrition in children</a></li>
+  <li><a href="#vectors-and-indices" id="toc-vectors-and-indices" class="nav-link" data-scroll-target="#vectors-and-indices"><span class="header-section-number">3.3.1</span> Vectors and indices</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.4</span> Exercises:</a>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.4</span> Data Frames</a>
   <ul class="collapse">
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">3.4.1</span> Histograms</a></li>
-  <li><a href="#the-average-1" id="toc-the-average-1" class="nav-link" data-scroll-target="#the-average-1"><span class="header-section-number">3.4.2</span> The Average</a></li>
-  <li><a href="#the-standard-deviation-1" id="toc-the-standard-deviation-1" class="nav-link" data-scroll-target="#the-standard-deviation-1"><span class="header-section-number">3.4.3</span> The standard deviation</a></li>
+  <li><a href="#dhs-data-on-the-nutritional-status-of-children-under-5-years" id="toc-dhs-data-on-the-nutritional-status-of-children-under-5-years" class="nav-link" data-scroll-target="#dhs-data-on-the-nutritional-status-of-children-under-5-years"><span class="header-section-number">3.4.1</span> DHS data on the nutritional status of children under 5 years</a></li>
+  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="header-section-number">3.4.2</span> Reading the DHS data from a file</a></li>
+  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data"><span class="header-section-number">3.4.3</span> Inspecting the data</a></li>
+  <li><a href="#analyzing-particular-variables-and-subsets-of-data" id="toc-analyzing-particular-variables-and-subsets-of-data" class="nav-link" data-scroll-target="#analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.4.4</span> Analyzing particular variables and subsets of data</a></li>
   </ul></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">3.5</span> Computer exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises:</a>
+  <ul class="collapse">
+  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">3.5.1</span> Histograms</a></li>
+  <li><a href="#the-average-1" id="toc-the-average-1" class="nav-link" data-scroll-target="#the-average-1"><span class="header-section-number">3.5.2</span> The Average</a></li>
+  <li><a href="#the-standard-deviation-1" id="toc-the-standard-deviation-1" class="nav-link" data-scroll-target="#the-standard-deviation-1"><span class="header-section-number">3.5.3</span> The standard deviation</a></li>
+  </ul></li>
+  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">3.6</span> Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -840,14 +844,101 @@ Now you try
 </div>
 </section>
 </section>
-<section id="sec-moreR" class="level2 page-columns page-full" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.3</span> Using the computer to summarize data: Next steps in R</h2>
-<p>Anthropometric data can help a country to get a data driven picture on the nutritional status of its population. These data can help identify areas where policy action is needed. Real world data sets, which will usually come from surveys, will be too large to be handled manually. For these datasets you need to be able to work with the computer.</p>
-<p>We will now learn these skills using data from the DHS survey. The data are used to monitor demographic and health developments to decide where policy action might be needed.</p>
-<div class="page-columns page-full"><p>The data we are using are not from an actual survey but they are from a synthetic model dataset provided by the DHS for teaching and training. But they reflect realistic values and could come form an actual country survey.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;The DHS website can be found here: https://dhsprogram.com/ and the raw model data sets can be found here https://dhsprogram.com/data/model-datasets.cfm</p></li></div></div>
-<p>Before we go into the details of the data we need a bit of context to understand what the data we are looking at here are precisely describing. In the analysis we are going to produce a statistical table on the nutritional status of children under five years.</p>
-<p>The anthropometric data reveal information about a persons nutritional status. The nutritional status of children is observed to monitor and measure malnutrition. The nutritional data of children are included in the United Nations development goals indicators.</p>
-<p>The DHS survey collects data on children’s sex, age, height-length, and weight to monitor the nutritional status of children. The nutritional indicators are sex and age specific because boys and girls grow at different rates. Their growth rates are also age dependent.</p>
+<section id="sec-moreR" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.3</span> Bigger datasets and more R</h2>
+<p>When we use the computer to summarize and communicate lots of data we need to get to know more of R. In particular we need to understand how to read data and select and manipulate variables. Let me lead you through some of the most basic concepts you need to know in order to do so. Finally we will apply our new skills to the hand on analysis of a real world anthropometric dataset from the DHS survey that help us to get a global picture about the nutritional situation for children and how this information could support us in setting policy priorities.</p>
+<section id="vectors-and-indices" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="vectors-and-indices"><span class="header-section-number">3.3.1</span> Vectors and indices</h3>
+<p>Say that for some reason we would be interested in the 50th observation in our data on human height. How would we tell R to select this observation from our data?</p>
+<p>Individual elements can be accessed by using an <em>index</em> or a set of <em>indices</em>. The index is specified by using brackets <code>[]</code>. For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 172.0488</code></pre>
+</div>
+</div>
+<p>gives the 5th element of our heights data. You can go to the beginning of this chapter to verify that we have indeed captured this element. 5 is the index in this example. To capture the 50the element, we would type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="dv">50</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 175.3654</code></pre>
+</div>
+</div>
+<p>A very important function in R is the <code>c()</code>function. <code>c</code> is short for concatenate and this is what the function does. It builds a vector putting several numbers together in one R object. In this way we can write down several indices at once and tell R for instance to read the 4th, the 40ies and the 67th element from our heights data like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">40</span>,<span class="dv">67</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 173.7980 176.6037 177.2146</code></pre>
+</div>
+</div>
+<p>Sometimes we need to retrieve consecutive numbers. For this case we need another function, the colon operator or <code>:</code>. It helps us to build sequences of conscutive numbers.</p>
+<p>For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 174.0172 175.5666 173.7980</code></pre>
+</div>
+</div>
+<p>is the same as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 174.0172 175.5666 173.7980</code></pre>
+</div>
+</div>
+<p>Say we wanted to know the average height and the standard deviation of the first 50 observations in our data we could tell R to compute this by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(heights[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 173.0988</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(heights[<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.99029</code></pre>
+</div>
+</div>
+<p>Another very powerful and useful function we will need often in data analysis is the <code>lenght()</code>function of R. It gives us the number of elements in a vector. Let’s check this with <code>heights()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+<p>which gives us the answer to be expected.</p>
+<p>As we already learned in the context of computing proportions of values fulfilling a certain condition by using logicals and the coercion rules of R before, we can do similar things by composing different functions.</p>
+<p>Assume we want to know the number of observations with a height larger than 180 cm. This could be computed by typing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(heights <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>You already know how this works. In the parentheses is a comparison. In this comparison R checks for each entry in the vector <code>heights</code> whether it is larger than 180 or not. For each observation where this is the case the output is <code>TRUE</code> and otherwise <code>FALSE</code>.</p>
+<p>But how can such a comparison work? After all heights is a vector with 100 entries and 180 is just one number. A vector can not be compared to a number. Here some feature of R comes into place which is called <em>recycling</em>. R makes <code>heights</code>and 180 similar by extending 180 to a vector with 100 of the same element 180 and then compare component by component resulting in a vector with 100 logicals (i.e.&nbsp;<code>TRUE</code> or <code>FALSE</code>).</p>
+<p>When the vector of logicals is given to the <code>sum()</code>function another internal rule of R is applied, which is called <em>coercion</em>. In this case R transforms in the background automatically the <code>TRUE</code> values into 1 and the <code>FALSE</code>values into 0. As a result you will get the sum of all cases where the condition is fulfilled.</p>
+<p>A related and also very useful function is the <code>which()</code>function. With this function you can find out the indices of the observations, fulfilling a condition</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(heights <span class="sc">&gt;</span> <span class="dv">180</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  8 26 46 54 60 73</code></pre>
+</div>
+</div>
+<p>tells you that the elements 8 26 46 54 60 73 were larger than 180. And what were the values of these 6 observations? Now you know already. It is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>heights[<span class="fu">which</span>(heights <span class="sc">&gt;</span> <span class="dv">180</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 185.3618 180.5622 184.1186 180.5760 182.7100 182.0625</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="data-frames" class="level2 page-columns page-full" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.4</span> Data Frames</h2>
+<p>Data Frames are the next R workhorse when we deal with data. A data frame is a rectangular table of data where every row corresponds to one data point.</p>
+<p>Instead of using just some data frame let us this time use a real world example of anthropometric data from the DHS. Anthropometric data can help a country to get a data driven picture on the nutritional status of its population. These data can help identify areas where policy action is needed.</p>
+<section id="dhs-data-on-the-nutritional-status-of-children-under-5-years" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="dhs-data-on-the-nutritional-status-of-children-under-5-years"><span class="header-section-number">3.4.1</span> DHS data on the nutritional status of children under 5 years</h3>
+<p>In the analysis we are going to produce a statistical table on the nutritional status of children under five years. The anthropometric data reveal information about a persons nutritional status. The nutritional status of children is observed to monitor and measure malnutrition. The nutritional data of children are included in the United Nations development goals indicators. They encompass children’s sex, age, height-length, and weight. The nutritional indicators are sex and age specific because boys and girls grow at different rates. Their growth rates are also age dependent.</p>
 <p>Four indicators on nutritional status are collected in DHS surveys:</p>
 <ol type="a">
 <li><p><strong>Overweight</strong>: This indicates high weight for height and is a measure of excess weight. This results from an imbalance of energy consumed (too much) and energy expended (too little). Children with this condition have an increased risk of non-communicable diseases, such as high blood pressure and diabetes and is associated with increased risk of being obese and overweight in adulthood.</p></li>
@@ -897,22 +988,23 @@ Now you try
 </table>
 <p>Prevalence is the proportion of a population who have a specific characteristic in a given time period. In a survey prevalence is measured by the number of people in a sample who have the characteristic divided by all people in the sample.</p>
 <p>Let us go now into the actual data and learn how to use the computer and R as a tool.</p>
-<section id="sec-readingdata" class="level3 page-columns page-full" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.3.1</span> Reading data in R</h3>
+</section>
+<section id="sec-readingdata" class="level3 page-columns page-full" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.4.2</span> Reading the DHS data from a file</h3>
 <p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this for the case of <em>comma separated text files</em> or so called <em>csv</em> files. Data are very often provided in csv-format. It is one of the most common data formats for publicly available data.</p>
 <p>R provides functions for reading and writing from almost any other format, like data stored in raw text files, in Excel files and many more data formats that are used today. Since in all those different formats are read by R following the same principles as in the csv case, it is sufficient if we discuss here the the case of csv files only.</p>
 <p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
 <p>In the simplest form you read the data and store them in an object you can work with in R. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
-<div class="page-columns page-full"><p>Let’s call the object in which we save our data <code>dhs_data</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. The csv-data-file, we will need for our analysis is called <code>children_nutrition_data.csv</code><a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> This allows us to refer to the data for doing further computations.</p><div class="no-row-height column-margin column-container"><li id="fn8"><p><sup>8</sup>&nbsp;I have prepared this file from the raw DHS data file. This needed many steps, some of them advanced and would be to complex to discuss in detail at this step.</p></li></div></div>
+<div class="page-columns page-full"><p>Let’s call the object in which we save our data <code>dhs_data</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. The csv-data-file, we will need for our analysis is called <code>children_nutrition_data.csv</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> This allows us to refer to the data for doing further computations.</p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;I have prepared this file from the raw DHS data file. This needed many steps, some of them advanced and would be to complex to discuss in detail at this step.</p></li></div></div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/DHS/children_nutrition_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/DHS/children_nutrition_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function needs as an argument the file name. If the file is in a sub-folder of the current directory you need to also specify the path. The path is described to R as a string of characters. Therefore it needs to be put between “” symbols.</p>
 <p>To specify the correct path to the file you need to know in which part of your directory tree you are currently working.</p>
 <p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data sub-folder has a further sub-folder called <code>DHS</code> in my case and thus I specify the path relative to this location.</p>
 <p>To find out what is your current R working directory, R provides the function <code>getwd()</code>. If I type this in my case, I will get</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "/home/martinsummer/R/Statistics_JWL"</code></pre>
 </div>
@@ -923,318 +1015,19 @@ Now you try
 <p>We have now read the main data file and written it to the R-object <code>dhs_data</code>.</p>
 <p>Before we are able to see what is inside of this object and how we can access the data, let us first explain a few very basic R building blocks or data types.</p>
 </section>
-<section id="r-fundamental-building-blocks" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="r-fundamental-building-blocks"><span class="header-section-number">3.3.2</span> R fundamental building blocks</h3>
-<section id="sec-robjects" class="level4" data-number="3.3.2.1">
-<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="sec-robjects"><span class="header-section-number">3.3.2.1</span> R objects</h4>
-<p>The most basic type of R objects are <strong>atomic vectors</strong>. Objects in R are built from atomic vectors.</p>
-<p>The dhs data-file we have just loaded is an example of such a more complex structure built from atomic vectors. We have already encountered a few of those in our previous lecture.</p>
-</section>
-<section id="sec-atomic" class="level4" data-number="3.3.2.2">
-<h4 data-number="3.3.2.2" class="anchored" data-anchor-id="sec-atomic"><span class="header-section-number">3.3.2.2</span> Atomic vectors</h4>
-<p>An atomic vector is just a simple vector of data. For example remember when we typed the infant mortality data for eight European countries for 1860 we typed</p>
+<section id="inspecting-the-data" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="inspecting-the-data"><span class="header-section-number">3.4.3</span> Inspecting the data</h3>
+<p>A useful function to inspect a data object like the one we have just created is the <code>dim()</code> function. It will tell us how many rows and columns our dataframe actually has</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mr_1860 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.237</span>, <span class="fl">0.139</span>, <span class="fl">0.136</span>, <span class="fl">0.150</span>, <span class="fl">0.260</span>, <span class="fl">0.102</span>, <span class="fl">0.174</span>, <span class="fl">0.124</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>In this case <code>mr_1860</code> is an atomic vector.</p>
-<p>R has a function, which allows you to check whether an object is an atomic vector or not. This function is called <code>is.vector()</code>. It takes the object name as an argument and returns <code>TRUE</code> if the object is an atomic vector and <code>FALSE</code> if it is not.</p>
-<p>For example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.vector</span>(mr_1860)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] TRUE</code></pre>
-</div>
-</div>
-<p>does indeed return <code>TRUE</code>.</p>
-<p>Each atomic vector stores values in a one-dimensional vector, and each atomic vector can only store one type of data. The length of the atomic vector can be determined by the function <code>length()</code> This function takes an R object, which is an atomic vector, as an argument and returns the number of elements in this vector. Here is the example of the die</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(mr_1860)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
-</div>
-</div>
-<p>which is 8 as it should be. An atomic vector could also have only one element, in which case <code>lenght()</code>would return 1.</p>
-</section>
-<section id="sec-datatypes" class="level4" data-number="3.3.2.3">
-<h4 data-number="3.3.2.3" class="anchored" data-anchor-id="sec-datatypes"><span class="header-section-number">3.3.2.3</span> Data types</h4>
-<p>Now altogether R has implemented <em>six basic types of atomic vectors</em>:</p>
-<ol type="1">
-<li><p>double</p></li>
-<li><p>integers</p></li>
-<li><p>characters</p></li>
-<li><p>logical</p></li>
-<li><p>complex</p></li>
-<li><p>raw</p></li>
-</ol>
-<p>We will not encounter complex and raw data-types in this course, so let us skip those and discuss only the first 4 types, <strong>double</strong>, <strong>integer</strong>, <strong>character</strong> and <strong>logical</strong>.</p>
-<p>Double and integers are the data types which represent numbers. Numbers can be added, multiplied etc. and functions that use these arithmetic operations to them can be applied to objects with the data type double or integer.</p>
-<p>For example the <code>mr_1860</code> - vector is a vector of data type <code>double</code>.If the numbers are integers only, then the data type is integer.</p>
-<p>Now why should we care for distinguishing integers from doubles? This has to do with the way a computer does computations. In some cases working with integers can support higher precision. For our purpose the precise distinction will not matter a lot, so let us not discuss this further at that stage.</p>
-<p><strong>Characters</strong> is a data-type which allows us to represent strings and groups of strings. Strings are the individual elements of a character vector. Characters always are between <code>" "</code> symbols, or we can also write <code>' '</code> which has the same meaning in R. We have encountered character vectors already in this lecture, for instance when specifiying the path to the data file when using <code>read.csv()</code>.</p>
-<p>Note that a string can be more than just letters. If you type, for instance the number 1 with quotation marks, like “1” R would interpret the value as a string not as a number. Sometimes one can get confused in R because both objects and characters appear as text in R code. Object names are without quotation marks strings always are between quotation marks.</p>
-<p>The last data type in the list, we want to discuss here, are: <strong>Logicals</strong>. We have already encountered this data type when we computed the proportion of values in a vector which fulfills a certain condition.</p>
-<p>Logical vectors store <code>TRUE</code> and <code>FALSE</code>; logical values. They are extremely useful for doing comparisons and - as we will see shortly - also for selecting values from a data set.</p>
-<p>How logical data types work can best be understood by an example. If you type, for instance:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&gt;</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE</code></pre>
-</div>
-</div>
-<p>R tells you that this statement is false, by printing the logical value <code>FALSE</code> as an output.</p>
-<p>Whenever you type <code>TRUE</code> of <code>FALSE</code> without quotation marks, R will treat the input as logical data. Note, as an aside, if you typed <code>"TRUE"</code>and <code>"FALSE"</code> in quotation marks, R would treat this input as a string co characters, a different data type. When communicating with a computer, you need to be very precise or the machine will not understand what you want to tell it do.</p>
-<p>For instance, the following statement yields:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>logic <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>logic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  TRUE FALSE  TRUE</code></pre>
-</div>
-</div>
-</section>
-<section id="sec-attributes" class="level4" data-number="3.3.2.4">
-<h4 data-number="3.3.2.4" class="anchored" data-anchor-id="sec-attributes"><span class="header-section-number">3.3.2.4</span> Attributes</h4>
-<p>One important R-fact which you need to know about atomic vectors is that atomic vectors can have <strong>attributes</strong>. Attributes won’t affect the values of an object but can hold and store object metadata.</p>
-<p>Normally we do not look at these metadata, but many R functions check for attributes and then do special things with the object depending on these attributes. Attributes can be checked with the function <code>attributes()</code> using an R object as an argument. This will show you all the attributes that are attached to an R object.</p>
-<p>The most common attributes for atomic vectors as well as R objects built from atomic vectors are <strong>names</strong>, <strong>dimensions</strong> and <strong>classes</strong>. Each of these attributes has its own helper function that you can use to also assign attributes to the object. For what we need now we discuss <code>names</code> and <code>dimensions</code> and discuss <code>classes</code>, which is a more advanced topic, later.</p>
-<p>For example, assume we want to know the dimensions of our data object <code>dhs_data</code>. We could use the helper function <code>dim</code> which would read the dimension attribute of <code>dhs_data</code> and print the dimensions. Let’s do this</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2559   18</code></pre>
 </div>
 </div>
-<p>The first number gives us the number of rows and the second the number of columns. We have 2559 rows or individual observations and 18 columns. You see this is a large dataset and has many variables.</p>
-<p>The variables are named and we can retrieve these names using the <code>names()</code>function. Let us do this for our data.</p>
-<div class="cell" data-code-fild="false">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "X"                 "wt"                "age_in_months"    
- [4] "sex"               "type_of_residence" "region"           
- [7] "wealth_index"      "nt_ch_sev_stunt"   "nt_ch_stunt"      
-[10] "nt_ch_haz"         "nt_ch_sev_wast"    "nt_ch_wast"       
-[13] "nt_ch_ovwt_ht"     "nt_ch_whz"         "nt_ch_sev_underwt"
-[16] "nt_ch_underwt"     "nt_ch_ovwt_age"    "nt_ch_waz"        </code></pre>
-</div>
-</div>
-<p>The variable names are sometimes self explaining and sometimes not at all. Usually their meaning has to be learned from the metadata or the data documentation file.</p>
-</section>
-<section id="factors" class="level4" data-number="3.3.2.5">
-<h4 data-number="3.3.2.5" class="anchored" data-anchor-id="factors"><span class="header-section-number">3.3.2.5</span> Factors</h4>
-<p>R stores categorical data, such as nationality, sex etc. by using a speical data type called <strong>factors</strong>. If you take for instance, sex, it can have only two values - male or female - and these values may have their idiosyncratic order, for example that females go always first. This variable is called for example <code>HV104</code> in the DHS data, as can be seen from the code manual.</p>
-<p>To make a factor in R you have to pass an atomic vector to the <code>factor()</code> function. This function works by recoding the values in the vector as integers and store the results in an integer vector. R also adds a <code>level</code> attribute which contains the set of labels and their order and a class attribute that says the vector is a factor. Example:</p>
+<p>This means that our data have 2559 rows and 18 columns. Quite a bit larger than the <code>heights</code> dataset. Here we really need a computer to analyze the infortion contained in these data.</p>
+<p>Another useful function to inspect data is the <code>heads()</code>function. It displays by default the first 6 rows of the dataframe</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>sex <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>))</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "integer"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$levels
-[1] "f" "m"
-
-$class
-[1] "factor"</code></pre>
-</div>
-</div>
-<p>Factors can be confusing since they look like characters but behave like integers.</p>
-<p>Note that R will often try to convert character strings to factors when you load and create data. I recommend that you do not allow R to make factors unless you explicitly ask for it. This can usually be controlled by an argument to whatever the data reader function is. For instance you can give the <code>read.csv()</code> function the argument <code>stringsAsFactors = FALSE</code>.</p>
-</section>
-<section id="coercion-rules" class="level4" data-number="3.3.2.6">
-<h4 data-number="3.3.2.6" class="anchored" data-anchor-id="coercion-rules"><span class="header-section-number">3.3.2.6</span> Coercion rules</h4>
-<p>R has an internal <strong>coercion</strong> behavior for data types, which you should know about if you work with R. With this knowledge you can do many useful things.</p>
-<p>If a character string is present in an atomic vector, R will automatically convert every other component in this vector to a character string. If a vector contains only logicals and numbers, R will convert the logicals to numbers. In this case every <code>TRUE</code> becomes a 1 and every <code>FALSE</code> becomes a 0.</p>
-<p>R also uses the coercion rules, when we do math with logicals, like for example</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>What happens here is that R coerces the vector <code>c(TRUE, TRUE, FALSE, FALSE)</code> to the vector <code>c(1, 1, 0, 0)</code> and sums the components. We used these rules before when we discussed the trick of counting the number of values fulfilling a certain condition.</p>
-</section>
-<section id="sec-data_frame" class="level4" data-number="3.3.2.7">
-<h4 data-number="3.3.2.7" class="anchored" data-anchor-id="sec-data_frame"><span class="header-section-number">3.3.2.7</span> Data frames and R lists</h4>
-<p>Our <code>dhs_data</code>objects contains variables of all data types we have now discussed. We also saw that atomic vectors can only contain the same data type not a mixture of both. How does R achieve holding these different data types in one object?</p>
-<p>The answer is that this is achieved by a data structure called a <strong>list</strong>. List are like atomic vectors, because the group data into a one-dimensional set. However, lists do not group together individual values. List group together R objects, such as atomic vectors or even other lists.</p>
-<p>For example, you can create a list, which contains a numeric vector of length 31 in its first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the <code>list()</code>function of R, like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">100</span><span class="sc">:</span><span class="dv">130</span>, <span class="st">"R"</span>, <span class="fu">list</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>list_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[[1]]
- [1] 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118
-[20] 119 120 121 122 123 124 125 126 127 128 129 130
-
-[[2]]
-[1] "R"
-
-[[3]]
-[[3]][[1]]
-[1] TRUE
-
-[[3]][[2]]
-[1] FALSE</code></pre>
-</div>
-</div>
-<p>The double bracketed indices tell you which element of the list is being displayed. The single bracketed indices tell you which sub-element of the list is being displayed. For example 100 is the first sub element of the first element in the list. “R” is the first sub element of the second list element.</p>
-<p>There is lots to say about lists. But this is an advanced topics. We mentioned it here to introduce one of the most important data structres for our course the R dataframe.</p>
-</section>
-<section id="data-frames" class="level4" data-number="3.3.2.8">
-<h4 data-number="3.3.2.8" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.3.2.8</span> Data Frames</h4>
-<p><strong>Data Frames</strong> are the two dimensional version of a list. They are by far the most useful storage structure for data analysis. Indeed, our <code>dhs_data</code> dataset is an instance of a data frame. Data frames group vectors together in a two dimensional table. As a consequence each variable can have a different type, i.e.&nbsp;each column of the data frame can contain a different data type. Within a column, however, we can have only one data type. Every column in this tabular array of data can be considered as a vector.</p>
-<p>Now after this dense discussion of some fundamental R-concepts, let us apply our new knowledge to get a hand on the dhs_data.</p>
-</section>
-</section>
-<section id="selecting-data-from-r-objects-a-toolbox." class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="selecting-data-from-r-objects-a-toolbox."><span class="header-section-number">3.3.3</span> Selecting data from R objects: A toolbox.</h3>
-<p>Asking questions about a dataframe and in particular about our dhs data requires that we are able to address particular values in the dataframe. We now learn the most important techniques to do so.</p>
-<p>R has a notation system to address individual values. You write the object name first, followed by a pair of had brackets <code>[]</code>. Between the brackets goes a <code>,</code> separating row and column indices. The notation is thus like <code>dhs_data[,]</code>.</p>
-<p>When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:</p>
-<ol type="1">
-<li>Positive integers</li>
-<li>Negative integers</li>
-<li>Zero</li>
-<li>Blank spaces</li>
-<li>Logical values</li>
-<li>Names</li>
-</ol>
-<p>The simplest are positive integers. When you want to extract for instance the value of the variable <code>type_of_residence</code> for the 5th row, which correspond to the 7th record in your dataset you would implement this with integers as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">7</span>,<span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "rural"</code></pre>
-</div>
-</div>
-<p>You can - of course extract more than one value. If you write for instance</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "female" "female" "female" "male"   "female"</code></pre>
-</div>
-</div>
-<p>you will get the first 5 values of the consumption numbers in the dataframe. The colon operator <code>:</code> used here is a very useful R operator. It creates sequences of whole numbers. Thus if you create a vector with the name, say <code>n10</code> containing the sequence of the first 10 whole numbers, you would write</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>n10 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now clearly the indexing rules work in the same way as with dataframes, only that now you have only 1 dimension. Say you want to extract the first three numbers from <code>n10</code> you would write</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>n10[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1 2 3</code></pre>
-</div>
-</div>
-<p>Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  age_in_months    sex
-1       24 - 35 female
-2       24 - 35 female
-3       36 - 48 female
-4        9 - 11   male
-5       36 - 48 female</code></pre>
-</div>
-</div>
-<p>R will always return a dataframe.</p>
-<p>However, if you select a single column, R will return a vector:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "female" "female" "female" "male"   "female"</code></pre>
-</div>
-</div>
-<p>if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">4</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex
-1 female
-2 female
-3 female
-4   male
-5 female</code></pre>
-</div>
-</div>
-<p><strong>Negative integers</strong> work exactly opposite to positive integers. If you type:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data[<span class="sc">-</span><span class="dv">1</span>,<span class="dv">4</span>], <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "female" "female" "male"   "female" "male"  </code></pre>
-</div>
-</div>
-<p>R will return the fourth column of the data frame <em>except</em> the first row. We just display the first 10 values using the <code>head()</code> function.</p>
-<p>If you try to pair a negative and a positive integer in an index, R will return an error. However, you can use both negative and positive integers if you use them in <em>different</em> indices.</p>
-<p><strong>Zero</strong> is neither positive nor negative, If you use 0 as an index, R will return nothing from a dimension with index 0. The following syntax for instance creates an empty object</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">0</span>,<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>data frame with 0 columns and 0 rows</code></pre>
-</div>
-</div>
-<p><strong>Blank spaces</strong> are used if you want to ask R to select <em>every</em> value in a dimension. So for instance, if you type:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>sel <span class="ot">&lt;-</span> dhs_data[ , <span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>R will select the entire column of records of children who are severely stunted. You can check that the length of this vector is</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(sel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2559</code></pre>
-</div>
-</div>
-<p>as expected.</p>
-<p><strong>Logical Values</strong> can also be used for subsetting. If you type for instance</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span>, <span class="fu">c</span>(F,F,F,T)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     sex nt_ch_sev_stunt nt_ch_wast nt_ch_underwt
-1 female           FALSE      FALSE         FALSE</code></pre>
-</div>
-</div>
-<p>R will select the value of the first observation of the fourth variable. Note that here we used the R convention that <code>TRUE</code>and <code>T</code> as well as <code>FALSE</code>and <code>F</code> have an equivalent meaning.</p>
-<p>Finally, you can ask for the elements, you want by name. On our case, you could select the first energy_consumption value by the syntax</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span>, <span class="st">"Wealth Index"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>NULL</code></pre>
-</div>
-</div>
-<p>Finally, note that two types of object in R obey an optional second system of notation. You can extract values from data frames and lists with th <code>$</code>syntax.</p>
-<p>It works as follows: For example</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> dhs_data<span class="sc">$</span>nt_ch_stunt</span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>test[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] FALSE  TRUE  TRUE FALSE</code></pre>
-</div>
-</div>
-<p>would select the column of the variable that measures whether a kid is stunted or not. in our dataframe, save them in an object names <code>test</code>and then subsequently extract the first four values from the object.</p>
-</section>
-<section id="application-tabulate-malnutrition-in-children" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="application-tabulate-malnutrition-in-children"><span class="header-section-number">3.3.4</span> Application: Tabulate malnutrition in children</h3>
-<p>Let us start by trying to get a rough idea how the data look like. We could do this by showing just a few records at the beginning, using the <code>head()</code>function of R</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data, <span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    X       wt age_in_months    sex type_of_residence   region wealth_index
 1  16 1.049502       24 - 35 female             rural region 2       middle
@@ -1242,28 +1035,157 @@ $class
 3  36 1.049502       36 - 48 female             rural region 2      poorest
 4  94 1.049502        9 - 11   male             rural region 2       poorer
 5 106 1.049502       36 - 48 female             rural region 2       middle
+6 113 1.049502       24 - 35   male             rural region 2       poorer
   nt_ch_sev_stunt nt_ch_stunt nt_ch_haz nt_ch_sev_wast nt_ch_wast nt_ch_ovwt_ht
 1           FALSE       FALSE     -0.73          FALSE      FALSE         FALSE
 2           FALSE        TRUE     -2.23          FALSE      FALSE         FALSE
 3           FALSE        TRUE     -2.10          FALSE      FALSE         FALSE
 4           FALSE       FALSE     -0.64          FALSE      FALSE         FALSE
 5           FALSE       FALSE     -0.38          FALSE      FALSE         FALSE
+6           FALSE        TRUE     -2.08          FALSE      FALSE         FALSE
   nt_ch_whz nt_ch_sev_underwt nt_ch_underwt nt_ch_ovwt_age nt_ch_waz
 1      0.29              TRUE         FALSE          FALSE     -0.13
 2     -0.42              TRUE         FALSE          FALSE     -1.59
 3      0.37              TRUE         FALSE          FALSE     -1.01
 4     -0.77              TRUE         FALSE          FALSE     -0.92
-5     -0.54              TRUE         FALSE          FALSE     -0.56</code></pre>
+5     -0.54              TRUE         FALSE          FALSE     -0.56
+6     -1.02              TRUE         FALSE          FALSE     -1.84</code></pre>
 </div>
 </div>
-<p>This shows the first five records including the variable names.</p>
-<p>some analysis missing still</p>
+<p>Since there are 18 variables not all of them can be displayed on a single page-width. R stacks the information in blocks. We see that some columns are numerical, some are characters and some are logicals. The variable names give already some clues about what they mean. For the exact meaning we would need some form of documentation.</p>
+</section>
+<section id="analyzing-particular-variables-and-subsets-of-data" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.4.4</span> Analyzing particular variables and subsets of data</h3>
+<p>Dollar signs <code>$</code> are used to adress individual columns. For example, assume we would like to count the number of boys (i.e.&nbsp;sex = male) in our sample we could use this together with R’s coercion rules by coding</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1256</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1303</code></pre>
+</div>
+</div>
+<p>Observe a few things here: Operationally we have applied the tricks we have learned about using logicals to count up cases for which a condition is true. The variable <code>sex</code> in our data is coded by strings of chracters. We therefore need to put these strings into <code>" "</code> quotation marks in the comparison. Note also that the identidy sign in R is <code>==</code>. The symbol <code>=</code> in R is an assignment operator, which we can only use to assign values to arguments in a function.</p>
+<p>Indices in a dataframe are pairs specifying row and column numbers. For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">4</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "9 - 11"</code></pre>
+</div>
+</div>
+<p>is the data point in the dataframe which is at row 4 and column 3. In this case it is a string of characters.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For any subset of a data frame <code>d</code>, we can extract whatever rows and columns we want using the format</p>
+<p><code>d[the rows we want, the columns we want]</code></p>
+</div>
+</div>
+<p>Soemtimes dataframes do not have column names. Still we can apply functions to the vector of a column using indices. For example we could compute the mean of the variable <code>nt_ch_waz</code>as</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dhs_data[ ,<span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.7392497</code></pre>
+</div>
+</div>
+<p>Note the expression [,18]. Since there is a 18 in the second position, we are talking about column 18. And since the first position, before the comma, is empty, no rows are specified — so <em>all</em> rows are included. That boils down to: all of column 18.</p>
+<p>A powerful feature of R is that we can extract data from a dataframe using the same logic as we used when extracting data from a vector.</p>
+<p>For example the follwoing code extracts variables 1, 3 and 5 and prints the first four values of them</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   X age_in_months type_of_residence
+1 16       24 - 35             rural
+2 27       24 - 35             rural
+3 36       36 - 48             rural
+4 94        9 - 11             rural</code></pre>
+</div>
+</div>
+<p>Note that in a dataframe all columns must have the same length. But as in our dataset, every variable can contain a different data type, like numbers, characters or logicals.</p>
+<p>Now let us analyze the prevalence of children in our dataset that are wasted. Before we do that let us explain that the data contain a variable, which is called <code>wt</code>. This is short for weight. It means that each row is not counted as one observation but is weighted. The sum of the weights</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2494.102</code></pre>
+</div>
+</div>
+<p>would then give us the total number of children in the sample. Let us not go into the details of where these weights are coming from and why they are needed at this stage. The variable that encodes stunting is <code>nt_ch_stunt</code> and the variable that encodes wasting is <code>nt_ch_wast</code>.</p>
+<p>Now let us do the computation using the rules we have learned so far:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3589812</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_wast<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1002921</code></pre>
+</div>
+</div>
+<p>The proportion of stunted children in our sample is 39.5 % and the proportion of wasted children is 10 %. Thus according to the WHO classification the prevalence in stunting is very high and the prevalence in wasting is high.</p>
+<p>We could use our new knowldge to answer other questions. Assume we would want to find out which of our regions has the highest proportion in stunting?</p>
+<p>First, let us find which rows refer to region 1, region 2 etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 1"</span>)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 2"</span>)</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 3"</span>)</span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now with these row indices we can compute the proportions on the relevant subset of the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>data_r1 <span class="ot">&lt;-</span> dhs_data[r1, ]</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>data_r2 <span class="ot">&lt;-</span> dhs_data[r2, ]</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>data_r3 <span class="ot">&lt;-</span> dhs_data[r3, ]</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>data_r4 <span class="ot">&lt;-</span> dhs_data[r4, ]</span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r1<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r1<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r1<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3367742</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r2<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r2<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r2<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4078512</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r3<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r3<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r3<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2998199</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r4<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r4<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r4<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.393195</code></pre>
+</div>
+</div>
+<p>So we see that region 2 has the highest prevalence in stunting.</p>
+<p>Often we want to extract data that fulfill more than just one condition. For instance when we want to filter the values of a variable that fall in a particular interval we need the values that are larger or equal to the lower bound of this interval and lower or equal to the upper bound of the interval.</p>
+<p>R allows us to combine conditions by logical operators. Assume we want to know the proportion of children in our data that are wasted and stunted. In this case both conditions need to be fulfilled. This would be coded in the following way:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">&amp;</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03264431</code></pre>
+</div>
+</div>
+<p>Let me explain. The condition that a child is both stunted and wasted means that the stunting variable evaluates to <code>TRUE</code> and the wasting variable evaluates to <code>TRUE</code>. If this is the case <code>(dhs_data$nt_ch_stunt &amp; dhs_data$nt_ch_wast)</code> is <code>TRUE</code>. If one of these variables evaluates to <code>FALSE</code> then <code>(dhs_data$nt_ch_stunt &amp; dhs_data$nt_ch_wast)</code> is <code>FALSE</code>.</p>
+<p>We can do this with other logical operators. We can ask for example what is the proportion of children who are wasted or stunted. The operator here is <code>|</code> and <code>(dhs_data$nt_ch_stunt | dhs_data$nt_ch_wast)</code> evaluates to <code>TRUE</code> if the first condition is <code>TRUE</code> or if the second condition is <code>TRUE</code> or if both are <code>TRUE</code>. Let’s do the computation:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">|</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4266291</code></pre>
+</div>
+</div>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.4</span> Exercises:</h2>
-<section id="histograms" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">3.4.1</span> Histograms</h3>
+<section id="exercises" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.5</span> Exercises:</h2>
+<section id="histograms" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">3.5.1</span> Histograms</h3>
 <ol type="1">
 <li>A histogram of monthly wages for part-time employees is shown below (relative frequencies are marked in parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200 to 300 is missing. How tall must it be?</li>
 </ol>
@@ -1271,28 +1193,28 @@ $class
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
-<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
-<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
-<span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-7"><a href="#cb89-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
-<span id="cb89-8"><a href="#cb89-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-9"><a href="#cb89-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
-<span id="cb89-10"><a href="#cb89-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
-<span id="cb89-11"><a href="#cb89-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb89-12"><a href="#cb89-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-13"><a href="#cb89-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
-<span id="cb89-14"><a href="#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb89-15"><a href="#cb89-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-16"><a href="#cb89-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-17"><a href="#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
-<span id="cb89-18"><a href="#cb89-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb89-19"><a href="#cb89-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-20"><a href="#cb89-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-21"><a href="#cb89-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
-<span id="cb89-22"><a href="#cb89-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
+<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
+<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
+<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-16"><a href="#cb95-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-17"><a href="#cb95-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
+<span id="cb95-18"><a href="#cb95-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb95-19"><a href="#cb95-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-20"><a href="#cb95-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb95-21"><a href="#cb95-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
+<span id="cb95-22"><a href="#cb95-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="fig-height_hist" class="quarto-layout-panel">
@@ -1349,8 +1271,8 @@ $class
 </figure>
 </div>
 </section>
-<section id="the-average-1" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="the-average-1"><span class="header-section-number">3.4.2</span> The Average</h3>
+<section id="the-average-1" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="the-average-1"><span class="header-section-number">3.5.2</span> The Average</h3>
 <p>Exercise 1:</p>
 <ol type="a">
 <li><p>The number 3 and 5 are marked by crosses on the horizontal line below. Find the average of these two numbers and mark it by an arrow.</p>
@@ -1381,8 +1303,8 @@ $class
 <p>Exercise 9:</p>
 <p>Average hourly earnings in the US are computed each month by the Bureau fo Labor statistics using payroll data from commercial establishments. The Bureau figures the total wages paid out to non-supervisory personnel, and divides by the total hours worked. During recessions, average hourly earnings typically go up. When the recession ends, average hourly earnings often start going down. How can this be?</p>
 </section>
-<section id="the-standard-deviation-1" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="the-standard-deviation-1"><span class="header-section-number">3.4.3</span> The standard deviation</h3>
+<section id="the-standard-deviation-1" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="the-standard-deviation-1"><span class="header-section-number">3.5.3</span> The standard deviation</h3>
 <p>Exercise 1:</p>
 <p>The <code>socr_height_weight</code> about the height and weight of 18 year old humans, we had used in the lecture before the average height in inches was about 173 cm and the standard deviation was about 5 cm.</p>
 <ol type="i">
@@ -1463,8 +1385,8 @@ $class
 </ol>
 </section>
 </section>
-<section id="computer-exercises" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.5</span> Computer exercises</h2>
+<section id="computer-exercises" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.6</span> Computer exercises</h2>
 <p>Open the notebook <code>exercises_summarizing_and_communicating_lots_of_data.ipynb</code> and work on the exercises. Write your solutions into the notebook. You will need the computer to do this work.</p>
 <!-- ## Contents  -->
 <!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->

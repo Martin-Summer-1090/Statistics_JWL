@@ -796,35 +796,139 @@ average?
 
 :::
 
-## Using the computer to summarize data: Next steps in R {#sec-moreR}
+## Bigger datasets and more R {#sec-moreR}
 
+When we use the computer to summarize and communicate lots of data we need
+to get to know more of R. In particular we need to understand how to read data
+and select and manipulate variables. Let me lead you through some of the
+most basic concepts you need to know in order to do so. Finally we will
+apply our new skills to the hand on analysis of a real world anthropometric dataset
+from the DHS survey that help us to get a global picture about the nutritional
+situation for children and how this information could support us in setting
+policy priorities.
+
+### Vectors and indices
+
+Say that for some reason we would be interested in the 50th observation in our data
+on human height. How would we tell R to select this observation from our data?
+
+Individual elements can be accessed by using an *index* or a set of *indices*. The
+index is specified by using brackets `[]`. For example
+```{r}
+#| code-fold: false
+
+heights[5]
+```
+gives the 5th element of our heights data. You can go to the beginning of this
+chapter to verify that we have indeed captured this element. 5 is the index in this
+example. To capture the 50the element, we would type
+```{r}
+#| code-fold: false
+heights[50]
+```
+
+A very important function in R is the `c()`function. `c` is short for concatenate and
+this is what the function does. It builds a vector putting several numbers together
+in one R object. In this way we can write down several indices at once and tell R
+for instance to read the 4th, the 40ies and the 67th element from our heights data like
+this
+```{r}
+#| code-fold: false
+heights[c(4,40,67)]
+```
+
+Sometimes we need to retrieve consecutive numbers. For this case we need another
+function, the colon operator or `:`. It helps us to build sequences of conscutive 
+numbers.
+
+For example
+```{r}
+#| code-fold: false
+heights[c(2,3,4)]
+```
+is the same as
+```{r}
+#| code-fold: false
+heights[2:4]
+```
+Say we wanted to know the average height and the standard deviation of the first 
+50 observations in our data we could tell R to compute this by
+```{r}
+#| code-fold: false
+mean(heights[1:50])
+sd(heights[1:50])
+```
+Another very powerful and useful function we will need often in data analysis is
+the `lenght()`function of R. It gives us the number of elements in a vector. Let's
+check this with `heights()`
+```{r}
+#| code-fold: false
+length(heights)
+```
+which gives us the answer to be expected.
+
+As we already learned in the context of computing proportions of
+values fulfilling a certain condition by using logicals and the
+coercion rules of R before, we can do similar things by composing
+different functions.
+
+Assume we want to know the number of observations with a height larger than 180 cm.
+This could be computed by typing
+```{r}
+#| code-fold: false
+sum(heights > 180)
+```
+You already know how this works. In the parentheses is a comparison. In this comparison R
+checks for each entry in the vector `heights` whether it is larger than 180 or not.
+For each observation where this is the case the output is `TRUE` and otherwise `FALSE`.
+
+But how can such a comparison work? After all heights is a vector with 100 entries and
+180 is just one number. A vector can not be compared to a number. Here some feature
+of R comes into place which is called *recycling*. R makes `heights`and 180 similar 
+by extending 180 to a vector with 100 of the same element 180 and then compare component
+by component resulting in a vector with 100 logicals (i.e. `TRUE` or `FALSE`).
+
+When the vector of logicals is given to the `sum()`function another internal rule
+of R is applied, which is called *coercion*. In this case R transforms in the background
+automatically the `TRUE` values into 1 and the `FALSE`values into 0. As a result you
+will get the sum of all cases where the condition is fulfilled.
+
+A related and also very useful function is the `which()`function. With this function
+you can find out the indices of the observations, fulfilling a condition
+```{r}
+#| code-fold: false
+
+which(heights > 180)
+```
+tells you that the elements 8 26 46 54 60 73 were larger than 180. And what were the
+values of these 6 observations? Now you know already. It is
+```{r}
+#| code-fold: false
+heights[which(heights > 180)]
+```
+
+
+## Data Frames
+
+Data Frames are the next R workhorse when we deal with data. A data frame
+is a rectangular table of data where every row corresponds to one data
+point.
+
+Instead
+of using just some data frame let us this time use a real world example
+of anthropometric data from the DHS.
 Anthropometric data can help a country to get a data driven picture on the nutritional status
 of its population. These data can help identify areas where policy action is needed.
-Real world data sets, which will usually come from surveys, will be too large to be
-handled manually. For these datasets you need to be able to work with the computer.
 
-We will now learn these skills using data from the DHS survey. The data are used 
-to monitor demographic and health developments to decide where policy action 
-might be needed.
+### DHS data on the nutritional status of children under 5 years
 
-The data we are using are not from an actual survey but they are from a 
-synthetic model dataset provided by the DHS for teaching and training. 
-But they reflect realistic values and could come form an actual country
-survey.^[The DHS website can be found here: https://dhsprogram.com/ and the 
-raw model data sets can be found here https://dhsprogram.com/data/model-datasets.cfm]
-
-Before we go into the details of the data we need a bit of context to understand 
-what the data we are looking at here are precisely describing. In the 
-analysis we are going to produce a statistical table on the nutritional 
+In the analysis we are going to produce a statistical table on the nutritional 
 status of children under five years.
-
 The anthropometric data reveal information about a 
 persons nutritional status. The nutritional status of children is observed to 
 monitor and measure malnutrition. The nutritional 
 data of children are included in the United Nations development goals indicators.
-
-The DHS survey collects data on children's sex, age, height-length, and weight to 
-monitor the nutritional status of children. The nutritional 
+They encompass children's sex, age, height-length, and weight. The nutritional 
 indicators are sex and age specific because boys and girls grow at different rates. 
 Their growth rates are also age dependent.
 
@@ -879,8 +983,6 @@ three, severely underweight.
 The WHO uses the following prevalence thresholds to assess the problems of 
 stunting and wasting in a population of children:
 
-
-
 |Classification|stunting         |wasting and overweight |
 |:-------------|:----------------|:----------------------|
 |very high     | 30% or more	   | 15 % or more          |
@@ -898,7 +1000,7 @@ people in a sample who have the characteristic divided by all people in the samp
 Let us go now into the actual data and learn how to use the computer and R
 as a tool.
 
-### Reading data in R {#sec-readingdata}
+### Reading the DHS data from a file {#sec-readingdata}
 
 Before we can do anything with data, we need first to learn how  to load data into R and how
 to save them. 
@@ -970,414 +1072,176 @@ Before we are able to see what is inside of this
 object and how we can access the data, let us
 first explain a few very basic R building blocks or data types.
 
-### R fundamental building blocks
+### Inspecting the data
 
-#### R objects {#sec-robjects}
-
-The most basic type of R objects are **atomic vectors**. Objects in R are built
-from atomic vectors. 
-
-The dhs data-file we have just loaded is an example of such
-a more complex structure built from atomic vectors. We have already encountered a few of
-those in our previous lecture.
-
-#### Atomic vectors {#sec-atomic}
-
-An atomic vector is just a simple vector of data. For example remember when we typed the
-infant mortality data for eight European countries for 1860 we typed
+A useful function to inspect a data object like the one
+we have just created is the `dim()` function. It will
+tell us how many rows and columns our dataframe actually has
 ```{r}
 #| code-fold: false
-mr_1860 <- c(0.237, 0.139, 0.136, 0.150, 0.260, 0.102, 0.174, 0.124)
-```
-In this case `mr_1860` is an atomic vector. 
-
-R has a function, which allows you to check whether an object is an atomic vector or not.
-This function is called `is.vector()`. 
-It takes the object name as an argument and returns `TRUE`
-if the object is an atomic vector and `FALSE` if it is not. 
-
-For example:
-```{r}
-#| code-fold: false
-is.vector(mr_1860)
-```
-does indeed return `TRUE`.
-
-Each atomic vector stores values in a one-dimensional vector, and each atomic vector can
-only store one type of data. The length of the atomic vector can be determined by the
-function `length()` This function takes an R object, which is an atomic vector, as an
-argument and returns the number of elements in this vector. Here is the example of the die
-```{r}
-#| code-fold: false
-length(mr_1860)
-```
-which is 8 as it should be. An atomic vector could also have only one element, in which case
-`lenght()`would return 1.
-
-#### Data types {#sec-datatypes}
-
-Now altogether R has implemented *six basic types of atomic vectors*:
-
-1. double
-
-2. integers
-
-3. characters
-
-4. logical
-
-5. complex
-
-6. raw
-
-We will not encounter complex and raw data-types in this course, so let 
-us skip those and discuss
-only the first 4 types, **double**, **integer**, **character** and **logical**.
-
-Double and integers are the data types which represent numbers. Numbers can be
-added, multiplied etc. and functions that use these arithmetic operations to them
-can be applied to objects with the data type double or integer.
-
-For example the `mr_1860` - vector is a vector of data type `double`.If the 
-numbers are integers only, then the data type is integer.
-
-Now why should we care for distinguishing integers from doubles? This has to do with the
-way a computer does computations. In some cases working with integers can support higher
-precision. For our purpose the precise distinction will not matter a lot, so let us
-not discuss this further at that stage.
-
-**Characters** is a data-type which allows us to represent strings and groups of
-strings. Strings are the individual elements of a character vector. Characters always
-are between `" "` symbols, or we can also write `' '` which has the same meaning in R.
-We have encountered character vectors already in this lecture, for instance when
-specifiying the path to the data file when using `read.csv()`.
-
-Note that a string can be more than just letters. If you type, for instance the number 
-1 with quotation marks, like "1" R would interpret the value as a string not 
-as a number. Sometimes one can get confused in R because both objects and 
-characters appear as text in R code. Object names are without quotation 
-marks strings always are between quotation marks.
-
-The last data type in the list, we want to discuss here, are: **Logicals**. 
-We have already encountered this data type when 
-we computed the proportion of values in a vector which fulfills a
-certain condition.
-
-Logical vectors store `TRUE` and `FALSE`; logical values. They
-are extremely useful for doing comparisons and - as we will see shortly - also for
-selecting values from a data set.
-
-How logical data types work can best be understood by an example. If you type, for instance:
-```{r}
-#| code-fold: false
-0 > 1
-```
-R tells you that this statement is false, by printing the logical value `FALSE` 
-as an output.
-
-Whenever you type `TRUE` of `FALSE` without quotation marks, R will treat the
-input as logical data. Note, as an aside, if you typed `"TRUE"`and `"FALSE"` in quotation marks, R 
-would
-treat this input as a string co characters, a different data type. When communicating
-with a computer, you need to be very precise or the machine will not understand what
-you want to tell it do.
-
-For instance, the following statement yields:
-
-```{r}
-
-#| code-fold: false
-logic <- c(TRUE, FALSE, TRUE)
-logic
-```
-
-
-#### Attributes {#sec-attributes}
-
-One important R-fact which you need to know about atomic vectors is that atomic vectors
-can have **attributes**. Attributes won't affect the values of an object but can hold
-and store object metadata. 
-
-Normally we do not look at these metadata, but many R functions
-check for attributes and then do special things with the object depending on these
-attributes. Attributes can be checked with the function `attributes()` using an R object as an argument.
-This will show you all the attributes that are attached to an R object.
-
-The most common attributes for atomic vectors as well as R objects built from
-atomic vectors are **names**, **dimensions** and **classes**.
-Each of these attributes has its own helper function that you can use to also assign attributes to
-the object. For what we need now we discuss `names` and `dimensions` and discuss `classes`, which is a more advanced topic, later.
-
-For example, assume we want to know the dimensions of our data object `dhs_data`. We
-could use the helper function `dim` which would read the dimension attribute of 
-`dhs_data` and print the dimensions. Let's do this
-```{r}
-#| code-fold: false
-
 dim(dhs_data)
 ```
 
-The first number gives us the number of rows and the second the number of columns. We have
-`r dim(dhs_data)[1]` rows or individual observations and `r dim(dhs_data)[2]` columns. You
-see this is a large dataset and has many variables. 
+This means that our data have `r dim(dhs_data)[1]` rows and `r dim(dhs_data)[2]`
+columns. Quite a bit larger than the `heights` dataset. Here we really need
+a computer to analyze the infortion contained in these data.
 
-The variables are named and we can retrieve these names using the `names()`function. Let
-us do this for our data. 
-```{r}
-#| code-fild: false
-
-names(dhs_data)
-```
-The variable names are sometimes self explaining and sometimes not at all. Usually their
-meaning has to be learned from the metadata or the data documentation file.
-
-#### Factors
-
-R stores categorical data, such as nationality, sex etc. by using a speical data type
-called **factors**. If
-you take for instance, sex, it can have only two values - male or female - and these
-values may have their idiosyncratic order, for example that females go always first.
-This variable is called for example `HV104` in the DHS data, as can be seen from the
-code manual.
-
-To make a factor in R you have to pass an atomic vector to the `factor()` function.
-This function works by recoding the values in the vector as integers and store the
-results in an integer vector. R also adds a `level` attribute which contains the set
-of labels and their order and a class attribute that says the vector is
-a factor. Example:
-```{r sex-factor}
-#| code-fold: false
-sex <- factor(c("m", "f", "f", "m"))
-typeof(sex)
-attributes(sex)
-```
-Factors can be confusing since they look like characters but behave like integers.
-
-Note that R will often try to convert 
-character strings to factors when you load and create data.
-I recommend that you do not allow R to make factors unless you explicitly ask for it. This
-can usually be controlled by an argument to whatever the data reader function is. For instance
-you can give the `read.csv()` function the argument `stringsAsFactors = FALSE`.
-
-#### Coercion rules
-
-R has an internal **coercion** behavior for data types, which you should know
-about if you work with R. With this knowledge you can do many useful things.
-
-If a character string is present in an atomic vector, R will automatically convert every
-other component in this vector to a character string. If a vector contains only logicals
-and numbers, R will convert the logicals to numbers. In this case every `TRUE` becomes a 1 and
-every `FALSE` becomes a 0.
-
-R also uses the coercion rules, when we do math with logicals, like for example
-```{r math-with-logicals}
-#| code-fold: false
-sum(c(TRUE, TRUE, FALSE, FALSE))
-```
-What happens here is that R coerces the vector `c(TRUE, TRUE, FALSE, FALSE)` to the
-vector `c(1, 1, 0, 0)` and sums the components.
-We used these rules before when we discussed the trick of counting the
-number of values fulfilling a certain condition.
-
-#### Data frames and R lists {#sec-data_frame}
-
-Our `dhs_data`objects contains variables of all data types we have now
-discussed. We also saw that atomic vectors can only contain the same
-data type not a mixture of both. How does R achieve holding these different
-data types in one object?
-
-The answer is that this is achieved by a data structure called a **list**. List are
-like atomic vectors, because the group data into a one-dimensional set. However, lists do
-not group together individual values. List group together R objects, such as atomic
-vectors or even other lists.
-
-For example, you can create a list, which contains a numeric vector of length 31 in its
-first element, a character vector of length 1 in its second element and a new list of length 2 in its third. This is done by using the `list()`function of R, like this:
+Another useful function to inspect data is the `heads()`function. It displays by
+default the first 6 rows of the dataframe
 ```{r}
 #| code-fold: false
-list_example <- list(100:130, "R", list(TRUE, FALSE))
-list_example
+head(dhs_data)
 ```
-The double bracketed indices tell you which element of the list is being displayed. The
-single bracketed indices tell you which sub-element of the list is being displayed. For example
-100 is the first sub element of the first element in the list. "R" is the first sub element of the
-second list element.
 
-There is lots to say about lists. But this is an advanced topics. We mentioned it here to
-introduce one of the most important data structres for our course the R dataframe.
+Since there are 18 variables not all of them can be displayed on a single page-width.
+R stacks the information in blocks. We see that some columns are numerical, some are
+characters and some are logicals. The variable names give already some clues about
+what they mean. For the exact meaning we would need some form of documentation.
 
-#### Data Frames
+### Analyzing particular variables and subsets of data
 
-**Data Frames** are the two dimensional version of a list. They are by far the most
-useful storage structure for data analysis. Indeed, our `dhs_data`
-dataset  is an instance of a data frame. Data frames group vectors
-together in a two dimensional table. As a consequence each variable 
-can have a different type, i.e. each column of the
-data frame can contain a different data type. Within a column, however, we can have only
-one data type. Every column in this tabular array of data can be considered as a vector.
-
-Now after this dense discussion of some fundamental R-concepts, let us 
-apply our new knowledge to get a hand on the dhs_data.
-
-### Selecting data from R objects: A toolbox.
-
-Asking questions about a dataframe and in particular about our dhs data requires that
-we are able to address particular values in the dataframe. We now learn the most
-important techniques to do so.
-
-R has a notation system to address individual values. 
-You write the object name first, followed by a
-pair of had brackets `[]`. Between the brackets goes a `,` separating 
-row and column indices. The
-notation is thus like `dhs_data[,]`.
-
-When it comes to writing the indices you have six different ways to do this, all of them very simple. You can use:
-
-1. Positive integers
-2. Negative integers
-3. Zero
-4. Blank spaces
-5. Logical values
-6. Names
-
-The simplest are positive integers. When you want to extract for instance the value of
-the variable `type_of_residence` for the 5th row, which correspond to the 7th record
-in your dataset you would implement this with integers as follows:
-
+Dollar signs `$` are used to adress individual columns. For example, assume we would like
+to count the number of boys (i.e. sex = male) in our sample we could use this together
+with R's coercion rules by coding
 ```{r}
 #| code-fold: false
-dhs_data[7,5]
+sum(dhs_data$sex == "male")
+sum(dhs_data$sex == "female")
 ```
 
-You can - of course extract more than one value. If you write for instance
+Observe a few things here: Operationally we have applied the tricks we have learned
+about using logicals to count up cases for which a condition is true. The variable
+`sex` in our data is coded by strings of chracters. We therefore need to put these
+strings into `" "` quotation marks in the comparison. Note also that the identidy sign
+in R is `==`. The symbol `=` in R is an assignment operator, which we can only use to
+assign values to arguments in a function.
 
+Indices in a dataframe are pairs specifying row and column numbers. For example
 ```{r}
 #| code-fold: false
 
-dhs_data[1:5,4]
+dhs_data[4,3]
 ```
-you will get the first 5 values of the consumption numbers in the dataframe. The colon
-operator `:` used here is a very useful R operator. It creates sequences of whole
-numbers. Thus if you create a vector with the name, say `n10` containing the sequence
-of the first 10 whole numbers, you would write
 
+is the data point in the dataframe which is at row 4 and column 3. In this case
+it is a string of characters.
+
+::: {.callout-tip}
+## Remember
+For any subset of a data frame `d`, we can extract whatever rows and columns we want using the format
+
+`d[the rows we want, the columns we want]`
+:::
+
+Soemtimes dataframes do not have column names. Still we can apply functions to
+the vector of a column using indices. For example we could compute the mean of
+the variable `nt_ch_waz`as
 ```{r}
 #| code-fold: false
-n10 <- 1:10
+mean(dhs_data[ ,18])
 ```
+Note the expression [,18]. Since there is a 18 in the second position, we are 
+talking about column 18. And since the first position, before the comma, is 
+empty, no rows are specified — so *all* rows are included. That boils down to: 
+all of column 18.
 
-Now clearly the indexing rules work in the same way as with dataframes, only that now you have
-only 1 dimension. Say you want to extract the first three numbers from `n10` you would write
+A powerful feature of R is that we can extract data from a dataframe using the 
+same logic as we used when extracting data from a vector.
 
-```{r}
-#| code-fold: false
-n10[1:3]
-```
-
-Note that R’s notation system is not limited to data frames. The same syntax can be used to select values from any R object, provided you supply an index for each dimension of the object. Two things have to be kept in mind. In R indexing begins at 1. In some other programming languages indexing begins at 0. The indexing convention in R is just like in linear algebra. The second thing to note is that if you select two or more columns from a data frame, R will return a new data frame, like in
-
-```{r}
-#| code-fold: false
-
-dhs_data[1:5, 3:4]
-```
-
- R will always return a dataframe.
-
-However, if you select a single column, R will return a vector:
-
+For example the follwoing code extracts variables 1, 3 and 5 and prints the first
+four values of them
 ```{r}
 #| code-fold: false
 
-dhs_data[1:5, 4]
+dhs_data[1:4, c(1,3,5)]
 ```
+Note that in a dataframe all columns must have the same length. But as in our
+dataset, every variable can contain a different data type, like numbers, characters
+or logicals.
 
-if you prefer to get returned a data frame in this case, you have to add the argument drop = FALSE, like:
-
-```{r}
-dhs_data[1:5, 4, drop = FALSE]
-```
-
-
-**Negative integers** work exactly opposite to positive integers. If you type:
-```{r}
-#| code-fold: false
-head(dhs_data[-1,4], n = 5)
-```
-R will return the fourth column of the data frame *except* the first row. We just display the
-first 10 values using the `head()` function.
-
-If you try to pair a negative and a positive integer in an index, R will return an error.
-However, you can use both negative and positive integers if you use them in *different*
-indices.
-
-**Zero** is neither positive nor negative, If you use 0 as an index, R will return nothing
-from a dimension with index 0. The following syntax for instance creates an empty object
-```{r empty-object}
-#| code-fold: false
-dhs_data[0,0]
-```
-
-**Blank spaces** are used if you want to ask R to select *every* value in a dimension. So for
-instance, if you type:
-```{r}
-#|code-fold: false
-sel <- dhs_data[ , 6]
-```
-R will select the entire column of records of children who are severely stunted. 
-You can check that the length of this
-vector is
-```{r}
-#|code-fold: false
-length(sel)
-```
-as expected.
-
-**Logical Values** can also be used for subsetting. If you type for instance
+Now let us analyze the prevalence of children in our dataset that are wasted. Before 
+we do that let us explain that the data contain a variable, which is called `wt`. 
+This is short for weight. It means that each row is not counted as one observation 
+but is weighted. The sum of the weights
 ```{r}
 #| code-fold: false
-dhs_data[1, c(F,F,F,T)]
+sum(dhs_data$wt)
 ```
-R will select the value of the first
-observation of the fourth variable. Note that here we used the R 
-convention that `TRUE`and `T`
-as well as `FALSE`and `F` have an equivalent meaning.
+would then give us the total number of children in the sample. Let us not go into
+the details of where these weights are coming from and why they are needed at this
+stage. The variable that encodes stunting is `nt_ch_stunt` and the variable that encodes
+wasting is `nt_ch_wast`.
 
-Finally, you can ask for the elements, you want by name. On our case, you could select the first
-energy_consumption value by the syntax
-
+Now let us do the computation using the rules we have learned so far:
 ```{r}
 #| code-fold: false
-dhs_data[1, "Wealth Index"]
+sum(dhs_data$nt_ch_stunt*dhs_data$wt)/sum(dhs_data$wt)
+sum(dhs_data$nt_ch_wast*dhs_data$wt)/sum(dhs_data$wt)
 ```
 
-Finally, note that two types of object in R obey an optional second system of notation. You can
-extract values from data frames and lists with th `$`syntax.
+The proportion of stunted children in our sample is 39.5 % and the proportion
+of wasted children is 10 %. Thus according to the WHO classification the prevalence in 
+stunting is very high and the prevalence in wasting is high.
 
-It works as follows: For example
-```{r}
-#| code-fold: false
-test <- dhs_data$nt_ch_stunt
-test[1:4]
-```
-would select the column of the variable that measures whether a kid is stunted or
-not. in our dataframe, save them in an object
-names `test`and then subsequently extract the first four values from the object.
+We could use our new knowldge to answer other questions. Assume we would
+want to find out which of our regions has the highest proportion in stunting?
 
-### Application: Tabulate malnutrition in children
-
-Let us start by trying to get a rough idea how the data look like. We could do this
-by showing just a few records at the beginning, using the `head()`function of R
+First, let us find which rows refer to region 1, region 2 etc.
 ```{r}
 #| code-fold: false
 
-head(dhs_data, n = 5)
+r1 <- which(dhs_data$region == "region 1")
+r2 <- which(dhs_data$region == "region 2")
+r3 <- which(dhs_data$region == "region 3")
+r4 <- which(dhs_data$region == "region 4")
 ```
-This shows the first five records including the variable names.
+Now with these row indices we can compute the proportions on the
+relevant subset of the data.
+```{r}
+#| code-fold: false
 
-some analysis missing still
+data_r1 <- dhs_data[r1, ]
+data_r2 <- dhs_data[r2, ]
+data_r3 <- dhs_data[r3, ]
+data_r4 <- dhs_data[r4, ]
 
+sum(data_r1$nt_ch_stunt*data_r1$wt)/sum(data_r1$wt)
+sum(data_r2$nt_ch_stunt*data_r2$wt)/sum(data_r2$wt)
+sum(data_r3$nt_ch_stunt*data_r3$wt)/sum(data_r3$wt)
+sum(data_r4$nt_ch_stunt*data_r4$wt)/sum(data_r4$wt)
+```
+So we see that region 2 has the highest prevalence in stunting.
 
+Often we want to extract data that fulfill more than just one condition. For instance
+when we want to filter the values of a variable that fall in a particular interval we
+need the values that are larger or equal to the lower bound of this interval and lower or
+equal to the upper bound of the interval. 
+
+R allows us to combine conditions by logical operators. Assume we want to know the
+proportion of children in our data that are wasted and stunted. In this case
+both conditions need to be fulfilled. This would be coded in the following way:
+```{r}
+#| code-fold: false
+sum((dhs_data$nt_ch_stunt & dhs_data$nt_ch_wast)*dhs_data$wt)/sum(dhs_data$wt)
+```
+Let me explain. The condition that a child is both stunted and wasted means that 
+the stunting variable evaluates to `TRUE` and the wasting variable evaluates to 
+`TRUE`. If this is the case `(dhs_data$nt_ch_stunt & dhs_data$nt_ch_wast)` is `TRUE`.
+If one of these variables evaluates to `FALSE` then `(dhs_data$nt_ch_stunt & dhs_data$nt_ch_wast)` is `FALSE`.
+
+We can do this with other logical operators. We can ask for example what is the 
+proportion of children who are wasted or stunted. The operator here is `|` and 
+`(dhs_data$nt_ch_stunt | dhs_data$nt_ch_wast)` evaluates to `TRUE` if the first
+condition is `TRUE` or if the second condition is `TRUE` or if both are `TRUE`.
+Let's do the computation:
+```{r}
+#| code-fold: false
+
+sum((dhs_data$nt_ch_stunt | dhs_data$nt_ch_wast)*dhs_data$wt)/sum(dhs_data$wt)
+```
+a proportion that is very high.
+
+## Summary
 
 
 ## Exercises: 
@@ -1620,38 +1484,3 @@ for both investigators?
 Open the notebook `exercises_summarizing_and_communicating_lots_of_data.ipynb` 
 and work on the exercises. Write your solutions into the notebook. You will
 need the computer to do this work.
-
-
-
-<!-- ## Contents  -->
-
-<!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
-<!-- chapter introduces the most important concepts. -->
-
-
-<!-- 1. The empirical distribution of data points -->
-<!-- 2. Measures of location and spread. -->
-<!-- 3. Skewed data distributions are common and some summary statistics are very sensitive to outlying values.  -->
-<!-- 4. Summaries always hide some detail.  -->
-<!-- 5. How to summarize sets of numbers graphically (histograms and box plots) -->
-<!-- 6. Useful transformations to reveal patterns -->
-<!-- 7. Looking at pairs of numbers, scatter plots, time series as line graphs.  -->
-<!-- 8. The primary aim in data exploration is to get an idea of the overall variation. -->
-
-<!-- ## Next steps in R: -->
-
-<!-- - vectors and indices -->
-<!-- - extracting subsets from vectors -->
-<!-- - creating vectors using c() -->
-<!-- - subsetting vectors wit logicals -->
-<!-- - data frames -->
-<!-- - factor class -->
-<!-- - extracting data from data frames -->
-<!-- - tapply -->
-
-
-
-<!-- ## Outcome  -->
-
-<!-- Understand these concepts and work through may examples showing how to apply these summary measures to data on the -->
-<!-- computer. -->
