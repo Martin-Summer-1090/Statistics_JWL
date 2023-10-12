@@ -238,15 +238,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sec-moreR" id="toc-sec-moreR" class="nav-link" data-scroll-target="#sec-moreR"><span class="header-section-number">3.3</span> Bigger datasets and more R</a>
   <ul class="collapse">
   <li><a href="#vectors-and-indices" id="toc-vectors-and-indices" class="nav-link" data-scroll-target="#vectors-and-indices"><span class="header-section-number">3.3.1</span> Vectors and indices</a></li>
+  <li><a href="#selecting-more-than-one-observation" id="toc-selecting-more-than-one-observation" class="nav-link" data-scroll-target="#selecting-more-than-one-observation"><span class="header-section-number">3.3.2</span> Selecting more than one observation</a></li>
+  <li><a href="#logical-subsetting-coercion-rules-and-recycling" id="toc-logical-subsetting-coercion-rules-and-recycling" class="nav-link" data-scroll-target="#logical-subsetting-coercion-rules-and-recycling"><span class="header-section-number">3.3.3</span> Logical subsetting, coercion rules and recycling</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.3.4</span> Data Frames</a></li>
   </ul></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">3.4</span> Data Frames</a>
-  <ul class="collapse">
-  <li><a href="#dhs-data-on-the-nutritional-status-of-children-under-5-years" id="toc-dhs-data-on-the-nutritional-status-of-children-under-5-years" class="nav-link" data-scroll-target="#dhs-data-on-the-nutritional-status-of-children-under-5-years"><span class="header-section-number">3.4.1</span> DHS data on the nutritional status of children under 5 years</a></li>
-  <li><a href="#sec-readingdata" id="toc-sec-readingdata" class="nav-link" data-scroll-target="#sec-readingdata"><span class="header-section-number">3.4.2</span> Reading the DHS data from a file</a></li>
-  <li><a href="#inspecting-the-data" id="toc-inspecting-the-data" class="nav-link" data-scroll-target="#inspecting-the-data"><span class="header-section-number">3.4.3</span> Inspecting the data</a></li>
-  <li><a href="#analyzing-particular-variables-and-subsets-of-data" id="toc-analyzing-particular-variables-and-subsets-of-data" class="nav-link" data-scroll-target="#analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.4.4</span> Analyzing particular variables and subsets of data</a></li>
-  </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises:</a>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.4</span> Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">3.5.1</span> Histograms</a></li>
   <li><a href="#the-average-1" id="toc-the-average-1" class="nav-link" data-scroll-target="#the-average-1"><span class="header-section-number">3.5.2</span> The Average</a></li>
@@ -681,7 +678,7 @@ Average
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip with Title
+How to compute percentages of observations that fulfill a condition.
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -844,7 +841,7 @@ Now you try
 </div>
 </section>
 </section>
-<section id="sec-moreR" class="level2" data-number="3.3">
+<section id="sec-moreR" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.3</span> Bigger datasets and more R</h2>
 <p>When we use the computer to summarize and communicate lots of data we need to get to know more of R. In particular we need to understand how to read data and select and manipulate variables. Let me lead you through some of the most basic concepts you need to know in order to do so. Finally we will apply our new skills to the hand on analysis of a real world anthropometric dataset from the DHS survey that help us to get a global picture about the nutritional situation for children and how this information could support us in setting policy priorities.</p>
 <section id="vectors-and-indices" class="level3" data-number="3.3.1">
@@ -871,6 +868,9 @@ Now you try
 <pre><code>[1] 173.7980 176.6037 177.2146</code></pre>
 </div>
 </div>
+</section>
+<section id="selecting-more-than-one-observation" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="selecting-more-than-one-observation"><span class="header-section-number">3.3.2</span> Selecting more than one observation</h3>
 <p>Sometimes we need to retrieve consecutive numbers. For this case we need another function, the colon operator or <code>:</code>. It helps us to build sequences of conscutive numbers.</p>
 <p>For example</p>
 <div class="cell">
@@ -905,6 +905,9 @@ Now you try
 </div>
 </div>
 <p>which gives us the answer to be expected.</p>
+</section>
+<section id="logical-subsetting-coercion-rules-and-recycling" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="logical-subsetting-coercion-rules-and-recycling"><span class="header-section-number">3.3.3</span> Logical subsetting, coercion rules and recycling</h3>
 <p>As we already learned in the context of computing proportions of values fulfilling a certain condition by using logicals and the coercion rules of R before, we can do similar things by composing different functions.</p>
 <p>Assume we want to know the number of observations with a height larger than 180 cm. This could be computed by typing</p>
 <div class="cell">
@@ -931,13 +934,12 @@ Now you try
 </div>
 </div>
 </section>
-</section>
-<section id="data-frames" class="level2 page-columns page-full" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.4</span> Data Frames</h2>
+<section id="data-frames" class="level3 page-columns page-full" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.3.4</span> Data Frames</h3>
 <p>Data Frames are the next R workhorse when we deal with data. A data frame is a rectangular table of data where every row corresponds to one data point.</p>
 <p>Instead of using just some data frame let us this time use a real world example of anthropometric data from the DHS. Anthropometric data can help a country to get a data driven picture on the nutritional status of its population. These data can help identify areas where policy action is needed.</p>
-<section id="dhs-data-on-the-nutritional-status-of-children-under-5-years" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="dhs-data-on-the-nutritional-status-of-children-under-5-years"><span class="header-section-number">3.4.1</span> DHS data on the nutritional status of children under 5 years</h3>
+<section id="dhs-data-on-the-nutritional-status-of-children-under-5-years" class="level4" data-number="3.3.4.1">
+<h4 data-number="3.3.4.1" class="anchored" data-anchor-id="dhs-data-on-the-nutritional-status-of-children-under-5-years"><span class="header-section-number">3.3.4.1</span> DHS data on the nutritional status of children under 5 years</h4>
 <p>In the analysis we are going to produce a statistical table on the nutritional status of children under five years. The anthropometric data reveal information about a persons nutritional status. The nutritional status of children is observed to monitor and measure malnutrition. The nutritional data of children are included in the United Nations development goals indicators. They encompass children’s sex, age, height-length, and weight. The nutritional indicators are sex and age specific because boys and girls grow at different rates. Their growth rates are also age dependent.</p>
 <p>Four indicators on nutritional status are collected in DHS surveys:</p>
 <ol type="a">
@@ -989,8 +991,8 @@ Now you try
 <p>Prevalence is the proportion of a population who have a specific characteristic in a given time period. In a survey prevalence is measured by the number of people in a sample who have the characteristic divided by all people in the sample.</p>
 <p>Let us go now into the actual data and learn how to use the computer and R as a tool.</p>
 </section>
-<section id="sec-readingdata" class="level3 page-columns page-full" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.4.2</span> Reading the DHS data from a file</h3>
+<section id="sec-readingdata" class="level4 page-columns page-full" data-number="3.3.4.2">
+<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.3.4.2</span> Reading the DHS data from a file</h4>
 <p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this for the case of <em>comma separated text files</em> or so called <em>csv</em> files. Data are very often provided in csv-format. It is one of the most common data formats for publicly available data.</p>
 <p>R provides functions for reading and writing from almost any other format, like data stored in raw text files, in Excel files and many more data formats that are used today. Since in all those different formats are read by R following the same principles as in the csv case, it is sufficient if we discuss here the the case of csv files only.</p>
 <p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
@@ -1015,8 +1017,8 @@ Now you try
 <p>We have now read the main data file and written it to the R-object <code>dhs_data</code>.</p>
 <p>Before we are able to see what is inside of this object and how we can access the data, let us first explain a few very basic R building blocks or data types.</p>
 </section>
-<section id="inspecting-the-data" class="level3" data-number="3.4.3">
-<h3 data-number="3.4.3" class="anchored" data-anchor-id="inspecting-the-data"><span class="header-section-number">3.4.3</span> Inspecting the data</h3>
+<section id="inspecting-the-data" class="level4" data-number="3.3.4.3">
+<h4 data-number="3.3.4.3" class="anchored" data-anchor-id="inspecting-the-data"><span class="header-section-number">3.3.4.3</span> Inspecting the data</h4>
 <p>A useful function to inspect a data object like the one we have just created is the <code>dim()</code> function. It will tell us how many rows and columns our dataframe actually has</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1054,8 +1056,8 @@ Now you try
 </div>
 <p>Since there are 18 variables not all of them can be displayed on a single page-width. R stacks the information in blocks. We see that some columns are numerical, some are characters and some are logicals. The variable names give already some clues about what they mean. For the exact meaning we would need some form of documentation.</p>
 </section>
-<section id="analyzing-particular-variables-and-subsets-of-data" class="level3" data-number="3.4.4">
-<h3 data-number="3.4.4" class="anchored" data-anchor-id="analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.4.4</span> Analyzing particular variables and subsets of data</h3>
+<section id="analyzing-particular-variables-and-subsets-of-data" class="level4" data-number="3.3.4.4">
+<h4 data-number="3.3.4.4" class="anchored" data-anchor-id="analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.3.4.4</span> Analyzing particular variables and subsets of data</h4>
 <p>Dollar signs <code>$</code> are used to adress individual columns. For example, assume we would like to count the number of boys (i.e.&nbsp;sex = male) in our sample we could use this together with R’s coercion rules by coding</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1165,6 +1167,9 @@ Remember
 </div>
 <p>So we see that region 2 has the highest prevalence in stunting.</p>
 <p>Often we want to extract data that fulfill more than just one condition. For instance when we want to filter the values of a variable that fall in a particular interval we need the values that are larger or equal to the lower bound of this interval and lower or equal to the upper bound of the interval.</p>
+</section>
+<section id="combining-several-conditions" class="level4" data-number="3.3.4.5">
+<h4 data-number="3.3.4.5" class="anchored" data-anchor-id="combining-several-conditions"><span class="header-section-number">3.3.4.5</span> Combining several conditions</h4>
 <p>R allows us to combine conditions by logical operators. Assume we want to know the proportion of children in our data that are wasted and stunted. In this case both conditions need to be fulfilled. This would be coded in the following way:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">&amp;</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1180,10 +1185,29 @@ Remember
 <pre><code>[1] 0.4266291</code></pre>
 </div>
 </div>
+<p>a proportion that is very high.</p>
 </section>
+</section>
+</section>
+<section id="summary" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.4</span> Summary</h2>
+<p>In this chapter you have learned how to summarize and communicate lost of data. As an application context we have chosen measures of height and weight, or anthropometric data.</p>
+<ol type="1">
+<li><p>You have learned how to summarize data graphically by a histogram, how to construct a histogram and how to display the histogram with different scales: With absolute and relative frequencies.</p></li>
+<li><p>You have learned to plot histograms in R and learned about things to care about when doing histograms, such as the choice of the bin size and choosing the boundaries of bins.</p></li>
+<li><p>You have learned to summarize data by the mean and the standard deviation. You have learned what these numbers mean and how to compute them by hand and, when you have lots of data, by R.</p></li>
+<li><p>You have learned new concepts in R that helped us to analyze a large dataset from the demographic and health survey by computing proportions of children suffering from certain physical conditions. In particular the new R concepts you learned were</p>
+<ol type="a">
+<li>Reading data from a file</li>
+<li>Using indices to extract particular values from a vector.</li>
+<li>Selecting more than one observation.</li>
+<li>Logical subsetting, coercion and recycling rules of R</li>
+<li>Data frames and how to work with them.</li>
+</ol></li>
+</ol>
 </section>
 <section id="exercises" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.5</span> Exercises:</h2>
+<h2 data-number="3.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.5</span> Exercises</h2>
 <section id="histograms" class="level3" data-number="3.5.1">
 <h3 data-number="3.5.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">3.5.1</span> Histograms</h3>
 <ol type="1">
@@ -1388,29 +1412,6 @@ Remember
 <section id="computer-exercises" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.6</span> Computer exercises</h2>
 <p>Open the notebook <code>exercises_summarizing_and_communicating_lots_of_data.ipynb</code> and work on the exercises. Write your solutions into the notebook. You will need the computer to do this work.</p>
-<!-- ## Contents  -->
-<!-- Statistics usually involves lots of data and we need ways to communicate and summarize these data. This -->
-<!-- chapter introduces the most important concepts. -->
-<!-- 1. The empirical distribution of data points -->
-<!-- 2. Measures of location and spread. -->
-<!-- 3. Skewed data distributions are common and some summary statistics are very sensitive to outlying values.  -->
-<!-- 4. Summaries always hide some detail.  -->
-<!-- 5. How to summarize sets of numbers graphically (histograms and box plots) -->
-<!-- 6. Useful transformations to reveal patterns -->
-<!-- 7. Looking at pairs of numbers, scatter plots, time series as line graphs.  -->
-<!-- 8. The primary aim in data exploration is to get an idea of the overall variation. -->
-<!-- ## Next steps in R: -->
-<!-- - vectors and indices -->
-<!-- - extracting subsets from vectors -->
-<!-- - creating vectors using c() -->
-<!-- - subsetting vectors wit logicals -->
-<!-- - data frames -->
-<!-- - factor class -->
-<!-- - extracting data from data frames -->
-<!-- - tapply -->
-<!-- ## Outcome  -->
-<!-- Understand these concepts and work through may examples showing how to apply these summary measures to data on the -->
-<!-- computer. -->
 
 
 </section>

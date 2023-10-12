@@ -575,7 +575,7 @@ individuals who are beyond these thresholds. This diversity
 is hidden in the aggregation.
 
 ::: {.callout-tip}
-## Tip with Title
+## How to compute percentages of observations that fulfill a condition.
 
 This is a good opportunity to show you a cool feature or trick in R how we could in one line
 compute such percentages. Assume we want to compute the percentage of individuals in our data
@@ -837,6 +837,8 @@ this
 heights[c(4,40,67)]
 ```
 
+### Selecting more than one observation
+
 Sometimes we need to retrieve consecutive numbers. For this case we need another
 function, the colon operator or `:`. It helps us to build sequences of conscutive 
 numbers.
@@ -866,6 +868,8 @@ check this with `heights()`
 length(heights)
 ```
 which gives us the answer to be expected.
+
+### Logical subsetting, coercion rules and recycling
 
 As we already learned in the context of computing proportions of
 values fulfilling a certain condition by using logicals and the
@@ -908,7 +912,7 @@ heights[which(heights > 180)]
 ```
 
 
-## Data Frames
+### Data Frames
 
 Data Frames are the next R workhorse when we deal with data. A data frame
 is a rectangular table of data where every row corresponds to one data
@@ -920,7 +924,7 @@ of anthropometric data from the DHS.
 Anthropometric data can help a country to get a data driven picture on the nutritional status
 of its population. These data can help identify areas where policy action is needed.
 
-### DHS data on the nutritional status of children under 5 years
+#### DHS data on the nutritional status of children under 5 years
 
 In the analysis we are going to produce a statistical table on the nutritional 
 status of children under five years.
@@ -1000,7 +1004,7 @@ people in a sample who have the characteristic divided by all people in the samp
 Let us go now into the actual data and learn how to use the computer and R
 as a tool.
 
-### Reading the DHS data from a file {#sec-readingdata}
+#### Reading the DHS data from a file {#sec-readingdata}
 
 Before we can do anything with data, we need first to learn how  to load data into R and how
 to save them. 
@@ -1072,7 +1076,7 @@ Before we are able to see what is inside of this
 object and how we can access the data, let us
 first explain a few very basic R building blocks or data types.
 
-### Inspecting the data
+#### Inspecting the data
 
 A useful function to inspect a data object like the one
 we have just created is the `dim()` function. It will
@@ -1098,7 +1102,7 @@ R stacks the information in blocks. We see that some columns are numerical, some
 characters and some are logicals. The variable names give already some clues about
 what they mean. For the exact meaning we would need some form of documentation.
 
-### Analyzing particular variables and subsets of data
+#### Analyzing particular variables and subsets of data
 
 Dollar signs `$` are used to adress individual columns. For example, assume we would like
 to count the number of boys (i.e. sex = male) in our sample we could use this together
@@ -1215,7 +1219,9 @@ So we see that region 2 has the highest prevalence in stunting.
 Often we want to extract data that fulfill more than just one condition. For instance
 when we want to filter the values of a variable that fall in a particular interval we
 need the values that are larger or equal to the lower bound of this interval and lower or
-equal to the upper bound of the interval. 
+equal to the upper bound of the interval.
+
+#### Combining several conditions
 
 R allows us to combine conditions by logical operators. Assume we want to know the
 proportion of children in our data that are wasted and stunted. In this case
@@ -1243,8 +1249,32 @@ a proportion that is very high.
 
 ## Summary
 
+In this chapter you have learned how to summarize and communicate lost of data.
+As an application context we have chosen measures of height and weight, or 
+anthropometric data.
 
-## Exercises: 
+1. You have learned how to summarize data graphically by a histogram, how to
+   construct a histogram and how to display the histogram with different scales: 
+   With absolute    and relative frequencies.
+
+2. You have learned to plot histograms in R and learned about things to care about when
+   doing histograms, such as the choice of the bin size and choosing the boundaries of bins.
+   
+3. You have learned to summarize data by the mean and the standard deviation. 
+   You have learned what these numbers mean and how to compute them by hand and, when you have    lots of data, by R.
+
+4. You have learned new concepts in R that helped us to analyze a large dataset
+   from the demographic and health survey by computing proportions of children 
+   suffering from certain physical conditions. In particular the new R concepts you
+   learned were
+     (a) Reading data from a file
+     (b) Using indices to extract particular values from a vector.
+     (c) Selecting more than one observation.
+     (d) Logical subsetting, coercion and recycling rules of R
+     (e) Data frames and how to work with them.
+     
+
+## Exercises
 
 ### Histograms
 
