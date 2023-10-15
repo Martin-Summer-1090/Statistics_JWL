@@ -1,4 +1,4 @@
-# Modelling relationships part 1: Some basic mathematical ideas
+# Modelling relationships
 
 <!-- ## Contents  -->
 <!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
@@ -18,8 +18,8 @@
 ## Statistical models
 
 In our course so far we have encountered various methods which allow us to visualize and
-summarize data consisting of a single set of numbers. We have alos learned how to look at
-associations between pairs of variables. These simple techniques have already taken us 
+summarize data consisting of a single set of numbers. These 
+simple techniques have already taken us 
 quite far and allowed us to look at various interesting real world questions.
 
 In general modern data are much more complex. In such more complex situations, involving 
@@ -140,39 +140,6 @@ You do not have to remember such details. They are usually recovered as needed
 from the help function.^[Here is the full list of possible values for the `pch` argument and
 what they do. The default value in `plot` is `pch = 1`. ![Possible values for pch](pictures/r-plot-pch-symbols-points-in-r.png)]
 
-:::{.callout-note icon=false}
-
-### Now you try: Exercises
-
-1. Three out of the following four points lie on a line. Which one does not? It is
-   above or below the line?
-   $(0,0), (0.5,0.5), (1,2), (2.5, 2.5)$
-   You can try to answer this with pencil and paper or using R. Try both ways.
-
-2. The table below shows four points. In each case the y-coordinate is computed from the x-coordinate by the rule $y = 2x + 1$. Fill in the blanks and then plot the four points. What can you say about them?
-
-| x       | y    | 
-|:-------:|:----:|
-| 1       | 3    |
-| 2       | 5    |
-| 3       |      |
-| 4       |      |
-
-3. Look at the following shaded regions. Which of the following two points is in the region
-   (1,2) or (2,1)? Answer this question for all three figures.
-
-::: {#fig-plot-regions layout-ncol=3}
-
-![Figure 1](pictures/shaded_a.png){#fig-shadea}
-
-![Figure 2](pictures/shaded_b.png){#fig-shadeb}
-
-![Figure 3](pictures/shaded_c.png){#fig-shadec}
-
-Where is the point.
-:::
-
-:::
 
 ### Slope and Intercept
 
@@ -289,9 +256,96 @@ Using a general formulation we can say
 The graph of equation $y = kx + d$ is a straight line with slope $k$ and intercept $d$
 :::
 
-:::{.callout-note icon=false}
 
-### Exercises:
+### Plotting lines, using R
+
+The examples we discussed so far helped you understand how to draw equations
+like
+\begin{equation}
+y = k x + d
+\end{equation}
+
+by hand and to switch between the algebraic and geometric
+description of such equations. Of course you can use R to do such plots.
+
+We briefly discuss how. Let us generate some example data for the case of
+the first equation in exercise 1:
+
+\begin{equation}
+y = 2x + 1
+\end{equation}
+
+We can draw such lines in R using the R function `curve()`. This function 
+requires as arguments the equation of the line and the range from where to
+where the $x$ variable should go. Let us start at $x=0$ and let x go to $x=5$:
+
+```{r}
+#| code-fold: false
+curve(1 + 2*x, from = 0, to = 5)
+```
+
+Here is another example, which is slightly more interesting because of its
+context. Consider the linear equation
+
+\begin{equation}
+y = 1007 - 0.393*x
+\end{equation}
+
+According to @GelmanHillVehtari2021 this line approximates the trajectory
+of the world record time in seconds for the mile run based on data starting
+from the year 1900. 
+
+To draw a curve like this by R, and assuming we plot the curve for
+the arguments $x = 1$, $x = 2$, $x = 3$ , $x = 4$ and $x = 5$, you would 
+best choose the R function `curve()` and a code like this:
+
+```{r}
+#| code-fold: false
+
+curve(1007 - 0.393*x, from = 0, to = 5)
+```
+
+
+::: {.callout-note}
+
+## Now you try
+
+Test your understanding of interpreting this line in the given context.
+
+1. What is the intercept of the line?
+2. What is the slope?
+3. What is the interpretation of the intercept in the given context?
+4. What is the interpretation of the slope in this context?
+5. What is the mile run record in the beginning of our data in 1900?
+6. What is the mile run record in 1990 assuming the line describes the
+   relation accurately?
+7. Is it reasonable to use the line to predict the mile run record in 2000? What do you think? 
+8. Is it reasonable to assume that this trend will go on forever?
+
+:::
+
+Finally, let us assume we want to present a graph of the line, conveying the
+context and which is easily readable. Then we need to use a different location and scale
+of the graph and add a title as well as informative descriptions of the $x$ and the $y$
+axis. This would be done in R as shown in the following code. 
+
+```{r}
+#| code-fold: false
+
+curve(1007 - 0.393*x, 
+      from = 1900, to = 2000, 
+      xlab = "Year", 
+      ylab = "Time (seconds)",
+      main = "Approximate trend of world record times\n for the mile run")
+```
+
+Location and scale are controlled by starting the curve not at $x=0$ but at $x=1900$. R then
+automatically adapts the scale by choosing appropriate units for $x$ and displaying not
+each single year.
+
+## Exercises:
+
+### Exercise 1:
 
 1. Plot the graphs of the following equations
 \begin{eqnarray}
@@ -313,72 +367,50 @@ all lie on a line. What is the equation of this line?
    (c) If $y$ is smaller than $x$, then the point $(x,y)$ is below the line of 
        exercise 3.
        
+### Exercise 2:
+
+1. Three out of the following four points lie on a line. Which one does not? It is
+   above or below the line?
+   $(0,0), (0.5,0.5), (1,2), (2.5, 2.5)$
+   You can try to answer this with pencil and paper or using R. Try both ways.
+
+2. The table below shows four points. In each case the y-coordinate is computed from the x-coordinate by the rule $y = 2x + 1$. Fill in the blanks and then plot the four points. What can you say about them?
+
+| x       | y    | 
+|:-------:|:----:|
+| 1       | 3    |
+| 2       | 5    |
+| 3       |      |
+| 4       |      |
+
+3. Look at the following shaded regions. Which of the following two points is in the region
+   (1,2) or (2,1)? Answer this question for all three figures.
+
+::: {#fig-plot-regions layout-ncol=3}
+
+![Figure 1](pictures/shaded_a.png){#fig-shadea}
+
+![Figure 2](pictures/shaded_b.png){#fig-shadeb}
+
+![Figure 3](pictures/shaded_c.png){#fig-shadec}
+
+Where is the point.
+
 :::
-       
-### Plotting lines, using R
 
-The examples we discussed so far helped you understand how to draw equations
-like $y = kx + d$ by hand and to switch between the algebraic and geometric
-description of such equations. Of course you can use R to do such plots.
+### Exercise 3:
 
-We briefly discuss how. Let us generate some example data for the case of
-the first equation in exercise 1.
+Look at the following line
 
-```{r}
-#| code-fold: false
+![Figure 3](pictures/line_e.png){#fig-line_e}
 
-x <- 0:10      # generate values of x-coordinate
-y <- 2*x + 1   # generate values of y-coordinate
+1. What is the equation of this line? 
+2. What is the height of the this line at $x = 1$?
+3. Plot the line whose equation is $y = - \frac{1}{2}x + 4$
 
-plot(x,y, type = "l")
+## Computer exercises
 
-```
+Open the Jupyter notebook "name_book" and work on the exercises there. When
+you have done the exercises save your notebook and submit it.
 
-In this graph R chose the coordinate system automatically for the display of the data.
-Therefore the x coordinates start at 0 and the ticks increase in units of two whereas
-the y coordinate starts at 5 and increases in units of 5. We can change this manually
-by using the graphics parameters `xlim` and `ylim`. Let#s do this for our data
-
-```{r}
-#| code-fold: false
-
-plot(x,y, type = "l", xlim = c(0,10), ylim = c(0,21))
-```
-
-This looks more familiar. Now assume you want to show the ticks by units of 1. This
-can also be adjusted, using the plot parameters `xaxp` and `yaxp`. `xaxp` (X-axis) 
-and `yaxp` (Y-axis) arguments allow customizing where the ticks of each axis start 
-and end and the number of regions to divide the axis specifying vectors of the 
-form `c(start, end, number_regions)`. 
-
-```{r}
-#| code-fold: false
-
-plot(x,y, type = "l", xlim = c(0,10), ylim = c(0,21), 
-     xaxp = c(0,10,10), yaxp = c(0,21,21))
-```
-
-Finally, you might want to add a line to a scatterplot in some cases. For this
-case R provides the function `abline()` which adds a line to a scatterplot.
-
-Assume we have plotted our `x`and `y` values as points.
-
-```{r}
-#| code-fold: false
-
-plot(x,y, xlim = c(0,10), ylim = c(0,21), 
-     xaxp = c(0,10,10), yaxp = c(0,21,21), pch = 19)
-```
-
-Now we want to add a line with slope 2 and intercept 1. This would be implemented in R
-as follows:
-
-```{r}
-#| code-fold: false
-
-plot(x,y, xlim = c(0,10), ylim = c(0,21), 
-     xaxp = c(0,10,10), yaxp = c(0,21,21), pch = 19)
-abline(1,2)
-
-```
 
