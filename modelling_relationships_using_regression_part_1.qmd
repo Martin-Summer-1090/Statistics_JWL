@@ -1,4 +1,4 @@
-# Modelling relationships
+# Modelling relationships: Points, Lines and Scatterplots
 
 <!-- ## Contents  -->
 <!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
@@ -342,6 +342,68 @@ curve(1007 - 0.393*x,
 Location and scale are controlled by starting the curve not at $x=0$ but at $x=1900$. R then
 automatically adapts the scale by choosing appropriate units for $x$ and displaying not
 each single year.
+
+## Modelling relationships and making predictions
+
+With the understanding of the mathematics of points and lines you are now well prepared
+for the next big topic in this course: Prediction. An important aspect of data analysis is
+what given data can tell us about the future. In the next chapter we will learn about one of
+the most used methods for making predictions: Regression analysis. Regression analysis helps
+us to model how different variables depend on each other and how we can make predictions using
+our understanding of this relation.
+
+Relations between two variables are described in statistics using scatter plots. A famous example
+from the history of statistics is an anthropometric dataset assembled by one of the pioneers of
+Statistics, Charles Pearson^[Karl Pearson 1857 – 1936 was an English mathematician and biostatistician. He has been credited with establishing the discipline of mathematical statistics.He founded the world's first university statistics department at University College London in 1911, and contributed significantly to the field of biometrics and meteorology.
+![Karl Pearson](pictures/Karl_Pearson,_1912.jpg)].
+
+The data are in the JWL package and are called `pearson`. Lets store these data in a variable
+we call `dat` here:
+```{r}
+#| code-fold: false
+library(JWL)
+dat <- pearson
+```
+When we plot the heights of fathers and sons in one diagram, each pair - i.e. each row in dat - is
+a point and the set of all points plotted in this way is called a **scatter-plot**. When we
+give `dat`to R as an argument R will automatically produce a scatter-plot. We show the code here:
+
+```{r}
+#| code-fold: false
+
+plot(dat, 
+     pch = 19, 
+     cex = 0.3, 
+     xlab = "Father's height (inches)", 
+     ylab = "Son's height (inches)",
+     main = "Pearson's height data from 1903")
+abline(0,1, lty = 2)
+abline(v = 71.5, lty = 2, col = "blue")
+abline(v = 72.5, lty = 2, col = "blue")
+```
+Let me briefly explain the code. `plot(dat)` would produce a default scatter plot with R. Here I adjust a few graphical parameters to make the plot more readable: I do not have to explain again how `xlab`, `ylab` and `main` works. `pch = 19` makes the dots filled contrary to the hollow points
+of the default configuration and `cex = 0.9` makes them smaller than the default, so you
+can see the differences better.
+
+The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this
+case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases.
+One says that there is a *positive association* between the heights of the fathers and the heights of 
+the sons. The dashed diagonal line is the line of all ppoints where the son's father's height and the
+son's height are equal. If the father's height is close to the son#s height the points are close
+to the line.
+
+There is quiet some spread showing the the relationship is weak. Suppose for example that you
+have to guess the height of a son from a father's height. In the stripe bordered by the
+blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There
+is a lot of variability in the heights of the sons. You can see it in the scatter within the
+stripe. So even if you know the father's height there is still a lot of room for error.
+
+::: {.callout-important}
+If there is a strong association between two variables, then knowing one helps a lot in predicting the other. But when there is a weak association, information about one variable does not help much
+in guessing the other.
+:::
+
+
 
 ## Exercises:
 

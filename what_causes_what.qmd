@@ -70,25 +70,13 @@ plot(enrol_attend_dat$Enrolment, enrol_attend_dat$Attendance,
 abline(1,1, col = "blue")
 ```
 
-:::{.callout-note icon=false}
-
-### Now you try
-
-This is an excellent opportunity to refresh some of the R skills you have required in this
-course so far. The data that were used to produce this picture are in the JWL-package.
-
-1. Load the JWL package
-2. The dataset is called `enrol_attend_dat`. Use the R help function to study the
-   data an the meaning of the variables as well as the original data source.
-3. Can you write an R code reproducing the graphics? (Hint: Not everything you need to
-   reproduce this plot was contained in the lectures. Try to use an internet search to find
-   out for instance how to draw the blue line)
-
-:::
-
-
 In the graph you see the enrolment rate in primary school at the x-axes and the
-attendance rate on the y-axes. If all children who are enrolled would also attend
+attendance rate on the y-axes. Such a graph, showing the relation between two
+variables is called a **scatter plot**. We will learn about the details of scatter
+plots later in the course.
+
+To help you understand the picture think of the follwoing situation:
+If all children who are enrolled would also attend
 all the points would be on the blue line, showing all the points where the enrollment rate
 is equal to the attendance rate. In the data you see many observations where the attendance 
 rate is below the enrolment rate and these observations are quite heterogeneous.
@@ -130,18 +118,6 @@ axis(1, at = seq(500, 3500, by = 500))
 Indeed a study by @Hedgesetal1994 confirmed patterns like these. There is strong
 evidence that education spending and educational outcomes are positively correlated.
 Remember our discussion of measuring the relation between two variables in section 3.5?
-
-:::{.callout-note icon=false}
-
-### Now you try
-
-This is another excellent opportunity to refresh some of the R skills you have required in this
-course so far. The data that were used to produce this picture are in the JWL-package.
-
-The dataset is called `expenditure_outcome_dat`. Use R to compute the correlation coefficient
-between public and private per capita expenditure of education and the average harmonized learning outcome. Explain what this number means.
-
-:::
 
 But does this evidence support the conclusion that there is a causal relation between 
 increased educational spending and student outcomes? There is a straightforward reason why
@@ -370,20 +346,6 @@ survived when political power was transferred to a new government in the next el
 Although Santiago Levy was not prime minister any more, the new government continued the
 program under the new name Oppordunitades.
 
-## Exercises:
-
-1. Data from the polio vaccine studies discussed in the text suggest that in 1954, the
-   school districts in the NFIP trial and in the randomized controlled experiment had
-   similar exposure to the polio virus.
-     (a) The data also show that children in the two vaccine groups (for the randomized    controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table @tbl-salk-vaccine-field-trials confirm
-     this finding?
-     (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?
-     (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?
-     (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
-     (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What's wrong with these data?
-     
-2. The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of
-polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.
 
 ## Observational studies
 
@@ -512,9 +474,6 @@ Explain.
 
 :::
 
-## Exercises
-
-To be added.
 
 ## Can we ever conclude causation from observational data ?
 
@@ -547,6 +506,21 @@ bring an observational study as close as possible to the situation of a randomiz
 controlled experiment. All these techniques adjust in more or less sophisticated ways for 
 potential confounders. Most of these techniques are based on regression, a topic we
 study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.
+
+## Exercises:
+
+1. Data from the polio vaccine studies discussed in the text suggest that in 1954, the
+   school districts in the NFIP trial and in the randomized controlled experiment had
+   similar exposure to the polio virus.
+     (a) The data also show that children in the two vaccine groups (for the randomized    controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table @tbl-salk-vaccine-field-trials confirm
+     this finding?
+     (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?
+     (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?
+     (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
+     (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What's wrong with these data?
+     
+2. The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of
+polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.
 
 
 

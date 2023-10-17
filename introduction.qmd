@@ -614,121 +614,121 @@ course is called R. It is one of the most widely used and most powerful language
 and statistics. We will introduce you to the language and its use step by step as we go along and
 in parallel with the statistical concepts we develop.
 
-## Activities in the study center
+<!-- ## Activities in the study center -->
 
-### Visualizing the share of extremely poor people for different countries
+<!-- ### Visualizing the share of extremely poor people for different countries -->
 
-:::{.callout-caution collapse="true"}
-## Comment for Seitwerk
-Here we assume that students have a running R and R-Studio or R with Jupyter Notebook or
-Jupyter Lab installation on their
-laptops at the study center. We would give the code in a notebook with the code chunk
-shown in the source file, to play with.
+<!-- :::{.callout-caution collapse="true"} -->
+<!-- ## Comment for Seitwerk -->
+<!-- Here we assume that students have a running R and R-Studio or R with Jupyter Notebook or -->
+<!-- Jupyter Lab installation on their -->
+<!-- laptops at the study center. We would give the code in a notebook with the code chunk -->
+<!-- shown in the source file, to play with. -->
 
-While we need not pin down all the details of the computational infrastructure yet, we need
-a discussion how to integrate the computer instructions into the course and the material I have
-to prepare for that. I would very much prefer a minimalist solution with R and some kind of
-notebook but not more.
+<!-- While we need not pin down all the details of the computational infrastructure yet, we need -->
+<!-- a discussion how to integrate the computer instructions into the course and the material I have -->
+<!-- to prepare for that. I would very much prefer a minimalist solution with R and some kind of -->
+<!-- notebook but not more. -->
 
-:::
+<!-- ::: -->
 
-Lets go back to figure @fig-share-of-people-in-extreme-poverty-world for a moment. This
-figure has been created by the use of the computer. 
+<!-- Lets go back to figure @fig-share-of-people-in-extreme-poverty-world for a moment. This -->
+<!-- figure has been created by the use of the computer.  -->
 
-In the following box you see the computer code that has read the data from a file and then
-plotted the share for the world and for a particular country, say China. Don't worry if you do
-not (yet) understand the details of the code. Think of it as a language that tells the
-computer what to do with the data. You can edit the code and delete China and insert another
-country instead. If you click the green arrow at the upper right corner of the box the
-computer will run the code again and generate a new graphic. 
+<!-- In the following box you see the computer code that has read the data from a file and then -->
+<!-- plotted the share for the world and for a particular country, say China. Don't worry if you do -->
+<!-- not (yet) understand the details of the code. Think of it as a language that tells the -->
+<!-- computer what to do with the data. You can edit the code and delete China and insert another -->
+<!-- country instead. If you click the green arrow at the upper right corner of the box the -->
+<!-- computer will run the code again and generate a new graphic.  -->
 
-:::{.callout-caution collapse="true"}
-## Comment for Seitwerk
+<!-- :::{.callout-caution collapse="true"} -->
+<!-- ## Comment for Seitwerk -->
 
-The details of this will of course depend on the kind of notebook we use. We can use in principle
-three options. Option 1: Have an installation of Rstudio (https://www.rstudio.com/). RStudio is the
-most popular (and free) IDE for development of R code. In R Studio we can open quarto notebooks (qdm) and run code interactively there. Pro: Works seamlessly with my notes and enhances
-production efficiency. Con: You need to explain students the IDE in addition to R, though no big deal it is an additional complication. Option 2: Jupyter Notebook with an R kernel (ipynp). Pro: If
-JWE decides to work more with Jupyter notebooks on a broader base, seamless integration for this 
-strategy. Con: same as with R studio and just a tiny inch more awkward to produce for me. Option 3:
-Work in the R console only. Pro: No IDE or notebook. Con: perhaps a bit too difficult to use for
-students without Computer Science background.
-:::
+<!-- The details of this will of course depend on the kind of notebook we use. We can use in principle -->
+<!-- three options. Option 1: Have an installation of Rstudio (https://www.rstudio.com/). RStudio is the -->
+<!-- most popular (and free) IDE for development of R code. In R Studio we can open quarto notebooks (qdm) and run code interactively there. Pro: Works seamlessly with my notes and enhances -->
+<!-- production efficiency. Con: You need to explain students the IDE in addition to R, though no big deal it is an additional complication. Option 2: Jupyter Notebook with an R kernel (ipynp). Pro: If -->
+<!-- JWE decides to work more with Jupyter notebooks on a broader base, seamless integration for this  -->
+<!-- strategy. Con: same as with R studio and just a tiny inch more awkward to produce for me. Option 3: -->
+<!-- Work in the R console only. Pro: No IDE or notebook. Con: perhaps a bit too difficult to use for -->
+<!-- students without Computer Science background. -->
+<!-- ::: -->
 
-Try to play and experiment with the
-code in this way to see what happens. Soon you will know yourself how to make interesting
-and beautiful data visualizations yourself.
+<!-- Try to play and experiment with the -->
+<!-- code in this way to see what happens. Soon you will know yourself how to make interesting -->
+<!-- and beautiful data visualizations yourself. -->
 
-```{r}
-library(ggplot2)
+<!-- ```{r} -->
+<!-- library(ggplot2) -->
 
-demo_data <- read.csv("data/extreme_poverty/share-of-population-in-extreme-poverty.csv")
+<!-- demo_data <- read.csv("data/extreme_poverty/share-of-population-in-extreme-poverty.csv") -->
 
-names(demo_data) <- c("Country", "Code", "Year", "Share")
+<!-- names(demo_data) <- c("Country", "Code", "Year", "Share") -->
 
-pl_dat <- with(demo_data, demo_data[Country %in% c("World", "China") & Year >= 2000, ])
+<!-- pl_dat <- with(demo_data, demo_data[Country %in% c("World", "China") & Year >= 2000, ]) -->
 
-p <- ggplot(pl_dat, aes(x = Year, y = Share, color = Country)) +
-     geom_point() +
-     geom_line() +
-     xlab("")
-ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world-china.png")
-p
-```
+<!-- p <- ggplot(pl_dat, aes(x = Year, y = Share, color = Country)) + -->
+<!--      geom_point() + -->
+<!--      geom_line() + -->
+<!--      xlab("") -->
+<!-- ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world-china.png") -->
+<!-- p -->
+<!-- ``` -->
 
-### Guessing ages
+<!-- ### Guessing ages -->
 
-This is an exercise which needs the leadership of an instructor at the study center. It
-would be great to collect the data of the exercise in a readable file for later use in the
-course.
+<!-- This is an exercise which needs the leadership of an instructor at the study center. It -->
+<!-- would be great to collect the data of the exercise in a readable file for later use in the -->
+<!-- course. -->
 
-We have 10 photos of persons whose age is known to us but not to the students.
-We divide students into 10 groups A through J. Each group gets one of the photos. The students
-in each group are asked to estimate the age of the person in their photograph and write the 
-guess into a form. Each group must come up with a single estimate.
+<!-- We have 10 photos of persons whose age is known to us but not to the students. -->
+<!-- We divide students into 10 groups A through J. Each group gets one of the photos. The students -->
+<!-- in each group are asked to estimate the age of the person in their photograph and write the  -->
+<!-- guess into a form. Each group must come up with a single estimate. -->
 
-Explain that each group will be estimating the ages of all 10 photos and that groups are competing
-to get the lowest error. Each group passes its card to the next group (A to B, B to C, etc. 
-J back to A) and estimates the age of the new photo. This is continued until each group has seen
-all photos.
+<!-- Explain that each group will be estimating the ages of all 10 photos and that groups are competing -->
+<!-- to get the lowest error. Each group passes its card to the next group (A to B, B to C, etc.  -->
+<!-- J back to A) and estimates the age of the new photo. This is continued until each group has seen -->
+<!-- all photos. -->
 
-The data are written in a table where the rows are groups and the columns are card numbers. We
-can discuss the expected accuracy of the guesses (within  how many years do you think you can
-guess). Then start with card 1 and ask groups to give their guess, then reveal the true age and
-write it at the bottom margin of the first column.
+<!-- The data are written in a table where the rows are groups and the columns are card numbers. We -->
+<!-- can discuss the expected accuracy of the guesses (within  how many years do you think you can -->
+<!-- guess). Then start with card 1 and ask groups to give their guess, then reveal the true age and -->
+<!-- write it at the bottom margin of the first column. -->
 
-Introduce the concept of error  - guessed age minus actual age - and wrote the errors in place
-of the guessed ages. Then fill the whole table. Ask the students to compute the 
-absolute average error. 
+<!-- Introduce the concept of error  - guessed age minus actual age - and wrote the errors in place -->
+<!-- of the guessed ages. Then fill the whole table. Ask the students to compute the  -->
+<!-- absolute average error.  -->
 
-Students get an idea about: uncertainty, empirical analysis and data display. There are many
-statistical ideas in this game and the data can be taken up throughout the course (variance, bias, experimental design, randomization, linear regression, two-way tables, statistical significance).
+<!-- Students get an idea about: uncertainty, empirical analysis and data display. There are many -->
+<!-- statistical ideas in this game and the data can be taken up throughout the course (variance, bias, experimental design, randomization, linear regression, two-way tables, statistical significance). -->
 
-To illustrate the idea more precisely:
+<!-- To illustrate the idea more precisely: -->
 
-For each card your group is given, estimate the age of the person on  the card and write your guess on the table below in the row corresponding to this numbered card. Later students are told the
-true ages and they can compute the error. The error is defined as estimated minus actual age.
+<!-- For each card your group is given, estimate the age of the person on  the card and write your guess on the table below in the row corresponding to this numbered card. Later students are told the -->
+<!-- true ages and they can compute the error. The error is defined as estimated minus actual age. -->
 
-| Card | Estimated | Actual | Error |
-|------|:--------- |:-------|:------|
-| 1    |           |        |       |
-| 2    |           |        |       |
-| 3    |           |        |       |
-| 4    |           |        |       |
-| 5    |           |        |       |
-| 6    |           |        |       |
-| 7    |           |        |       |
-| 8    |           |        |       |
-| 9    |           |        |       |
-| 10   |           |        |       |
+<!-- | Card | Estimated | Actual | Error | -->
+<!-- |------|:--------- |:-------|:------| -->
+<!-- | 1    |           |        |       | -->
+<!-- | 2    |           |        |       | -->
+<!-- | 3    |           |        |       | -->
+<!-- | 4    |           |        |       | -->
+<!-- | 5    |           |        |       | -->
+<!-- | 6    |           |        |       | -->
+<!-- | 7    |           |        |       | -->
+<!-- | 8    |           |        |       | -->
+<!-- | 9    |           |        |       | -->
+<!-- | 10   |           |        |       | -->
 
-: Example for group card, guessing ages
+<!-- : Example for group card, guessing ages -->
 
 
-### Collect data from students.
+<!-- ### Collect data from students. -->
 
-One data collection exercise, which might be fun here is to collect the height and hand span from 
-students in the class. Later when we teach regression we can compare to the data Pearson
-collected on university students over 100 years ago.
+<!-- One data collection exercise, which might be fun here is to collect the height and hand span from  -->
+<!-- students in the class. Later when we teach regression we can compare to the data Pearson -->
+<!-- collected on university students over 100 years ago. -->
 
 

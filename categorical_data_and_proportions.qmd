@@ -289,7 +289,11 @@ Such a visualization could then look for example like this:
 #|          260 infants died in the first year of their life.
 
 library(waffle)
-waffle(c("Death" = 260, "Survived" = 740), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
+
+waffle(c("Death" = 260, "Survived" = 740), 
+       rows = 20, colors = c("#FD6F6F", "#93FB98"), 
+       use_glyph = "child", 
+       glyph_size = 4, equal = F)
 ```
 Here you visualize the numbers as differently colored crowds. There are 20 rows with 50
 people symbols each. This multiplies to a crowd of 1000 people. It makes the magnitude

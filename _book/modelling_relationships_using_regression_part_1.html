@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics - 6&nbsp; Modelling relationships</title>
+<title>Statistics - 6&nbsp; Modelling relationships: Points, Lines and Scatterplots</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression_part_1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./modelling_relationships_using_regression_part_1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships: Points, Lines and Scatterplots</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -193,13 +193,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression_part_1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships: Points, Lines and Scatterplots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression_part_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Relationships using Regression Part 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling relationship: Prediction using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -252,13 +252,14 @@ div.csl-indent {
   <li><a href="#the-algebraic-equation-for-a-line" id="toc-the-algebraic-equation-for-a-line" class="nav-link" data-scroll-target="#the-algebraic-equation-for-a-line"><span class="header-section-number">6.2.5</span> The algebraic equation for a line</a></li>
   <li><a href="#plotting-lines-using-r" id="toc-plotting-lines-using-r" class="nav-link" data-scroll-target="#plotting-lines-using-r"><span class="header-section-number">6.2.6</span> Plotting lines, using R</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.3</span> Exercises:</a>
+  <li><a href="#modelling-relationships-and-making-predictions" id="toc-modelling-relationships-and-making-predictions" class="nav-link" data-scroll-target="#modelling-relationships-and-making-predictions"><span class="header-section-number">6.3</span> Modelling relationships and making predictions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises:</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">6.3.1</span> Exercise 1:</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">6.3.2</span> Exercise 2:</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">6.3.3</span> Exercise 3:</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">6.4.1</span> Exercise 1:</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">6.4.2</span> Exercise 2:</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">6.4.3</span> Exercise 3:</a></li>
   </ul></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">6.4</span> Computer exercises</a></li>
+  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">6.5</span> Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +268,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships: Points, Lines and Scatterplots</span></h1>
 </div>
 
 
@@ -632,10 +633,51 @@ Now you try
 <p>Location and scale are controlled by starting the curve not at <span class="math inline">\(x=0\)</span> but at <span class="math inline">\(x=1900\)</span>. R then automatically adapts the scale by choosing appropriate units for <span class="math inline">\(x\)</span> and displaying not each single year.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.3</span> Exercises:</h2>
-<section id="exercise-1" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">6.3.1</span> Exercise 1:</h3>
+<section id="modelling-relationships-and-making-predictions" class="level2 page-columns page-full" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="modelling-relationships-and-making-predictions"><span class="header-section-number">6.3</span> Modelling relationships and making predictions</h2>
+<p>With the understanding of the mathematics of points and lines you are now well prepared for the next big topic in this course: Prediction. An important aspect of data analysis is what given data can tell us about the future. In the next chapter we will learn about one of the most used methods for making predictions: Regression analysis. Regression analysis helps us to model how different variables depend on each other and how we can make predictions using our understanding of this relation.</p>
+<div class="page-columns page-full"><p>Relations between two variables are described in statistics using scatter plots. A famous example from the history of statistics is an anthropometric dataset assembled by one of the pioneers of Statistics, Charles Pearson<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Karl Pearson 1857 – 1936 was an English mathematician and biostatistician. He has been credited with establishing the discipline of mathematical statistics.He founded the world’s first university statistics department at University College London in 1911, and contributed significantly to the field of biometrics and meteorology. <img src="pictures/Karl_Pearson,_1912.jpg" class="img-fluid" alt="Karl Pearson"></p></li></div></div>
+<p>The data are in the JWL package and are called <code>pearson</code>. Lets store these data in a variable we call <code>dat</code> here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> pearson</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we plot the heights of fathers and sons in one diagram, each pair - i.e.&nbsp;each row in dat - is a point and the set of all points plotted in this way is called a <strong>scatter-plot</strong>. When we give <code>dat</code>to R as an argument R will automatically produce a scatter-plot. We show the code here:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">71.5</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">72.5</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let me briefly explain the code. <code>plot(dat)</code> would produce a default scatter plot with R. Here I adjust a few graphical parameters to make the plot more readable: I do not have to explain again how <code>xlab</code>, <code>ylab</code> and <code>main</code> works. <code>pch = 19</code> makes the dots filled contrary to the hollow points of the default configuration and <code>cex = 0.9</code> makes them smaller than the default, so you can see the differences better.</p>
+<p>The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases. One says that there is a <em>positive association</em> between the heights of the fathers and the heights of the sons. The dashed diagonal line is the line of all ppoints where the son’s father’s height and the son’s height are equal. If the father’s height is close to the son#s height the points are close to the line.</p>
+<p>There is quiet some spread showing the the relationship is weak. Suppose for example that you have to guess the height of a son from a father’s height. In the stripe bordered by the blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There is a lot of variability in the heights of the sons. You can see it in the scatter within the stripe. So even if you know the father’s height there is still a lot of room for error.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If there is a strong association between two variables, then knowing one helps a lot in predicting the other. But when there is a weak association, information about one variable does not help much in guessing the other.</p>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises:</h2>
+<section id="exercise-1" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">6.4.1</span> Exercise 1:</h3>
 <ol type="1">
 <li><p>Plot the graphs of the following equations <span class="math display">\[\begin{eqnarray}
 y &amp;=&amp; 2 x + 1 \\
@@ -651,8 +693,8 @@ y &amp;=&amp; \frac{1}{2}x + 2
 </ol></li>
 </ol>
 </section>
-<section id="exercise-2" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">6.3.2</span> Exercise 2:</h3>
+<section id="exercise-2" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">6.4.2</span> Exercise 2:</h3>
 <ol type="1">
 <li><p>Three out of the following four points lie on a line. Which one does not? It is above or below the line? <span class="math inline">\((0,0), (0.5,0.5), (1,2), (2.5, 2.5)\)</span> You can try to answer this with pencil and paper or using R. Try both ways.</p></li>
 <li><p>The table below shows four points. In each case the y-coordinate is computed from the x-coordinate by the rule <span class="math inline">\(y = 2x + 1\)</span>. Fill in the blanks and then plot the four points. What can you say about them?</p></li>
@@ -718,8 +760,8 @@ y &amp;=&amp; \frac{1}{2}x + 2
 </figure>
 </div>
 </section>
-<section id="exercise-3" class="level3" data-number="6.3.3">
-<h3 data-number="6.3.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">6.3.3</span> Exercise 3:</h3>
+<section id="exercise-3" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">6.4.3</span> Exercise 3:</h3>
 <p>Look at the following line</p>
 <div id="fig-line_e" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -734,8 +776,8 @@ y &amp;=&amp; \frac{1}{2}x + 2
 </ol>
 </section>
 </section>
-<section id="computer-exercises" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">6.4</span> Computer exercises</h2>
+<section id="computer-exercises" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">6.5</span> Computer exercises</h2>
 <p>Open the Jupyter notebook “name_book” and work on the exercises there. When you have done the exercises save your notebook and submit it.</p>
 
 
@@ -989,7 +1031,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./modelling_relationships_using_regression_part_2.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Relationships using Regression Part 2</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling relationship: Prediction using regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

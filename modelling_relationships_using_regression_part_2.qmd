@@ -1,8 +1,4 @@
-# Modelling Relationships using Regression Part 2
-
-## Contents
+# Modelling relationship: Prediction using regression
 
 
-
-## Outcome 
 

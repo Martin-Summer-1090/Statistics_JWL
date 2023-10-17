@@ -191,7 +191,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression_part_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -247,10 +247,9 @@ div.csl-indent {
   <li><a href="#field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" id="toc-field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies" class="nav-link" data-scroll-target="#field-trials-for-early-polio-vaccines-in-the-us-in-the-1950ies"><span class="header-section-number">5.3.1</span> Field trials for early polio vaccines in the US in the 1950ies</a></li>
   <li><a href="#school-subsidies-for-the-poor-the-mexican-progresa-poverty-program" id="toc-school-subsidies-for-the-poor-the-mexican-progresa-poverty-program" class="nav-link" data-scroll-target="#school-subsidies-for-the-poor-the-mexican-progresa-poverty-program"><span class="header-section-number">5.3.2</span> School subsidies for the poor: The Mexican progresa poverty program</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.4</span> Exercises:</a></li>
-  <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.5</span> Observational studies</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.6</span> Exercises</a></li>
-  <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.7</span> Can we ever conclude causation from observational data ?</a></li>
+  <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.4</span> Observational studies</a></li>
+  <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.6</span> Exercises:</a></li>
   </ul>
 </nav>
     </div>
@@ -303,25 +302,8 @@ div.csl-indent {
 <p><img src="what_causes_what_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is an excellent opportunity to refresh some of the R skills you have required in this course so far. The data that were used to produce this picture are in the JWL-package.</p>
-<ol type="1">
-<li>Load the JWL package</li>
-<li>The dataset is called <code>enrol_attend_dat</code>. Use the R help function to study the data an the meaning of the variables as well as the original data source.</li>
-<li>Can you write an R code reproducing the graphics? (Hint: Not everything you need to reproduce this plot was contained in the lectures. Try to use an internet search to find out for instance how to draw the blue line)</li>
-</ol>
-</div>
-</div>
-<p>In the graph you see the enrolment rate in primary school at the x-axes and the attendance rate on the y-axes. If all children who are enrolled would also attend all the points would be on the blue line, showing all the points where the enrollment rate is equal to the attendance rate. In the data you see many observations where the attendance rate is below the enrolment rate and these observations are quite heterogeneous.</p>
+<p>In the graph you see the enrolment rate in primary school at the x-axes and the attendance rate on the y-axes. Such a graph, showing the relation between two variables is called a <strong>scatter plot</strong>. We will learn about the details of scatter plots later in the course.</p>
+<p>To help you understand the picture think of the follwoing situation: If all children who are enrolled would also attend all the points would be on the blue line, showing all the points where the enrollment rate is equal to the attendance rate. In the data you see many observations where the attendance rate is below the enrolment rate and these observations are quite heterogeneous.</p>
 <div class="page-columns page-full"><p>Another aspect that was debated is that enrollment does not necessarily mean that children actually learn something or that they learn at a sufficient quality. This problem of poor learning outcomes in many parts of the globe was demonstrated in many cases.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;For details on the evidence you can for instance look at chapter 4 in the excellent book by <span class="citation" data-cites="BanerjeeDuflo2012">Banerjee and Duflo (<a href="references.html#ref-BanerjeeDuflo2012" role="doc-biblioref">2012</a>)</span></p></li></div></div>
 <p>Does this mean these policies are wrong, as their critics claim? They point out that there is no point in all this educational supply if there is no demand for it, taking lack of attendance and lack of sufficient learning outcomes as evidence. If there were demand, these critics argue, supply would follow and the demand arises by itself as soon as there are high enough returns to education.</p>
 <p>Why can’t controversies like these not simply be resolved by looking at the data?</p>
@@ -345,20 +327,6 @@ Now you try
 </div>
 </div>
 <p>Indeed a study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span> confirmed patterns like these. There is strong evidence that education spending and educational outcomes are positively correlated. Remember our discussion of measuring the relation between two variables in section 3.5?</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is another excellent opportunity to refresh some of the R skills you have required in this course so far. The data that were used to produce this picture are in the JWL-package.</p>
-<p>The dataset is called <code>expenditure_outcome_dat</code>. Use R to compute the correlation coefficient between public and private per capita expenditure of education and the average harmonized learning outcome. Explain what this number means.</p>
-</div>
-</div>
 <p>But does this evidence support the conclusion that there is a causal relation between increased educational spending and student outcomes? There is a straightforward reason why this can not be the case.</p>
 <div class="page-columns page-full"><p>We compare very different students or schools across countries in the scatter plot we produced before. In the study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span> the variables that were related were students from different households across different schools. In the plot we show here it is students from different households across different countries. For the general point we want to make here, this is immaterial. What matters is that simply comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;There are whole websites documenting examples where two variables are highly correlated but it is obvious that there can not be a causal relation. These examples are quite funny. One site you can find for example here: https://tylervigen.com/spurious-correlations Try it out!</p></li></div></div>
 <p>Statisticians have summarized this observation in the mantra that <strong>“correlation does not imply causation”</strong>. If we want to establish a causal relation from data we need to work harder.</p>
@@ -483,22 +451,8 @@ Now you try
 <p>The evidence for the success of the Progresa Program also helped that the program survived when political power was transferred to a new government in the next election. Although Santiago Levy was not prime minister any more, the new government continued the program under the new name Oppordunitades.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.4</span> Exercises:</h2>
-<ol type="1">
-<li>Data from the polio vaccine studies discussed in the text suggest that in 1954, the school districts in the NFIP trial and in the randomized controlled experiment had similar exposure to the polio virus.
-<ol type="a">
-<li>The data also show that children in the two vaccine groups (for the randomized controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table <a href="#tbl-salk-vaccine-field-trials">Table&nbsp;<span>5.1</span></a> confirm this finding?</li>
-<li>The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?</li>
-<li>The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?</li>
-<li>In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?</li>
-<li>To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What’s wrong with these data?</li>
-</ol></li>
-<li>The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.</li>
-</ol>
-</section>
-<section id="observational-studies" class="level2 page-columns page-full" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">5.5</span> Observational studies</h2>
+<section id="observational-studies" class="level2 page-columns page-full" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="observational-studies"><span class="header-section-number">5.4</span> Observational studies</h2>
 <p>Controlled experiments are different from <strong>observational</strong> studies. In a controlled experiment the investigator decides who will be in the treatment group and who will be in the control group. In an observational study, by contrast, the investigator can just observe what happens and he has no control over assigning subjects to different groups. In an observational study the subjects assign themselves to treatment and control.</p>
 <p>This terminology can be confusing because it uses the word control in two meanings: On the one hand, as we discussed in the previous sections a control is a subject who did not get the treatment. A controlled experiment is a study where the investigator decides who will be in the treatment group and who will be in the control group.</p>
 <p>Going back to studies on the effects of smoking, which we discussed earlier in this lecture, we can see that such studies must necessarily be observational. We can not make some people smoke for a decade or more just to fulfill a statistically satisfactory research design.</p>
@@ -615,12 +569,8 @@ Now you try
 </div>
 </div>
 </section>
-<section id="exercises-1" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">5.6</span> Exercises</h2>
-<p>To be added.</p>
-</section>
-<section id="can-we-ever-conclude-causation-from-observational-data" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.7</span> Can we ever conclude causation from observational data ?</h2>
+<section id="can-we-ever-conclude-causation-from-observational-data" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</h2>
 <p><span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> discusses a list of criteria first suggested by the British applied statistician Austin Bradford Hill in 1965. These criteria should be considered before concluding that an observed link between an outcome and an exposure was causal. These criteria were much debated and we show here a version of the list presented in <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> and which is due to Jermey Howick - a clinical epidemiologist form the University of Oxford in the UK - and his colleagues.</p>
 <p>These criteria are separated in three categories: Direct, mechanistic and parallel evidence. I reproduce the list from the book of <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> here:</p>
 <ul>
@@ -642,6 +592,20 @@ Now you try
 </ul></li>
 </ul>
 <p>The appropriate handling of causation is still a contested field of statistics. There are various techniques that are based on the idea to use certain techniques to bring an observational study as close as possible to the situation of a randomized controlled experiment. All these techniques adjust in more or less sophisticated ways for potential confounders. Most of these techniques are based on regression, a topic we study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.</p>
+</section>
+<section id="exercises" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.6</span> Exercises:</h2>
+<ol type="1">
+<li>Data from the polio vaccine studies discussed in the text suggest that in 1954, the school districts in the NFIP trial and in the randomized controlled experiment had similar exposure to the polio virus.
+<ol type="a">
+<li>The data also show that children in the two vaccine groups (for the randomized controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table <a href="#tbl-salk-vaccine-field-trials">Table&nbsp;<span>5.1</span></a> confirm this finding?</li>
+<li>The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?</li>
+<li>The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?</li>
+<li>In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?</li>
+<li>To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What’s wrong with these data?</li>
+</ol></li>
+<li>The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -909,7 +873,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./modelling_relationships_using_regression_part_1.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships part 1: Some basic mathematical ideas</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
