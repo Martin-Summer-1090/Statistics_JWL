@@ -472,7 +472,7 @@ Look at the following line
 
 ## Computer exercises
 
-Open the Jupyter notebook "name_book" and work on the exercises there. When
+Open the Jupyter notebook "points_and_lines.ipynb" and work on the exercises there. When
 you have done the exercises save your notebook and submit it.
 
 
