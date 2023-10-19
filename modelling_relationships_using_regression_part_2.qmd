@@ -48,3 +48,54 @@ red point to the red line is the residual.
 The idea of prediction using models of straight lines is to make these residuals small. We
 will learn a method how to do this. This approach to prediction is called regression and we
 will learn how it works in this chapter.
+
+## Correlation
+
+In the beginning of this lecture we studied the example of infant mortality. 
+Let us first study a scatter plot which plots the number of children per woman
+against the infant mortality rate across countries in the world in the year 2000.
+
+```{r}
+library(JWL)
+dat <- infant_mortality_data
+
+dat_2000 <- dat[dat$Year == 2000, ]
+
+plot(dat_2000$Children, dat_2000$Mortality,
+     yaxt = "n",
+     xlab = "Children per woman",
+     ylab = "Infant mortality",
+     pch = 19,
+     cex = 0.5)
+axis(2, at=pretty(dat_2000$Mortality), lab=paste0(pretty(dat_2000$Mortality) * 100, " %"), las=TRUE)
+```
+
+Notice the positive association in the data. The scatter of points is sloping upwards,
+indicating that a higher number of children per woman tends to go along with
+a higher infant mortality rate.
+
+```{r}
+data <- child_mortality_average_schooling_of_women
+
+data_2020 <- data[data$Year == 2020, ]
+
+plot(data_2020$YEW15, data_2020$MR,
+     xlab = "Average years of schooling for women",
+     ylab = "Child mortality",
+     pch = 19,
+     cex = 0.5)
+```
+
+This is an example of a negative association.
+
+Example of no correlation:
+
+```{r}
+x <- rnorm(1000)
+y <- rnorm(1000)
+
+plot(x,y,
+     pch = 19,
+     cex = 0.5)
+```
+
