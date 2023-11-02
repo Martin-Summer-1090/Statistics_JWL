@@ -19,7 +19,7 @@ abline(0,1, lty = 2)
 
 We discussed how we could use the positive association in this scatter-plot to 
 predict the height of a son from the height of the father. One intuition might be
-to use the straight dashed line that run along the diagonal. If we would use this
+to use the straight dashed line that runs along the diagonal. If we would use this
 line as a model for prediction, each adult son would be predicted to show the same 
 height as his father. But we can do better than that and improve on this choice.
 
@@ -74,6 +74,11 @@ Notice the positive association in the data. The scatter of points is sloping up
 indicating that a higher number of children per woman tends to go along with
 a higher infant mortality rate.
 
+Let's look at another example, where we plot the average years of schooling for 
+women on the x-axis and child mortality^[Remember from the section on counts and categorical data that child mortality is the rate of children who die before their fifth birthday. Infant mortality in contrast is the rate of children dying before their first birthday.] on the y-axis. Here we see a negative correlation. Child mortality across countries in a given year, here the year 2020, tends to be negatively
+associated with the average years of schooling of women. In such cases we speak of a
+negative correlation.
+
 ```{r}
 data <- child_mortality_average_schooling_of_women
 
@@ -86,16 +91,119 @@ plot(data_2020$YEW15, data_2020$MR,
      cex = 0.5)
 ```
 
-This is an example of a negative association.
+The **correlation coefficient** measures how tightly a scatterplot is clustered around
+a straight line. The correlation coefficient is therefore 
+called a measure of linear association. It is usually expressed shorthand as
+**correlation** and often abbreviated by the letter $r$.
 
-Example of no correlation:
+Here are some mathematical properties of correlation which we will observe
+by simulation in a next step.
+
+::: {.callout-important}
+## Mathematical properties of correlation
+
+1. The correlation coefficient $r$ is a number between -1 and +1.
+2. $r$ measures the extend to which the scatter plot clusters around a straight line.
+3. $r=1$ if the scatter plot is a straight line sloping upwards and $r = -1$ if the
+   scatter plot is a straight line sloping downwards
+:::
+
+### The correlation coefficient
+
+R has a built in function for computing the correlation coefficient. This function is
+called `cor()` and takes the $x$ and the $y$ values of a scatter plot as arguments. So, for
+example, take the data on children per woman and infant mortality.
+
+We read the data from the `JWL`package and store them in an object which we call `dat`.
 
 ```{r}
-x <- rnorm(1000)
-y <- rnorm(1000)
+#| code-fold: false
 
-plot(x,y,
-     pch = 19,
-     cex = 0.5)
+library(JWL)
+dat <- infant_mortality_data
+
 ```
 
+Let's check the variable names. 
+
+```{r}
+#| code-fold: false
+names(dat)
+```
+
+We filter the data for the year 2000 and store these data in a new object called `dat_2000`
+
+```{r}
+#| code-fold: false
+
+dat_2000 <- dat[dat$Year == 2000, ]
+```
+
+Now we compute the correlation between the average number of children per
+woman `Children` and the child mortality rate `Mortality`, where each data-point
+corresponds to a particular country around the world.
+
+```{r}
+#| code-fold: false
+
+cor(dat_2000$Children, dat_2000$Mortality)
+```
+
+indicating a strong positive correlation. 
+
+Now let us use a function, which I have written myself using R which I call
+`r_scatter`. This function takes the correlation coefficient as an argument and
+produces a scatter plot. We have already learned in chapter 4 how we can write
+our own R functions, but let us not go into the details of the
+`r_scatter`function for now.
+
+```{r}
+r_scatter <- function(r, n = 1000){
+  
+  x <- rnorm(n)
+  z <- rnorm(n)
+  y <- r*x + sqrt(1-r^2)*z
+  
+  plot(x,y,
+     xlab = "x",
+     ylab = "y",
+     main = paste(c("Correlation coefficient is", r), collapse = " "),
+     pch = 19,
+     cex = 0.5)
+  
+}
+```
+
+Now we call `r_scatter` a few times to see what the correlation coefficient does.
+
+```{r}
+#| code-fold: false
+
+r_scatter(0.9)
+```
+
+```{r}
+#| code-fold: false
+
+r_scatter(0.25)
+```
+
+```{r}
+#| code-fold: false
+
+r_scatter(0)
+```
+
+```{r}
+#| code-fold: false
+
+r_scatter( -0.7)
+```
+
+```{r}
+#| code-fold: false
+
+r_scatter(- 0.98)
+```
+
+### Computing r
