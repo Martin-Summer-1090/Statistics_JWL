@@ -380,20 +380,3 @@ $r$ is a measure of clustering along a line. This is often referred to by callin
 $r$ a measure of linear association. Note that data are often associated strongly but
 not necessarily along a line. In such cases $r$ would show a weak association only.
 
-Take for instance the following data which show on the $x$-axis GDP per capita for many
-countries around the globe and on the $y$-axis the per capita emissions of CO2 in the
-year 2018.
-```{r}
-library(JWL)
-emissions_data <- emissions[(emissions$Year == 2018 & emissions$GDPpc < 100000), ]
-
-plot(emissions_data$GDPpc, emissions_data$CO2pc,
-     xlab = "GDP per capita",
-     ylab = "CO2 emissions per capita",
-     main = "CO2 emissions per capita vs. GDP per capita, 2018",
-     pch = 19,
-     cex = 0.5)
-
-cor(emissions_data$GDPpc, emissions_data$CO2pc)
-```
-
