@@ -227,6 +227,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#the-correlation-coefficient" id="toc-the-correlation-coefficient" class="nav-link" data-scroll-target="#the-correlation-coefficient"><span class="header-section-number">7.1.1</span> The correlation coefficient</a></li>
   <li><a href="#computing-r" id="toc-computing-r" class="nav-link" data-scroll-target="#computing-r"><span class="header-section-number">7.1.2</span> Computing r</a></li>
+  <li><a href="#properties-of-r" id="toc-properties-of-r" class="nav-link" data-scroll-target="#properties-of-r"><span class="header-section-number">7.1.3</span> Properties of r</a></li>
+  <li><a href="#r-is-a-measure-of-clustering-along-a-line." id="toc-r-is-a-measure-of-clustering-along-a-line." class="nav-link" data-scroll-target="#r-is-a-measure-of-clustering-along-a-line."><span class="header-section-number">7.1.4</span> r is a measure of clustering along a line.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -381,25 +383,34 @@ Mathematical properties of correlation
 </div>
 </div>
 <p>indicating a strong positive correlation.</p>
-<p>Now let us use a function, which I have written myself using R which I call <code>r_scatter</code>. This function takes the correlation coefficient as an argument and produces a scatter plot. We have already learned in chapter 4 how we can write our own R functions, but let us not go into the details of the <code>r_scatter</code>function for now.</p>
+<p>Now let us use a function, which we call <code>r_scatter</code> to explore how the correlation coefficient shapes a scatter plot. This is an excellent opportunity to refresh our knowledge of how to write your own functions in R.</p>
+<p>First, remember that each function is an R object and has a name. We already decided to call the function <code>r_scatter</code>. Then the syntax is to write <code>function()</code> and put the function arguments within the paranthesis.</p>
+<p>Here we have two arguments, the correlation coefficient - let us call it according to the convention <span class="math inline">\(r\)</span> - and the number of data points we want to consider. We call this number <code>n</code> and assign a default value to it, let’s say 1000.</p>
+<p>Next we have to write the function body between <code>{}</code>. This is the part containing the actual instructions.</p>
+<p>First we create two vectors of length <span class="math inline">\(n\)</span> of values <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> from a normal distribution with mean 0 and standard deviation 1. This is achieved by the r function <code>rnorm(n)</code>. Note that n is a function argument and since we have set+ a default value of n, unless specified otherwise R will set n to 1000.</p>
+<p>Next we use a mathematical fact, which we do not explain here in detail. When <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have the same standard deviation then the variable <span class="math inline">\(y\)</span> given by <span class="math display">\[\begin{equation}
+y = r x + \sqrt{1 - r^2} z
+\end{equation}\]</span> will have correlation coefficient <span class="math inline">\(r\)</span> with <span class="math inline">\(x\)</span>. Thus we can implement this formula in the function body, leaving <span class="math inline">\(r\)</span> unspecified. It is the function argument of <code>r_scatter</code> and will be specified by you when you call the function with a specific <span class="math inline">\(r\)</span>.</p>
+<p>Then we do a scatterplot of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> which is the output of the function. The function will always render the last expression in <code>{}</code> as the output.</p>
+<p>This is how the code looks like in its entirety:</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>r_scatter <span class="ot">&lt;-</span> <span class="cf">function</span>(r, <span class="at">n =</span> <span class="dv">1000</span>){</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> r<span class="sc">*</span>x <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>r<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>z</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(x,y,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"y"</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"Correlation coefficient is"</span>, r), <span class="at">collapse =</span> <span class="st">" "</span>),</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n) <span class="co"># create n observations from a standard normal distribution</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n) <span class="co"># create n observations from a standard normal distribution</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> r<span class="sc">*</span>x <span class="sc">+</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">-</span>r<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>z <span class="co"># implement the formula discussed in text.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># do a scatter plot of x and y</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(x,y,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"y"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"Correlation coefficient is"</span>, r), <span class="at">collapse =</span> <span class="st">" "</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we call <code>r_scatter</code> a few times to see what the correlation coefficient does.</p>
 <div class="cell">
@@ -433,8 +444,295 @@ Mathematical properties of correlation
 </div>
 </div>
 </section>
-<section id="computing-r" class="level3" data-number="7.1.2">
+<section id="computing-r" class="level3 page-columns page-full" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="computing-r"><span class="header-section-number">7.1.2</span> Computing r</h3>
+<p>How does <code>cor()</code> compute the correlation coefficient? We do not give a mathematical derivation here. One way to explain the computation is to say that</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Formula for <span class="math inline">\(r\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(r\)</span> is the <strong>average of the products of the two variables</strong> when both variables are measured in <strong>standard units</strong> or z-scores.</p>
+</div>
+</div>
+<p>Let’s do a simple example in R to explain the computation. Consider the follwoing toy data</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">13</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">13</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>To convert into standard units we have to subtract the mean from each observation and divide by the standard deviation. You should be able to verify for yourself that the mean of <span class="math inline">\(x\)</span> is 4 and the standard deviation is 2 and for <span class="math inline">\(y\)</span> the corresponding values are 7 and 4.</p>
+<p>Doing this operation on the values in our table will give us:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(x,y, <span class="at">x_su =</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>)), <span class="at">y_su =</span> (y<span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">/</span>(<span class="fu">sd</span>(y)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">x_su</th>
+<th style="text-align: right;">y_su</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-1.5</td>
+<td style="text-align: right;">-0.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">-0.5</td>
+<td style="text-align: right;">0.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">-1.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Finally we have to add the product of the standardized values <span class="math inline">\(x_{su}\)</span> and <span class="math inline">\(y_{su}\)</span> to get</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(x,y, <span class="at">x_su =</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>)), <span class="at">y_su =</span> (y<span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">/</span>(<span class="fu">sd</span>(y)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>)), <span class="at">xy_su =</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x))<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>))<span class="sc">*</span>(y<span class="sc">-</span> <span class="fu">mean</span>(y))<span class="sc">/</span>(<span class="fu">sd</span>(y)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">5</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">x</th>
+<th style="text-align: right;">y</th>
+<th style="text-align: right;">x_su</th>
+<th style="text-align: right;">y_su</th>
+<th style="text-align: right;">xy_su</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">-1.5</td>
+<td style="text-align: right;">-0.5</td>
+<td style="text-align: right;">0.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">-0.5</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">-0.25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.0</td>
+<td style="text-align: right;">0.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">-1.5</td>
+<td style="text-align: right;">-0.75</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">2.25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Taking the average across these values gives <span class="math inline">\(r\)</span>. Thus we get <span class="math display">\[\begin{equation}
+\frac{0.75-0.25+0.00-0.75+2.25}{5} = 0.40
+\end{equation}\]</span></p>
+<p>Now check this against <code>cor()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4</code></pre>
+</div>
+</div>
+<p>Let’s do a scatter plot of the data:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">nx =</span> <span class="dv">2</span>, <span class="at">ny =</span> <span class="dv">2</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, </span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"y"</span>,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Scatter plot toy example"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="dv">4</span>)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">4.1</span>, <span class="at">y =</span> <span class="fl">6.6</span>, </span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"0"</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="fl">8.4</span>, </span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"-0.25"</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="fl">4.4</span>, </span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"0.75"</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">1.6</span>, </span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"-0.75"</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">7</span>, <span class="at">y =</span> <span class="fl">12.4</span>, </span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"2.25"</span>)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">2.5</span>, <span class="at">y =</span> <span class="dv">10</span>, </span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"-"</span>, <span class="st">"-"</span>, <span class="st">"-"</span>, <span class="st">"-"</span>)), <span class="at">cex =</span> <span class="dv">4</span>)</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">5.5</span>, <span class="at">y =</span> <span class="dv">10</span>, </span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"+"</span>, <span class="at">cex =</span> <span class="dv">4</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">5.5</span>, <span class="at">y =</span> <span class="dv">4</span>, </span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">"-"</span>, <span class="st">"-"</span>, <span class="st">"-"</span>, <span class="st">"-"</span>)), <span class="at">cex =</span> <span class="dv">4</span>)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="dv">4</span>, </span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">label =</span> <span class="st">"+"</span>, <span class="at">cex =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="page-columns page-full"><p>In this plot the <span class="math inline">\(x\)</span> axis and the <span class="math inline">\(y\)</span> axis show the values of the original table and in the plot we associate the values of the product of standardized units in the plot. The dashed lines are plotted through the points of averages, dividing the scatter plot into four quadrants. If a point is in the lower left quadrant both variables are below average and are negative in standard units. So their product is positive. In the upper right quadrant the product of two positives is positive. In the remaining two quadrants the product of a positive and a negative is negative.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The average of all these products is the correlation coefficient.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;For those of you who need a refresher about the algebra of multiplying positive and negative numbers, you might resort to the following intuition: <span class="math inline">\(3 \times 5 = 15\)</span>: Getting 5 Dollars 3 times gives you 15 Dollars. <span class="math inline">\(3 \times (-5) = -15\)</span>: Paying a 5 Dollar penalty 3 times gives you a 15 Dollar penalty. <span class="math inline">\((-3) \times 5 = -15\)</span>: Not getting 5 Dollars 3 times is not getting 15 Dollars. $(-3) (-5) = 15: Not paying a 5 Dollar penalty 3 times is getting 15 Dollars.</p></li></div></div>
+<p>If <span class="math inline">\(r\)</span> is positive, then points in the two positive quadrants will predominate as for example here</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_scatter</span>(<span class="at">r =</span> <span class="fl">0.93</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Vertical grid</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal grid  </span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If <span class="math inline">\(r\)</span> is negative points in the two negative quadrants will dominate as for example here.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_scatter</span>(<span class="at">r =</span> <span class="sc">-</span><span class="fl">0.95</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Vertical grid</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">0</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal grid  </span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"gray"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="properties-of-r" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="properties-of-r"><span class="header-section-number">7.1.3</span> Properties of r</h3>
+<p>From these observations we can observe three properties of <span class="math inline">\(r\)</span></p>
+<ol type="1">
+<li><span class="math inline">\(r\)</span> is a pure number. It has no units. This is because <span class="math inline">\(r\)</span> is computed from standard units.</li>
+<li><span class="math inline">\(r\)</span> is unaffected by changing the units on either axis. This is again because <span class="math inline">\(r\)</span> is computed based on standard units.</li>
+<li><span class="math inline">\(r\)</span> is unaffected when we switch the axes. Algebraically this must be the case because when we multiply <span class="math inline">\(x\)</span> by <span class="math inline">\(y\)</span> the value of the product is the same as when we multiply <span class="math inline">\(y\)</span> by <span class="math inline">\(x\)</span>. Geometrically switching axes reflects the scatterplot along the line <span class="math inline">\(x=y\)</span> but does not change the amount of clustering along the line.</li>
+</ol>
+</section>
+<section id="r-is-a-measure-of-clustering-along-a-line." class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="r-is-a-measure-of-clustering-along-a-line."><span class="header-section-number">7.1.4</span> r is a measure of clustering along a line.</h3>
+<p><span class="math inline">\(r\)</span> is a measure of clustering along a line. This is often referred to by calling <span class="math inline">\(r\)</span> a measure of linear association. Note that data are often associated strongly but not necessarily along a line. In such cases <span class="math inline">\(r\)</span> would show a weak association only.</p>
+<p>Take for instance the following data which show on the <span class="math inline">\(x\)</span>-axis GDP per capita for many countries around the globe and on the <span class="math inline">\(y\)</span>-axis the per capita emissions of CO2 in the year 2018.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>emissions_data <span class="ot">&lt;-</span> emissions[(emissions<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2018</span> <span class="sc">&amp;</span> emissions<span class="sc">$</span>GDPpc <span class="sc">&lt;</span> <span class="dv">100000</span>), ]</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(emissions_data<span class="sc">$</span>GDPpc, emissions_data<span class="sc">$</span>CO2pc,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"CO2 emissions per capita"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CO2 emissions per capita vs. GDP per capita, 2018"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(emissions_data<span class="sc">$</span>GDPpc, emissions_data<span class="sc">$</span>CO2pc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7429093</code></pre>
+</div>
+</div>
 
 
 </section>

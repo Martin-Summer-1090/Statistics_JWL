@@ -151,18 +151,54 @@ cor(dat_2000$Children, dat_2000$Mortality)
 
 indicating a strong positive correlation. 
 
-Now let us use a function, which I have written myself using R which I call
-`r_scatter`. This function takes the correlation coefficient as an argument and
-produces a scatter plot. We have already learned in chapter 4 how we can write
-our own R functions, but let us not go into the details of the
-`r_scatter`function for now.
+Now let us use a function, which we call
+`r_scatter` to explore how the correlation coefficient shapes a
+scatter plot. This is an excellent opportunity to refresh our knowledge
+of how to write your own functions in R.
+
+First, remember that each function is an R object and has a name. We
+already decided to call the function `r_scatter`. Then the syntax is
+to write `function()` and put the function arguments within the paranthesis.
+
+Here we have two arguments, the correlation coefficient - let us call it
+according to the convention $r$ - and the number of data points we want
+to consider. We call this number `n` and assign a default value to it, let's
+say 1000. 
+
+Next we have to write the function body between `{}`. This is the part
+containing the actual instructions.
+
+First we create two vectors of length $n$ of values $x$ and $z$ from a normal 
+distribution with mean 0 and standard deviation 1. This is achieved by the r
+function `rnorm(n)`. Note that n is a function argument and since we have set+
+a default value of n, unless specified otherwise R will set n to 1000.
+
+Next we use a mathematical fact, which we do not explain here in detail. When
+$x$ and $y$ have the same standard deviation then the variable $y$ given by
+\begin{equation}
+y = r x + \sqrt{1 - r^2} z
+\end{equation}
+will have correlation coefficient $r$ with $x$. Thus we can implement this
+formula in the function body, leaving $r$ unspecified. It is the function
+argument of `r_scatter` and will be specified by you when you call the function
+with a specific $r$.
+
+Then we do a scatterplot of $x$ and $y$ which is the output of the function. The
+function will always render the last expression in `{}` as the output.
+
+This is how the code looks like in its entirety:
 
 ```{r}
+#| code-fold: false
+
 r_scatter <- function(r, n = 1000){
   
-  x <- rnorm(n)
-  z <- rnorm(n)
-  y <- r*x + sqrt(1-r^2)*z
+  x <- rnorm(n) # create n observations from a standard normal distribution
+  z <- rnorm(n) # create n observations from a standard normal distribution
+  
+  y <- r*x + sqrt(1-r^2)*z # implement the formula discussed in text.
+  
+  # do a scatter plot of x and y
   
   plot(x,y,
      xlab = "x",
@@ -207,3 +243,157 @@ r_scatter(- 0.98)
 ```
 
 ### Computing r
+
+How does `cor()` compute the correlation coefficient? We do not give a mathematical
+derivation here. One way to explain the computation is to say that
+
+::: {.callout-important}
+## Formula for $r$
+
+$r$ is the **average of the products of the two variables** when both variables are
+measured in **standard units** or z-scores.
+:::
+
+Let's do a simple example in R to explain the computation. Consider the follwoing toy data
+```{r}
+x <- c(1,3,4,5,7)
+y <- c(5,9,7,1,13)
+
+knitr::kable(data.frame(x,y))
+```
+
+To convert into standard units we have to subtract the mean from each observation and
+divide by the standard deviation. You should be able to verify for yourself that the mean
+of $x$ is 4 and the standard deviation is 2 and for $y$ the corresponding  values are
+7 and 4.
+
+Doing this operation on the values in our table will give us:
+
+```{r}
+knitr::kable(data.frame(x,y, x_su = (x - mean(x))/(sd(x)*sqrt(4/5)), y_su = (y- mean(y))/(sd(y)*sqrt(4/5))))
+```
+
+Finally we have to add the product of the standardized values $x_{su}$ and $y_{su}$ 
+to get
+```{r}
+knitr::kable(data.frame(x,y, x_su = (x - mean(x))/(sd(x)*sqrt(4/5)), y_su = (y- mean(y))/(sd(y)*sqrt(4/5)), xy_su = (x - mean(x))/(sd(x)*sqrt(4/5))*(y- mean(y))/(sd(y)*sqrt(4/5))))
+```
+
+Taking the average across these values gives $r$. Thus we get
+\begin{equation}
+\frac{0.75-0.25+0.00-0.75+2.25}{5} = 0.40
+\end{equation}
+
+Now check this against `cor()`:
+
+```{r}
+#| code-fold: false
+cor(x,y)
+```
+
+Let's do a scatter plot of the data:
+
+```{r}
+plot(x,y)
+
+grid(nx = 2, ny = 2,
+     lty = 2, col = "gray", lwd = 2)
+
+par(new = TRUE)
+plot(x,y, 
+     xlab = "x",
+     ylab = "y",
+     main = "Scatter plot toy example",
+     pch = 19, 
+     col = 4)
+text(x = 4.1, y = 6.6, 
+     label = "0")
+text(x = 3, y = 8.4, 
+     label = "-0.25")
+text(x = 1, y = 4.4, 
+     label = "0.75")
+text(x = 5, y = 1.6, 
+     label = "-0.75")
+text(x = 7, y = 12.4, 
+     label = "2.25")
+text(x = 2.5, y = 10, 
+     label = paste(c("-", "-", "-", "-")), cex = 4)
+text(x = 5.5, y = 10, 
+     label = "+", cex = 4)
+text(x = 5.5, y = 4, 
+     label = paste(c("-", "-", "-", "-")), cex = 4)
+text(x = 2, y = 4, 
+     label = "+", cex = 4)
+```
+
+In this plot the $x$ axis and the $y$ axis show the values of the original table
+and in the plot we associate the values of the product of standardized units
+in the plot. The dashed lines are plotted through the points of averages, dividing the
+scatter plot into four quadrants. If a point is in the lower left quadrant both
+variables are below average and are negative in standard units. So their product is
+positive. In the upper right quadrant the product of two positives is positive. In
+the remaining two quadrants the product of a positive and a negative is 
+negative.^[For those of you who need a refresher about the algebra of multiplying positive and negative numbers, you might resort to the following intuition: $3 \times 5 = 15$: Getting
+5 Dollars 3 times gives you 15 Dollars. $3 \times (-5) = -15$: Paying a 5 Dollar penalty 3 times gives you a 15 Dollar penalty. $(-3) \times 5 = -15$: Not getting 5 Dollars 3 times is not getting 15 Dollars. $(-3) \times (-5) = 15: Not paying a 5 Dollar penalty 3 times is getting 15 Dollars.] 
+The
+average of all these products is the correlation coefficient. 
+
+If $r$ is positive, then
+points in the two positive quadrants will predominate as for example here
+```{r}
+r_scatter(r = 0.93)
+# Vertical grid
+abline(v = 0,
+       lty = 2, col = "gray")
+
+# Horizontal grid  
+abline(h = 0,
+       lty = 2, col = "gray")
+```
+
+If $r$ is negative points in the
+two negative quadrants will dominate as for example here.
+
+```{r}
+r_scatter(r = -0.95)
+# Vertical grid
+abline(v = 0,
+       lty = 2, col = "gray")
+
+# Horizontal grid  
+abline(h = 0,
+       lty = 2, col = "gray")
+```
+
+### Properties of r
+
+From these observations we can observe three properties of $r$
+
+1. $r$ is a pure number. It has no units. This is because $r$ is computed from standard units.
+2. $r$ is unaffected by changing the units on either axis. This is again because $r$ is computed based on standard units.
+3. $r$ is unaffected when we switch the axes. Algebraically this must be the case because when
+we multiply $x$ by $y$ the value of the product is the same as when we multiply $y$ by $x$. Geometrically switching axes reflects the scatterplot along the line $x=y$ but does not change the amount of clustering along the line.
+
+### r is a measure of clustering along a line. 
+
+$r$ is a measure of clustering along a line. This is often referred to by calling
+$r$ a measure of linear association. Note that data are often associated strongly but
+not necessarily along a line. In such cases $r$ would show a weak association only.
+
+Take for instance the following data which show on the $x$-axis GDP per capita for many
+countries around the globe and on the $y$-axis the per capita emissions of CO2 in the
+year 2018.
+```{r}
+library(JWL)
+emissions_data <- emissions[(emissions$Year == 2018 & emissions$GDPpc < 100000), ]
+
+plot(emissions_data$GDPpc, emissions_data$CO2pc,
+     xlab = "GDP per capita",
+     ylab = "CO2 emissions per capita",
+     main = "CO2 emissions per capita vs. GDP per capita, 2018",
+     pch = 19,
+     cex = 0.5)
+
+cor(emissions_data$GDPpc, emissions_data$CO2pc)
+```
+
