@@ -707,30 +707,68 @@ Formula for <span class="math inline">\(r\)</span>
 </section>
 <section id="r-is-a-measure-of-clustering-along-a-line." class="level3" data-number="7.1.4">
 <h3 data-number="7.1.4" class="anchored" data-anchor-id="r-is-a-measure-of-clustering-along-a-line."><span class="header-section-number">7.1.4</span> r is a measure of clustering along a line.</h3>
-<p><span class="math inline">\(r\)</span> is a measure of clustering along a line. This is often referred to by calling <span class="math inline">\(r\)</span> a measure of linear association. Note that data are often associated strongly but not necessarily along a line. In such cases <span class="math inline">\(r\)</span> would show a weak association only.</p>
-<p>Take for instance the following data which show on the <span class="math inline">\(x\)</span>-axis GDP per capita for many countries around the globe and on the <span class="math inline">\(y\)</span>-axis the per capita emissions of CO2 in the year 2018.</p>
+<p><span class="math inline">\(r\)</span> is a measure of clustering along a line. This is often referred to by calling <span class="math inline">\(r\)</span> a measure of linear association. Note that data are often associated in other ways not necessarily along a line. In such cases <span class="math inline">\(r\)</span> would show a weak association only.</p>
+<p>As one real world examples let us take the relation between the share of extremely poor people across countries in the world in a given year versus GDP per capita in that same year. Here we take the year 2015. This is what we get.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>emissions_data <span class="ot">&lt;-</span> emissions[(emissions<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2018</span> <span class="sc">&amp;</span> emissions<span class="sc">$</span>GDPpc <span class="sc">&lt;</span> <span class="dv">100000</span>), ]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(emissions_data<span class="sc">$</span>GDPpc, emissions_data<span class="sc">$</span>CO2pc,</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"CO2 emissions per capita"</span>,</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CO2 emissions per capita vs. GDP per capita, 2018"</span>,</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove World, which should not be there and Luxembourg which is an extreme outlier</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>data_2015 <span class="ot">&lt;-</span> poverty_vs_gdp[(poverty_vs_gdp<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">!</span>(poverty_vs_gdp<span class="sc">$</span>Entity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"World"</span>, <span class="st">"Luxembourg"</span>))), ]</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data_2015<span class="sc">$</span>GDPpc, data_2015<span class="sc">$</span>Share,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<p>You can see that the data show a strong association between GDP per capita and the share of extreme poverty, which is intuitive. Moreover this association is not along a straight line.</p>
+<p>If we would compute the correlation coefficient in these data, we would get a value of -0.4532214, a weak negative association.</p>
+<p>In the following picture we show the data with smooth curve that approximates the shape of the data in red. Had we fitted a straight line to these data, you can see from the picture that the fit is poor. Though there seems to be a relatively strong association between GDP per capita and the share of people living in extreme poverty, it is not a linear association, i.e.&nbsp;an association along a straight line. The correlation coefficient only captures the clustering of data points along a straight line.</p>
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(emissions_data<span class="sc">$</span>GDPpc, emissions_data<span class="sc">$</span>CO2pc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> data_2015<span class="sc">$</span>GDPpc, <span class="at">y =</span> data_2015<span class="sc">$</span>Share)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(stats<span class="sc">::</span><span class="fu">lowess</span>(df, <span class="at">f=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>), <span class="at">lw =</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">"red"</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lw =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7429093</code></pre>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 

@@ -377,6 +377,77 @@ we multiply $x$ by $y$ the value of the product is the same as when we multiply 
 ### r is a measure of clustering along a line. 
 
 $r$ is a measure of clustering along a line. This is often referred to by calling
-$r$ a measure of linear association. Note that data are often associated strongly but
+$r$ a measure of linear association. Note that data are often associated in other ways
 not necessarily along a line. In such cases $r$ would show a weak association only.
+
+As one real world examples let us take the relation between the
+share of extremely poor people across countries in the world in a given year versus GDP per capita in that same year. Here we
+take the year 2015. This is what we get.
+
+```{r}
+library(JWL)
+
+# remove World, which should not be there and Luxembourg which is an extreme outlier
+
+data_2015 <- poverty_vs_gdp[(poverty_vs_gdp$Year == 2015 &
+                            !(poverty_vs_gdp$Entity %in% c("World", "Luxembourg"))), ]
+
+options(scipen = 999)
+plot(data_2015$GDPpc, data_2015$Share,
+     xlab = "GDP per capita",
+     ylab = "Share in extreme poverty",
+     main = "Share of population living in extreme poverty vs. GDP per
+capita, 2015",
+     pch = 19,
+     cex = 0.5,
+xaxt = "n",
+yaxt = "n")
+
+axis(1, at = c(0, 20000, 40000, 60000, 80000),
+     labels = paste0(c("0", "20.000", "40.000", "60.000", "80.000"), " ", "$"), cex.axis = 0.9)
+axis(2, at = c(0, 10, 20, 30, 40, 50, 60),
+     labels = paste0(as.character(c(0, 10, 20, 30, 40, 50, 60)), " ", "%"), cex.axis = 0.9)
+
+```
+
+You can see that the data show a strong association between GDP per capita and the share of extreme poverty, which is intuitive. Moreover this association is not along a straight line. 
+
+If we would compute the correlation coefficient in these data, we
+would get a value of `r cor(data_2015$GDPpc, data_2015$Share)`, a weak negative association.
+
+In the following picture we show the data with smooth curve that approximates the shape of the
+data in red. Had we fitted a straight line to these data, you can see from the picture
+that the fit is poor. Though there seems to be a relatively strong association between
+GDP per capita and the share of people living in extreme poverty, it is not a linear 
+association, i.e. an association along a straight line. The correlation coefficient only
+captures the clustering of data points along a straight line. 
+
+```{r}
+
+df <- data.frame(x = data_2015$GDPpc, y = data_2015$Share)
+plot(df$x, df$y,
+     xlab = "GDP per capita",
+     ylab = "Share in extreme poverty",
+     main = "Share of population living in extreme poverty vs. GDP per
+capita, 2015",
+     pch = 19,
+     cex = 0.5,
+xaxt = "n",
+yaxt = "n")
+
+axis(1, at = c(0, 20000, 40000, 60000, 80000),
+     labels = paste0(c("0", "20.000", "40.000", "60.000", "80.000"), " ", "$"), cex.axis = 0.9)
+axis(2, at = c(0, 10, 20, 30, 40, 50, 60),
+     labels = paste0(as.character(c(0, 10, 20, 30, 40, 50, 60)), " ", "%"), cex.axis = 0.9)
+
+mod <- lm(y ~ x, data = df)
+
+lines(stats::lowess(df, f= 1/7), lw = 2, col= "red")
+
+abline(mod, col = 4, lw = 2)
+
+
+```
+
+
 
