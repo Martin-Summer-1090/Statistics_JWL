@@ -365,6 +365,26 @@ abline(h = 0,
        lty = 2, col = "gray")
 ```
 
+Note that the way correlation as a measure of linear association makes $r$ sensitive to 
+outliers. Consider the following example from @AdhDen. Let's assume we have a scatter plot like this
+```{r}
+x <- c(1:4)
+y <- c(1:4)
+plot(x,y, col = "red", pch = 19)
+```
+
+The correlation coefficient here is `r cor(x,y)`, since the points are all exactly on a line. Now assume we add
+a fifth point, like this - an outlier.
+
+```{r}
+x <- c(1:4, 5)
+y <- c(1:4, 0)
+plot(x,y, col = "red", pch = 19)
+```
+
+Now the correlation $r$ is `r cor(x,y)`. So a perfect correlation is changed to no correlation by just adding 
+one single outlying point.
+
 ### Properties of r
 
 From these observations we can observe three properties of $r$
@@ -449,5 +469,205 @@ abline(mod, col = 4, lw = 2)
 
 ```
 
+### Association is not causation
+
+In the discussion of correlations we need to come back to an issue we 
+had discussed in a previous lecture. It is important to keep in mind that correlations measure 
+linear association between two variables but association is not the same as causation.
+
+Let me come back to an example we discussed earlier in section 3, where we looked
+at the correlation between average learning outcomes and total education expenditure 
+by per capita documented in the study by @Hedgesetal1994
+
+```{r}
+library(JWL)
+plot(expenditure_outcome_dat$Expenditure, 
+     expenditure_outcome_dat$Outcome, 
+     main = ("Average learning outcomes by total education expenditure per capita"), 
+     xlab = ("Public and private per capita expenditure on education (PPP, constant 2011-intl $)"), 
+     ylab = ("Average harmonized learning outcome in 2005 - 2015"), pch = 16)
+
+axis(1, at = seq(500, 3500, by = 500))
+
+mod <- lm(Outcome ~ Expenditure, data = expenditure_outcome_dat)
+
+abline(mod, col = 4, lw = 2)
+```
+
+The correlation in these data is `r cor(expenditure_outcome_dat$Expenditure, 
+     expenditure_outcome_dat$Outcome)`. 
+But does this evidence does not support the conclusion that there is a causal relation between 
+increased educational spending and student outcomes. Comparing outcomes of students across countries or students across schools with different
+levels of spending does not tell us whether the different spending levels are causal for the
+variation in outcomes we observe. There may be many other differences between countries and
+students that are shaping this relationship.
+
+### Ecological correlations
+
+The previous example shows a case of correlations based on averages. We have seen by now
+various examples of such correlations. Correlations based on averages can be frequently 
+found in social sciences such as sociology, political science or economics. However these
+correlations have to be assessed with care because they can overstate the strength of an
+association.
+
+Let me illustrate this point by a hypothetical example. Many studies have looked at the
+association between individual education and individual income, claiming a positive
+association between the level of education and individual income. Suppose a survey had
+collected data on income and education for individuals in three countries, labelled by
+three colors: Country red, country orange and country blue. Each individual is marked by one 
+color symbolizing it's country of residence. Let's do not worry about the exact units. Say education
+is measured by some form of time of education and income in some monetary unit.
 
 
+
+```{r}
+set.seed(12) # set the random number generator seed
+
+  x <- 0:24
+  y <- 1153*x + rnorm(25, 20000, 8000) # create the toy data of duration of edcuation and income
+  
+  df <- data.frame(Education = x, Income = y) # write into dataframe
+  
+  
+  df$State <-  with(df, ave(seq_along(Income), Income, FUN = function(x)
+    sample(c("Red", "Blue", "Orange"), size = length(x), replace = TRUE, prob = c(1/3, 1/3, 1/3)))) |>    as.factor() # asign colors as factors to the education and income combination
+
+  color_pallete_function <- colorRampPalette(
+  colors = c("red", "orange", "blue"),
+  space = "Lab" # Option used when colors do not represent a quantitative scale
+  ) # define a state by a color
+  
+  num_colors <- nlevels(df$State)
+  df_state_state <- color_pallete_function(num_colors)
+  
+# Do the exercise for state averages
+  
+  col1 <- tapply(df$Education, df$State, mean)
+  col2 <- tapply(df$Income, df$State, mean)
+
+df_avg <- data.frame(Education = col1, Income = col2, State = as.factor(names(col1)))
+
+num_colors_avg <- nlevels(df_avg$State)
+df_state_state_avg <- color_pallete_function(num_colors_avg)
+
+# plot side by side
+
+par(mfrow = c(1,2))
+
+# plot for individual values
+  
+  plot(
+  x = df$Education,
+  y = df$Income,
+  xlab = "Individual education",
+  ylab = "Individual income",
+  pch = 20, # solid dots increase the readability of this data plot
+  col = df_state_state[df$State],
+  xaxt = "n",
+  yaxt = "n")
+  
+# plot for aggregated values
+
+ plot(
+  x = df_avg$Education,
+  y = df_avg$Income,
+  xlab = "Country average education",
+  ylab = "Country average income",
+  pch = 20, # solid dots increase the readability of this data plot
+  col = df_state_state_avg[df_avg$State],
+  xaxt = "n",
+  yaxt = "n"
+)
+
+
+```
+
+In the averaged data the correlation increases from `r round(cor(df$Education, df$Income),3)` to 
+`r round(cor(df_avg$Education, df_avg$Income),3)` or by about 17.5 %. So bear in mind that, while
+correlations based on averages are frequently encountered in the press, in reports and in the
+research literature, they tend to overstate the strength of an association.
+
+## The regression line
+
+The correlation coefficient does not only measure the strength of linear association along a line, it also
+helps us identifying this line. In order to help you discover this, let us go bak to the Pearson data on the
+height of fathers and sons, we used in the beginning of this chapter.
+
+```{r}
+library(JWL)
+dat <- pearson
+
+plot(dat, 
+     pch = 19, 
+     cex = 0.3, 
+     xlab = "Father's height (inches)", 
+     ylab = "Son's height (inches)",
+     main = "Pearson's height data from 1903")
+
+abline(0, 1.036765, lty = 2, col = 4, lwd = 2)
+abline(v = 67.69 + 2.75 - 0.5, lty = 2)
+abline(v = 67.69 + 2.75 + 0.5, lty = 2)
+
+points(70.44, 70.12, pch = 19, col = "red")
+points(73.19, 71.56, pch = 19, col = "red")
+points(62.19, 65.8, pch = 19, col = "red")
+
+mod <- lm(Son ~ Father, data = dat)
+abline(mod, col = "red", lwd = 2)
+```
+
+The summary statistics of the data are:
+```{r}
+data_father_son <- data.frame(Father = round(c(mean(dat$Father), sd(dat$Father)),2), 
+                              Son = round(c(mean(dat$Son), sd(dat$Son)),2), row.names = c("Mean", "Standard Deviation"))
+knitr::kable(data_father_son)
+```
+
+The correlation coefficient is $r$ = `r round(cor(dat$Father, dat$Son), 3)`.
+
+The dashed blue line in the picture is the line starting at 0 and increasing with the slope given
+by the standard-deviation of the father's height - 2.82 - divided by the standard deviation of the 
+son's height - 2.72. This is a slope of approximately 1. The vertical strip with the dashed black
+lines show the fathers who were one standard deviation above average - 70.44 to the nearest inch, i.e.
+plus minus 0.5 inches. You can see that most of the points in this vertical strip are below the dashed
+red line. This means that most of the son's whose father's were 1 standard deviation above average were
+less than a standard deviation above average. The average height of the sons is only a fraction of a 
+standard deviation above the average height. This is where the correlation coefficient $r$ = 0.51 comes
+in. Associated with an increase of one standard deviation in height by the father is and increase
+of only 0.51 standard deviations in height of the son on average.
+
+Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average
+height of their sons will be above average by 0.51 standard deviations of their height, or $0.51 \times 2.82$, which is $1.44$. So the average height of a son is $68.68 + 1.44$ $The point $(70.44, 70.12)$ is marked by
+a red dot in the figure.
+
+Now let's look at the father's who are two standard deviations above the average height: 
+$67.69 + 2 \times 2.75$ which is $73.19$. The average height of their sons should be above
+$2 \times 0.51$ of their height, or $1.02$ standard deviations of height. That is $1.02 \times 2.82$ or
+$2.88$. That is their average height is around $68.68 + 2.88$ or $71.56$. We mark the point $(73.19, 71.56)$
+also as a red dot in our picture.
+
+What about those who are 2 standard deviations below the average? Their height is $67.69 - 2 \time 2.75$, which
+is $62.19$. The average height of the sons is then about $68.68 - 2.88$ or $65.8$. We also mark the point
+$(62.19, 65.8)$ by a red dot.
+
+Now all points that combine the father#s height with the estimate of the average height of the son fall on
+the solid red line which connects the red dots. This line is called the **regression line**. The line goes
+through the points of averages. Father#s with average heights should have sons with average height.
+
+::: {.callout-important}
+## Regression line
+
+The regression line for $y$ on $x$ estimates the average value for $y$ corresponding to each value
+of $x$.
+:::
+
+The method with which we have estimated this line is called the **regression method**. It associated
+in our example with each increase in one standard deviation in height by the father an increase of
+$0.51$ standard deviations of the son. More generally:
+
+::: {.callout-important}
+## Regression method
+
+Associated with each increase of one standard deviation in $x$ there is an increas of only $r$ standard deviations
+in $y$ on average.
+:::

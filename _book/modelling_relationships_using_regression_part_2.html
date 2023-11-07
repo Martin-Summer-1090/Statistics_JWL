@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -229,7 +248,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#computing-r" id="toc-computing-r" class="nav-link" data-scroll-target="#computing-r"><span class="header-section-number">7.1.2</span> Computing r</a></li>
   <li><a href="#properties-of-r" id="toc-properties-of-r" class="nav-link" data-scroll-target="#properties-of-r"><span class="header-section-number">7.1.3</span> Properties of r</a></li>
   <li><a href="#r-is-a-measure-of-clustering-along-a-line." id="toc-r-is-a-measure-of-clustering-along-a-line." class="nav-link" data-scroll-target="#r-is-a-measure-of-clustering-along-a-line."><span class="header-section-number">7.1.4</span> r is a measure of clustering along a line.</a></li>
+  <li><a href="#association-is-not-causation" id="toc-association-is-not-causation" class="nav-link" data-scroll-target="#association-is-not-causation"><span class="header-section-number">7.1.5</span> Association is not causation</a></li>
+  <li><a href="#ecological-correlations" id="toc-ecological-correlations" class="nav-link" data-scroll-target="#ecological-correlations"><span class="header-section-number">7.1.6</span> Ecological correlations</a></li>
   </ul></li>
+  <li><a href="#the-regression-line" id="toc-the-regression-line" class="nav-link" data-scroll-target="#the-regression-line"><span class="header-section-number">7.2</span> The regression line</a></li>
   </ul>
 </nav>
     </div>
@@ -695,6 +717,31 @@ Formula for <span class="math inline">\(r\)</span>
 <p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Note that the way correlation as a measure of linear association makes <span class="math inline">\(r\)</span> sensitive to outliers. Consider the following example from <span class="citation" data-cites="AdhDen">Adhikari, DeNero, and Wagner</span>. Let’s assume we have a scatter plot like this</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The correlation coefficient here is 1, since the points are all exactly on a line. Now assume we add a fifth point, like this - an outlier.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">0</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now the correlation <span class="math inline">\(r\)</span> is 0. So a perfect correlation is changed to no correlation by just adding one single outlying point.</p>
 </section>
 <section id="properties-of-r" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="properties-of-r"><span class="header-section-number">7.1.3</span> Properties of r</h3>
@@ -712,31 +759,31 @@ Formula for <span class="math inline">\(r\)</span>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove World, which should not be there and Luxembourg which is an extreme outlier</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>data_2015 <span class="ot">&lt;-</span> poverty_vs_gdp[(poverty_vs_gdp<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">!</span>(poverty_vs_gdp<span class="sc">$</span>Entity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"World"</span>, <span class="st">"Luxembourg"</span>))), ]</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data_2015<span class="sc">$</span>GDPpc, data_2015<span class="sc">$</span>Share,</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># remove World, which should not be there and Luxembourg which is an extreme outlier</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>data_2015 <span class="ot">&lt;-</span> poverty_vs_gdp[(poverty_vs_gdp<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">&amp;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">!</span>(poverty_vs_gdp<span class="sc">$</span>Entity <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"World"</span>, <span class="st">"Luxembourg"</span>))), ]</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data_2015<span class="sc">$</span>GDPpc, data_2015<span class="sc">$</span>Share,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>You can see that the data show a strong association between GDP per capita and the share of extreme poverty, which is intuitive. Moreover this association is not along a straight line.</p>
@@ -745,35 +792,237 @@ Formula for <span class="math inline">\(r\)</span>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> data_2015<span class="sc">$</span>GDPpc, <span class="at">y =</span> data_2015<span class="sc">$</span>Share)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(stats<span class="sc">::</span><span class="fu">lowess</span>(df, <span class="at">f=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>), <span class="at">lw =</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">"red"</span>)</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lw =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> data_2015<span class="sc">$</span>GDPpc, <span class="at">y =</span> data_2015<span class="sc">$</span>Share)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>x, df<span class="sc">$</span>y,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"GDP per capita"</span>,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Share in extreme poverty"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Share of population living in extreme poverty vs. GDP per</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">capita, 2015"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">20000</span>, <span class="dv">40000</span>, <span class="dv">60000</span>, <span class="dv">80000</span>),</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"20.000"</span>, <span class="st">"40.000"</span>, <span class="st">"60.000"</span>, <span class="st">"80.000"</span>), <span class="st">" "</span>, <span class="st">"$"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>),</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">as.character</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)), <span class="st">" "</span>, <span class="st">"%"</span>), <span class="at">cex.axis =</span> <span class="fl">0.9</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> df)</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(stats<span class="sc">::</span><span class="fu">lowess</span>(df, <span class="at">f=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">7</span>), <span class="at">lw =</span> <span class="dv">2</span>, <span class="at">col=</span> <span class="st">"red"</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lw =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-
-
 </section>
+<section id="association-is-not-causation" class="level3" data-number="7.1.5">
+<h3 data-number="7.1.5" class="anchored" data-anchor-id="association-is-not-causation"><span class="header-section-number">7.1.5</span> Association is not causation</h3>
+<p>In the discussion of correlations we need to come back to an issue we had discussed in a previous lecture. It is important to keep in mind that correlations measure linear association between two variables but association is not the same as causation.</p>
+<p>Let me come back to an example we discussed earlier in section 3, where we looked at the correlation between average learning outcomes and total education expenditure by per capita documented in the study by <span class="citation" data-cites="Hedgesetal1994">Larry Hedges (<a href="references.html#ref-Hedgesetal1994" role="doc-biblioref">1994</a>)</span></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(expenditure_outcome_dat<span class="sc">$</span>Expenditure, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>     expenditure_outcome_dat<span class="sc">$</span>Outcome, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> (<span class="st">"Average learning outcomes by total education expenditure per capita"</span>), </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> (<span class="st">"Public and private per capita expenditure on education (PPP, constant 2011-intl $)"</span>), </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> (<span class="st">"Average harmonized learning outcome in 2005 - 2015"</span>), <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">500</span>, <span class="dv">3500</span>, <span class="at">by =</span> <span class="dv">500</span>))</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Outcome <span class="sc">~</span> Expenditure, <span class="at">data =</span> expenditure_outcome_dat)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lw =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The correlation in these data is 0.5684246. But does this evidence does not support the conclusion that there is a causal relation between increased educational spending and student outcomes. Comparing outcomes of students across countries or students across schools with different levels of spending does not tell us whether the different spending levels are causal for the variation in outcomes we observe. There may be many other differences between countries and students that are shaping this relationship.</p>
+</section>
+<section id="ecological-correlations" class="level3" data-number="7.1.6">
+<h3 data-number="7.1.6" class="anchored" data-anchor-id="ecological-correlations"><span class="header-section-number">7.1.6</span> Ecological correlations</h3>
+<p>The previous example shows a case of correlations based on averages. We have seen by now various examples of such correlations. Correlations based on averages can be frequently found in social sciences such as sociology, political science or economics. However these correlations have to be assessed with care because they can overstate the strength of an association.</p>
+<p>Let me illustrate this point by a hypothetical example. Many studies have looked at the association between individual education and individual income, claiming a positive association between the level of education and individual income. Suppose a survey had collected data on income and education for individuals in three countries, labelled by three colors: Country red, country orange and country blue. Each individual is marked by one color symbolizing it’s country of residence. Let’s do not worry about the exact units. Say education is measured by some form of time of education and income in some monetary unit.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12</span>) <span class="co"># set the random number generator seed</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">24</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="dv">1153</span><span class="sc">*</span>x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">25</span>, <span class="dv">20000</span>, <span class="dv">8000</span>) <span class="co"># create the toy data of duration of edcuation and income</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Education =</span> x, <span class="at">Income =</span> y) <span class="co"># write into dataframe</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>State <span class="ot">&lt;-</span>  <span class="fu">with</span>(df, <span class="fu">ave</span>(<span class="fu">seq_along</span>(Income), Income, <span class="at">FUN =</span> <span class="cf">function</span>(x)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Red"</span>, <span class="st">"Blue"</span>, <span class="st">"Orange"</span>), <span class="at">size =</span> <span class="fu">length</span>(x), <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)))) <span class="sc">|&gt;</span>    <span class="fu">as.factor</span>() <span class="co"># asign colors as factors to the education and income combination</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  color_pallete_function <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>),</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">space =</span> <span class="st">"Lab"</span> <span class="co"># Option used when colors do not represent a quantitative scale</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="co"># define a state by a color</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  num_colors <span class="ot">&lt;-</span> <span class="fu">nlevels</span>(df<span class="sc">$</span>State)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  df_state_state <span class="ot">&lt;-</span> <span class="fu">color_pallete_function</span>(num_colors)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Do the exercise for state averages</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>  col1 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(df<span class="sc">$</span>Education, df<span class="sc">$</span>State, mean)</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  col2 <span class="ot">&lt;-</span> <span class="fu">tapply</span>(df<span class="sc">$</span>Income, df<span class="sc">$</span>State, mean)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>df_avg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Education =</span> col1, <span class="at">Income =</span> col2, <span class="at">State =</span> <span class="fu">as.factor</span>(<span class="fu">names</span>(col1)))</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>num_colors_avg <span class="ot">&lt;-</span> <span class="fu">nlevels</span>(df_avg<span class="sc">$</span>State)</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>df_state_state_avg <span class="ot">&lt;-</span> <span class="fu">color_pallete_function</span>(num_colors_avg)</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a><span class="co"># plot side by side</span></span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot for individual values</span></span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df<span class="sc">$</span>Education,</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df<span class="sc">$</span>Income,</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Individual education"</span>,</span>
+<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Individual income"</span>,</span>
+<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">20</span>, <span class="co"># solid dots increase the readability of this data plot</span></span>
+<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> df_state_state[df<span class="sc">$</span>State],</span>
+<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a><span class="co"># plot for aggregated values</span></span>
+<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(</span>
+<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> df_avg<span class="sc">$</span>Education,</span>
+<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> df_avg<span class="sc">$</span>Income,</span>
+<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Country average education"</span>,</span>
+<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Country average income"</span>,</span>
+<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">20</span>, <span class="co"># solid dots increase the readability of this data plot</span></span>
+<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> df_state_state_avg[df_avg<span class="sc">$</span>State],</span>
+<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>  <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">yaxt =</span> <span class="st">"n"</span></span>
+<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>In the averaged data the correlation increases from 0.848 to 0.996 or by about 17.5 %. So bear in mind that, while correlations based on averages are frequently encountered in the press, in reports and in the research literature, they tend to overstate the strength of an association.</p>
+</section>
+</section>
+<section id="the-regression-line" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="the-regression-line"><span class="header-section-number">7.2</span> The regression line</h2>
+<p>The correlation coefficient does not only measure the strength of linear association along a line, it also helps us identifying this line. In order to help you discover this, let us go bak to the Pearson data on the height of fathers and sons, we used in the beginning of this chapter.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> pearson</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="fl">1.036765</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">67.69</span> <span class="sc">+</span> <span class="fl">2.75</span> <span class="sc">-</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">67.69</span> <span class="sc">+</span> <span class="fl">2.75</span> <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">70.44</span>, <span class="fl">70.12</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">73.19</span>, <span class="fl">71.56</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">62.19</span>, <span class="fl">65.8</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The summary statistics of the data are:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_father_son <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Father =</span> <span class="fu">round</span>(<span class="fu">c</span>(<span class="fu">mean</span>(dat<span class="sc">$</span>Father), <span class="fu">sd</span>(dat<span class="sc">$</span>Father)),<span class="dv">2</span>), </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">Son =</span> <span class="fu">round</span>(<span class="fu">c</span>(<span class="fu">mean</span>(dat<span class="sc">$</span>Son), <span class="fu">sd</span>(dat<span class="sc">$</span>Son)),<span class="dv">2</span>), <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Standard Deviation"</span>))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(data_father_son)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Father</th>
+<th style="text-align: right;">Son</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mean</td>
+<td style="text-align: right;">67.69</td>
+<td style="text-align: right;">68.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Standard Deviation</td>
+<td style="text-align: right;">2.75</td>
+<td style="text-align: right;">2.82</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The correlation coefficient is <span class="math inline">\(r\)</span> = 0.501.</p>
+<p>The dashed blue line in the picture is the line starting at 0 and increasing with the slope given by the standard-deviation of the father’s height - 2.82 - divided by the standard deviation of the son’s height - 2.72. This is a slope of approximately 1. The vertical strip with the dashed black lines show the fathers who were one standard deviation above average - 70.44 to the nearest inch, i.e. plus minus 0.5 inches. You can see that most of the points in this vertical strip are below the dashed red line. This means that most of the son’s whose father’s were 1 standard deviation above average were less than a standard deviation above average. The average height of the sons is only a fraction of a standard deviation above the average height. This is where the correlation coefficient <span class="math inline">\(r\)</span> = 0.51 comes in. Associated with an increase of one standard deviation in height by the father is and increase of only 0.51 standard deviations in height of the son on average.</p>
+<p>Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average height of their sons will be above average by 0.51 standard deviations of their height, or <span class="math inline">\(0.51 \times 2.82\)</span>, which is <span class="math inline">\(1.44\)</span>. So the average height of a son is <span class="math inline">\(68.68 + 1.44\)</span> $The point <span class="math inline">\((70.44, 70.12)\)</span> is marked by a red dot in the figure.</p>
+<p>Now let’s look at the father’s who are two standard deviations above the average height: <span class="math inline">\(67.69 + 2 \times 2.75\)</span> which is <span class="math inline">\(73.19\)</span>. The average height of their sons should be above <span class="math inline">\(2 \times 0.51\)</span> of their height, or <span class="math inline">\(1.02\)</span> standard deviations of height. That is <span class="math inline">\(1.02 \times 2.82\)</span> or <span class="math inline">\(2.88\)</span>. That is their average height is around <span class="math inline">\(68.68 + 2.88\)</span> or <span class="math inline">\(71.56\)</span>. We mark the point <span class="math inline">\((73.19, 71.56)\)</span> also as a red dot in our picture.</p>
+<p>What about those who are 2 standard deviations below the average? Their height is <span class="math inline">\(67.69 - 2 \time 2.75\)</span>, which is <span class="math inline">\(62.19\)</span>. The average height of the sons is then about <span class="math inline">\(68.68 - 2.88\)</span> or <span class="math inline">\(65.8\)</span>. We also mark the point <span class="math inline">\((62.19, 65.8)\)</span> by a red dot.</p>
+<p>Now all points that combine the father#s height with the estimate of the average height of the son fall on the solid red line which connects the red dots. This line is called the <strong>regression line</strong>. The line goes through the points of averages. Father#s with average heights should have sons with average height.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Regression line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The regression line for <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span> estimates the average value for <span class="math inline">\(y\)</span> corresponding to each value of <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+<p>The method with which we have estimated this line is called the <strong>regression method</strong>. It associated in our example with each increase in one standard deviation in height by the father an increase of <span class="math inline">\(0.51\)</span> standard deviations of the son. More generally:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Regression method
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Associated with each increase of one standard deviation in <span class="math inline">\(x\)</span> there is an increas of only <span class="math inline">\(r\)</span> standard deviations in <span class="math inline">\(y\)</span> on average.</p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-AdhDen" class="csl-entry" role="listitem">
+Adhikari, Ani, John DeNero, and David Wagner. <span>“Computational and Inferential Thinking: The Foundations of Data Science.”</span> <a href="https://inferentialthinking.com/chapters/intro.html" class="uri">https://inferentialthinking.com/chapters/intro.html</a>.
+</div>
+<div id="ref-Hedgesetal1994" class="csl-entry" role="listitem">
+Larry Hedges, Rob Greenwald, Richard Laine. 1994. <span>“Does Money Matter? A Meta-Analysis of Studies of the Effects of Differential School Inputs on Student Outcomes.”</span> <em>Educational Researcher</em> 3 (23): 5–14.
+</div>
+</div>
 </section>
 
 
