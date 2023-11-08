@@ -637,7 +637,7 @@ in. Associated with an increase of one standard deviation in height by the fathe
 of only 0.51 standard deviations in height of the son on average.
 
 Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average
-height of their sons will be above average by 0.51 standard deviations of their height, or $0.51 \times 2.82$, which is $1.44$. So the average height of a son is $68.68 + 1.44$ $The point $(70.44, 70.12)$ is marked by
+height of their sons will be above average by 0.51 standard deviations of their height, or $0.51 \times 2.82$, which is $1.44$. So the average height of a son is $68.68 + 1.44$ The point $(70.44, 70.12)$ is marked by
 a red dot in the figure.
 
 Now let's look at the father's who are two standard deviations above the average height: 
@@ -646,7 +646,7 @@ $2 \times 0.51$ of their height, or $1.02$ standard deviations of height. That i
 $2.88$. That is their average height is around $68.68 + 2.88$ or $71.56$. We mark the point $(73.19, 71.56)$
 also as a red dot in our picture.
 
-What about those who are 2 standard deviations below the average? Their height is $67.69 - 2 \time 2.75$, which
+What about those who are 2 standard deviations below the average? Their height is $67.69 - 2 \times 2.75$, which
 is $62.19$. The average height of the sons is then about $68.68 - 2.88$ or $65.8$. We also mark the point
 $(62.19, 65.8)$ by a red dot.
 
@@ -657,7 +657,7 @@ through the points of averages. Father#s with average heights should have sons w
 ::: {.callout-important}
 ## Regression line
 
-The regression line for $y$ on $x$ estimates the average value for $y$ corresponding to each value
+The **regression line** for $y$ on $x$ estimates the average value for $y$ corresponding to each value
 of $x$.
 :::
 
@@ -668,6 +668,177 @@ $0.51$ standard deviations of the son. More generally:
 ::: {.callout-important}
 ## Regression method
 
-Associated with each increase of one standard deviation in $x$ there is an increas of only $r$ standard deviations
-in $y$ on average.
+Associated with each increase of one standard deviation in $x$ there is an increase of only $r$ standard deviations in $y$ on average.
 :::
+
+From our picture and the discussion we can also learn how the regression line can be described
+mathematically
+
+### The method of least squares
+
+Finding a regression line is a standard problem often encountered in statistics 
+either to make predictions, when you run controlled experiments or to describe
+the data you see for a given population.
+
+In the previous section we have explained how a regression line for a scatter plot can be 
+found. In our discussion we followed the path how the regression line was historically
+detected by the pioneers of statistics.
+
+In current practice the regression line is usually determined in another way. When the
+points in scatter plot seem to follow a straight line, we could ask the question which 
+line fits the points best.
+
+Let's go back to the graph discussed in the very beginning:
+
+```{r}
+
+library(JWL)
+dat <- pearson
+
+plot(dat, 
+     pch = 19, 
+     cex = 0.3, 
+     xlab = "Father's height (inches)", 
+     ylab = "Son's height (inches)",
+     main = "Pearson's height data from 1903")
+abline(0,1, lty = 2)
+abline(reg = lm(dat$Son ~ dat$Father), col = "red", lwd = 2)
+points(63.1, 74.3, pch = 19, col = "red")
+lines(c(63.1, 63.1), c(66.3264, 74.3), col = "red", lty = 2)
+points(71.1, 66.3, pch = 19, col = "red")
+lines(c(71.1,71.1), c(66.3, 70.4384), col = "red", lty = 2)
+
+```
+
+Any straight line drawn through this point cloud will be near to some points and farther from
+others. One such distance from the line to a particular point is marked in the graph by a red
+dot. When we move the red line around, we will get closer with the line to some points and
+farther from others.
+
+This conflict can be resolved in two steps: First define an average distance of all the points to the line.
+Second, move the line around until this average distance is as small as possible.
+
+When $x$ is used to predict $y$ the error at each point is the vertical distance of the point to the
+line, like in our graph. Now, some distances will be positive, some will be negative, so to minimize
+the average distance, you can not just add the distances because negative and positive values will
+cancel each other. Instead statisticians take the square of these distances, because the square will
+always be positive, no matter, whether the distance has a negative or positive value. This 
+square of the distances is also known as the **root mean square error**.
+
+::: {.callout-important}
+## Regression line by least squares
+
+Among all lines, the line that minimizes the root mean square error in predicting $y$ from $x$ is the
+regression line. Moreover the regression line is the only line that minimizes the root mean square error.
+:::
+
+### Finding the regression line with R
+
+#### The `lm()` function
+
+Regression is such an important topic and basic tool in statistics, that every sowtware package has
+built in functions, to help you compute the regression line. In R this function is called `lm()` for
+linear model. As usual with functions, `lm()` takes arguments.
+
+The first argument is of a type we did not encounter before. It is called in R a formula and has the following
+syntax. Suppose we want to fit a linear model
+\begin{equation}
+y = k x + d
+\end{equation}
+to our height data. $y$ is the vector of the father's heights and $x$ is the vector of the son's heights. The
+intercept of this line with the $y$ axis is $d$. To tell R that this is our formula we write
+`name of y ~ name of x`.
+
+Let me explain. Here in our discussion we stored the data in a dataframe which we called `dat`. This dataframe
+has two variables, which we called `Father` and `Son`. Now the formula we need to give to `lm`
+needs to be called in this case `dat$Son ~ dat$Father`. 
+
+Where is the constant $d$ in this formula? `lm()` automatically assumes that there is an intercept term. This
+has not to be specified in particular when passing the formula to `lm()`. The second argument you need to give
+to `lm()` is the data. This is called in our case `dat`.
+
+So now we have the syntax:
+
+```{r}
+#| code-fold: false
+
+lm(Son ~ Father, data = dat)
+```
+
+The output shows the value of the intercept $d = 33.893 $ and the slope $k =  0.514 $. Let#s breifly check how 
+this fits together with your discussion of the regression line. The correlation, the standard deviation of the
+son's height and the standard deviation of the father's height determine the slope $k$
+```{r}
+#| code-fold: false
+
+r <- cor(dat$Father, dat$Son)
+SDF <- sd(dat$Father)
+SDS <- sd(dat$Son)
+
+r*SDS/SDF
+```
+which is indeed the slope of the regression line.
+
+### Plotting the regression line
+
+Assume we would like to plot the regression line together with a scatter-plot of the data.
+We would first store the output of `lm()` in an object, let us call this object `mod()` for model
+```{r}
+#| code-fold: false
+
+mod <- lm(Son ~ Father, data = dat)
+```
+
+Then plotting the scatter plot together with the regression line can be done as follows:
+
+```{r}
+#| code-fold: false
+
+plot(dat$Father, dat$Son, 
+     pch = 19, 
+     cex = 0.3, 
+     xlab = "Father's height (inches)", 
+     ylab = "Son's height (inches)",
+     main = "Pearson's height data from 1903") # Syntax for the scatter plot 
+
+abline(mod, col = "red", lwd = 2) # syntax for the regression line
+```
+
+We first draw the scatter plot using the R `plot()`function. The arguments `pch` and `cex` control the
+type and size of the dots and `xlab`, `ylab` and `main` control the lables of the x-axis, the y-axis and the
+main plot. 
+
+Then we give the output of `lm()` the function `abline()` and tell `abline()`that the color of the line
+should be red and the line width should be 2. That's it.
+
+### Using the `predict()` function
+
+Finally, let us briefly show you an R function which helps you to check the predictions made by the linear
+model of the regression line using the built in function `predict()`.
+
+Note that our regression line was computed as
+\begin{equation}
+\text{Son's height} = 0.51 \times \text{Father's height} + 33.89
+\end{equation}
+Now assume you want to make predictions for the height of the son based on the height of
+the father using this linear model. In this case this is easy to compute by hand but for
+many values (and even for few) this step can be automated using the `predict()`function of R.
+`predict()`needs as arguments the output of `lm()` plus a dataframe of new data.
+
+We have already stored the output of `lm()`in our object `mod`. Now define some new data and then give
+the model and the new data to the `predict()`function:
+```{r}
+#| code-fold: false
+
+newdata <- data.frame(Father = c(60, 70, 80))
+
+predict(mod, newdata)
+```
+So what predict does for you in one step is to compute for example for the value 80
+```{r}
+#| code-fold: false
+
+0.514 *80 + 33.893
+```
+
+

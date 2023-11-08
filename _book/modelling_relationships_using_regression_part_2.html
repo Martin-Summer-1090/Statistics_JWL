@@ -251,7 +251,13 @@ div.csl-indent {
   <li><a href="#association-is-not-causation" id="toc-association-is-not-causation" class="nav-link" data-scroll-target="#association-is-not-causation"><span class="header-section-number">7.1.5</span> Association is not causation</a></li>
   <li><a href="#ecological-correlations" id="toc-ecological-correlations" class="nav-link" data-scroll-target="#ecological-correlations"><span class="header-section-number">7.1.6</span> Ecological correlations</a></li>
   </ul></li>
-  <li><a href="#the-regression-line" id="toc-the-regression-line" class="nav-link" data-scroll-target="#the-regression-line"><span class="header-section-number">7.2</span> The regression line</a></li>
+  <li><a href="#the-regression-line" id="toc-the-regression-line" class="nav-link" data-scroll-target="#the-regression-line"><span class="header-section-number">7.2</span> The regression line</a>
+  <ul class="collapse">
+  <li><a href="#the-method-of-least-squares" id="toc-the-method-of-least-squares" class="nav-link" data-scroll-target="#the-method-of-least-squares"><span class="header-section-number">7.2.1</span> The method of least squares</a></li>
+  <li><a href="#finding-the-regression-line-with-r" id="toc-finding-the-regression-line-with-r" class="nav-link" data-scroll-target="#finding-the-regression-line-with-r"><span class="header-section-number">7.2.2</span> Finding the regression line with R</a></li>
+  <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line"><span class="header-section-number">7.2.3</span> Plotting the regression line</a></li>
+  <li><a href="#using-the-predict-function" id="toc-using-the-predict-function" class="nav-link" data-scroll-target="#using-the-predict-function"><span class="header-section-number">7.2.4</span> Using the <code>predict()</code> function</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -982,9 +988,9 @@ Formula for <span class="math inline">\(r\)</span>
 </div>
 <p>The correlation coefficient is <span class="math inline">\(r\)</span> = 0.501.</p>
 <p>The dashed blue line in the picture is the line starting at 0 and increasing with the slope given by the standard-deviation of the father’s height - 2.82 - divided by the standard deviation of the son’s height - 2.72. This is a slope of approximately 1. The vertical strip with the dashed black lines show the fathers who were one standard deviation above average - 70.44 to the nearest inch, i.e. plus minus 0.5 inches. You can see that most of the points in this vertical strip are below the dashed red line. This means that most of the son’s whose father’s were 1 standard deviation above average were less than a standard deviation above average. The average height of the sons is only a fraction of a standard deviation above the average height. This is where the correlation coefficient <span class="math inline">\(r\)</span> = 0.51 comes in. Associated with an increase of one standard deviation in height by the father is and increase of only 0.51 standard deviations in height of the son on average.</p>
-<p>Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average height of their sons will be above average by 0.51 standard deviations of their height, or <span class="math inline">\(0.51 \times 2.82\)</span>, which is <span class="math inline">\(1.44\)</span>. So the average height of a son is <span class="math inline">\(68.68 + 1.44\)</span> $The point <span class="math inline">\((70.44, 70.12)\)</span> is marked by a red dot in the figure.</p>
+<p>Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average height of their sons will be above average by 0.51 standard deviations of their height, or <span class="math inline">\(0.51 \times 2.82\)</span>, which is <span class="math inline">\(1.44\)</span>. So the average height of a son is <span class="math inline">\(68.68 + 1.44\)</span> The point <span class="math inline">\((70.44, 70.12)\)</span> is marked by a red dot in the figure.</p>
 <p>Now let’s look at the father’s who are two standard deviations above the average height: <span class="math inline">\(67.69 + 2 \times 2.75\)</span> which is <span class="math inline">\(73.19\)</span>. The average height of their sons should be above <span class="math inline">\(2 \times 0.51\)</span> of their height, or <span class="math inline">\(1.02\)</span> standard deviations of height. That is <span class="math inline">\(1.02 \times 2.82\)</span> or <span class="math inline">\(2.88\)</span>. That is their average height is around <span class="math inline">\(68.68 + 2.88\)</span> or <span class="math inline">\(71.56\)</span>. We mark the point <span class="math inline">\((73.19, 71.56)\)</span> also as a red dot in our picture.</p>
-<p>What about those who are 2 standard deviations below the average? Their height is <span class="math inline">\(67.69 - 2 \time 2.75\)</span>, which is <span class="math inline">\(62.19\)</span>. The average height of the sons is then about <span class="math inline">\(68.68 - 2.88\)</span> or <span class="math inline">\(65.8\)</span>. We also mark the point <span class="math inline">\((62.19, 65.8)\)</span> by a red dot.</p>
+<p>What about those who are 2 standard deviations below the average? Their height is <span class="math inline">\(67.69 - 2 \times 2.75\)</span>, which is <span class="math inline">\(62.19\)</span>. The average height of the sons is then about <span class="math inline">\(68.68 - 2.88\)</span> or <span class="math inline">\(65.8\)</span>. We also mark the point <span class="math inline">\((62.19, 65.8)\)</span> by a red dot.</p>
 <p>Now all points that combine the father#s height with the estimate of the average height of the son fall on the solid red line which connects the red dots. This line is called the <strong>regression line</strong>. The line goes through the points of averages. Father#s with average heights should have sons with average height.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -996,7 +1002,7 @@ Regression line
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The regression line for <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span> estimates the average value for <span class="math inline">\(y\)</span> corresponding to each value of <span class="math inline">\(x\)</span>.</p>
+<p>The <strong>regression line</strong> for <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span> estimates the average value for <span class="math inline">\(y\)</span> corresponding to each value of <span class="math inline">\(x\)</span>.</p>
 </div>
 </div>
 <p>The method with which we have estimated this line is called the <strong>regression method</strong>. It associated in our example with each increase in one standard deviation in height by the father an increase of <span class="math inline">\(0.51\)</span> standard deviations of the son. More generally:</p>
@@ -1010,7 +1016,137 @@ Regression method
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Associated with each increase of one standard deviation in <span class="math inline">\(x\)</span> there is an increas of only <span class="math inline">\(r\)</span> standard deviations in <span class="math inline">\(y\)</span> on average.</p>
+<p>Associated with each increase of one standard deviation in <span class="math inline">\(x\)</span> there is an increase of only <span class="math inline">\(r\)</span> standard deviations in <span class="math inline">\(y\)</span> on average.</p>
+</div>
+</div>
+<p>From our picture and the discussion we can also learn how the regression line can be described mathematically</p>
+<section id="the-method-of-least-squares" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="the-method-of-least-squares"><span class="header-section-number">7.2.1</span> The method of least squares</h3>
+<p>Finding a regression line is a standard problem often encountered in statistics either to make predictions, when you run controlled experiments or to describe the data you see for a given population.</p>
+<p>In the previous section we have explained how a regression line for a scatter plot can be found. In our discussion we followed the path how the regression line was historically detected by the pioneers of statistics.</p>
+<p>In current practice the regression line is usually determined in another way. When the points in scatter plot seem to follow a straight line, we could ask the question which line fits the points best.</p>
+<p>Let’s go back to the graph discussed in the very beginning:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> pearson</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">reg =</span> <span class="fu">lm</span>(dat<span class="sc">$</span>Son <span class="sc">~</span> dat<span class="sc">$</span>Father), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">63.1</span>, <span class="fl">74.3</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="fl">63.1</span>, <span class="fl">63.1</span>), <span class="fu">c</span>(<span class="fl">66.3264</span>, <span class="fl">74.3</span>), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fl">71.1</span>, <span class="fl">66.3</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">c</span>(<span class="fl">71.1</span>,<span class="fl">71.1</span>), <span class="fu">c</span>(<span class="fl">66.3</span>, <span class="fl">70.4384</span>), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Any straight line drawn through this point cloud will be near to some points and farther from others. One such distance from the line to a particular point is marked in the graph by a red dot. When we move the red line around, we will get closer with the line to some points and farther from others.</p>
+<p>This conflict can be resolved in two steps: First define an average distance of all the points to the line. Second, move the line around until this average distance is as small as possible.</p>
+<p>When <span class="math inline">\(x\)</span> is used to predict <span class="math inline">\(y\)</span> the error at each point is the vertical distance of the point to the line, like in our graph. Now, some distances will be positive, some will be negative, so to minimize the average distance, you can not just add the distances because negative and positive values will cancel each other. Instead statisticians take the square of these distances, because the square will always be positive, no matter, whether the distance has a negative or positive value. This square of the distances is also known as the <strong>root mean square error</strong>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Regression line by least squares
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Among all lines, the line that minimizes the root mean square error in predicting <span class="math inline">\(y\)</span> from <span class="math inline">\(x\)</span> is the regression line. Moreover the regression line is the only line that minimizes the root mean square error.</p>
+</div>
+</div>
+</section>
+<section id="finding-the-regression-line-with-r" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="finding-the-regression-line-with-r"><span class="header-section-number">7.2.2</span> Finding the regression line with R</h3>
+<section id="the-lm-function" class="level4" data-number="7.2.2.1">
+<h4 data-number="7.2.2.1" class="anchored" data-anchor-id="the-lm-function"><span class="header-section-number">7.2.2.1</span> The <code>lm()</code> function</h4>
+<p>Regression is such an important topic and basic tool in statistics, that every sowtware package has built in functions, to help you compute the regression line. In R this function is called <code>lm()</code> for linear model. As usual with functions, <code>lm()</code> takes arguments.</p>
+<p>The first argument is of a type we did not encounter before. It is called in R a formula and has the following syntax. Suppose we want to fit a linear model <span class="math display">\[\begin{equation}
+y = k x + d
+\end{equation}\]</span> to our height data. <span class="math inline">\(y\)</span> is the vector of the father’s heights and <span class="math inline">\(x\)</span> is the vector of the son’s heights. The intercept of this line with the <span class="math inline">\(y\)</span> axis is <span class="math inline">\(d\)</span>. To tell R that this is our formula we write <code>name of y ~ name of x</code>.</p>
+<p>Let me explain. Here in our discussion we stored the data in a dataframe which we called <code>dat</code>. This dataframe has two variables, which we called <code>Father</code> and <code>Son</code>. Now the formula we need to give to <code>lm</code> needs to be called in this case <code>dat$Son ~ dat$Father</code>.</p>
+<p>Where is the constant <span class="math inline">\(d\)</span> in this formula? <code>lm()</code> automatically assumes that there is an intercept term. This has not to be specified in particular when passing the formula to <code>lm()</code>. The second argument you need to give to <code>lm()</code> is the data. This is called in our case <code>dat</code>.</p>
+<p>So now we have the syntax:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Son ~ Father, data = dat)
+
+Coefficients:
+(Intercept)       Father  
+     33.893        0.514  </code></pre>
+</div>
+</div>
+<p>The output shows the value of the intercept $d = 33.893 $ and the slope $k = 0.514 $. Let#s breifly check how this fits together with your discussion of the regression line. The correlation, the standard deviation of the son’s height and the standard deviation of the father’s height determine the slope <span class="math inline">\(k\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">cor</span>(dat<span class="sc">$</span>Father, dat<span class="sc">$</span>Son)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>SDF <span class="ot">&lt;-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Father)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>SDS <span class="ot">&lt;-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Son)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>r<span class="sc">*</span>SDS<span class="sc">/</span>SDF</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5140059</code></pre>
+</div>
+</div>
+<p>which is indeed the slope of the regression line.</p>
+</section>
+</section>
+<section id="plotting-the-regression-line" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="plotting-the-regression-line"><span class="header-section-number">7.2.3</span> Plotting the regression line</h3>
+<p>Assume we would like to plot the regression line together with a scatter-plot of the data. We would first store the output of <code>lm()</code> in an object, let us call this object <code>mod()</code> for model</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then plotting the scatter plot together with the regression line can be done as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>Father, dat<span class="sc">$</span>Son, </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>) <span class="co"># Syntax for the scatter plot </span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># syntax for the regression line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We first draw the scatter plot using the R <code>plot()</code>function. The arguments <code>pch</code> and <code>cex</code> control the type and size of the dots and <code>xlab</code>, <code>ylab</code> and <code>main</code> control the lables of the x-axis, the y-axis and the main plot.</p>
+<p>Then we give the output of <code>lm()</code> the function <code>abline()</code> and tell <code>abline()</code>that the color of the line should be red and the line width should be 2. That’s it.</p>
+</section>
+<section id="using-the-predict-function" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="using-the-predict-function"><span class="header-section-number">7.2.4</span> Using the <code>predict()</code> function</h3>
+<p>Finally, let us briefly show you an R function which helps you to check the predictions made by the linear model of the regression line using the built in function <code>predict()</code>.</p>
+<p>Note that our regression line was computed as <span class="math display">\[\begin{equation}
+\text{Son's height} = 0.51 \times \text{Father's height} + 33.89
+\end{equation}\]</span> Now assume you want to make predictions for the height of the son based on the height of the father using this linear model. In this case this is easy to compute by hand but for many values (and even for few) this step can be automated using the <code>predict()</code>function of R. <code>predict()</code>needs as arguments the output of <code>lm()</code> plus a dataframe of new data.</p>
+<p>We have already stored the output of <code>lm()</code>in our object <code>mod</code>. Now define some new data and then give the model and the new data to the <code>predict()</code>function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Father =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod, newdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        2        3 
+64.73316 69.87321 75.01327 </code></pre>
+</div>
+</div>
+<p>So what predict does for you in one step is to compute for example for the value 80</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.514</span> <span class="sc">*</span><span class="dv">80</span> <span class="sc">+</span> <span class="fl">33.893</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 75.013</code></pre>
 </div>
 </div>
 
@@ -1023,6 +1159,7 @@ Adhikari, Ani, John DeNero, and David Wagner. <span>“Computational and Inferen
 Larry Hedges, Rob Greenwald, Richard Laine. 1994. <span>“Does Money Matter? A Meta-Analysis of Studies of the Effects of Differential School Inputs on Student Outcomes.”</span> <em>Educational Researcher</em> 3 (23): 5–14.
 </div>
 </div>
+</section>
 </section>
 
 
