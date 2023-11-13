@@ -193,13 +193,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression_part_1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Modelling relationships: Points, Lines and Scatterplots</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./modelling_relationships_using_regression_part_2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling Relationships using Regression Part 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Modelling relationship: Prediction using regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -252,9 +252,12 @@ div.csl-indent {
   </ul></li>
   <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</a></li>
   <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"><span class="header-section-number">2.4</span> Compairing pairs of proportions</a></li>
-  <li><a href="#activities-in-the-study-center" id="toc-activities-in-the-study-center" class="nav-link" data-scroll-target="#activities-in-the-study-center"><span class="header-section-number">2.5</span> Activities in the study center</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.5</span> Exercises:</a>
   <ul class="collapse">
-  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.1</span> The story of infant mortality around the globe</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">2.5.1</span> Exercises:</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">2.5.2</span> Exercises R:</a></li>
+  <li><a href="#exercises-project" id="toc-exercises-project" class="nav-link" data-scroll-target="#exercises-project"><span class="header-section-number">2.5.3</span> Exercises project</a></li>
+  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.4</span> The story of infant mortality around the globe</a></li>
   </ul></li>
   <li><a href="#a-data-collection-exercise-for-the-next-unit" id="toc-a-data-collection-exercise-for-the-next-unit" class="nav-link" data-scroll-target="#a-data-collection-exercise-for-the-next-unit"><span class="header-section-number">2.6</span> A data collection exercise for the next unit</a></li>
   </ul>
@@ -1161,9 +1164,33 @@ Don’t use pie charts to visually compare proportions
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, </span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">glyph_size =</span> <span class="dv">16</span>, </span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">equal =</span> F, <span class="at">legend_pos =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(extrafont)</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emojifont)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>my_waffle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">'square'</span>, <span class="at">glyph_size =</span> <span class="dv">6</span>,</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">title =</span> <span class="st">'Waffle chart'</span>) {</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  len <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  waffles <span class="ot">&lt;-</span> <span class="fu">seq</span>(len) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="cf">if</span>(<span class="fu">is.null</span>(<span class="fu">names</span>(x))) <span class="fu">seq_along</span>(x) <span class="cf">else</span> <span class="fu">names</span>(x)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">xvals =</span> waffles <span class="sc">%/%</span> rows,</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yvals =</span> <span class="dv">1</span> <span class="sc">-</span> (waffles <span class="sc">%%</span> rows),</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(nms, <span class="at">times =</span> x)))</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(xvals, yvals, <span class="at">color =</span> fill)) <span class="sc">+</span></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">label =</span> <span class="fu">fontawesome</span>(<span class="fu">paste</span>(<span class="st">'fa'</span>, use_glyph, <span class="at">sep =</span> <span class="st">'-'</span>)), </span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">'fontawesome-webfont'</span>, <span class="at">size =</span> glyph_size, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_equal</span>(<span class="at">expand =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>xvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>xvals) <span class="sc">+</span> <span class="dv">1</span>),</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">y  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>yvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>yvals) <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)) </span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
@@ -1173,8 +1200,7 @@ Don’t use pie charts to visually compare proportions
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">7</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, </span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#3A9ABD"</span>, <span class="st">"#93FB98"</span>), <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">equal =</span> F, <span class="at">legend_pos =</span> <span class="st">""</span>, <span class="at">size =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">7</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
@@ -1199,21 +1225,17 @@ Now you try
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">94</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, </span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">glyph_size =</span> <span class="dv">8</span>, </span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">equal =</span> F, <span class="at">legend_pos =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">94</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>The estimated life time risk of developing bowel cancer if you eat 50 g of processed meat per day increases your relative risk by 18 %. At this heigthened risk level the new absolute risk is now 6.6 % or about 7 out of 100</p>
+<p>The estimated life time risk of developing bowel cancer if you eat 50 g of processed meat per day increases your relative risk by 18 %. At this heightened risk level the new absolute risk is now 6.6 % or about 7 out of 100</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">93</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, </span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#3A9ABD"</span>, <span class="st">"#93FB98"</span>), <span class="at">glyph_size =</span> <span class="dv">8</span>, </span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">equal =</span> F, <span class="at">legend_pos =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">93</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
@@ -1221,10 +1243,23 @@ Now you try
 </div>
 <p>In the research literature proportions are often expressed by the <em>odds ratio</em>. This ratio expresses the chance of an event happening relative to the chance of an event not happening. In the example of processed meat and bowel cancer this would be <span class="math inline">\(6/94\)</span>, because 6 out of hundered people develop bowel cancer in their life time and 94 out of hundred do not. While odds are very common in the research literture they are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside a scientific context, since it easily invites misunderstanding.</p>
 </section>
-<section id="activities-in-the-study-center" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="activities-in-the-study-center"><span class="header-section-number">2.5</span> Activities in the study center</h2>
-<section id="the-story-of-infant-mortality-around-the-globe" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.1</span> The story of infant mortality around the globe</h3>
+<section id="exercises" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.5</span> Exercises:</h2>
+<p>A note on exercises. Exercises will help you to actively remember the concepts you, learn, they will help you to practice applying these concepts to problems and develop your competence and skills. The exercises will be divided into two categories.</p>
+<p><strong>Exercises</strong> will ask questions related to the study material. They will help you remembering the concepts learned. They will also help you to test and develop your understanding by applying the concepts to various situations, some similar but slightly different than in the text. This will help you develop your skills, aqcuring routine through practice and reflect in your understanding.</p>
+<p><strong>Exercises R</strong> will be exercises for which you will need the computer and access to your digital tools like R and the Jupyter notebook. These exercises will be very important. They support you in developing your computer skills and gain practice in modern data analysis. Data analysis today is always done using a computer. You should consider these as an integral part of your general skills in statistics.</p>
+<p><strong>Exercises Project</strong> will be exercises related to a long term project which requires from you a continuous development done unit by unit and cumulatively drawing on the skills you learned during the course. It will also need the computer and your use of R and the Jupyter notebook. The project we are going to work on during this course is called: “People count: The future of humanity in pictures and numbers”. In this project we will apply what we learned in this data to the application of statistical techniques to understand data about demography. Demography is the study of the characteristics of human populations, such as size, growth, density, distribution, and vital statistics.</p>
+<section id="exercises-1" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.5.1</span> Exercises:</h3>
+</section>
+<section id="exercises-r" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">2.5.2</span> Exercises R:</h3>
+</section>
+<section id="exercises-project" class="level3" data-number="2.5.3">
+<h3 data-number="2.5.3" class="anchored" data-anchor-id="exercises-project"><span class="header-section-number">2.5.3</span> Exercises project</h3>
+</section>
+<section id="the-story-of-infant-mortality-around-the-globe" class="level3" data-number="2.5.4">
+<h3 data-number="2.5.4" class="anchored" data-anchor-id="the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.4</span> The story of infant mortality around the globe</h3>
 <p>For this activity we continue to look into the issue of infant mortality around the globe by working with a Jupyter notebook. To work on this assignment, please open the notebook <code>infant_mortality_global.ipynb</code> with the jupyter notebook. The notebook contains some text and some code which you can interactively execute from the notebook, as we already did it in the assignments in the Introduction, when we looked at the share of poverty in various countries. In this notebook we continue to dive deeper into the story of infant mortality around the globe. The things you learn when you work through this assignment will probably surprise you.</p>
 </section>
 </section>

@@ -914,17 +914,40 @@ To see this go back to our previous example of imagining crowds of people instea
 percentages. 
 
 ```{r}
-waffle(c(2, 8), rows = 2, use_glyph = "male", 
-       colors = c("#FD6F6F", "#93FB98"), glyph_size = 16, 
-       equal = F, legend_pos = "")
+#library(extrafont)
+library(emojifont)
+library(ggplot2)
+
+my_waffle <- function(x, rows = 5, use_glyph = 'square', glyph_size = 6,
+                      title = 'Waffle chart') {
+  
+  len <- sum(x)
+  waffles <- seq(len) - 1
+  nms <- if(is.null(names(x))) seq_along(x) else names(x)
+  df <- data.frame(xvals = waffles %/% rows,
+                   yvals = 1 - (waffles %% rows),
+                   fill = factor(rep(nms, times = x)))
+  
+  ggplot(df, aes(xvals, yvals, color = fill)) +
+    geom_text(label = fontawesome(paste('fa', use_glyph, sep = '-')), 
+              family = 'fontawesome-webfont', size = glyph_size, show.legend = F) +
+    coord_equal(expand = TRUE) +
+    lims(x  = c(min(df$xvals) - 1, max(df$xvals) + 1),
+         y  = c(min(df$yvals) - 1, max(df$yvals) + 1)) + 
+    theme_void(base_size = 16) +
+    labs(title = title, color = NULL) +
+    theme(plot.title = element_text(),
+          plot.margin = margin(4, 4, 4, 4)) 
+} 
+
+my_waffle(c(2, 8), rows = 2, use_glyph = "male", glyph_size = 16, title = " ")
 ```
 Here we have an *absolute risk* of two out of 10 persons developing bowel cancer.
 If the relative risk would increase by 50 % this would mean in terms of
 absolute risk that now we have
 
 ```{r}
-waffle(c(2, 1, 7), rows = 2, use_glyph = "male", 
-       colors = c("#FD6F6F", "#3A9ABD", "#93FB98"), glyph_size = 16, equal = F, legend_pos = "", size = 0.2)
+my_waffle(c(2, 1, 7), rows = 2, use_glyph = "male", glyph_size = 16, title = " ")
 ```
 
 The risk increases now to three out of 10.
@@ -944,18 +967,14 @@ estimated lifetime risk of developing bowel cancer is 5.6 %. Expressed as a
 relative frequency this is about 6 out of 100 or in a chart
 
 ```{r}
-waffle(c(6, 94), rows = 5, use_glyph = "male", 
-       colors = c("#FD6F6F", "#93FB98"), glyph_size = 8, 
-       equal = F, legend_pos = "")
+my_waffle(c(6, 94), rows = 5, use_glyph = "male", glyph_size = 13, title = "")
 ```
 The estimated life time risk of developing bowel cancer if you eat 50 g of processed meat 
-per day increases your relative risk by 18 %. At this heigthened risk level the new
+per day increases your relative risk by 18 %. At this heightened risk level the new
 absolute risk is now 6.6 % or about 7 out of 100
 
 ```{r}
-waffle(c(6, 1, 93), rows = 5, use_glyph = "male", 
-       colors = c("#FD6F6F", "#3A9ABD", "#93FB98"), glyph_size = 8, 
-       equal = F, legend_pos = "")
+my_waffle(c(6, 1, 93), rows = 5, use_glyph = "male", glyph_size = 13, title = "")
 ```
 
 In the research literature proportions are often expressed by the *odds ratio*.
@@ -966,23 +985,55 @@ and 94 out of hundred do not. While odds are very common in the research litertu
 are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside
 a scientific context, since it easily invites misunderstanding.
 
-## Activities in the study center
+## Exercises:
 
-### The story of infant mortality around the globe
+A note on exercises. Exercises will help you to actively remember the concepts you,
+learn, they will help you to practice applying these concepts to problems and
+develop your competence and skills. The exercises will be divided into two categories.
 
-For this activity we continue to look into the issue of infant mortality around the
-globe by working with a Jupyter notebook. To work on this assignment, please open
-the notebook `infant_mortality_global.ipynb` with the jupyter notebook. 
-The notebook contains some text and some code which you can interactively 
-execute from the notebook, as we already did it in the assignments 
-in the Introduction, when we looked at the share of
-poverty in various countries. In this notebook we continue to dive deeper into the
-story of infant mortality around the globe. The things you learn when you work through 
-this assignment will probably surprise you.
+**Exercises** will ask questions related to the study material. They will help you
+remembering the concepts learned. They will also help you to test and develop your understanding
+by applying the concepts to various situations, some similar but slightly different than
+in the text. This will help you develop your skills, aqcuring routine through practice and
+reflect in your understanding.
 
-## A data collection exercise for the next unit
+**Exercises R** will be exercises for which you will need the computer and access to your
+digital tools like R and the Jupyter notebook. These exercises will be very important. They
+support you in developing your computer skills and gain practice in modern data analysis. 
+Data analysis today is always done using a computer. You should consider these as an integral part
+of your general skills in statistics.
 
-Maybe handedness score?
+**Exercises Project** will be exercises related to a long term project which requires from
+you a continuous development done unit by unit and cumulatively drawing on the skills
+you learned during the course. It will also need the computer and your use of R and the
+Jupyter notebook. The project we are going to work on during this course is called:
+"People count: The future of humanity in pictures and numbers". In this project
+we will apply what we learned in this data to the application of statistical 
+techniques to understand data about demography. Demography is 
+the study of the characteristics of human populations, such as size, growth, density, distribution, 
+and vital statistics.
+
+### Exercises:
+
+### Exercises R:
+
+### Exercises project
+
+<!-- ### The story of infant mortality around the globe -->
+
+<!-- For this activity we continue to look into the issue of infant mortality around the -->
+<!-- globe by working with a Jupyter notebook. To work on this assignment, please open -->
+<!-- the notebook `infant_mortality_global.ipynb` with the jupyter notebook.  -->
+<!-- The notebook contains some text and some code which you can interactively  -->
+<!-- execute from the notebook, as we already did it in the assignments  -->
+<!-- in the Introduction, when we looked at the share of -->
+<!-- poverty in various countries. In this notebook we continue to dive deeper into the -->
+<!-- story of infant mortality around the globe. The things you learn when you work through  -->
+<!-- this assignment will probably surprise you. -->
+
+<!-- ## A data collection exercise for the next unit -->
+
+<!-- Maybe handedness score? -->
 
 <!-- ## Contents -->
 

@@ -25,8 +25,7 @@ of the three core skills you will learn in this course:
 
 3.  To **quantify the uncertainty** we have to attach to our predictions.
 
-The introduction also takes you through some activities, where we will collect data
-from you, to analyze and use them later in the course. You will also do your very 
+In this introduction you will also do your very 
 first steps on the computer by playing with a visualization set up in a digital notebook.
 This will be your very first encounter with a technology we will use all over this course.
 
@@ -256,7 +255,7 @@ powerful and visualizing data in data exploration is another core skill you are 
 learn in this course.
 
 So let us visualize the world poverty data. In our plot we draw the year on  the x-axes and
-the share of people living in extreme poverty on the y-axes. This will give us a point for each
+the share^[The share is a proportion of a whole. Here this proportion is expressed in percent. A percentage (from Latin per centum 'by a hundred') is a number or ratio expressed as a fraction of 100. It is often denoted using the percent sign (%), although the abbreviations pct., pct, and sometimes pc are also used. A percentage is a dimensionless number (pure number), primarily used for expressing proportions, but percent is nonetheless a unit of measurement in its orthography and usage. So for example when we say the share of extremely poor people in the world in a given year is 25 %, this expresses the fraction 25/100 or 0.25. Percentages are often used to express proportions of a whole. 25% would thus be 1/4th of all people in the world.] of people living in extreme poverty on the y-axes. This will give us a point for each
 year. To facilitate the spotting of a trend, we connect the annual observations by a line.
 
 ```{r}
@@ -266,10 +265,13 @@ year. To facilitate the spotting of a trend, we connect the annual observations 
 
 library(ggplot2)
 
-p <- ggplot(plot_data, aes(x = Year, y = Share)) + 
+p <- ggplot(plot_data, aes(x = Year, y = Share/100)) + 
      geom_line() +
      geom_point() +
-     xlab("")
+     xlab("Year") +
+     ylab("Share of extremely poor people") +
+     scale_y_continuous(labels = scales::percent)
+  
 ggsave(plot=p, filename="figures/fig-share-of-people-in-extreme-poverty-world.png")
 p
 
