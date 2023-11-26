@@ -160,29 +160,7 @@ To guard against the trap of mindlessly fall into mechanical thinking or automat
 sometimes helpful to make a rough plausibility estimates about the order of magnitude you
 might expect as a result for a really big number, like the number of trees on  the globe.
 
-:::{.callout-caution collapse="true"}
-## Comment for Seitwerk: Please uncollapse
-Here would be a good opportunity to engage students in an activity estimating a big number.
-Since this has an interactive part, which better works when in class together, one could set up
-the problem with some guidance in the online unit and then discuss solutions in class. It might
-be fun to add a competitive element by splitting the students in teams or pairs and rewarding
-the team/pair who
-comes closest to the true value. Let them first just guess and then lead them through the
-guestimation a bit more systematically: 
-One way to lead students through this exercise might be: How many
-people are there in country X, how many children of school age, how many of them ride the bus, 
-how many students can be transported by a bus etc. The estimate will have lots of uncertainty but be
-hopefully closer to the truth than most of the original unguided guesses. It is a first 
-encounter for the students with propagation of uncertainty, an important topic in 
-statistics more generally. 
-The activity contains further interesting aspects like reliability of data sources and the design
-of data collection. I am not quite sure whether and how to build this in at this stage but maybe
-you have an idea or suggestion.
 
-A good example would for instance be: How many school buses are there in country X? 
-
-
-:::
 
 ### What has happened to extreme poverty on the globe in the last 20 years?
 

@@ -64,7 +64,7 @@ by 1000, so that the rate reflects the number of infant deaths per 1000 life bir
 manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on
 the level of comparison that is required. Reporting mortality statistics as mortality rates
 has the advantage that it communicates the risk as an expected frequency. 
-Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 births. 
+Instead of percentages or probabilities it conveys directly what it means, for example, for 1000 births. 
 
 The production and reporting of mortality statistics is a modern phenomenon. 
 In many countries there are now statistical registry systems that record
@@ -213,17 +213,6 @@ Within a bit more than a century the
 mortality rate has been reduced from 30 % to below 0.3 %. This amounts to 
 a reduction by a factor of about 100. Isn't this a stunning achievement?
 
-::: {.callout-note icon=false}
-
-## Now you try
-
-This is a good opportunity to practice and refresh your skills in manipulating
-percentages. Compute and report the reduction in the share of infant mortality for
-each of the 8 countries between 1860 and 2020 based on the numbers reported in
-@tbl-infant-mortality-1860 and @tbl-infant-mortality-2020
-
-:::
-
 In a recent book [@Smil2020], the Canadian researcher Vaclav Smil
 has pointed out that such low rates are impossible 
 without the combination
@@ -288,12 +277,33 @@ Such a visualization could then look for example like this:
 #| fig-cap: In 1860 in Germany among 1000 newborns 
 #|          260 infants died in the first year of their life.
 
-library(waffle)
+#library(extrafont)
+library(emojifont)
+library(ggplot2)
 
-waffle(c("Death" = 260, "Survived" = 740), 
-       rows = 20, colors = c("#FD6F6F", "#93FB98"), 
-       use_glyph = "child", 
-       glyph_size = 4, equal = F)
+my_waffle <- function(x, rows = 5, use_glyph = 'square', glyph_size = 6,
+                      title = 'Waffle chart') {
+  
+  len <- sum(x)
+  waffles <- seq(len) - 1
+  nms <- if(is.null(names(x))) seq_along(x) else names(x)
+  df <- data.frame(xvals = waffles %/% rows,
+                   yvals = 1 - (waffles %% rows),
+                   fill = factor(rep(nms, times = x)))
+  
+  ggplot(df, aes(xvals, yvals, color = fill)) +
+    geom_text(label = fontawesome(paste('fa', use_glyph, sep = '-')), 
+              family = 'fontawesome-webfont', size = glyph_size, show.legend = F) +
+    coord_equal(expand = TRUE) +
+    lims(x  = c(min(df$xvals) - 1, max(df$xvals) + 1),
+         y  = c(min(df$yvals) - 1, max(df$yvals) + 1)) + 
+    theme_void(base_size = 16) +
+    labs(title = title, color = NULL) +
+    theme(plot.title = element_text(),
+          plot.margin = margin(4, 4, 4, 4)) 
+} 
+
+my_waffle(c("Death" = 260, "Survived" = 740), rows = 20, use_glyph = "child", glyph_size = 4, title = " ")
 ```
 Here you visualize the numbers as differently colored crowds. There are 20 rows with 50
 people symbols each. This multiplies to a crowd of 1000 people. It makes the magnitude
@@ -310,8 +320,7 @@ rates alone. The same kind of visualization for the 2020 data would then look li
 #| label: infant-mortality-isotype-2020
 #| fig-cap: In 2020 in Germany among 1000 newborns 3 infants died in the first year of their life.
 
-library(waffle)
-waffle(c("Death" = 3, "Survived" = 997), rows = 20, colors = c("#FD6F6F", "#93FB98"), use_glyph = "child", glyph_size = 4, equal = F)
+my_waffle(c("Death" = 3, "Survived" = 997), rows = 20, use_glyph = "child", glyph_size = 4, title = " ")
 ```
 
 From this perspective the improvement in infant mortality rates in Germany are truly spectacular. 
@@ -321,28 +330,6 @@ even at the low mortality rate this can mean a huge amount of individual tragedi
 760.378 births. 0.31 % of this amounts to 2357 individual tragedies. Even if this rate could be
 brought down further, say to 0.28 % which sounds like a tiny improvement, it would mean 228 infant lives
 that could be saved.  
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-David Spiegelhalter [@Spi2019] whose book we have encountered when we discussed the question of how many
-trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of
-young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers 
-that riding on the London Underground is very safe. Try to imagine what this statement would mean
-when you think about this information in terms of crowds of young Londoners, assuming 
-that "young" means between 15 and 25. Try to exlpain how the same information presented differently 
-may have a different impact.
-What kind of communication tools we have just heard about, have been applied here? 
-:::
-
-:::{.callout-caution collapse="true"}
-## Seitwerk: A remark on answer.
-Turn a positive frame into a negative one and then imagine actual crowds of people instead of percentages.
-This or an answer like this I would have in mind that studnets come up with if they reflect this
-example. I think an answer to such a reflection is best placed in the interactive part of the course
-or in the study center meet ups.
-:::
 
 :::{.callout-important}
 ## Be mindful of framing
@@ -383,8 +370,7 @@ ways: First from the R command line and then also by working
 with Jupyter Notebooks.^[Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is
 free of charge. Again you need a computer where you have the privileges to install software and you need an internet connection.]
 
-The
-notebooks, which we already encountered in an example in the introduction, 
+The notebooks 
 will not only allow to write R code and send this code to R for execution.  Notebooks also 
 allows you to store commands, to comment them and make them available as files for later use. This
 is especially useful, once you work on longer and more complicated tasks. It is then 
@@ -392,7 +378,7 @@ essential that you can reproduce what you did in the past days, that you can wri
 easily readable comments and that you can collaborate in a team, where you can share your work
 with others. This circle of collaborators includes your future and past self.
 
-For a start we just work with the R command line or the R-console, as it is called, introducing
+Let us start the **R command line** or the **R-console**, as it is called, introducing
 the use of R via the notebooks a bit later. 
 
 You start R by either typing `R` into the 
@@ -403,13 +389,6 @@ To end your R session write `quit()` at the
 prompt `>` of the console. Congratulations. Now that you can start and quit R we are ready to 
 go.
 
-:::{.callout-caution collapse="true"}
-## Seitwerk: A remark on a demo.
-This would be perhaps best shown in a brief video. Of course when producing the video it is
-important to think about which operating system the students will use, and the R version that they
-will have available. If this is open, so the demo for windows, mac and linux. It does only take
-marginally more time and effort. Maybe this whole intro is perfect for a video demo.
-:::
 
 ### First steps
 
@@ -469,15 +448,6 @@ and of course you can combine all of these operations:
 ```
 
 The comma is represented in R as a dot `.`. So the above output reads `1717`and one half or `0.5`.
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-Use R to transform the Mortality numbers reported in percent in @tbl-infant-mortality-1860 and
-@tbl-infant-mortality-2020 in mortality rates, i.e. the (approximate) 
-number of infant-deaths per 1000 life births.
-:::
 
 R needs a complete command to be able to execute it, when the return key is pressed. 
 Lets see what happens, if a command is incomplete, like for instance:
@@ -556,6 +526,122 @@ When you assign a new value to the old name `a`, the old value will be overwritt
 
 What names should you use? You could uses actually anything but you have to follow a few rules. A name in 
 R must for example not begin with a number, a dot  `.` or an  underscore `_`. So for example `var_1`, `var.1`, `var1` and `VAR1` and `myVar1` are all allowed names but `1var`, `.var` and `_var1` are not
+
+## Using R via the Jupyter Notebook
+
+In these first steps we have used R via the console. In this course we will use another
+powerful tool to use R: The **Jupyter-Notebook**. The notebook is a file format that allows you
+to store both text and code within one file. It allows you also to produce documents and store them.
+This has a few big advantages over using R just via the console:
+
+1. It allows you to store your work and to come back to it later. 
+2. It also allows you to
+show your work to a learning facilitator to get feedback or grades as often needed in this course. 
+3. It finally allows you to verbally comment your code, so you later - when you come back to it - remember
+what you have done.
+4. It is a document format that gives you an elegant and powerful tool to report on your data work in the
+form of a readable and professionally layed out document.
+
+Let us show, how the Jupyter-Notebook works. You start the Notebook by double clicking the Jupyter
+icon in your docker.
+
+:::{.callout-caution collapse="true"}
+## Comment for Seitwerk: Please uncollapse
+Here you should demonstrate in a vido how to launch the Jupyter-Notebook in the
+docker version you have installed for the course.
+:::
+
+Upon start Jupyter will show you your directory structure and a navigation pane. On my
+screen it looks like this:
+![Jupyter-Start-Screen](pictures/jupyter_start.png)
+Now you need to navigate to the folder where you would like to store your notebooks. This
+will be a folder of your choice with a name you have given it. If the directory
+has been created you can navigate there from the Jupyter menue by just double clicking
+on the directory names. For instance, in my case the files are stores in my `R` 
+directory. So I double click `R` and will then see the subdirectories of `R`. Then
+I click on my folder `Statistics_JWL` because this is where I store my files for
+this course and in this directory I click `notebooks` because this is the folder
+for my Jupyter notebooks. In your case this will be different depending on how you
+chose to organise your directories.
+
+After navigating to my folder my screen will look like this:
+
+![Jupyter-Directory](pictures/jupyter_ms.png)
+Now in the gry bar you see the directory you are in. In this directory you can create a new
+notebook-file by selecting the button new in the upper right corner of the screen. When I do this
+I get a menu of options, like this
+![Jupyter-Notebook-Type](pictures/jupyter_type.png)
+In my case I can choose from three options. These options refer to different computing engines, which
+will do code execution from the notebook. The options might look a bit different in your
+installation but what is important is that you should have an option `R` in your
+pull down menu: Please choose this option.
+
+When you do that you have created a new notebook which will be able to use R as its computing
+engine and be able to send R commands from the notebook to R as well as receive R output in the
+notebook. This is the way we will use the Jupyter-Notebook in this course. You should now see a screen 
+like this:
+
+![Jupyter-Notebook](pictures/jupyter-notebook.png)
+You see now the `R`icon in the upper right corner, you see a menue bar on the top. You also
+see that the notebook has yet no name and is called Untitled1. Let's give this notebook a name.
+In order to do so, you click the File menu, select Save as and then give the file a name: I called
+mine `testbook`.
+
+To work with the notebooks for now, you have just to understand very few things beyond how to
+open Juyter and create a new notebook. Let me explain these few concepts here and then you
+are ready to go.
+
+### Cells
+
+Jupyter-Notebooks are file formats that can combine code and text and represent these
+different forms of input in a single documents. Whether something you type is understood
+by the notebook as a text or as code depends on the type of so called cells.
+
+For example in the new file we created we see a line which is boxed with a color bar on the left. Then
+its has `In []:` followed by a kind of ply symbol and then a light gray box, like this:
+
+![Jupyter-Notebook_input_Cell](pictures/jupyter_input_cell.png)
+This is a cell type that can take inputs of `R` code. You can see this, by
+looking at the line below the menu bar which says `Code`. Now let us
+give the cell some R input like for example the vector of 
+mortality rates in 1860.
+
+![Jupyter Storing mortality rates of 1860 in an object called mr_1860](pictures/jupyter_mr.png)
+Now you can execute the cell by typing SHIFT and ENTER. This executes the cell. This means
+that the code is sent to R and processed there as if you had typed the same command on the console.
+Note that something has also changed with the cell. The `Input[]:` has now be given a number by
+the notebook. This is the first input the notebook has received in this session and it is
+recorded. At the same time R has opened a new input cell for code.
+
+![Jupyter Code cell executed](pictures/jupyter_new_cell.png)
+Say now that you want to inspect the object `mr_1860` in which we have stored the
+data you just would type this name into the cell and press SHIFT ENTER again.
+The resulting screen would then look like this:
+
+![Jupyter Notebook with output](pictures/jupyter_output.png)
+Now say you want to write a comment as text. Then you first need to change the
+type of the cell. To do so go to the pull down menu that says `Code` and choose
+Markdown. Now the cell is a textcell which accepts Text and text formatting commands
+in a markup language called Markdown. For the moment we do not need to know any
+details about this. The screen will look now as follows
+
+![Jupyter with Markdown Text Cell](pictures/jupyter_markdown.png)
+Now write a text comment into this cell, for example: "These are the percentages of
+infant mortality in 1860 in a group of European countries" and then press SHIFT ENTER.
+You will now see a screen like this:
+
+![Jupyter Notebook with Code and Text Cells](pictures/jupyter_with_text_Md.png)
+Now you can safe the file by just clicking the save symbol or choosing the menu File and 
+choose Save and Checkpoint. Then choose in the File menue Close and Halt to close your
+notebook. You can now open it any time again by double clicking the file in your
+directory. The Jupyter Notebooks have the file extension `ipynb`. The file
+can be uploaded to a platform, attached to an e-mail etc. as with any other file.
+Anybody who has the Jupyter Notebook software can open the file and read it. If the
+right software installation is in place the cells can be also correctly executed.
+
+From now on let us do our R stuff with Jupyter Notebooks to make the R work readable to
+others as well as reproduceable.
+
 
 ### A first data visualization
 
@@ -670,10 +756,9 @@ vector of words, the country names. We can give the country names as an argument
 #| code-fold: false
 barplot(mr_1860, names.arg = ctr)
 ```
-Not too bad. But some country names are missing. It seems that the width of the
-bars is not wide enough that R is able to print all names. 
+Not too bad. 
 
-It would be more convenient
+It would perhaps be more convenient
 to flip the chart around and interchange the x and the y axes here. This can be done by another
 argument to `barplot()`. This argument is called `horiz` and it assumes a logical value. A logical
 is another R data type which allows us to express whether something is true or false. Logical true and
@@ -700,13 +785,6 @@ because the names of countries with longer names are cut off a bit. This could b
 additional function arguments, but let us not go too much in the details of the
 `barplot()`function at this stage. We will learn a lot about powerful visualization
 techniques in R as we go along.
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.
-:::
 
 Before we close this first encounter with R and data visualization, let me point out an
 important aspect of bar charts. The visual impression is powerful and truthful, if we choose
@@ -792,7 +870,6 @@ the Institute for Health Metrics and Evaluation as well as the share of each cau
 overall cases.^[See https://www.healthdata.org/gbd/2019]
 
 ```{r}
-
 # read data from JWL package
 
 library(JWL)
@@ -803,19 +880,17 @@ causes_ordered <- causes[order(-causes$Share) , ]
 dat <- causes_ordered[, c("Entity", "Share")]
 names(dat) <- c("Cause", "Share")
 
-library(knitr)
-kable(dat, digits = 3, row.names = FALSE)
-write.csv(dat, file = "tables/table_2_4_infant_mortality_causes.csv", row.names = FALSE)
 ```
 
-::: {.callout-note icon=false}
+```{r}
+#| label: tbl-causes-infant-mortality
+#| tbl-cap: Causes of infant mortality
 
-## Now you try
+library(knitr)
+kable(dat, digits = 3, row.names = FALSE)
+#write.csv(dat, file = "tables/table_2_4_infant_mortality_causes.csv", row.names = FALSE)
+```
 
-Use R to visualize this table in a barchart. Don't worry if some of the causes are cut off at
-the left of the graph. We will learn during the course how to better control the appearance
-of a visualization and control for details like this.
-:::
 
 :::{.callout-caution collapse="true"}
 ## This is how an answer can look like.
@@ -841,8 +916,7 @@ causes of infant mortality visualizing our data will look like this
 pie(dat$Share, labels = dat$Cause, radius = 1, cex = 0.5)
 ```
 
-Now compare this to a display of the same information using the bar chart. If 
-you have done the exercise before correctly, it will look like this
+Now compare this to a display of the same information using the bar chart. 
 
 ```{r}
 barplot(dat$Share, 
@@ -914,32 +988,6 @@ To see this go back to our previous example of imagining crowds of people instea
 percentages. 
 
 ```{r}
-#library(extrafont)
-library(emojifont)
-library(ggplot2)
-
-my_waffle <- function(x, rows = 5, use_glyph = 'square', glyph_size = 6,
-                      title = 'Waffle chart') {
-  
-  len <- sum(x)
-  waffles <- seq(len) - 1
-  nms <- if(is.null(names(x))) seq_along(x) else names(x)
-  df <- data.frame(xvals = waffles %/% rows,
-                   yvals = 1 - (waffles %% rows),
-                   fill = factor(rep(nms, times = x)))
-  
-  ggplot(df, aes(xvals, yvals, color = fill)) +
-    geom_text(label = fontawesome(paste('fa', use_glyph, sep = '-')), 
-              family = 'fontawesome-webfont', size = glyph_size, show.legend = F) +
-    coord_equal(expand = TRUE) +
-    lims(x  = c(min(df$xvals) - 1, max(df$xvals) + 1),
-         y  = c(min(df$yvals) - 1, max(df$yvals) + 1)) + 
-    theme_void(base_size = 16) +
-    labs(title = title, color = NULL) +
-    theme(plot.title = element_text(),
-          plot.margin = margin(4, 4, 4, 4)) 
-} 
-
 my_waffle(c(2, 8), rows = 2, use_glyph = "male", glyph_size = 16, title = " ")
 ```
 Here we have an *absolute risk* of two out of 10 persons developing bowel cancer.
@@ -951,13 +999,6 @@ my_waffle(c(2, 1, 7), rows = 2, use_glyph = "male", glyph_size = 16, title = " "
 ```
 
 The risk increases now to three out of 10.
-
-::: {.callout-note icon=false}
-
-## Now you try
-
-Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk? 
-:::
 
 These examples illustrate that you need baseline or absolute risks as a vital 
 information to understand what an 18 % increase in risk really means. 
@@ -1013,11 +1054,96 @@ techniques to understand data about demography. Demography is
 the study of the characteristics of human populations, such as size, growth, density, distribution, 
 and vital statistics.
 
+The exercises will also be graded and solving them is an essential part of documenting
+your learning process and determining whether you will successfully finish this course.
+
 ### Exercises:
+
+::: {.callout-note}
+
+## Exercise 1: Refresh your knowledge of computing with percentages
+
+Compute and report the reduction in the share of infant mortality for
+each of the 8 countries between 1860 and 2020 based on the numbers reported in
+@tbl-infant-mortality-1860 and @tbl-infant-mortality-2020. You can do this
+with pencil and paper. You could do it also using the computer. When you
+report your result use a Jupyter-Notebook
+
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Framing
+
+In the text we gave as an example of framing the reporting of infant mortality by the 
+percentage of infant-deaths and equivalently as infant-survivals. Can you think of 
+another example of framing i.e. an example where you would report the same 
+information in two different ways ?
+
+:::
+
+::: {.callout-note icon=false}
+
+## Exercise 3: Communicating counts and proportions
+
+David Spiegelhalter [@Spi2019] whose book we have encountered when we discussed the question of how many
+trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of
+young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers 
+that riding on the London Underground is very safe. Try to imagine what this statement would mean
+when you think about this information in terms of crowds of young Londoners, assuming 
+that "young" means between 15 and 25. Try to exlpain how the same information presented differently 
+may have a different impact.
+What kind of communication tools we have just heard about, have been applied here? 
+:::
+
+::: {.callout-note icon=false}
+
+## Exercise 4:
+
+Go back to the first example in the section comparing pairs of proportions. 
+Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk? 
+:::
 
 ### Exercises R:
 
-### Exercises project
+::: {.callout-note icon=false}
+
+## Exercise 1: Transforming percentages into rates using R
+
+Use R to transform the mortality numbers reported in percent in @tbl-infant-mortality-1860 and
+@tbl-infant-mortality-2020 in mortality rates, i.e. the (approximate) 
+number of infant-deaths per 1000 life births.
+:::
+
+::: {.callout-note icon=false}
+
+## Exercise 2: Your first barplot
+
+Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.
+:::
+
+::: {.callout-note icon=false}
+
+## Exercise 3: A bar chart on the causes of infant mortality
+
+Use R to visualize the table of causes of infant mortality @tbl-causes-infant-mortality 
+in a barchart. 
+Don't worry if some of the causes are cut off at
+the left of the graph. We will learn during the course how to better control the appearance
+of a visualization and control for details like this.
+:::
+
+### Exercises project:
+
+In this course we will follow a larger project which we will call **People count and their data stories**.
+You will develop this project unit by unit adding new material as we go along. At each step you are going to
+apply concepts you learned in the unit. When you add the individual steps you will at the end have a data
+driven story of humanity in a few very interesting numbers and charts. It will help you understand some
+key aspect about humanity and its past and destination.
+
+In this section we begin with counting people. We will use a variant of our first visualisation tool
+we have learned in this lesson, the bar chart.
+
 
 <!-- ### The story of infant mortality around the globe -->
 

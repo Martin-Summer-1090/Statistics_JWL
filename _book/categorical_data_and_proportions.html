@@ -248,18 +248,20 @@ div.csl-indent {
   <li><a href="#starting-an-quitting-r" id="toc-starting-an-quitting-r" class="nav-link" data-scroll-target="#starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</a></li>
   <li><a href="#first-steps" id="toc-first-steps" class="nav-link" data-scroll-target="#first-steps"><span class="header-section-number">2.2.2</span> First steps</a></li>
   <li><a href="#storing-and-reusing-results" id="toc-storing-and-reusing-results" class="nav-link" data-scroll-target="#storing-and-reusing-results"><span class="header-section-number">2.2.3</span> Storing and reusing results</a></li>
-  <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"><span class="header-section-number">2.2.4</span> A first data visualization</a></li>
   </ul></li>
-  <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</a></li>
-  <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"><span class="header-section-number">2.4</span> Compairing pairs of proportions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.5</span> Exercises:</a>
+  <li><a href="#using-r-via-the-jupyter-notebook" id="toc-using-r-via-the-jupyter-notebook" class="nav-link" data-scroll-target="#using-r-via-the-jupyter-notebook"><span class="header-section-number">2.3</span> Using R via the Jupyter Notebook</a>
   <ul class="collapse">
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">2.5.1</span> Exercises:</a></li>
-  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">2.5.2</span> Exercises R:</a></li>
-  <li><a href="#exercises-project" id="toc-exercises-project" class="nav-link" data-scroll-target="#exercises-project"><span class="header-section-number">2.5.3</span> Exercises project</a></li>
-  <li><a href="#the-story-of-infant-mortality-around-the-globe" id="toc-the-story-of-infant-mortality-around-the-globe" class="nav-link" data-scroll-target="#the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.4</span> The story of infant mortality around the globe</a></li>
+  <li><a href="#cells" id="toc-cells" class="nav-link" data-scroll-target="#cells"><span class="header-section-number">2.3.1</span> Cells</a></li>
+  <li><a href="#a-first-data-visualization" id="toc-a-first-data-visualization" class="nav-link" data-scroll-target="#a-first-data-visualization"><span class="header-section-number">2.3.2</span> A first data visualization</a></li>
   </ul></li>
-  <li><a href="#a-data-collection-exercise-for-the-next-unit" id="toc-a-data-collection-exercise-for-the-next-unit" class="nav-link" data-scroll-target="#a-data-collection-exercise-for-the-next-unit"><span class="header-section-number">2.6</span> A data collection exercise for the next unit</a></li>
+  <li><a href="#categorical-variables-causes-of-infant-mortality" id="toc-categorical-variables-causes-of-infant-mortality" class="nav-link" data-scroll-target="#categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.4</span> Categorical variables: Causes of infant mortality</a></li>
+  <li><a href="#compairing-pairs-of-proportions" id="toc-compairing-pairs-of-proportions" class="nav-link" data-scroll-target="#compairing-pairs-of-proportions"><span class="header-section-number">2.5</span> Compairing pairs of proportions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.6</span> Exercises:</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">2.6.1</span> Exercises:</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">2.6.2</span> Exercises R:</a></li>
+  <li><a href="#exercises-project" id="toc-exercises-project" class="nav-link" data-scroll-target="#exercises-project"><span class="header-section-number">2.6.3</span> Exercises project:</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -309,7 +311,7 @@ Overview
 <p>In pre-industrial societies infant- and child-mortality were uniformly and cruelly high. They were a universal and frequent experience for families all over the world.</p>
 <div class="page-columns page-full"><p>Such tragic events are today counted as well as reported and compiled in so called mortality statistics, usually by national health authorities and civil registration and statistics systems. These data are then again collected and globally reported by the United Nation World Health Organisation.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;If you have internet access you can look at the organisation’s website https://www.who.int/data/data-collection-tools/who-mortality-database</p></li></div></div>
 <p>Mortality statistics distinguish between infant- and child-mortality. If a child dies within the first year of his life, this is classified and counted as an infant death and the statistics is referred to as infant-mortality statistics. If a child dies before its fifth year this is classified as child-mortality.</p>
-<p>Mortality statistics are reported in different formats. Often the concept of a <em>mortality-rate</em> is used in such reports. These are usually mortality rates standardized to 1000 life births. To compute an infant mortality rate in a given year in a given geographic area one would, for instance, need to know how many babies were born alive in a given period in a given area and how many babies who were born alive died before their first birthday during the same period. The number of deaths is the divided by the number of births. This rate is then multiplied by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on the level of comparison that is required. Reporting mortality statistics as mortality rates has the advantage that it communicates the risk as an expected frequency. Instead of percentages of probabilities it conveys directly what it means, for example, for 1000 births.</p>
+<p>Mortality statistics are reported in different formats. Often the concept of a <em>mortality-rate</em> is used in such reports. These are usually mortality rates standardized to 1000 life births. To compute an infant mortality rate in a given year in a given geographic area one would, for instance, need to know how many babies were born alive in a given period in a given area and how many babies who were born alive died before their first birthday during the same period. The number of deaths is the divided by the number of births. This rate is then multiplied by 1000, so that the rate reflects the number of infant deaths per 1000 life births in a standardized manner. This is just a reporting convention. We also could multiply by 10.000 of 100.000 depending on the level of comparison that is required. Reporting mortality statistics as mortality rates has the advantage that it communicates the risk as an expected frequency. Instead of percentages or probabilities it conveys directly what it means, for example, for 1000 births.</p>
 <p>The production and reporting of mortality statistics is a modern phenomenon. In many countries there are now statistical registry systems that record infant-deaths in legally regulated processes. But this is not the case all over the world. Poorer countries find it hard to have such processes in place. Still for these countries, where no registry data are available, the United Nations Health Organisation conduct high quality surveys that allow a fairly precise estimate of infant mortality rates. We will learn later in the course how you can draw conclusions from a survey to the whole population with a certain confidence. Today using either registry data of surveys we know a lot more about infant mortality based on a rich amount of data.</p>
 <p>Historically these statistics can only be based on estimation and proxies of different and varied sources. In a scientific publication Anthony Volk and Jeremy Atkinson made an attempt to report mortality rates of infants and children in the past, collecting data from a wide range of geographic locations and cultures reaching far back in history <span class="citation" data-cites="VolAtk2013">(<a href="references.html#ref-VolAtk2013" role="doc-biblioref">Antony and Jeremy 2013</a>)</span>.</p>
 <p>The authors find that in the entire sample about 27 % of children died in their first year of life and 46 % died before they reached adulthood. These numbers are surprisingly similar across regions and cultures: Every forth newborn child died in the first year of life, every second child during its early childhood. These high mortality rates are a major cause of the slow population growth of past centuries before the onset of the industrial revolution at around 1800.</p>
@@ -485,19 +487,6 @@ Overview
 </div>
 <p>This is a spectacular improvement for this group of countries. By 2020 we have much more data, covering more regions and we will follow the global story later. But let us stick for the moment with this group of European Countries, which we followed over a time span of 160 year.</p>
 <p>Within a bit more than a century the mortality rate has been reduced from 30 % to below 0.3 %. This amounts to a reduction by a factor of about 100. Isn’t this a stunning achievement?</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This is a good opportunity to practice and refresh your skills in manipulating percentages. Compute and report the reduction in the share of infant mortality for each of the 8 countries between 1860 and 2020 based on the numbers reported in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a></p>
-</div>
-</div>
 <div class="page-columns page-full"><p>In a recent book <span class="citation" data-cites="Smil2020">(<a href="references.html#ref-Smil2020" role="doc-biblioref">Smil 2020</a>)</span>, the Canadian researcher Vaclav Smil has pointed out that such low rates are impossible without the combination of a number of critical conditions, such as good healthcare in general, appropriate prenatal, perinatal and neonatal<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> care, proper maternal and infant nutrition, adequate sanitary living conditions as well as access to social support for disadvantages families. All of these factors require relevant government and private spending and on infrastructures that can be universally used and accessed. Infant mortality is thus a very powerful indicator of quality of life in a country.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;prenatal is a word rooted in ancient Latin and means before birth. Perinatal means around the time of birth and neonatal means the first month after birth of a child.</p></li></div></div>
 <p>When data, such as counts and proportions are reported in a table we should make careful considerations how the data are precisely presented.</p>
 <p>For instance in the table about infant mortality in some European countries in 1860, we could have reported the same information by presenting survival rates instead of mortality rates. Such a choice in reporting is generally known as <strong>framing</strong>.</p>
@@ -583,12 +572,33 @@ as percentages. In this way the risk can be imagined as an actual crowd of peopl
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">260</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">740</span>), </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">use_glyph =</span> <span class="st">"child"</span>, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">equal =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(extrafont)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emojifont)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>my_waffle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">'square'</span>, <span class="at">glyph_size =</span> <span class="dv">6</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">title =</span> <span class="st">'Waffle chart'</span>) {</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  len <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  waffles <span class="ot">&lt;-</span> <span class="fu">seq</span>(len) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="cf">if</span>(<span class="fu">is.null</span>(<span class="fu">names</span>(x))) <span class="fu">seq_along</span>(x) <span class="cf">else</span> <span class="fu">names</span>(x)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">xvals =</span> waffles <span class="sc">%/%</span> rows,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yvals =</span> <span class="dv">1</span> <span class="sc">-</span> (waffles <span class="sc">%%</span> rows),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(nms, <span class="at">times =</span> x)))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(xvals, yvals, <span class="at">color =</span> fill)) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">label =</span> <span class="fu">fontawesome</span>(<span class="fu">paste</span>(<span class="st">'fa'</span>, use_glyph, <span class="at">sep =</span> <span class="st">'-'</span>)), </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">'fontawesome-webfont'</span>, <span class="at">size =</span> glyph_size, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_equal</span>(<span class="at">expand =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>xvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>xvals) <span class="sc">+</span> <span class="dv">1</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">y  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>yvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>yvals) <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(),</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)) </span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">260</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">740</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -604,8 +614,7 @@ as percentages. In this way the risk can be imagined as an actual crowd of peopl
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waffle)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">997</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#FD6F6F"</span>, <span class="st">"#93FB98"</span>), <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">equal =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="st">"Death"</span> <span class="ot">=</span> <span class="dv">3</span>, <span class="st">"Survived"</span> <span class="ot">=</span> <span class="dv">997</span>), <span class="at">rows =</span> <span class="dv">20</span>, <span class="at">use_glyph =</span> <span class="st">"child"</span>, <span class="at">glyph_size =</span> <span class="dv">4</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -618,35 +627,6 @@ as percentages. In this way the risk can be imagined as an actual crowd of peopl
 </div>
 <p>From this perspective the improvement in infant mortality rates in Germany are truly spectacular.</p>
 <p>Still even at the low mortality rate this can mean a huge amount of individual tragedies. In 2020 Germany had 760.378 births. 0.31 % of this amounts to 2357 individual tragedies. Even if this rate could be brought down further, say to 0.28 % which sounds like a tiny improvement, it would mean 228 infant lives that could be saved.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>David Spiegelhalter <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> whose book we have encountered when we discussed the question of how many trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers that riding on the London Underground is very safe. Try to imagine what this statement would mean when you think about this information in terms of crowds of young Londoners, assuming that “young” means between 15 and 25. Try to exlpain how the same information presented differently may have a different impact. What kind of communication tools we have just heard about, have been applied here?</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Seitwerk: A remark on answer.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Turn a positive frame into a negative one and then imagine actual crowds of people instead of percentages. This or an answer like this I would have in mind that studnets come up with if they reflect this example. I think an answer to such a reflection is best placed in the interactive part of the course or in the study center meet ups.</p>
-</div>
-</div>
-</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -671,26 +651,10 @@ Be mindful of framing
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="starting-an-quitting-r"><span class="header-section-number">2.2.1</span> Starting an quitting R</h3>
 <div class="page-columns page-full"><p>We assume that the computer you work with has a recent version of R installed. R will work with the most common operating systems such as Windows, OSX or Linux.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;Installing R yourself is not complicated. To install R yourself you need a computer where you have the privileges to install software and you need an internet connection. You get the newest version of R at the website https://cran.r-project.org/. A screenshot of the website is here <img src="pictures/cran-website-as-of-2022-09.png" class="img-fluid" alt="cran-website"></p></li></div></div>
 <div class="page-columns page-full"><p>We will use R in two ways: First from the R command line and then also by working with Jupyter Notebooks.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;Another very powerful and popular program to work with R and R code is RStudio, which you can find here https://www.rstudio.com/. RStudio is a so called IDE, an integrated development environment. If you have access to a computer with internet connection and the permissions to install software yourself, feel free to experiment also with this tool. The basic version is free of charge. Again you need a computer where you have the privileges to install software and you need an internet connection.</p></li></div></div>
-<p>The notebooks, which we already encountered in an example in the introduction, will not only allow to write R code and send this code to R for execution. Notebooks also allows you to store commands, to comment them and make them available as files for later use. This is especially useful, once you work on longer and more complicated tasks. It is then essential that you can reproduce what you did in the past days, that you can write easily readable comments and that you can collaborate in a team, where you can share your work with others. This circle of collaborators includes your future and past self.</p>
-<p>For a start we just work with the R command line or the R-console, as it is called, introducing the use of R via the notebooks a bit later.</p>
+<p>The notebooks will not only allow to write R code and send this code to R for execution. Notebooks also allows you to store commands, to comment them and make them available as files for later use. This is especially useful, once you work on longer and more complicated tasks. It is then essential that you can reproduce what you did in the past days, that you can write easily readable comments and that you can collaborate in a team, where you can share your work with others. This circle of collaborators includes your future and past self.</p>
+<p>Let us start the <strong>R command line</strong> or the <strong>R-console</strong>, as it is called, introducing the use of R via the notebooks a bit later.</p>
 <p>You start R by either typing <code>R</code> into the terminal or by clicking the R icon on your computer. The R console shows a prompt, a symbol that looks like this <code>&gt;</code>. When you see the prompt in the R console, R is ready to receive commands.</p>
 <p>To end your R session write <code>quit()</code> at the prompt <code>&gt;</code> of the console. Congratulations. Now that you can start and quit R we are ready to go.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Seitwerk: A remark on a demo.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This would be perhaps best shown in a brief video. Of course when producing the video it is important to think about which operating system the students will use, and the R version that they will have available. If this is open, so the demo for windows, mac and linux. It does only take marginally more time and effort. Maybe this whole intro is perfect for a video demo.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="first-steps" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="first-steps"><span class="header-section-number">2.2.2</span> First steps</h3>
@@ -739,19 +703,6 @@ Seitwerk: A remark on a demo.
 </div>
 </div>
 <p>The comma is represented in R as a dot <code>.</code>. So the above output reads <code>1717</code>and one half or <code>0.5</code>.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use R to transform the Mortality numbers reported in percent in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a> in mortality rates, i.e.&nbsp;the (approximate) number of infant-deaths per 1000 life births.</p>
-</div>
-</div>
 <p>R needs a complete command to be able to execute it, when the return key is pressed. Lets see what happens, if a command is incomplete, like for instance:</p>
 <p><code>5*</code></p>
 <p>In this case R will show the expression <code>5*</code> followed by a <code>+</code> instead of showing a new prompt. This means that the expression is incomplete. When R shows <code>+</code> after entering a command instead of the output and a new prompt, it means that it expects more input. If we complete the expression, the expression can be evaluated and a new prompt is shown in the console.</p>
@@ -793,13 +744,58 @@ Now you try
 <p>When you assign a new value to the old name <code>a</code>, the old value will be overwritten by the new value.</p>
 <p>What names should you use? You could uses actually anything but you have to follow a few rules. A name in R must for example not begin with a number, a dot <code>.</code> or an underscore <code>_</code>. So for example <code>var_1</code>, <code>var.1</code>, <code>var1</code> and <code>VAR1</code> and <code>myVar1</code> are all allowed names but <code>1var</code>, <code>.var</code> and <code>_var1</code> are not</p>
 </section>
-<section id="a-first-data-visualization" class="level3 page-columns page-full" data-number="2.2.4">
-<h3 data-number="2.2.4" class="anchored" data-anchor-id="a-first-data-visualization"><span class="header-section-number">2.2.4</span> A first data visualization</h3>
+</section>
+<section id="using-r-via-the-jupyter-notebook" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="using-r-via-the-jupyter-notebook"><span class="header-section-number">2.3</span> Using R via the Jupyter Notebook</h2>
+<p>In these first steps we have used R via the console. In this course we will use another powerful tool to use R: The <strong>Jupyter-Notebook</strong>. The notebook is a file format that allows you to store both text and code within one file. It allows you also to produce documents and store them. This has a few big advantages over using R just via the console:</p>
+<ol type="1">
+<li>It allows you to store your work and to come back to it later.</li>
+<li>It also allows you to show your work to a learning facilitator to get feedback or grades as often needed in this course.</li>
+<li>It finally allows you to verbally comment your code, so you later - when you come back to it - remember what you have done.</li>
+<li>It is a document format that gives you an elegant and powerful tool to report on your data work in the form of a readable and professionally layed out document.</li>
+</ol>
+<p>Let us show, how the Jupyter-Notebook works. You start the Notebook by double clicking the Jupyter icon in your docker.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comment for Seitwerk: Please uncollapse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Here you should demonstrate in a vido how to launch the Jupyter-Notebook in the docker version you have installed for the course.</p>
+</div>
+</div>
+</div>
+<p>Upon start Jupyter will show you your directory structure and a navigation pane. On my screen it looks like this: <img src="pictures/jupyter_start.png" class="img-fluid" alt="Jupyter-Start-Screen"> Now you need to navigate to the folder where you would like to store your notebooks. This will be a folder of your choice with a name you have given it. If the directory has been created you can navigate there from the Jupyter menue by just double clicking on the directory names. For instance, in my case the files are stores in my <code>R</code> directory. So I double click <code>R</code> and will then see the subdirectories of <code>R</code>. Then I click on my folder <code>Statistics_JWL</code> because this is where I store my files for this course and in this directory I click <code>notebooks</code> because this is the folder for my Jupyter notebooks. In your case this will be different depending on how you chose to organise your directories.</p>
+<p>After navigating to my folder my screen will look like this:</p>
+<p><img src="pictures/jupyter_ms.png" class="img-fluid" alt="Jupyter-Directory"> Now in the gry bar you see the directory you are in. In this directory you can create a new notebook-file by selecting the button new in the upper right corner of the screen. When I do this I get a menu of options, like this <img src="pictures/jupyter_type.png" class="img-fluid" alt="Jupyter-Notebook-Type"> In my case I can choose from three options. These options refer to different computing engines, which will do code execution from the notebook. The options might look a bit different in your installation but what is important is that you should have an option <code>R</code> in your pull down menu: Please choose this option.</p>
+<p>When you do that you have created a new notebook which will be able to use R as its computing engine and be able to send R commands from the notebook to R as well as receive R output in the notebook. This is the way we will use the Jupyter-Notebook in this course. You should now see a screen like this:</p>
+<p><img src="pictures/jupyter-notebook.png" class="img-fluid" alt="Jupyter-Notebook"> You see now the <code>R</code>icon in the upper right corner, you see a menue bar on the top. You also see that the notebook has yet no name and is called Untitled1. Let’s give this notebook a name. In order to do so, you click the File menu, select Save as and then give the file a name: I called mine <code>testbook</code>.</p>
+<p>To work with the notebooks for now, you have just to understand very few things beyond how to open Juyter and create a new notebook. Let me explain these few concepts here and then you are ready to go.</p>
+<section id="cells" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="cells"><span class="header-section-number">2.3.1</span> Cells</h3>
+<p>Jupyter-Notebooks are file formats that can combine code and text and represent these different forms of input in a single documents. Whether something you type is understood by the notebook as a text or as code depends on the type of so called cells.</p>
+<p>For example in the new file we created we see a line which is boxed with a color bar on the left. Then its has <code>In []:</code> followed by a kind of ply symbol and then a light gray box, like this:</p>
+<p><img src="pictures/jupyter_input_cell.png" class="img-fluid" alt="Jupyter-Notebook_input_Cell"> This is a cell type that can take inputs of <code>R</code> code. You can see this, by looking at the line below the menu bar which says <code>Code</code>. Now let us give the cell some R input like for example the vector of mortality rates in 1860.</p>
+<p><img src="pictures/jupyter_mr.png" class="img-fluid" alt="Jupyter Storing mortality rates of 1860 in an object called mr_1860"> Now you can execute the cell by typing SHIFT and ENTER. This executes the cell. This means that the code is sent to R and processed there as if you had typed the same command on the console. Note that something has also changed with the cell. The <code>Input[]:</code> has now be given a number by the notebook. This is the first input the notebook has received in this session and it is recorded. At the same time R has opened a new input cell for code.</p>
+<p><img src="pictures/jupyter_new_cell.png" class="img-fluid" alt="Jupyter Code cell executed"> Say now that you want to inspect the object <code>mr_1860</code> in which we have stored the data you just would type this name into the cell and press SHIFT ENTER again. The resulting screen would then look like this:</p>
+<p><img src="pictures/jupyter_output.png" class="img-fluid" alt="Jupyter Notebook with output"> Now say you want to write a comment as text. Then you first need to change the type of the cell. To do so go to the pull down menu that says <code>Code</code> and choose Markdown. Now the cell is a textcell which accepts Text and text formatting commands in a markup language called Markdown. For the moment we do not need to know any details about this. The screen will look now as follows</p>
+<p><img src="pictures/jupyter_markdown.png" class="img-fluid" alt="Jupyter with Markdown Text Cell"> Now write a text comment into this cell, for example: “These are the percentages of infant mortality in 1860 in a group of European countries” and then press SHIFT ENTER. You will now see a screen like this:</p>
+<p><img src="pictures/jupyter_with_text_Md.png" class="img-fluid" alt="Jupyter Notebook with Code and Text Cells"> Now you can safe the file by just clicking the save symbol or choosing the menu File and choose Save and Checkpoint. Then choose in the File menue Close and Halt to close your notebook. You can now open it any time again by double clicking the file in your directory. The Jupyter Notebooks have the file extension <code>ipynb</code>. The file can be uploaded to a platform, attached to an e-mail etc. as with any other file. Anybody who has the Jupyter Notebook software can open the file and read it. If the right software installation is in place the cells can be also correctly executed.</p>
+<p>From now on let us do our R stuff with Jupyter Notebooks to make the R work readable to others as well as reproduceable.</p>
+</section>
+<section id="a-first-data-visualization" class="level3 page-columns page-full" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="a-first-data-visualization"><span class="header-section-number">2.3.2</span> A first data visualization</h3>
 <p>We showed the infant mortality rates of a group of European countries before in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a>.</p>
 <p>Humans are very visual creatures. Thus using our visual system to explore data and absorb information in these data visualizations can be very powerful. To deploy their power, we must - however - follow some principles, which we will learn step by step over this course.</p>
 <p>Assume we would like to display the information in our tables in a so called <strong>bar chart</strong>. A bar chart would combine in a plot bars for each country in the table with the bar length proportional to the mortality rate. This will give us a visual impression how the countries differ in one view, which might be more informative as just looking at the numbers themselves in a table.</p>
-<section id="functions" class="level4" data-number="2.2.4.1">
-<h4 data-number="2.2.4.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.2.4.1</span> Functions</h4>
+<section id="functions" class="level4" data-number="2.3.2.1">
+<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.3.2.1</span> Functions</h4>
 <p>R is not just a calculator and data storage device. What makes R very powerful is that it comes equipped with many functions which we can use to do things with data, like for instance producing plots like a bar chart.</p>
 <p>Functions in R have a name followed by parenthesis. In the very first step we typed for example <code>quit()</code> at the prompt. This is a function and by typing its name followed by the parenthesis, R knows that it has to close the program and shut down.</p>
 <p>Functions can also have arguments, which we can assign certain values to. For example, R has a function which would round numbers. This function is called <code>round()</code>. It has also arguments. You need to tell R which numbers to round and the number of digits the rounding should consider.</p>
@@ -820,8 +816,8 @@ Now you try
 <p>R would have known automatically that the first value is assigned to <code>x</code>and the second to <code>digits</code>.</p>
 <p>We will encounter a lot of R functions during this course. We will also learn how to access R documentation to know for so many different functions, what is their name, which arguments they accept as input and how we can use them.</p>
 </section>
-<section id="visualizing-the-infant-mortality-data" class="level4 page-columns page-full" data-number="2.2.4.2">
-<h4 data-number="2.2.4.2" class="anchored" data-anchor-id="visualizing-the-infant-mortality-data"><span class="header-section-number">2.2.4.2</span> Visualizing the infant mortality data</h4>
+<section id="visualizing-the-infant-mortality-data" class="level4 page-columns page-full" data-number="2.3.2.2">
+<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="visualizing-the-infant-mortality-data"><span class="header-section-number">2.3.2.2</span> Visualizing the infant mortality data</h4>
 <p>R has a built in function for plotting bar charts, which is called <code>barplot()</code>. Let is make use of this function to show the infant mortality rates of 1860 as a bar chart. The arguments taken by R are the data. Then we can add additional arguments which determine details of the plot display and appearance.</p>
 <p>Let us first store the data in an object with the name <code>mr</code>for mortality rates of 1860.</p>
 <div class="cell">
@@ -855,8 +851,8 @@ Now you try
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Not too bad. But some country names are missing. It seems that the width of the bars is not wide enough that R is able to print all names.</p>
-<p>It would be more convenient to flip the chart around and interchange the x and the y axes here. This can be done by another argument to <code>barplot()</code>. This argument is called <code>horiz</code> and it assumes a logical value. A logical is another R data type which allows us to express whether something is true or false. Logical true and false values are expressed as <code>TRUE</code> and <code>FALSE</code> in R.</p>
+<p>Not too bad.</p>
+<p>It would perhaps be more convenient to flip the chart around and interchange the x and the y axes here. This can be done by another argument to <code>barplot()</code>. This argument is called <code>horiz</code> and it assumes a logical value. A logical is another R data type which allows us to express whether something is true or false. Logical true and false values are expressed as <code>TRUE</code> and <code>FALSE</code> in R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(mr_1860, <span class="at">names.arg =</span> ctr, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -872,19 +868,6 @@ Now you try
 </div>
 </div>
 <p>Now we have visualized the information we had displayed in a table before. It is not yet perfect because the names of countries with longer names are cut off a bit. This could be fixed by additional function arguments, but let us not go too much in the details of the <code>barplot()</code>function at this stage. We will learn a lot about powerful visualization techniques in R as we go along.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.</p>
-</div>
-</div>
 <p>Before we close this first encounter with R and data visualization, let me point out an important aspect of bar charts. The visual impression is powerful and truthful, if we choose the origin of the bars carefully. It is usually the best idea to start the bars at zero. So we see clearly the relative lengths and the magnitude of differences in the context of the entire dataset.</p>
 <p>Changing the origin with not enough care can visually exaggerate the differences between countries. This is a manipulative visualization, which should be avoided but which is encountered often. So be mindful about the choice of origin in a bar chart.</p>
 <p>Let me show you what I mean by telling R, for example, to start the plot of the data for the 1880 data at <span class="math inline">\(0.08\)</span> instead as of <span class="math inline">\(0\)</span>.</p>
@@ -941,8 +924,8 @@ Be mindful about order in displaying the data
 </section>
 </section>
 </section>
-<section id="categorical-variables-causes-of-infant-mortality" class="level2 page-columns page-full" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.3</span> Categorical variables: Causes of infant mortality</h2>
+<section id="categorical-variables-causes-of-infant-mortality" class="level2 page-columns page-full" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="categorical-variables-causes-of-infant-mortality"><span class="header-section-number">2.4</span> Categorical variables: Causes of infant mortality</h2>
 <p>We have discussed binary data. These are data that can take two values, like death or alive, in the examples of infant mortality data we have studied so far. A generalization of binary variables are called <strong>categorical variables</strong> in statistics. Categorical variables are measures that can take two or more values, which can be either unordered, such as eye color, countries or study center locations at which JWL courses take place. They can also be ordered, like positions in a hierarchy.</p>
 <p>An example of categorical data arises if we study the issue of infant mortality further and ask for the causes. Why do infants die in the first year of their life?</p>
 <div class="page-columns page-full"><p>Here are the causes that have been registered by the Global Burden of Disease Study in 2019 by the Institute for Health Metrics and Evaluation as well as the share of each cause in the overall cases.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn10"><p><sup>10</sup>&nbsp;See https://www.healthdata.org/gbd/2019</p></li></div></div>
@@ -957,13 +940,19 @@ Be mindful about order in displaying the data
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>causes_ordered <span class="ot">&lt;-</span> causes[<span class="fu">order</span>(<span class="sc">-</span>causes<span class="sc">$</span>Share) , ]</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> causes_ordered[, <span class="fu">c</span>(<span class="st">"Entity"</span>, <span class="st">"Share"</span>)]</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cause"</span>, <span class="st">"Share"</span>)</span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cause"</span>, <span class="st">"Share"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(dat, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
+<div id="tbl-causes-infant-mortality" class="anchored">
 <table class="table table-sm table-striped small">
+<caption>Table&nbsp;2.4: Causes of infant mortality</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Cause</th>
@@ -1058,26 +1047,14 @@ Be mindful about order in displaying the data
 </tbody>
 </table>
 </div>
+</div>
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(dat, <span class="at">file =</span> <span class="st">"tables/table_2_4_infant_mortality_causes.csv"</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#write.csv(dat, file = "tables/table_2_4_infant_mortality_causes.csv", row.names = FALSE)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Use R to visualize this table in a barchart. Don’t worry if some of the causes are cut off at the left of the graph. We will learn during the course how to better control the appearance of a visualization and control for details like this.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1086,17 +1063,17 @@ This is how an answer can look like.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Since students have not yet learned subsetting, they need to use the table and retype the values and the causes manually. This is intended because it will familiarize them with the <code>c()</code> function, the difference between numerical and character data type and is an excellent opportunity to review what we did on simple R bar-charts. In the example cause below I use - of course - the convenience of subsetting</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </div>
@@ -1106,21 +1083,21 @@ This is how an answer can look like.
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>Now compare this to a display of the same information using the bar chart. If you have done the exercise before correctly, it will look like this</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now compare this to a display of the same information using the bar chart.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(dat<span class="sc">$</span>Share, </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> dat<span class="sc">$</span>Cause, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.names =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Apart from some imperfections of displaying the labels in a easily readable way, why does the bar chart work much better for comparing the proportions of causes than the pie chart?</p>
@@ -1128,11 +1105,11 @@ This is how an answer can look like.
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie3D</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">labelcex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotrix)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie3D</span>(dat<span class="sc">$</span>Share, <span class="at">labels =</span> dat<span class="sc">$</span>Cause, <span class="at">radius =</span> <span class="dv">1</span>, <span class="at">labelcex =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now it is even worse, because our visual system now has to additionally decode perspective on top of area, something it is naturally also not good at.</p>
@@ -1151,8 +1128,8 @@ Don’t use pie charts to visually compare proportions
 </div>
 </div>
 </section>
-<section id="compairing-pairs-of-proportions" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="compairing-pairs-of-proportions"><span class="header-section-number">2.4</span> Compairing pairs of proportions</h2>
+<section id="compairing-pairs-of-proportions" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="compairing-pairs-of-proportions"><span class="header-section-number">2.5</span> Compairing pairs of proportions</h2>
 <p>Often proportions or percentages are used to communicate risks by comparing pairs of proportions.</p>
 <p>When pairs of proportions are compared, we need to understand how such comparisons can be made in a meaningful way. Especially in the media it is popular to often run spectacular headlines of how specific behaviors affect your likelihood of developing a disease.</p>
 <p>Much of the spectacle in the headlines is due to the exclusive reporting of <em>relative risks</em>. It is important to understand that such statements need to be put into context by also reporting baseline of <em>absolute</em> risk.</p>
@@ -1164,108 +1141,166 @@ Don’t use pie charts to visually compare proportions
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(extrafont)</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emojifont)</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>my_waffle <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">'square'</span>, <span class="at">glyph_size =</span> <span class="dv">6</span>,</span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">title =</span> <span class="st">'Waffle chart'</span>) {</span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>  len <span class="ot">&lt;-</span> <span class="fu">sum</span>(x)</span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  waffles <span class="ot">&lt;-</span> <span class="fu">seq</span>(len) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  nms <span class="ot">&lt;-</span> <span class="cf">if</span>(<span class="fu">is.null</span>(<span class="fu">names</span>(x))) <span class="fu">seq_along</span>(x) <span class="cf">else</span> <span class="fu">names</span>(x)</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">xvals =</span> waffles <span class="sc">%/%</span> rows,</span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yvals =</span> <span class="dv">1</span> <span class="sc">-</span> (waffles <span class="sc">%%</span> rows),</span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(nms, <span class="at">times =</span> x)))</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(xvals, yvals, <span class="at">color =</span> fill)) <span class="sc">+</span></span>
-<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="at">label =</span> <span class="fu">fontawesome</span>(<span class="fu">paste</span>(<span class="st">'fa'</span>, use_glyph, <span class="at">sep =</span> <span class="st">'-'</span>)), </span>
-<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="st">'fontawesome-webfont'</span>, <span class="at">size =</span> glyph_size, <span class="at">show.legend =</span> F) <span class="sc">+</span></span>
-<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_equal</span>(<span class="at">expand =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lims</span>(<span class="at">x  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>xvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>xvals) <span class="sc">+</span> <span class="dv">1</span>),</span>
-<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">y  =</span> <span class="fu">c</span>(<span class="fu">min</span>(df<span class="sc">$</span>yvals) <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">max</span>(df<span class="sc">$</span>yvals) <span class="sc">+</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_void</span>(<span class="at">base_size =</span> <span class="dv">16</span>) <span class="sc">+</span></span>
-<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> title, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(),</span>
-<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>)) </span>
-<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Here we have an <em>absolute risk</em> of two out of 10 persons developing bowel cancer. If the relative risk would increase by 50 % this would mean in terms of absolute risk that now we have</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">7</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">7</span>), <span class="at">rows =</span> <span class="dv">2</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">16</span>, <span class="at">title =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The risk increases now to three out of 10.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk?</p>
-</div>
-</div>
 <p>These examples illustrate that you need baseline or absolute risks as a vital information to understand what an 18 % increase in risk really means.</p>
 <p>Going back to the example of processed meat consumption and bowel cancer risk, the estimated lifetime risk of developing bowel cancer is 5.6 %. Expressed as a relative frequency this is about 6 out of 100 or in a chart</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">94</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">94</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The estimated life time risk of developing bowel cancer if you eat 50 g of processed meat per day increases your relative risk by 18 %. At this heightened risk level the new absolute risk is now 6.6 % or about 7 out of 100</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">93</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">my_waffle</span>(<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">93</span>), <span class="at">rows =</span> <span class="dv">5</span>, <span class="at">use_glyph =</span> <span class="st">"male"</span>, <span class="at">glyph_size =</span> <span class="dv">13</span>, <span class="at">title =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+<p><img src="categorical_data_and_proportions_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In the research literature proportions are often expressed by the <em>odds ratio</em>. This ratio expresses the chance of an event happening relative to the chance of an event not happening. In the example of processed meat and bowel cancer this would be <span class="math inline">\(6/94\)</span>, because 6 out of hundered people develop bowel cancer in their life time and 94 out of hundred do not. While odds are very common in the research literture they are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside a scientific context, since it easily invites misunderstanding.</p>
 </section>
-<section id="exercises" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.5</span> Exercises:</h2>
+<section id="exercises" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.6</span> Exercises:</h2>
 <p>A note on exercises. Exercises will help you to actively remember the concepts you, learn, they will help you to practice applying these concepts to problems and develop your competence and skills. The exercises will be divided into two categories.</p>
 <p><strong>Exercises</strong> will ask questions related to the study material. They will help you remembering the concepts learned. They will also help you to test and develop your understanding by applying the concepts to various situations, some similar but slightly different than in the text. This will help you develop your skills, aqcuring routine through practice and reflect in your understanding.</p>
 <p><strong>Exercises R</strong> will be exercises for which you will need the computer and access to your digital tools like R and the Jupyter notebook. These exercises will be very important. They support you in developing your computer skills and gain practice in modern data analysis. Data analysis today is always done using a computer. You should consider these as an integral part of your general skills in statistics.</p>
 <p><strong>Exercises Project</strong> will be exercises related to a long term project which requires from you a continuous development done unit by unit and cumulatively drawing on the skills you learned during the course. It will also need the computer and your use of R and the Jupyter notebook. The project we are going to work on during this course is called: “People count: The future of humanity in pictures and numbers”. In this project we will apply what we learned in this data to the application of statistical techniques to understand data about demography. Demography is the study of the characteristics of human populations, such as size, growth, density, distribution, and vital statistics.</p>
-<section id="exercises-1" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.5.1</span> Exercises:</h3>
+<p>The exercises will also be graded and solving them is an essential part of documenting your learning process and determining whether you will successfully finish this course.</p>
+<section id="exercises-1" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.6.1</span> Exercises:</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Refresh your knowledge of computing with percentages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compute and report the reduction in the share of infant mortality for each of the 8 countries between 1860 and 2020 based on the numbers reported in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a>. You can do this with pencil and paper. You could do it also using the computer. When you report your result use a Jupyter-Notebook</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Framing
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the text we gave as an example of framing the reporting of infant mortality by the percentage of infant-deaths and equivalently as infant-survivals. Can you think of another example of framing i.e.&nbsp;an example where you would report the same information in two different ways ?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Communicating counts and proportions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>David Spiegelhalter <span class="citation" data-cites="Spi2019">(<a href="references.html#ref-Spi2019" role="doc-biblioref">Spiegelhalter 2019</a>)</span> whose book we have encountered when we discussed the question of how many trees there are on the planet, describes an advertisement in the London Underground, saying that 99 % of young Londoners do not commit serious crimes. The add was presumably intended to reassure passengers that riding on the London Underground is very safe. Try to imagine what this statement would mean when you think about this information in terms of crowds of young Londoners, assuming that “young” means between 15 and 25. Try to exlpain how the same information presented differently may have a different impact. What kind of communication tools we have just heard about, have been applied here?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go back to the first example in the section comparing pairs of proportions. Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk?</p>
+</div>
+</div>
 </section>
-<section id="exercises-r" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">2.5.2</span> Exercises R:</h3>
+<section id="exercises-r" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">2.6.2</span> Exercises R:</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Transforming percentages into rates using R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use R to transform the mortality numbers reported in percent in <a href="#tbl-infant-mortality-1860">Table&nbsp;<span>2.1</span></a> and <a href="#tbl-infant-mortality-2020">Table&nbsp;<span>2.2</span></a> in mortality rates, i.e.&nbsp;the (approximate) number of infant-deaths per 1000 life births.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Your first barplot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use R to redo the barplot visualization we just did for the 1860 data for the 2020 data.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: A bar chart on the causes of infant mortality
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use R to visualize the table of causes of infant mortality <a href="#tbl-causes-infant-mortality">Table&nbsp;<span>2.4</span></a> in a barchart. Don’t worry if some of the causes are cut off at the left of the graph. We will learn during the course how to better control the appearance of a visualization and control for details like this.</p>
+</div>
+</div>
 </section>
-<section id="exercises-project" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="exercises-project"><span class="header-section-number">2.5.3</span> Exercises project</h3>
-</section>
-<section id="the-story-of-infant-mortality-around-the-globe" class="level3" data-number="2.5.4">
-<h3 data-number="2.5.4" class="anchored" data-anchor-id="the-story-of-infant-mortality-around-the-globe"><span class="header-section-number">2.5.4</span> The story of infant mortality around the globe</h3>
-<p>For this activity we continue to look into the issue of infant mortality around the globe by working with a Jupyter notebook. To work on this assignment, please open the notebook <code>infant_mortality_global.ipynb</code> with the jupyter notebook. The notebook contains some text and some code which you can interactively execute from the notebook, as we already did it in the assignments in the Introduction, when we looked at the share of poverty in various countries. In this notebook we continue to dive deeper into the story of infant mortality around the globe. The things you learn when you work through this assignment will probably surprise you.</p>
-</section>
-</section>
-<section id="a-data-collection-exercise-for-the-next-unit" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="a-data-collection-exercise-for-the-next-unit"><span class="header-section-number">2.6</span> A data collection exercise for the next unit</h2>
-<p>Maybe handedness score?</p>
+<section id="exercises-project" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="exercises-project"><span class="header-section-number">2.6.3</span> Exercises project:</h3>
+<p>In this course we will follow a larger project which we will call <strong>People count and their data stories</strong>. You will develop this project unit by unit adding new material as we go along. At each step you are going to apply concepts you learned in the unit. When you add the individual steps you will at the end have a data driven story of humanity in a few very interesting numbers and charts. It will help you understand some key aspect about humanity and its past and destination.</p>
+<p>In this section we begin with counting people. We will use a variant of our first visualisation tool we have learned in this lesson, the bar chart.</p>
+<!-- ### The story of infant mortality around the globe -->
+<!-- For this activity we continue to look into the issue of infant mortality around the -->
+<!-- globe by working with a Jupyter notebook. To work on this assignment, please open -->
+<!-- the notebook `infant_mortality_global.ipynb` with the jupyter notebook.  -->
+<!-- The notebook contains some text and some code which you can interactively  -->
+<!-- execute from the notebook, as we already did it in the assignments  -->
+<!-- in the Introduction, when we looked at the share of -->
+<!-- poverty in various countries. In this notebook we continue to dive deeper into the -->
+<!-- story of infant mortality around the globe. The things you learn when you work through  -->
+<!-- this assignment will probably surprise you. -->
+<!-- ## A data collection exercise for the next unit -->
+<!-- Maybe handedness score? -->
 <!-- ## Contents -->
 <!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
 <!-- 1. The importance of framing -->
@@ -1302,6 +1337,7 @@ Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. 
 Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
 </div>
+</section>
 </section>
 
 
