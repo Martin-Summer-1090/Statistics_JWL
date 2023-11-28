@@ -111,15 +111,6 @@ But before we do so, lets look at a smaller example of human height data.
 To summarize data, statisticians often use a graph which is called a **histogram**. 
 In this section we will discuss all you have to know about histograms and how to use them.
 
-:::{.callout-caution collapse="true"}
-## Seitwerk: Expand for reading comment.
-Reda, I think it would be great that among the activities in the study center we collect
-some data about the students in the group. I would suggest height, weight. These
-varibles can be measured and recorded and the students could be asked to store these
-data in a text file, sow e can read them by R here. We could then
-use these data here to explain how a histogram is constructed or give it as an exercise.
-:::
-
 ### Constructing a histogram
 
 Since real world examples in this exposition come from anthropometry, let us 
@@ -232,7 +223,8 @@ takes the data as an argument. This is the second graphic function
 of R you encounter in this course
 after we played with the `barplot()`function in the last lecture. 
 
-To produce a histogram from the height data with R, we type at the console
+To produce a histogram from the height data with R, we type, assuming that we have stored the
+100 heights data we printed above in a variable called `heights`.
 
 ```{r}
 #| code-fold: false
@@ -254,14 +246,6 @@ shows the distribution of the final score in a certain class.
 ![Final Score](pictures/final_score.png)
 :::
 
-:::{.callout-caution collapse="true"}
-## Seitwerk: Expand for reading comment.
-Reda, I think it would be great if you could redo the graphics with
-computer. I have these hand drawn graphs only because I did not have
-enough time to play around with computer graphics and because I
-wanted to experiment how such pictures would look like. I think
-a computer graph would be better.
-:::
 
 ### The relative frequency scale: Absolute versus relative frequency
 
@@ -401,10 +385,12 @@ an spread here, these are just ordinary words with no special technical meaning.
 When we do statistics we need 
 precise definitions and we will study and learn these definitions in this section. 
 The **average** is
-often used to find the center. Another measure to find 
-the center is the **median**. The **standard** deviation measures spread around 
-the average. The **interquartile range** is another measure of 
-spreads.
+often used to find the center. The **standard** deviation measures spread around 
+the average.
+^[When the distribution is not symmetric around the mean it is better to take other
+maesures of center and spread. These alternative measures are called 
+the **median**.  The **interquartile range** is another alternative measure of 
+spreads. We will learn  the details about these measures later in the course.]
 
 Before we go into these definitions, let me show for a start 
 two histograms, both have the same center, but the second one is more spread
@@ -1004,77 +990,54 @@ people in a sample who have the characteristic divided by all people in the samp
 Let us go now into the actual data and learn how to use the computer and R
 as a tool.
 
-#### Reading the DHS data from a file {#sec-readingdata}
+#### Reading the DHS data using the JWL-package {#sec-readingdata}
 
-Before we can do anything with data, we need first to learn how  to load data into R and how
-to save them. 
-We will discuss now how to do this for the case of *comma separated text files* or 
-so called *csv* files. Data are very often provided in csv-format. It is one
-of the most common data formats for publicly available data.
+The data we use in these notes and in our course are usually real world data collected
+from a public source on the internet. Since we begin from scratch with explaining
+the concepts of statistics as well as of R, we develop your R knowledge step by step 
+and explain only at the end of the course how to read data into R from various outside
+sources, from websites and in different file formats. While this is not difficult, it is tedious and
+perhaps unnecessarily confusing for a beginner. We  have therefore packed all datasets used in this
+course into a so called `R package`. R-packages are libraries, which add new functionalities to R, usually new
+functions, which you yourself or somebody else has written. Packages must be installed once and then
+loaded to be usable for your current R section. The package with the name `JWL` contains all datasets
+used in the course and it has been preinstalled by your learning facilitators. You only have to load the
+package, when you want to use data from it in your current R session.
 
-R provides functions 
-for reading and writing from almost any other format, like data stored in
-raw text files, in Excel files and many more data formats that are used today.
-Since in all those different formats are read by R following the same principles 
-as in the csv case, it is sufficient if we discuss here the the case of csv files only.
+The R function, loading a package is called `library()` and it takes the package name as an argument.
+We load the DHS data now from the JWL package. We first load the package to make the data
+available to R. For this you type at the console of at the input cell of your Jupyter Notebook
 
-To read a csv file, R provides the function `read.csv()`. If the csv file
-comes with a European instead of an US decimal format (`,` instead of `.` for the
-decimal sign.) you need to use the function `read.csv2()`. Please check out the documentation
-of these functions by typing `?read.csv` at the R prompt.
+```{r}
+#| code-fold: false
+library(JWL)
+```
 
-In the simplest form you read the data and store them in an object
-you can work with in R. How to store data in an R object, we have already learned
+Now the data are available to you. But how do I know the names of the datasets? R contains a function
+`data()` where you can look up datasets that are bundeled in a package. For instance if you type
+
+```{r}
+#| code-fold: false
+data(package = "JWL")$results[ , "Item"]
+
+```
+
+R shows you all the datasets that are in the `JWL` package. Don't worry for the moment about
+the somewhat mysterious syntax of this R statement. Given your current knowledge of
+R you cannot fully understand it at this moment. So just accept it as a command whith which 
+you can look up datasets in a package. 
+
+Our dataset from the DHS is called `cildren_nutrition_data`. Let's store them in an object
+with a slightly simpler name, say `dhs_data`. How to store data in an R object, we have already learned
 in the previous lecture. You invent a name and assign the values to this name using the 
 assignment operator `<-`.
 
-Let's call the
-object in which we save our data `dhs_data`, then by calling the function `read.csv()` with the
-path to your file as an argument will read the data from your 
-local folder and store them in the
-object we have created. The csv-data-file, we will need for our analysis is called
-`children_nutrition_data.csv`^[I have prepared this file from the 
-raw DHS data file. This needed many steps, some of them advanced and would be to complex to
-discuss in detail at this step.] This allows us to refer to the 
-data for doing further computations.
+Let's call the object in which we save our data `dhs_data`
 ```{r}
 #| code-fold: false
-dhs_data <- read.csv("data/DHS/children_nutrition_data.csv")
+dhs_data <- children_nutrition_data
 ```
-The function needs as an argument the file name. If the file is in a sub-folder
-of  the current directory you need to also specify the path. The path is described
-to R as a string of characters. Therefore it needs to be put between "" symbols.
 
-To specify the correct path to the file
-you need to know in which part of your directory tree you are currently working.
-
-In my
-case I am working in the project folder for my lecture notes, which has a sub-folder called
-`data`. The data sub-folder has a further sub-folder called `DHS` in my case
-and thus I specify the path relative to this location. 
-
-To find out what is your current
-R working directory, R provides the function `getwd()`. If I type this in my case, I will get
-```{r}
-#| code-fold: false
-getwd()
-```
-the path of my project folder for this lecture notes. So if I type the string
-`"data/DHS/children_nutrition_data.csv"` this specifies the path relative to my working directory.
-
-If you read the file on your computer, you need to specify the path appropriately from where
-you are working in R at the moment to where you have stored the csv file.
-
-Now `read.csv()` has many additional arguments, which provide you with lots of
-flexibility. I encourage you to check it out and play with it using the help function and
-the examples given therein by typing `?read.csv` at the prompt.
-
-We have now read the main data file and written it to the 
-R-object `dhs_data`. 
-
-Before we are able to see what is inside of this
-object and how we can access the data, let us
-first explain a few very basic R building blocks or data types.
 
 #### Inspecting the data
 
@@ -1083,6 +1046,7 @@ we have just created is the `dim()` function. It will
 tell us how many rows and columns our dataframe actually has
 ```{r}
 #| code-fold: false
+
 dim(dhs_data)
 ```
 
@@ -1097,7 +1061,7 @@ default the first 6 rows of the dataframe
 head(dhs_data)
 ```
 
-Since there are 18 variables not all of them can be displayed on a single page-width.
+Since there are 17 variables not all of them can be displayed on a single page-width.
 R stacks the information in blocks. We see that some columns are numerical, some are
 characters and some are logicals. The variable names give already some clues about
 what they mean. For the exact meaning we would need some form of documentation.
@@ -1137,19 +1101,20 @@ For any subset of a data frame `d`, we can extract whatever rows and columns we 
 `d[the rows we want, the columns we want]`
 :::
 
-Soemtimes dataframes do not have column names. Still we can apply functions to
+Sometimes dataframes do not have column names. Still we can apply functions to
 the vector of a column using indices. For example we could compute the mean of
 the variable `nt_ch_waz`as
+
 ```{r}
 #| code-fold: false
-mean(dhs_data[ ,18])
+mean(dhs_data[ ,17])
 ```
-Note the expression [,18]. Since there is a 18 in the second position, we are 
-talking about column 18. And since the first position, before the comma, is 
-empty, no rows are specified — so *all* rows are included. That boils down to: 
+Note the expression [,17]. Since there is a 17 in the second position, we are
+talking about column 17. And since the first position, before the comma, is
+empty, no rows are specified — so *all* rows are included. That boils down to:
 all of column 18.
 
-A powerful feature of R is that we can extract data from a dataframe using the 
+A powerful feature of R is that we can extract data from a dataframe using the
 same logic as we used when extracting data from a vector.
 
 For example the follwoing code extracts variables 1, 3 and 5 and prints the first
@@ -1163,9 +1128,9 @@ Note that in a dataframe all columns must have the same length. But as in our
 dataset, every variable can contain a different data type, like numbers, characters
 or logicals.
 
-Now let us analyze the prevalence of children in our dataset that are wasted. Before 
-we do that let us explain that the data contain a variable, which is called `wt`. 
-This is short for weight. It means that each row is not counted as one observation 
+Now let us analyze the prevalence of children in our dataset that are wasted. Before
+we do that let us explain that the data contain a variable, which is called `wt`.
+This is short for weight. It means that each row is not counted as one observation
 but is weighted. The sum of the weights
 ```{r}
 #| code-fold: false
@@ -1276,15 +1241,24 @@ anthropometric data.
 
 ## Exercises
 
-### Histograms
+### Exercises:
 
-1. A histogram of monthly wages for part-time employees is shown below (relative frequencies
+::: {.callout-note}
+## Exercise 1: Histogram of monthly wages
+
+A histogram of monthly wages for part-time employees is shown below (relative frequencies
 are marked in
 parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200
 to 300 is missing. How tall must it be?
 
 ![Wages](pictures/wages.png)
-2. Three people plot histograms for the weights of subjects in a study, using the relative
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Which histogram is right?
+
+Three people plot histograms for the weights of subjects in a study, using the relative
 frequency scale. Only one is right. Which one and why?
 
 ```{r}
@@ -1324,42 +1298,22 @@ plot(hist_inf, freq = FALSE, xlab = "hight (cm) ", ylab = "5 cm per percent", ma
 Three versions of a hight histogram of males over age 18
 :::
 
-3. An investigator draws a histogram for some height data, using the metric system. She is working in
+:::
+
+::: {.callout-note}
+
+## Exercise 3: Different scales in a histogram 
+
+An investigator draws a histogram for some height data, using the metric system. She is working in
 centimeters (cm). She wants to draw the histogram in a so called density scale, i.e. in a scale that the area of all the bars sum to 1. The vertical axes shows relative frequency
 and the top of the vertical axes is 10 percent per cm. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the 
 horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.
 
-4. In a Public Health Service study, a histogram was plotted showing the number of 
-cigarettes per day smoked by each subject (male current smokers), as shown in the 
-histogram below. The density is marked in
-parentheses. The class interval include the right endpoint, not the left.
+:::
 
-   (a) The percentage who smoked 10 cigarettes or less per day is around:
+::: {.callout-note}
 
-        1.5%    15%   30%   50%
-
-   (b) The percentage who smoked more than a pack a day, but not more than 2 packs, is around
-
-        1.5%    15 %    30%   50%
-        (There are 20 cigarettes in a pack)
-
-   (c) The percentage who smoked more than a pack a day is around
-
-        1.5%,   15%,   30%,   50%
-
-   (d) The percent who smoked more than 3 packs a day is around
-
-        0.25 of 1%,    0.5 of 1%,     10 %
-
-   (e) The percent who smoked 15 cigarettes per day is around
-
-        0.35 of 1%,    0.5 of 1%,   1.5%,    3.5%,    10%
-        
-![Number of cigarettes](pictures/cigarettes.png){#fig-hight-cigarettes}
-
-### The Average
-
-Exercise 1:
+## Exercise 4: Find the average
 
 (a) The number 3 and 5 are marked by crosses on  the horizontal line below. Find the average of 
     these two numbers and mark it by an arrow.
@@ -1374,52 +1328,62 @@ Exercise 1:
     pointing to their average.
     
     ![](pictures/average_c.png)
-    
-Exercise 2: 
+
+:::
+
+::: {.callout-note}
+
+## Exercise 5: Questions about averages
 
 A list has 10 entries. Each entry is either 1, 2 or 3. What must the list be of the average is
 1? if the average is 3? Can the average be 4?
 
-Exercise 3:
+:::
+
+::: {.callout-note}
+
+## Exercise 6: Comparing averages without computation
 
 Which of the following lists has a bigger average? Or are they the same? try 
 to answer without doing arithmetic.
 
 (i) 10, 7, 8, 3, 5, 9   (ii) 10, 7, 8, 3, 5, 9, 11
 
-Exercise 4:
+:::
 
-Ten people in a room have an average height of 1.69 m. An 11th person is 1.96 enters
+::: {.callout-note}
+
+## Exercise 7: Adding data and the change of averages
+
+1. Ten people in a room have an average height of 1.69 m. An 11th person is 1.96 enters
 the room. Find the average height of all 11 people.
 
-Exercise 5:
+2. Twenty-one people in a room have an average height of 1.68. A 22nd person who is 1.96
+enters the room. Find the average height of all 22 people.
 
-Twenty-one people in a room have an average height of 1.68. A 22nd person who is 1.96
-enters the room. Find the average height of all 22 people. Compare with exercise 4.
-
-Exercise 6:
-
-Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. 
+3. Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. 
 How tall would he have to be to raise the average height by 1 inch.
 
-Exercise 7:
 
-If you go back to figure @fig-ex-hist-bm, where in the Histogram would be mountains?
-Where would you find planes? Where would the trenches in the sea floor show?
+:::
 
-Exercise 8: 
+::: {.callout-note}
+
+## Exercise 8: True or False ?
 
 Diastolic blood pressure is considered a better indicator of heart trouble than systolic
 pressure. The figure below shows age-specific average diastolic blood pressure for
-men age 20 and over in a health survey from the US (HANES5 (2003-04)). True or fales: The
+men age 20 and over in a health survey from the US (HANES5 (2003-04)). True or false: The
 data show that as men age, their diastolic blood pressure increases until age 45
 or so. and then decreases. If false, how do you explain the pattern in  the graph?
 (Blood pressure is measured in "mm" that is millimeter of mercury)
 
 ![](pictures/blood_pressure.png)
+:::
 
+::: {.callout-note}
 
-Exercise 9:
+## Exercise 9: Can you explain this?
 
 Average hourly earnings in the US are computed each month by the Bureau fo Labor statistics using 
 payroll data from commercial establishments. The Bureau figures the total 
@@ -1427,9 +1391,11 @@ wages paid out to non-supervisory personnel, and divides
 by the total hours worked. During recessions, average hourly earnings typically go up. 
 When the recession ends, average hourly earnings often start going down. How can this be?
 
-### The standard deviation
+:::
 
-Exercise 1:
+::: {.callout-note}
+
+## Exercise 10: Working with standard deviations
 
 The `socr_height_weight` about the height and weight of 18 year old humans, we had used in the
 lecture before the average height in inches was about 173 cm and the standard deviation was about
@@ -1441,7 +1407,11 @@ lecture before the average height in inches was about 173 cm and the standard de
 (iv) If an individual was within 2.25 standard deviations of average height, the shortest height for this
 individual would be how many cm? The highest height would be how many cm?
 
-Exercise 2:
+:::
+
+::: {.callout-note}
+
+## Exercise 11:  Match the height
 
 (a) Here are the heights of 4 individuals. 150 cm, 130 cm, 180 cm, 172 cm. Match 
 the heights with the description. A description may be used twice.
@@ -1451,8 +1421,12 @@ unusually short, about average, unusually tall
 (b) About what percentage of individuals in the data had heights between 170.2 and 173.2 ? Between
     165.5 and 179.2?
     
-Exercise 3: 
+:::
 
+::: {.callout-note}
+
+## Exercise 12: Recognizing the spread of lists
+    
 Each of the following lists has an average of 50. For which one is the spread of
 the numbers around the average biggest? Smallest?
 
@@ -1460,7 +1434,11 @@ the numbers around the average biggest? Smallest?
 (ii)    0, 48, 49, 50, 51, 52, 100
 (iii)   0,1,2,50,98, 99, 100
 
-Exercise 4:
+:::
+
+::: {.callout-note}
+
+## Exercise 13: Guess the standard deviation
 
 Each of the following lists has an average of 50. For each one, guess whether the standard deviation is around 1, 2, or 10. (This does not require any arithmetic.)
 
@@ -1470,7 +1448,11 @@ Each of the following lists has an average of 50. For each one, guess whether th
 (d)   54, 49, 46, 49, 51, 53, 50, 50, 49, 49
 (e)   60, 36, 31, 50, 48, 50, 54, 56, 62, 53
 
-Exercise 5:
+:::
+
+::: {.callout-note}
+
+## Exercise 14: Stylized histograms, average and standard deviation
 
 Below are three sketches of three stylized histograms 
 (we call them "sketches" because they display a schematic
@@ -1494,7 +1476,11 @@ symbol $\approx$ is the mathematical notation for *approximately*.
 Three stylized histograms
 :::
 
-Exercise 6:
+:::
+
+::: {.callout-note}
+
+## Exercise 15: Estimating the size of average and standard deviation
 
 One investigator takes a sample of 100 men age 18 - 24 in a certain town. Another one takes a sample
 of 1000 such men.
@@ -1509,8 +1495,54 @@ for both investigators?
 (d) Which investigator is likely to get the shortest of the sample men? Or are the chances about the same
 for both investigators?
 
-## Computer exercises
+:::
 
-Open the notebook `exercises_summarizing_and_communicating_lots_of_data.ipynb` 
-and work on the exercises. Write your solutions into the notebook. You will
-need the computer to do this work.
+### Exercises R
+
+::: {.callout-note}
+
+## Exercise 15: A histogram of the Nile river flow data
+
+Base R comes bundled with certain datasets which are available to R when you start it. One of these
+data are flow measurements of the river Nile at Aswan in Egypt. This dataset is called `Nile`. 
+
+(a) Use the R help function to learn more about these data. Describe in words the meaning of the datapoints.
+
+(b) Plot a histogram of the Nile river flow data.
+
+(b) Change the Main title of the histogram to "Histogram of Nile river flow data at Aswan Egypt" and change the x axes label to "Annual flow is recorded are 100 millions of cubic meters". Hint: If you don't know how to go about this either use ?hist - the R help function - to find out. Alternatively you might try a search engine like google of bing and ask something like "changing title and labels in base R histogram".
+
+:::
+
+::: {.callout-note}
+
+## Exercise 16: Analyze the full height dataset
+
+Load the `JWL`library of datasets and store the variable `socr_height_weight` in a 
+variable called `dat`. Use R's help function to learn what the data are.
+
+1. The data show heights in inches and weights in pounds. Transform both variables to metric data
+   before you continue. Note that 1 inch is 2.54 cm and 1 pound is 0.4535924 kg.
+2. Plot a histogram of the heights in cm. Plot a histogram of the weight in cm.
+3. Compute the mean and the standard deviation of both height and weight.
+4. Compute the percentage of observations between plus 1 and minus 1 standard deviations from the mean.
+5. Compute the percentage of observations between plus and minus 2 standard deviations from the mean. Do the same with three standard deviations.
+
+:::
+
+::: {.callout-note}
+
+## Exercise 17: Energy consumption per capita accross countries in the world
+
+1. Load the dataset `energy_consumption_per_capita` from the JWL package and use the R help function
+to learn what this dataset describes.
+2. Select the energy consumption in the year 2018 and plot a histogram of these data. What do you see?
+3. How many countries consume more than 50.000 kilowatt-hours-per person per year? 
+4. Which countries fulfill this condition?
+
+
+:::
+
+### Exercise Project:
+
+To be added.

@@ -245,11 +245,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.4</span> Summary</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.5</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#histograms" id="toc-histograms" class="nav-link" data-scroll-target="#histograms"><span class="header-section-number">3.5.1</span> Histograms</a></li>
-  <li><a href="#the-average-1" id="toc-the-average-1" class="nav-link" data-scroll-target="#the-average-1"><span class="header-section-number">3.5.2</span> The Average</a></li>
-  <li><a href="#the-standard-deviation-1" id="toc-the-standard-deviation-1" class="nav-link" data-scroll-target="#the-standard-deviation-1"><span class="header-section-number">3.5.3</span> The standard deviation</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">3.5.1</span> Exercises:</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">3.5.2</span> Exercises R</a></li>
+  <li><a href="#exercise-project" id="toc-exercise-project" class="nav-link" data-scroll-target="#exercise-project"><span class="header-section-number">3.5.3</span> Exercise Project:</a></li>
   </ul></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">3.6</span> Computer exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -302,22 +301,6 @@ Overview
 <section id="the-histogram" class="level2 page-columns page-full" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="the-histogram"><span class="header-section-number">3.1</span> The histogram</h2>
 <p>To summarize data, statisticians often use a graph which is called a <strong>histogram</strong>. In this section we will discuss all you have to know about histograms and how to use them.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Seitwerk: Expand for reading comment.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Reda, I think it would be great that among the activities in the study center we collect some data about the students in the group. I would suggest height, weight. These varibles can be measured and recorded and the students could be asked to store these data in a text file, sow e can read them by R here. We could then use these data here to explain how a histogram is constructed or give it as an exercise.</p>
-</div>
-</div>
-</div>
 <section id="constructing-a-histogram" class="level3 page-columns page-full" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="constructing-a-histogram"><span class="header-section-number">3.1.1</span> Constructing a histogram</h3>
 <div class="page-columns page-full"><p>Since real world examples in this exposition come from anthropometry, let us look at a sample of 100 observations from a set of real world data about human adults of age 18 and above, where the data record their height in cm.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> I have stored these values in an R object which I called <code>heights</code>. So in this discussion I refer to the 100 vaues shown below as <code>heights</code>.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;These data are collected from the internet. For details you can look at the source at http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights</p></li></div></div>
@@ -391,7 +374,7 @@ Seitwerk: Expand for reading comment.
 <p>On the Frequency axes you put the frequency scale: Counts of values. Then for each bin, you plot a bar, which has the width of the bin and the height of the frequency. Do this for all the bins you have tabulated and you are ready.</p>
 <p>The histogram provides a certain aggregation of the data because it sorts the 100 data points into 6 bins, in our example. While loosing some local information on individual data points the global information conveyed by the summary gives us a pretty good idea of the overall pattern of variation on the human height data.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -400,7 +383,7 @@ Seitwerk: Expand for reading comment.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Reda, I think it would be great if you could do some animation that reproduces the steps: Plot a height axis with bins from 160 to 190 in bin sizes of 5, then plot a frequency axes from 0 to 40 in steps of 10. Them from the list of 100 numbers, collect all that are recorded in the first bin and then make the height proportional to the count, then the next etc. The idea would be to realize something like my previous sketch for the Nile data <img src="pictures/nile_hist.png" class="img-fluid" alt="Constructing the river flow histogram"></p>
 </div>
@@ -420,7 +403,7 @@ Seitwerk: Expand for reading comment.
 <p>You will agree that as a summary of the data it is not particularly useful and not as informative as the histogram.</p>
 <p>Histograms are such a common tool in statistics to explore the variation in one variable and the shape, how it is roughly distributed that every statistical software has functions to produce histograms.</p>
 <p>In R, the language we use in this course, there is also such a function. The function name is called <code>hist()</code> and it takes the data as an argument. This is the second graphic function of R you encounter in this course after we played with the <code>barplot()</code>function in the last lecture.</p>
-<p>To produce a histogram from the height data with R, we type at the console</p>
+<p>To produce a histogram from the height data with R, we type, assuming that we have stored the 100 heights data we printed above in a variable called <code>heights</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(heights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -448,22 +431,6 @@ Now you try
 <p><img src="pictures/final_score.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Final Score</figcaption>
 </figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Seitwerk: Expand for reading comment.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Reda, I think it would be great if you could redo the graphics with computer. I have these hand drawn graphs only because I did not have enough time to play around with computer graphics and because I wanted to experiment how such pictures would look like. I think a computer graph would be better.</p>
 </div>
 </div>
 </div>
@@ -585,10 +552,10 @@ Seitwerk: Expand for reading comment.
 </section>
 </section>
 </section>
-<section id="the-average-and-the-standard-deviation" class="level2" data-number="3.2">
+<section id="the-average-and-the-standard-deviation" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="the-average-and-the-standard-deviation"><span class="header-section-number">3.2</span> The average and the standard deviation</h2>
 <p>With a histogram we can summarize a large amount of data and get some insights about the variation in the data. Often we can summarize data much more drastically by just one number describing the center of the histogram and the spread around this center. When I write center an spread here, these are just ordinary words with no special technical meaning.</p>
-<p>When we do statistics we need precise definitions and we will study and learn these definitions in this section. The <strong>average</strong> is often used to find the center. Another measure to find the center is the <strong>median</strong>. The <strong>standard</strong> deviation measures spread around the average. The <strong>interquartile range</strong> is another measure of spreads.</p>
+<div class="page-columns page-full"><p>When we do statistics we need precise definitions and we will study and learn these definitions in this section. The <strong>average</strong> is often used to find the center. The <strong>standard</strong> deviation measures spread around the average. <a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;When the distribution is not symmetric around the mean it is better to take other maesures of center and spread. These alternative measures are called the <strong>median</strong>. The <strong>interquartile range</strong> is another alternative measure of spreads. We will learn the details about these measures later in the course.</p></li></div></div>
 <p>Before we go into these definitions, let me show for a start two histograms, both have the same center, but the second one is more spread out, there are more observations farther away from the center.</p>
 <div id="fig-example-hist" class="quarto-layout-panel">
 <figure class="figure">
@@ -841,7 +808,7 @@ Now you try
 </div>
 </section>
 </section>
-<section id="sec-moreR" class="level2 page-columns page-full" data-number="3.3">
+<section id="sec-moreR" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="sec-moreR"><span class="header-section-number">3.3</span> Bigger datasets and more R</h2>
 <p>When we use the computer to summarize and communicate lots of data we need to get to know more of R. In particular we need to understand how to read data and select and manipulate variables. Let me lead you through some of the most basic concepts you need to know in order to do so. Finally we will apply our new skills to the hand on analysis of a real world anthropometric dataset from the DHS survey that help us to get a global picture about the nutritional situation for children and how this information could support us in setting policy priorities.</p>
 <section id="vectors-and-indices" class="level3" data-number="3.3.1">
@@ -934,7 +901,7 @@ Now you try
 </div>
 </div>
 </section>
-<section id="data-frames" class="level3 page-columns page-full" data-number="3.3.4">
+<section id="data-frames" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">3.3.4</span> Data Frames</h3>
 <p>Data Frames are the next R workhorse when we deal with data. A data frame is a rectangular table of data where every row corresponds to one data point.</p>
 <p>Instead of using just some data frame let us this time use a real world example of anthropometric data from the DHS. Anthropometric data can help a country to get a data driven picture on the nutritional status of its population. These data can help identify areas where policy action is needed.</p>
@@ -991,80 +958,100 @@ Now you try
 <p>Prevalence is the proportion of a population who have a specific characteristic in a given time period. In a survey prevalence is measured by the number of people in a sample who have the characteristic divided by all people in the sample.</p>
 <p>Let us go now into the actual data and learn how to use the computer and R as a tool.</p>
 </section>
-<section id="sec-readingdata" class="level4 page-columns page-full" data-number="3.3.4.2">
-<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.3.4.2</span> Reading the DHS data from a file</h4>
-<p>Before we can do anything with data, we need first to learn how to load data into R and how to save them. We will discuss now how to do this for the case of <em>comma separated text files</em> or so called <em>csv</em> files. Data are very often provided in csv-format. It is one of the most common data formats for publicly available data.</p>
-<p>R provides functions for reading and writing from almost any other format, like data stored in raw text files, in Excel files and many more data formats that are used today. Since in all those different formats are read by R following the same principles as in the csv case, it is sufficient if we discuss here the the case of csv files only.</p>
-<p>To read a csv file, R provides the function <code>read.csv()</code>. If the csv file comes with a European instead of an US decimal format (<code>,</code> instead of <code>.</code> for the decimal sign.) you need to use the function <code>read.csv2()</code>. Please check out the documentation of these functions by typing <code>?read.csv</code> at the R prompt.</p>
-<p>In the simplest form you read the data and store them in an object you can work with in R. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
-<div class="page-columns page-full"><p>Let’s call the object in which we save our data <code>dhs_data</code>, then by calling the function <code>read.csv()</code> with the path to your file as an argument will read the data from your local folder and store them in the object we have created. The csv-data-file, we will need for our analysis is called <code>children_nutrition_data.csv</code><a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> This allows us to refer to the data for doing further computations.</p><div class="no-row-height column-margin column-container"><li id="fn7"><p><sup>7</sup>&nbsp;I have prepared this file from the raw DHS data file. This needed many steps, some of them advanced and would be to complex to discuss in detail at this step.</p></li></div></div>
+<section id="sec-readingdata" class="level4" data-number="3.3.4.2">
+<h4 data-number="3.3.4.2" class="anchored" data-anchor-id="sec-readingdata"><span class="header-section-number">3.3.4.2</span> Reading the DHS data using the JWL-package</h4>
+<p>The data we use in these notes and in our course are usually real world data collected from a public source on the internet. Since we begin from scratch with explaining the concepts of statistics as well as of R, we develop your R knowledge step by step and explain only at the end of the course how to read data into R from various outside sources, from websites and in different file formats. While this is not difficult, it is tedious and perhaps unnecessarily confusing for a beginner. We have therefore packed all datasets used in this course into a so called <code>R package</code>. R-packages are libraries, which add new functionalities to R, usually new functions, which you yourself or somebody else has written. Packages must be installed once and then loaded to be usable for your current R section. The package with the name <code>JWL</code> contains all datasets used in the course and it has been preinstalled by your learning facilitators. You only have to load the package, when you want to use data from it in your current R session.</p>
+<p>The R function, loading a package is called <code>library()</code> and it takes the package name as an argument. We load the DHS data now from the JWL package. We first load the package to make the data available to R. For this you type at the console of at the input cell of your Jupyter Notebook</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/DHS/children_nutrition_data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The function needs as an argument the file name. If the file is in a sub-folder of the current directory you need to also specify the path. The path is described to R as a string of characters. Therefore it needs to be put between “” symbols.</p>
-<p>To specify the correct path to the file you need to know in which part of your directory tree you are currently working.</p>
-<p>In my case I am working in the project folder for my lecture notes, which has a sub-folder called <code>data</code>. The data sub-folder has a further sub-folder called <code>DHS</code> in my case and thus I specify the path relative to this location.</p>
-<p>To find out what is your current R working directory, R provides the function <code>getwd()</code>. If I type this in my case, I will get</p>
+<p>Now the data are available to you. But how do I know the names of the datasets? R contains a function <code>data()</code> where you can look up datasets that are bundeled in a package. For instance if you type</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="at">package =</span> <span class="st">"JWL"</span>)<span class="sc">$</span>results[ , <span class="st">"Item"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "/home/martinsummer/R/Statistics_JWL"</code></pre>
+<pre><code> [1] "child_mortality_average_schooling_of_women"
+ [2] "children_nutrition_data"                   
+ [3] "col_sal"                                   
+ [4] "emissions"                                 
+ [5] "energy_consumption_per_capita"             
+ [6] "enrol_attend_dat"                          
+ [7] "expenditure_outcome_dat"                   
+ [8] "height_men"                                
+ [9] "height_weight"                             
+[10] "height_women"                              
+[11] "infant_mortality_causes"                   
+[12] "infant_mortality_data"                     
+[13] "life_expectancy"                           
+[14] "ncd_height"                                
+[15] "ncd_weight"                                
+[16] "pearson"                                   
+[17] "povdat_by_country"                         
+[18] "poverty_vs_gdp"                            
+[19] "socr_height_weight"                        </code></pre>
 </div>
 </div>
-<p>the path of my project folder for this lecture notes. So if I type the string <code>"data/DHS/children_nutrition_data.csv"</code> this specifies the path relative to my working directory.</p>
-<p>If you read the file on your computer, you need to specify the path appropriately from where you are working in R at the moment to where you have stored the csv file.</p>
-<p>Now <code>read.csv()</code> has many additional arguments, which provide you with lots of flexibility. I encourage you to check it out and play with it using the help function and the examples given therein by typing <code>?read.csv</code> at the prompt.</p>
-<p>We have now read the main data file and written it to the R-object <code>dhs_data</code>.</p>
-<p>Before we are able to see what is inside of this object and how we can access the data, let us first explain a few very basic R building blocks or data types.</p>
+<p>R shows you all the datasets that are in the <code>JWL</code> package. Don’t worry for the moment about the somewhat mysterious syntax of this R statement. Given your current knowledge of R you cannot fully understand it at this moment. So just accept it as a command whith which you can look up datasets in a package.</p>
+<p>Our dataset from the DHS is called <code>cildren_nutrition_data</code>. Let’s store them in an object with a slightly simpler name, say <code>dhs_data</code>. How to store data in an R object, we have already learned in the previous lecture. You invent a name and assign the values to this name using the assignment operator <code>&lt;-</code>.</p>
+<p>Let’s call the object in which we save our data <code>dhs_data</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> children_nutrition_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="inspecting-the-data" class="level4" data-number="3.3.4.3">
 <h4 data-number="3.3.4.3" class="anchored" data-anchor-id="inspecting-the-data"><span class="header-section-number">3.3.4.3</span> Inspecting the data</h4>
 <p>A useful function to inspect a data object like the one we have just created is the <code>dim()</code> function. It will tell us how many rows and columns our dataframe actually has</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2559   18</code></pre>
+<pre><code>[1] 2559   17</code></pre>
 </div>
 </div>
-<p>This means that our data have 2559 rows and 18 columns. Quite a bit larger than the <code>heights</code> dataset. Here we really need a computer to analyze the infortion contained in these data.</p>
+<p>This means that our data have 2559 rows and 17 columns. Quite a bit larger than the <code>heights</code> dataset. Here we really need a computer to analyze the infortion contained in these data.</p>
 <p>Another useful function to inspect data is the <code>heads()</code>function. It displays by default the first 6 rows of the dataframe</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>    X       wt age_in_months    sex type_of_residence   region wealth_index
-1  16 1.049502       24 - 35 female             rural region 2       middle
-2  27 1.049502       24 - 35 female             rural region 2       poorer
-3  36 1.049502       36 - 48 female             rural region 2      poorest
-4  94 1.049502        9 - 11   male             rural region 2       poorer
-5 106 1.049502       36 - 48 female             rural region 2       middle
-6 113 1.049502       24 - 35   male             rural region 2       poorer
-  nt_ch_sev_stunt nt_ch_stunt nt_ch_haz nt_ch_sev_wast nt_ch_wast nt_ch_ovwt_ht
-1           FALSE       FALSE     -0.73          FALSE      FALSE         FALSE
-2           FALSE        TRUE     -2.23          FALSE      FALSE         FALSE
-3           FALSE        TRUE     -2.10          FALSE      FALSE         FALSE
-4           FALSE       FALSE     -0.64          FALSE      FALSE         FALSE
-5           FALSE       FALSE     -0.38          FALSE      FALSE         FALSE
-6           FALSE        TRUE     -2.08          FALSE      FALSE         FALSE
-  nt_ch_whz nt_ch_sev_underwt nt_ch_underwt nt_ch_ovwt_age nt_ch_waz
-1      0.29              TRUE         FALSE          FALSE     -0.13
-2     -0.42              TRUE         FALSE          FALSE     -1.59
-3      0.37              TRUE         FALSE          FALSE     -1.01
-4     -0.77              TRUE         FALSE          FALSE     -0.92
-5     -0.54              TRUE         FALSE          FALSE     -0.56
-6     -1.02              TRUE         FALSE          FALSE     -1.84</code></pre>
+<pre><code>          wt age_in_months    sex type_of_residence   region wealth_index
+16  1.049502       24 - 35 female             rural region 2       middle
+27  1.049502       24 - 35 female             rural region 2       poorer
+36  1.049502       36 - 48 female             rural region 2      poorest
+94  1.049502        9 - 11   male             rural region 2       poorer
+106 1.049502       36 - 48 female             rural region 2       middle
+113 1.049502       24 - 35   male             rural region 2       poorer
+    nt_ch_sev_stunt nt_ch_stunt nt_ch_haz nt_ch_sev_wast nt_ch_wast
+16            FALSE       FALSE     -0.73          FALSE      FALSE
+27            FALSE        TRUE     -2.23          FALSE      FALSE
+36            FALSE        TRUE     -2.10          FALSE      FALSE
+94            FALSE       FALSE     -0.64          FALSE      FALSE
+106           FALSE       FALSE     -0.38          FALSE      FALSE
+113           FALSE        TRUE     -2.08          FALSE      FALSE
+    nt_ch_ovwt_ht nt_ch_whz nt_ch_sev_underwt nt_ch_underwt nt_ch_ovwt_age
+16          FALSE      0.29              TRUE         FALSE          FALSE
+27          FALSE     -0.42              TRUE         FALSE          FALSE
+36          FALSE      0.37              TRUE         FALSE          FALSE
+94          FALSE     -0.77              TRUE         FALSE          FALSE
+106         FALSE     -0.54              TRUE         FALSE          FALSE
+113         FALSE     -1.02              TRUE         FALSE          FALSE
+    nt_ch_waz
+16      -0.13
+27      -1.59
+36      -1.01
+94      -0.92
+106     -0.56
+113     -1.84</code></pre>
 </div>
 </div>
-<p>Since there are 18 variables not all of them can be displayed on a single page-width. R stacks the information in blocks. We see that some columns are numerical, some are characters and some are logicals. The variable names give already some clues about what they mean. For the exact meaning we would need some form of documentation.</p>
+<p>Since there are 17 variables not all of them can be displayed on a single page-width. R stacks the information in blocks. We see that some columns are numerical, some are characters and some are logicals. The variable names give already some clues about what they mean. For the exact meaning we would need some form of documentation.</p>
 </section>
 <section id="analyzing-particular-variables-and-subsets-of-data" class="level4" data-number="3.3.4.4">
 <h4 data-number="3.3.4.4" class="anchored" data-anchor-id="analyzing-particular-variables-and-subsets-of-data"><span class="header-section-number">3.3.4.4</span> Analyzing particular variables and subsets of data</h4>
 <p>Dollar signs <code>$</code> are used to adress individual columns. For example, assume we would like to count the number of boys (i.e.&nbsp;sex = male) in our sample we could use this together with R’s coercion rules by coding</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1256</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"female"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1303</code></pre>
 </div>
@@ -1072,9 +1059,10 @@ Now you try
 <p>Observe a few things here: Operationally we have applied the tricks we have learned about using logicals to count up cases for which a condition is true. The variable <code>sex</code> in our data is coded by strings of chracters. We therefore need to put these strings into <code>" "</code> quotation marks in the comparison. Note also that the identidy sign in R is <code>==</code>. The symbol <code>=</code> in R is an assignment operator, which we can only use to assign values to arguments in a function.</p>
 <p>Indices in a dataframe are pairs specifying row and column numbers. For example</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">4</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">4</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "9 - 11"</code></pre>
+<pre><code>[1] male
+Levels: male female</code></pre>
 </div>
 </div>
 <p>is the data point in the dataframe which is at row 4 and column 3. In this case it is a string of characters.</p>
@@ -1092,30 +1080,30 @@ Remember
 <p><code>d[the rows we want, the columns we want]</code></p>
 </div>
 </div>
-<p>Soemtimes dataframes do not have column names. Still we can apply functions to the vector of a column using indices. For example we could compute the mean of the variable <code>nt_ch_waz</code>as</p>
+<p>Sometimes dataframes do not have column names. Still we can apply functions to the vector of a column using indices. For example we could compute the mean of the variable <code>nt_ch_waz</code>as</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dhs_data[ ,<span class="dv">18</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dhs_data[ ,<span class="dv">17</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.7392497</code></pre>
 </div>
 </div>
-<p>Note the expression [,18]. Since there is a 18 in the second position, we are talking about column 18. And since the first position, before the comma, is empty, no rows are specified — so <em>all</em> rows are included. That boils down to: all of column 18.</p>
+<p>Note the expression [,17]. Since there is a 17 in the second position, we are talking about column 17. And since the first position, before the comma, is empty, no rows are specified — so <em>all</em> rows are included. That boils down to: all of column 18.</p>
 <p>A powerful feature of R is that we can extract data from a dataframe using the same logic as we used when extracting data from a vector.</p>
 <p>For example the follwoing code extracts variables 1, 3 and 5 and prints the first four values of them</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>dhs_data[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   X age_in_months type_of_residence
-1 16       24 - 35             rural
-2 27       24 - 35             rural
-3 36       36 - 48             rural
-4 94        9 - 11             rural</code></pre>
+<pre><code>         wt    sex   region
+16 1.049502 female region 2
+27 1.049502 female region 2
+36 1.049502 female region 2
+94 1.049502   male region 2</code></pre>
 </div>
 </div>
 <p>Note that in a dataframe all columns must have the same length. But as in our dataset, every variable can contain a different data type, like numbers, characters or logicals.</p>
 <p>Now let us analyze the prevalence of children in our dataset that are wasted. Before we do that let us explain that the data contain a variable, which is called <code>wt</code>. This is short for weight. It means that each row is not counted as one observation but is weighted. The sum of the weights</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2494.102</code></pre>
 </div>
@@ -1123,11 +1111,11 @@ Remember
 <p>would then give us the total number of children in the sample. Let us not go into the details of where these weights are coming from and why they are needed at this stage. The variable that encodes stunting is <code>nt_ch_stunt</code> and the variable that encodes wasting is <code>nt_ch_wast</code>.</p>
 <p>Now let us do the computation using the rules we have learned so far:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3589812</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_wast<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(dhs_data<span class="sc">$</span>nt_ch_wast<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1002921</code></pre>
 </div>
@@ -1136,31 +1124,31 @@ Remember
 <p>We could use our new knowldge to answer other questions. Assume we would want to find out which of our regions has the highest proportion in stunting?</p>
 <p>First, let us find which rows refer to region 1, region 2 etc.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 1"</span>)</span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 2"</span>)</span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 3"</span>)</span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 1"</span>)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>r2 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 2"</span>)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>r3 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 3"</span>)</span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>r4 <span class="ot">&lt;-</span> <span class="fu">which</span>(dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now with these row indices we can compute the proportions on the relevant subset of the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>data_r1 <span class="ot">&lt;-</span> dhs_data[r1, ]</span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>data_r2 <span class="ot">&lt;-</span> dhs_data[r2, ]</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>data_r3 <span class="ot">&lt;-</span> dhs_data[r3, ]</span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>data_r4 <span class="ot">&lt;-</span> dhs_data[r4, ]</span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r1<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r1<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r1<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>data_r1 <span class="ot">&lt;-</span> dhs_data[r1, ]</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>data_r2 <span class="ot">&lt;-</span> dhs_data[r2, ]</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>data_r3 <span class="ot">&lt;-</span> dhs_data[r3, ]</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>data_r4 <span class="ot">&lt;-</span> dhs_data[r4, ]</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r1<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r1<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r1<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3367742</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r2<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r2<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r2<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r2<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r2<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r2<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4078512</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r3<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r3<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r3<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r3<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r3<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r3<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2998199</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r4<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r4<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r4<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(data_r4<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>data_r4<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(data_r4<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.393195</code></pre>
 </div>
@@ -1172,7 +1160,7 @@ Remember
 <h4 data-number="3.3.4.5" class="anchored" data-anchor-id="combining-several-conditions"><span class="header-section-number">3.3.4.5</span> Combining several conditions</h4>
 <p>R allows us to combine conditions by logical operators. Assume we want to know the proportion of children in our data that are wasted and stunted. In this case both conditions need to be fulfilled. This would be coded in the following way:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">&amp;</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">&amp;</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03264431</code></pre>
 </div>
@@ -1180,7 +1168,7 @@ Remember
 <p>Let me explain. The condition that a child is both stunted and wasted means that the stunting variable evaluates to <code>TRUE</code> and the wasting variable evaluates to <code>TRUE</code>. If this is the case <code>(dhs_data$nt_ch_stunt &amp; dhs_data$nt_ch_wast)</code> is <code>TRUE</code>. If one of these variables evaluates to <code>FALSE</code> then <code>(dhs_data$nt_ch_stunt &amp; dhs_data$nt_ch_wast)</code> is <code>FALSE</code>.</p>
 <p>We can do this with other logical operators. We can ask for example what is the proportion of children who are wasted or stunted. The operator here is <code>|</code> and <code>(dhs_data$nt_ch_stunt | dhs_data$nt_ch_wast)</code> evaluates to <code>TRUE</code> if the first condition is <code>TRUE</code> or if the second condition is <code>TRUE</code> or if both are <code>TRUE</code>. Let’s do the computation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">|</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((dhs_data<span class="sc">$</span>nt_ch_stunt <span class="sc">|</span> dhs_data<span class="sc">$</span>nt_ch_wast)<span class="sc">*</span>dhs_data<span class="sc">$</span>wt)<span class="sc">/</span><span class="fu">sum</span>(dhs_data<span class="sc">$</span>wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4266291</code></pre>
 </div>
@@ -1208,37 +1196,63 @@ Remember
 </section>
 <section id="exercises" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.5</span> Exercises</h2>
-<section id="histograms" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="histograms"><span class="header-section-number">3.5.1</span> Histograms</h3>
-<ol type="1">
-<li>A histogram of monthly wages for part-time employees is shown below (relative frequencies are marked in parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200 to 300 is missing. How tall must it be?</li>
-</ol>
-<p><img src="pictures/wages.png" class="img-fluid" alt="Wages"> 2. Three people plot histograms for the weights of subjects in a study, using the relative frequency scale. Only one is right. Which one and why?</p>
+<section id="exercises-1" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">3.5.1</span> Exercises:</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Histogram of monthly wages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A histogram of monthly wages for part-time employees is shown below (relative frequencies are marked in parenthesis). Nobody earned more than $1000 a month. The block over the class interval from 200 to 300 is missing. How tall must it be?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/wages.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Wages</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Which histogram is right?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Three people plot histograms for the weights of subjects in a study, using the relative frequency scale. Only one is right. Which one and why?</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
-<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
-<span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-5"><a href="#cb95-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
-<span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
-<span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-9"><a href="#cb95-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
-<span id="cb95-10"><a href="#cb95-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
-<span id="cb95-11"><a href="#cb95-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb95-12"><a href="#cb95-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-13"><a href="#cb95-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
-<span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-16"><a href="#cb95-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-17"><a href="#cb95-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
-<span id="cb95-18"><a href="#cb95-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
-<span id="cb95-19"><a href="#cb95-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-20"><a href="#cb95-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb95-21"><a href="#cb95-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
-<span id="cb95-22"><a href="#cb95-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo = false</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> height_weight</span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>state <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>sex <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> dat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">18</span>, ]</span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>hist_inf <span class="ot">&lt;-</span> <span class="fu">hist</span>(data<span class="sc">$</span>height, <span class="at">plot =</span> <span class="cn">FALSE</span>)         <span class="co"># Store output of hist function</span></span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a>hist_inf<span class="sc">$</span>density <span class="ot">&lt;-</span> hist_inf<span class="sc">$</span>counts <span class="sc">/</span>    <span class="co"># Compute density values</span></span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(hist_inf<span class="sc">$</span>counts) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version1.png"</span>)</span>
+<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">" "</span>, <span class="at">ylab =</span> <span class="st">" "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-16"><a href="#cb96-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-17"><a href="#cb96-17" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version2.png"</span>)</span>
+<span id="cb96-18"><a href="#cb96-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"Percent per 5 cm "</span>, <span class="at">main =</span> <span class="st">" "</span>)</span>
+<span id="cb96-19"><a href="#cb96-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-20"><a href="#cb96-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-21"><a href="#cb96-21" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file=</span><span class="st">"pictures/hight_version3.png"</span>)</span>
+<span id="cb96-22"><a href="#cb96-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(hist_inf, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlab =</span> <span class="st">"hight (cm) "</span>, <span class="at">ylab =</span> <span class="st">"5 cm per percent"</span>, <span class="at">main =</span> <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div id="fig-height_hist" class="quarto-layout-panel">
@@ -1272,32 +1286,31 @@ Remember
 <p></p><figcaption class="figure-caption">Figure&nbsp;3.3: Three versions of a hight histogram of males over age 18</figcaption><p></p>
 </figure>
 </div>
-<ol start="3" type="1">
-<li><p>An investigator draws a histogram for some height data, using the metric system. She is working in centimeters (cm). She wants to draw the histogram in a so called density scale, i.e.&nbsp;in a scale that the area of all the bars sum to 1. The vertical axes shows relative frequency and the top of the vertical axes is 10 percent per cm. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.</p></li>
-<li><p>In a Public Health Service study, a histogram was plotted showing the number of cigarettes per day smoked by each subject (male current smokers), as shown in the histogram below. The density is marked in parentheses. The class interval include the right endpoint, not the left.</p>
-<ol type="a">
-<li><p>The percentage who smoked 10 cigarettes or less per day is around:</p>
-<p>1.5% 15% 30% 50%</p></li>
-<li><p>The percentage who smoked more than a pack a day, but not more than 2 packs, is around</p>
-<p>1.5% 15 % 30% 50% (There are 20 cigarettes in a pack)</p></li>
-<li><p>The percentage who smoked more than a pack a day is around</p>
-<p>1.5%, 15%, 30%, 50%</p></li>
-<li><p>The percent who smoked more than 3 packs a day is around</p>
-<p>0.25 of 1%, 0.5 of 1%, 10 %</p></li>
-<li><p>The percent who smoked 15 cigarettes per day is around</p>
-<p>0.35 of 1%, 0.5 of 1%, 1.5%, 3.5%, 10%</p></li>
-</ol></li>
-</ol>
-<div id="fig-hight-cigarettes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/cigarettes.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;3.4: Number of cigarettes</figcaption>
-</figure>
 </div>
-</section>
-<section id="the-average-1" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="the-average-1"><span class="header-section-number">3.5.2</span> The Average</h3>
-<p>Exercise 1:</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Different scales in a histogram
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An investigator draws a histogram for some height data, using the metric system. She is working in centimeters (cm). She wants to draw the histogram in a so called density scale, i.e.&nbsp;in a scale that the area of all the bars sum to 1. The vertical axes shows relative frequency and the top of the vertical axes is 10 percent per cm. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Find the average
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="a">
 <li><p>The number 3 and 5 are marked by crosses on the horizontal line below. Find the average of these two numbers and mark it by an arrow.</p>
 <p><img src="pictures/average_a.png" class="img-fluid"></p></li>
@@ -1306,30 +1319,91 @@ Remember
 <li><p>Two numbers are shown below by crosses on a horizontal axis. Draw an arrow pointing to their average.</p>
 <p><img src="pictures/average_c.png" class="img-fluid"></p></li>
 </ol>
-<p>Exercise 2:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: Questions about averages
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A list has 10 entries. Each entry is either 1, 2 or 3. What must the list be of the average is 1? if the average is 3? Can the average be 4?</p>
-<p>Exercise 3:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 6: Comparing averages without computation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Which of the following lists has a bigger average? Or are they the same? try to answer without doing arithmetic.</p>
 <ol type="i">
 <li>10, 7, 8, 3, 5, 9 (ii) 10, 7, 8, 3, 5, 9, 11</li>
 </ol>
-<p>Exercise 4:</p>
-<p>Ten people in a room have an average height of 1.69 m. An 11th person is 1.96 enters the room. Find the average height of all 11 people.</p>
-<p>Exercise 5:</p>
-<p>Twenty-one people in a room have an average height of 1.68. A 22nd person who is 1.96 enters the room. Find the average height of all 22 people. Compare with exercise 4.</p>
-<p>Exercise 6:</p>
-<p>Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. How tall would he have to be to raise the average height by 1 inch.</p>
-<p>Exercise 7:</p>
-<p>If you go back to figure <a href="#fig-ex-hist-bm">Figure&nbsp;<span>3.2</span></a>, where in the Histogram would be mountains? Where would you find planes? Where would the trenches in the sea floor show?</p>
-<p>Exercise 8:</p>
-<p>Diastolic blood pressure is considered a better indicator of heart trouble than systolic pressure. The figure below shows age-specific average diastolic blood pressure for men age 20 and over in a health survey from the US (HANES5 (2003-04)). True or fales: The data show that as men age, their diastolic blood pressure increases until age 45 or so. and then decreases. If false, how do you explain the pattern in the graph? (Blood pressure is measured in “mm” that is millimeter of mercury)</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 7: Adding data and the change of averages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Ten people in a room have an average height of 1.69 m. An 11th person is 1.96 enters the room. Find the average height of all 11 people.</p></li>
+<li><p>Twenty-one people in a room have an average height of 1.68. A 22nd person who is 1.96 enters the room. Find the average height of all 22 people.</p></li>
+<li><p>Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. How tall would he have to be to raise the average height by 1 inch.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 8: True or False ?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Diastolic blood pressure is considered a better indicator of heart trouble than systolic pressure. The figure below shows age-specific average diastolic blood pressure for men age 20 and over in a health survey from the US (HANES5 (2003-04)). True or false: The data show that as men age, their diastolic blood pressure increases until age 45 or so. and then decreases. If false, how do you explain the pattern in the graph? (Blood pressure is measured in “mm” that is millimeter of mercury)</p>
 <p><img src="pictures/blood_pressure.png" class="img-fluid"></p>
-<p>Exercise 9:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 9: Can you explain this?
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Average hourly earnings in the US are computed each month by the Bureau fo Labor statistics using payroll data from commercial establishments. The Bureau figures the total wages paid out to non-supervisory personnel, and divides by the total hours worked. During recessions, average hourly earnings typically go up. When the recession ends, average hourly earnings often start going down. How can this be?</p>
-</section>
-<section id="the-standard-deviation-1" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="the-standard-deviation-1"><span class="header-section-number">3.5.3</span> The standard deviation</h3>
-<p>Exercise 1:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 10: Working with standard deviations
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The <code>socr_height_weight</code> about the height and weight of 18 year old humans, we had used in the lecture before the average height in inches was about 173 cm and the standard deviation was about 5 cm.</p>
 <ol type="i">
 <li>One individual was 188 cm. He was above average by how many standard deviations?</li>
@@ -1337,7 +1411,18 @@ Remember
 <li>A third individual was 1.5 standard deviations below the average height. He was how many cm?</li>
 <li>If an individual was within 2.25 standard deviations of average height, the shortest height for this individual would be how many cm? The highest height would be how many cm?</li>
 </ol>
-<p>Exercise 2:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 11: Match the height
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="a">
 <li>Here are the heights of 4 individuals. 150 cm, 130 cm, 180 cm, 172 cm. Match the heights with the description. A description may be used twice.</li>
 </ol>
@@ -1345,14 +1430,36 @@ Remember
 <ol start="2" type="a">
 <li>About what percentage of individuals in the data had heights between 170.2 and 173.2 ? Between 165.5 and 179.2?</li>
 </ol>
-<p>Exercise 3:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 12: Recognizing the spread of lists
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Each of the following lists has an average of 50. For which one is the spread of the numbers around the average biggest? Smallest?</p>
 <ol type="i">
 <li><pre><code>0, 20, 40, 50, 60, 80, 100</code></pre></li>
 <li>0, 48, 49, 50, 51, 52, 100</li>
 <li>0,1,2,50,98, 99, 100</li>
 </ol>
-<p>Exercise 4:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 13: Guess the standard deviation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Each of the following lists has an average of 50. For each one, guess whether the standard deviation is around 1, 2, or 10. (This does not require any arithmetic.)</p>
 <ol type="a">
 <li>49, 51, 49, 51, 49, 51, 49, 51, 49, 51</li>
@@ -1361,7 +1468,18 @@ Remember
 <li>54, 49, 46, 49, 51, 53, 50, 50, 49, 49</li>
 <li>60, 36, 31, 50, 48, 50, 54, 56, 62, 53</li>
 </ol>
-<p>Exercise 5:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 14: Stylized histograms, average and standard deviation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Below are three sketches of three stylized histograms (we call them “sketches” because they display a schematic shape of a hypothetical histogram. This is why these sketches do not look like real histograms.) Match the sketch with the description. Some descriptions will be left over. Give your reasoning in each case. The symbol <span class="math inline">\(\approx\)</span> is the mathematical notation for <em>approximately</em>.</p>
 <ol type="i">
 <li>ave <span class="math inline">\(\approx\)</span> 3.5, sd <span class="math inline">\(\approx\)</span> 1 (iv) ave <span class="math inline">\(\approx\)</span> 2.5, sd <span class="math inline">\(\approx\)</span> 1</li>
@@ -1396,10 +1514,21 @@ Remember
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3.5: Three stylized histograms</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3.4: Three stylized histograms</figcaption><p></p>
 </figure>
 </div>
-<p>Exercise 6:</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 15: Estimating the size of average and standard deviation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>One investigator takes a sample of 100 men age 18 - 24 in a certain town. Another one takes a sample of 1000 such men.</p>
 <ol type="a">
 <li><p>Which investigator will get a bigger average for the heights of the men in his sample? Or should the average be about the same?</p></li>
@@ -1407,13 +1536,74 @@ Remember
 <li><p>Which investigator is likely to get the tallest of the sample men? Or are the chances about the same for both investigators?</p></li>
 <li><p>Which investigator is likely to get the shortest of the sample men? Or are the chances about the same for both investigators?</p></li>
 </ol>
+</div>
+</div>
 </section>
+<section id="exercises-r" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">3.5.2</span> Exercises R</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 15: A histogram of the Nile river flow data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Base R comes bundled with certain datasets which are available to R when you start it. One of these data are flow measurements of the river Nile at Aswan in Egypt. This dataset is called <code>Nile</code>.</p>
+<ol type="a">
+<li><p>Use the R help function to learn more about these data. Describe in words the meaning of the datapoints.</p></li>
+<li><p>Plot a histogram of the Nile river flow data.</p></li>
+<li><p>Change the Main title of the histogram to “Histogram of Nile river flow data at Aswan Egypt” and change the x axes label to “Annual flow is recorded are 100 millions of cubic meters”. Hint: If you don’t know how to go about this either use ?hist - the R help function - to find out. Alternatively you might try a search engine like google of bing and ask something like “changing title and labels in base R histogram”.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 16: Analyze the full height dataset
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Load the <code>JWL</code>library of datasets and store the variable <code>socr_height_weight</code> in a variable called <code>dat</code>. Use R’s help function to learn what the data are.</p>
+<ol type="1">
+<li>The data show heights in inches and weights in pounds. Transform both variables to metric data before you continue. Note that 1 inch is 2.54 cm and 1 pound is 0.4535924 kg.</li>
+<li>Plot a histogram of the heights in cm. Plot a histogram of the weight in cm.</li>
+<li>Compute the mean and the standard deviation of both height and weight.</li>
+<li>Compute the percentage of observations between plus 1 and minus 1 standard deviations from the mean.</li>
+<li>Compute the percentage of observations between plus and minus 2 standard deviations from the mean. Do the same with three standard deviations.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 17: Energy consumption per capita accross countries in the world
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Load the dataset <code>energy_consumption_per_capita</code> from the JWL package and use the R help function to learn what this dataset describes.</li>
+<li>Select the energy consumption in the year 2018 and plot a histogram of these data. What do you see?</li>
+<li>How many countries consume more than 50.000 kilowatt-hours-per person per year?</li>
+<li>Which countries fulfill this condition?</li>
+</ol>
+</div>
+</div>
 </section>
-<section id="computer-exercises" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">3.6</span> Computer exercises</h2>
-<p>Open the notebook <code>exercises_summarizing_and_communicating_lots_of_data.ipynb</code> and work on the exercises. Write your solutions into the notebook. You will need the computer to do this work.</p>
+<section id="exercise-project" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="exercise-project"><span class="header-section-number">3.5.3</span> Exercise Project:</h3>
+<p>To be added.</p>
 
 
+</section>
 </section>
 
 

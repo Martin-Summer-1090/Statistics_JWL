@@ -1057,7 +1057,7 @@ and vital statistics.
 The exercises will also be graded and solving them is an essential part of documenting
 your learning process and determining whether you will successfully finish this course.
 
-### Exercises:
+### Exercises
 
 ::: {.callout-note}
 
@@ -1104,7 +1104,7 @@ Go back to the first example in the section comparing pairs of proportions.
 Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk? 
 :::
 
-### Exercises R:
+### Exercises R
 
 ::: {.callout-note icon=false}
 
@@ -1133,7 +1133,7 @@ the left of the graph. We will learn during the course how to better control the
 of a visualization and control for details like this.
 :::
 
-### Exercises project:
+### Exercises project
 
 In this course we will follow a larger project which we will call **People count and their data stories**.
 You will develop this project unit by unit adding new material as we go along. At each step you are going to
