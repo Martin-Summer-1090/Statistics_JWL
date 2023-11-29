@@ -1518,7 +1518,7 @@ data are flow measurements of the river Nile at Aswan in Egypt. This dataset is 
 
 ## Exercise 16: Analyze the full height dataset
 
-Load the `JWL`library of datasets and store the variable `socr_height_weight` in a 
+Load the `JWL` package of datasets and store the variable `socr_height_weight` in a 
 variable called `dat`. Use R's help function to learn what the data are.
 
 1. The data show heights in inches and weights in pounds. Transform both variables to metric data
