@@ -1,18 +1,30 @@
 # What causes what?
 
-<!-- ## Contents -->
+::: {.callout-note appearance="simple"}
+## Overview
 
-<!-- In this lecture we discuss what causation means in a statistical sense, why we need be careful to distinguish between causation and correlation. -->
+In this lecture we discuss what causation means in a statistical sense and 
+why we need be careful to distinguish between causation and correlation. 
+This is a conceptually difficult topic. It is, however, not technically difficult 
+but it will need lots of examples. Fortunately there are many good (and bad) real 
+world examples that I hope will stick with you as reference examples after the course. 
+At the end of this lecture you should understand the idea of randomized trials and 
+observational studies as well as the general ideas of comparison in statistical analysis.
 
-<!-- 1. Causation in a statistical sense means that when we intervene, the chances of different outcomes vary systematically. -->
-<!-- 2. Causation is difficult to establish statistically, but well designed randomized trials are the best available framework. -->
-<!-- 3.Principles that helped clinical trials to identify effects. -->
-<!-- 4, Observational data may have background factors influencing the apparent relationships between exposure and outcome which may be either observed confounders or lurking factors. -->
-<!-- 5. Statistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed. -->
+1. Causation in a statistical sense means that when we intervene, the chances of different outcomes vary systematically.
 
-<!-- ## Outcome -->
+2. Causation is difficult to establish statistically, but well designed randomized trials are the best available framework.
 
-<!-- This is a conceptually difficult topic. It is, however, not technically difficult but it will need lots of examples. Fortunately there are many good (and bad) real world examples that I hope will stick with the students as reference examples after the course. Students should understand the idea of randomized trials and observational studies as well as the general ideas of comparison in statistical analysis. -->
+3. You will learn about the principles that helped clinical trials to identify effects and how you can
+transfer these principles to other fields.
+
+4. Observational data may have background factors influencing the apparent relationships between exposure and outcome which may be either observed confounders or lurking factors.
+
+5. Statistical methods do not suspend judgment which is always required for the confidence with which causation can be claimed.
+
+:::
+
+
 
 The last two centuries brought enormous advances in the expansion of education around the
 world. Quantitative measures such as literacy rates, school enrollment, the share of 
@@ -27,10 +39,11 @@ provide broad access to basic education. A certain amount of schooling is even c
 most countries, although not all the countries have the capacity to broadly enforce such obligations.
 
 Despite all of these developments and efforts in the 
-expansion of education there are still about 8 % of children worldwide 
+expansion of education there are still 
+about 8 % of children worldwide 
 which are not in school.
 Also progress has been heterogeneous across the globe, with literacy rates
-among the youth of sub Saharan Africa - for example - still below 50 %.^[The data and an interesting analysis can be found in @Roser2021 at https://ourworldindata.org/children-not-in-school]
+among the youth of sub Saharan Africa - for example - still below 50 %.^[Data on this particular topic and an interesting analysis can be found in @Roser2021 at https://ourworldindata.org/children-not-in-school]
 
 Education policies have thus been widely debated 
 in international policy circles and 
@@ -73,9 +86,16 @@ abline(1,1, col = "blue")
 In the graph you see the enrolment rate in primary school at the x-axes and the
 attendance rate on the y-axes. Such a graph, showing the relation between two
 variables is called a **scatter plot**. We will learn about the details of scatter
-plots later in the course.
+plots later in the course. 
 
-To help you understand the picture think of the follwoing situation:
+To understand the graph, think of each point as measuring
+the enrollment rate in primary school and the attendance rate in primary school in a 
+given year for a given country. Taking many countries around the globe gives you
+a scatter of such points all showing different enrollment attendance pairs. The whole
+cloud of points shows a positive slope suggesting that attendance varies positively with
+enrollment. 
+
+To help you interpret the scatter plot think of the following situation:
 If all children who are enrolled would also attend
 all the points would be on the blue line, showing all the points where the enrollment rate
 is equal to the attendance rate. In the data you see many observations where the attendance 
@@ -116,8 +136,9 @@ axis(1, at = seq(500, 3500, by = 500))
 
 
 Indeed a study by @Hedgesetal1994 confirmed patterns like these. There is strong
-evidence that education spending and educational outcomes are positively correlated.
-Remember our discussion of measuring the relation between two variables in section 3.5?
+evidence that education spending and educational outcomes are **positively correlated**.
+This is the statistics jargon for saying that the variables covary positively. We will
+learn in detain about correlation in the next chapter.
 
 But does this evidence support the conclusion that there is a causal relation between 
 increased educational spending and student outcomes? There is a straightforward reason why
@@ -165,7 +186,8 @@ The famous statistician Sir R.A. Fisher doubted the causal role of cigarettes fo
 and suggested possible confounding factors. Epidemiologists conducted careful studies that
 accumulated evidence that these confounding factors were not plausible. Over time the
 evidence taken together convinced the medical community that smoking is indeed causal for
-lung cancer. But causal here has a meaning that takes into account the unavoidable variability that underlies real life.
+lung cancer. But causal here has a meaning that takes into account 
+the unavoidable variability that underlies real life.
 
 The statistical notion of causation or causality is not deterministic. If statisticians say
 there is evidence that smoking is causal for lung cancer it does not mean that every smoker will
@@ -197,7 +219,7 @@ patients.^[This discussion follows @FrePisPur2009]
 The basic idea of testing the effectiveness of the medicine is **comparison**. An
 experiment is designed in which the medicine is given to a **treatment group**. But there
 are other subjects that are not treated and form another group, the **control group**.
-Then the responses of the two groups are compared. The assignemt of subjects to both 
+Then the responses of the two groups are compared. The assignment of subjects to both 
 groups should be **random** and  the experiment should be run **double blind**: Neither the subjects
 nor the researchers who measure the response should know who was in the control group.
 
@@ -253,7 +275,7 @@ experiment:
 
 RCT <- data.frame(Group = c("Treatment", "Control", "No consent"), Size = c(200000, 200000, 350000), Rate = c(28, 71, 46))
 
-NFIP <- data.frame(Group = c("Grade 2 (vaccine)", "Grades 1 and 2 (control)", "Grade 2 (no consent"), Size = c(225000, 725000, 125000), Rate = c(25, 54, 44))
+NFIP <- data.frame(Group = c("Grade 2 (vaccine)", "Grades 1 and 2 (control)", "Grade 2 (no consent)"), Size = c(225000, 725000, 125000), Rate = c(25, 54, 44))
 
 library(knitr)
 
@@ -313,7 +335,7 @@ evidence that this approach
 would increase enrollment it was known that such supply policies were not 
 effective for increasing enrollment amongt the poor. So Santiago Levy took a 
 household demand approach providing subsidies which can administratively 
-targeted to the poor and thereby perhaps help increase the enrollment rates 
+be targeted to the poor and thereby perhaps help increase the enrollment rates 
 in these groups. But would this work?
 
 To find out the ministry of Finance 
@@ -339,7 +361,7 @@ of a randomized controlled trial.
 It could indeed be established that Progresa worked to increase school enrollment among
 the poor in Mexico. Here are the numbers: For boys the enrollment increased from 73 % in the
 control group to 77 % in  the Progresa group. For girls the increase was even bigger, from
-67 % in the contril group to 75 % in the Progresa group.
+67 % in the control group to 75 % in the Progresa group.
 
 The evidence for the success of the Progresa Program also helped that the program
 survived when political power was transferred to a new government in the next election.
@@ -464,17 +486,6 @@ controlled for there is little difference between admission rates of men and wom
 This is known as **Simpson's paradox** which occurs when the apparent direction 
 of an association is reversed by adjusting for a confounding factor.
 
-:::{.callout-note icon=false}
-
-### Now you try
-
-When you go back to the introductory chapter to this course, can you find the
-example which showed Simpson's Paradox in a different context ? Which example was that?
-Explain.
-
-:::
-
-
 ## Can we ever conclude causation from observational data ?
 
 @Spi2019 discusses a list of criteria first suggested by the British applied 
@@ -489,12 +500,12 @@ I reproduce the list from the book of @Spi2019 here:
 
 * Direct evidence
     + The size of the effect is so large that it can not be explained by plausible       confounding.
-    + There is an appropriate temporaö and/or spatial proximity, in that cause precedes effect and effect occurs after a plausible interval and/or cause occurs at the same site as the
+    + There is an appropriate temporal and/or spatial proximity, in that cause precedes effect and effect occurs after a plausible interval and/or cause occurs at the same site as the
     effect.
     + The effect increases as the exposure increases and the effect reduces upon reduction
     in exposure (dose responsiveness and reversibility).
 * Mechanistic evidence
-    + There is a plausible mechanism of action which could be biological, chemical or mechanical with external evidence fro a causal chain.
+    + There is a plausible mechanism of action which could be biological, chemical or mechanical with external evidence for a causal chain.
 * Parallel evidence
     + The effect fits with what is known already
     + The effect is also found when the study is replicated
@@ -507,9 +518,25 @@ controlled experiment. All these techniques adjust in more or less sophisticated
 potential confounders. Most of these techniques are based on regression, a topic we
 study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.
 
+## Analyzing and producing tables in R: The tapply function.
+
+In this section we discussed examples of randomized controlled experiments and observational
+studies to explain key ideas of examining data and in particular how to compare treatment
+and control groups. In terms of R this gives us an opportunity to learn in this context about
+a very powerful R function which would help us analyze datasets that result from such experiments and
+help us to summarize large datasets.
+
+use the arthritis table.
+
 ## Exercises:
 
-1. Data from the polio vaccine studies discussed in the text suggest that in 1954, the
+### Exercises
+
+::: {.callout-note}
+
+## Exercise 1: The polio vaccine study 
+
+Data from the polio vaccine studies discussed in the text suggest that in 1954, the
    school districts in the NFIP trial and in the randomized controlled experiment had
    similar exposure to the polio virus.
      (a) The data also show that children in the two vaccine groups (for the randomized    controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table @tbl-salk-vaccine-field-trials confirm
@@ -519,8 +546,50 @@ study later in this course. Whatever sophisticated technique is used judgement i
      (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
      (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What's wrong with these data?
      
-2. The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incindence of
+:::
+
+::: {.callout-note}
+
+## Exercise 2: Did the vaccine field trial cause children to get polio?
+     
+The polio vaccine studies were conducted only in certain experimental areas (school districts) selected by the Public Health Service in consultation with local officials. In these areas there were about 3 million children in grades 1,2, or 3; and there were about 11 million children in those grades in the United States. In the experimental areas, the incidence of
 polio was about 25% higher than in the rest of the country. Did the vaccine field trial cause children to get polio instead of preventing it? Answer yes or no and explain briefly.
 
+:::
 
+::: {.callout-note}
 
+## Exercise 3: The effects of smoking on health
+
+The Public Health Service studies the effects of smoking on health, in a large sample of
+representative households. For men and for women in each age group, those who had never
+smoked were on average somewhat healthier than the current smokers, but the current
+smokers were  on average much healthier that those who had recently stopped smoking.
+
+(a) Why did they study men and women in the different age groups separately?
+(b) The lesson seems to be that you shouldn't start smoking, but once you've started don't stop. 
+Comment briefly.
+
+:::
+
+::: {.callout-note}
+
+## Exercise 4: Evaluating a prisoners rehabilitation program
+
+A program to rehabilitate prisoners before their release is evaluated. The object
+of the program is to reduce the recidivism rate - the percentage who will
+be back in prison within two years of release. The program involves
+several months of "boot camp" - military-style basic training with very strict
+discipline. Admission to the program is voluntary. According to a prison
+spokesman, those who complete the boot camp are less likely to return
+to prision than other inmates.
+
+(a) What is the treatment group in the prison spokesman's comparison? What is the
+control group?
+(b) Is the prison spokesman's comparison based on an observational study or 
+a randomized controlled experiment?
+(c) True of false: The data show that the bootcamp worked.
+
+Explain your answers.
+
+:::
