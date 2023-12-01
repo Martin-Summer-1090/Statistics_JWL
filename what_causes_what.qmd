@@ -518,7 +518,7 @@ controlled experiment. All these techniques adjust in more or less sophisticated
 potential confounders. Most of these techniques are based on regression, a topic we
 study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.
 
-## Analyzing and producing tables in R
+## Tabulating and analyzing data from controlled randomized trials in R
 
 In this section we discussed examples of randomized controlled experiments and observational
 studies to explain key ideas of examining data and in particular how to compare treatment
@@ -630,17 +630,90 @@ magic `tapply()`function of R.
 Assume we would have the task to produce a so called demographic table from the 
 `arthritis` data. The table should show:
 
-1: How many individuals got the drug and how many got the placebo.
+1. How many individuals got the drug and how many got the placebo?
+
 2. What is the mean age and the standard deviation of the individuals who got the drug and those who got the placebo?
-3. What is the percentage as well as absolute numbers of males and females who got the drug or the placebo and how many missing observations do we have?
-4. What is the distribution of basline scores between individuals who got the drug and those who got the
+
+3. What are the numbers of males and females who got the drug or the placebo ?
+
+4. What is the distribution of baseline scores between individuals who got the drug and those who got the
 placebo?
 
 We saw before how we could arrive at all of these values using the R subsetting rules for dataframes.
-But `tapply`offers you an even more powerful option.
 
-`
+But `tapply`offers you an even more powerful option. Suppose we want to count the cases which
+were treated and those who got a placebo in Month 1. We first filter the data to only
+contain the observations for Month 1 and save these values in a new object `dat`.
 
+```{r}
+#| code-fold: false
+dat <- arthritis[arthritis$time == "Month 1", ]
+
+tapply(dat$y, dat$trt, length)
+```
+
+Now comes the magic of the `tapply`function. The code expressed in words says the
+following: Group the variable `y` into the levels of the factor `trt`. This gives you two groups
+the group "drug" and the group "placebo". Now apply the function `length()`to both groups. 
+This is the same as counting the cases.
+
+What about question 2? Let us apply the same logic here as before.
+```{r}
+#| code-fold: false
+
+tapply(dat$age, dat$trt, mean)
+tapply(dat$age, dat$trt, sd)
+```
+
+Here we again apply the same logic. Group the data in `dat`accroding to the levels
+of our fatcor `trt`, i.e. in the group placebo and the group drug and apply to each group
+the funtion `mean()` and the function `sd`.
+
+To make sure it is clear how this works, say for the case of computing the mean, let’s 
+look at a small artificial example, which I have taken from a nice book by @Mattloff2023:
+
+```{r}
+#| code-fold: false
+x <- c(8,5,12,13)
+g <- c('M',"F",'M','M')
+```
+
+Suppose $x$ is the ages of some kids, who are a boy, a girl, then two more boys, as indicated in $g$. For instance, the 5-year-old is a girl.
+
+Let’s call tapply:
+
+```{r}
+#| code-fold: false
+tapply(x,g,mean)
+```
+
+That call said, “Split x into two piles, according to the corresponding elements of g, and 
+then find the mean in each pile.
+
+Note that it is no accident that x and g had the same number of elements above, 4 each. If on 
+the contrary, $g$ had 5 elements, that fifth element would be useless — the gender of a nonexistent 
+fifth child’s age in $x$. Similarly, it wouldn’t be right if $g$ had had only 3 elements, apparently 
+leaving the fourth child without a specified gender.
+
+Now, let us take another, perhaps slightly more complex example by looking at question 3. Let
+us begin with the absolute numbers. Now we have two factors according to which we form the groups.
+Now we do not only group by treatment but also by sex. Then we count the cases in each group. If we
+have multiple factors, we have to give the grouping argument to apply by the syntax 
+`list(factor1, factor2, etc.)`
+
+```{r}
+#| code-fold: false
+
+tapply(dat$y, list(dat$sex , dat$trt), length)
+```
+
+Finally, we would answer question 4 by coding
+
+```{r}
+#| code-fold: false
+
+tapply(dat$y, list(dat$baselinescore, dat$trt), length)
+```
 
 
 ## Exercises:
@@ -706,5 +779,23 @@ a randomized controlled experiment?
 (c) True of false: The data show that the bootcamp worked.
 
 Explain your answers.
+
+:::
+
+### Exercises R
+
+::: {.callout-note}
+
+## Exercise 5: Practicing the tapply function with the DHS dataset.
+
+Let's revisit the children nutrition data `children_nutrition_data` in the
+`JWL`package from the DHS discussed in section 2. Load the
+`JWL`package. Earlier in our lecture we analyzed the
+data using the subsetting rules of the R language. Let us redo some
+of the analysis now using the `tapply()`function.
+
+1. Count the number of rows with boys and girls in this dataset by suming the weight variable (`wt`) for
+the boys and the girls using the `tapply()`function.
+2. Compute the prevalence of stunting by region using the `tapply()` function.
 
 :::

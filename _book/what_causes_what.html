@@ -115,6 +115,8 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -249,7 +251,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.4</span> Observational studies</a></li>
   <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</a></li>
-  <li><a href="#analyzing-and-producing-tables-in-r" id="toc-analyzing-and-producing-tables-in-r" class="nav-link" data-scroll-target="#analyzing-and-producing-tables-in-r"><span class="header-section-number">5.6</span> Analyzing and producing tables in R</a>
+  <li><a href="#tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" id="toc-tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" class="nav-link" data-scroll-target="#tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from controlled randomized trials in R</a>
   <ul class="collapse">
   <li><a href="#the-factor-class" id="toc-the-factor-class" class="nav-link" data-scroll-target="#the-factor-class"><span class="header-section-number">5.6.1</span> The factor class</a></li>
   <li><a href="#the-tapply-function" id="toc-the-tapply-function" class="nav-link" data-scroll-target="#the-tapply-function"><span class="header-section-number">5.6.2</span> The tapply function</a></li>
@@ -257,6 +259,7 @@ div.csl-indent {
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.7</span> Exercises:</a>
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.7.1</span> Exercises</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">5.7.2</span> Exercises R</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -600,8 +603,8 @@ Overview
 </ul>
 <p>The appropriate handling of causation is still a contested field of statistics. There are various techniques that are based on the idea to use certain techniques to bring an observational study as close as possible to the situation of a randomized controlled experiment. All these techniques adjust in more or less sophisticated ways for potential confounders. Most of these techniques are based on regression, a topic we study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.</p>
 </section>
-<section id="analyzing-and-producing-tables-in-r" class="level2 page-columns page-full" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="analyzing-and-producing-tables-in-r"><span class="header-section-number">5.6</span> Analyzing and producing tables in R</h2>
+<section id="tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" class="level2 page-columns page-full" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from controlled randomized trials in R</h2>
 <p>In this section we discussed examples of randomized controlled experiments and observational studies to explain key ideas of examining data and in particular how to compare treatment and control groups.</p>
 <p>In terms of R this gives us an opportunity to learn in this context about a very powerful R data types and functions which help us to analyze and summarize datasets that result from such experiments.</p>
 <div class="page-columns page-full"><p>Let us use a real dataset resulting from a randomized controlled trial of testing a drug to be taken against arthritis.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> This dataset is part of the R package <code>multgee</code> (<span class="citation" data-cites="Toul2015">Touloumis A. (<a href="references.html#ref-Toul2015" role="doc-biblioref">2015</a>)</span>). We have added this dataset to our course data library. Let us inspect the first few lines</p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;The current issue of Wikipedia describes this illness as follows: “Arthritis is a term often used to mean any disorder that affects joints. Symptoms generally include joint pain and stiffness. Other symptoms may include redness, warmth, swelling, and decreased range of motion of the affected joints. In some types of arthritis, other organs are also affected. Onset can be gradual or sudden.”</p></li></div></div>
@@ -678,9 +681,75 @@ Overview
 <h3 data-number="5.6.2" class="anchored" data-anchor-id="the-tapply-function"><span class="header-section-number">5.6.2</span> The tapply function</h3>
 <p>R often offers various different ways to achieve things we want to compute or express. Some of them are stunningly short and elegant. They are also very useful if we have to work with tables like the <code>arthristis</code> dataset. You must therefor learn about the magic <code>tapply()</code>function of R.</p>
 <p>Assume we would have the task to produce a so called demographic table from the <code>arthritis</code> data. The table should show:</p>
-<p>1: How many individuals got the drug and how many got the placebo. 2. What is the mean age and the standard deviation of the individuals who got the drug and those who got the placebo? 3. What is the percentage as well as absolute numbers of males and females who got the drug or the placebo and how many missing observations do we have? 4. What is the distribution of basline scores between individuals who got the drug and those who got the placebo?</p>
-<p>We saw before how we could arrive at all of these values using the R subsetting rules for dataframes. But <code>tapply</code>offers you an even more powerful option.</p>
-<p>`</p>
+<ol type="1">
+<li><p>How many individuals got the drug and how many got the placebo?</p></li>
+<li><p>What is the mean age and the standard deviation of the individuals who got the drug and those who got the placebo?</p></li>
+<li><p>What are the numbers of males and females who got the drug or the placebo ?</p></li>
+<li><p>What is the distribution of baseline scores between individuals who got the drug and those who got the placebo?</p></li>
+</ol>
+<p>We saw before how we could arrive at all of these values using the R subsetting rules for dataframes.</p>
+<p>But <code>tapply</code>offers you an even more powerful option. Suppose we want to count the cases which were treated and those who got a placebo in Month 1. We first filter the data to only contain the observations for Month 1 and save these values in a new object <code>dat</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> arthritis[arthritis<span class="sc">$</span>time <span class="sc">==</span> <span class="st">"Month 1"</span>, ]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>y, dat<span class="sc">$</span>trt, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>placebo    drug 
+    149     153 </code></pre>
+</div>
+</div>
+<p>Now comes the magic of the <code>tapply</code>function. The code expressed in words says the following: Group the variable <code>y</code> into the levels of the factor <code>trt</code>. This gives you two groups the group “drug” and the group “placebo”. Now apply the function <code>length()</code>to both groups. This is the same as counting the cases.</p>
+<p>What about question 2? Let us apply the same logic here as before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>age, dat<span class="sc">$</span>trt, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> placebo     drug 
+50.70470 50.05882 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>age, dat<span class="sc">$</span>trt, sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> placebo     drug 
+11.23490 11.02583 </code></pre>
+</div>
+</div>
+<p>Here we again apply the same logic. Group the data in <code>dat</code>accroding to the levels of our fatcor <code>trt</code>, i.e.&nbsp;in the group placebo and the group drug and apply to each group the funtion <code>mean()</code> and the function <code>sd</code>.</p>
+<p>To make sure it is clear how this works, say for the case of computing the mean, let’s look at a small artificial example, which I have taken from a nice book by <span class="citation" data-cites="Mattloff2023">(<a href="references.html#ref-Mattloff2023" role="doc-biblioref"><strong>Mattloff2023?</strong></a>)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">12</span>,<span class="dv">13</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'M'</span>,<span class="st">"F"</span>,<span class="st">'M'</span>,<span class="st">'M'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Suppose <span class="math inline">\(x\)</span> is the ages of some kids, who are a boy, a girl, then two more boys, as indicated in <span class="math inline">\(g\)</span>. For instance, the 5-year-old is a girl.</p>
+<p>Let’s call tapply:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(x,g,mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> F  M 
+ 5 11 </code></pre>
+</div>
+</div>
+<p>That call said, “Split x into two piles, according to the corresponding elements of g, and then find the mean in each pile.</p>
+<p>Note that it is no accident that x and g had the same number of elements above, 4 each. If on the contrary, <span class="math inline">\(g\)</span> had 5 elements, that fifth element would be useless — the gender of a nonexistent fifth child’s age in <span class="math inline">\(x\)</span>. Similarly, it wouldn’t be right if <span class="math inline">\(g\)</span> had had only 3 elements, apparently leaving the fourth child without a specified gender.</p>
+<p>Now, let us take another, perhaps slightly more complex example by looking at question 3. Let us begin with the absolute numbers. Now we have two factors according to which we form the groups. Now we do not only group by treatment but also by sex. Then we count the cases in each group. If we have multiple factors, we have to give the grouping argument to apply by the syntax <code>list(factor1, factor2, etc.)</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>y, <span class="fu">list</span>(dat<span class="sc">$</span>sex , dat<span class="sc">$</span>trt), length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       placebo drug
+female      43   40
+male       106  113</code></pre>
+</div>
+</div>
+<p>Finally, we would answer question 4 by coding</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(dat<span class="sc">$</span>y, <span class="fu">list</span>(dat<span class="sc">$</span>baselinescore, dat<span class="sc">$</span>trt), length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  placebo drug
+1      11   12
+2      35   38
+3      70   69
+4      28   28
+5       5    6</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="5.7">
@@ -747,6 +816,26 @@ Exercise 4: Evaluating a prisoners rehabilitation program
 <li>True of false: The data show that the bootcamp worked.</li>
 </ol>
 <p>Explain your answers.</p>
+</div>
+</div>
+</section>
+<section id="exercises-r" class="level3" data-number="5.7.2">
+<h3 data-number="5.7.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">5.7.2</span> Exercises R</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: Practicing the tapply function with the DHS dataset.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s revisit the children nutrition data <code>children_nutrition_data</code> in the <code>JWL</code>package from the DHS discussed in section 2. Load the <code>JWL</code>package. Earlier in our lecture we analyzed the data using the subsetting rules of the R language. Let us redo some of the analysis now using the <code>tapply()</code>function.</p>
+<ol type="1">
+<li>Count the number of rows with boys and girls in this dataset by suming the weight variable (<code>wt</code>) for the boys and the girls using the <code>tapply()</code>function.</li>
+<li>Compute the prevalence of stunting by region using the <code>tapply()</code> function.</li>
+</ol>
 </div>
 </div>
 
