@@ -518,15 +518,130 @@ controlled experiment. All these techniques adjust in more or less sophisticated
 potential confounders. Most of these techniques are based on regression, a topic we
 study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.
 
-## Analyzing and producing tables in R: The tapply function.
+## Analyzing and producing tables in R
 
 In this section we discussed examples of randomized controlled experiments and observational
 studies to explain key ideas of examining data and in particular how to compare treatment
-and control groups. In terms of R this gives us an opportunity to learn in this context about
-a very powerful R function which would help us analyze datasets that result from such experiments and
-help us to summarize large datasets.
+and control groups. 
 
-use the arthritis table.
+In terms of R this gives us an opportunity to learn in this context about
+a very powerful R data types and functions which help us to 
+analyze and summarize datasets that result from such experiments.
+
+Let us use a real dataset resulting from a randomized controlled trial of testing
+a drug to be taken against arthritis.^[The current issue of Wikipedia describes this
+illness as follows: "Arthritis is a term often used to mean any disorder that 
+affects joints. 
+Symptoms generally include joint pain and stiffness. Other symptoms may include 
+redness, warmth, swelling, and decreased range of motion of the affected joints. 
+In some types of arthritis, other organs are also affected. Onset can be gradual or sudden."]
+This dataset is part of the R package `multgee` (@Toul2015). We have added this dataset to our course
+data library. Let us inspect the first few lines
+
+```{r}
+#| code-fold: false
+
+library(JWL)
+head(arthritis)
+```
+
+This dataset contains observations of the self-assessment score of arthritis, an ordered 
+variable with five categories, collected at baseline and three follow-up times during a 
+randomized comparative study of alternative treatments of 302 patients with rheumatoid arthritis. 
+The data came from a randomized clinical trial that aimed to evaluate the effectiveness 
+of the drug Auranofin versus the placebo therapy for the treatment of 
+rheumatoid arthritis. The five-level (1=poor, . . . , 5=very good) ordinal 
+multinomial response variable was the self-assessment of 
+rheumatoid arthritis recorded at one (t = 1), three (t = 2) and five (t = 3) follow-up months.
+
+### The factor class 
+
+We have already learned that each R object has a class or a type. We have learned about some
+of these classes like `double`, `integer`, `chraracter`, `logical` before. Some of the variables
+in our example dataset have a class we already know: `id` the identity of individuals who are part
+of the sample, `y` the response variable, `age`, the individual's age, `baseline` are all
+of class or type numeric. We can find out the class of variables using the R function
+`class()`. If we type for example 
+```{r}
+#| code-fold: false
+
+class(arthritis$y)
+```
+
+R answers that this is an integer.
+
+For categorical variables, we discussed in our first unit, R has a special class
+the **factor-class**. In our dataset the variables `sex`, `trt`, `baselinescore` and
+`score` have this class. For example of you type 
+```{r}
+#|code-fold: false
+
+class(arthritis$sex)
+```
+R answers that this is a factor. R factors are used for categorical variables. The categorical
+variable in our example is `sex`. This is the name the data creator chose for this variable. This
+variable has two categories or levels, which we can find out with the R `levels()`function by
+```{r}
+#| code-fold: false
+
+levels(arthritis$sex)
+```
+Note that the values of an R factor must be quoted. Either single or double 
+quote marks is fine (though the marks don’t show up when we use head).
+
+Factors can sometimes be a bit tricky to work with, but the above is enough for now. 
+Let’s see how to apply the notion in the current dataset.
+
+We could for instance use the factor structure to compute the mean of the response
+of the treated male individuals in the sample in Month 1 and the mean
+response of the non-treated male participants in Month 1:
+```{r}
+#| code-fold: false
+
+whichmt <- which(arthritis$sex == "male" & 
+                 arthritis$trt == "drug" & 
+                 arthritis$time == "Month 1")
+
+whichmnt <- which(arthritis$sex == "male" & 
+                  arthritis$trt == "placebo" & 
+                  arthritis$time == "Month 1")
+
+mean(arthritis[whichmt,2], na.rm = T)
+mean(arthritis[whichmnt,2], na.rm = T)
+```
+
+Let us unpack this code. The `which()`function returns the index of entries for which all the conditions
+imposed on `sex`, `drug` and `time` in the `arthritis` dataframe are true.
+
+Now, look at the expression `arthritis[whichmt,2]`. Remember, data frames are accessed with two subscript expressions, one for rows, one for column, in the format
+
+`d[the rows we want, the columns we want]`
+
+Thus we select the rows for which all conditions are met and the second column
+which contains the response variable. Then we take the average of all these observations.
+
+### The tapply function
+
+R often offers various different ways to achieve things we want to compute or express.
+Some of them are stunningly short and elegant. They are also very useful if we have to
+work with tables like the `arthristis` dataset. You must therefor learn about the
+magic `tapply()`function of R.
+
+Assume we would have the task to produce a so called demographic table from the 
+`arthritis` data. The table should show:
+
+1: How many individuals got the drug and how many got the placebo.
+2. What is the mean age and the standard deviation of the individuals who got the drug and those who got the placebo?
+3. What is the percentage as well as absolute numbers of males and females who got the drug or the placebo and how many missing observations do we have?
+4. What is the distribution of basline scores between individuals who got the drug and those who got the
+placebo?
+
+We saw before how we could arrive at all of these values using the R subsetting rules for dataframes.
+But `tapply`offers you an even more powerful option.
+
+`
+
+
 
 ## Exercises:
 

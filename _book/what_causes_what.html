@@ -249,7 +249,11 @@ div.csl-indent {
   </ul></li>
   <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.4</span> Observational studies</a></li>
   <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</a></li>
-  <li><a href="#analyzing-and-producing-tables-in-r-the-tapply-function." id="toc-analyzing-and-producing-tables-in-r-the-tapply-function." class="nav-link" data-scroll-target="#analyzing-and-producing-tables-in-r-the-tapply-function."><span class="header-section-number">5.6</span> Analyzing and producing tables in R: The tapply function.</a></li>
+  <li><a href="#analyzing-and-producing-tables-in-r" id="toc-analyzing-and-producing-tables-in-r" class="nav-link" data-scroll-target="#analyzing-and-producing-tables-in-r"><span class="header-section-number">5.6</span> Analyzing and producing tables in R</a>
+  <ul class="collapse">
+  <li><a href="#the-factor-class" id="toc-the-factor-class" class="nav-link" data-scroll-target="#the-factor-class"><span class="header-section-number">5.6.1</span> The factor class</a></li>
+  <li><a href="#the-tapply-function" id="toc-the-tapply-function" class="nav-link" data-scroll-target="#the-tapply-function"><span class="header-section-number">5.6.2</span> The tapply function</a></li>
+  </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.7</span> Exercises:</a>
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.7.1</span> Exercises</a></li>
@@ -596,10 +600,88 @@ Overview
 </ul>
 <p>The appropriate handling of causation is still a contested field of statistics. There are various techniques that are based on the idea to use certain techniques to bring an observational study as close as possible to the situation of a randomized controlled experiment. All these techniques adjust in more or less sophisticated ways for potential confounders. Most of these techniques are based on regression, a topic we study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.</p>
 </section>
-<section id="analyzing-and-producing-tables-in-r-the-tapply-function." class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="analyzing-and-producing-tables-in-r-the-tapply-function."><span class="header-section-number">5.6</span> Analyzing and producing tables in R: The tapply function.</h2>
-<p>In this section we discussed examples of randomized controlled experiments and observational studies to explain key ideas of examining data and in particular how to compare treatment and control groups. In terms of R this gives us an opportunity to learn in this context about a very powerful R function which would help us analyze datasets that result from such experiments and help us to summarize large datasets.</p>
-<p>use the arthritis table.</p>
+<section id="analyzing-and-producing-tables-in-r" class="level2 page-columns page-full" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="analyzing-and-producing-tables-in-r"><span class="header-section-number">5.6</span> Analyzing and producing tables in R</h2>
+<p>In this section we discussed examples of randomized controlled experiments and observational studies to explain key ideas of examining data and in particular how to compare treatment and control groups.</p>
+<p>In terms of R this gives us an opportunity to learn in this context about a very powerful R data types and functions which help us to analyze and summarize datasets that result from such experiments.</p>
+<div class="page-columns page-full"><p>Let us use a real dataset resulting from a randomized controlled trial of testing a drug to be taken against arthritis.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> This dataset is part of the R package <code>multgee</code> (<span class="citation" data-cites="Toul2015">Touloumis A. (<a href="references.html#ref-Toul2015" role="doc-biblioref">2015</a>)</span>). We have added this dataset to our course data library. Let us inspect the first few lines</p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;The current issue of Wikipedia describes this illness as follows: “Arthritis is a term often used to mean any disorder that affects joints. Symptoms generally include joint pain and stiffness. Other symptoms may include redness, warmth, swelling, and decreased range of motion of the affected joints. In some types of arthritis, other organs are also affected. Onset can be gradual or sudden.”</p></li></div></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(arthritis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  id y    sex age     trt baseline    time baselinescore score
+1  1 4   male  54    drug        2 Month 1             2     4
+2  1 5   male  54    drug        2 Month 3             2     5
+3  1 5   male  54    drug        2 Month 5             2     5
+4  2 4 female  41 placebo        3 Month 1             3     4
+5  2 4 female  41 placebo        3 Month 3             3     4
+6  2 4 female  41 placebo        3 Month 5             3     4</code></pre>
+</div>
+</div>
+<p>This dataset contains observations of the self-assessment score of arthritis, an ordered variable with five categories, collected at baseline and three follow-up times during a randomized comparative study of alternative treatments of 302 patients with rheumatoid arthritis. The data came from a randomized clinical trial that aimed to evaluate the effectiveness of the drug Auranofin versus the placebo therapy for the treatment of rheumatoid arthritis. The five-level (1=poor, . . . , 5=very good) ordinal multinomial response variable was the self-assessment of rheumatoid arthritis recorded at one (t = 1), three (t = 2) and five (t = 3) follow-up months.</p>
+<section id="the-factor-class" class="level3" data-number="5.6.1">
+<h3 data-number="5.6.1" class="anchored" data-anchor-id="the-factor-class"><span class="header-section-number">5.6.1</span> The factor class</h3>
+<p>We have already learned that each R object has a class or a type. We have learned about some of these classes like <code>double</code>, <code>integer</code>, <code>chraracter</code>, <code>logical</code> before. Some of the variables in our example dataset have a class we already know: <code>id</code> the identity of individuals who are part of the sample, <code>y</code> the response variable, <code>age</code>, the individual’s age, <code>baseline</code> are all of class or type numeric. We can find out the class of variables using the R function <code>class()</code>. If we type for example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(arthritis<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+</div>
+<p>R answers that this is an integer.</p>
+<p>For categorical variables, we discussed in our first unit, R has a special class the <strong>factor-class</strong>. In our dataset the variables <code>sex</code>, <code>trt</code>, <code>baselinescore</code> and <code>score</code> have this class. For example of you type</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(arthritis<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+<p>R answers that this is a factor. R factors are used for categorical variables. The categorical variable in our example is <code>sex</code>. This is the name the data creator chose for this variable. This variable has two categories or levels, which we can find out with the R <code>levels()</code>function by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(arthritis<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "female" "male"  </code></pre>
+</div>
+</div>
+<p>Note that the values of an R factor must be quoted. Either single or double quote marks is fine (though the marks don’t show up when we use head).</p>
+<p>Factors can sometimes be a bit tricky to work with, but the above is enough for now. Let’s see how to apply the notion in the current dataset.</p>
+<p>We could for instance use the factor structure to compute the mean of the response of the treated male individuals in the sample in Month 1 and the mean response of the non-treated male participants in Month 1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>whichmt <span class="ot">&lt;-</span> <span class="fu">which</span>(arthritis<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">&amp;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                 arthritis<span class="sc">$</span>trt <span class="sc">==</span> <span class="st">"drug"</span> <span class="sc">&amp;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                 arthritis<span class="sc">$</span>time <span class="sc">==</span> <span class="st">"Month 1"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>whichmnt <span class="ot">&lt;-</span> <span class="fu">which</span>(arthritis<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">&amp;</span> </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                  arthritis<span class="sc">$</span>trt <span class="sc">==</span> <span class="st">"placebo"</span> <span class="sc">&amp;</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                  arthritis<span class="sc">$</span>time <span class="sc">==</span> <span class="st">"Month 1"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(arthritis[whichmt,<span class="dv">2</span>], <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.294643</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(arthritis[whichmnt,<span class="dv">2</span>], <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.095238</code></pre>
+</div>
+</div>
+<p>Let us unpack this code. The <code>which()</code>function returns the index of entries for which all the conditions imposed on <code>sex</code>, <code>drug</code> and <code>time</code> in the <code>arthritis</code> dataframe are true.</p>
+<p>Now, look at the expression <code>arthritis[whichmt,2]</code>. Remember, data frames are accessed with two subscript expressions, one for rows, one for column, in the format</p>
+<p><code>d[the rows we want, the columns we want]</code></p>
+<p>Thus we select the rows for which all conditions are met and the second column which contains the response variable. Then we take the average of all these observations.</p>
+</section>
+<section id="the-tapply-function" class="level3" data-number="5.6.2">
+<h3 data-number="5.6.2" class="anchored" data-anchor-id="the-tapply-function"><span class="header-section-number">5.6.2</span> The tapply function</h3>
+<p>R often offers various different ways to achieve things we want to compute or express. Some of them are stunningly short and elegant. They are also very useful if we have to work with tables like the <code>arthristis</code> dataset. You must therefor learn about the magic <code>tapply()</code>function of R.</p>
+<p>Assume we would have the task to produce a so called demographic table from the <code>arthritis</code> data. The table should show:</p>
+<p>1: How many individuals got the drug and how many got the placebo. 2. What is the mean age and the standard deviation of the individuals who got the drug and those who got the placebo? 3. What is the percentage as well as absolute numbers of males and females who got the drug or the placebo and how many missing observations do we have? 4. What is the distribution of basline scores between individuals who got the drug and those who got the placebo?</p>
+<p>We saw before how we could arrive at all of these values using the R subsetting rules for dataframes. But <code>tapply</code>offers you an even more powerful option.</p>
+<p>`</p>
+</section>
 </section>
 <section id="exercises" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.7</span> Exercises:</h2>
@@ -687,6 +769,9 @@ Roser, Max. 2021. <span>“Access to Basic Education: Almost 60 Million Children
 </div>
 <div id="ref-Spi2019" class="csl-entry" role="listitem">
 Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
+</div>
+<div id="ref-Toul2015" class="csl-entry" role="listitem">
+Touloumis A. 2015. <span>“<span>R</span> Package <span class="nocase">multgee</span>: A Generalized Estimating Equations Solver for Multinomial Responses.”</span> <em>Journal of Statistical Software</em> 64 (8): 1–14. <a href="https://doi.org/10.18637/jss.v064.i08">https://doi.org/10.18637/jss.v064.i08</a>.
 </div>
 </div>
 </section>
