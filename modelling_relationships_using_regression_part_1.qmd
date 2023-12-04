@@ -522,7 +522,7 @@ Look at the following line
 
 :::
 
-## Exercises R:
+## Exercises R
 
 ::: {.callout-note icon=false}
 
