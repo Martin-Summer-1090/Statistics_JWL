@@ -253,13 +253,11 @@ div.csl-indent {
   <li><a href="#plotting-lines-using-r" id="toc-plotting-lines-using-r" class="nav-link" data-scroll-target="#plotting-lines-using-r"><span class="header-section-number">6.2.6</span> Plotting lines, using R</a></li>
   </ul></li>
   <li><a href="#modelling-relationships-and-making-predictions" id="toc-modelling-relationships-and-making-predictions" class="nav-link" data-scroll-target="#modelling-relationships-and-making-predictions"><span class="header-section-number">6.3</span> Modelling relationships and making predictions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises:</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises</a>
   <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">6.4.1</span> Exercise 1:</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">6.4.2</span> Exercise 2:</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">6.4.3</span> Exercise 3:</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">6.4.1</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#computer-exercises" id="toc-computer-exercises" class="nav-link" data-scroll-target="#computer-exercises"><span class="header-section-number">6.5</span> Computer exercises</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">6.6</span> Exercises R:</a></li>
   </ul>
 </nav>
     </div>
@@ -283,18 +281,29 @@ div.csl-indent {
 
 </header>
 
-<!-- ## Contents  -->
-<!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
-<!-- 1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.  -->
-<!-- 2. Regression to the mean -->
-<!-- 3. Regression models can incorporate different types of response variable -->
-<!-- 4. Explanatory variables and non-linear relationships -->
-<!-- 5. Be cautious in interpreting models and don’t take them literally. -->
-<!-- ## Outcome -->
-<!-- The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect.  -->
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this section you will make your first steps into statistical modeling. With a statistical model you can study relationships between two or more variables and analyze more complex empirical situations that we did up to now. When we going towards models we need some tools from mathematics. Here we introduce first the mathematics of points and lines and how you can use R to visualize and manipulate points and lines. This will prepare the next section where we will discuss how we can use a model to make predictions.</p>
+<ol type="1">
+<li><p>A <strong>statistical model</strong> is a mathematical representation of the relationship between variables which we can use for the prediction of the value of one variable using the value of another variable or the values of a list of other variables.</p></li>
+<li><p>Points and lines can be plotted in a coordinate system. Points and lines can at the same time be described and manipulated algebraically by equations. You will learn to understand both representations and how to go back and forth between them.</p></li>
+<li><p>An important object in this context are straight lines. You need to understand what the slope and the intercept of a line are and how you can describe a line by an equation as well as how you can recognize the slope and the intercept from the equation.</p></li>
+<li><p>You will learn how to harness the power of the computer by plotting lines and points using R.</p></li>
+<li><p>In the end of this section we start our discussion of modelling relationships between variables and using these models to make predictions.</p></li>
+</ol>
+</div>
+</div>
 <section id="statistical-models" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="statistical-models"><span class="header-section-number">6.1</span> Statistical models</h2>
-<p>In our course so far we have encountered various methods which allow us to visualize and summarize data consisting of a single set of numbers. These simple techniques have already taken us quite far and allowed us to look at various interesting real world questions.</p>
+<p>In our course so far we have encountered various methods which allow us to visualize and summarize data consisting of a single set of numbers. These simple techniques have already taken us quite far and allowed us to look at various interesting real world questions. We have also learned in some instances describing data where more than one variable is involved in studying some scatterplots.</p>
 <p>In general modern data are much more complex. In such more complex situations, involving whole lists of related variables, we need more powerful tools. In this chapter we are going to take a first step in introducing the idea of a <strong>statistical model</strong>.</p>
 <p>A statistical model is a mathematical representation of the relationship between variables which we can use for the prediction of the value of one variable using the value of another variable or the values of a list of other variables. It also allows us a more precise description of the relationship between variables.</p>
 <p>Statistical models inevitably involve some mathematical ideas, which you need to understand to confidently work with these models and use them. In this chapter we will introduce you to these ideas step by step, going into actual statistical models and its most important form, regression analysis in the next chapter.</p>
@@ -304,55 +313,33 @@ div.csl-indent {
 <p>In this section we review some ideas about plotting points and lines which we will need for understanding statistical models. For some of you this might be a refresher of concepts you have already encountered in school, for others this material might be new.</p>
 <section id="reading-points-off-a-graph" class="level3 page-columns page-full" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="reading-points-off-a-graph"><span class="header-section-number">6.2.1</span> Reading points off a graph</h3>
-<p><a href="#fig-coordinates">Figure&nbsp;<span>6.1</span></a> shows two coordinate systems, coordinatesystem 1 and coordinatesystem 2. The graphs of the coordinate systems have a horizontal axis, the <span class="math inline">\(x\)</span>-axis and a vertical axis, the <span class="math inline">\(y\)</span>-axis. Each point in the plane can be described by its coordinates, given by an <span class="math inline">\(x\)</span> value and a <span class="math inline">\(y\)</span> value.</p>
-<p>For example, the point shown in coordinatesystem 1 is the point <span class="math inline">\((x,y) = (2,3)\)</span>. This is the point you get in the plane, if you move from the origin <span class="math inline">\((0,0)\)</span> 2 units to the right on the <span class="math inline">\(x\)</span>-axis and then 3 units up on the <span class="math inline">\(y\)</span>-axis.</p>
-<div class="page-columns page-full"><p>In the second coordinate system, cordinatesystem b, you see the plot of a point <span class="math inline">\((x,y) = (-1.5, -0.8)\)</span> with the coordinates <span class="math inline">\((-1.5,-0.8)\)</span>. The idea to represent points in a plane by pairs of numbers (their coordinates) is very powerful because it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects. This idea goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is why the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates are often referred as “cartesian coordinates”.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portait painted by the Dutch painter Frans Hals. <img src="pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg" class="img-fluid" alt="Descartes"></p></li></div></div>
+<p><a href="#fig-coordinates">Figure&nbsp;<span>6.1</span></a> shows two coordinate systems, coordinate-system 1 and coordinate-system 2. The graphs of the coordinate systems have a horizontal axis, the <span class="math inline">\(x\)</span>-axis and a vertical axis, the <span class="math inline">\(y\)</span>-axis. Each point in the plane can be described by its coordinates, given by an <span class="math inline">\(x\)</span> value and a <span class="math inline">\(y\)</span> value.</p>
+<p>For example, the point shown in coordinate-system 1 is the point <span class="math inline">\((x,y) = (2,3)\)</span>. This is the point you get in the plane, if you move from the origin - <span class="math inline">\((0,0)\)</span> - 2 units to the right on the <span class="math inline">\(x\)</span>-axis and then 3 units up on the <span class="math inline">\(y\)</span>-axis.</p>
+<p>In the second coordinate system, coordinate-system 2, you see the plot of a point <span class="math inline">\((x,y) = (-1.5, -0.8)\)</span> with the coordinates <span class="math inline">\((-1.5,-0.8)\)</span>.</p>
+<p>The idea to represent points in a plane by pairs of numbers (their coordinates) is very powerful because it combines two apparently different field, algebra - the manipulation of numbers by adding, subtracting etc. - and geometry, lines, points and other geometric objects.</p>
+<div class="page-columns page-full"><p>This idea goes back to the french philosopher and mathematician Rene Descartes (1556 - 1630).<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> This is why the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinates are often referred as “Cartesian coordinates”.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Rene Descartes was born in 1556 and died in 1630. He was a french philosopher and mathematician and scientist. His connection of the two previously separated fields of geometry and algebra into the field of analytic geometry is one of his lasting contribution to mathematics. Here you see a portrait painted by the Dutch painter Frans Hals. <img src="pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg" class="img-fluid" alt="Descartes"></p></li></div></div>
 <div id="fig-coordinates" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-coorda" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="pictures/coordinates_a.png" class="img-fluid figure-img" data-ref-parent="fig-coordinates"></p>
-<figcaption class="figure-caption">(a) Coordinatesystem 1</figcaption>
+<p><img src="pictures/coordinates_a.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Coordinate-System 1</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-coordb" class="quarto-figure quarto-figure-center anchored">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="pictures/coordinates_b.png" class="img-fluid figure-img" data-ref-parent="fig-coordinates"></p>
-<figcaption class="figure-caption">(b) Coordinatesystem 2</figcaption>
+<p><img src="pictures/coordinates_b.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Coordinate-System 2</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p></p><figcaption class="figure-caption">Figure&nbsp;6.1: Coordinate Systems</figcaption><p></p>
 </figure>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<div id="fig-coordc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/coordinates_c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.2: Five points in a coordinate system</figcaption>
-</figure>
-</div>
-<p><a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a> shows 5 points plotted in a coordinate system.</p>
-<ol type="1">
-<li>Write down the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinate for each point.</li>
-<li>As you move from point A to point B in <a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a>, explain by how mauch your <span class="math inline">\(x\)</span>-coordinate and your <span class="math inline">\(y\)</span>-coordinate goes up.</li>
-<li>One point in <a href="#fig-coordc">Figure&nbsp;<span>6.2</span></a> has a <span class="math inline">\(y\)</span>-coordinate 1 bigger than the <span class="math inline">\(y\)</span>-coordinate of point E. Which point is this?</li>
-</ol>
-</div>
 </div>
 </section>
 <section id="plotting-points" class="level3 page-columns page-full" data-number="6.2.2">
@@ -386,10 +373,10 @@ Now you try
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.3: Plotting a point.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.2: Plotting a point.</figcaption><p></p>
 </figure>
 </div>
-<p>Here is a step by step procedure outlined in <a href="#fig-plot-points">Figure&nbsp;<span>6.3</span></a>. We start with a coordinate system as depicted in <a href="#fig-plota">Figure&nbsp;<span>6.3 (a)</span></a>. The <span class="math inline">\(x\)</span> coordinate is at 2. We could imagine a dotted line starting at <span class="math inline">\(x=2\)</span> and extending vertically through the coordinate system as shown in <a href="#fig-plotb">Figure&nbsp;<span>6.3 (b)</span></a>. Finally the <span class="math inline">\(y\)</span> coordinate has value 3. We could imagine a dashed line starting at the <span class="math inline">\(y = 3\)</span> coordinate parallel to the <span class="math inline">\(x\)</span> axes as shown in <a href="#fig-plotc">Figure&nbsp;<span>6.3 (c)</span></a> The point <span class="math inline">\((2,3)\)</span> is where both of the dashed lines intersect.</p>
+<p>Here is a step by step procedure outlined in <a href="#fig-plot-points">Figure&nbsp;<span>6.2</span></a>. We start with a coordinate system as depicted in <a href="#fig-plota">Figure&nbsp;<span>6.2 (a)</span></a>. The <span class="math inline">\(x\)</span> coordinate is at 2. We could imagine a dotted line starting at <span class="math inline">\(x=2\)</span> and extending vertically through the coordinate system as shown in <a href="#fig-plotb">Figure&nbsp;<span>6.2 (b)</span></a>. Finally the <span class="math inline">\(y\)</span> coordinate has value 3. We could imagine a dashed line starting at the <span class="math inline">\(y = 3\)</span> coordinate parallel to the <span class="math inline">\(x\)</span> axes as shown in <a href="#fig-plotc">Figure&nbsp;<span>6.2 (c)</span></a> The point <span class="math inline">\((2,3)\)</span> is where both of the dashed lines intersect.</p>
 <p>With the help of the computer, you can of course plot points automatically. Let me show you how.</p>
 <p>Say we want to plot the points <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((3,3)\)</span> and <span class="math inline">\((4,4)\)</span> with R. The way we plot these data would be that we represent the coordinates in R as a dataframe (see 3.2.4) like this.</p>
 <div class="cell">
@@ -410,11 +397,11 @@ Now you try
 <p>The following figure shows a line.</p>
 <div id="fig-slope" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/slope_a.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.4: Line</figcaption>
+<p><img src="pictures/slope_a.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.3: Line</figcaption>
 </figure>
 </div>
-<p>Take any point on this line, say point A. Now move up the line to any other point, say B. When you make such a move, your <span class="math inline">\(x\)</span>-coordinate has increased by some amount. We call this increase <span class="math inline">\(\Delta x\)</span>.^{is a greek letter and in mathematical notation it is often used to symbolize change} In our picture <span class="math inline">\(\Delta x = 2\)</span> because we moved two units to the right. At the same time you <span class="math inline">\(y\)</span>-coordinate has increased by some other amount which we call <span class="math inline">\(\Delta y\)</span>. In our picture <span class="math inline">\(\Delta y = 1\)</span>. The ratio <span class="math inline">\(\Delta y/ \Delta x\)</span> is called the <strong>slope</strong> of the line. Whatever points you take on this line the slope will always be 1/2.</p>
+<div class="page-columns page-full"><p>Take any point on this line, say point A. Now move up the line to any other point, say B. When you make such a move, your <span class="math inline">\(x\)</span>-coordinate has increased by some amount. We call this increase <span class="math inline">\(\Delta x\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In our picture <span class="math inline">\(\Delta x = 2\)</span> because we moved two units to the right. At the same time you <span class="math inline">\(y\)</span>-coordinate has increased by some other amount which we call <span class="math inline">\(\Delta y\)</span>. In our picture <span class="math inline">\(\Delta y = 1\)</span>. The ratio <span class="math inline">\(\Delta y/ \Delta x\)</span> is called the <strong>slope</strong> of the line. Whatever points you take on this line the slope will always be 1/2.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;<span class="math inline">\(\Delta\)</span> is a greek letter and in mathematical notation it is often used to symbolize change</p></li></div></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -429,44 +416,8 @@ Important
 </div>
 </div>
 <p>The slope is the rate at which <span class="math inline">\(y\)</span> increases with <span class="math inline">\(x\)</span> along the line.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>What is the slope of these two lines?</p>
-<div id="fig-plot-slopes" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-slopeb" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/slope_b.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
-<figcaption class="figure-caption">(a) Slope 1</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-slopec" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="pictures/slope_c.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
-<figcaption class="figure-caption">(b) Slope 2</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.5: Different slopes</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="page-columns page-full"><p>The <strong>intercept</strong> of a line is the value of the <span class="math inline">\(y\)</span>-coordinate at <span class="math inline">\(x = 0\)</span>. You could also say that the intercept is the point where the line crosses the <span class="math inline">\(y\)</span>-axis.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;We have to be careful with this rule of thumb because this intersection property is true only if the <span class="math inline">\(x\)</span>-axis and the <span class="math inline">\(y\)</span>-axis cross at the origin <span class="math inline">\((0,0)\)</span></p></li></div></div>
-<p>For example in <a href="#fig-slope">Figure&nbsp;<span>6.4</span></a> the intercept is 1, in <a href="#fig-slopeb">Figure&nbsp;<span>6.5 (a)</span></a> is 2 and in <a href="#fig-slopec">Figure&nbsp;<span>6.5 (b)</span></a> the intercept is 3.</p>
+<div class="page-columns page-full"><p>The <strong>intercept</strong> of a line is the value of the <span class="math inline">\(y\)</span>-coordinate at <span class="math inline">\(x = 0\)</span>. You could also say that the intercept is the point where the line crosses the <span class="math inline">\(y\)</span>-axis.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;We have to be careful with this rule of thumb because this intersection property is true only if the <span class="math inline">\(x\)</span>-axis and the <span class="math inline">\(y\)</span>-axis cross at the origin <span class="math inline">\((0,0)\)</span></p></li></div></div>
+<p>For example in <a href="#fig-slope">Figure&nbsp;<span>6.3</span></a> the intercept is 1, in <a href="#fig-slopeb">Figure&nbsp;<span>6.9 (a)</span></a> is 2 and in <a href="#fig-slopec">Figure&nbsp;<span>6.9 (b)</span></a> the intercept is 3.</p>
 </section>
 <section id="how-to-plot-a-line" class="level3" data-number="6.2.4">
 <h3 data-number="6.2.4" class="anchored" data-anchor-id="how-to-plot-a-line"><span class="header-section-number">6.2.4</span> How to plot a line</h3>
@@ -474,15 +425,15 @@ Now you try
 <p>The first step is that we draw the point <span class="math inline">\((2,1)\)</span> into the coordinate system, like this:</p>
 <div id="fig-linesa" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_a.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.6: Coordinate system with point (2,1)</figcaption>
+<p><img src="pictures/line_a.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.4: Coordinate system with point (2,1)</figcaption>
 </figure>
 </div>
 <p>Next you move any convenient distance <span class="math inline">\(\Delta x\)</span> to the right like this, say we move 3 units. Make a point at this location like this</p>
 <div id="fig-linesb" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_b.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.7: Coordinate system with point (2,1) and construction point (5,1)</figcaption>
+<p><img src="pictures/line_b.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.5: Coordinate system with point (2,1) and construction point (5,1)</figcaption>
 </figure>
 </div>
 <p>Since the line slopes up - the slope is positive an 1/2 - the line passes above this point. The question is, how far?. To find the answer to the question ho much will the line rise in a <span class="math inline">\(\Delta x\)</span> of 3? The answer can be found from the formula of the slope. The line rises at the rate of half a vertical unit per horizontal unit. Thus we have <span class="math display">\[\begin{equation}
@@ -490,27 +441,9 @@ Now you try
 \end{equation}\]</span> In our case this means <span class="math inline">\(3 \times \frac{1}{2} = 1.5\)</span> Thus from the contruction point <span class="math inline">\((5,1)\)</span> we have to go up 1.5 units and mark a new point there. Now if you join these two points using a ruler you get the line like this</p>
 <div id="fig-linesc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_c.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.8: The third point</figcaption>
+<p><img src="pictures/line_c.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.6: The third point</figcaption>
 </figure>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Now you try
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Draw lines through the point (2,1) with the following slopes: 1, -1, 0</li>
-<li>Start at point (2,1). If you move 2 to the right and 1 up will you be on the line, above the line or below the line?</li>
-<li>Draw the line with intercept 2 and slope -1.</li>
-<li>Draw the line with intercept 2 and slope 1.</li>
-</ol>
-</div>
 </div>
 </section>
 <section id="the-algebraic-equation-for-a-line" class="level3" data-number="6.2.5">
@@ -548,8 +481,8 @@ y = \frac{1}{2}x + 1
 <p>If you plot these points, they all fall on a line. Any point whose <span class="math inline">\(y\)</span>-coordinate is related to its <span class="math inline">\(x\)</span>-coordinate by the same equation <span class="math inline">\(y = \frac{1}{2}x + 1\)</span> will be on this line. This line is called the <strong>graph</strong> of the equation. The slope is 1/2, the coefficient of <span class="math inline">\(x\)</span> in the equation. The intercept is 1, the constant term in the equation. We can draw a picture illustrating the situation</p>
 <div id="fig-linesd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_d.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.9: The line through (2,2) with slope 1/2</figcaption>
+<p><img src="pictures/line_d.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.7: The line through (2,2) with slope 1/2</figcaption>
 </figure>
 </div>
 <p>Using a general formulation we can say</p>
@@ -586,7 +519,7 @@ y = 2x + 1
 </div>
 <p>Here is another example, which is slightly more interesting because of its context. Consider the linear equation</p>
 <p><span class="math display">\[\begin{equation}
-y = 1007 - 0.393*x
+y = 1007 - 0.393 x
 \end{equation}\]</span></p>
 <p>According to <span class="citation" data-cites="GelmanHillVehtari2021">Andrew Gelman (<a href="references.html#ref-GelmanHillVehtari2021" role="doc-biblioref">2021</a>)</span> this line approximates the trajectory of the world record time in seconds for the mile run based on data starting from the year 1900.</p>
 <p>To draw a curve like this by R, and assuming we plot the curve for the arguments <span class="math inline">\(x = 1\)</span>, <span class="math inline">\(x = 2\)</span>, <span class="math inline">\(x = 3\)</span> , <span class="math inline">\(x = 4\)</span> and <span class="math inline">\(x = 5\)</span>, you would best choose the R function <code>curve()</code> and a code like this:</p>
@@ -636,7 +569,7 @@ Now you try
 <section id="modelling-relationships-and-making-predictions" class="level2 page-columns page-full" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="modelling-relationships-and-making-predictions"><span class="header-section-number">6.3</span> Modelling relationships and making predictions</h2>
 <p>With the understanding of the mathematics of points and lines you are now well prepared for the next big topic in this course: Prediction. An important aspect of data analysis is what given data can tell us about the future. In the next chapter we will learn about one of the most used methods for making predictions: Regression analysis. Regression analysis helps us to model how different variables depend on each other and how we can make predictions using our understanding of this relation.</p>
-<div class="page-columns page-full"><p>Relations between two variables are described in statistics using scatter plots. A famous example from the history of statistics is an anthropometric dataset assembled by one of the pioneers of Statistics, Charles Pearson<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Karl Pearson 1857 – 1936 was an English mathematician and biostatistician. He has been credited with establishing the discipline of mathematical statistics.He founded the world’s first university statistics department at University College London in 1911, and contributed significantly to the field of biometrics and meteorology. <img src="pictures/Karl_Pearson,_1912.jpg" class="img-fluid" alt="Karl Pearson"></p></li></div></div>
+<div class="page-columns page-full"><p>Relations between two variables are described in statistics using scatter plots. A famous example from the history of statistics is an anthropometric dataset assembled by one of the pioneers of Statistics, Charles Pearson<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;Karl Pearson 1857 – 1936 was an English mathematician and biostatistician. He has been credited with establishing the discipline of mathematical statistics.He founded the world’s first university statistics department at University College London in 1911, and contributed significantly to the field of biometrics and meteorology. <img src="pictures/Karl_Pearson,_1912.jpg" class="img-fluid" alt="Karl Pearson"></p></li></div></div>
 <p>The data are in the JWL package and are called <code>pearson</code>. Lets store these data in a variable we call <code>dat</code> here:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
@@ -658,8 +591,8 @@ Now you try
 </div>
 </div>
 <p>Let me briefly explain the code. <code>plot(dat)</code> would produce a default scatter plot with R. Here I adjust a few graphical parameters to make the plot more readable: I do not have to explain again how <code>xlab</code>, <code>ylab</code> and <code>main</code> works. <code>pch = 19</code> makes the dots filled contrary to the hollow points of the default configuration and <code>cex = 0.9</code> makes them smaller than the default, so you can see the differences better.</p>
-<p>The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases. One says that there is a <em>positive association</em> between the heights of the fathers and the heights of the sons. The dashed diagonal line is the line of all ppoints where the son’s father’s height and the son’s height are equal. If the father’s height is close to the son#s height the points are close to the line.</p>
-<p>There is quiet some spread showing the the relationship is weak. Suppose for example that you have to guess the height of a son from a father’s height. In the stripe bordered by the blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There is a lot of variability in the heights of the sons. You can see it in the scatter within the stripe. So even if you know the father’s height there is still a lot of room for error.</p>
+<p>The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases. One says that there is a <em>positive association</em> between the heights of the fathers and the heights of the sons. The dashed diagonal line is the line of all points where the son’s father’s height and the son’s height are equal. If the father’s height is close to the son’s height the points are close to the line.</p>
+<p>There is quiet some spread, showing the the relationship is weak. Suppose for example that you have to guess the height of a son from a father’s height. In the stripe bordered by the blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There is a lot of variability in the heights of the sons. You can see it in the scatter within the stripe. So even if you know the father’s height there is still a lot of room for error.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -675,9 +608,97 @@ Important
 </div>
 </section>
 <section id="exercises" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises:</h2>
-<section id="exercise-1" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">6.4.1</span> Exercise 1:</h3>
+<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
+<section id="exercises-1" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored"><span class="header-section-number">6.4.1</span> Exercises</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Points in a coordinate system
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="fig-coordc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/coordinates_c.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.8: Five points in a coordinate system</figcaption>
+</figure>
+</div>
+<p><a href="#fig-coordc">Figure&nbsp;<span>6.8</span></a> shows 5 points plotted in a coordinate system.</p>
+<ol type="1">
+<li>Write down the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> coordinate for each point.</li>
+<li>As you move from point A to point B in <a href="#fig-coordc">Figure&nbsp;<span>6.8</span></a>, explain by how mauch your <span class="math inline">\(x\)</span>-coordinate and your <span class="math inline">\(y\)</span>-coordinate goes up.</li>
+<li>One point in <a href="#fig-coordc">Figure&nbsp;<span>6.8</span></a> has a <span class="math inline">\(y\)</span>-coordinate 1 bigger than the <span class="math inline">\(y\)</span>-coordinate of point E. Which point is this?</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: What is the slope?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What is the slope of these two lines?</p>
+<div id="fig-plot-slopes" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-slopeb" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/slope_b.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
+<figcaption class="figure-caption">(a) Slope 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-slopec" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="pictures/slope_c.png" class="img-fluid figure-img" data-ref-parent="fig-plot-slopes"></p>
+<figcaption class="figure-caption">(b) Slope 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.9: Different slopes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Where on the line are you?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Draw lines through the point (2,1) with the following slopes: 1, -1, 0</li>
+<li>Start at point (2,1). If you move 2 to the right and 1 up will you be on the line, above the line or below the line?</li>
+<li>Draw the line with intercept 2 and slope -1.</li>
+<li>Draw the line with intercept 2 and slope 1.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Plotting graphs (by hand)
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Plot the graphs of the following equations <span class="math display">\[\begin{eqnarray}
 y &amp;=&amp; 2 x + 1 \\
@@ -692,9 +713,18 @@ y &amp;=&amp; \frac{1}{2}x + 2
 <li>If <span class="math inline">\(y\)</span> is smaller than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is below the line of exercise 3.</li>
 </ol></li>
 </ol>
-</section>
-<section id="exercise-2" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">6.4.2</span> Exercise 2:</h3>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: Where is the point
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><p>Three out of the following four points lie on a line. Which one does not? It is above or below the line? <span class="math inline">\((0,0), (0.5,0.5), (1,2), (2.5, 2.5)\)</span> You can try to answer this with pencil and paper or using R. Try both ways.</p></li>
 <li><p>The table below shows four points. In each case the y-coordinate is computed from the x-coordinate by the rule <span class="math inline">\(y = 2x + 1\)</span>. Fill in the blanks and then plot the four points. What can you say about them?</p></li>
@@ -759,26 +789,89 @@ y &amp;=&amp; \frac{1}{2}x + 2
 <p></p><figcaption class="figure-caption">Figure&nbsp;6.10: Where is the point.</figcaption><p></p>
 </figure>
 </div>
-</section>
-<section id="exercise-3" class="level3" data-number="6.4.3">
-<h3 data-number="6.4.3" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">6.4.3</span> Exercise 3:</h3>
+</div>
+</div>
+<div id="fig-plot-regions" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<section id="exercise-6-the-mathematics-of-lines" class="level2 quarto-layout-cell" data-number="6.5" style="flex-basis: 33.3%;justify-content: center;">
+<h2 data-number="6.5" class="anchored" data-anchor-id="exercise-6-the-mathematics-of-lines"><span class="header-section-number">6.5</span> Exercise 6: The mathematics of lines</h2>
 <p>Look at the following line</p>
+</section>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-line_e" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_e.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;6.11: Figure 3</figcaption>
+<p><img src="pictures/line_e.png" class="img-fluid figure-img" data-ref-parent="fig-plot-regions"></p>
+<figcaption class="figure-caption">(a) Figure 3</figcaption>
 </figure>
 </div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <ol type="1">
 <li>What is the equation of this line?</li>
 <li>What is the height of the this line at <span class="math inline">\(x = 1\)</span>?</li>
 <li>Plot the line whose equation is <span class="math inline">\(y = - \frac{1}{2}x + 4\)</span></li>
 </ol>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.11: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
 </section>
 </section>
-<section id="computer-exercises" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="computer-exercises"><span class="header-section-number">6.5</span> Computer exercises</h2>
-<p>Open the Jupyter notebook “points_and_lines.ipynb” and work on the exercises there. When you have done the exercises save your notebook and submit it.</p>
+<section id="exercises-r" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">6.6</span> Exercises R:</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Life expectancy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Throughout history, life expectancy at birth was on average 30 year everywhere in the world. This time span is an average. It does not mean that even in historical times some people did not reach a higher age but the distribution of life expectancy in years at birth was centered at 30. This started to change slowly at around 1800. Today the life expectancy in the world is 70 years. This is a dramatic improvement, if you think about it.</p>
+<p>Life expectancy is associated with the level of income, measured as GDP per capita. GDP is a shorthand and means “gross domestic product” in the jargon of economists. What it measures is the value of all goods and services produced in a given country in a year expressed in a suitable monetary unit. This could be the currency of a country, it could be US-Dollars or other units, you choose them. If you divide this number by the population in a country in a given year you get GDP per capita. It is a proxy of the level of income in a country when viewed as an aggregate entity and is one of the most used number in economic statistics. In 2018 the poorest country in the world had a GDP per capita of about 623 $ expressed in international dollars at 2011 prices, a hypothetical monetary unit that makes income comparable accross countries. The richest country is in comparison at about 150.000 $ international.</p>
+<p>For the year 2018 the data show that the relation of GDP follows a straight line with the equation <span class="math inline">\(y=67.78+0.0002549 x\)</span></p>
+<p>In the exercise you are asked to add points to a plot. This is done in R like this. You first write the code for the line graph and then write the code for a point with the syntax points(x,y).</p>
+<ol type="1">
+<li>Use R to plot this curve starting from 0 and ranging to 10000. Also add a title and axes descriptions.</li>
+<li>Now let’s check real data and see where selected countries in the world lie in this graph, by plotting these countries as points within the graph. In order to do so, we need first to load the data. The data are in your JWL package, which needs to be loaded with the command library(JWL) in R.The data we need here are called life_expectancy. Load these data and store them in an R object.</li>
+<li>Create a new R object which contains only the data of the year 2018.</li>
+<li>Add the points for some countries to this plot. Say, we choose Chad, Egypt, Kenya, Vietnam, Thailand, India, Switzerland, United States, Qatar. You have learned in the lecture to draw a line using the curve()function. We did not discuss how to add points to such a plot. Try to figure out how to do this using the R help function ?points. You can also learn how to anotate the points by looking up ?text in the R help function.</li>
+<li>Add your own country to the plot.</li>
+<li>Quatar is an outlier here. How would you interpret this peculiar position? Try to think of an explanation, that could be investigated and fact checked in a next step.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Reporduce the scatter plot on primary school enrollment rate
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this exercise we ask you to reproduce the scatter plot on the enrollment rate in primary school and the attendance rate discussed in section 3.</p>
+<ol type="1">
+<li>Load the JWL package. The dataset is called <code>enrol_attend_dat</code>. Use the R help function to study the data an the meaning of the variables as well as the original data source.</li>
+<li>Can you write an R code reproducing the graphics?</li>
+<li>Give an interpretation of the graph in your own words.</li>
+</ol>
+</div>
+</div>
+<!-- ## Contents  -->
+<!-- Regression models provide a mathematical representation between a set of explanatory variables and a response.  -->
+<!-- 1. The coefficients in a regression represent how much we expect the response to change when the explanatory variable is observed to change.  -->
+<!-- 2. Regression to the mean -->
+<!-- 3. Regression models can incorporate different types of response variable -->
+<!-- 4. Explanatory variables and non-linear relationships -->
+<!-- 5. Be cautious in interpreting models and don’t take them literally. -->
+<!-- ## Outcome -->
+<!-- The students should understand the concept of regression and how it works and should be correctly interpreted. They should develop a good understanding that a method like regression does not provide an automatism for making predictions and will always need cautious interpretation. The students should learn some tools and example what cautious interpretation means and what is helpful in this respect.  -->
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

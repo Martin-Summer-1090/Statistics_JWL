@@ -251,12 +251,12 @@ div.csl-indent {
   </ul></li>
   <li><a href="#observational-studies" id="toc-observational-studies" class="nav-link" data-scroll-target="#observational-studies"><span class="header-section-number">5.4</span> Observational studies</a></li>
   <li><a href="#can-we-ever-conclude-causation-from-observational-data" id="toc-can-we-ever-conclude-causation-from-observational-data" class="nav-link" data-scroll-target="#can-we-ever-conclude-causation-from-observational-data"><span class="header-section-number">5.5</span> Can we ever conclude causation from observational data ?</a></li>
-  <li><a href="#tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" id="toc-tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" class="nav-link" data-scroll-target="#tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from controlled randomized trials in R</a>
+  <li><a href="#tabulating-and-analyzing-data-from-a-controlled-randomized-trial-in-r" id="toc-tabulating-and-analyzing-data-from-a-controlled-randomized-trial-in-r" class="nav-link" data-scroll-target="#tabulating-and-analyzing-data-from-a-controlled-randomized-trial-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from a controlled randomized trial in R</a>
   <ul class="collapse">
   <li><a href="#the-factor-class" id="toc-the-factor-class" class="nav-link" data-scroll-target="#the-factor-class"><span class="header-section-number">5.6.1</span> The factor class</a></li>
   <li><a href="#the-tapply-function" id="toc-the-tapply-function" class="nav-link" data-scroll-target="#the-tapply-function"><span class="header-section-number">5.6.2</span> The tapply function</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.7</span> Exercises:</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.7.1</span> Exercises</a></li>
   <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">5.7.2</span> Exercises R</a></li>
@@ -603,8 +603,8 @@ Overview
 </ul>
 <p>The appropriate handling of causation is still a contested field of statistics. There are various techniques that are based on the idea to use certain techniques to bring an observational study as close as possible to the situation of a randomized controlled experiment. All these techniques adjust in more or less sophisticated ways for potential confounders. Most of these techniques are based on regression, a topic we study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.</p>
 </section>
-<section id="tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r" class="level2 page-columns page-full" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="tabulating-and-analyzing-data-from-controlled-randomized-trials-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from controlled randomized trials in R</h2>
+<section id="tabulating-and-analyzing-data-from-a-controlled-randomized-trial-in-r" class="level2 page-columns page-full" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="tabulating-and-analyzing-data-from-a-controlled-randomized-trial-in-r"><span class="header-section-number">5.6</span> Tabulating and analyzing data from a controlled randomized trial in R</h2>
 <p>In this section we discussed examples of randomized controlled experiments and observational studies to explain key ideas of examining data and in particular how to compare treatment and control groups.</p>
 <p>In terms of R this gives us an opportunity to learn in this context about a very powerful R data types and functions which help us to analyze and summarize datasets that result from such experiments.</p>
 <div class="page-columns page-full"><p>Let us use a real dataset resulting from a randomized controlled trial of testing a drug to be taken against arthritis.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> This dataset is part of the R package <code>multgee</code> (<span class="citation" data-cites="Toul2015">Touloumis A. (<a href="references.html#ref-Toul2015" role="doc-biblioref">2015</a>)</span>). We have added this dataset to our course data library. Let us inspect the first few lines</p><div class="no-row-height column-margin column-container"><li id="fn6"><p><sup>6</sup>&nbsp;The current issue of Wikipedia describes this illness as follows: “Arthritis is a term often used to mean any disorder that affects joints. Symptoms generally include joint pain and stiffness. Other symptoms may include redness, warmth, swelling, and decreased range of motion of the affected joints. In some types of arthritis, other organs are also affected. Onset can be gradual or sudden.”</p></li></div></div>
@@ -753,7 +753,7 @@ male       106  113</code></pre>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.7</span> Exercises:</h2>
+<h2 data-number="5.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.7</span> Exercises</h2>
 <section id="exercises-1" class="level3" data-number="5.7.1">
 <h3 data-number="5.7.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">5.7.1</span> Exercises</h3>
 <div class="callout callout-style-default callout-note callout-titled">

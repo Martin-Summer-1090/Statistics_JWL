@@ -518,7 +518,7 @@ controlled experiment. All these techniques adjust in more or less sophisticated
 potential confounders. Most of these techniques are based on regression, a topic we
 study later in this course. Whatever sophisticated technique is used judgement is always required if causation is claimed.
 
-## Tabulating and analyzing data from controlled randomized trials in R
+## Tabulating and analyzing data from a controlled randomized trial in R
 
 In this section we discussed examples of randomized controlled experiments and observational
 studies to explain key ideas of examining data and in particular how to compare treatment
@@ -716,7 +716,7 @@ tapply(dat$y, list(dat$baselinescore, dat$trt), length)
 ```
 
 
-## Exercises:
+## Exercises
 
 ### Exercises
 
