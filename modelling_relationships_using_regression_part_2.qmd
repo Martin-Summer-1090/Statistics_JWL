@@ -1,5 +1,11 @@
 # Modelling relationship: Prediction using regression
 
+::: {.callout-note appearance="simple"}
+## Overview
+
+
+:::
+
 We ended the last chapter with Pearson's historical data on the
 heights of fathers and sons to introduce the concept of a scatter-plot.
 
@@ -20,7 +26,7 @@ abline(0,1, lty = 2)
 We discussed how we could use the positive association in this scatter-plot to 
 predict the height of a son from the height of the father. One intuition might be
 to use the straight dashed line that runs along the diagonal. If we would use this
-line as a model for prediction, each adult son would be predicted to show the same 
+line - the diagonal - as a model for prediction, each adult son would be predicted to show the same 
 height as his father. But we can do better than that and improve on this choice.
 
 For any straight line we might choose, each data-point will give rise to a **residual** which
@@ -139,6 +145,7 @@ We filter the data for the year 2000 and store these data in a new object called
 dat_2000 <- dat[dat$Year == 2000, ]
 ```
 
+
 Now we compute the correlation between the average number of children per
 woman `Children` and the child mortality rate `Mortality`, where each data-point
 corresponds to a particular country around the world.
@@ -151,6 +158,9 @@ cor(dat_2000$Children, dat_2000$Mortality)
 
 indicating a strong positive correlation. 
 
+::: {.callout-tip}
+## Write your own R-function to study properties of correlation
+
 Now let us use a function, which we call
 `r_scatter` to explore how the correlation coefficient shapes a
 scatter plot. This is an excellent opportunity to refresh our knowledge
@@ -161,7 +171,7 @@ already decided to call the function `r_scatter`. Then the syntax is
 to write `function()` and put the function arguments within the paranthesis.
 
 Here we have two arguments, the correlation coefficient - let us call it
-according to the convention $r$ - and the number of data points we want
+according to the convention `r` - and the number of data points we want
 to consider. We call this number `n` and assign a default value to it, let's
 say 1000. 
 
@@ -170,8 +180,8 @@ containing the actual instructions.
 
 First we create two vectors of length $n$ of values $x$ and $z$ from a normal 
 distribution with mean 0 and standard deviation 1. This is achieved by the r
-function `rnorm(n)`. Note that n is a function argument and since we have set+
-a default value of n, unless specified otherwise R will set n to 1000.
+function `rnorm(n)`. Note that `n` is a function argument and since we have set
+a default value of `n`, unless specified otherwise R will set `n` to 1000.
 
 Next we use a mathematical fact, which we do not explain here in detail. When
 $x$ and $y$ have the same standard deviation then the variable $y$ given by
@@ -241,6 +251,8 @@ r_scatter( -0.7)
 
 r_scatter(- 0.98)
 ```
+
+:::
 
 ### Computing r
 
@@ -389,10 +401,14 @@ one single outlying point.
 
 From these observations we can observe three properties of $r$
 
+::: {.callout-important}
+## Three properties of r:
+
 1. $r$ is a pure number. It has no units. This is because $r$ is computed from standard units.
 2. $r$ is unaffected by changing the units on either axis. This is again because $r$ is computed based on standard units.
 3. $r$ is unaffected when we switch the axes. Algebraically this must be the case because when
 we multiply $x$ by $y$ the value of the product is the same as when we multiply $y$ by $x$. Geometrically switching axes reflects the scatterplot along the line $x=y$ but does not change the amount of clustering along the line.
+:::
 
 ### r is a measure of clustering along a line. 
 
@@ -590,7 +606,7 @@ research literature, they tend to overstate the strength of an association.
 ## The regression line
 
 The correlation coefficient does not only measure the strength of linear association along a line, it also
-helps us identifying this line. In order to help you discover this, let us go bak to the Pearson data on the
+helps us identifying this line. In order to help you discover this, let us go back to the Pearson data on the
 height of fathers and sons, we used in the beginning of this chapter.
 
 ```{r}
@@ -636,7 +652,7 @@ standard deviation above the average height. This is where the correlation coeff
 in. Associated with an increase of one standard deviation in height by the father is and increase
 of only 0.51 standard deviations in height of the son on average.
 
-Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average
+Take the father whose height is one standard deviation above average: 67.69 + 2.75 = 70.44 in. The average
 height of their sons will be above average by 0.51 standard deviations of their height, or $0.51 \times 2.82$, which is $1.44$. So the average height of a son is $68.68 + 1.44$ The point $(70.44, 70.12)$ is marked by
 a red dot in the figure.
 
@@ -650,9 +666,9 @@ What about those who are 2 standard deviations below the average? Their height i
 is $62.19$. The average height of the sons is then about $68.68 - 2.88$ or $65.8$. We also mark the point
 $(62.19, 65.8)$ by a red dot.
 
-Now all points that combine the father#s height with the estimate of the average height of the son fall on
+Now all points that combine the father's height with the estimate of the average height of the son fall on
 the solid red line which connects the red dots. This line is called the **regression line**. The line goes
-through the points of averages. Father#s with average heights should have sons with average height.
+through the points of averages. Fathers with average heights should have sons with average height.
 
 ::: {.callout-important}
 ## Regression line
@@ -672,7 +688,30 @@ Associated with each increase of one standard deviation in $x$ there is an incre
 :::
 
 From our picture and the discussion we can also learn how the regression line can be described
-mathematically
+mathematically:
+
+When the variables $x$ and $y$ are measured in standard units, the regression line for predicting
+$y$ based on $x$ has slope $r$ and passes through the origin. Thus the regression equation can
+be written as
+\begin{equation*}
+\text{estimate of} \, y = r x \, \text{when both variables are measured in standard units}
+\end{equation*}
+
+When we write this equation not in standard units but in the original units of the data, this
+equation becomes
+\begin{equation*}
+\frac{\text{estimate of} \, y - \text{average of } \,y}{\text{sd of} \,y} = r \,\, \frac{\text{given} \, x - \text{average} \, x}{\text{sd of} \, x}
+\end{equation*}
+
+This means, we have:
+
+::: {.callout-important}
+## Slope and Intercept of the regression line
+
+1. The **slope of the regression line** is: $r \,\, \frac{\text{sd}\, y}{\text{sd}\, x}$
+2. The **intercept of the regression line** is: $\text{average of}\, y - \text{slope} \times \text{average of}\, x$
+:::
+
 
 ### The method of least squares
 
@@ -685,7 +724,7 @@ found. In our discussion we followed the path how the regression line was histor
 detected by the pioneers of statistics.
 
 In current practice the regression line is usually determined in another way. When the
-points in scatter plot seem to follow a straight line, we could ask the question which 
+points in a scatter plot seem to follow a straight line, we could ask the question which 
 line fits the points best.
 
 Let's go back to the graph discussed in the very beginning:
@@ -736,7 +775,7 @@ regression line. Moreover the regression line is the only line that minimizes th
 
 #### The `lm()` function
 
-Regression is such an important topic and basic tool in statistics, that every sowtware package has
+Regression is such an important topic and basic tool in statistics, that every software package has
 built in functions, to help you compute the regression line. In R this function is called `lm()` for
 linear model. As usual with functions, `lm()` takes arguments.
 
@@ -751,7 +790,7 @@ intercept of this line with the $y$ axis is $d$. To tell R that this is our form
 
 Let me explain. Here in our discussion we stored the data in a dataframe which we called `dat`. This dataframe
 has two variables, which we called `Father` and `Son`. Now the formula we need to give to `lm`
-needs to be called in this case `dat$Son ~ dat$Father`. 
+needs to be called in this case `Son ~ Father`. 
 
 Where is the constant $d$ in this formula? `lm()` automatically assumes that there is an intercept term. This
 has not to be specified in particular when passing the formula to `lm()`. The second argument you need to give
@@ -765,7 +804,7 @@ So now we have the syntax:
 lm(Son ~ Father, data = dat)
 ```
 
-The output shows the value of the intercept $d = 33.893 $ and the slope $k =  0.514 $. Let#s breifly check how 
+The output shows the value of the intercept $d = 33.893$ and the slope $k =  0.514$. Let's briefly check how 
 this fits together with your discussion of the regression line. The correlation, the standard deviation of the
 son's height and the standard deviation of the father's height determine the slope $k$
 ```{r}
@@ -779,10 +818,17 @@ r*SDS/SDF
 ```
 which is indeed the slope of the regression line.
 
+For the intercept we derived:
+```{r}
+#| code-fold: false
+mean(dat$Son) - r*mean(dat$Father)
+```
+which is the (almost) the same as the value of the intercept computed by `lm()`.
+
 ### Plotting the regression line
 
 Assume we would like to plot the regression line together with a scatter-plot of the data.
-We would first store the output of `lm()` in an object, let us call this object `mod()` for model
+We would first store the output of `lm()` in an object, let us call this object `mod` for model
 ```{r}
 #| code-fold: false
 
@@ -842,3 +888,12 @@ So what predict does for you in one step is to compute for example for the value
 ```
 
 
+## Exercises
+
+### Exercises
+
+
+### Exercises R
+
+
+### Exercises Project

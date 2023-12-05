@@ -258,6 +258,12 @@ div.csl-indent {
   <li><a href="#plotting-the-regression-line" id="toc-plotting-the-regression-line" class="nav-link" data-scroll-target="#plotting-the-regression-line"><span class="header-section-number">7.2.3</span> Plotting the regression line</a></li>
   <li><a href="#using-the-predict-function" id="toc-using-the-predict-function" class="nav-link" data-scroll-target="#using-the-predict-function"><span class="header-section-number">7.2.4</span> Using the <code>predict()</code> function</a></li>
   </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.3</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">7.3.1</span> Exercises</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">7.3.2</span> Exercises R</a></li>
+  <li><a href="#exercises-project" id="toc-exercises-project" class="nav-link" data-scroll-target="#exercises-project"><span class="header-section-number">7.3.3</span> Exercises Project</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -281,6 +287,19 @@ div.csl-indent {
 
 </header>
 
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 <p>We ended the last chapter with Pearson’s historical data on the heights of fathers and sons to introduce the concept of a scatter-plot.</p>
 <div class="cell">
 <details>
@@ -300,7 +319,7 @@ div.csl-indent {
 <p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>We discussed how we could use the positive association in this scatter-plot to predict the height of a son from the height of the father. One intuition might be to use the straight dashed line that runs along the diagonal. If we would use this line as a model for prediction, each adult son would be predicted to show the same height as his father. But we can do better than that and improve on this choice.</p>
+<p>We discussed how we could use the positive association in this scatter-plot to predict the height of a son from the height of the father. One intuition might be to use the straight dashed line that runs along the diagonal. If we would use this line - the diagonal - as a model for prediction, each adult son would be predicted to show the same height as his father. But we can do better than that and improve on this choice.</p>
 <p>For any straight line we might choose, each data-point will give rise to a <strong>residual</strong> which is the size of the error were we to use the line as prediction.</p>
 <div class="cell">
 <details>
@@ -411,11 +430,21 @@ Mathematical properties of correlation
 </div>
 </div>
 <p>indicating a strong positive correlation.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Write your own R-function to study properties of correlation
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Now let us use a function, which we call <code>r_scatter</code> to explore how the correlation coefficient shapes a scatter plot. This is an excellent opportunity to refresh our knowledge of how to write your own functions in R.</p>
 <p>First, remember that each function is an R object and has a name. We already decided to call the function <code>r_scatter</code>. Then the syntax is to write <code>function()</code> and put the function arguments within the paranthesis.</p>
-<p>Here we have two arguments, the correlation coefficient - let us call it according to the convention <span class="math inline">\(r\)</span> - and the number of data points we want to consider. We call this number <code>n</code> and assign a default value to it, let’s say 1000.</p>
+<p>Here we have two arguments, the correlation coefficient - let us call it according to the convention <code>r</code> - and the number of data points we want to consider. We call this number <code>n</code> and assign a default value to it, let’s say 1000.</p>
 <p>Next we have to write the function body between <code>{}</code>. This is the part containing the actual instructions.</p>
-<p>First we create two vectors of length <span class="math inline">\(n\)</span> of values <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> from a normal distribution with mean 0 and standard deviation 1. This is achieved by the r function <code>rnorm(n)</code>. Note that n is a function argument and since we have set+ a default value of n, unless specified otherwise R will set n to 1000.</p>
+<p>First we create two vectors of length <span class="math inline">\(n\)</span> of values <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> from a normal distribution with mean 0 and standard deviation 1. This is achieved by the r function <code>rnorm(n)</code>. Note that <code>n</code> is a function argument and since we have set a default value of <code>n</code>, unless specified otherwise R will set <code>n</code> to 1000.</p>
 <p>Next we use a mathematical fact, which we do not explain here in detail. When <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> have the same standard deviation then the variable <span class="math inline">\(y\)</span> given by <span class="math display">\[\begin{equation}
 y = r x + \sqrt{1 - r^2} z
 \end{equation}\]</span> will have correlation coefficient <span class="math inline">\(r\)</span> with <span class="math inline">\(x\)</span>. Thus we can implement this formula in the function body, leaving <span class="math inline">\(r\)</span> unspecified. It is the function argument of <code>r_scatter</code> and will be specified by you when you call the function with a specific <span class="math inline">\(r\)</span>.</p>
@@ -469,6 +498,8 @@ y = r x + \sqrt{1 - r^2} z
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">r_scatter</span>(<span class="sc">-</span> <span class="fl">0.98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -752,11 +783,23 @@ Formula for <span class="math inline">\(r\)</span>
 <section id="properties-of-r" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="properties-of-r"><span class="header-section-number">7.1.3</span> Properties of r</h3>
 <p>From these observations we can observe three properties of <span class="math inline">\(r\)</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Three properties of r:
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
 <li><span class="math inline">\(r\)</span> is a pure number. It has no units. This is because <span class="math inline">\(r\)</span> is computed from standard units.</li>
 <li><span class="math inline">\(r\)</span> is unaffected by changing the units on either axis. This is again because <span class="math inline">\(r\)</span> is computed based on standard units.</li>
 <li><span class="math inline">\(r\)</span> is unaffected when we switch the axes. Algebraically this must be the case because when we multiply <span class="math inline">\(x\)</span> by <span class="math inline">\(y\)</span> the value of the product is the same as when we multiply <span class="math inline">\(y\)</span> by <span class="math inline">\(x\)</span>. Geometrically switching axes reflects the scatterplot along the line <span class="math inline">\(x=y\)</span> but does not change the amount of clustering along the line.</li>
 </ol>
+</div>
+</div>
 </section>
 <section id="r-is-a-measure-of-clustering-along-a-line." class="level3" data-number="7.1.4">
 <h3 data-number="7.1.4" class="anchored" data-anchor-id="r-is-a-measure-of-clustering-along-a-line."><span class="header-section-number">7.1.4</span> r is a measure of clustering along a line.</h3>
@@ -925,7 +968,7 @@ Formula for <span class="math inline">\(r\)</span>
 </section>
 <section id="the-regression-line" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="the-regression-line"><span class="header-section-number">7.2</span> The regression line</h2>
-<p>The correlation coefficient does not only measure the strength of linear association along a line, it also helps us identifying this line. In order to help you discover this, let us go bak to the Pearson data on the height of fathers and sons, we used in the beginning of this chapter.</p>
+<p>The correlation coefficient does not only measure the strength of linear association along a line, it also helps us identifying this line. In order to help you discover this, let us go back to the Pearson data on the height of fathers and sons, we used in the beginning of this chapter.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -988,10 +1031,10 @@ Formula for <span class="math inline">\(r\)</span>
 </div>
 <p>The correlation coefficient is <span class="math inline">\(r\)</span> = 0.501.</p>
 <p>The dashed blue line in the picture is the line starting at 0 and increasing with the slope given by the standard-deviation of the father’s height - 2.82 - divided by the standard deviation of the son’s height - 2.72. This is a slope of approximately 1. The vertical strip with the dashed black lines show the fathers who were one standard deviation above average - 70.44 to the nearest inch, i.e. plus minus 0.5 inches. You can see that most of the points in this vertical strip are below the dashed red line. This means that most of the son’s whose father’s were 1 standard deviation above average were less than a standard deviation above average. The average height of the sons is only a fraction of a standard deviation above the average height. This is where the correlation coefficient <span class="math inline">\(r\)</span> = 0.51 comes in. Associated with an increase of one standard deviation in height by the father is and increase of only 0.51 standard deviations in height of the son on average.</p>
-<p>Take the father whose height is ons standaed deviation above average: 67.69 + 2.75 = 70.44 in. The average height of their sons will be above average by 0.51 standard deviations of their height, or <span class="math inline">\(0.51 \times 2.82\)</span>, which is <span class="math inline">\(1.44\)</span>. So the average height of a son is <span class="math inline">\(68.68 + 1.44\)</span> The point <span class="math inline">\((70.44, 70.12)\)</span> is marked by a red dot in the figure.</p>
+<p>Take the father whose height is one standard deviation above average: 67.69 + 2.75 = 70.44 in. The average height of their sons will be above average by 0.51 standard deviations of their height, or <span class="math inline">\(0.51 \times 2.82\)</span>, which is <span class="math inline">\(1.44\)</span>. So the average height of a son is <span class="math inline">\(68.68 + 1.44\)</span> The point <span class="math inline">\((70.44, 70.12)\)</span> is marked by a red dot in the figure.</p>
 <p>Now let’s look at the father’s who are two standard deviations above the average height: <span class="math inline">\(67.69 + 2 \times 2.75\)</span> which is <span class="math inline">\(73.19\)</span>. The average height of their sons should be above <span class="math inline">\(2 \times 0.51\)</span> of their height, or <span class="math inline">\(1.02\)</span> standard deviations of height. That is <span class="math inline">\(1.02 \times 2.82\)</span> or <span class="math inline">\(2.88\)</span>. That is their average height is around <span class="math inline">\(68.68 + 2.88\)</span> or <span class="math inline">\(71.56\)</span>. We mark the point <span class="math inline">\((73.19, 71.56)\)</span> also as a red dot in our picture.</p>
 <p>What about those who are 2 standard deviations below the average? Their height is <span class="math inline">\(67.69 - 2 \times 2.75\)</span>, which is <span class="math inline">\(62.19\)</span>. The average height of the sons is then about <span class="math inline">\(68.68 - 2.88\)</span> or <span class="math inline">\(65.8\)</span>. We also mark the point <span class="math inline">\((62.19, 65.8)\)</span> by a red dot.</p>
-<p>Now all points that combine the father#s height with the estimate of the average height of the son fall on the solid red line which connects the red dots. This line is called the <strong>regression line</strong>. The line goes through the points of averages. Father#s with average heights should have sons with average height.</p>
+<p>Now all points that combine the father’s height with the estimate of the average height of the son fall on the solid red line which connects the red dots. This line is called the <strong>regression line</strong>. The line goes through the points of averages. Fathers with average heights should have sons with average height.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1019,12 +1062,35 @@ Regression method
 <p>Associated with each increase of one standard deviation in <span class="math inline">\(x\)</span> there is an increase of only <span class="math inline">\(r\)</span> standard deviations in <span class="math inline">\(y\)</span> on average.</p>
 </div>
 </div>
-<p>From our picture and the discussion we can also learn how the regression line can be described mathematically</p>
+<p>From our picture and the discussion we can also learn how the regression line can be described mathematically:</p>
+<p>When the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are measured in standard units, the regression line for predicting <span class="math inline">\(y\)</span> based on <span class="math inline">\(x\)</span> has slope <span class="math inline">\(r\)</span> and passes through the origin. Thus the regression equation can be written as <span class="math display">\[\begin{equation*}
+\text{estimate of} \, y = r x \, \text{when both variables are measured in standard units}
+\end{equation*}\]</span></p>
+<p>When we write this equation not in standard units but in the original units of the data, this equation becomes <span class="math display">\[\begin{equation*}
+\frac{\text{estimate of} \, y - \text{average of } \,y}{\text{sd of} \,y} = r \,\, \frac{\text{given} \, x - \text{average} \, x}{\text{sd of} \, x}
+\end{equation*}\]</span></p>
+<p>This means, we have:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Slope and Intercept of the regression line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The <strong>slope of the regression line</strong> is: <span class="math inline">\(r \,\, \frac{\text{sd}\, y}{\text{sd}\, x}\)</span></li>
+<li>The <strong>intercept of the regression line</strong> is: <span class="math inline">\(\text{average of}\, y - \text{slope} \times \text{average of}\, x\)</span></li>
+</ol>
+</div>
+</div>
 <section id="the-method-of-least-squares" class="level3" data-number="7.2.1">
 <h3 data-number="7.2.1" class="anchored" data-anchor-id="the-method-of-least-squares"><span class="header-section-number">7.2.1</span> The method of least squares</h3>
 <p>Finding a regression line is a standard problem often encountered in statistics either to make predictions, when you run controlled experiments or to describe the data you see for a given population.</p>
 <p>In the previous section we have explained how a regression line for a scatter plot can be found. In our discussion we followed the path how the regression line was historically detected by the pioneers of statistics.</p>
-<p>In current practice the regression line is usually determined in another way. When the points in scatter plot seem to follow a straight line, we could ask the question which line fits the points best.</p>
+<p>In current practice the regression line is usually determined in another way. When the points in a scatter plot seem to follow a straight line, we could ask the question which line fits the points best.</p>
 <p>Let’s go back to the graph discussed in the very beginning:</p>
 <div class="cell">
 <details>
@@ -1070,11 +1136,11 @@ Regression line by least squares
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="finding-the-regression-line-with-r"><span class="header-section-number">7.2.2</span> Finding the regression line with R</h3>
 <section id="the-lm-function" class="level4" data-number="7.2.2.1">
 <h4 data-number="7.2.2.1" class="anchored" data-anchor-id="the-lm-function"><span class="header-section-number">7.2.2.1</span> The <code>lm()</code> function</h4>
-<p>Regression is such an important topic and basic tool in statistics, that every sowtware package has built in functions, to help you compute the regression line. In R this function is called <code>lm()</code> for linear model. As usual with functions, <code>lm()</code> takes arguments.</p>
+<p>Regression is such an important topic and basic tool in statistics, that every software package has built in functions, to help you compute the regression line. In R this function is called <code>lm()</code> for linear model. As usual with functions, <code>lm()</code> takes arguments.</p>
 <p>The first argument is of a type we did not encounter before. It is called in R a formula and has the following syntax. Suppose we want to fit a linear model <span class="math display">\[\begin{equation}
 y = k x + d
 \end{equation}\]</span> to our height data. <span class="math inline">\(y\)</span> is the vector of the father’s heights and <span class="math inline">\(x\)</span> is the vector of the son’s heights. The intercept of this line with the <span class="math inline">\(y\)</span> axis is <span class="math inline">\(d\)</span>. To tell R that this is our formula we write <code>name of y ~ name of x</code>.</p>
-<p>Let me explain. Here in our discussion we stored the data in a dataframe which we called <code>dat</code>. This dataframe has two variables, which we called <code>Father</code> and <code>Son</code>. Now the formula we need to give to <code>lm</code> needs to be called in this case <code>dat$Son ~ dat$Father</code>.</p>
+<p>Let me explain. Here in our discussion we stored the data in a dataframe which we called <code>dat</code>. This dataframe has two variables, which we called <code>Father</code> and <code>Son</code>. Now the formula we need to give to <code>lm</code> needs to be called in this case <code>Son ~ Father</code>.</p>
 <p>Where is the constant <span class="math inline">\(d\)</span> in this formula? <code>lm()</code> automatically assumes that there is an intercept term. This has not to be specified in particular when passing the formula to <code>lm()</code>. The second argument you need to give to <code>lm()</code> is the data. This is called in our case <code>dat</code>.</p>
 <p>So now we have the syntax:</p>
 <div class="cell">
@@ -1089,7 +1155,7 @@ Coefficients:
      33.893        0.514  </code></pre>
 </div>
 </div>
-<p>The output shows the value of the intercept $d = 33.893 $ and the slope $k = 0.514 $. Let#s breifly check how this fits together with your discussion of the regression line. The correlation, the standard deviation of the son’s height and the standard deviation of the father’s height determine the slope <span class="math inline">\(k\)</span></p>
+<p>The output shows the value of the intercept <span class="math inline">\(d = 33.893\)</span> and the slope <span class="math inline">\(k = 0.514\)</span>. Let’s briefly check how this fits together with your discussion of the regression line. The correlation, the standard deviation of the son’s height and the standard deviation of the father’s height determine the slope <span class="math inline">\(k\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="fu">cor</span>(dat<span class="sc">$</span>Father, dat<span class="sc">$</span>Son)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>SDF <span class="ot">&lt;-</span> <span class="fu">sd</span>(dat<span class="sc">$</span>Father)</span>
@@ -1101,26 +1167,34 @@ Coefficients:
 </div>
 </div>
 <p>which is indeed the slope of the regression line.</p>
+<p>For the intercept we derived:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat<span class="sc">$</span>Son) <span class="sc">-</span> r<span class="sc">*</span><span class="fu">mean</span>(dat<span class="sc">$</span>Father)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34.76212</code></pre>
+</div>
+</div>
+<p>which is the (almost) the same as the value of the intercept computed by <code>lm()</code>.</p>
 </section>
 </section>
 <section id="plotting-the-regression-line" class="level3" data-number="7.2.3">
 <h3 data-number="7.2.3" class="anchored" data-anchor-id="plotting-the-regression-line"><span class="header-section-number">7.2.3</span> Plotting the regression line</h3>
-<p>Assume we would like to plot the regression line together with a scatter-plot of the data. We would first store the output of <code>lm()</code> in an object, let us call this object <code>mod()</code> for model</p>
+<p>Assume we would like to plot the regression line together with a scatter-plot of the data. We would first store the output of <code>lm()</code> in an object, let us call this object <code>mod</code> for model</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then plotting the scatter plot together with the regression line can be done as follows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>Father, dat<span class="sc">$</span>Son, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>) <span class="co"># Syntax for the scatter plot </span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># syntax for the regression line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dat<span class="sc">$</span>Father, dat<span class="sc">$</span>Son, </span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>) <span class="co"># Syntax for the scatter plot </span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># syntax for the regression line</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<p><img src="modelling_relationships_using_regression_part_2_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We first draw the scatter plot using the R <code>plot()</code>function. The arguments <code>pch</code> and <code>cex</code> control the type and size of the dots and <code>xlab</code>, <code>ylab</code> and <code>main</code> control the lables of the x-axis, the y-axis and the main plot.</p>
@@ -1134,9 +1208,9 @@ Coefficients:
 \end{equation}\]</span> Now assume you want to make predictions for the height of the son based on the height of the father using this linear model. In this case this is easy to compute by hand but for many values (and even for few) this step can be automated using the <code>predict()</code>function of R. <code>predict()</code>needs as arguments the output of <code>lm()</code> plus a dataframe of new data.</p>
 <p>We have already stored the output of <code>lm()</code>in our object <code>mod</code>. Now define some new data and then give the model and the new data to the <code>predict()</code>function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Father =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>))</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod, newdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Father =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>))</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(mod, newdata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1        2        3 
 64.73316 69.87321 75.01327 </code></pre>
@@ -1144,11 +1218,23 @@ Coefficients:
 </div>
 <p>So what predict does for you in one step is to compute for example for the value 80</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.514</span> <span class="sc">*</span><span class="dv">80</span> <span class="sc">+</span> <span class="fl">33.893</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.514</span> <span class="sc">*</span><span class="dv">80</span> <span class="sc">+</span> <span class="fl">33.893</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 75.013</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.3</span> Exercises</h2>
+<section id="exercises-1" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">7.3.1</span> Exercises</h3>
+</section>
+<section id="exercises-r" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">7.3.2</span> Exercises R</h3>
+</section>
+<section id="exercises-project" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="exercises-project"><span class="header-section-number">7.3.3</span> Exercises Project</h3>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
