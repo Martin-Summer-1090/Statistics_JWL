@@ -1229,6 +1229,158 @@ Coefficients:
 <h2 data-number="7.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.3</span> Exercises</h2>
 <section id="exercises-1" class="level3" data-number="7.3.1">
 <h3 data-number="7.3.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">7.3.1</span> Exercises</h3>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Comparing correlations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Look at the following four data sets. Rank them from weakest to strongest correlations.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<p><img src="pictures/corr_plot_A.png" class="img-fluid" alt="A"> <img src="pictures/corr_plot_B.png" class="img-fluid" alt="B"> <img src="pictures/corr_plot_C.png" class="img-fluid" alt="C"> <img src="pictures/corr_plot_D.png" class="img-fluid" alt="D"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Interpreting correlation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Studies find a negative correlation between hours spent watching television and scores on reading tests. Does watching television make people less able to read? Discuss briefly.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exerxise 3: Rating learning facilitators
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a statistics course, a course with lectures and small discussion sections led by learning facilitators, in the last lecture, students were asked to fill out anonymous questionaires rating the effectiveness of their learning facilitators and the course on the scale:</p>
+<p>1: poor, 2: fair, 3: good, 4: very good, 5: excellent</p>
+<p>The following statistics were then computed:</p>
+<ol type="1">
+<li>The average rating of the learning facilitator by the students in each section.</li>
+<li>The average rating of the course by the students in each section</li>
+<li>The average score on the final for the students in each section.</li>
+</ol>
+<p>Results are shown below - sections are identified by letter. Draw a scatter diagram for each pair of the variables - there are three pairs - and find the correlations.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">section =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"F"</span>, <span class="st">"G"</span>, <span class="st">"H"</span>, <span class="st">"I"</span>, <span class="st">"J"</span>, <span class="st">"K"</span>),</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">avratlf =</span> <span class="fu">c</span>(<span class="fl">3.3</span>, <span class="fl">2.9</span>, <span class="fl">4.1</span>, <span class="fl">3.3</span>, <span class="fl">2.7</span>, <span class="fl">3.4</span>, <span class="fl">2.8</span>, <span class="fl">2.1</span>, <span class="fl">3.7</span>, <span class="fl">3.2</span>, <span class="fl">2.4</span>),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">avratco =</span> <span class="fu">c</span>(<span class="fl">3.5</span>, <span class="fl">3.2</span>, <span class="fl">3.1</span>, <span class="fl">3.3</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">3.6</span>, <span class="fl">2.8</span>, <span class="fl">2.8</span>, <span class="fl">3.3</span>, <span class="fl">3.3</span>),</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">avsfin  =</span> <span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">64</span>,<span class="dv">47</span>,<span class="dv">63</span>,<span class="dv">69</span>,<span class="dv">69</span>,<span class="dv">69</span>,<span class="dv">63</span>,<span class="dv">53</span>,<span class="dv">65</span>,<span class="dv">64</span>))</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">section</th>
+<th style="text-align: right;">avratlf</th>
+<th style="text-align: right;">avratco</th>
+<th style="text-align: right;">avsfin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">4.1</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">47</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: right;">2.7</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">G</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">3.6</td>
+<td style="text-align: right;">69</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">H</td>
+<td style="text-align: right;">2.1</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I</td>
+<td style="text-align: right;">3.7</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">J</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">K</td>
+<td style="text-align: right;">2.4</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">64</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>where <em>avratlf</em> means average rating of learning facilitator, <em>avratco</em> means average rating of course and <em>avsfin</em> means average score on final.</p>
+<p>The data are section averages. Since the questionnaire was anonymous, it was not possible to link up student ratings with scores on an individual basis. Student ability may be a confounding factor. However, controlling for pretest resulst turned out to make no difference to the analysis. Each learning facilitator taught in onse section. True or false? Explain.</p>
+<ol type="a">
+<li>On the average those sections that liked their LF more did better on the final.</li>
+<li>There was almost no relationship between the section’s average ratibg of the learning facilitator and the section’s average rating of the course.</li>
+<li>There was almost no relationship betwee the section’s average rating of the course and the section’s average score on the final.</li>
+</ol>
+</div>
+</div>
 </section>
 <section id="exercises-r" class="level3" data-number="7.3.2">
 <h3 data-number="7.3.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">7.3.2</span> Exercises R</h3>
