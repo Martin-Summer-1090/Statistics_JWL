@@ -3,6 +3,18 @@
 ::: {.callout-note appearance="simple"}
 ## Overview
 
+1. In this chapter you will learn about the most widely used method for making predictions: **Regression
+analysis**.
+2. Regression analysis allows us to make predictions based on a **model** of the data. In our course we
+discuss the most basic case where we model the relationship between two variables.
+3. Our discussion begins with the concept of a **correlation coefficient**, a concept that describes how tightly a scatter plot is aligned along a straight line. This provides a measure of the strength of a **linear association** between two variables.
+4. We explain in detail how a correlation coefficient is described and what it means, We also show how to compute correlations using R.
+5. The correlation coefficient also helps us to identify the so called **regression line**. We explain how to do this using historic anthropometric data about the height of fathers and sons and follow in our explanation the
+reasoning that was behind the historic discovery of the regression line as a model of the linear relationship
+between two variables.
+6. We discuss also the method of **least squares** to identify the regression line.
+7. In  the end we demonstrate how we can make use of R to compute regression lines and how to use it
+for making predictions.
 
 :::
 
@@ -953,7 +965,54 @@ The data are section averages. Since the questionnaire was anonymous, it was not
 
 :::
 
+::: {.callout-note appearance="simple"}
+
+## Exercise 4: Explain
+
+When we calculate the correlation coefficient, why do we convert data to standard units?
+
+:::
+
 ### Exercises R
 
+::: {.callout-note appearance="simple"}
+
+## Exercise 1: Write a conversion function from any data to standard units:
+
+Write a function called `convert_su` which takes in a dataframe of elements called data and returns a dataframe of the values represented in standard units. To do a specific computation with the function take the
+dataset `pearson` from the `JWL`package. These are the data we used in the lecture. 
+
+:::
+
+::: {.callout-note appearance="simple"}
+
+## Exercise 2: Write your own function to compute correlation.
+
+Write a function called `calculate_correlation` which takes in a dataframe which is the output of
+`convert_su` and returns the correlation coefficient. Again test your function with the
+`pearson`dataset from the `JWL` package.
+
+:::
+
+::: {.callout-note appearance="simple"}
+
+## Exercise 3: Advertising channels and sales
+
+Load the `advertising` dataset from the `JWL` package. The data show 200 samples of
+advertising expenditures via different advertising channels, TC, radio and newspaper as well
+as revenues from sales.
+
+1. Visualize the association between advertising expenditures and the value of sales for each
+advertising channel. Interpret the graphs in your own words.
+
+2. Compute the correlation between advertising expenditures and sales for the different advertising channels.
+
+3. Build a linear model between advertising expenditures via TV and sales and display a scatterplot of the
+data as well as the regression line. Use `lm()` to compute the intercept and the slope of the regression line.
+
+4. Predict the sales from the model if we spend 0 on TV advertising? What are the predicted sales if we spend
+300 on advertising?
+
+:::
 
 ### Exercises Project
