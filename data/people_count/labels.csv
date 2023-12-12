@@ -1,0 +1,99 @@
+Name,Label
+AREA_KM2,Area in square kilometers
+ASFR15_19,"Age specific fertility rate for women age 15-19 (births per 1,000 population)"
+ASFR20_24,"Age specific fertility rate for women age 20-24 (births per 1,000 population)"
+ASFR25_29,"Age specific fertility rate for women age 25-29 (births per 1,000 population)"
+ASFR30_34,"Age specific fertility rate for women age 30-34 (births per 1,000 population)"
+ASFR35_39,"Age specific fertility rate for women age 35-39 (births per 1,000 population)"
+ASFR40_44,"Age specific fertility rate for women age 40-44 (births per 1,000 population)"
+ASFR45_49,"Age specific fertility rate for women age 45-49 (births per 1,000 population)"
+CBR,"Crude birth rate (births per 1,000 population)"
+CDR,"Crude death rate (deaths per 1,000 population)"
+E0,Both sexes life expectancy at birth
+E0_F,Female life expectancy at birth
+E0_M,Male life expectancy at birth
+FIPS,FIPS country or area code
+FMR0_4,Mortality rates for females under 5 years of age
+FMR1_4,Mortality rates for females aged 1-4 years
+FPOP,Female midyear population
+FPOP0_4,Female midyear population aged 0-4 years
+FPOP10_14,Female midyear population aged 10-14 years
+FPOP100_,Female midyear population aged 100+ years
+FPOP15_19,Female midyear population aged 15-19 years
+FPOP20_24,Female midyear population aged 20-24 years
+FPOP25_29,Female midyear population aged 25-29 years
+FPOP30_34,Female midyear population aged 30-34 years
+FPOP35_39,Female midyear population aged 35-39 years
+FPOP40_44,Female midyear population aged 40-44 years
+FPOP45_49,Female midyear population aged 45-49 years
+FPOP5_9,Female midyear population aged 5-9 years
+FPOP50_54,Female midyear population aged 50-54 years
+FPOP55_59,Female midyear population aged 55-59 years
+FPOP60_64,Female midyear population aged 60-64 years
+FPOP65_69,Female midyear population aged 65-69 years
+FPOP70_74,Female midyear population aged 70-74 years
+FPOP75_79,Female midyear population aged 75-79 years
+FPOP80_84,Female midyear population aged 80-84 years
+FPOP85_89,Female midyear population aged 85-89 years
+FPOP90_94,Female midyear population aged 90-94 years
+FPOP95_99,Female midyear population aged 95-99 years
+GR,Growth rate (percent)
+GRR,Gross reproduction rate (lifetime births per woman)
+IMR,"Both sexes Infant mortality rate (infant deaths per 1,000 population)"
+IMR_F,"Female infant mortality rate (infant deaths per 1,000 population)"
+IMR_M,"Male infant mortality rate (infant deaths per 1,000 population)"
+MMR0_4,Mortality rates for males under 5 years of age
+MMR1_4,Mortality rates for males aged 1-4 years
+MPOP,Male midyear population
+MPOP0_4,Male midyear population aged 0-4 years
+MPOP10_14,Male midyear population aged 10-14 years
+MPOP100_,Male midyear population aged 100+ years
+MPOP15_19,Male midyear population aged 15-19 years
+MPOP20_24,Male midyear population aged 20-24 years
+MPOP25_29,Male midyear population aged 25-29 years
+MPOP30_34,Male midyear population aged 30-34 years
+MPOP35_39,Male midyear population aged 35-39 years
+MPOP40_44,Male midyear population aged 40-44 years
+MPOP45_49,Male midyear population aged 45-49 years
+MPOP5_9,Male midyear population aged 5-9 years
+MPOP50_54,Male midyear population aged 50-54 years
+MPOP55_59,Male midyear population aged 55-59 years
+MPOP60_64,Male midyear population aged 60-64 years
+MPOP65_69,Male midyear population aged 65-69 years
+MPOP70_74,Male midyear population aged 70-74 years
+MPOP75_79,Male midyear population aged 75-79 years
+MPOP80_84,Male midyear population aged 80-84 years
+MPOP85_89,Male midyear population aged 85-89 years
+MPOP90_94,Male midyear population aged 90-94 years
+MPOP95_99,Male midyear population aged 95-99 years
+MR0_4,Total mortality rates under 5 years of age
+MR1_4,Total mortality rates aged 1-4 years
+NAME,Country or area name
+NMR,"Net migration rate (net number of migrants per 1,000 population)"
+POP,Total midyear population
+POP0_4,Total midyear population aged 0-4 years
+POP10_14,Total midyear population aged 10-14 years
+POP100_,Total midyear population aged 100+ years
+POP15_19,Total midyear population aged 15-19 years
+POP20_24,Total midyear population aged 20-24 years
+POP25_29,Total midyear population aged 25-29 years
+POP30_34,Total midyear population aged 30-34 years
+POP35_39,Total midyear population aged 35-39 years
+POP40_44,Total midyear population aged 40-44 years
+POP45_49,Total midyear population aged 45-49 years
+POP5_9,Total midyear population aged 5-9 years
+POP50_54,Total midyear population aged 50-54 years
+POP55_59,Total midyear population aged 55-59 years
+POP60_64,Total midyear population aged 60-64 years
+POP65_69,Total midyear population aged 65-69 years
+POP70_74,Total midyear population aged 70-74 years
+POP75_79,Total midyear population aged 75-79 years
+POP80_84,Total midyear population aged 80-84 years
+POP85_89,Total midyear population aged 85-89 years
+POP90_94,Total midyear population aged 90-94 years
+POP95_99,Total midyear population aged 95-99 years
+RNI,Rate of natural increase (percent)
+SRB,Sex ratio at birth (males per female)
+TFR,Total fertility rate
+time,ISO-8601 Date/Time value
+YR,Year
