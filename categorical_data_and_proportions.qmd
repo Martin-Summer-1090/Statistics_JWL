@@ -1026,7 +1026,7 @@ and 94 out of hundred do not. While odds are very common in the research litertu
 are not a very intuitive way to communicate the comparison of proportions. Spiegelhalter, from whom I took this example therefore recommends not to use odds ratios outside
 a scientific context, since it easily invites misunderstanding.
 
-## Exercises:
+## Exercises
 
 A note on exercises. Exercises will help you to actively remember the concepts you,
 learn, they will help you to practice applying these concepts to problems and
@@ -1098,7 +1098,7 @@ What kind of communication tools we have just heard about, have been applied her
 
 ::: {.callout-note icon=false}
 
-## Exercise 4:
+## Exercise 4: Absolute and relative risk when comparing proportions
 
 Go back to the first example in the section comparing pairs of proportions. 
 Assume the absolute risk is 4 out of 10 and the relative risk increase is 50 %. How many out of 10 are now at risk? 
@@ -1133,7 +1133,7 @@ the left of the graph. We will learn during the course how to better control the
 of a visualization and control for details like this.
 :::
 
-### Exercises project
+### Project People Count. Unit 1
 
 In this course we will follow a larger project which we will call **People count and their data stories**.
 You will develop this project unit by unit adding new material as we go along. At each step you are going to
@@ -1141,44 +1141,99 @@ apply concepts you learned in the unit. When you add the individual steps you wi
 driven story of humanity in a few very interesting numbers and charts. It will help you understand some
 key aspect about humanity and its past and destination.
 
-In this section we begin with counting people. We will use a variant of our first visualisation tool
-we have learned in this lesson, the bar chart.
+In this section we begin with counting people. We will use a variant of our first visualization tool
+we have learned in this lesson, the bar chart. In this first part we are applying what we have 
+learned in this unit by counting people in Kenya. Like in all countries in the world, national 
+statistical offices describe people living in a country by age, sex, race, education, and a 
+number of other factors. Are these descriptions important?
 
+In particular in this project we ask whether the description of a country by age groups 
+does help us better understand a country? We are going to study the "shape" of Keynia 
+based on the counts of people living in the country by age.
 
-<!-- ### The story of infant mortality around the globe -->
+As in real life national statistics we are going to produce data visualizations that display the data 
+by way of barplots and other summaries. These descriptions begin to unpack stories about people 
+living in this country. Behind these numbers and graphs are real people, their sisters and 
+brothers and parents and nieces and nephews. The stories revealed in these data help us 
+better understand a particular country.
 
-<!-- For this activity we continue to look into the issue of infant mortality around the -->
-<!-- globe by working with a Jupyter notebook. To work on this assignment, please open -->
-<!-- the notebook `infant_mortality_global.ipynb` with the jupyter notebook.  -->
-<!-- The notebook contains some text and some code which you can interactively  -->
-<!-- execute from the notebook, as we already did it in the assignments  -->
-<!-- in the Introduction, when we looked at the share of -->
-<!-- poverty in various countries. In this notebook we continue to dive deeper into the -->
-<!-- story of infant mortality around the globe. The things you learn when you work through  -->
-<!-- this assignment will probably surprise you. -->
+The following table shows the counts of women and men in Kenya in the year 2022. 
+The data are made available through an international demographic database, which 
+compiles the local information from national statistical authorities and provide 
+the data publicly via a website hosted by the Census Bureau of the United States.^[The website is here 
+https://www.census.gov/programs-surveys/international-programs/about/idb.html 
+and I have retrieved the data from this site.]
 
-<!-- ## A data collection exercise for the next unit -->
+|Age   | Number of Women  | Number of Men   |
+|:-----|-----------------:|----------------:|
+|0-4   | 3487490          | 3531278         |
+|5-9   | 3404421          | 3431166         |
+|10-14 | 3444606          | 3473103         |
+|15-19 | 3225971          | 3249738         |
+|20-24 | 2656730          | 2664966         |
+|30-34 | 1946994          | 1926219         |
+|40-44 | 1606763          | 1610246         |
+|45-49 | 1170869          | 1196519         |
+|50-54 |  858998          |  890662         |
+|55-59 |  672025          |  679943         |
+|60-64 |  516769          |  488074         |
+|65-69 |  387773          |  340546         |
+|70-74 |  272320          |  229912         |
+|75-79 |  168499          |  138357         |
+|80-84 |   93724          |   73093         |
+|85-89 |   39226          |   28473         |
+|90-94 |   10461          |    6918         |
+|95-99 |    1520          |     902         |
 
-<!-- Maybe handedness score? -->
+1. Produce a barplot of the total population with R. Also produce a separate 
+barplot for men and women.
 
-<!-- ## Contents -->
+2. Demographers usually use the following terminology: A population distribution is 
+defined by the following layers: The **bottom-layer** in terms of age group refers 
+to the counts of people in the 0 to 24 years old age groups.
+The **lower middle-layer** refers to the counts of people in the 25 to 49 
+years old age groups. The **upper middle-layer** refers to the count of 
+people in the 50 to 74 years old age groups. The top layer refers to 
+the count of people in the 75 to 100+ years old age groups. Depending 
+on which layer is the largest a country's "shape" is defined by 
+demographers as a bottom-layered a middle layered and a top layered country.
+Use R to do a horizontal box-plot where the number of people in each 
+age group are shown in percent. For computing the percentages you 
+will need the total number of people over all age groups. 
+Fortunately R has a function for this. It is called `sum()` 
+and is applied as follows: Assume you have a vector `x  <- c(1,4,5)`, 
+then using the sum function `sum(x)` you will get 10 in this 
+example.
 
-<!-- Introduce binary variables, variables that can be imagined as yes-no questions and how they can be summarized as proportions. -->
+3. Identify two age groups in which the number of people in one age group is
+approximately double the count in the other age group.
 
-<!-- 1. The importance of framing -->
-<!-- 2. Relative and absolute risk -->
-<!-- 3. How to think in expected frequencies can promote understanding and provide an appropriate sense of importance, what are odds rations, why we need to understand what they mean and why we should avoid them in communication. -->
-<!-- All these concepts and discussions should be accompanied by data visualization and students will learn how to visualize the data on the computer. -->
+4. “Old” and “young” are subjective descriptions that in many cases are defined by
+several factors other than age (for example, health status, or income status). For
+this unit, however, consider the definition of “young” as people less than 10 years
+old, and the definition of “old” as people who are 65 years old or older. What is the
+ratio of “old” to “young” using the above definitions of young and old? 
 
-<!-- ## Outcome -->
+5. If there are approximately 500 students in a typical school for students who are 5 to
+14 years old, estimate the number of schools needed to educate the students who
+are 5 to 14 years old.
 
-<!-- The outcome of learning from the introduction and this chapter, which together form unit 1, students should have an overview of -->
+6. Here is an R challenge that you can do, if you have enough time left and if you love challenges. 
+It will not This will not be graded. It is an option to give this challenge a try. 
+You can also come back to it later, when you have more experience with R. When
+you have no time, just leave it out.
 
-<!-- 1. The contents of the course -->
-<!-- 2. Should have formed expectations that this course will actively involve them and require their hands on participation -->
-<!-- 3. Know how to start and stop R (Python) and R studio (Jupyter notebooks) and have played with one or two meaningful visualizations right away. -->
+Demographers, have a very nice visualization of population counts by 5 
+year age groups and by sex, which are called "population pyramids". 
+These graphs are a very nice example of the power of data visualization, 
+because they convey at one glance whether a particular country is a 
+bottom, middle layered or a top layered country and how the relative 
+cohort sizes of men and women look like for each age cohort.
 
-<!-- The way to achieve this is to prepare a visualization code in an interactive notebook, which students need not understand in all details. But they can change details, for instance if the variables contain countries, they could change the code such that the data for their own country are shown and rerun the visualization code. -->
+It looks approximately like this:
 
-<!-- After this unit the students should feel familiar with proportions and their meaning and interpretation. -->
-<!-- We will also have gathered data from an activity which will be used later in the course. -->
+![Example of a population pyramid](pictures/pop_pyramid_example.png)
+
+Could you construct a similar graph for the Kenya data using the barplot 
+function and R's graphics options? You might consult the help function, or the 
+internet when you have internet access.

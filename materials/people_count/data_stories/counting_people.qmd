@@ -1,0 +1,69 @@
+---
+title: "Counting people"
+author: "Martin Summer"
+format: html
+editor: source
+---
+
+## Counting people
+
+This is a project about counting people in Kenya. Like in all countries
+in the world, national statistical offices describe people living in a country
+by age, sex, race, education, and a number of other factors. Are these descriptions important?
+
+In particular, does the description of a country by age groups help us better understand a
+country? In this project we study the shape of Keynia based on the counts of people living in the country
+by age. As in real life national statistics we are goint to produce data visualizations that 
+display the data by way of barplots and other summaries. These descriptions 
+begin to unpack stories about people living in this
+country. Behind these numbers and graphs are real people, their sisters and brothers and parents and nieces and
+nephews. The stories revealed in these data help us better understand a particular country.
+
+::: {.callout-note}
+At this stage students have not yet learned a lot in terms of technique, especially also not loading, wrangling 
+and cleaning data. We thus provide them with a data table, they can still manage manually.
+:::
+
+```{r}
+library(JWL)
+dat <- dem_dat_by_sex_and_age_hist 
+
+dat_kenya <- dat[dat$Country == "Kenya" &
+                  dat$Year == 2022 &
+                  dat$Age %in% c("0-4", "5-9", "10-14", "15-19", "20-24", "24-29", "30-34", "34-39","40-44",
+                  "45-49","50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94",
+                  "95-99", "100 - 105"), c("Country", "ISO2", "Year", "Sex", "Age", "POP")]
+
+dat_kenya$Age <- factor(dat_kenya$Age, levels = c("0-4", "5-9", "10-14", "15-19", "20-24", 
+                                                  "24-29", "30-34", "34-39","40-44",
+                  "45-49","50-54", "55-59", "60-64", "65-69", "70-74", "75-79", "80-84", "85-89", "90-94",
+                  "95-99", "100 - 105"), ordered = T)
+
+table_kenya <- dat_kenya[ , c("Age", "Sex", "POP")]
+
+library(tidyverse)
+
+tab <- table_kenya  %>% pivot_wider(
+names_from = Sex,
+values_from= POP)
+
+knitr::kable(tab, row.names = F)
+
+```
+```{r}
+tab$"F"
+```
+
+```{r}
+tab$"M"
+```
+
+```{r}
+length(tab$"F")
+length(tab$"M")
+length(tab$Age)
+```
+```{r}
+tab$Age
+```
+

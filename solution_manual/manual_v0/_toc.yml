@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: exercises_unit_1
+- file: exercises_unit_2
+- file: exercises_unit_3
+- file: exercises_unit_4
+- file: exercises_unit_5
+- file: exercises_unit_6
+- file: exercises_unit_7
+- file: exercises_unit_8

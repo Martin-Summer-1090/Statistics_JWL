@@ -1,0 +1,1049 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Exercises: Unit 1, Categorical data and proportions &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Exercises" href="exercises_unit_2.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Solution manual for excercises in Statistics the art and science of learning from data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Solution manual for excercises in Statistics the art and science of learning from data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 1, Categorical data and proportions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_7.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_8.html">Exercises</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fexercises_unit_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/exercises_unit_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exercises: Unit 1, Categorical data and proportions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pen-and-paper-exercises">Pen and paper exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-introduce-yourself">Exercise 1: Introduce yourself</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-computing-the-percentage-decrease-in-infant-mortality-rates-of-8-european-countries-between-1860-and-2020">Exercise 2: Computing the percentage decrease in infant mortality rates of 8 European countries between 1860 and 2020</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-framing">Exercise 3: Framing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-communicating-counts-and-proportions">Exercise 4: Communicating counts and proportions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-exercises">Computer exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-transforming-percentages-into-rates">Exercise 1: Transforming percentages into rates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-your-first-bar-plot">Exercise 2: Your first bar plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-barchart-on-the-causes-of-infant-mortality">Exercise 3: Barchart on the causes of infant mortality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers">Project: People count: The future of humanity in pictures and numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-people">Counting people</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-1-categorical-data-and-proportions">
+<h1>Exercises: Unit 1, Categorical data and proportions<a class="headerlink" href="#exercises-unit-1-categorical-data-and-proportions" title="Permalink to this heading">#</a></h1>
+<section id="pen-and-paper-exercises">
+<h2>Pen and paper exercises<a class="headerlink" href="#pen-and-paper-exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-introduce-yourself">
+<h3>Exercise 1: Introduce yourself<a class="headerlink" href="#exercise-1-introduce-yourself" title="Permalink to this heading">#</a></h3>
+<p>My name is Martin Summer. I live in Vienna, the capital of Austria in Europe with my wife Gabriele and my two sons Paul, 17 and Peter, 15. I am an economist by training and profession and I am currently heading a research department at Oesterreichische Nationalbank, which is the central bank of Austria and together with the European Central Bank part of the Europan system of central banks. I came to statistics and data analysis through my work, where I use these tools to do research, advise policy and more generally trying to understand what is going on in the world more broadly.</p>
+<p>I have admired Jesuit Worldwide Learning as a project and institution for many years. This at some stage led to a cooperation when JWL asked and entrusted me to develop a statistics course for their program. The course you are taking now is the first result in this attempt and I hope you will enjy it and find it interesting and useful. I love teaching and I love statistics and this is a key reason why I decided to take on this honorable assignemt. Of course I also want to support you in your desire to learn by giving the best I can from my experience. I also want to support my Jesuit friends who founded and maintain this wonderful project, which I truely admire and love.</p>
+<p>Statistics impacts my life in many ways: As a source of wonder and a well of knowledge about the world, as an amazing field of insight and inspiration, to which many of the greatest minds in human history, both theoretically and practically have contributed. It is just wonderful to partcipate in this human project of knowledge. Statistics also impacts my professional life, where it is one tool of the trade in economic analysis and policy advice. At the moment I am together with colleagues at OeNB are engaged in a research project where we uses statistical methods to find out whether people in Austria would be willing to adopt a digital form of the Euro, our money which we currently just as banknotes or through accounts at commercial banks. Isn’t it almost like magic that statistics allows us to glimpse not only into an unknown future but also into potential behavior of people in using a payment method - the digital Euro - that does not yet exist at all but as an idea?</p>
+</section>
+<section id="exercise-2-computing-the-percentage-decrease-in-infant-mortality-rates-of-8-european-countries-between-1860-and-2020">
+<h3>Exercise 2: Computing the percentage decrease in infant mortality rates of 8 European countries between 1860 and 2020<a class="headerlink" href="#exercise-2-computing-the-percentage-decrease-in-infant-mortality-rates-of-8-european-countries-between-1860-and-2020" title="Permalink to this heading">#</a></h3>
+<p>Here are the numbers we discussed in the text in a table. I named the variables for the infant mortality rate in this exercise MR-1860 for  the infant mortality rate in 1860 and MR-2020 for the corresponding mortality rate in 2020.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Country</p></th>
+<th class="head text-left"><p>Continent</p></th>
+<th class="head text-right"><p>MR-1860</p></th>
+<th class="head text-right"><p>MR-2020</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Austria</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.237</p></td>
+<td class="text-right"><p>0.0030</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Belgium</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.139</p></td>
+<td class="text-right"><p>0.0034</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Denmark</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.136</p></td>
+<td class="text-right"><p>0.0031</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>France</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.150</p></td>
+<td class="text-right"><p>0.0034</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Germany</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.260</p></td>
+<td class="text-right"><p>0.0031</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Norway</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.102</p></td>
+<td class="text-right"><p>0.0018</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Spain</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.174</p></td>
+<td class="text-right"><p>0.0027</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sweden</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>0.124</p></td>
+<td class="text-right"><p>0.0021</p></td>
+</tr>
+</tbody>
+</table>
+<p>In case you wonder how I did this table in the Jupyter notebook, look at the cell input and study the code. For
+textcells in Jupyter you can use a markup language called Markdown. Mardown will allow you to format text by using certain markup symbols that the Jupyter notebook can interpret and process. Here is a link to a cheat sheet summarizing the most important markup instructions: <a class="reference external" href="https://www.markdownguide.org/cheat-sheet/">https://www.markdownguide.org/cheat-sheet/</a></p>
+<p>I encourage you as facilitators to familiarize yourself with markup and teach it to the students you work with when working with the Jupyter Notebooks.</p>
+<p>The infant mortality rate in Austria was <span class="math notranslate nohighlight">\(0.237\)</span> in 1860 and was <span class="math notranslate nohighlight">\(0.0030\)</span> 160 years later in 2020. The percentage decrease over this period is computed as:
+\begin{equation*}
+\frac{0.237 - 0.003}{0.237}
+\end{equation*}</p>
+<p>you can compute this by hand or by calculator or by R. Let me use R for the sake of the example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="m">0.237</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.003</span><span class="p">)</span><span class="o">/</span><span class="m">0.237</span><span class="p">)</span><span class="o">*</span><span class="m">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">98.7341772151899</div></div>
+</div>
+<p>This is a reduction of roughly 99 % percent. One could also say that the mortality rate decreased by a factor of 78. If you express the change as a relative change in percent you see how enormous the reduction was over a period of 160 years. This is next to a miracle, after centuries of extremely high rates.</p>
+<p>In case you are uncertain how to compute percentage changes, let us discuss some examples:</p>
+<p>Example 1: Suppose you have worked in a Supermarket for a wage of 10 (in some monetary unit) and your pay is increased to 12. What is your pay increase in percent? The way to compute the percentage increase is:
+\begin{equation*}
+\frac{(12-10)}{10}
+\end{equation*}</p>
+<p>which is <span class="math notranslate nohighlight">\(0.20\)</span>. Take this times 100 and you have the increase in percent, which is <span class="math notranslate nohighlight">\(20\)</span> %.</p>
+<p>Example 2: The staff of a company decreased from 40 to 29. What was the percentage decrease in its labor force?
+\begin{equation*}
+\frac{(29 - 40)}{29}
+\end{equation*}</p>
+<p>which is <span class="math notranslate nohighlight">\(0.275\)</span>. Take this by 100 and you have  <span class="math notranslate nohighlight">\(27.5\)</span> %.</p>
+<p>Did you see the general pattern. When computing a percentage change, the formula you apply is</p>
+<p>\begin{equation*}
+\frac{(final - initial)}{initial} \times 100
+\end{equation*}</p>
+<p>This is the formula for a percentage change. When this change is positive, we say naturally that we have an increase, when it is negative we say we have a decrease and fold the minus sign into the workd decrease. So in the second example, we would say that the labor force of the company decreased by<span class="math notranslate nohighlight">\(27.5\)</span> %.</p>
+<p>When the percentage change is 100 it means that something doubled, when it is 1000 it means that something has increased 10 fold, or as in the case of infant mortality in Austria between 1860 and 2020 has decreased 78 fold.</p>
+<p>We can also do the computations with R based on what we have learned in the course so far. Let’s first store the values in two objects, which we call ‘mr_1860’ and ‘mr_2020’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mr_1860</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.237</span><span class="p">,</span><span class="w"> </span><span class="m">0.139</span><span class="p">,</span><span class="w"> </span><span class="m">0.136</span><span class="p">,</span><span class="w"> </span><span class="m">0.15</span><span class="p">,</span><span class="w"> </span><span class="m">0.26</span><span class="p">,</span><span class="w"> </span><span class="m">0.102</span><span class="p">,</span><span class="w"> </span><span class="m">0.174</span><span class="p">,</span><span class="w"> </span><span class="m">0.124</span><span class="p">)</span>
+<span class="n">mr_2020</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.003</span><span class="p">,</span><span class="w"> </span><span class="m">0.0034</span><span class="p">,</span><span class="w"> </span><span class="m">0.0031</span><span class="p">,</span><span class="w"> </span><span class="m">0.0034</span><span class="p">,</span><span class="w"> </span><span class="m">0.0031</span><span class="p">,</span><span class="w"> </span><span class="m">0.0018</span><span class="p">,</span><span class="w"> </span><span class="m">0.0027</span><span class="p">,</span><span class="w"> </span><span class="m">0.0021</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we use the fact that R can compute component wise and apply the formula for the percentage change and round to 2 digits:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">round</span><span class="p">(((</span><span class="n">mr_1860</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mr_2020</span><span class="p">)</span><span class="o">/</span><span class="n">mr_1860</span><span class="p">)</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>98.73</li><li>97.55</li><li>97.72</li><li>97.73</li><li>98.81</li><li>98.24</li><li>98.45</li><li>98.31</li></ol>
+</div></div>
+</div>
+<p>So this means we have:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Country</p></th>
+<th class="head text-center"><p>Percentage decrease in infant mortality from 1860 - 2020</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Austria</p></td>
+<td class="text-center"><p>98.73 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Belgium</p></td>
+<td class="text-center"><p>97.55 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Denmark</p></td>
+<td class="text-center"><p>97.72 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>France</p></td>
+<td class="text-center"><p>97.73 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Germany</p></td>
+<td class="text-center"><p>98.81 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Norway</p></td>
+<td class="text-center"><p>98.24 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Spain</p></td>
+<td class="text-center"><p>98.45 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sweden</p></td>
+<td class="text-center"><p>98.31 %</p></td>
+</tr>
+</tbody>
+</table>
+<p>Usually you dp not encounter percentage number like this, because the difference in the mortality rates are so enormous. Suppose you were a bit unsure whether this could be indeed correct. Here is a way to check your calculation. A decrease by, for example of 98.73 %, is a decrease by 0.9873 in decimal notation. So if your rate was initially 0.237 and you subtract <span class="math notranslate nohighlight">\(0.237 \times 0.9873\)</span> you get 0.0030099 as you should if rounded to the last four digits.</p>
+<p>I encourage you as facilitators to come back to this simple example if appropriate in the comming two units, once students have learned and practiced more with R. Here is a way how you could retrieve the necessary data to do the computation with R</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+
+<span class="c1"># load infant mortality data</span>
+
+<span class="n">infant_mortality</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">infant_mortality_data</span>
+
+<span class="c1"># make table for the year 1860 and 2020 and throw away all countries where there are no observations</span>
+<span class="c1"># and select the variables Country, Continent, Mortality</span>
+
+<span class="n">my_countries</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Austria&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Belgium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Denmark&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;France&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Germany&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Norway&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Spain&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sweden&quot;</span><span class="p">)</span>
+
+<span class="n">dat_1860</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">infant_mortality</span><span class="p">[</span><span class="n">infant_mortality</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">my_countries</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">infant_mortality</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1860</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">dat_2020</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">infant_mortality</span><span class="p">[</span><span class="n">infant_mortality</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">my_countries</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">infant_mortality</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2020</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">rate_1860</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_1860</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Country&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Continent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Mortality&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">()</span>
+<span class="n">rate_2020</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat_2020</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Mortality&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">()</span>
+
+<span class="c1"># make a table by binding the columns together in one dataframe</span>
+
+<span class="n">tab</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">rate_1860</span><span class="p">,</span><span class="w"> </span><span class="n">rate_2020</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">tab</span><span class="p">)</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Contry&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Continent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MR-1860&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MR-2020&quot;</span><span class="p">)</span>
+<span class="n">tab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 8 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>Contry</th><th scope=col>Continent</th><th scope=col>MR-1860</th><th scope=col>MR-2020</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1970</th><td>Austria</td><td>Europe</td><td>0.237</td><td>0.0030</td></tr>
+	<tr><th scope=row>3260</th><td>Belgium</td><td>Europe</td><td>0.139</td><td>0.0034</td></tr>
+	<tr><th scope=row>7810</th><td>Denmark</td><td>Europe</td><td>0.136</td><td>0.0031</td></tr>
+	<tr><th scope=row>10396</th><td>France </td><td>Europe</td><td>0.150</td><td>0.0034</td></tr>
+	<tr><th scope=row>11040</th><td>Germany</td><td>Europe</td><td>0.260</td><td>0.0031</td></tr>
+	<tr><th scope=row>22590</th><td>Norway </td><td>Europe</td><td>0.102</td><td>0.0018</td></tr>
+	<tr><th scope=row>28200</th><td>Spain  </td><td>Europe</td><td>0.174</td><td>0.0027</td></tr>
+	<tr><th scope=row>28829</th><td>Sweden </td><td>Europe</td><td>0.124</td><td>0.0021</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="exercise-3-framing">
+<h3>Exercise 3: Framing<a class="headerlink" href="#exercise-3-framing" title="Permalink to this heading">#</a></h3>
+<p>One example could for instance be:</p>
+<p>While looking for a disinfectant, you choose a product that kills 95% of all the germs (positive frame), over one which claims that 5% of the germs will survive (negative frame).</p>
+<p>or:</p>
+<p>You must decide between two elective courses in your studies at JWL. You are determined to maintain your
+good grades, and you seek more information about both courses. One learning faclitator tells you thatin course one 20% of the students achieve the best possible grade (positive frame) while in the other course 80% fail to get the best possible grade (negative frame). You choose the former over the latter.</p>
+<p>or:</p>
+<p>Saying “Save 100 Euro a year by using energy-efficient appliances” (gain frame) rather than “Lose 100 Euro a year by not using energy-efficient appliances” (loss frame). The gain-framed message may motivate more people to act.</p>
+</section>
+<section id="exercise-4-communicating-counts-and-proportions">
+<h3>Exercise 4: Communicating counts and proportions<a class="headerlink" href="#exercise-4-communicating-counts-and-proportions" title="Permalink to this heading">#</a></h3>
+<p>One way to think about this might be as follows: The statment that 99 % of young Londoner’s do not comit serious youth violence is equivalent to the information that there is 1 % who do commit serious violence. Now you might think about this as an actual crowd of people. Note that order of magnitude is decisive here not the very exact numbers. The population of London is around 9 Million. Of these 9 Million about 1 million is aged between 15 and 25. 1 % of 1 million is 10000. Would you feel comfortable riding on the London underground, knwoing that 10000 seriously violent youngsters are traveling in this system at the same time? Now we have used two twists here: First we have turned a positive into a negative frame and then tunred a percentage into an actual number of people.</p>
+<p>To provide information impartially it is advisable to think of both negative and positive frames.</p>
+<p>This is an exercise that would be very good for class discussion. The example of London, will require students to think about estimating orders of magnitude or think about how they could find out. For example: Where could I find out the number of inhabitants of London? (easy), how many young people are living there (what is young? compare to the introductory example of what is a tree?) etc.</p>
+</section>
+</section>
+<section id="computer-exercises">
+<h2>Computer exercises<a class="headerlink" href="#computer-exercises" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="exercise-1-transforming-percentages-into-rates">
+<h2>Exercise 1: Transforming percentages into rates<a class="headerlink" href="#exercise-1-transforming-percentages-into-rates" title="Permalink to this heading">#</a></h2>
+<p>This is the table of infant mortality data in percent.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Country</p></th>
+<th class="head text-left"><p>Continent</p></th>
+<th class="head text-right"><p>MR-1860</p></th>
+<th class="head text-right"><p>MR-2020</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Austria</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>23.7 %</p></td>
+<td class="text-right"><p>0.30 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Belgium</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>13.9 %</p></td>
+<td class="text-right"><p>0.34 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Denmark</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>13.6 %</p></td>
+<td class="text-right"><p>0.31 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>France</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>15.0 %</p></td>
+<td class="text-right"><p>0.34 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Germany</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>26.0 %</p></td>
+<td class="text-right"><p>0.31 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Norway</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>10.2 %</p></td>
+<td class="text-right"><p>0.18 %</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Spain</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>17.4 %</p></td>
+<td class="text-right"><p>0.27 %</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sweden</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>12.4 %</p></td>
+<td class="text-right"><p>0.21 %</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s start with saving the percentages in an R object in decimal notation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mr_1860</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.003</span><span class="p">,</span><span class="w"> </span><span class="m">0.0034</span><span class="p">,</span><span class="w"> </span><span class="m">0.0031</span><span class="p">,</span><span class="w"> </span><span class="m">0.0034</span><span class="p">,</span><span class="w"> </span><span class="m">0.0031</span><span class="p">,</span><span class="w"> </span><span class="m">0.0018</span><span class="p">,</span><span class="w"> </span><span class="m">0.0027</span><span class="p">,</span><span class="w"> </span><span class="m">0.0021</span><span class="p">)</span>
+<span class="n">mr_2020</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.237</span><span class="p">,</span><span class="w"> </span><span class="m">0.139</span><span class="p">,</span><span class="w"> </span><span class="m">0.136</span><span class="p">,</span><span class="w"> </span><span class="m">0.15</span><span class="p">,</span><span class="w"> </span><span class="m">0.26</span><span class="p">,</span><span class="w"> </span><span class="m">0.102</span><span class="p">,</span><span class="w"> </span><span class="m">0.174</span><span class="p">,</span><span class="w"> </span><span class="m">0.124</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we multiply every entry with 1000 and this gives us the number of infant death per 1000. One nice feature of R is that it can apply a mathematcal operation to a whole object. So if you multiply the object by 1000 this multiplication is applied to every component in the vector. Let’s do this and save the results in a new object
+called rates_1860 and rates_2020. Then display the results and write them into a new table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rates_1860</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_1860</span><span class="o">*</span><span class="m">1000</span>
+<span class="n">rates_2020</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mr_2020</span><span class="o">*</span><span class="m">1000</span>
+
+<span class="n">rates_1860</span>
+<span class="n">rates_2020</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3</li><li>3.4</li><li>3.1</li><li>3.4</li><li>3.1</li><li>1.8</li><li>2.7</li><li>2.1</li></ol>
+</div><div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>237</li><li>139</li><li>136</li><li>150</li><li>260</li><li>102</li><li>174</li><li>124</li></ol>
+</div></div>
+</div>
+<p>This is the table of infant mortality data per 1000 of life births.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Country</p></th>
+<th class="head text-left"><p>Continent</p></th>
+<th class="head text-right"><p>MR-1860</p></th>
+<th class="head text-right"><p>MR-2020</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Austria</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>237</p></td>
+<td class="text-right"><p>3.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Belgium</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>139</p></td>
+<td class="text-right"><p>3.4</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Denmark</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>136</p></td>
+<td class="text-right"><p>3.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>France</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>150</p></td>
+<td class="text-right"><p>3.4</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Germany</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>260</p></td>
+<td class="text-right"><p>3.1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Norway</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>102</p></td>
+<td class="text-right"><p>1.8</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Spain</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>174</p></td>
+<td class="text-right"><p>2.7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sweden</p></td>
+<td class="text-left"><p>Europe</p></td>
+<td class="text-right"><p>124</p></td>
+<td class="text-right"><p>2.1</p></td>
+</tr>
+</tbody>
+</table>
+<section id="exercise-2-your-first-bar-plot">
+<h3>Exercise 2: Your first bar plot<a class="headerlink" href="#exercise-2-your-first-bar-plot" title="Permalink to this heading">#</a></h3>
+<p>Let’s redo the barplot for motrality rates with the 2020 numbers. Let us store the rates in an R object first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mr_2020</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.237</span><span class="p">,</span><span class="w"> </span><span class="m">0.139</span><span class="p">,</span><span class="w"> </span><span class="m">0.136</span><span class="p">,</span><span class="w"> </span><span class="m">0.15</span><span class="p">,</span><span class="w"> </span><span class="m">0.26</span><span class="p">,</span><span class="w"> </span><span class="m">0.102</span><span class="p">,</span><span class="w"> </span><span class="m">0.174</span><span class="p">,</span><span class="w"> </span><span class="m">0.124</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now create a second object with the country names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cntr</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Austria&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Belgium&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Denmark&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;France&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Germany&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Norway&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Spain&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Sweden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the order of countries in this needs to be congruent with the order of the numbers, so that they fit together. One advantage of the computer is that such steps can be automated when you know more R. Such manual procedures, which we use here are error prone and should be usually avoided. Here we use it because we do not yet know enough R to avoid this. Another approach to annotate the countries would be to use the international ISO2 codes for the countries, like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cntr_iso</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;AT&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;FR&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NO&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ES&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now for the barplot, proceed as in the lecture and give the barplot a title:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">mr_2020</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cntr_iso</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Infant mortality rates in percent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1ff41213b52b9f18e0accecfde6ce5b9d34d856984e09f620c6af08b7248703f.png" src="_images/1ff41213b52b9f18e0accecfde6ce5b9d34d856984e09f620c6af08b7248703f.png" />
+</div>
+</div>
+<p>Or flip and use the full country names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">mr_2020</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cntr</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Infant mortality rates in percent in 2020&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12c1868628887baa4b6adbf3e875d67e7a58b28c4271cc308ddda988266e192a.png" src="_images/12c1868628887baa4b6adbf3e875d67e7a58b28c4271cc308ddda988266e192a.png" />
+</div>
+</div>
+<p>The names of Germany and Denmark are cut off a bit at the margin. An option to adjust plot margins in a boxplot to use the R function <code class="docutils literal notranslate"><span class="pre">par</span></code> with the argument <code class="docutils literal notranslate"><span class="pre">mar</span></code> for margin. <code class="docutils literal notranslate"><span class="pre">mar</span></code>is a numerical vector of the form c(bottom, left, top, right) which gives the number of lines of margin to be specified on the four sides of the plot. The default is c(5, 4, 4, 2) + 0.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mar</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">mr_2020</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cntr</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Infant mortality rates in percent in 2020&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de1502ed056d83d0fbd1fb14443e288dc9cd6525ba6da632443093da8d7eb02e.png" src="_images/de1502ed056d83d0fbd1fb14443e288dc9cd6525ba6da632443093da8d7eb02e.png" />
+</div>
+</div>
+<p>Now you can see the full names. This is an advanced graphic option. You do not need to confuse the students with these details but it might be good to know an answer, in case somebody asks.</p>
+<p>If there are students who are quickly at ease with using R and who find this too easy, point them to the R help function and encourage them to play with options to change the graph. Looking for help on <code class="docutils literal notranslate"><span class="pre">boxplot</span></code> for example would need the function call:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">boxplot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This displays the R help manual page for boxplot with all adjustment options.</p>
+</section>
+<section id="exercise-3-barchart-on-the-causes-of-infant-mortality">
+<h3>Exercise 3: Barchart on the causes of infant mortality<a class="headerlink" href="#exercise-3-barchart-on-the-causes-of-infant-mortality" title="Permalink to this heading">#</a></h3>
+<p>Here again the point is to familiarize yourself with creating a barplot in R. Since we do by now know only very little R we do not yet know how to get the data we need for the plot automatically. Here the assumption is that we only have the table from the study material and we want to produce a boxplot on this base by manually entering the data. Of course the usual situation will be that data rerieval and entry will be done by the computer. We will soon do so ourselves. In general manual entry of data should be mimimized as a matter of principle. It is not only tedious and slow but also error prone.</p>
+<p>Now, assuming, manual entry, we would first create two R objects, one character vector with the names of the causes and one with the share in all known causes and produce the boxplot from there. So let’s do this. The way you name your objects is by the way up to you. You choose the names you want and that work for you. Remember the naming rules, however. If you have forgotten these rules (Do not start a name by a . or _ or a number etc.) look them up again and learn them by heart,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">causes</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="s">&quot;Preterm birth&quot;</span><span class="p">,</span>
+<span class="s">&quot;Encephalopathy due to birth asphyxia and trauma&quot;</span><span class="p">,</span>
+<span class="s">&quot;Lower respiratory infections&quot;</span><span class="p">,</span>
+<span class="s">&quot;Birth defects&quot;</span><span class="p">,</span>
+<span class="s">&quot;Diarrheal diseases&quot;</span><span class="p">,</span>
+<span class="s">&quot;Heart anomalies&quot;</span><span class="p">,</span>
+<span class="s">&quot;Malaria&quot;</span><span class="p">,</span>
+<span class="s">&quot;Syphilis&quot;</span><span class="p">,</span>
+<span class="s">&quot;Meningitis&quot;</span><span class="p">,</span>
+<span class="s">&quot;Whooping cough&quot;</span><span class="p">,</span>
+<span class="s">&quot;Nutritional deficiencies&quot;</span><span class="p">,</span>
+<span class="s">&quot;Digestive anomalies&quot;</span><span class="p">,</span>
+<span class="s">&quot;Sudden infant death syndrome&quot;</span><span class="p">,</span>
+<span class="s">&quot;Tuberculosis&quot;</span><span class="p">,</span>
+<span class="s">&quot;Measles&quot;</span><span class="p">,</span>
+<span class="s">&quot;HIV/AIDS&quot;</span><span class="p">,</span>
+<span class="s">&quot;Digestive diseases&quot;</span><span class="p">,</span>
+<span class="s">&quot;Tetanus&quot;</span><span class="p">,</span>
+<span class="s">&quot;Encephalitis&quot;</span><span class="p">,</span>
+<span class="s">&quot;Acute hepatitis&quot;</span><span class="p">,</span>
+<span class="s">&quot;Diabetes and kidney diseases&quot;</span>
+<span class="p">)</span>
+
+<span class="n">shares</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.211</span><span class="p">,</span><span class="w"> </span><span class="m">0.180</span><span class="p">,</span><span class="w"> </span><span class="m">0.161</span><span class="p">,</span><span class="w"> </span><span class="m">0.128</span><span class="p">,</span><span class="w"> </span><span class="m">0.092</span><span class="p">,</span><span class="w"> </span><span class="m">0.048</span><span class="p">,</span><span class="w"> </span><span class="m">0.044</span><span class="p">,</span><span class="w"> </span><span class="m">0.026</span><span class="p">,</span><span class="w"> </span><span class="m">0.020</span><span class="p">,</span><span class="w"> </span><span class="m">0.016</span><span class="p">,</span><span class="w"> </span><span class="m">0.015</span><span class="p">,</span><span class="w"> </span><span class="m">0.013</span><span class="p">,</span><span class="w"> </span><span class="m">0.009</span><span class="p">,</span><span class="w"> </span><span class="m">0.008</span><span class="p">,</span><span class="w"> </span>
+<span class="w">             </span><span class="m">0.006</span><span class="p">,</span><span class="w"> </span><span class="m">0.006</span><span class="p">,</span><span class="w"> </span><span class="m">0.005</span><span class="p">,</span><span class="w"> </span><span class="m">0.005</span><span class="p">,</span><span class="w"> </span><span class="m">0.003</span><span class="p">,</span><span class="w"> </span><span class="m">0.002</span><span class="p">,</span><span class="w"> </span><span class="m">0.002</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To reproduce the boxplot form the study materials we would need the following instruction for R, assuming that I give also a title to the plot, in my case “Causes of infant mortality”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">shares</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">causes</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Causes of infant mortality&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/80cc8e6bd7273a8377e0dc6267c256d02e09730c3d721ff4fb29f202eed4223f.png" src="_images/80cc8e6bd7273a8377e0dc6267c256d02e09730c3d721ff4fb29f202eed4223f.png" />
+</div>
+</div>
+<p>Here we have again the problem that the names are too long for the default vaues of the boxplot boundaries. This might be an option to explain how these boundaries can be adjusted in R.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mar</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">4</span><span class="p">))</span>
+<span class="nf">barplot</span><span class="p">(</span><span class="n">shares</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">causes</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Causes of infant mortality&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f3dfa9f6308657f1d0e83b44eb5d502aeb640c267f6e9cca7f384e03d6024a1a.png" src="_images/f3dfa9f6308657f1d0e83b44eb5d502aeb640c267f6e9cca7f384e03d6024a1a.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-pictures-and-numbers">
+<h2>Project: People count: The future of humanity in pictures and numbers<a class="headerlink" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers" title="Permalink to this heading">#</a></h2>
+<section id="counting-people">
+<h3>Counting people<a class="headerlink" href="#counting-people" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercises_unit_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pen-and-paper-exercises">Pen and paper exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-introduce-yourself">Exercise 1: Introduce yourself</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-computing-the-percentage-decrease-in-infant-mortality-rates-of-8-european-countries-between-1860-and-2020">Exercise 2: Computing the percentage decrease in infant mortality rates of 8 European countries between 1860 and 2020</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-framing">Exercise 3: Framing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-communicating-counts-and-proportions">Exercise 4: Communicating counts and proportions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computer-exercises">Computer exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-transforming-percentages-into-rates">Exercise 1: Transforming percentages into rates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-your-first-bar-plot">Exercise 2: Your first bar plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-barchart-on-the-causes-of-infant-mortality">Exercise 3: Barchart on the causes of infant mortality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers">Project: People count: The future of humanity in pictures and numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting-people">Counting people</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martin Summer
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
