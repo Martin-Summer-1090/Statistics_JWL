@@ -561,7 +561,7 @@ textcells in Jupyter you can use a markup language called Markdown. Mardown will
 </tbody>
 </table>
 <p>Usually you dp not encounter percentage number like this, because the difference in the mortality rates are so enormous. Suppose you were a bit unsure whether this could be indeed correct. Here is a way to check your calculation. A decrease by, for example of 98.73 %, is a decrease by 0.9873 in decimal notation. So if your rate was initially 0.237 and you subtract <span class="math notranslate nohighlight">\(0.237 \times 0.9873\)</span> you get 0.0030099 as you should if rounded to the last four digits.</p>
-<p>I encourage you as facilitators to come back to this simple example if appropriate in the comming two units, once students have learned and practiced more with R. Here is a way how you could retrieve the necessary data to do the computation with R</p>
+<p>I encourage you as facilitators to come back to this simple example if appropriate in the coming two units, once students have learned and practiced more with R. Here is a way how you could retrieve the necessary data to do the computation with R</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
@@ -908,6 +908,281 @@ called rates_1860 and rates_2020. Then display the results and write them into a
 <h2>Project: People count: The future of humanity in pictures and numbers<a class="headerlink" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers" title="Permalink to this heading">#</a></h2>
 <section id="counting-people">
 <h3>Counting people<a class="headerlink" href="#counting-people" title="Permalink to this heading">#</a></h3>
+<p>This is the begin of a data project which will stretch all over the course. In this first part we
+are applying what we have learned in this unit by counting people in Kenya. Like in all countries
+in the world, national statistical offices describe people living in a country
+by age, sex, race, education, and a number of other factors. Are these descriptions important?</p>
+<p>In particular in this project we ask whether the description of a country
+by age groups does help us better understand a
+country? We are going to study the “shape” of Keynia based on the counts of people living in the country
+by age.</p>
+<p>As in real life national statistics we are goint to produce data visualizations that
+display the data by way of barplots and other summaries. These descriptions
+begin to unpack stories about people living in this
+country. Behind these numbers and graphs are real people, their sisters and brothers and parents and nieces and
+nephews. The stories revealed in these data help us better understand a particular country.</p>
+<p>The following table shows the counts of women and men in Kenya in the year 2022. The data are made available through an international demographic database, which compiles the local infromation from national statistical authorities and provide the data publicly via a website hosted by the Census Bureau of the United States. The website is here and I have retrieved the data from this site.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Age</p></th>
+<th class="head text-right"><p>Number of Females</p></th>
+<th class="head text-right"><p>Number of Males</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>0-4</p></td>
+<td class="text-right"><p>3487490</p></td>
+<td class="text-right"><p>3531278</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>5-9</p></td>
+<td class="text-right"><p>3404421</p></td>
+<td class="text-right"><p>3431166</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>10-14</p></td>
+<td class="text-right"><p>3444606</p></td>
+<td class="text-right"><p>3473103</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>15-19</p></td>
+<td class="text-right"><p>3225971</p></td>
+<td class="text-right"><p>3249738</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>20-24</p></td>
+<td class="text-right"><p>2656730</p></td>
+<td class="text-right"><p>2664966</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>30-34</p></td>
+<td class="text-right"><p>1946994</p></td>
+<td class="text-right"><p>1926219</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>40-44</p></td>
+<td class="text-right"><p>1606763</p></td>
+<td class="text-right"><p>1610246</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>45-49</p></td>
+<td class="text-right"><p>1170869</p></td>
+<td class="text-right"><p>1196519</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>50-54</p></td>
+<td class="text-right"><p>858998</p></td>
+<td class="text-right"><p>890662</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>55-59</p></td>
+<td class="text-right"><p>672025</p></td>
+<td class="text-right"><p>679943</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>60-64</p></td>
+<td class="text-right"><p>516769</p></td>
+<td class="text-right"><p>488074</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>65-69</p></td>
+<td class="text-right"><p>387773</p></td>
+<td class="text-right"><p>340546</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>70-74</p></td>
+<td class="text-right"><p>272320</p></td>
+<td class="text-right"><p>229912</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>75-79</p></td>
+<td class="text-right"><p>168499</p></td>
+<td class="text-right"><p>138357</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>80-84</p></td>
+<td class="text-right"><p>93724</p></td>
+<td class="text-right"><p>73093</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>85-89</p></td>
+<td class="text-right"><p>39226</p></td>
+<td class="text-right"><p>28473</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>90-94</p></td>
+<td class="text-right"><p>10461</p></td>
+<td class="text-right"><p>6918</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>95-99</p></td>
+<td class="text-right"><p>1520</p></td>
+<td class="text-right"><p>902</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Produce a barplot of the total population with R. Also produce a seperate barplot for man and women.</p></li>
+</ol>
+<p>Comment for learning facilitators: First store the data in appropriate R objects. It is perhaps best for this task to create an object for the man counts and the female counts seperately and then use R to create an object for the total. It is also important that studnets understand that Age is of data-type character and thus has to be entered using “” whereas Number of Females and Number of Males is of type numeric and can be entered as numbers.</p>
+<p>Create R objects for the elements needed to produce the boxplot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">age</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;0-4&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;5-9&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;10-14&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;15-19&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;30-34&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;40-44&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;45-49&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;50-54&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;55-59&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;60-64&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="s">&quot;65-69&quot;</span><span class="p">,</span><span class="s">&quot;70-74&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;75-79&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;80-84&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;85-89&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;90-94&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;95-99 &quot;</span><span class="p">)</span>
+
+<span class="n">num_f</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3487490</span><span class="p">,</span><span class="w"> </span><span class="m">3404421</span><span class="p">,</span><span class="w"> </span><span class="m">3444606</span><span class="p">,</span><span class="w"> </span><span class="m">3225971</span><span class="p">,</span><span class="w"> </span><span class="m">2656730</span><span class="p">,</span><span class="w"> </span><span class="m">1946994</span><span class="p">,</span><span class="w"> </span><span class="m">1606763</span><span class="p">,</span><span class="w"> </span><span class="m">1170869</span><span class="p">,</span><span class="w"> </span><span class="m">858998</span><span class="p">,</span><span class="w"> </span><span class="m">672025</span><span class="p">,</span><span class="w">  </span><span class="m">516769</span><span class="p">,</span>
+<span class="w">            </span><span class="m">387773</span><span class="p">,</span><span class="w"> </span><span class="m">272320</span><span class="p">,</span><span class="w"> </span><span class="m">168499</span><span class="p">,</span><span class="w">  </span><span class="m">93724</span><span class="p">,</span><span class="w"> </span><span class="m">39226</span><span class="p">,</span><span class="w"> </span><span class="m">10461</span><span class="p">,</span><span class="w"> </span><span class="m">1520</span><span class="w"> </span><span class="p">)</span>
+
+<span class="n">num_m</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3531278</span><span class="p">,</span><span class="w"> </span><span class="m">3431166</span><span class="p">,</span><span class="w"> </span><span class="m">3473103</span><span class="p">,</span><span class="w"> </span><span class="m">3249738</span><span class="p">,</span><span class="w">  </span><span class="m">2664966</span><span class="p">,</span><span class="w"> </span><span class="m">1926219</span><span class="p">,</span><span class="w"> </span><span class="m">1610246</span><span class="p">,</span><span class="w"> </span><span class="m">1196519</span><span class="p">,</span><span class="w">  </span><span class="m">890662</span><span class="p">,</span><span class="w">  </span><span class="m">679943</span><span class="p">,</span><span class="w"> </span><span class="m">488074</span><span class="p">,</span>
+<span class="w">            </span><span class="m">340546</span><span class="p">,</span><span class="w">  </span><span class="m">229912</span><span class="p">,</span><span class="w">  </span><span class="m">138357</span><span class="p">,</span><span class="w"> </span><span class="m">73093</span><span class="p">,</span><span class="w">  </span><span class="m">28473</span><span class="p">,</span><span class="w"> </span><span class="m">6918</span><span class="p">,</span><span class="w"> </span><span class="m">902</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The total number can be created by using the R operation of addition for R objects</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">total</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">num_f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num_m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can do a barplot as in the previous examples. Here is the plot for the total number of people:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of people in Kenya 2022 by age groups&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bcdde9677efb2a51a59f37ce14dcc04f85db9b6c86855fb865f6a2dda214b58c.png" src="_images/bcdde9677efb2a51a59f37ce14dcc04f85db9b6c86855fb865f6a2dda214b58c.png" />
+</div>
+</div>
+<p>Here is the plot for the females</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">num_f</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of women in Kenya 2022 by age groups&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a92171ac70a8ff569fd9f8d1bd7c3a847e0de715a693f0c903d829b8bfe5b4bf.png" src="_images/a92171ac70a8ff569fd9f8d1bd7c3a847e0de715a693f0c903d829b8bfe5b4bf.png" />
+</div>
+</div>
+<p>Here is the number of men:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">num_m</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of men in Kenya 2022 by age groups&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3b7f8d0b4db2c5ede500148d9c765abab9d262e50a7d0b0fd6c6a933ea97eb6a.png" src="_images/3b7f8d0b4db2c5ede500148d9c765abab9d262e50a7d0b0fd6c6a933ea97eb6a.png" />
+</div>
+</div>
+<p>You might discuss with the students some details of producing the barplot with R. For example, if we look at the total numbers we see that not all age buckets can be displayed because the box of the plot is too narrow. This can be changed in the same way as we did in the course, for instance by using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">total</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of people in Kenya 2022 by age groups&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b842a9240632c646ec2338d03ccfccbf0c6c8a280ce12a4a605b1abb90072ed4.png" src="_images/b842a9240632c646ec2338d03ccfccbf0c6c8a280ce12a4a605b1abb90072ed4.png" />
+</div>
+</div>
+<p>This looks better but now we have the problem that the <span class="math notranslate nohighlight">\(x\)</span>-tick marks are shown in scientific notatione, e.i. 1e + 06 means for example <span class="math notranslate nohighlight">\(10^6\)</span> or 1000000 and 7e+06 means <span class="math notranslate nohighlight">\(7 \times 10^6\)</span> or 7  x 1000000 etc.</p>
+<p>What you could do here is for example changing the units by dividing totals by <span class="math notranslate nohighlight">\(10^6\)</span> and annotate the plot
+accordingly. Here is an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">total</span><span class="o">/</span><span class="m">10</span><span class="o">^</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of people in Kenya 2022 by age groups in millions&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09d827fec20734e2d1d63badccc27590ef7e26d7349d6c7559f828bf782b462b.png" src="_images/09d827fec20734e2d1d63badccc27590ef7e26d7349d6c7559f828bf782b462b.png" />
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Demographers usually use the following terminology: A population distribution is defined by the following layers: The bottom-layer in terms of age group refers to the counts of people in the 0 to 24 years old age groups.
+The lower middle-layer refers to the counts of people in the 25 to 49 years old age groups. The upper middle-layer refers to the count of people in the 50 to 74 years old age groups. The top layer refers to the count of people in the 75 to 100+ years old age groups. Depending on which layer is the largest a country’s “shape” is defined by demorgaphers as a bottom-layered a middle layered and a top layered country.</p></li>
+</ol>
+<p>Use R to do a horizontal box-plot where the number of people in each age group are shown in percent. For computing the percentages you will need the total number of people over all age groups. Fortunately R has a function for this. It is called <code class="docutils literal notranslate"><span class="pre">sum()</span></code> and is applied as follows: Assume you have a vector <code class="docutils literal notranslate"><span class="pre">x</span>&#160; <span class="pre">&lt;-</span> <span class="pre">c(1,4,5)</span></code>, then using the sum function <code class="docutils literal notranslate"><span class="pre">sum(x)</span></code> you will get 10.</p>
+<p>Compute the percentages and do the barplot with adjusted title:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">perc</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">total</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">perc</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Number of people in Kenya 2022 by age groups in percent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8b4d429e9dc0794b7b934716392a0ff7cf3540a2fc8b45955dc2720c1e2bc289.png" src="_images/8b4d429e9dc0794b7b934716392a0ff7cf3540a2fc8b45955dc2720c1e2bc289.png" />
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Identify two age groups in which the number of people in one age group is
+approximately double the count in the other age group.</p></li>
+</ol>
+<p>Answers vary. Possible selections: the count of 45 – 49 years old is approximately
+double the 60 – 64 years old. Also, the count of 0 – 4 years old is a little less than
+double the count of 30 – 34 years old. Other answers should be considered.</p>
+<ol class="arabic simple" start="4">
+<li><p>“Old” and “young” are subjective descriptions that in many cases are defined by
+several factors other than age (for example, health status, or income status). For
+this unit, however, consider the definition of “young” as people less than 10 years
+old, and the definition of “old” as people who are 65 years old or older. What is the
+ratio of “old” to “young” using the above definitions of young and old?</p></li>
+</ol>
+<p>Answer: The “old” population is 1,791,724 people and the “young” population is 20,772,064
+people. The ratio is 1,791,724 to 20,772,064. The value of the ratio is approximately
+0.09. You could also say that there are 9 old people for 100 young ones.</p>
+<p>5.If there are approximately 500 students in a typical school for students who are 5 to
+14 years old, estimate the number of schools needed to educate the students who
+are 5 to 14 years old.</p>
+<p>Add the count of the 5- 9 years old and the count of the 10 – 14 years old, or:
+6,835,587 + 6,917,709 = 13,753,296 people. The estimate of the number of schools
+would be:
+13,753,296 divided by 500 students per school is approximately 27,507 schools.</p>
+<ol class="arabic simple" start="6">
+<li><p>Here is an R challenge that you can do, if you have enough time left and if you love challenges. It will not This will not be graded. It is an option to give this challenge a try. You can also come back to it later, when you have more experience with R. When you have no time, just leave it out.</p></li>
+</ol>
+<p>Demographers, have a very nice visualization of population counts by 5 year age groups and by sex, which are called “population pyramids”. These graphs are a very nice example of the power of data visualization, becuase they convey at one glance whether a particular country is a botto, middle laydred or a top layered country and how the relative cohort sizes of men and women look like for each age cohort.</p>
+<p>It looks approcimately like this:</p>
+<p><img alt="Example of a population pyramid" src="~/R/Statistics_JWL/solution_manual/manual_v0/img/pop_pyramid_example.png" /></p>
+<p>Could you construct a similar graph for the Kenya data using the barplot function and R’s graphics options? You might consult the help function, or the internet when you have internet access.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">num_f</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1edf78697260d9a28b612d03d29db929fae8d6b89ab5bf320a8fee9e8c685729.png" src="_images/1edf78697260d9a28b612d03d29db929fae8d6b89ab5bf320a8fee9e8c685729.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="o">-</span><span class="w"> </span><span class="n">num_m</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">-500000</span><span class="p">,</span><span class="w"> </span><span class="m">-1500000</span><span class="p">,</span><span class="w"> </span><span class="m">-2500000</span><span class="p">,</span><span class="w"> </span><span class="m">-3500000</span><span class="p">),</span>
+<span class="w">     </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3500000&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de127e6a14f262f578f393cae376748c31d2c4c7c5906f326b9ea23cde67389f.png" src="_images/de127e6a14f262f578f393cae376748c31d2c4c7c5906f326b9ea23cde67389f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">par</span><span class="p">(</span><span class="n">mar</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">3.7</span><span class="p">,</span><span class="w"> </span><span class="m">0.2</span><span class="p">,</span><span class="w"> </span><span class="m">0.2</span><span class="p">),</span><span class="w"> </span><span class="n">mfrow</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">),</span>
+<span class="w">     </span><span class="n">oma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">0.2</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">0.2</span><span class="p">))</span>
+
+<span class="nf">barplot</span><span class="p">(</span><span class="o">-</span><span class="w"> </span><span class="n">num_m</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">yaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;n&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xaxt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;n&#39;</span><span class="p">)</span>
+<span class="nf">axis</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">-500000</span><span class="p">,</span><span class="w"> </span><span class="m">-1500000</span><span class="p">,</span><span class="w"> </span><span class="m">-2500000</span><span class="p">,</span><span class="w"> </span><span class="m">-3500000</span><span class="p">),</span>
+<span class="w">     </span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;1500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2500000&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;3500000&quot;</span><span class="p">))</span>
+
+<span class="nf">barplot</span><span class="p">(</span><span class="n">num_f</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0798f5ba9f81e178476a5647a456a9a557d9c2b019b9fa9da3e779fd4609597b.png" src="_images/0798f5ba9f81e178476a5647a456a9a557d9c2b019b9fa9da3e779fd4609597b.png" />
+</div>
+</div>
 </section>
 </section>
 </section>
