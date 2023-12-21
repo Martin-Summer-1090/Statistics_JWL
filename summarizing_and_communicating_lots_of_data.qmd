@@ -3,7 +3,7 @@
 ::: {.callout-note appearance="simple"}
 ## Overview
 
-1. In this chapter we will learn how to summarize and communicate lots of data. Most
+1. In this chapter we will learn **how to summarize and communicate lots of data**. Most
    datasets you will be working with in statistics are large and can contain thousands or
    even millions of observations. To understand these data and their pattern of
    variation you need tools to summarize them in a meaningful and informative way. In this
@@ -29,15 +29,15 @@
    again throughout the large field of statistics and applied work with data. You need
    to gain a good understanding of what the standard deviation is and how to compute it.
 
-5. For larger datasets, which will be the usual case in practice, you will need to learn
+5. For larger datasets, which will be the usual case in practice, you will need to **learn
    how to summarize and communicate the information about variables with lost of different
-   values using the computer. This means in particular, that you need to understand how
+   values using the computer**. This means in particular, that you need to understand how
    to read large datafiles from a given source, how to select and modify particular variables.
    You will thus learn some powerful tools from the R language that will help you to
    do so.
 
-When you have worked through this unit you will be able to summarize large datasets
-graphically and numerically and understand what these measures tell you about the
+When you have worked through this unit you will be able to **summarize large datasets
+graphically and numerically** and understand what these measures tell you about the
 variation in the data, how they look like, what are the most typical values of the variables
 and how much they are spread out around these values. In this process you will power up
 your abilities to read, select and manipulate large data files and single variables using the
@@ -72,7 +72,7 @@ on living conditions, height
 data can be an indirect measure of living conditions. This is especially interesting for
 periods when very little or no data were collected and recorded.
 
-But also tody information about the distribution of height and weight in a 
+But also today information about the distribution of height and weight in a 
 population enables countries 
 to make data-driven decisions and to monitor their progress in improving 
 nutritional status and achieving the United Nation's Sustainable Development Goals.^[
@@ -129,7 +129,7 @@ heights <- sample(x = dat$Height, size = 100) # randomly select 100 values witho
 heights
 ```
 This is how R prints out the 100 height values. You already learned what the numbers in
-brackets on the left side mean. They are counters or observations. In total we have
+brackets on the left side mean. They are counters of observations. In total we have
 100 values.
 
 We start the construction of a histogram by choosing for the horizontal 
@@ -187,16 +187,6 @@ bins, in our example. While loosing some local information on
 individual data points the global information
 conveyed by the summary gives us a pretty good idea of the overall 
 pattern of variation on the human height data.
-
-:::{.callout-caution collapse="true"}
-## Seitwerk: Expand for reading comment.
-Reda, I think it would be great if you could do some animation that reproduces the 
-steps: Plot a height axis with bins from 160 to 190 in bin sizes of 5, then plot a frequency
-axes from 0 to 40 in steps of 10. Them from the list of 100 numbers, collect all that are
-recorded in the first bin and then make the height proportional to the count, then the next
-etc. The idea would be to realize something like my previous sketch for the Nile data
-![Constructing the river flow histogram](pictures/nile_hist.png)
-:::
 
 We can see, for instance, that the most frequent height is between 170 and 175 and that the
 variation is fairly symmetric around this bin. In the extremes this most frequent 
@@ -388,7 +378,7 @@ The **average** is
 often used to find the center. The **standard** deviation measures spread around 
 the average.
 ^[When the distribution is not symmetric around the mean it is better to take other
-maesures of center and spread. These alternative measures are called 
+measures of center and spread. These alternative measures are called 
 the **median**.  The **interquartile range** is another alternative measure of 
 spreads. We will learn  the details about these measures later in the course.]
 
@@ -545,14 +535,14 @@ average_height <- mean(heights)
 average_height
 ```
 
-The average height in this dataset is about `r average_height`  cm. 
+The average height in this dataset is about `r round(average_height,2)`  cm. 
 The average is a very powerful way of
 communicating data by compressing many observations into one single
 number, the mean. 
 
 This compression is, however, only achieved by loosing some 
 information on individual differences.
-For example in our dataset the average height is `r average_height` cm. 
+For example in our dataset the average height is `r round(average_height, 2)` cm. 
 
 But there are about `r mean(heights > 180)*100` % who are larger than
 180 cm and there are also about `r mean(heights < 165)*100` % who are 
@@ -565,7 +555,7 @@ is hidden in the aggregation.
 
 This is a good opportunity to show you a cool feature or trick in R how we could in one line
 compute such percentages. Assume we want to compute the percentage of individuals in our data
-who are larger than the mean of `r average_height`. How can we do this?
+who are larger than the mean of `r round(average_height,2)`. How can we do this?
 
 Logicals are a powerful data type to make such a computation. A logical is
 a special data type, similar to the data type numerical, used for representing numbers, or
@@ -596,15 +586,18 @@ number 0. We will learn about the details of these R the coercion rules later in
 If you apply `mean()` to `x` you will get the proportion of values fulfilling a certain
 condition. So if you take the mean of
 ```{r}
+#| code-fold: false
+
 x > 2
 ```
-R would firts transfrom the vector
+R would first transfrom the vector
 
 `TRUE`,  `TRUE`, `FALSE`, `FALSE`, `TRUE`,  `FALSE`,  `FALSE`,  `TRUE`,  `TRUE`,  `TRUE`
 
 into a vector
-
-1,1,0,0,1,0,0,1,1,1.
+```{r}
+as.numeric(x > 2)
+```
 
 When you take the mean
 \begin{equation}
@@ -763,7 +756,73 @@ sd&=&\sqrt{\frac{5^2 + (-5)^2 + 0^2 + 0^2}{4}} \\
 \end{eqnarray}
 
 The standard deviation has the same units as the data. 
-For example, when we measure height in cm then at the squaring step the units change to $cm^2$ but the squre root returns $cm$ again. 
+For example, when we measure height in cm then at the 
+squaring step the units change to $cm^2$ but the square root returns $cm$ again.
+
+### The R implementation of sd()
+
+When you use the R function `sd()` to check the computation we did above
+```{r}
+#| code-fold: false
+
+sd(c(5,-5,0,0))
+```
+
+Should this not be roughly $3.5$? Let's check the computation from above directly
+again using R
+
+```{r}
+#| code-fold: false
+
+round(sqrt((25+25+0+0)/4),1)
+```
+
+What is going on here. Is there a bug in the R implementation of `sd()`? No, the
+reason for this is that the R implementation of `sd()`implements the function for the
+standard deviation is called the *sample standard deviation* and it has the
+formula. In contrast to the formula we discussed above, which is called the
+*population standard deviation* it divides by $(n-1)$ - in our example by 3 - instead
+of by $n$ in our example 4. In the next lecture we we learn what the precise meaning of
+the terms sample and population is and what this means. Whenever we are interested in
+the standard deviation of the population we use the formula we have discussed. 
+Whenever we compute the standard deviation of a sample we use the sample standard deviation.
+Don't worry about this difference at this stage. For most practical purposes, especially
+when you have many observations this difference does not matter much. 
+
+But what do you do, when you want to have the exact value of the population standard
+deviation, as we wanted this before in the example, but R only provides the formula
+for the sample standard deviation? It is easy to transform one into the other using a little
+math. let me show you how to go from the formula for the sample standard deviation to
+the population standard deviation. Assume the data values are $x_1, x_2, x_3$ and $x_4$ and
+their mean or average is $\mu$. Then the formula for `sd()`would compute:
+\begin{equation*}
+\sqrt{\frac{(x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - \mu)^2 + (x_4 - \mu)^2)}{3}}
+\end{equation*}
+Now, if we multiply this term by $\sqrt{3/4}$, we get
+\begin{equation*}
+\sqrt{\frac{(x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - \mu)^2 + (x_4 - \mu)^2)}{3}}\sqrt{\frac{3}{4}}
+\end{equation*}
+which is the same as
+\begin{equation*}
+\sqrt{3 \frac{(x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - \mu)^2 + (x_4 - \mu)^2)}{3}\frac{1}{4}}
+\end{equation*}
+Now the 3 is cancelling out and we have
+\begin{equation*}
+\sqrt{\frac{(x_1 - \mu)^2 + (x_2 - \mu)^2 + (x_3 - \mu)^2 + (x_4 - \mu)^2)}{4}}
+\end{equation*}
+which is the population standard deviation. Those of you who learned the mathematics
+of powers in school will have no difficulties understanding this little mathematical
+argument. Those of you who did not learn this, don't worry. This discussion is just to
+explain to you a point you need to be aware of when working with `sd()`. So if we multiply
+`sd()`by $sqrt{(n-1)/n}$ we will get the population standard deviation. Let's check, using
+our example
+```{r}
+#| code-fold: false
+
+sd(c(5,-5,0,0))*sqrt(3/4)
+```
+and we get the same value as in the formula we used. Note that `sqrt()`is the R function 
+for computing the square root.
 
 ::: {.callout-note icon=false}
 
@@ -788,7 +847,7 @@ When we use the computer to summarize and communicate lots of data we need
 to get to know more of R. In particular we need to understand how to read data
 and select and manipulate variables. Let me lead you through some of the
 most basic concepts you need to know in order to do so. Finally we will
-apply our new skills to the hand on analysis of a real world anthropometric dataset
+apply our new skills to the hands on analysis of a real world anthropometric dataset
 from the DHS survey that help us to get a global picture about the nutritional
 situation for children and how this information could support us in setting
 policy priorities.
@@ -997,11 +1056,15 @@ from a public source on the internet. Since we begin from scratch with explainin
 the concepts of statistics as well as of R, we develop your R knowledge step by step 
 and explain only at the end of the course how to read data into R from various outside
 sources, from websites and in different file formats. While this is not difficult, it is tedious and
-perhaps unnecessarily confusing for a beginner. We  have therefore packed all datasets used in this
+perhaps unnecessarily confusing for a beginner. 
+
+We  have therefore packed all datasets used in this
 course into a so called `R package`. R-packages are libraries, which add new functionalities to R, usually new
 functions, which you yourself or somebody else has written. Packages must be installed once and then
-loaded to be usable for your current R section. The package with the name `JWL` contains all datasets
-used in the course and it has been preinstalled by your learning facilitators. You only have to load the
+loaded to be usable for your current R session. The package 
+with the name `JWL` contains all datasets
+used in the course and it has been preinstalled by your learning 
+facilitators. You only have to load the
 package, when you want to use data from it in your current R session.
 
 The R function, loading a package is called `library()` and it takes the package name as an argument.
@@ -1069,7 +1132,7 @@ what they mean. For the exact meaning we would need some form of documentation.
 #### Analyzing particular variables and subsets of data
 
 Dollar signs `$` are used to adress individual columns. For example, assume we would like
-to count the number of boys (i.e. sex = male) in our sample we could use this together
+to count the number of boys (i.e. sex == male) in our sample we could use this together
 with R's coercion rules by coding
 ```{r}
 #| code-fold: false
@@ -1109,7 +1172,7 @@ the variable `nt_ch_waz`as
 #| code-fold: false
 mean(dhs_data[ ,17])
 ```
-Note the expression [,17]. Since there is a 17 in the second position, we are
+Note the expression `[,17]`. Since there is a 17 in the second position, we are
 talking about column 17. And since the first position, before the comma, is
 empty, no rows are specified — so *all* rows are included. That boils down to:
 all of column 18.
@@ -1148,7 +1211,7 @@ sum(dhs_data$nt_ch_stunt*dhs_data$wt)/sum(dhs_data$wt)
 sum(dhs_data$nt_ch_wast*dhs_data$wt)/sum(dhs_data$wt)
 ```
 
-The proportion of stunted children in our sample is 39.5 % and the proportion
+The proportion of stunted children in our sample is 35.9 % and the proportion
 of wasted children is 10 %. Thus according to the WHO classification the prevalence in 
 stunting is very high and the prevalence in wasting is high.
 
@@ -1305,9 +1368,15 @@ Three versions of a hight histogram of males over age 18
 ## Exercise 3: Different scales in a histogram 
 
 An investigator draws a histogram for some height data, using the metric system. She is working in
-centimeters (cm). She wants to draw the histogram in a so called density scale, i.e. in a scale that the area of all the bars sum to 1. The vertical axes shows relative frequency
-and the top of the vertical axes is 10 percent per cm. Now she wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. On the 
-horizontal axis, she has to change 175 cm to ? mm, 200 cam to ? mm. On the vertical axis she has to change 10 percent per cm to ? percent per mm, and 5 percent per cm to ? percent per mm.
+centimeters (cm). She wants to draw the histogram in a so called density scale, 
+i.e. in a scale that the area of all the bars sum to 1. The vertical axes shows 
+relative frequency
+and the top of the vertical axes is 10 percent per cm. Now s
+he wants to convert to millimeter (mm). There are 10 millimeter to the centimeter. 
+On the 
+horizontal axis, she has to change 175 cm to ? mm, 200 cm to ? mm. 
+On the vertical axis she has to change 10 percent per cm to ? percent per mm, 
+and 5 percent per cm to ? percent per mm.
 
 :::
 
@@ -1362,7 +1431,7 @@ the room. Find the average height of all 11 people.
 enters the room. Find the average height of all 22 people.
 
 3. Twenty-one people in a room have a height of 1.68. A 22nd person enters the room. 
-How tall would he have to be to raise the average height by 1 inch.
+How tall would he have to be to raise the average height by 3 cm.
 
 
 :::
