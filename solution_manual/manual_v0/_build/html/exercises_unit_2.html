@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
+    <title>Exercises: Unit 2, Summarizing and communication lot’s of data &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
   
   
   
@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -170,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_1.html">Exercises: Unit 1, Categorical data and proportions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 2, Summarizing and communication lot’s of data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises</a></li>
@@ -349,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,11 +364,47 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises</h1>
+    <h1>Exercises: Unit 2, Summarizing and communication lot’s of data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-you-try">Now you try:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-histogram-of-monthly-wages">Exercise 1: Histogram of monthly wages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-which-histogram-is-right">Exercise 2: Which histogram is right?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-different-scales-in-a-histogram">Exercise 3: Different scales in a histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-find-the-average">Exercise 4: Find the average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-questions-about-averages">Exercise 5: Questions about averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-comparing-averages-without-computation">Exercise 6: Comparing averages without computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-adding-data-and-the-change-of-averages">Exercise 7: Adding data and the change of averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-true-or-false">Exercise 8: True or false?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-can-you-explain-this">Exercise 9: Can you explain this?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-working-with-standard-deviations">Exercise 10: Working with standard deviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-match-the-height">Exercise 11: Match the height</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-recognizing-the-spread-of-lists">Exercise 12: Recognizing the spread of lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-guess-the-standard-deviation">Exercise 13: Guess the standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-stylized-histograms-average-and-standard-deviation">Exercise 14: Stylized histograms, average and standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-estimating-the-size-of-average-and-standard-deviation">Exercise 15: Estimating the size of average and standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a-histogram-of-the-nile-river-flow-data">Exercise 1: A histogram of the Nile river flow data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-analyze-the-full-height-dataset">Exercise 2: Analyze the full height dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-energy-consumption-per-capita-accross-countries-in-the-world">Exercise 3: Energy consumption per capita accross countries in the world</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers">Project People count: The future of humanity in pictures and numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mean-age-of-a-population">The mean age of a population</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -374,8 +414,696 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-2-summarizing-and-communication-lot-s-of-data">
+<h1>Exercises: Unit 2, Summarizing and communication lot’s of data<a class="headerlink" href="#exercises-unit-2-summarizing-and-communication-lot-s-of-data" title="Permalink to this heading">#</a></h1>
+<section id="now-you-try">
+<h2>Now you try:<a class="headerlink" href="#now-you-try" title="Permalink to this heading">#</a></h2>
+<p>The standard deviation of (ii) is highter than (i). If we compute we get:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sd</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">9</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">12</span><span class="p">))</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">5</span><span class="o">/</span><span class="m">6</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">13</span><span class="p">))</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">5</span><span class="o">/</span><span class="m">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1</div><div class="output text_html">2</div></div>
+</div>
+<p>No, this is not possible</p>
+<p>Yes, an example would be 1,1,16. This list has an average of 6 and a standard deviation of about 7</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-histogram-of-monthly-wages">
+<h3>Exercise 1: Histogram of monthly wages<a class="headerlink" href="#exercise-1-histogram-of-monthly-wages" title="Permalink to this heading">#</a></h3>
+<p>It must be 25 %</p>
+</section>
+<section id="exercise-2-which-histogram-is-right">
+<h3>Exercise 2: Which histogram is right?<a class="headerlink" href="#exercise-2-which-histogram-is-right" title="Permalink to this heading">#</a></h3>
+<p>The answer is version 2 because version 1 does not have units and version 3 has the wrong units for the relative frequency scale</p>
+</section>
+<section id="exercise-3-different-scales-in-a-histogram">
+<h3>Exercise 3: Different scales in a histogram<a class="headerlink" href="#exercise-3-different-scales-in-a-histogram" title="Permalink to this heading">#</a></h3>
+<p>1750, 2000, 1, 0.5. The idea on density: If you spread 10 % evenly over 1 cm = 10 mm, there is 1 percent in each mm, i.e. 1 percent per mm.</p>
+</section>
+<section id="exercise-4-find-the-average">
+<h3>Exercise 4: Find the average<a class="headerlink" href="#exercise-4-find-the-average" title="Permalink to this heading">#</a></h3>
+<p>The average is at 4 and the mark must be at half the distance between 3 and 5</p>
+<p>For th next list the average is at 4.33 and the mark must be accordingly nearer to 5.</p>
+<p>The average must exactly hald the distance between the two crosses on the line</p>
+</section>
+<section id="exercise-5-questions-about-averages">
+<h3>Exercise 5: Questions about averages<a class="headerlink" href="#exercise-5-questions-about-averages" title="Permalink to this heading">#</a></h3>
+<p>If the average is 1 the list consists of 10 1s, if the average is 3 the list consists of 10 3’s. The average can not be 4. It has to be between 3 and 4.</p>
+</section>
+<section id="exercise-6-comparing-averages-without-computation">
+<h3>Exercise 6: Comparing averages without computation<a class="headerlink" href="#exercise-6-comparing-averages-without-computation" title="Permalink to this heading">#</a></h3>
+<p>The average of (ii) is bigger because it has one larger entry</p>
+</section>
+<section id="exercise-7-adding-data-and-the-change-of-averages">
+<h3>Exercise 7: Adding data and the change of averages<a class="headerlink" href="#exercise-7-adding-data-and-the-change-of-averages" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\((10 \times 1.69 + 1.96)/11 = 1.71\)</span></p>
+<p>You could also reason as follows: The new person is 27 cm taller than the old average. So it adds 27/11 to the old average of 169 cm</p>
+<p><span class="math notranslate nohighlight">\((1.68 \times 21 + 1.96)/22 = 1.69\)</span></p>
+<p>As the number of people goes up each new person has less affect on the average</p>
+<p>2.34 m, the person would have to be a giant. Solve the equation <span class="math notranslate nohighlight">\((1.68 \times 21 + x)/22 = 1.71\)</span> for <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</section>
+<section id="exercise-8-true-or-false">
+<h3>Exercise 8: True or false?<a class="headerlink" href="#exercise-8-true-or-false" title="Permalink to this heading">#</a></h3>
+<p>The conclusion does not follow. The data are cross sectional and not over time (longitudinal). The men with higher diastolic blood pressure are likely to die earlier, they will not be represented in the graph. Furthermore men with higher blood pressure are likely to be put on medications that reduce blood pressure.</p>
+</section>
+<section id="exercise-9-can-you-explain-this">
+<h3>Exercise 9: Can you explain this?<a class="headerlink" href="#exercise-9-can-you-explain-this" title="Permalink to this heading">#</a></h3>
+<p>During recessions, firms tend to lay off workers with the lowest seniority, who are also usually the lowest paid. This raises the average wage of those left on the payroll. When the recession ends, these low paid workers are rehired.</p>
+</section>
+<section id="exercise-10-working-with-standard-deviations">
+<h3>Exercise 10: Working with standard deviations<a class="headerlink" href="#exercise-10-working-with-standard-deviations" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\((188-173)/5\)</span>. This individual is thus away 3 standard deviations from the mean. <span class="math notranslate nohighlight">\((174.66 -173)/5\)</span> which is 0.33 standard deviations above average. <span class="math notranslate nohighlight">\(173 - 1.5 \times 5\)</span> which is 165.5 cm. This would be <span class="math notranslate nohighlight">\(173 - 2.25 \times 5\)</span> which amounts to 161.75 cm. The highest height would thus be <span class="math notranslate nohighlight">\(173 + 2.25 \times 5\)</span> which amounts to 185.25 cm.</p>
+</section>
+<section id="exercise-11-match-the-height">
+<h3>Exercise 11: Match the height<a class="headerlink" href="#exercise-11-match-the-height" title="Permalink to this heading">#</a></h3>
+<p>We compute the mean and the standard deviation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">150</span><span class="p">,</span><span class="w"> </span><span class="m">130</span><span class="p">,</span><span class="w"> </span><span class="m">180</span><span class="p">,</span><span class="w"> </span><span class="m">172</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="nf">sqrt</span><span class="p">(</span><span class="m">3</span><span class="o">/</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">158</div><div class="output text_html">19.5448202856921</div></div>
+</div>
+<p>The mean is 158 and the standard deviation is about 20. The first individual would be about average. The second would be at the lower boundary of usual height. The third is unusually high and the fourth is also unusally high.</p>
+</section>
+<section id="exercise-12-recognizing-the-spread-of-lists">
+<h3>Exercise 12: Recognizing the spread of lists<a class="headerlink" href="#exercise-12-recognizing-the-spread-of-lists" title="Permalink to this heading">#</a></h3>
+<p>Biggest c, smallest b</p>
+</section>
+<section id="exercise-13-guess-the-standard-deviation">
+<h3>Exercise 13: Guess the standard deviation<a class="headerlink" href="#exercise-13-guess-the-standard-deviation" title="Permalink to this heading">#</a></h3>
+<p>(a) 1, since all deviations from the average of 50 are plus or minus 1, (b) 2, (c) 2, (e) 10</p>
+</section>
+<section id="exercise-14-stylized-histograms-average-and-standard-deviation">
+<h3>Exercise 14: Stylized histograms, average and standard deviation<a class="headerlink" href="#exercise-14-stylized-histograms-average-and-standard-deviation" title="Permalink to this heading">#</a></h3>
+<p>(a) (i), (b) (ii), (c) (v)</p>
+</section>
+<section id="exercise-15-estimating-the-size-of-average-and-standard-deviation">
+<h3>Exercise 15: Estimating the size of average and standard deviation<a class="headerlink" href="#exercise-15-estimating-the-size-of-average-and-standard-deviation" title="Permalink to this heading">#</a></h3>
+<p>The avarages and standard deviations should be about the same, but the investigator with the biggest sample is likely to get the tallest man as well as the shortest. The bigger the sample, the bigger teh range between smallest and largest element.</p>
+</section>
+</section>
+<section id="exercises-r">
+<h2>Exercises R<a class="headerlink" href="#exercises-r" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-a-histogram-of-the-nile-river-flow-data">
+<h3>Exercise 1: A histogram of the Nile river flow data<a class="headerlink" href="#exercise-1-a-histogram-of-the-nile-river-flow-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">Nile</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data are measurments of the annual flow of the river Nile at Aswan (formerly Assuan), 1871–1970, in <span class="math notranslate nohighlight">\(10^8 m^3\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">Nile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/423b6590271cb77a7733a4287b3e4a1d8043762d22ae2aa5dfd19862d9823577.png" src="_images/423b6590271cb77a7733a4287b3e4a1d8043762d22ae2aa5dfd19862d9823577.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">Nile</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Histogram of Nile river flow data at Aswan Egypt&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Annual flow is recorded are 100 millions of cubic meters&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4bfaf2cf4dd4a859d0666d0c993acc0a11b203a7458386a192e2952e1bf0833a.png" src="_images/4bfaf2cf4dd4a859d0666d0c993acc0a11b203a7458386a192e2952e1bf0833a.png" />
+</div>
+</div>
+</section>
+<section id="exercise-2-analyze-the-full-height-dataset">
+<h3>Exercise 2: Analyze the full height dataset<a class="headerlink" href="#exercise-2-analyze-the-full-height-dataset" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">socr_height_weight</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="o">*</span><span class="m">2.54</span>
+<span class="n">dat</span><span class="o">$</span><span class="n">Weight</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Weight</span><span class="o">*</span><span class="m">0.4535924</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/592c8e47163b3b668ce7d8a44740dfe0424ad5695fa45b00dcafca9c6ca902ba.png" src="_images/592c8e47163b3b668ce7d8a44740dfe0424ad5695fa45b00dcafca9c6ca902ba.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9c422a85314254abde16929bb816da9412fbd9cadd3e4c7b192b10391024ea4d.png" src="_images/9c422a85314254abde16929bb816da9412fbd9cadd3e4c7b192b10391024ea4d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span>
+
+<span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Weight</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">172.702508535872</div><div class="output text_html">4.83026407886225</div><div class="output text_html">57.6422596349381</div><div class="output text_html">5.28929451202942</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.68356</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.9546</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">3</span><span class="o">*</span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">3</span><span class="o">*</span><span class="nf">sd</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Height</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.99796</div></div>
+</div>
+</section>
+<section id="exercise-3-energy-consumption-per-capita-accross-countries-in-the-world">
+<h3>Exercise 3: Energy consumption per capita accross countries in the world<a class="headerlink" href="#exercise-3-energy-consumption-per-capita-accross-countries-in-the-world" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="o">?</span><span class="n">energy_consumption_per_capita</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Data points show primary energy consumption per capita measured in kwh per person per year for various countries around the globe from 1965 - 2021</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">energy_consumption_per_capita</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;2018&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>Code</th><th scope=col>Year</th><th scope=col>Cons</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>39</th><td>Afghanistan        </td><td>AFG</td><td>2018</td><td> 1129.595</td></tr>
+	<tr><th scope=row>136</th><td>Albania            </td><td>ALB</td><td>2018</td><td>14455.136</td></tr>
+	<tr><th scope=row>191</th><td>Algeria            </td><td>DZA</td><td>2018</td><td>15898.334</td></tr>
+	<tr><th scope=row>233</th><td>American Samoa     </td><td>ASM</td><td>2018</td><td>25953.754</td></tr>
+	<tr><th scope=row>273</th><td>Angola             </td><td>AGO</td><td>2018</td><td> 3212.779</td></tr>
+	<tr><th scope=row>313</th><td>Antigua and Barbuda</td><td>ATG</td><td>2018</td><td>31520.479</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9662 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>Code</th><th scope=col>Year</th><th scope=col>Cons</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Afghanistan</td><td>AFG</td><td>1980</td><td> 583.2944</td></tr>
+	<tr><th scope=row>2</th><td>Afghanistan</td><td>AFG</td><td>1981</td><td> 666.3782</td></tr>
+	<tr><th scope=row>3</th><td>Afghanistan</td><td>AFG</td><td>1982</td><td> 725.6599</td></tr>
+	<tr><th scope=row>4</th><td>Afghanistan</td><td>AFG</td><td>1983</td><td> 912.1396</td></tr>
+	<tr><th scope=row>5</th><td>Afghanistan</td><td>AFG</td><td>1984</td><td> 941.3926</td></tr>
+	<tr><th scope=row>6</th><td>Afghanistan</td><td>AFG</td><td>1985</td><td> 939.6124</td></tr>
+	<tr><th scope=row>7</th><td>Afghanistan</td><td>AFG</td><td>1986</td><td> 976.6691</td></tr>
+	<tr><th scope=row>8</th><td>Afghanistan</td><td>AFG</td><td>1987</td><td>1592.7023</td></tr>
+	<tr><th scope=row>9</th><td>Afghanistan</td><td>AFG</td><td>1988</td><td>2805.6096</td></tr>
+	<tr><th scope=row>10</th><td>Afghanistan</td><td>AFG</td><td>1989</td><td>2700.4739</td></tr>
+	<tr><th scope=row>11</th><td>Afghanistan</td><td>AFG</td><td>1990</td><td>2557.5864</td></tr>
+	<tr><th scope=row>12</th><td>Afghanistan</td><td>AFG</td><td>1991</td><td>1045.3979</td></tr>
+	<tr><th scope=row>13</th><td>Afghanistan</td><td>AFG</td><td>1992</td><td> 632.8918</td></tr>
+	<tr><th scope=row>14</th><td>Afghanistan</td><td>AFG</td><td>1993</td><td> 575.6830</td></tr>
+	<tr><th scope=row>15</th><td>Afghanistan</td><td>AFG</td><td>1994</td><td> 516.2827</td></tr>
+	<tr><th scope=row>16</th><td>Afghanistan</td><td>AFG</td><td>1995</td><td> 410.1951</td></tr>
+	<tr><th scope=row>17</th><td>Afghanistan</td><td>AFG</td><td>1996</td><td> 386.4446</td></tr>
+	<tr><th scope=row>18</th><td>Afghanistan</td><td>AFG</td><td>1997</td><td> 358.4202</td></tr>
+	<tr><th scope=row>19</th><td>Afghanistan</td><td>AFG</td><td>1998</td><td> 342.0968</td></tr>
+	<tr><th scope=row>20</th><td>Afghanistan</td><td>AFG</td><td>1999</td><td> 334.5757</td></tr>
+	<tr><th scope=row>21</th><td>Afghanistan</td><td>AFG</td><td>2000</td><td> 284.5822</td></tr>
+	<tr><th scope=row>22</th><td>Afghanistan</td><td>AFG</td><td>2001</td><td> 215.8596</td></tr>
+	<tr><th scope=row>23</th><td>Afghanistan</td><td>AFG</td><td>2002</td><td> 195.9296</td></tr>
+	<tr><th scope=row>24</th><td>Afghanistan</td><td>AFG</td><td>2003</td><td> 219.9100</td></tr>
+	<tr><th scope=row>25</th><td>Afghanistan</td><td>AFG</td><td>2004</td><td> 194.5417</td></tr>
+	<tr><th scope=row>26</th><td>Afghanistan</td><td>AFG</td><td>2005</td><td> 239.8551</td></tr>
+	<tr><th scope=row>27</th><td>Afghanistan</td><td>AFG</td><td>2006</td><td> 293.0181</td></tr>
+	<tr><th scope=row>28</th><td>Afghanistan</td><td>AFG</td><td>2007</td><td> 370.4378</td></tr>
+	<tr><th scope=row>29</th><td>Afghanistan</td><td>AFG</td><td>2008</td><td> 618.7231</td></tr>
+	<tr><th scope=row>30</th><td>Afghanistan</td><td>AFG</td><td>2009</td><td> 984.1227</td></tr>
+	<tr><th scope=row>⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
+	<tr><th scope=row>10186</th><td>Zimbabwe</td><td>ZWE</td><td>1990</td><td>5872.587</td></tr>
+	<tr><th scope=row>10187</th><td>Zimbabwe</td><td>ZWE</td><td>1991</td><td>5864.751</td></tr>
+	<tr><th scope=row>10188</th><td>Zimbabwe</td><td>ZWE</td><td>1992</td><td>5283.862</td></tr>
+	<tr><th scope=row>10189</th><td>Zimbabwe</td><td>ZWE</td><td>1993</td><td>5009.730</td></tr>
+	<tr><th scope=row>10190</th><td>Zimbabwe</td><td>ZWE</td><td>1994</td><td>4723.183</td></tr>
+	<tr><th scope=row>10191</th><td>Zimbabwe</td><td>ZWE</td><td>1995</td><td>4619.312</td></tr>
+	<tr><th scope=row>10192</th><td>Zimbabwe</td><td>ZWE</td><td>1996</td><td>4692.042</td></tr>
+	<tr><th scope=row>10193</th><td>Zimbabwe</td><td>ZWE</td><td>1997</td><td>4585.107</td></tr>
+	<tr><th scope=row>10194</th><td>Zimbabwe</td><td>ZWE</td><td>1998</td><td>4584.613</td></tr>
+	<tr><th scope=row>10195</th><td>Zimbabwe</td><td>ZWE</td><td>1999</td><td>5247.149</td></tr>
+	<tr><th scope=row>10196</th><td>Zimbabwe</td><td>ZWE</td><td>2000</td><td>4900.144</td></tr>
+	<tr><th scope=row>10197</th><td>Zimbabwe</td><td>ZWE</td><td>2001</td><td>4609.955</td></tr>
+	<tr><th scope=row>10198</th><td>Zimbabwe</td><td>ZWE</td><td>2002</td><td>4572.823</td></tr>
+	<tr><th scope=row>10199</th><td>Zimbabwe</td><td>ZWE</td><td>2003</td><td>4431.698</td></tr>
+	<tr><th scope=row>10200</th><td>Zimbabwe</td><td>ZWE</td><td>2004</td><td>4092.676</td></tr>
+	<tr><th scope=row>10201</th><td>Zimbabwe</td><td>ZWE</td><td>2005</td><td>4211.419</td></tr>
+	<tr><th scope=row>10202</th><td>Zimbabwe</td><td>ZWE</td><td>2006</td><td>4194.021</td></tr>
+	<tr><th scope=row>10203</th><td>Zimbabwe</td><td>ZWE</td><td>2007</td><td>4085.941</td></tr>
+	<tr><th scope=row>10204</th><td>Zimbabwe</td><td>ZWE</td><td>2008</td><td>3370.732</td></tr>
+	<tr><th scope=row>10205</th><td>Zimbabwe</td><td>ZWE</td><td>2009</td><td>3293.989</td></tr>
+	<tr><th scope=row>10206</th><td>Zimbabwe</td><td>ZWE</td><td>2010</td><td>3632.863</td></tr>
+	<tr><th scope=row>10207</th><td>Zimbabwe</td><td>ZWE</td><td>2011</td><td>3900.153</td></tr>
+	<tr><th scope=row>10208</th><td>Zimbabwe</td><td>ZWE</td><td>2012</td><td>4153.979</td></tr>
+	<tr><th scope=row>10209</th><td>Zimbabwe</td><td>ZWE</td><td>2013</td><td>4148.077</td></tr>
+	<tr><th scope=row>10210</th><td>Zimbabwe</td><td>ZWE</td><td>2014</td><td>4018.925</td></tr>
+	<tr><th scope=row>10211</th><td>Zimbabwe</td><td>ZWE</td><td>2015</td><td>3956.026</td></tr>
+	<tr><th scope=row>10212</th><td>Zimbabwe</td><td>ZWE</td><td>2016</td><td>3326.073</td></tr>
+	<tr><th scope=row>10213</th><td>Zimbabwe</td><td>ZWE</td><td>2017</td><td>3226.617</td></tr>
+	<tr><th scope=row>10214</th><td>Zimbabwe</td><td>ZWE</td><td>2018</td><td>3289.887</td></tr>
+	<tr><th scope=row>10215</th><td>Zimbabwe</td><td>ZWE</td><td>2019</td><td>3374.877</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">scipen</span><span class="o">=</span><span class="m">999</span><span class="p">)</span>
+<span class="nf">hist</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Cons</span><span class="p">,</span><span class="w"> </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Primary energy consumption per capita around the world in 2018&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Primary energy consumption kwh per person per year&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ddc51b33acf2015b785f40d74ebcab9d601f888acf089d6cac4498d7028f1f0f.png" src="_images/ddc51b33acf2015b785f40d74ebcab9d601f888acf089d6cac4498d7028f1f0f.png" />
+</div>
+</div>
+<p>Most countries consume below 50000 and fes more than that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">length</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">Country</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2018</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Cons</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">50000</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">34</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">$</span><span class="n">Country</span><span class="p">[</span><span class="n">df</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2018</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">Cons</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">50000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'Australia'</li><li>'Bahrain'</li><li>'Belgium'</li><li>'Bermuda'</li><li>'Brunei'</li><li>'Canada'</li><li>'Estonia'</li><li>'Faeroe Islands'</li><li>'Falkland Islands'</li><li>'Finland'</li><li>'Greenland'</li><li>'Iceland'</li><li>'Kuwait'</li><li>'Luxembourg'</li><li>'Malta'</li><li>'Netherlands'</li><li>'New Caledonia'</li><li>'New Zealand'</li><li>'North America'</li><li>'Norway'</li><li>'Oman'</li><li>'Qatar'</li><li>'Russia'</li><li>'Saint Pierre and Miquelon'</li><li>'Saudi Arabia'</li><li>'Singapore'</li><li>'South Korea'</li><li>'Sweden'</li><li>'Taiwan'</li><li>'Trinidad and Tobago'</li><li>'Turkmenistan'</li><li>'United Arab Emirates'</li><li>'United States'</li><li>'United States Virgin Islands'</li></ol>
+</div></div>
+</div>
+</section>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-pictures-and-numbers">
+<h2>Project People count: The future of humanity in pictures and numbers<a class="headerlink" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers" title="Permalink to this heading">#</a></h2>
+<section id="the-mean-age-of-a-population">
+<h3>The mean age of a population<a class="headerlink" href="#the-mean-age-of-a-population" title="Permalink to this heading">#</a></h3>
+<p>In the previous project we had to read the population count numbers of Kenya from a table and transfer them manually to the computer to do, for example, a population bar chart by age groups. Now that you know much more R, you can leverage the power of R to read and select data by computer.</p>
+<p>The population data we used in the previous project for unit 1 are filed and stored in a dataset called
+<code class="docutils literal notranslate"><span class="pre">population_statistics_by_age_and_sex</span></code> and is contained in the <code class="docutils literal notranslate"><span class="pre">JWL</span></code> package. Let us load the package and the data and store them in an object with a shorter name, so it is easier to work with these data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">population_statistics_by_age_and_sex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us inspect the data by using the R functions <code class="docutils literal notranslate"><span class="pre">dim()</span></code>, <code class="docutils literal notranslate"><span class="pre">head()</span></code>and <code class="docutils literal notranslate"><span class="pre">tail()</span></code>. These functions give us a brief glimps how the data roughly look like. With <code class="docutils literal notranslate"><span class="pre">dim()</span></code>we get the number of rows and columns. <code class="docutils literal notranslate"><span class="pre">head()</span></code>shows us the first few lines of the dataframe. <code class="docutils literal notranslate"><span class="pre">tail()</span></code> is kind of mirror to <code class="docutils literal notranslate"><span class="pre">heads()</span></code>, for it shows us the end of the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dim</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1369480</li><li>6</li></ol>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>0-4  </td><td>NA</td></tr>
+	<tr><th scope=row>2</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>5-9  </td><td>NA</td></tr>
+	<tr><th scope=row>3</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>10-14</td><td>NA</td></tr>
+	<tr><th scope=row>4</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>15-19</td><td>NA</td></tr>
+	<tr><th scope=row>5</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>20-24</td><td>NA</td></tr>
+	<tr><th scope=row>6</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>25-29</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">tail</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1369475</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>70-74</td><td>846700</td></tr>
+	<tr><th scope=row>1369476</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>75-79</td><td>760492</td></tr>
+	<tr><th scope=row>1369477</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>80-84</td><td>616095</td></tr>
+	<tr><th scope=row>1369478</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>85-89</td><td>411166</td></tr>
+	<tr><th scope=row>1369479</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>90-94</td><td>180252</td></tr>
+	<tr><th scope=row>1369480</th><td>Zimbabwe</td><td>ZW</td><td>2100</td><td>M</td><td>95-99</td><td> 64552</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>There are six variables, <code class="docutils literal notranslate"><span class="pre">Country</span></code>, <code class="docutils literal notranslate"><span class="pre">ISO2</span></code> which encode contry name and the two letter international country code. Both allow us to idnetify countries. The dataframe is huge and we can assume that this must come from the fact that
+it contains most countries in the world, which are today about 200. The <code class="docutils literal notranslate"><span class="pre">Year</span></code> variable seems to start in 1950 and end in 2100. So our data must contain historical records as well as predictions. The data are stratified by <code class="docutils literal notranslate"><span class="pre">Sex</span></code>, here obviously encoded as <code class="docutils literal notranslate"><span class="pre">M</span></code> for male and <code class="docutils literal notranslate"><span class="pre">F</span></code> for female, as well as by age groups. The start at <code class="docutils literal notranslate"><span class="pre">0-4</span></code>and end at <code class="docutils literal notranslate"><span class="pre">95-99</span></code>. Let’s make a check whether our guess is reasonable. Assume we have roughly 200 countries and 150 years, 2 Sexes and 20 age groups, we would get around 1.200.000 observations. So we are at about the right order of magnitude. Note that in the beginning the dataframe shows entries <code class="docutils literal notranslate"><span class="pre">NA</span></code>. This is R’s symbol to mark missing observations. <code class="docutils literal notranslate"><span class="pre">POP</span></code>finally is the actual count of the number of people of a certain sex and age group in a country in a given year.</p>
+<ol class="arabic simple">
+<li><p>Use the R subsetting rules to extract the population data for the year 2022 for three countries: Kenya, the
+United States of America and Japan. When you have managed to do that you can uses the table
+from the last   project to see whether you get the same data for Kenya.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ke_2022</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">ISO2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;KE&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">us_2022</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">ISO2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;US&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">jp_2022</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">ISO2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;JP&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ke_2022</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 40 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>612921</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>0-4  </td><td>3487490</td></tr>
+	<tr><th scope=row>612922</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>5-9  </td><td>3404421</td></tr>
+	<tr><th scope=row>612923</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>10-14</td><td>3444606</td></tr>
+	<tr><th scope=row>612924</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>15-19</td><td>3225971</td></tr>
+	<tr><th scope=row>612925</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>20-24</td><td>2656730</td></tr>
+	<tr><th scope=row>612926</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>25-29</td><td>2139208</td></tr>
+	<tr><th scope=row>612927</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>30-34</td><td>1946994</td></tr>
+	<tr><th scope=row>612928</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>35-39</td><td>1849778</td></tr>
+	<tr><th scope=row>612929</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>40-44</td><td>1606763</td></tr>
+	<tr><th scope=row>612930</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>45-49</td><td>1170869</td></tr>
+	<tr><th scope=row>612931</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>50-54</td><td> 858998</td></tr>
+	<tr><th scope=row>612932</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>55-59</td><td> 672025</td></tr>
+	<tr><th scope=row>612933</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>60-64</td><td> 516769</td></tr>
+	<tr><th scope=row>612934</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>65-69</td><td> 387773</td></tr>
+	<tr><th scope=row>612935</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>70-74</td><td> 272320</td></tr>
+	<tr><th scope=row>612936</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>75-79</td><td> 168499</td></tr>
+	<tr><th scope=row>612937</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>80-84</td><td>  93724</td></tr>
+	<tr><th scope=row>612938</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>85-89</td><td>  39226</td></tr>
+	<tr><th scope=row>612939</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>90-94</td><td>  10461</td></tr>
+	<tr><th scope=row>612940</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>95-99</td><td>   1520</td></tr>
+	<tr><th scope=row>612941</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>0-4  </td><td>3531278</td></tr>
+	<tr><th scope=row>612942</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>5-9  </td><td>3431166</td></tr>
+	<tr><th scope=row>612943</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>10-14</td><td>3473103</td></tr>
+	<tr><th scope=row>612944</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>15-19</td><td>3249738</td></tr>
+	<tr><th scope=row>612945</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>20-24</td><td>2664966</td></tr>
+	<tr><th scope=row>612946</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>25-29</td><td>2119949</td></tr>
+	<tr><th scope=row>612947</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>30-34</td><td>1926219</td></tr>
+	<tr><th scope=row>612948</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>35-39</td><td>1830280</td></tr>
+	<tr><th scope=row>612949</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>40-44</td><td>1610246</td></tr>
+	<tr><th scope=row>612950</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>45-49</td><td>1196519</td></tr>
+	<tr><th scope=row>612951</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>50-54</td><td> 890662</td></tr>
+	<tr><th scope=row>612952</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>55-59</td><td> 679943</td></tr>
+	<tr><th scope=row>612953</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>60-64</td><td> 488074</td></tr>
+	<tr><th scope=row>612954</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>65-69</td><td> 340546</td></tr>
+	<tr><th scope=row>612955</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>70-74</td><td> 229912</td></tr>
+	<tr><th scope=row>612956</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>75-79</td><td> 138357</td></tr>
+	<tr><th scope=row>612957</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>80-84</td><td>  73093</td></tr>
+	<tr><th scope=row>612958</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>85-89</td><td>  28473</td></tr>
+	<tr><th scope=row>612959</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>90-94</td><td>   6918</td></tr>
+	<tr><th scope=row>612960</th><td>Kenya</td><td>KE</td><td>2022</td><td>M</td><td>95-99</td><td>    902</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>Comparing with the table shows that the numbers match. Note that we could have referred to the country also by
+name “Kenya”, for example. In the case of US we needed to take some care. The US is recorded with the Country variable “United States of America”. This is one string with blanks between the words. To make R treat this string as such, we would have to refer to <code class="docutils literal notranslate"><span class="pre">dat$&quot;United</span> <span class="pre">States</span> <span class="pre">of</span> <span class="pre">America&quot;</span></code>. Otherwise R, in the case without “”, R would read the string as <code class="docutils literal notranslate"><span class="pre">dat$United</span></code> and would not find anything matching. It also would not not what to do with <code class="docutils literal notranslate"><span class="pre">States</span></code>, <code class="docutils literal notranslate"><span class="pre">of</span></code> and <code class="docutils literal notranslate"><span class="pre">America</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Make a barplot for the total population numbers (i.e. women plus men) for
+each age group for all the three countries. This requires you again to use the
+R subsetting rules correctly. Describe in your own words what you see as the
+main difference between the charts.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">numbers_ke</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">ke_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ke_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">]</span>
+<span class="n">numbers_us</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">us_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">us_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">us_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">us_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">]</span>
+<span class="n">numbers_jp</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">jp_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">jp_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">numbers_ke</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">levels</span><span class="p">(</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">Age</span><span class="p">),</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Total population of Kenya in 2022 per age group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f7e2e392b8a6b23742cf6eb820fce3768d604417b37f87bcd97574a377e78df1.png" src="_images/f7e2e392b8a6b23742cf6eb820fce3768d604417b37f87bcd97574a377e78df1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">numbers_us</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">levels</span><span class="p">(</span><span class="n">us_2022</span><span class="o">$</span><span class="n">Age</span><span class="p">),</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Total population of United States in 2022 per age group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0315fb501e4759ddb30135e7fc232c19f59f52d286f7eed2b38bea66cc8289a7.png" src="_images/0315fb501e4759ddb30135e7fc232c19f59f52d286f7eed2b38bea66cc8289a7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">barplot</span><span class="p">(</span><span class="n">numbers_jp</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">levels</span><span class="p">(</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">Age</span><span class="p">),</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Total population of Kenya in 2022 per age group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7b9b1a533adae8f0e0455e44c86af55b3e94da3ea67b31cfcdc49ba10a611530.png" src="_images/7b9b1a533adae8f0e0455e44c86af55b3e94da3ea67b31cfcdc49ba10a611530.png" />
+</div>
+</div>
+<p>Kenya has many young people, the barchart has large bars at the bottom. Demographers call this a bottom layered country. The US has the larges bars in the middle, middle layered and Japan in the top, top layered.</p>
+<ol class="arabic simple" start="3">
+<li><p>Assume we would want to compute the mean age of the population in each country. Think about how you can do this given the data format you encounter here. The problem of the format is that we do not have a list of individual ages where we just have to apply the <code class="docutils literal notranslate"><span class="pre">mean()</span></code> function but we just have age groups and counts per group. Think about how we could compute a mean age in this case and compute the mean age using your procedure for the three countries. Comment whether your result is consistent with the barcharts. Hint: When you create a new column, you need for a computation you can always append this new column to your dataframe like this. Assume we have a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>with variables <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. We would like to add a variable <code class="docutils literal notranslate"><span class="pre">z</span></code> which is the sum of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. In this case we would just write <code class="docutils literal notranslate"><span class="pre">df$z</span>&#160; <span class="pre">&lt;-</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code> and a new column <code class="docutils literal notranslate"><span class="pre">z</span></code> would be appended to <code class="docutils literal notranslate"><span class="pre">df</span></code>.</p></li>
+</ol>
+<p>The main idea we need to compute a mean age for the grouped data is to see that the mid point of each age group gives us the mean age in this group. When we take this mean and multiply be the number of people in this age group we get an estimate for the total age in this group, when we assume all members of the group have about the mean
+age. So here is the idea. Assume we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">toy_age</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are all ages in the interval 0 to 4 years. The average age in the list is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">toy_age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">1.91666666666667</div></div>
+</div>
+<p>Not exactly 2 but also not too bad. So we do hopefully not make too big of a mistake like this. So lets go to the actual computation using this idea</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 1: Create a new variable of the age group interval mid points for all age groups. Note that there are many ways</span>
+<span class="c1"># to do this, including creating a variable by hand and adding it. Here we use the sequence function of R</span>
+
+<span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">ke_2022</span><span class="o">$</span><span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mid</span>
+
+<span class="c1"># Step 2: Add up the product between mid and POP for all age groups and divide by the total population</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">mid</span><span class="o">*</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">ke_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">24.2350859595261</div></div>
+</div>
+<p>Kenya has a mean age of 24</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">us_2022</span><span class="o">$</span><span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mid</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">us_2022</span><span class="o">$</span><span class="n">mid</span><span class="o">*</span><span class="n">us_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">us_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">39.5162642880378</div></div>
+</div>
+<p>The US has a mean age of 40</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">jp_2022</span><span class="o">$</span><span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mid</span>
+<span class="nf">sum</span><span class="p">(</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">mid</span><span class="o">*</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">jp_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">47.2826355354766</div></div>
+</div>
+<p>Japan has a mean age of 47</p>
+<p>This is in line with the bar charts, because the countries have the bulk of people at the bottom, in the middle and at the top of age groups.</p>
+<ol class="arabic simple" start="4">
+<li><p>How does your country compare with these three?</p></li>
+</ol>
+<p>My country is Austria:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">at_2022</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">ISO2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;AT&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">numbers_at</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">at_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">at_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">at_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">at_2022</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">]</span>
+
+<span class="nf">barplot</span><span class="p">(</span><span class="n">numbers_at</span><span class="p">,</span><span class="w"> </span><span class="n">names.arg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">levels</span><span class="p">(</span><span class="n">at_2022</span><span class="o">$</span><span class="n">Age</span><span class="p">),</span><span class="w"> </span><span class="n">horiz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">,</span><span class="w"> </span><span class="n">las</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span>
+<span class="w">       </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Total population of Austria in 2022 per age group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1da23dd101f8befef7acbfb9ea40595563782452a1515e54eed9a04108ac7a0d.png" src="_images/1da23dd101f8befef7acbfb9ea40595563782452a1515e54eed9a04108ac7a0d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+<span class="n">at_2022</span><span class="o">$</span><span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mid</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">at_2022</span><span class="o">$</span><span class="n">mid</span><span class="o">*</span><span class="n">at_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">at_2022</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">43.430240348906</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">Austria</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">between</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">US</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Japan</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">tends</span><span class="w"> </span><span class="n">towards</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">top</span><span class="w"> </span><span class="n">layered</span><span class="w"> </span><span class="n">country.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="ow">in</span> <span class="n">parse</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">srcfile</span> <span class="o">=</span> <span class="n">src</span><span class="p">):</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">:</span> <span class="n">unexpected</span> <span class="n">symbol</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">Austria</span> <span class="ow">is</span>
+            <span class="o">^</span>
+<span class="ne">Traceback</span>:
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,6 +1160,48 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-you-try">Now you try:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-histogram-of-monthly-wages">Exercise 1: Histogram of monthly wages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-which-histogram-is-right">Exercise 2: Which histogram is right?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-different-scales-in-a-histogram">Exercise 3: Different scales in a histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-find-the-average">Exercise 4: Find the average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-questions-about-averages">Exercise 5: Questions about averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-comparing-averages-without-computation">Exercise 6: Comparing averages without computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-adding-data-and-the-change-of-averages">Exercise 7: Adding data and the change of averages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-true-or-false">Exercise 8: True or false?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-can-you-explain-this">Exercise 9: Can you explain this?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-working-with-standard-deviations">Exercise 10: Working with standard deviations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-11-match-the-height">Exercise 11: Match the height</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-12-recognizing-the-spread-of-lists">Exercise 12: Recognizing the spread of lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-13-guess-the-standard-deviation">Exercise 13: Guess the standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-14-stylized-histograms-average-and-standard-deviation">Exercise 14: Stylized histograms, average and standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-15-estimating-the-size-of-average-and-standard-deviation">Exercise 15: Estimating the size of average and standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a-histogram-of-the-nile-river-flow-data">Exercise 1: A histogram of the Nile river flow data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-analyze-the-full-height-dataset">Exercise 2: Analyze the full height dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-energy-consumption-per-capita-accross-countries-in-the-world">Exercise 3: Energy consumption per capita accross countries in the world</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers">Project People count: The future of humanity in pictures and numbers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-mean-age-of-a-population">The mean age of a population</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

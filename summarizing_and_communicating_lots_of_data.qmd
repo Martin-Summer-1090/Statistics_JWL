@@ -49,7 +49,7 @@ R language. This will enlarge your abilities to work with data by a huge and imp
 
 ## Keywords
 
-** Histogram**: A histogram is a visual device allowing you to summarize lots of data
+**Histogram**: A histogram is a visual device allowing you to summarize lots of data
 in a graph that aggregates data into bins and plots a distribution of the counts across
 bins. In contrast to a bar plot, which visualizes categorical data, a histogram 
 depicts the frequency distribution 
@@ -1542,10 +1542,9 @@ unusually short, about average, unusually tall
     
 Each of the following lists has an average of 50. For which one is the spread of
 the numbers around the average biggest? Smallest?
-
-(i)     0, 20, 40, 50, 60, 80, 100
-(ii)    0, 48, 49, 50, 51, 52, 100
-(iii)   0,1,2,50,98, 99, 100
+(a)     0, 20, 40, 50, 60, 80, 100
+(b)    0, 48, 49, 50, 51, 52, 100
+(c)   0,1,2,50,98, 99, 100
 
 :::
 
@@ -1614,7 +1613,7 @@ for both investigators?
 
 ::: {.callout-note}
 
-## Exercise 15: A histogram of the Nile river flow data
+## Exercise 1: A histogram of the Nile river flow data
 
 Base R comes bundled with certain datasets which are available to R when you start it. One of these
 data are flow measurements of the river Nile at Aswan in Egypt. This dataset is called `Nile`. 
@@ -1629,7 +1628,7 @@ data are flow measurements of the river Nile at Aswan in Egypt. This dataset is 
 
 ::: {.callout-note}
 
-## Exercise 16: Analyze the full height dataset
+## Exercise 2: Analyze the full height dataset
 
 Load the `JWL` package of datasets and store the variable `socr_height_weight` in a 
 variable called `dat`. Use R's help function to learn what the data are.
@@ -1645,7 +1644,7 @@ variable called `dat`. Use R's help function to learn what the data are.
 
 ::: {.callout-note}
 
-## Exercise 17: Energy consumption per capita accross countries in the world
+## Exercise 3: Energy consumption per capita accross countries in the world
 
 1. Load the dataset `energy_consumption_per_capita` from the JWL package and use the R help function
 to learn what this dataset describes.
@@ -1656,6 +1655,90 @@ to learn what this dataset describes.
 
 :::
 
-### Exercise Project
+## Project People count: The future of humanity in pictures and numbers
 
-To be added.
+### The mean age of a population
+
+In the previous project we had to read the population count 
+numbers of Kenya from a table and transfer them manually to 
+the computer to do, for example, a population bar chart by 
+age groups. Now that you know much more R, you can leverage 
+the power of R to read and select data by computer.
+
+The population data we used in the previous project for 
+unit 1 are filed and stored in a dataset called 
+`population_statistics_by_age_and_sex` and is contained in the `JWL` package. 
+Let us load the package and the data and store them in an object 
+with a shorter name, so it is easier to work with these data.
+
+```{r}
+#| code-fold: false
+
+library(JWL)
+dat <- population_statistics_by_age_and_sex
+```
+
+Let us inspect the data by using the R functions `dim()`, `head()`and `tail()`. These functions give us a brief glimps how the data roughly look like. With `dim()`we get the number of rows and columns. `head()`shows us the first few lines of the dataframe. `tail()` is kind of mirror to `heads()`, for it shows us the end of the dataframe.
+
+```{r}
+#| code-fold: false
+dim(dat)
+```
+
+```{r}
+#| code-fold: false
+head(dat)
+```
+
+```{r}
+#| code-fold: false
+
+tail(dat)
+```
+
+There are six variables, `Country`, `ISO2` which encode contry name 
+and the two letter international country code. Both allow us to 
+identify countries. The dataframe is huge and we can assume that 
+this must come from the fact that
+it contains most countries in the world, which are today about 200. 
+The Year variable seems to start in 1950 and end in 2100. So our 
+data must contain historical records as well as predictions. The 
+data are stratified by `Sex`, here obviously encoded as `M` for 
+male and `F` for female, as well as by age groups. 
+The start at `0-4`and end at `95-99`. Let's make a 
+check whether our guess is reasonable. Assume we have 
+roughly 200 countries and 150 years, 2 Sexes and 20 age 
+groups, we would get around 1.200.000 observations. So 
+we are at about the right order of magnitude. Note that in
+the beginning the dataframe shows entries `NA`. This is R's 
+symbol to mark missing observations.
+
+1. Use the R subsetting rules to extract the population data 
+for the year 2022 for three countries: Kenya, the 
+United States of America and Japan. When you have 
+managed to do that you can uses the table 
+from the last   project to see whether you get the same data for Kenya.
+
+2. Make a barplot for the total population numbers (i.e. women plus men) for
+each age group for all the three countries. This requires you again to use the
+R subsetting rules correctly. Describe in your own words what you see as the
+main difference between the charts.
+
+3. Assume we would want to compute the mean age of the 
+population in each country. Think about how you can do 
+this given the data format you encounter here. The problem 
+of the format is that we do not have a list of individual 
+ages where we just have to apply the `mean()` function but 
+we just have age groups and counts per group. Think about 
+how we could compute a mean age in this case and compute 
+the mean age using your procedure for the three countries. 
+Comment whether your result is consistent with the barcharts.
+Hint: When you create a new column, you need for a computation 
+you can always append this new column to your dataframe like 
+this. Assume we have a dataframe `df`with variables `x` and `y`. 
+We would like to add a variable `z` which is the sum of `x` and `y`. 
+In this case we would just write `df$z  <- x + y` and a new 
+column `z` would be appended to `df`.
+
+4. How does your country compare to these three?
+
