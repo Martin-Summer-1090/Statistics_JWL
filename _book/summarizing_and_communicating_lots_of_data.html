@@ -248,7 +248,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">3.5.1</span> Exercises</a></li>
   <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">3.5.2</span> Exercises R</a></li>
-  <li><a href="#exercise-project" id="toc-exercise-project" class="nav-link" data-scroll-target="#exercise-project"><span class="header-section-number">3.5.3</span> Exercise Project</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">3.6</span> Project People count: The future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#the-mean-age-of-a-population" id="toc-the-mean-age-of-a-population" class="nav-link" data-scroll-target="#the-mean-age-of-a-population"><span class="header-section-number">3.6.1</span> The mean age of a population</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1647,9 +1650,55 @@ Exercise 3: Energy consumption per capita accross countries in the world
 </div>
 </div>
 </section>
-<section id="exercise-project" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="exercise-project"><span class="header-section-number">3.5.3</span> Exercise Project</h3>
-<p>To be added.</p>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="project-people-count-the-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">3.6</span> Project People count: The future of humanity in pictures and numbers</h2>
+<section id="the-mean-age-of-a-population" class="level3" data-number="3.6.1">
+<h3 data-number="3.6.1" class="anchored" data-anchor-id="the-mean-age-of-a-population"><span class="header-section-number">3.6.1</span> The mean age of a population</h3>
+<p>In the previous project we had to read the population count numbers of Kenya from a table and transfer them manually to the computer to do, for example, a population bar chart by age groups. Now that you know much more R, you can leverage the power of R to read and select data by computer.</p>
+<p>The population data we used in the previous project for unit 1 are filed and stored in a dataset called <code>population_statistics_by_age_and_sex</code> and is contained in the <code>JWL</code> package. Let us load the package and the data and store them in an object with a shorter name, so it is easier to work with these data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> population_statistics_by_age_and_sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let us inspect the data by using the R functions <code>dim()</code>, <code>head()</code>and <code>tail()</code>. These functions give us a brief glimps how the data roughly look like. With <code>dim()</code>we get the number of rows and columns. <code>head()</code>shows us the first few lines of the dataframe. <code>tail()</code> is kind of mirror to <code>heads()</code>, for it shows us the end of the dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1369480       6</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Country ISO2 Year Sex   Age POP
+1 Andorra   AD 1950   F   0-4  NA
+2 Andorra   AD 1950   F   5-9  NA
+3 Andorra   AD 1950   F 10-14  NA
+4 Andorra   AD 1950   F 15-19  NA
+5 Andorra   AD 1950   F 20-24  NA
+6 Andorra   AD 1950   F 25-29  NA</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(dat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Country ISO2 Year Sex   Age    POP
+1369475 Zimbabwe   ZW 2100   M 70-74 846700
+1369476 Zimbabwe   ZW 2100   M 75-79 760492
+1369477 Zimbabwe   ZW 2100   M 80-84 616095
+1369478 Zimbabwe   ZW 2100   M 85-89 411166
+1369479 Zimbabwe   ZW 2100   M 90-94 180252
+1369480 Zimbabwe   ZW 2100   M 95-99  64552</code></pre>
+</div>
+</div>
+<p>There are six variables, <code>Country</code>, <code>ISO2</code> which encode contry name and the two letter international country code. Both allow us to identify countries. The dataframe is huge and we can assume that this must come from the fact that it contains most countries in the world, which are today about 200. The Year variable seems to start in 1950 and end in 2100. So our data must contain historical records as well as predictions. The data are stratified by <code>Sex</code>, here obviously encoded as <code>M</code> for male and <code>F</code> for female, as well as by age groups. The start at <code>0-4</code>and end at <code>95-99</code>. Let’s make a check whether our guess is reasonable. Assume we have roughly 200 countries and 150 years, 2 Sexes and 20 age groups, we would get around 1.200.000 observations. So we are at about the right order of magnitude. Note that in the beginning the dataframe shows entries <code>NA</code>. This is R’s symbol to mark missing observations.</p>
+<ol type="1">
+<li><p>Use the R subsetting rules to extract the population data for the year 2022 for three countries: Kenya, the United States of America and Japan. When you have managed to do that you can uses the table from the last project to see whether you get the same data for Kenya.</p></li>
+<li><p>Make a barplot for the total population numbers (i.e.&nbsp;women plus men) for each age group for all the three countries. This requires you again to use the R subsetting rules correctly. Describe in your own words what you see as the main difference between the charts.</p></li>
+<li><p>Assume we would want to compute the mean age of the population in each country. Think about how you can do this given the data format you encounter here. The problem of the format is that we do not have a list of individual ages where we just have to apply the <code>mean()</code> function but we just have age groups and counts per group. Think about how we could compute a mean age in this case and compute the mean age using your procedure for the three countries. Comment whether your result is consistent with the barcharts. Hint: When you create a new column, you need for a computation you can always append this new column to your dataframe like this. Assume we have a dataframe <code>df</code>with variables <code>x</code> and <code>y</code>. We would like to add a variable <code>z</code> which is the sum of <code>x</code> and <code>y</code>. In this case we would just write <code>df$z  &lt;- x + y</code> and a new column <code>z</code> would be appended to <code>df</code>.</p></li>
+<li><p>How does your country compare to these three?</p></li>
+</ol>
 
 
 </section>
