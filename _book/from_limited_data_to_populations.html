@@ -264,10 +264,6 @@ div.csl-indent {
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.8.1</span> Exercises</a></li>
   <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">4.8.2</span> Exercises R</a></li>
   </ul></li>
-  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">4.9</span> Project People count: The present and future of humanity in pictures and numbers</a>
-  <ul class="collapse">
-  <li><a href="#age-percentiles-in-kenya-the-united-states-and-japan" id="toc-age-percentiles-in-kenya-the-united-states-and-japan" class="nav-link" data-scroll-target="#age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">4.9.1</span> Age percentiles in Kenya, the United States and Japan</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -648,7 +644,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once. We have now implemented in the computer an equivalent to physically throwing a die.</p>
@@ -669,15 +665,15 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -696,7 +692,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -707,7 +703,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -1013,7 +1009,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 174.7457 171.7543 178.2539 167.1265</code></pre>
+<pre><code>[1] 173.2346 174.9669 171.0302 182.4812</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1030,7 +1026,7 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>174.7457 is 0.423 from the average. In standard units therefore 174.7457 is 0.423.</p>
+<p>173.2346 is 0.1102 from the average. In standard units therefore 173.2346 is 0.1102.</p>
 <p>Standard units are used in the DHS data on nutrition of children and adults which we worked with in the last exercise of chapter 3. Standard units are also often referred to as the <strong>z-score</strong>. Let us go back to these data and look at them more closely again.</p>
 <p>Let us go back to the histogram of human height we already discussed in the chapter 3.</p>
 <div class="cell">
@@ -1396,17 +1392,6 @@ Exercise 8: Practicing the tapply function
 <p>In the section about analyzing and communicating lots of data we had used the <code>dhs</code> data <code>children_nutrtition_data</code> from the <code>JWL</code> package to compute the percentage of stunted children by region. Try to compute the answer by using the <code>tapply()</code> function instead of taking the approach we took before using subsetting rules. Hint: There is a complication because we need to take into account the weighting variable and not only the pure count of cases. When you do the computation of proportions you need to create a new variable and apply <code>tapply()</code>twice.</p>
 </div>
 </div>
-</section>
-</section>
-<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">4.9</span> Project People count: The present and future of humanity in pictures and numbers</h2>
-<section id="age-percentiles-in-kenya-the-united-states-and-japan" class="level3" data-number="4.9.1">
-<h3 data-number="4.9.1" class="anchored" data-anchor-id="age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">4.9.1</span> Age percentiles in Kenya, the United States and Japan</h3>
-<p>In the last step of our project, people count, we were trying to compute the mean age for Kenya, the US and Japan. But if we look at the distribution of the number of people across age groups, we see not so much symmetric but rather asymmetric distributions. So let’s continue our analysis here by considering percentiles and look at the median as one percentile, which can be alternatively used to characterize the center of a distribution. Let us also study spreads using the interquartile range.</p>
-<p>In order to do so, we can again load the data and make country subsets, as we did last time. Those of you who successfully completed this task last time, can now just recycle the code from the last unit. The others can give it a second trial here. Note the advantage of the notebook. You can now reuse your old code.</p>
-<ol type="1">
-<li>Find the median age group for Kenya, the United states, Japan and for your own country, by constructing a dataframe extended by the cumulative count of people across age groups and the proportion of the cumulative count in the total population.</li>
-</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

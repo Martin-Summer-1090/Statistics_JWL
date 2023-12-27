@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -260,6 +260,10 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.7.1</span> Exercises</a></li>
   <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">5.7.2</span> Exercises R</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">5.8</span> Project People count: The present and future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#age-percentiles-in-kenya-the-united-states-and-japan" id="toc-age-percentiles-in-kenya-the-united-states-and-japan" class="nav-link" data-scroll-target="#age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">5.8.1</span> Age percentiles in Kenya, the United States and Japan</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -766,7 +770,7 @@ Exercise 1: The polio vaccine study
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Data from the polio vaccine studies discussed in the text suggest that in 1954, the school districts in the NFIP trial and in the randomized controlled experiment had similar exposure to the polio virus. (a) The data also show that children in the two vaccine groups (for the randomized controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table <a href="#tbl-salk-vaccine-field-trials">Table&nbsp;<span>5.1</span></a> confirm this finding? (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding? (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding? (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why? (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What’s wrong with these data?</p>
+<p>Data from the polio vaccine studies discussed in the text suggest that in 1954, the school districts in the NFIP trial and in the randomized controlled experiment had similar exposure to the polio virus. (a) The data also show that children in the two vaccine groups (for the randomized controlled experiment and the NFPI design) came from families with similar incomes and educational backgrounds. Which two numbers in table <a href="#tbl-salk-vaccine-field-trials">Table&nbsp;<span>5.1</span></a> confirm this finding? (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding? (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding? (d) In the NFIP study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why? (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What’s wrong with these data?</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -838,6 +842,19 @@ Exercise 5: Practicing the tapply function with the DHS dataset.
 </ol>
 </div>
 </div>
+</section>
+</section>
+<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">5.8</span> Project People count: The present and future of humanity in pictures and numbers</h2>
+<section id="age-percentiles-in-kenya-the-united-states-and-japan" class="level3" data-number="5.8.1">
+<h3 data-number="5.8.1" class="anchored" data-anchor-id="age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">5.8.1</span> Age percentiles in Kenya, the United States and Japan</h3>
+<p>In the last step of our project, people count, we were trying to compute the mean age for Kenya, the US and Japan. But if we look at the distribution of the number of people across age groups, we see not so much symmetric but rather asymmetric distributions. So let’s continue our analysis here by considering percentiles and look at the median as one percentile, which can be alternatively used to characterize the center of a distribution. Let us also study spreads using the interquartile range.</p>
+<p>In order to do so, we can again load the data and make country subsets, as we did last time. Those of you who successfully completed this task last time, can now just recycle the code from the last unit. The others can give it a second trial here. Note the advantage of the notebook. You can now reuse your old code.</p>
+<ol type="1">
+<li><p>Find the median age group for Kenya, the United states, Japan and for your own country, by constructing a dataframe extended by the cumulative count of people across age groups and the proportion of the cumulative count in the total population.</p></li>
+<li><p>Automate this process by writing a R function that takes Country, Year and the entire dataframe <code>dat</code> as argument and returns an approximate median age group.</p></li>
+<li><p>Use the approximation procedure for grouped data we used in the last project exercise to compute the mean and standard deviation of the age in the population of your country in 2022. Argue why the age distribution can not be approximated by a normal curve. Reuse the computations you made in the last project step.</p></li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

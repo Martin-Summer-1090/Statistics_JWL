@@ -1237,27 +1237,3 @@ do the computation of proportions you need to create a new variable and
 apply `tapply()`twice.
 :::
 
-## Project People count: The present and future of humanity in pictures and numbers
-
-### Age percentiles in Kenya, the United States and Japan
-
-In the last step of our project, people count, we were trying to
-compute the mean age for Kenya, the US and Japan. But if we look
-at the distribution of the number of people across age groups, we
-see not so much symmetric but rather asymmetric distributions. So let's
-continue our analysis here by considering percentiles and 
-look at the median as one percentile, which can be alternatively
-used to characterize the center of a distribution. Let us
-also study spreads using the interquartile range.
-
-In order to do so, we can again load the data and make country subsets,
-as we did last time. Those of you who successfully completed this task
-last time, can now just recycle the code from the last unit. The others
-can give it a second trial here. Note the advantage of the notebook. You can now reuse your old code.
-
-1. Find the median age group for Kenya, the United states, 
-Japan and for your
-own country, by constructing a dataframe extended by the cumulative count of
-people across age groups and the proportion of the cumulative count
-in the total population. 
-
