@@ -731,7 +731,7 @@ Data from the polio vaccine studies discussed in the text suggest that in 1954, 
      this finding?
      (b) The data show that children in the two no-consent groups had similar family backgrounds. WHich pair of numbers in the table confirm this finding?
      (c) The data show that children in the two control groups had different family backgrounds. Which pair of numbers in the table confirm this finding?
-     (d) In the NGPI study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
+     (d) In the NFIP study, neither the control group nor the no-consent group got the vaccine. Yet the no-consent group had a lower rate of polio. Why?
      (e) To show that the vaccine works, someone wants to compare the 44/100.000 in the NFPI study with 25/100.000 in the vaccine group. What's wrong with these data?
      
 :::

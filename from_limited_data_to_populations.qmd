@@ -1,26 +1,66 @@
 # From limited data to populations
 
+Why do we look at data anyway? Looking at data, analyzing their
+properties and learning about the information they contain can
+be fun in its own. But most of the time when we look at data we want to
+learn something about an entire population not only about the
+usually much smaller group of people, objects, sites etc. which
+comprise our data sets. In this section we learn about some
+imporant considerations, notions and tools needed in such a process
+of generalization. If done properly it can allow you to make a leap
+from limited data to populations with a level of uncertainty you can at least quantify precisely. While we will learn about how to 
+quantify uncertainty only later in this section we learn about
+the most important considerations about inductively going from 
+limited data to populations.
+
 ::: {.callout-note appearance="simple"}
 ## Overview
 
-1. In this lecture you will learn about the process of inductive inference. Inductive
+1. In this lecture you will learn about the process of **inductive inference**. Inductive
 inference requires working from data to study sample and study population 
 to target population.
 
-2. At each stage bias can crop up. When you work with data and when you want to learn from data you need
-to be aware of these potential sources of bias. We discuss and explain the most important
+2. At each stage **bias** can crop up. When you work with data and when you want to learn from data you need
+to be aware of these potential **sources of bias**. We discuss and explain the most important
 ones in this lecture.
 
-3. The best way to proceed from a sample to the study population is if you have drawn a random sample. Using
+3. The best way to proceed from a sample to the study population is if you have drawn a **random sample**. Using
 R we will learn how random sampling works and why it helps to reduce bias.
 
-4. We will discuss the idea of describing distributions by an approximation by the normal curve. This is an important idea in the entire field of statistics. The idea essentially says that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population
+4. We will discuss the idea of describing distributions by an approximation by the **normal curve**. This is an important idea in the entire field of statistics. The idea essentially says that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population
 
-5. Population statistics often can be summarized using parameters that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.
+5. Population statistics often can be summarized using **parameters** that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.
 
-6. In terms of R you will learn some powerful new concepts in this lecture, like writing your
-own function, performing random draws from a population of data as well as how to determine
-the area under the normal curve using R.
+6. In terms of R you will learn some powerful new concepts in this lecture, like **writing your own function**, performing **random draws from a population of data** as well as how to **determine the area under the normal curve** using R.
+:::
+
+::: {.callout-important appearance="simple"}
+
+## Keywords
+
+**Sample**: A selected set of observations from a larger population of which we would ultimately like to learn its statistical properties.
+
+**Study population**: The units that could have potentially be included in
+the sample.
+
+**Target population**: The population about which we ultimately hope to learn some statistical properties.
+
+**Random sample**: A selection of observations from a study population where each unit has the same probability of ending up in the sample.
+
+**Deductive reasoning**: Derives particular conclusions from general premises using the rules of logic.
+
+**Inductive reasoning**: Starts from particular instances and treis to work out generalizations from there.
+
+**Bias**: When our data systematically measure something different from what we actually want to measure.
+
+**The normal curve**: A smoothed version of an idealized histogram which often occurs for large samples of empirical data. The normal curve is symmetric around the mean, the total area under the curve is 1 and the
+curve is always above the horizontal axis. The area between minus and plus one standard deviation from the mean is 68%, the area within two standard deviations from the mean is 95% and the area within three standard deviations is 99.7% for the normal curve.
+
+**Percentiles**: Percentiles are used to understand and interpret data. They indicate the values below which a certain percentage of the data in a data set is found.
+
+**R-Functions**: R allows you to write functions of your own. A function needs a name, the name needs as assignment the term `function()`where the parantheses hold arguments of the function. The function body needs to be
+within curly brackets {}. The last expression in the function body is the result a function computes when called.
+
 :::
 
 
@@ -1079,7 +1119,7 @@ notions in this context, what is the sample, what is the study population and wh
 
 :::{.callout-note icon=false}
 
-## Exercise 2:  Now you try
+## Exercise 2:  Examples of deductive and inductive reasoning
 
 Think of another example for 
 
@@ -1127,7 +1167,7 @@ picked a sample of 8. Use the sample function to pick randomly 8 numbers out of 
 ## Exercise 3: Sample mean and sample standard deviation
 
 Use the `emp_distr_height()`function we have just written to draw a random sample of n=5000. Compute the mean
-and the standard deviation of the sample distribution. Compute - or look up in chapter 3 - the mean and the
+and the standard deviation of the sample distribution of the Height variable. Compute - or look up in chapter 3 - the mean and the
 standard deviation of the population data and compare.
 
 :::
@@ -1182,20 +1222,42 @@ Explain.
 
 :::
 
-### Exercise Project:
+:::{.callout-note icon=false}
 
-To be added.
+## Exercise 8: Practicing the tapply function
 
-<!-- ## Contents -->
+In the section about analyzing and communicating lots of data
+we had used the `dhs` data `children_nutrtition_data` from the 
+`JWL` package to compute the percentage of stunted children by
+region. Try to compute the answer by using the `tapply()` function
+instead of taking the approach we took before using subsetting rules.
+Hint: There is a complication because we need to take into account the
+weighting variable and not only the pure count of cases. When you
+do the computation of proportions you need to create a new variable and
+apply `tapply()`twice.
+:::
 
-<!-- Inductive inference requires working from data to study sample and study population to target population. -->
+## Project People count: The present and future of humanity in pictures and numbers
 
-<!-- At each stage bias can crop up. -->
-<!-- The best way to proceed from sample to study population is if you have drawn a random sample. -->
-<!-- Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population -->
-<!-- Populations can be summarized using parameters that mirror the summary statistics of sample data. -->
-<!-- It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t. -->
+### Age percentiles in Kenya, the United States and Japan
 
-<!-- ## Outcome -->
+In the last step of our project, people count, we were trying to
+compute the mean age for Kenya, the US and Japan. But if we look
+at the distribution of the number of people across age groups, we
+see not so much symmetric but rather asymmetric distributions. So let's
+continue our analysis here by considering percentiles and 
+look at the median as one percentile, which can be alternatively
+used to characterize the center of a distribution. Let us
+also study spreads using the interquartile range.
 
-<!-- Make the concept of a random sample and a probability distribution tangible by using the computer. -->
+In order to do so, we can again load the data and make country subsets,
+as we did last time. Those of you who successfully completed this task
+last time, can now just recycle the code from the last unit. The others
+can give it a second trial here. Note the advantage of the notebook. You can now reuse your old code.
+
+1. Find the median age group for Kenya, the United states, 
+Japan and for your
+own country, by constructing a dataframe extended by the cumulative count of
+people across age groups and the proportion of the cumulative count
+in the total population. 
+

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -263,7 +263,10 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.8.1</span> Exercises</a></li>
   <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">4.8.2</span> Exercises R</a></li>
-  <li><a href="#exercise-project" id="toc-exercise-project" class="nav-link" data-scroll-target="#exercise-project"><span class="header-section-number">4.8.3</span> Exercise Project:</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">4.9</span> Project People count: The present and future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#age-percentiles-in-kenya-the-united-states-and-japan" id="toc-age-percentiles-in-kenya-the-united-states-and-japan" class="nav-link" data-scroll-target="#age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">4.9.1</span> Age percentiles in Kenya, the United States and Japan</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -288,6 +291,7 @@ div.csl-indent {
 
 </header>
 
+<p>Why do we look at data anyway? Looking at data, analyzing their properties and learning about the information they contain can be fun in its own. But most of the time when we look at data we want to learn something about an entire population not only about the usually much smaller group of people, objects, sites etc. which comprise our data sets. In this section we learn about some imporant considerations, notions and tools needed in such a process of generalization. If done properly it can allow you to make a leap from limited data to populations with a level of uncertainty you can at least quantify precisely. While we will learn about how to quantify uncertainty only later in this section we learn about the most important considerations about inductively going from limited data to populations.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -299,13 +303,35 @@ Overview
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>In this lecture you will learn about the process of inductive inference. Inductive inference requires working from data to study sample and study population to target population.</p></li>
-<li><p>At each stage bias can crop up. When you work with data and when you want to learn from data you need to be aware of these potential sources of bias. We discuss and explain the most important ones in this lecture.</p></li>
-<li><p>The best way to proceed from a sample to the study population is if you have drawn a random sample. Using R we will learn how random sampling works and why it helps to reduce bias.</p></li>
-<li><p>We will discuss the idea of describing distributions by an approximation by the normal curve. This is an important idea in the entire field of statistics. The idea essentially says that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population</p></li>
-<li><p>Population statistics often can be summarized using parameters that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.</p></li>
-<li><p>In terms of R you will learn some powerful new concepts in this lecture, like writing your own function, performing random draws from a population of data as well as how to determine the area under the normal curve using R.</p></li>
+<li><p>In this lecture you will learn about the process of <strong>inductive inference</strong>. Inductive inference requires working from data to study sample and study population to target population.</p></li>
+<li><p>At each stage <strong>bias</strong> can crop up. When you work with data and when you want to learn from data you need to be aware of these potential <strong>sources of bias</strong>. We discuss and explain the most important ones in this lecture.</p></li>
+<li><p>The best way to proceed from a sample to the study population is if you have drawn a <strong>random sample</strong>. Using R we will learn how random sampling works and why it helps to reduce bias.</p></li>
+<li><p>We will discuss the idea of describing distributions by an approximation by the <strong>normal curve</strong>. This is an important idea in the entire field of statistics. The idea essentially says that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population</p></li>
+<li><p>Population statistics often can be summarized using <strong>parameters</strong> that mirror the summary statistics of sample data. It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t.</p></li>
+<li><p>In terms of R you will learn some powerful new concepts in this lecture, like <strong>writing your own function</strong>, performing <strong>random draws from a population of data</strong> as well as how to <strong>determine the area under the normal curve</strong> using R.</p></li>
 </ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keywords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Sample</strong>: A selected set of observations from a larger population of which we would ultimately like to learn its statistical properties.</p>
+<p><strong>Study population</strong>: The units that could have potentially be included in the sample.</p>
+<p><strong>Target population</strong>: The population about which we ultimately hope to learn some statistical properties.</p>
+<p><strong>Random sample</strong>: A selection of observations from a study population where each unit has the same probability of ending up in the sample.</p>
+<p><strong>Deductive reasoning</strong>: Derives particular conclusions from general premises using the rules of logic.</p>
+<p><strong>Inductive reasoning</strong>: Starts from particular instances and treis to work out generalizations from there.</p>
+<p><strong>Bias</strong>: When our data systematically measure something different from what we actually want to measure.</p>
+<p><strong>The normal curve</strong>: A smoothed version of an idealized histogram which often occurs for large samples of empirical data. The normal curve is symmetric around the mean, the total area under the curve is 1 and the curve is always above the horizontal axis. The area between minus and plus one standard deviation from the mean is 68%, the area within two standard deviations from the mean is 95% and the area within three standard deviations is 99.7% for the normal curve.</p>
+<p><strong>Percentiles</strong>: Percentiles are used to understand and interpret data. They indicate the values below which a certain percentage of the data in a data set is found.</p>
+<p><strong>R-Functions</strong>: R allows you to write functions of your own. A function needs a name, the name needs as assignment the term <code>function()</code>where the parantheses hold arguments of the function. The function body needs to be within curly brackets {}. The last expression in the function body is the result a function computes when called.</p>
 </div>
 </div>
 <div class="page-columns page-full"><p>In the last chapter we analyzed data from the Demographic and Health Survey.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> We looked at data monitoring of the nutritional state of children by using anthropometric data.¶</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;To learn more about this survey, please visit the DHS website at https://dhsprogram.com/</p></li></div></div>
@@ -643,15 +669,15 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -681,7 +707,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>everything works, just as intended.</p>
@@ -987,7 +1013,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 168.4362 183.3148 175.1474 173.5544</code></pre>
+<pre><code>[1] 174.7457 171.7543 178.2539 167.1265</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1004,7 +1030,7 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>168.4362 is -0.8832 from the average. In standard units therefore 168.4362 is -0.8832.</p>
+<p>174.7457 is 0.423 from the average. In standard units therefore 174.7457 is 0.423.</p>
 <p>Standard units are used in the DHS data on nutrition of children and adults which we worked with in the last exercise of chapter 3. Standard units are also often referred to as the <strong>z-score</strong>. Let us go back to these data and look at them more closely again.</p>
 <p>Let us go back to the histogram of human height we already discussed in the chapter 3.</p>
 <div class="cell">
@@ -1215,7 +1241,7 @@ Exercise 1: Understanding the notions of sample, target population and study pop
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2: Now you try
+Exercise 2: Examples of deductive and inductive reasoning
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1285,7 +1311,7 @@ Exercise 3: Sample mean and sample standard deviation
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Use the <code>emp_distr_height()</code>function we have just written to draw a random sample of n=5000. Compute the mean and the standard deviation of the sample distribution. Compute - or look up in chapter 3 - the mean and the standard deviation of the population data and compare.</p>
+<p>Use the <code>emp_distr_height()</code>function we have just written to draw a random sample of n=5000. Compute the mean and the standard deviation of the sample distribution of the Height variable. Compute - or look up in chapter 3 - the mean and the standard deviation of the population data and compare.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -1357,19 +1383,30 @@ Exercise 7: Percentiles, median, interquartile range.
 <p>Take the human height data from the JWL package <code>socr_height_weight</code> and compute the 1%, 10%, 25%, 50%, 75%, 90%, 99% quantiles. Compare the median and the mean and compare the standard deviation and the interquartile range. What do you observe? Explain.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 8: Practicing the tapply function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the section about analyzing and communicating lots of data we had used the <code>dhs</code> data <code>children_nutrtition_data</code> from the <code>JWL</code> package to compute the percentage of stunted children by region. Try to compute the answer by using the <code>tapply()</code> function instead of taking the approach we took before using subsetting rules. Hint: There is a complication because we need to take into account the weighting variable and not only the pure count of cases. When you do the computation of proportions you need to create a new variable and apply <code>tapply()</code>twice.</p>
+</div>
+</div>
 </section>
-<section id="exercise-project" class="level3" data-number="4.8.3">
-<h3 data-number="4.8.3" class="anchored" data-anchor-id="exercise-project"><span class="header-section-number">4.8.3</span> Exercise Project:</h3>
-<p>To be added.</p>
-<!-- ## Contents -->
-<!-- Inductive inference requires working from data to study sample and study population to target population. -->
-<!-- At each stage bias can crop up. -->
-<!-- The best way to proceed from sample to study population is if you have drawn a random sample. -->
-<!-- Introduce the idea that a population can be thought of as a group of individuals but also as a probability distribution for a random observation drawn from that population -->
-<!-- Populations can be summarized using parameters that mirror the summary statistics of sample data. -->
-<!-- It often occurs that data do not arise as a sample from a literal population. We can always imagine data as drawn from a metaphorical population of events that could have occurred but didn’t. -->
-<!-- ## Outcome -->
-<!-- Make the concept of a random sample and a probability distribution tangible by using the computer. -->
+</section>
+<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">4.9</span> Project People count: The present and future of humanity in pictures and numbers</h2>
+<section id="age-percentiles-in-kenya-the-united-states-and-japan" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="age-percentiles-in-kenya-the-united-states-and-japan"><span class="header-section-number">4.9.1</span> Age percentiles in Kenya, the United States and Japan</h3>
+<p>In the last step of our project, people count, we were trying to compute the mean age for Kenya, the US and Japan. But if we look at the distribution of the number of people across age groups, we see not so much symmetric but rather asymmetric distributions. So let’s continue our analysis here by considering percentiles and look at the median as one percentile, which can be alternatively used to characterize the center of a distribution. Let us also study spreads using the interquartile range.</p>
+<p>In order to do so, we can again load the data and make country subsets, as we did last time. Those of you who successfully completed this task last time, can now just recycle the code from the last unit. The others can give it a second trial here. Note the advantage of the notebook. You can now reuse your old code.</p>
+<ol type="1">
+<li>Find the median age group for Kenya, the United states, Japan and for your own country, by constructing a dataframe extended by the cumulative count of people across age groups and the proportion of the cumulative count in the total population.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
