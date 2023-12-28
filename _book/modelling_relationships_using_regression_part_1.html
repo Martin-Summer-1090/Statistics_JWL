@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -257,7 +257,7 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">6.4.1</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">6.6</span> Exercises R</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">6.5</span> Exercises R</a></li>
   </ul>
 </nav>
     </div>
@@ -281,6 +281,7 @@ div.csl-indent {
 
 </header>
 
+<p>In this section you will make your first steps into statistical modeling. With a statistical model you can study relationships between two or more variables and analyze more complex empirical situations that we did up to now. When we are going towards models we need some tools from mathematics. Here we introduce first the mathematics of points and lines and how you can use R to visualize and manipulate points and lines. This will prepare the next section where we will discuss how we can use a model to make predictions.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -291,14 +292,31 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this section you will make your first steps into statistical modeling. With a statistical model you can study relationships between two or more variables and analyze more complex empirical situations that we did up to now. When we going towards models we need some tools from mathematics. Here we introduce first the mathematics of points and lines and how you can use R to visualize and manipulate points and lines. This will prepare the next section where we will discuss how we can use a model to make predictions.</p>
 <ol type="1">
 <li><p>A <strong>statistical model</strong> is a mathematical representation of the relationship between variables which we can use for the prediction of the value of one variable using the value of another variable or the values of a list of other variables.</p></li>
-<li><p>Points and lines can be plotted in a coordinate system. Points and lines can at the same time be described and manipulated algebraically by equations. You will learn to understand both representations and how to go back and forth between them.</p></li>
-<li><p>An important object in this context are straight lines. You need to understand what the slope and the intercept of a line are and how you can describe a line by an equation as well as how you can recognize the slope and the intercept from the equation.</p></li>
-<li><p>You will learn how to harness the power of the computer by plotting lines and points using R.</p></li>
-<li><p>In the end of this section we start our discussion of modelling relationships between variables and using these models to make predictions.</p></li>
+<li><p><strong>Points and lines</strong> can be plotted in a coordinate system. Points and lines can at the same time be described and manipulated algebraically by equations. You will learn to understand both representations and how to go back and forth between them.</p></li>
+<li><p>An important object in this context are <strong>straight lines</strong>. You need to understand what the slope and the intercept of a line are and how you can describe a line by an equation as well as how you can recognize the slope and the intercept from the equation.</p></li>
+<li><p>You will learn how to harness the power of the computer by <strong>plotting lines and points using R</strong>.</p></li>
+<li><p>In the end of this section we start our discussion of <strong>modelling relationships between variables</strong> and using these models to <strong>make predictions</strong>.</p></li>
 </ol>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keywords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Statistical model</strong>: A statistical model is a mathematical representation of the relationship between variables which we can use for the prediction of the value of one variable using the value of another variable or the values of a list of other variables. It also allows us a more precise description of the relationship between variables.</p>
+<p><strong>Coordinate system</strong>: The graphs of a coordinate systems have a horizontal axis, the <span class="math inline">\(x\)</span>-axis and a vertical axis, the <span class="math inline">\(y\)</span>-axis. Each point in the plane can be described by its coordinates, given by an <span class="math inline">\(x\)</span> value and a <span class="math inline">\(y\)</span> value.</p>
+<p><strong>Slope</strong>: The slope is the ratio of the units of change in the y-coordinate over the units of change of the x-coordinate, formally expressed as slope = <span class="math inline">\(\frac{\Delta y}{\Delta x}\)</span></p>
+<p><strong>Intercept</strong>: The intercept of a line is the value of the y-coordinate when the x-coordinate takes a value of 0. Graphically it is where the line intersects the y-axis.</p>
+<p><strong>Equation for the graph of a straight line</strong>: The graph of equation <span class="math inline">\(y = kx + d\)</span> is a straight line with slope <span class="math inline">\(k\)</span> and intercept <span class="math inline">\(d\)</span></p>
+<p><strong>Scatterplot</strong>: The visual display of the relations between two variables are described in statistics using scatter plots. It plots the points described by pairs of values into a coordinate system. The result is a scatter of points.</p>
 </div>
 </div>
 <section id="statistical-models" class="level2" data-number="6.1">
@@ -436,9 +454,9 @@ Important
 <figcaption class="figure-caption">Figure&nbsp;6.5: Coordinate system with point (2,1) and construction point (5,1)</figcaption>
 </figure>
 </div>
-<p>Since the line slopes up - the slope is positive an 1/2 - the line passes above this point. The question is, how far?. To find the answer to the question ho much will the line rise in a <span class="math inline">\(\Delta x\)</span> of 3? The answer can be found from the formula of the slope. The line rises at the rate of half a vertical unit per horizontal unit. Thus we have <span class="math display">\[\begin{equation}
+<p>Since the line slopes up - the slope is positive an 1/2 - the line passes above this point. The question is, how far?. To find the answer to the question how much will the line rise in a <span class="math inline">\(\Delta x\)</span> of 3? The answer can be found from the formula of the slope. The line rises at the rate of half a vertical unit per horizontal unit. Thus we have <span class="math display">\[\begin{equation}
 \Delta y = \Delta x \times \text{slope}
-\end{equation}\]</span> In our case this means <span class="math inline">\(3 \times \frac{1}{2} = 1.5\)</span> Thus from the contruction point <span class="math inline">\((5,1)\)</span> we have to go up 1.5 units and mark a new point there. Now if you join these two points using a ruler you get the line like this</p>
+\end{equation}\]</span> In our case this means <span class="math inline">\(3 \times \frac{1}{2} = 1.5\)</span> Thus from the construction point <span class="math inline">\((5,1)\)</span> we have to go up 1.5 units and mark a new point there. Now if you join these two points using a ruler you get the line like this</p>
 <div id="fig-linesc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="pictures/line_c.png" style="width:50.0%;height:50.0%" class="figure-img"></p>
@@ -592,7 +610,7 @@ Now you try
 </div>
 <p>Let me briefly explain the code. <code>plot(dat)</code> would produce a default scatter plot with R. Here I adjust a few graphical parameters to make the plot more readable: I do not have to explain again how <code>xlab</code>, <code>ylab</code> and <code>main</code> works. <code>pch = 19</code> makes the dots filled contrary to the hollow points of the default configuration and <code>cex = 0.9</code> makes them smaller than the default, so you can see the differences better.</p>
 <p>The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases. One says that there is a <em>positive association</em> between the heights of the fathers and the heights of the sons. The dashed diagonal line is the line of all points where the son’s father’s height and the son’s height are equal. If the father’s height is close to the son’s height the points are close to the line.</p>
-<p>There is quiet some spread, showing the the relationship is weak. Suppose for example that you have to guess the height of a son from a father’s height. In the stripe bordered by the blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There is a lot of variability in the heights of the sons. You can see it in the scatter within the stripe. So even if you know the father’s height there is still a lot of room for error.</p>
+<p>There is quite some spread, showing the the relationship is weak. Suppose for example that you have to guess the height of a son from a father’s height. In the stripe bordered by the blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There is a lot of variability in the heights of the sons. You can see it in the scatter within the stripe. So even if you know the father’s height there is still a lot of room for error.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -610,7 +628,7 @@ Important
 <section id="exercises" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
 <section id="exercises-1" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored"><span class="header-section-number">6.4.1</span> Exercises</h3>
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">6.4.1</span> Exercises</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -708,9 +726,9 @@ y &amp;=&amp; \frac{1}{2}x + 2
 <li><p>Plot the points <span class="math inline">\((1,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((3,3)\)</span> and <span class="math inline">\((4,4)\)</span> on the same graph. These points all lie on a line. What is the equation of this line?</p></li>
 <li><p>True of false:</p>
 <ol type="a">
-<li>If <span class="math inline">\(y\)</span> is bigger than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is above the line of exercise 3.</li>
-<li>If <span class="math inline">\(y = x\)</span> then the point <span class="math inline">\((x,y)\)</span> is on the line of exercise 3.</li>
-<li>If <span class="math inline">\(y\)</span> is smaller than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is below the line of exercise 3.</li>
+<li>If <span class="math inline">\(y\)</span> is bigger than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is above the line of exercise 3 1. with slope 1.</li>
+<li>If <span class="math inline">\(y = x\)</span> then the point <span class="math inline">\((x,y)\)</span> is on the line of exercise 3 1. with slope -1.</li>
+<li>If <span class="math inline">\(y\)</span> is smaller than <span class="math inline">\(x\)</span>, then the point <span class="math inline">\((x,y)\)</span> is below the line of exercise 3 1. with slope 0.</li>
 </ol></li>
 </ol>
 </div>
@@ -791,22 +809,23 @@ Exercise 5: Where is the point
 </div>
 </div>
 </div>
-<div id="fig-plot-regions" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<section id="exercise-6-the-mathematics-of-lines" class="level2 quarto-layout-cell" data-number="6.5" style="flex-basis: 33.3%;justify-content: center;">
-<h2 data-number="6.5" class="anchored" data-anchor-id="exercise-6-the-mathematics-of-lines"><span class="header-section-number">6.5</span> Exercise 6: The mathematics of lines</h2>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 6: The mathematics of lines
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Look at the following line</p>
-</section>
-<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 33.3%;justify-content: center;">
 <div id="fig-line_e" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="pictures/line_e.png" class="img-fluid figure-img" data-ref-parent="fig-plot-regions"></p>
-<figcaption class="figure-caption">(a) Figure 3</figcaption>
+<p><img src="pictures/line_e.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;6.11: Figure 3</figcaption>
 </figure>
 </div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <ol type="1">
 <li>What is the equation of this line?</li>
 <li>What is the height of the this line at <span class="math inline">\(x = 1\)</span>?</li>
@@ -814,13 +833,10 @@ Exercise 5: Where is the point
 </ol>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6.11: <strong>?(caption)</strong></figcaption><p></p>
-</figure>
-</div>
 </section>
 </section>
-<section id="exercises-r" class="level2" data-number="6.6">
-<h2 data-number="6.6" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">6.6</span> Exercises R</h2>
+<section id="exercises-r" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">6.5</span> Exercises R</h2>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -833,7 +849,7 @@ Exercise 1: Life expectancy
 <div class="callout-body-container callout-body">
 <p>Throughout history, life expectancy at birth was on average 30 year everywhere in the world. This time span is an average. It does not mean that even in historical times some people did not reach a higher age but the distribution of life expectancy in years at birth was centered at 30. This started to change slowly at around 1800. Today the life expectancy in the world is 70 years. This is a dramatic improvement, if you think about it.</p>
 <p>Life expectancy is associated with the level of income, measured as GDP per capita. GDP is a shorthand and means “gross domestic product” in the jargon of economists. What it measures is the value of all goods and services produced in a given country in a year expressed in a suitable monetary unit. This could be the currency of a country, it could be US-Dollars or other units, you choose them. If you divide this number by the population in a country in a given year you get GDP per capita. It is a proxy of the level of income in a country when viewed as an aggregate entity and is one of the most used number in economic statistics. In 2018 the poorest country in the world had a GDP per capita of about 623 $ expressed in international dollars at 2011 prices, a hypothetical monetary unit that makes income comparable accross countries. The richest country is in comparison at about 150.000 $ international.</p>
-<p>For the year 2018 the data show that the relation of GDP follows a straight line with the equation <span class="math inline">\(y=67.78+0.0002549 x\)</span></p>
+<p>For the year 2018 the data show that the relation of GDP to life expectancy follows a straight line with the equation <span class="math inline">\(y=67.78+0.0002549 x\)</span></p>
 <p>In the exercise you are asked to add points to a plot. This is done in R like this. You first write the code for the line graph and then write the code for a point with the syntax points(x,y).</p>
 <ol type="1">
 <li>Use R to plot this curve starting from 0 and ranging to 10000. Also add a title and axes descriptions.</li>
@@ -851,7 +867,7 @@ Exercise 1: Life expectancy
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2: Reporduce the scatter plot on primary school enrollment rate
+Exercise 2: Reproduce the scatter plot on primary school enrollment rate
 </div>
 </div>
 <div class="callout-body-container callout-body">

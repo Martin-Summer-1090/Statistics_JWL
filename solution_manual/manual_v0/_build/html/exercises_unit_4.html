@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
+    <title>Exercises: Unit 4 Making predictions using regression &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
   
   
   
@@ -62,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Exercises" href="exercises_unit_5.html" />
-    <link rel="prev" title="Exercises" href="exercises_unit_3.html" />
+    <link rel="prev" title="Exercises: Unit 3, Generalizing observations from data and knowing what causes what" href="exercises_unit_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,15 +166,15 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Solution manual for Statistics: The art and science of learning from data.
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_1.html">Exercises: Unit 1, Categorical data and proportions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises: Unit 2, Summarizing and communication lot’s of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises: Unit 3, Generalizing observations from data and knowing what causes what</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 4 Making predictions using regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_7.html">Exercises</a></li>
@@ -349,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,11 +364,38 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises</h1>
+    <h1>Exercises: Unit 4 Making predictions using regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-points-in-a-coordinate-system">Exercise 1: Points in a coordinate system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-what-is-the-slope">Exercise 2: What is the slope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-where-on-the-line-are-you">Exercise 3: Where on the line are you?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plotting-graphs-by-hand">Exercise 4: Plotting graphs (by hand)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-where-is-the-point">Exercise 5: Where is the point?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-mathematics-of-lines">Exercise 6: The mathematics of lines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-comparing-correlations">Exercise 7: Comparing correlations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-interpreting-correlation">Exercise 8: Interpreting correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-correlation-between-height-and-weight">Exercise 9: Correlation between height and weight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-explain">Exercise 10: Explain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-life-expectancy">Exercise 1: Life expectancy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproduce-the-scatterplot-on-primary-school-enrolment-rate">Exercise 2: Reproduce the scatterplot on primary school enrolment rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-write-a-conversion-function-from-any-data-to-standard-units">Exercise 3: Write a conversion function from any data to standard units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertising-channels-and-sales">Advertising channels and sales</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -374,8 +405,826 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-4-making-predictions-using-regression">
+<h1>Exercises: Unit 4 Making predictions using regression<a class="headerlink" href="#exercises-unit-4-making-predictions-using-regression" title="Permalink to this heading">#</a></h1>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-points-in-a-coordinate-system">
+<h3>Exercise 1: Points in a coordinate system<a class="headerlink" href="#exercise-1-points-in-a-coordinate-system" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>A = (1,2), B = (4,4), C = (5,3), D = (5,1), E = (3,0)</p></li>
+<li><p>x moves up 3 y moves up 2</p></li>
+<li><p>D</p></li>
+</ol>
+</section>
+<section id="exercise-2-what-is-the-slope">
+<h3>Exercise 2: What is the slope<a class="headerlink" href="#exercise-2-what-is-the-slope" title="Permalink to this heading">#</a></h3>
+<p>First slope is 0, second slope is -1</p>
+</section>
+<section id="exercise-3-where-on-the-line-are-you">
+<h3>Exercise 3: Where on the line are you?<a class="headerlink" href="#exercise-3-where-on-the-line-are-you" title="Permalink to this heading">#</a></h3>
+<p>Line through (2,1) with slope 1. Note: You can sketch this by hand. I have done this here in R just for my convenience to put the plot into the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">-1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/87d4417ccfd80862ecf830a672437f496a77c02c946de66f122f3a0871e02dbb.png" src="_images/87d4417ccfd80862ecf830a672437f496a77c02c946de66f122f3a0871e02dbb.png" />
+</div>
+</div>
+<p>Slope -1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/18737d25edb1d384c23c621634455bb221177c0961a87f2830df366993e852b3.png" src="_images/18737d25edb1d384c23c621634455bb221177c0961a87f2830df366993e852b3.png" />
+</div>
+</div>
+<p>Slope 0</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1c61e7bd516c458decda46771c171722eb789df88bf20335157f7aae65c66848.png" src="_images/1c61e7bd516c458decda46771c171722eb789df88bf20335157f7aae65c66848.png" />
+</div>
+</div>
+<p>with slope 1: below the line, with slope -1: above the line, with slope 0 above the line</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7f1329c176c217b29234e2123942a8c17b0a10eb2efda477f1bad5ec294d75de.png" src="_images/7f1329c176c217b29234e2123942a8c17b0a10eb2efda477f1bad5ec294d75de.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/47ed219c786d4b0d1837a361d3480579320dfb75d4718540d4c15c27b65d5812.png" src="_images/47ed219c786d4b0d1837a361d3480579320dfb75d4718540d4c15c27b65d5812.png" />
+</div>
+</div>
+</section>
+<section id="exercise-4-plotting-graphs-by-hand">
+<h3>Exercise 4: Plotting graphs (by hand)<a class="headerlink" href="#exercise-4-plotting-graphs-by-hand" title="Permalink to this heading">#</a></h3>
+<p>Again here I allow myself to plot the graphs by R instead of by hand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-5</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/168743bbe5063e10c933375811987e086f46f508a3e8540a0f03d337360c5bb9.png" src="_images/168743bbe5063e10c933375811987e086f46f508a3e8540a0f03d337360c5bb9.png" />
+</div>
+</div>
+<p>The height of the line at x = 2 is 5, the slope is 2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.5</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-10</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/baef2cda84224b9be6f0d8eac8a8300f0c972f8e914ce78c55d818b2d0a514a7.png" src="_images/baef2cda84224b9be6f0d8eac8a8300f0c972f8e914ce78c55d818b2d0a514a7.png" />
+</div>
+</div>
+<p>The height of the line at x = 2 is 3 and the slope is 1/2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="o">*</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/26e46741b56005f8fd27eee8fa30d290de0260fd305bc2ce9f22f5465b68d633.png" src="_images/26e46741b56005f8fd27eee8fa30d290de0260fd305bc2ce9f22f5465b68d633.png" />
+</div>
+</div>
+<p>All points lie on a line. The equation of the line is <span class="math notranslate nohighlight">\(y = 2*x\)</span> the slope is 1/2</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">x</span><span class="p">,</span><span class="n">dat</span><span class="o">$</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/851e68158429f244e71818a0eb8b0974c3a084bd3bcb0266fd601475f17ce4c5.png" src="_images/851e68158429f244e71818a0eb8b0974c3a084bd3bcb0266fd601475f17ce4c5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare the parametric curve to the curve from the data</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">2</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7d0cfe4908043d2198a769618c664435fad4f0b364b41c9b9342b83b02ff243d.png" src="_images/7d0cfe4908043d2198a769618c664435fad4f0b364b41c9b9342b83b02ff243d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">)</span>
+<span class="nf">lines</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cfb39758bc4d786cf234fe0ee1630bce43e395a450e9675235ec368b7597d2c6.png" src="_images/cfb39758bc4d786cf234fe0ee1630bce43e395a450e9675235ec368b7597d2c6.png" />
+</div>
+</div>
+<p>The equation of the line is <span class="math notranslate nohighlight">\(y = x\)</span>.</p>
+<ol class="arabic simple" start="4">
+<li><p>false, false, false</p></li>
+</ol>
+</section>
+<section id="exercise-5-where-is-the-point">
+<h3>Exercise 5: Where is the point?<a class="headerlink" href="#exercise-5-where-is-the-point" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">aux</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0.5</span><span class="p">,</span><span class="m">1.5</span><span class="p">,</span><span class="m">2.5</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">2.5</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">aux</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ebdb937b5dba9eab1c33e50c77717225cdde59f3f9f6e9711c048a0f037d5142.png" src="_images/ebdb937b5dba9eab1c33e50c77717225cdde59f3f9f6e9711c048a0f037d5142.png" />
+</div>
+</div>
+<p>(1.5,2) does not lie on the line but above.</p>
+<p>The blanks are 7 and 9. We can plot the points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">9</span><span class="p">))</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/45611957dbf2707333756944291fdfa08eac3ccdc98e38f9dd8bb9b7258ced0d.png" src="_images/45611957dbf2707333756944291fdfa08eac3ccdc98e38f9dd8bb9b7258ced0d.png" />
+</div>
+</div>
+<p>They are all on a line.</p>
+<p>(1,2) is in b and c but not in a, (2,1) is in a but not in b or c.</p>
+</section>
+<section id="exercise-6-the-mathematics-of-lines">
+<h3>Exercise 6: The mathematics of lines<a class="headerlink" href="#exercise-6-the-mathematics-of-lines" title="Permalink to this heading">#</a></h3>
+<p>The equation of the line is <span class="math notranslate nohighlight">\(y = -x + 4\)</span>. At <span class="math notranslate nohighlight">\(x=1\)</span> the height is 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot.new</span><span class="p">()</span>
+
+<span class="nf">grid</span><span class="p">(</span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gray&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span>
+
+<span class="nf">par</span><span class="p">(</span><span class="n">new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">curve</span><span class="p">(</span><span class="m">4</span><span class="w"> </span><span class="o">-</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="m">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">-8</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/277001ed00382096447f47f0e8c2e4e9dc4309c42a96a9bcbb652836239b53c6.png" src="_images/277001ed00382096447f47f0e8c2e4e9dc4309c42a96a9bcbb652836239b53c6.png" />
+</div>
+</div>
+</section>
+<section id="exercise-7-comparing-correlations">
+<h3>Exercise 7: Comparing correlations<a class="headerlink" href="#exercise-7-comparing-correlations" title="Permalink to this heading">#</a></h3>
+<p>2 stronger than 3 stronger than 4 stronger than 1</p>
+</section>
+<section id="exercise-8-interpreting-correlation">
+<h3>Exercise 8: Interpreting correlation<a class="headerlink" href="#exercise-8-interpreting-correlation" title="Permalink to this heading">#</a></h3>
+<p>No it is as such without further evidence not a causal relation. Discuss potential confounders, reasons that make people read less and watch more TV. It coul for instance be the case that people who have trouble reading watch more TV, so causality would run in the other direction. After all the correlation between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> is the same as between <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</section>
+<section id="exercise-9-correlation-between-height-and-weight">
+<h3>Exercise 9: Correlation between height and weight<a class="headerlink" href="#exercise-9-correlation-between-height-and-weight" title="Permalink to this heading">#</a></h3>
+<p>true, true, true, false</p>
+</section>
+<section id="exercise-10-explain">
+<h3>Exercise 10: Explain<a class="headerlink" href="#exercise-10-explain" title="Permalink to this heading">#</a></h3>
+<p>Standard units allow us to compare the strengths of linear relations, because in standard units values that are larger than the mean are positive and values that are less than the mean are negative.</p>
+</section>
+</section>
+<section id="exercises-r">
+<h2>Exercises R<a class="headerlink" href="#exercises-r" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-life-expectancy">
+<h3>Exercise 1: Life expectancy<a class="headerlink" href="#exercise-1-life-expectancy" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">curve</span><span class="p">(</span><span class="m">67.78</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.0002549</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Relation of GDP per capita and life expectancy&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GDP per capita in international Dollars at 2011 prices&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average life expectancy at birth in years&quot;</span><span class="w">    </span>
+<span class="w">     </span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/07fd25fabb2c44133c307635e83d1bace07673a480752f66459be09a602260eb.png" src="_images/07fd25fabb2c44133c307635e83d1bace07673a480752f66459be09a602260eb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">lex</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">life_expectancy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">lex</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Entity</th><th scope=col>Code</th><th scope=col>Year</th><th scope=col>LE</th><th scope=col>GDPC</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>2</th><td>Afghanistan</td><td>AFG</td><td>1950</td><td>27.7275</td><td>1156</td></tr>
+	<tr><th scope=row>3</th><td>Afghanistan</td><td>AFG</td><td>1951</td><td>27.9634</td><td>1170</td></tr>
+	<tr><th scope=row>4</th><td>Afghanistan</td><td>AFG</td><td>1952</td><td>28.4456</td><td>1189</td></tr>
+	<tr><th scope=row>5</th><td>Afghanistan</td><td>AFG</td><td>1953</td><td>28.9304</td><td>1240</td></tr>
+	<tr><th scope=row>6</th><td>Afghanistan</td><td>AFG</td><td>1954</td><td>29.2258</td><td>1245</td></tr>
+	<tr><th scope=row>7</th><td>Afghanistan</td><td>AFG</td><td>1955</td><td>29.9206</td><td>1246</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">lex_2018</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lex</span><span class="p">[</span><span class="n">lex</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2018</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">lex_2018</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Entity</th><th scope=col>Code</th><th scope=col>Year</th><th scope=col>LE</th><th scope=col>GDPC</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>70</th><td>Afghanistan</td><td>AFG</td><td>2018</td><td>63.0810</td><td> 1934.555</td></tr>
+	<tr><th scope=row>665</th><td>Albania    </td><td>ALB</td><td>2018</td><td>79.1838</td><td>11104.166</td></tr>
+	<tr><th scope=row>924</th><td>Algeria    </td><td>DZA</td><td>2018</td><td>76.0656</td><td>14228.025</td></tr>
+	<tr><th scope=row>1634</th><td>Angola     </td><td>AGO</td><td>2018</td><td>62.1438</td><td> 7771.442</td></tr>
+	<tr><th scope=row>2277</th><td>Argentina  </td><td>ARG</td><td>2018</td><td>76.9994</td><td>18556.383</td></tr>
+	<tr><th scope=row>2536</th><td>Armenia    </td><td>ARM</td><td>2018</td><td>75.0645</td><td>11454.425</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">sel</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Chad&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Egypt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Vietnam&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Thailand&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;India&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Switzerland&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;United States&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Qatar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">lex_2018</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">sel</span><span class="p">,</span><span class="w"> </span><span class="p">]</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">countries</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Entity&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;GDPC&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LE&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 9 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Entity</th><th scope=col>GDPC</th><th scope=col>LE</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>10008</th><td>Chad         </td><td>  2046.363</td><td>52.8253</td></tr>
+	<tr><th scope=row>15257</th><td>Egypt        </td><td> 11957.212</td><td>71.3669</td></tr>
+	<tr><th scope=row>24460</th><td>India        </td><td>  6806.498</td><td>70.7095</td></tr>
+	<tr><th scope=row>27940</th><td>Kenya        </td><td>  3377.470</td><td>62.6765</td></tr>
+	<tr><th scope=row>45731</th><td>Qatar        </td><td>153764.170</td><td>80.8982</td></tr>
+	<tr><th scope=row>54635</th><td>Switzerland  </td><td> 61372.730</td><td>83.5615</td></tr>
+	<tr><th scope=row>55857</th><td>Thailand     </td><td> 16648.623</td><td>78.6622</td></tr>
+	<tr><th scope=row>59903</th><td>United States</td><td> 55334.740</td><td>78.9896</td></tr>
+	<tr><th scope=row>61747</th><td>Vietnam      </td><td>  6814.142</td><td>73.9757</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">curve</span><span class="p">(</span><span class="m">67.78</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.0002549</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">160000</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Relation of GDP per capita and life expectancy&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GDP per capita in international Dollars at 2011 prices&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average life expectancy at birth in years&quot;</span><span class="w">    </span>
+<span class="w">     </span><span class="p">)</span>
+
+<span class="nf">points</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">GDPC</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">LE</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">GDPC</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">LE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Entity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cb5c4930aaf70c77de355a72abe13e498ae8eb4d89c731caad33708059865e40.png" src="_images/cb5c4930aaf70c77de355a72abe13e498ae8eb4d89c731caad33708059865e40.png" />
+</div>
+</div>
+<p>Add my own country</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">curve</span><span class="p">(</span><span class="m">67.78</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.0002549</span><span class="o">*</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">160000</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Relation of GDP per capita and life expectancy&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;GDP per capita in international Dollars at 2011 prices&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Average life expectancy at birth in years&quot;</span><span class="w">    </span>
+<span class="w">     </span><span class="p">)</span>
+
+<span class="nf">points</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">GDPC</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">LE</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">GDPC</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Austria&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">lex_2018</span><span class="o">$</span><span class="n">LE</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Austria&quot;</span><span class="p">],</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">19</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">GDPC</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">LE</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Entity</span><span class="p">)</span>
+<span class="nf">text</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lex_2018</span><span class="o">$</span><span class="n">GDPC</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Austria&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lex_2018</span><span class="o">$</span><span class="n">LE</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Austria&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="p">[</span><span class="n">lex_2018</span><span class="o">$</span><span class="n">Entity</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Austria&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5b51264462984c06434c6e45d6c109fc7f7009407887b49bb0247957032cf0ff.png" src="_images/5b51264462984c06434c6e45d6c109fc7f7009407887b49bb0247957032cf0ff.png" />
+</div>
+</div>
+</section>
+<section id="exercise-2-reproduce-the-scatterplot-on-primary-school-enrolment-rate">
+<h3>Exercise 2: Reproduce the scatterplot on primary school enrolment rate<a class="headerlink" href="#exercise-2-reproduce-the-scatterplot-on-primary-school-enrolment-rate" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">enrol_attend_dat</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>Code</th><th scope=col>Year</th><th scope=col>Attendance</th><th scope=col>Enrolment</th><th scope=col>Population</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>597</th><td>Albania   </td><td>ALB</td><td>2008</td><td>94.47980</td><td>90.26729</td><td> 2951690</td></tr>
+	<tr><th scope=row>2436</th><td>Armenia   </td><td>ARM</td><td>2005</td><td>98.57435</td><td>80.08213</td><td> 3047254</td></tr>
+	<tr><th scope=row>3654</th><td>Azerbaijan</td><td>AZE</td><td>2006</td><td>79.27288</td><td>83.15377</td><td> 8763353</td></tr>
+	<tr><th scope=row>5726</th><td>Benin     </td><td>BEN</td><td>2006</td><td>63.06672</td><td>82.57930</td><td> 8402635</td></tr>
+	<tr><th scope=row>5727</th><td>Benin     </td><td>BEN</td><td>2012</td><td>70.60000</td><td>94.86310</td><td>10014087</td></tr>
+	<tr><th scope=row>6332</th><td>Bolivia   </td><td>BOL</td><td>2003</td><td>82.40857</td><td>95.62232</td><td> 9057386</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">dat</span><span class="o">$</span><span class="n">Enrolment</span><span class="p">,</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Attendance</span><span class="p">,</span><span class="w"> </span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Enrollment versus Attendance&quot;</span><span class="p">),</span><span class="w"> </span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Enrollment rate primary school&quot;</span><span class="p">),</span><span class="w"> </span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;Attendance rate primary school&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">)</span>
+
+<span class="nf">abline</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9f8fb8b2e9e00b208ce2af4ebf39dee467743ccdd1642078ba21a537516ad1a4.png" src="_images/9f8fb8b2e9e00b208ce2af4ebf39dee467743ccdd1642078ba21a537516ad1a4.png" />
+</div>
+</div>
+</section>
+<section id="exercise-3-write-a-conversion-function-from-any-data-to-standard-units">
+<h3>Exercise 3: Write a conversion function from any data to standard units<a class="headerlink" href="#exercise-3-write-a-conversion-function-from-any-data-to-standard-units" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+
+<span class="n">testdat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pearson</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">testdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A spec_tbl_df: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Father</th><th scope=col>Son</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>65.0</td><td>59.8</td></tr>
+	<tr><th scope=row>2</th><td>63.3</td><td>63.2</td></tr>
+	<tr><th scope=row>3</th><td>65.0</td><td>63.3</td></tr>
+	<tr><th scope=row>4</th><td>65.8</td><td>62.8</td></tr>
+	<tr><th scope=row>5</th><td>61.1</td><td>64.3</td></tr>
+	<tr><th scope=row>6</th><td>63.0</td><td>64.2</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">scale</span><span class="p">(</span><span class="n">testdat</span><span class="p">))</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Father</th><th scope=col>Son</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>-0.9785130</td><td>-3.154694</td></tr>
+	<tr><th scope=row>2</th><td>-1.5976343</td><td>-1.947391</td></tr>
+	<tr><th scope=row>3</th><td>-0.9785130</td><td>-1.911882</td></tr>
+	<tr><th scope=row>4</th><td>-0.6871618</td><td>-2.089426</td></tr>
+	<tr><th scope=row>5</th><td>-2.3988501</td><td>-1.556793</td></tr>
+	<tr><th scope=row>6</th><td>-1.7068910</td><td>-1.592302</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Father</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Son</span><span class="p">)</span>
+
+<span class="nf">sd</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Father</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Son</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">-1.31100560022995e-15</div><div class="output text_html">-1.33732395422732e-15</div><div class="output text_html">1</div><div class="output text_html">1</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># An implementation using the scale function of R.</span>
+
+<span class="n">convert_su</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">){</span>
+
+<span class="w">    </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">scale</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="w">    </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">convert_su</span><span class="p">(</span><span class="n">testdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1078 × 2</caption>
+<thead>
+	<tr><th scope=col>Father</th><th scope=col>Son</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>-0.97851299</td><td>-3.1546939</td></tr>
+	<tr><td>-1.59763428</td><td>-1.9473907</td></tr>
+	<tr><td>-0.97851299</td><td>-1.9118818</td></tr>
+	<tr><td>-0.68716179</td><td>-2.0894264</td></tr>
+	<tr><td>-2.39885006</td><td>-1.5567926</td></tr>
+	<tr><td>-1.70689098</td><td>-1.5923015</td></tr>
+	<tr><td>-0.83283739</td><td>-1.6278104</td></tr>
+	<tr><td>-1.08776969</td><td>-1.6633194</td></tr>
+	<tr><td>-0.57790509</td><td>-1.4502659</td></tr>
+	<tr><td>-0.25013500</td><td>-1.6633194</td></tr>
+	<tr><td>-3.16364695</td><td>-1.2372124</td></tr>
+	<tr><td>-1.74330987</td><td>-1.1661945</td></tr>
+	<tr><td>-1.45195868</td><td>-1.0596678</td></tr>
+	<tr><td>-1.30628308</td><td>-1.1661945</td></tr>
+	<tr><td>-1.08776969</td><td>-1.2017034</td></tr>
+	<tr><td>-0.90567519</td><td>-1.3792480</td></tr>
+	<tr><td>-0.46864840</td><td>-1.3082302</td></tr>
+	<tr><td>-0.75999959</td><td>-1.1306856</td></tr>
+	<tr><td>-0.10445940</td><td>-1.2727213</td></tr>
+	<tr><td>-0.32297280</td><td>-1.1306856</td></tr>
+	<tr><td> 0.04121619</td><td>-1.2727213</td></tr>
+	<tr><td> 0.66033748</td><td>-1.1306856</td></tr>
+	<tr><td>-1.88898547</td><td>-0.7400875</td></tr>
+	<tr><td>-1.41553978</td><td>-0.8111054</td></tr>
+	<tr><td>-1.16060748</td><td>-0.9176321</td></tr>
+	<tr><td>-0.97851299</td><td>-0.9531410</td></tr>
+	<tr><td>-1.08776969</td><td>-0.9531410</td></tr>
+	<tr><td>-0.72358069</td><td>-0.7755964</td></tr>
+	<tr><td>-0.79641849</td><td>-1.0596678</td></tr>
+	<tr><td>-0.75999959</td><td>-0.9531410</td></tr>
+	<tr><td>⋮</td><td>⋮</td></tr>
+	<tr><td> 1.097364275</td><td> 1.2129029</td></tr>
+	<tr><td> 1.716485564</td><td> 1.2839207</td></tr>
+	<tr><td> 1.716485564</td><td> 1.2129029</td></tr>
+	<tr><td>-0.177297202</td><td> 1.4614653</td></tr>
+	<tr><td> 0.041216194</td><td> 1.4614653</td></tr>
+	<tr><td> 0.441824087</td><td> 1.7100277</td></tr>
+	<tr><td> 0.988107577</td><td> 1.7810456</td></tr>
+	<tr><td> 1.279458772</td><td> 1.4614653</td></tr>
+	<tr><td> 1.352296571</td><td> 1.6745188</td></tr>
+	<tr><td> 1.461553269</td><td> 1.5324832</td></tr>
+	<tr><td> 1.789323363</td><td> 1.6035010</td></tr>
+	<tr><td>-0.031621605</td><td> 2.0651169</td></tr>
+	<tr><td> 0.332567389</td><td> 1.8165545</td></tr>
+	<tr><td> 1.206620973</td><td> 1.8165545</td></tr>
+	<tr><td> 1.570809967</td><td> 1.8165545</td></tr>
+	<tr><td> 2.736214746</td><td> 1.8165545</td></tr>
+	<tr><td> 1.971417860</td><td> 2.4557150</td></tr>
+	<tr><td> 0.806013081</td><td> 3.0238577</td></tr>
+	<tr><td>-0.796418491</td><td>-3.0481671</td></tr>
+	<tr><td> 1.789323363</td><td> 2.8818220</td></tr>
+	<tr><td> 1.643647766</td><td>-0.7045786</td></tr>
+	<tr><td>-1.634053176</td><td>-3.5097830</td></tr>
+	<tr><td> 2.044255659</td><td>-0.2784716</td></tr>
+	<tr><td>-0.687161793</td><td>-2.7285869</td></tr>
+	<tr><td> 0.004797295</td><td>-3.1546939</td></tr>
+	<tr><td>-0.250135001</td><td> 0.7512870</td></tr>
+	<tr><td> 1.315877672</td><td>-0.1364359</td></tr>
+	<tr><td> 1.497972168</td><td> 0.2186532</td></tr>
+	<tr><td> 1.097364275</td><td> 0.2186532</td></tr>
+	<tr><td> 0.951688678</td><td>-0.5980519</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">calculate_correlation</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">dat</span><span class="p">){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">#convert to standard units</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">su</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">convert_su</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">mean</span><span class="p">(</span><span class="n">su</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="m">1</span><span class="p">]</span><span class="o">*</span><span class="n">su</span><span class="p">[,</span><span class="w"> </span><span class="m">2</span><span class="p">])</span>
+<span class="w">    </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">calculate_correlation</span><span class="p">(</span><span class="n">testdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.500697780361573</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the same calculation with these data using R cor() function</span>
+
+<span class="nf">cor</span><span class="p">(</span><span class="n">testdat</span><span class="o">$</span><span class="n">Father</span><span class="p">,</span><span class="w"> </span><span class="n">testdat</span><span class="o">$</span><span class="n">Son</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.501162680807591</div></div>
+</div>
+<p>This works, the differences after the third decimal point come from numerical differences.</p>
+</section>
+<section id="advertising-channels-and-sales">
+<h3>Advertising channels and sales<a class="headerlink" href="#advertising-channels-and-sales" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+
+<span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">advertising</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>ID</th><th scope=col>TV</th><th scope=col>radio</th><th scope=col>newspaper</th><th scope=col>sales</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>230.1</td><td>37.8</td><td>69.2</td><td>22.1</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td> 44.5</td><td>39.3</td><td>45.1</td><td>10.4</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td> 17.2</td><td>45.9</td><td>69.3</td><td> 9.3</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td>151.5</td><td>41.3</td><td>58.5</td><td>18.5</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>180.8</td><td>10.8</td><td>58.4</td><td>12.9</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td>  8.7</td><td>48.9</td><td>75.0</td><td> 7.2</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">TV</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">newspaper</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;green&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/65e4dbb4c615077ee11868817bc015d872d5521a3cd34630a15202ec62729add.png" src="_images/65e4dbb4c615077ee11868817bc015d872d5521a3cd34630a15202ec62729add.png" />
+<img alt="_images/eecb87c924e5a4336ed53cfcfc13ee6b83dcd18aaa6c5d5fd15277f77484f305.png" src="_images/eecb87c924e5a4336ed53cfcfc13ee6b83dcd18aaa6c5d5fd15277f77484f305.png" />
+<img alt="_images/4609de6140ef80e3cbec337d8f30b78eaa8877efcb73c803b475479fee19d65a.png" src="_images/4609de6140ef80e3cbec337d8f30b78eaa8877efcb73c803b475479fee19d65a.png" />
+</div>
+</div>
+<p>The strongest correlation with the advertising channel is TV, followed by radio, followed by newspaper, which has almost no or only very weak correlation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">TV</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">)</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">radio</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">)</span>
+<span class="nf">cor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">newspaper</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.782224424861606</div><div class="output text_html">0.576222574571055</div><div class="output text_html">0.228299026376165</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">sales</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">TV</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="n">mod</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = sales ~ TV, data = data)
+
+Coefficients:
+(Intercept)           TV  
+    7.03259      0.04754  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">TV</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">sales</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/632f7e164c5554de72330d62a8a8aa6daec25df16370198f8214cbdf0c066739.png" src="_images/632f7e164c5554de72330d62a8a8aa6daec25df16370198f8214cbdf0c066739.png" />
+</div>
+</div>
+<p>Intercept: 7.03259
+Slope: 0.04754</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">newdata</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">TV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">))</span>
+
+<span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>1:</strong> 7.03259354912769</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">newdata</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">TV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">300</span><span class="p">))</span>
+
+<span class="nf">predict</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><strong>1:</strong> 21.2935856790336</div></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,7 +1263,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Exercises: Unit 3, Generalizing observations from data and knowing what causes what</p>
       </div>
     </a>
     <a class="right-next"
@@ -432,6 +1281,39 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-points-in-a-coordinate-system">Exercise 1: Points in a coordinate system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-what-is-the-slope">Exercise 2: What is the slope</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-where-on-the-line-are-you">Exercise 3: Where on the line are you?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-plotting-graphs-by-hand">Exercise 4: Plotting graphs (by hand)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-where-is-the-point">Exercise 5: Where is the point?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-mathematics-of-lines">Exercise 6: The mathematics of lines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-comparing-correlations">Exercise 7: Comparing correlations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-interpreting-correlation">Exercise 8: Interpreting correlation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-correlation-between-height-and-weight">Exercise 9: Correlation between height and weight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-explain">Exercise 10: Explain</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-life-expectancy">Exercise 1: Life expectancy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproduce-the-scatterplot-on-primary-school-enrolment-rate">Exercise 2: Reproduce the scatterplot on primary school enrolment rate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-write-a-conversion-function-from-any-data-to-standard-units">Exercise 3: Write a conversion function from any data to standard units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertising-channels-and-sales">Advertising channels and sales</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

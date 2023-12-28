@@ -1,70 +1,127 @@
 # Modelling relationships: Points, Lines and Scatterplots
 
-
-
-::: {.callout-note appearance="simple"}
-## Overview
-
 In this section you will make your first steps into statistical modeling. With
 a statistical model you can study relationships between two or more variables
 and analyze more complex empirical situations that we did up to now. When we 
-going towards models we need some tools from mathematics. Here we introduce
-first the mathematics of points and lines and how you can use R to visualize and
+are going towards models we need some tools from mathematics. 
+Here we introduce
+first the mathematics of points and lines and how you can 
+use R to visualize and
 manipulate points and lines. This will prepare the next section where we will
 discuss how we can use a model to make predictions. 
+
+::: {.callout-note appearance="simple"}
+
+## Overview
 
 1. A **statistical model** is a mathematical representation of the relationship between variables
 which we can use for the prediction of the value of one variable using the
 value of another variable or the values of a list of other
 variables.
 
-2. Points and lines can be plotted in a coordinate system. Points and lines
-can at the same time be described and manipulated algebraically by equations. You
-will learn to understand both representations and how to go back and forth between
+2. **Points and lines** can be plotted in a coordinate system. 
+Points and lines
+can at the same time be described and manipulated algebraically 
+by equations. You
+will learn to understand both representations and how to go 
+back and forth between
 them.
 
-3. An important object in this context are straight lines. You need to understand
-what the slope and the intercept of a line are and how you can describe a line
-by an equation as well as how you can recognize the slope and the intercept from
+3. An important object in this context are **straight lines**. 
+You need to understand
+what the slope and the intercept of a line are and how 
+you can describe a line
+by an equation as well as how you can recognize the 
+slope and the intercept from
 the equation.
 
-4. You will learn how to harness the power of the computer by plotting lines and
-points using R.
+4. You will learn how to harness the power of the 
+computer by **plotting lines and
+points using R**.
 
-5. In the end of this section we start our discussion of modelling relationships
-between variables and using these models to make predictions.
+5. In the end of this section we start our 
+discussion of **modelling relationships
+between variables** and using these models to **make predictions**.
 
 :::
+
+::: {.callout-important appearance="simple"}
+
+## Keywords
+
+**Statistical model**: A statistical model is a 
+mathematical representation of the relationship between variables
+which we can use for the prediction of the value of one variable using the
+value of another variable or the values of a list of other
+variables. It also allows us a more precise description 
+of the relationship between
+variables.
+
+**Coordinate system**: The
+graphs of a coordinate systems have a horizontal axis, 
+the $x$-axis and a vertical axis,
+the $y$-axis. Each point in the plane can be described 
+by its coordinates, given by an $x$ value
+and a $y$ value.
+
+**Slope**: The slope is the ratio of the units of change in the y-coordinate
+over the units of change of the x-coordinate, formally expressed as
+slope = $\frac{\Delta y}{\Delta x}$
+
+**Intercept**: The intercept of a line is the value of the y-coordinate when
+the x-coordinate takes a value of 0. Graphically it is where the line intersects the y-axis.
+
+**Equation for the graph of a straight line**: The graph of equation $y = kx + d$ is a straight line with slope $k$ and intercept $d$
+
+**Scatterplot**: The visual display of the relations between 
+two variables are described in statistics using scatter plots. 
+It plots the points
+described by pairs of values into a coordinate system. The 
+result is a scatter of points.
+
+:::
+
+
 
 ## Statistical models
 
 In our course so far we have encountered various methods which allow us to visualize and
 summarize data consisting of a single set of numbers. These 
 simple techniques have already taken us 
-quite far and allowed us to look at various interesting real world questions. We
+quite far and allowed us to look at various interesting 
+real world questions. We
 have also learned in some instances describing data where more than one
 variable is involved in studying some scatterplots.
 
-In general modern data are much more complex. In such more complex situations, involving 
-whole lists of related variables, we need more powerful tools. In this chapter we are going to
+In general modern data are much more complex. In such more 
+complex situations, involving 
+whole lists of related variables, we need more powerful 
+tools. In this chapter we are going to
 take a first step in introducing the idea of a **statistical model**.
 
 A statistical model is a mathematical representation of the relationship between variables
 which we can use for the prediction of the value of one variable using the
 value of another variable or the values of a list of other
-variables. It also allows us a more precise description of the relationship between
+variables. It also allows us a more precise description 
+of the relationship between
 variables.
 
-Statistical models inevitably involve some mathematical ideas, which you need to understand 
-to confidently work with these models and use them. In this chapter we will introduce you
-to these ideas step by step, going into actual statistical models and its most
+Statistical models inevitably involve some mathematical ideas, which 
+you need to understand 
+to confidently work with these models and use them. In this chapter 
+we will introduce you
+to these ideas step by step, going into actual statistical models 
+and its most
 important form, regression analysis in the next chapter.
 
 ## Plotting points and lines
 
-In this section we review some ideas about plotting points and lines which we will need
-for understanding statistical models. For some of you this might be a refresher of
-concepts you have already encountered in school, for others this material might be new.
+In this section we review some ideas about plotting points and 
+lines which we will need
+for understanding statistical models. For some of you this 
+might be a refresher of
+concepts you have already encountered in school, for others 
+this material might be new.
 
 ### Reading points off a graph
 
@@ -82,9 +139,12 @@ In the second coordinate system, coordinate-system 2, you see the plot of a poin
 $(x,y) = (-1.5, -0.8)$ with the coordinates $(-1.5,-0.8)$. 
 
 The idea to represent
-points in a plane by pairs of numbers (their coordinates) is very powerful because
-it combines two apparently different field, algebra - the manipulation of numbers 
-by adding, subtracting etc. - and geometry, lines, points and other geometric objects. 
+points in a plane by pairs of numbers (their coordinates) is very 
+powerful because
+it combines two apparently different field, algebra - the 
+manipulation of numbers 
+by adding, subtracting etc. - and geometry, lines, points 
+and other geometric objects. 
 
 This idea
 goes back to the french philosopher and mathematician 
@@ -92,7 +152,8 @@ Rene Descartes (1556 - 1630).^[Rene Descartes was born in 1556 and
 died in 1630. He was a french philosopher and mathematician and scientist. 
 His connection of the two previously separated fields of geometry and 
 algebra into the field of analytic geometry is one of his lasting contribution 
-to mathematics. Here you see a portrait painted by the Dutch painter Frans Hals. 
+to mathematics. Here you see a portrait painted by the 
+Dutch painter Frans Hals. 
 ![Descartes](pictures/330px-Frans_Hals_-_Portret_van_René_Descartes.jpg)] This
 is why the $x$ and $y$ coordinates are often referred as "Cartesian coordinates".
 
@@ -166,13 +227,20 @@ The following figure shows a line.
 
 ![Line](pictures/slope_a.png){#fig-slope width=50% height=50%}
 
-Take any point on this line, say point A. Now move up the line to any other point, say B.
-When you make such a move, your $x$-coordinate has increased by some amount. We call this
-increase $\Delta x$.^[$\Delta$ is a greek letter and in mathematical notation it is
-often used to symbolize change] In our picture $\Delta x = 2$ because we moved two units to the
-right. At the same time you $y$-coordinate has increased by some other amount which we
-call $\Delta y$. In our picture $\Delta y = 1$. The ratio $\Delta y/ \Delta x$ is called
-the **slope** of the line. Whatever points you take on this line the slope will always be
+Take any point on this line, say point A. Now move up the 
+line to any other point, say B.
+When you make such a move, your $x$-coordinate has 
+increased by some amount. We call this
+increase $\Delta x$.^[$\Delta$ is a greek letter and in 
+mathematical notation it is
+often used to symbolize change] In our picture $\Delta x = 2$ because 
+we moved two units to the
+right. At the same time you $y$-coordinate has increased by 
+some other amount which we
+call $\Delta y$. In our picture $\Delta y = 1$. 
+The ratio $\Delta y/ \Delta x$ is called
+the **slope** of the line. Whatever points you take on 
+this line the slope will always be
 1/2.
 
 ::: {.callout-important}
@@ -200,25 +268,29 @@ The first step is that we draw the point $(2,1)$ into the coordinate system, lik
 
 ![Coordinate system with point (2,1)](pictures/line_a.png){#fig-linesa width=50% height=50%}
 
-Next you move any convenient distance $\Delta x$ to the right like this, say we move
+Next you move any convenient distance $\Delta x$ to the right 
+like this, say we move
 3 units. Make a point at this location like this
 
 ![Coordinate system with point (2,1) and construction point (5,1)](pictures/line_b.png){#fig-linesb width=50% height=50%}
 
-Since the line slopes up - the slope is positive an 1/2 - the line passes above this point. 
-The question is, how far?. To find the answer to the question ho much will the line
-rise in a $\Delta x$ of 3? The answer can be found from the formula of the slope. The
-line rises at the rate of half a vertical unit per horizontal unit. Thus we have
+Since the line slopes up - the slope is positive an 1/2 - the line 
+passes above this point. 
+The question is, how far?. To find the answer to the question 
+how much will the line
+rise in a $\Delta x$ of 3? The answer can be found from the 
+formula of the slope. The
+line rises at the rate of half a vertical unit per 
+horizontal unit. Thus we have
 \begin{equation}
 \Delta y = \Delta x \times \text{slope}
 \end{equation}
-In our case this means $3 \times \frac{1}{2} = 1.5$ Thus from the contruction point $(5,1)$
+In our case this means $3 \times \frac{1}{2} = 1.5$ Thus 
+from the construction point $(5,1)$
 we have to go up 1.5 units and mark a new point there. Now if you join these two points using
 a ruler you get the line like this
 
 ![The third point](pictures/line_c.png){#fig-linesc width=50% height=50%}
-
-
 
 ### The algebraic equation for a line
 
@@ -339,11 +411,16 @@ each single year.
 
 ## Modelling relationships and making predictions
 
-With the understanding of the mathematics of points and lines you are now well prepared
-for the next big topic in this course: Prediction. An important aspect of data analysis is
-what given data can tell us about the future. In the next chapter we will learn about one of
-the most used methods for making predictions: Regression analysis. Regression analysis helps
-us to model how different variables depend on each other and how we can make predictions using
+With the understanding of the mathematics of points and 
+lines you are now well prepared
+for the next big topic in this course: Prediction. An 
+important aspect of data analysis is
+what given data can tell us about the future. In the next 
+chapter we will learn about one of
+the most used methods for making predictions: Regression analysis. 
+Regression analysis helps
+us to model how different variables depend on each other 
+and how we can make predictions using
 our understanding of this relation.
 
 Relations between two variables are described in statistics using scatter plots. A famous example
@@ -351,15 +428,18 @@ from the history of statistics is an anthropometric dataset assembled by one of 
 Statistics, Charles Pearson^[Karl Pearson 1857 – 1936 was an English mathematician and biostatistician. He has been credited with establishing the discipline of mathematical statistics.He founded the world's first university statistics department at University College London in 1911, and contributed significantly to the field of biometrics and meteorology.
 ![Karl Pearson](pictures/Karl_Pearson,_1912.jpg)].
 
-The data are in the JWL package and are called `pearson`. Lets store these data in a variable
+The data are in the JWL package and are called `pearson`. Lets 
+store these data in a variable
 we call `dat` here:
 ```{r}
 #| code-fold: false
 library(JWL)
 dat <- pearson
 ```
-When we plot the heights of fathers and sons in one diagram, each pair - i.e. each row in dat - is
-a point and the set of all points plotted in this way is called a **scatter-plot**. When we
+When we plot the heights of fathers and sons in one diagram, 
+each pair - i.e. each row in dat - is
+a point and the set of all points plotted in this way is 
+called a **scatter-plot**. When we
 give `dat`to R as an argument R will automatically produce a scatter-plot. We show the code here:
 
 ```{r}
@@ -375,29 +455,44 @@ abline(0,1, lty = 2)
 abline(v = 71.5, lty = 2, col = "blue")
 abline(v = 72.5, lty = 2, col = "blue")
 ```
-Let me briefly explain the code. `plot(dat)` would produce a default scatter plot with R. Here I adjust a few graphical parameters to make the plot more readable: I do not have to explain again how `xlab`, `ylab` and `main` works. `pch = 19` makes the dots filled contrary to the hollow points
-of the default configuration and `cex = 0.9` makes them smaller than the default, so you
+Let me briefly explain the code. `plot(dat)` would produce a 
+default scatter plot with R. Here I adjust a few graphical 
+parameters to make the plot more readable: I do not have to 
+explain again how `xlab`, `ylab` and `main` works. `pch = 19` makes 
+the dots filled contrary to the hollow points
+of the default configuration and `cex = 0.9` makes them smaller 
+than the default, so you
 can see the differences better.
 
-The figure illustrates the mechanics of scatter plots. It is a cloud of points, which in this
-case slopes upward to the right, the y-coordinates tending to increase as the x-coordinate increases.
-One says that there is a *positive association* between the heights of the fathers and the heights of 
-the sons. The dashed diagonal line is the line of all points where the son's father's height and the
-son's height are equal. If the father's height is close to the son's height the points are close
+The figure illustrates the mechanics of scatter plots. It is a 
+cloud of points, which in this
+case slopes upward to the right, the y-coordinates tending to 
+increase as the x-coordinate increases.
+One says that there is a *positive association* between the heights 
+of the fathers and the heights of 
+the sons. The dashed diagonal line is the line of all points 
+where the son's father's height and the
+son's height are equal. If the father's height is close to 
+the son's height the points are close
 to the line.
 
-There is quiet some spread, showing the the relationship is weak. Suppose for example that you
-have to guess the height of a son from a father's height. In the stripe bordered by the
-blue dashed lines you see all the points where the father is 72 inches to the nearest inch. There
-is a lot of variability in the heights of the sons. You can see it in the scatter within the
+There is quite some spread, showing the the relationship 
+is weak. Suppose for example that you
+have to guess the height of a son from a father's height. In 
+the stripe bordered by the
+blue dashed lines you see all the points where the father is 72 
+inches to the nearest inch. There
+is a lot of variability in the heights of the sons. You 
+can see it in the scatter within the
 stripe. So even if you know the father's height there is still a lot of room for error.
 
 ::: {.callout-important}
-If there is a strong association between two variables, then knowing one helps a lot in predicting the other. But when there is a weak association, information about one variable does not help much
+If there is a strong association between two variables, 
+then knowing one helps a lot in predicting the other. But when 
+there is a weak association, information about one variable 
+does not help much
 in guessing the other.
 :::
-
-
 
 ## Exercises
 
@@ -466,10 +561,11 @@ points lie on a line? What is the equation of this line?
 all lie on a line. What is the equation of this line?
 
 4. True of false:
-   (a) If $y$ is bigger than $x$, then the point $(x,y)$ is above the line of exercise 3.
-   (b) If $y = x$ then the point $(x,y)$ is on the line of exercise 3.
+   (a) If $y$ is bigger than $x$, then the point $(x,y)$ is above the line of exercise 3 1. with slope 1.
+   (b) If $y = x$ then the point $(x,y)$ is on the line of exercise 3 1. with
+   slope -1.
    (c) If $y$ is smaller than $x$, then the point $(x,y)$ is below the line of 
-       exercise 3.
+       exercise 3 1. with slope 0.
        
 :::
 
@@ -508,7 +604,7 @@ Where is the point.
 
 :::
 
-::: {#fig-plot-regions layout-ncol=3}
+::: {.callout-note icon=false}
 
 ## Exercise 6: The mathematics of lines
 
@@ -547,7 +643,8 @@ capita of about 623 \$ expressed in international dollars at
 2011 prices, a hypothetical monetary unit that makes income comparable 
 accross countries. The richest country is in comparison at about 150.000 $ international.
 
-For the year 2018 the data show that the relation of GDP follows a straight line with the equation
+For the year 2018 the data show that the relation of GDP to life
+expectancy follows a straight line with the equation
 $y=67.78+0.0002549 x$
  
 In the exercise you are asked to add points to a plot. This is done in R like this. You first write the code for the line graph and then write the code for a point with the syntax points(x,y).
@@ -563,7 +660,7 @@ In the exercise you are asked to add points to a plot. This is done in R like th
 
 :::{.callout-note icon=false}
 
-## Exercise 2: Reporduce the scatter plot on primary school enrollment rate
+## Exercise 2: Reproduce the scatter plot on primary school enrollment rate
 
 In this exercise we ask you to reproduce the scatter plot on the enrollment rate in primary school and the
 attendance rate discussed in section 3.

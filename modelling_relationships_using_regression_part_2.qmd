@@ -1,5 +1,12 @@
 # Modelling relationship: Prediction using regression
 
+We are now ready to learn about the most important statistical
+tool to describe relationship between variables and to model
+this relationship. The model of the relationship is the
+basis for making predictions. After finishing this unit
+you will have mastered the second core skill taught in this
+course: Making predictions based on data on past observations.
+
 ::: {.callout-note appearance="simple"}
 ## Overview
 
@@ -15,6 +22,47 @@ between two variables.
 6. We discuss also the method of **least squares** to identify the regression line.
 7. In  the end we demonstrate how we can make use of R to compute regression lines and how to use it
 for making predictions.
+
+:::
+
+::: {.callout-important appearance="simple"}
+
+## Keywords
+
+**Correlation**: Correlation, expressed by the correlation 
+coefficient measures how tightly a scatterplot is clustered 
+around a straight line. The correlation coefficient is 
+therefore called a measure of linear association. 
+It is usually expressed shorthand as correlation and often 
+abbreviated by the letter $r$. 
+
+**Correlation Coefficient**:  The correlation coefficient $r$ is 
+the average of the products of the two variables when both 
+variables are measured in standard units or z-scores.
+
+**Correlation is not Causation**: Correlation establishes how tightly
+two variables are clustered around a straight line. While a causal story
+might be the reason for this pattern (x causing y) the pattern does
+not establish that x causes y in a statistical sense. Detecting
+a pattern is never sufficient to establish a causal relation between
+variables.
+
+**Regression lines**: The regression line for $y$ on $x$ estimates 
+the average value for $y$ corresponding to each value of $x$. 
+
+**Slope and Intercept of the regression line**: The **slope of the regression line** is: $r \,\, \frac{\text{sd}\, y}{\text{sd}\, x}$.
+The **intercept of the regression line** is: $\text{average of}\, y - \text{slope} \times \text{average of}\, x$.
+
+**Least squares method**: Among all lines, the line that 
+minimizes the root mean square error in predicting $y$ from $x$
+is the regression line. Moreover the regression line is 
+the only line that minimizes the root mean square error.
+
+**`lm()` function**: The `lm()` function is the R implementation of 
+the least squares method. 
+
+**`predict()`**: The `predict()` function allows us to make predictions
+from a statistical model derived by `lm()`.
 
 :::
 
@@ -929,39 +977,17 @@ Studies find a negative correlation between hours spent watching television and 
 
 ::: {.callout-note appearance="simple"}
 
-## Exerxise 3: Rating learning facilitators
+## Exerxise 3: Correlation between height and weight
 
-In a statistics course, a course with lectures and small discussion sections led by learning facilitators, 
-in the last lecture, students were asked to fill out anonymous questionaires
-rating the effectiveness of their learning facilitators and the course on the scale:
+The correlation between height and weight among men 18-74 in the US is about
+0.40. Say whether each conclusion follows from the data, explain 
+your answer:
 
-1: poor, 2: fair, 3: good, 4: very good, 5: excellent
-
-The following statistics were then computed:
-
-1. The average rating of the learning facilitator by the students in each section.
-2. The average rating of the course by the students in each section
-3. The average score on the final for the students in each section.
-
-Results are shown below - sections are identified by letter. Draw a scatter diagram for each pair of 
-the variables  - there are three pairs - and find the correlations.
-
-```{r}
-example <- data.frame(section = c("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"),
-                      avratlf = c(3.3, 2.9, 4.1, 3.3, 2.7, 3.4, 2.8, 2.1, 3.7, 3.2, 2.4),
-                      avratco = c(3.5, 3.2, 3.1, 3.3, 2.8, 3.5, 3.6, 2.8, 2.8, 3.3, 3.3),
-                      avsfin  = c(70,64,47,63,69,69,69,63,53,65,64))
-
-knitr::kable(example)
-```
-where *avratlf* means average rating of learning facilitator, *avratco* means average rating of course and
-*avsfin* means average score on final.
-
-The data are section averages. Since the questionnaire was anonymous, it was not possible to link up student ratings with scores on an individual basis. Student ability may be a confounding factor. However, controlling for pretest resulst turned out to make no difference to the analysis. Each learning facilitator taught in onse section. True or false? Explain.
-
-(a) On the average those sections that liked their LF more did better on the final.
-(b) There was almost no relationship between the section's average ratibg of the learning facilitator and the section's average rating of the course.
-(c) There was almost no relationship betwee the section's average rating of the course and the section's average score on the final.
+1. Taller men tend to be heavier
+2. The correlation between weight and height for men 18-74 is 0.4
+3. Heavier men tend to be taller
+4. If someone eats more and puts on 10 pounds, he is likely to get
+somewhat taller.
 
 :::
 
@@ -979,8 +1005,11 @@ When we calculate the correlation coefficient, why do we convert data to standar
 
 ## Exercise 1: Write a conversion function from any data to standard units:
 
-Write a function called `convert_su` which takes in a dataframe of elements called data and returns a dataframe of the values represented in standard units. To do a specific computation with the function take the
-dataset `pearson` from the `JWL`package. These are the data we used in the lecture. 
+Write a function called `convert_su` which takes in a dataframe of 
+elements called data and returns a dataframe of the values represented 
+in standard units. To do a specific computation with the function 
+take the dataset `pearson` from the `JWL`package. These are 
+the data we used in the lecture. 
 
 :::
 
@@ -1015,4 +1044,6 @@ data as well as the regression line. Use `lm()` to compute the intercept and the
 
 :::
 
-### Exercises Project
+## Project People count: The present and future of humanity in pictures and numbers
+
+### Text
