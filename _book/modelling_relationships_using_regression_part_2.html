@@ -265,7 +265,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">7.4</span> Project People count: The present and future of humanity in pictures and numbers</a>
   <ul class="collapse">
-  <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text"><span class="header-section-number">7.4.1</span> Text</a></li>
+  <li><a href="#looking-forward-predicting-the-future-population-of-kenya" id="toc-looking-forward-predicting-the-future-population-of-kenya" class="nav-link" data-scroll-target="#looking-forward-predicting-the-future-population-of-kenya"><span class="header-section-number">7.4.1</span> Looking Forward: Predicting the future population of Kenya</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1378,8 +1378,15 @@ Exercise 3: Advertising channels and sales
 </section>
 <section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">7.4</span> Project People count: The present and future of humanity in pictures and numbers</h2>
-<section id="text" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="text"><span class="header-section-number">7.4.1</span> Text</h3>
+<section id="looking-forward-predicting-the-future-population-of-kenya" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="looking-forward-predicting-the-future-population-of-kenya"><span class="header-section-number">7.4.1</span> Looking Forward: Predicting the future population of Kenya</h3>
+<p>Your country will need many services and public goods to thrive in the future: Schools, hospitals, traffic infrastructure. But these goods are very expensive, straining the resources of the country. Waste is not an option here. To the contrary, since these are all long term investments where lost of effort and resources has to be spent now to reap benefits only in a distant future, sometimes 10 years or more ahead of the present, careful planning and thinking is essential to get things right. An essential part of this planning will be a good estimate or prediction about the future count of people. In this step of our project we will leverage what we have learned in unit 4 to design a population model of the future count of people, taking Kenya as an example.</p>
+<p>Note: This step of the project will require some independence from you. Use the R help facilities but also the internet to find out how to solve particular details of your project as you encounter challenges.</p>
+<ol type="1">
+<li><p>Load the JWL package and extract the data for Kenya from the data object. This time we will have to load the data for all the years up to the last full year, which will be in our case 2023. These data will not have observations for all years. Missing observations will be indicated by R as <code>NA</code>. <code>NA</code> is a logical constant and used by R to make missing values. Since we can not use missing values as a basis for predictions we can drop all records where we have no data. A useful function for this in R is <code>na.omit()</code>. Use the help function to find out how to use this function and remove the records without data from your dataframe for Kenya.</p></li>
+<li><p>Make a plot of the aggregate population count starting from the beginning of the records until 2023. Give your plot an informative title and useful axis annotations. As an input for the plot it would be useful if the data were in the format of a dataframe. You might need to also think about how you could transform the aggregated data into this particular format.</p></li>
+</ol>
+<p>Hint: There are several ways of how to arrive at an aggregated population count per year, but using the <code>tapply()</code> function will be particularly efficient, so you might try to empty this function first.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">

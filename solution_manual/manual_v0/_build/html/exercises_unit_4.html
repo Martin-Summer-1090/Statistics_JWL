@@ -394,6 +394,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertising-channels-and-sales">Advertising channels and sales</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-looking-forward-predicting-the-future-population-of-kenya">Project people count: Looking Forward: Predicting the future population of Kenya</a></li>
 </ul>
             </nav>
         </div>
@@ -1225,6 +1226,199 @@ Slope: 0.04754</p>
 </div>
 </section>
 </section>
+<section id="project-people-count-looking-forward-predicting-the-future-population-of-kenya">
+<h2>Project people count: Looking Forward: Predicting the future population of Kenya<a class="headerlink" href="#project-people-count-looking-forward-predicting-the-future-population-of-kenya" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">population_statistics_by_age_and_sex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">kdat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">ISO2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;KE&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">kdat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>610041</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>0-4  </td><td>NA</td></tr>
+	<tr><th scope=row>610042</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>5-9  </td><td>NA</td></tr>
+	<tr><th scope=row>610043</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>10-14</td><td>NA</td></tr>
+	<tr><th scope=row>610044</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>15-19</td><td>NA</td></tr>
+	<tr><th scope=row>610045</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>20-24</td><td>NA</td></tr>
+	<tr><th scope=row>610046</th><td>Kenya</td><td>KE</td><td>1950</td><td>F</td><td>25-29</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">kdat_new</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">na.omit</span><span class="p">(</span><span class="n">kdat</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">kdat_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>611201</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>0-4  </td><td>1618057</td></tr>
+	<tr><th scope=row>611202</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>5-9  </td><td>1239085</td></tr>
+	<tr><th scope=row>611203</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>10-14</td><td>1045040</td></tr>
+	<tr><th scope=row>611204</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>15-19</td><td> 858494</td></tr>
+	<tr><th scope=row>611205</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>20-24</td><td> 680045</td></tr>
+	<tr><th scope=row>611206</th><td>Kenya</td><td>KE</td><td>1979</td><td>F</td><td>25-29</td><td> 542065</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">agg</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tapply</span><span class="p">(</span><span class="n">kdat_new</span><span class="o">$</span><span class="n">POP</span><span class="p">,</span><span class="w"> </span><span class="n">kdat_new</span><span class="o">$</span><span class="n">Year</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>1979</dt><dd>15690220</dd><dt>1980</dt><dd>16330790</dd><dt>1981</dt><dd>16986998</dd><dt>1982</dt><dd>17658853</dd><dt>1983</dt><dd>18345591</dd><dt>1984</dt><dd>19046144</dd></dl>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pop_ke</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">agg</span><span class="p">),</span><span class="w"> </span><span class="n">POP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">agg</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pop_ke</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Year</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1979</th><td>1979</td><td>15690220</td></tr>
+	<tr><th scope=row>1980</th><td>1980</td><td>16330790</td></tr>
+	<tr><th scope=row>1981</th><td>1981</td><td>16986998</td></tr>
+	<tr><th scope=row>1982</th><td>1982</td><td>17658853</td></tr>
+	<tr><th scope=row>1983</th><td>1983</td><td>18345591</td></tr>
+	<tr><th scope=row>1984</th><td>1984</td><td>19046144</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pop_ke</span><span class="o">$</span><span class="n">Year</span><span class="p">,</span><span class="w"> </span><span class="n">pop_ke</span><span class="o">$</span><span class="n">POP</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Population of Kenya over time&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Population Kenya&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Year&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="n">bg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/73070ebd2cc9d351ceb2d9e7675554bf524dde4bb8e9f7804e1efff37c8f1273.png" src="_images/73070ebd2cc9d351ceb2d9e7675554bf524dde4bb8e9f7804e1efff37c8f1273.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pop_ke</span><span class="o">$</span><span class="n">POP</span><span class="p">[</span><span class="n">pop_ke</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;2019&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">52348340</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pop_ke</span><span class="o">$</span><span class="n">Annual_Growth</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span><span class="n">pop_ke</span><span class="o">$</span><span class="n">POP</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">pop_ke</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Year</th><th scope=col>POP</th><th scope=col>Annual_Growth</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1979</th><td>1979</td><td>15690220</td><td>    NA</td></tr>
+	<tr><th scope=row>1980</th><td>1980</td><td>16330790</td><td>640570</td></tr>
+	<tr><th scope=row>1981</th><td>1981</td><td>16986998</td><td>656208</td></tr>
+	<tr><th scope=row>1982</th><td>1982</td><td>17658853</td><td>671855</td></tr>
+	<tr><th scope=row>1983</th><td>1983</td><td>18345591</td><td>686738</td></tr>
+	<tr><th scope=row>1984</th><td>1984</td><td>19046144</td><td>700553</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">mean</span><span class="p">(</span><span class="n">pop_ke</span><span class="o">$</span><span class="n">Annual_Growth</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">940036.386363636</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">POP</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">Year</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop_ke</span><span class="p">)</span>
+<span class="n">mod</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = POP ~ as.numeric(Year), data = pop_ke)
+
+Coefficients:
+     (Intercept)  as.numeric(Year)  
+      -1.856e+09         9.443e+05  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mod</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">POP</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">Year</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pop_ke</span><span class="p">)</span>
+
+<span class="nf">plot</span><span class="p">(</span><span class="n">pop_ke</span><span class="o">$</span><span class="n">Year</span><span class="p">,</span><span class="w"> </span><span class="n">pop_ke</span><span class="o">$</span><span class="n">POP</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<span class="w">     </span><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Population of Kenya over time&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">ylab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Population Kenya in Millions&quot;</span><span class="p">,</span>
+<span class="w">     </span><span class="n">xlab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Year&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">16</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">mod</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f938d4897e5abc5d7c14822c2c187da2f416b0620dce23b19c2b25b141946b42.png" src="_images/f938d4897e5abc5d7c14822c2c187da2f416b0620dce23b19c2b25b141946b42.png" />
+</div>
+</div>
+<p>The predictions are pretty close and differ by about 3 Mio.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1310,6 +1504,7 @@ Slope: 0.04754</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advertising-channels-and-sales">Advertising channels and sales</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-looking-forward-predicting-the-future-population-of-kenya">Project people count: Looking Forward: Predicting the future population of Kenya</a></li>
 </ul>
   </nav></div>
 

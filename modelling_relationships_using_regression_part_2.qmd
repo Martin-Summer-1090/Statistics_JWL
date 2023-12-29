@@ -1046,4 +1046,84 @@ data as well as the regression line. Use `lm()` to compute the intercept and the
 
 ## Project People count: The present and future of humanity in pictures and numbers
 
-### Text
+### Looking Forward: Predicting the future population of Kenya
+
+Your country will need many services and public goods to thrive in the
+future: Schools, hospitals, traffic infrastructure. But these goods
+are very expensive, straining the resources of the country. Waste is
+not an option here. To the contrary, since these are all long term 
+investments where lost of effort and resources has to be spent now to
+reap benefits only in a distant future, sometimes 10 years or more ahead of
+the present, careful planning and thinking is essential to get things
+right. An essential part of this planning will be a good estimate or 
+prediction about the future count of people. In this step of our
+project we will leverage what we have learned in unit 4 to design a 
+population model of the future count of people, taking Kenya as an
+example. 
+
+Note: This step of the project will require some independence from
+you. Use the R help facilities but also the internet to find out
+how to solve particular details of your project as you encounter
+challenges.
+
+1. Load the JWL package and extract the data for Kenya from 
+the data object. This time we will have to load the data for 
+all the years up to the last full year, which will be in our 
+case 2023. These data will not have observations for all years. 
+Missing observations will be indicated by R as
+`NA`. `NA` is a logical constant and used by R to make missing 
+values. Since we can not use missing values as a basis for 
+predictions we can drop all records where we have no data. A 
+useful function for this in R is `na.omit()`. Use the help 
+function to find out how to use this function and 
+remove the records without data from your dataframe for Kenya.
+
+2. Make a plot of the aggregate population count starting from 
+the beginning of the records until 2023. Give your plot an
+informative title and useful axis annotations. As an input
+for the plot it would be useful if the data were in the format
+of a dataframe. You might need to also think about how you could
+transform the aggregated data into this particular format.
+
+3. Since we have the data year by year, we can compute from the data
+record by how many people the population grew (or shrunk) from year to year 
+by computing the difference on population counts $POP_{t+1} - POP_t$ in
+every year $t$ in our record. Compute the average amount of annual
+population growth.
+
+You can do this by hand or by using 
+the R function `diff()` (use ?diff to find out how it works). Be 
+careful, if you
+compute these differences you will get a column of data which is by one
+record shorter than the original data. This has to be the case 
+because your data start somewhere and for the first entry you 
+will not have an observation before that that could be used 
+for computing the difference. If you want to add a new column 
+with the population differences to the original
+dataframe you need to put an `NA` as the first entry. When you
+compute the mean of these growth rates, you need to use the option
+`na.rm = T` in the `mean()` function. Use `?mean` to learn about the
+details.
+Hint: There are several
+ways of how to arrive at an aggregated population count per year, but
+using the `tapply()` function will be particularly efficient, so you might
+try to empty this function first.
+
+3. Instead of computing the mean population growth we could also estimate
+a regression model of the form:
+\begin{equation}
+POP_t = d + k \times t
+\end{equation}
+where $POP_t$ is the population at time $t$ and $k$ is the parameter
+we would estimate. The value of this parameter should be close to the
+mean population growth. When you put the years in the `lm()` function, 
+be careful that the Years variable has the correct data type. If, 
+for instance, your dataframe records the years as `character` then 
+you need to transform them into the format `numeric` by using the function `as.numeric()`.
+
+4. Display the estimated model in the graph you made before and 
+make a prediction of the population count for the years up to 2030. Compare
+the prediction from you model with what the recorded predictions in
+our data file are.
+
+
