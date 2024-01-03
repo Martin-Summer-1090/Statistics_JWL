@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistics - 8&nbsp; How sure can we be about what is going on</title>
+<title>Statistics - 8&nbsp; How sure can we be about what is going on: Estimates and intervals</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./how_sure_can_we_be.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./how_sure_can_we_be.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on: Estimates and intervals</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -150,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on: Estimates and intervals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,8 +221,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents"><span class="header-section-number">8.1</span> Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">8.2</span> Outcome</a></li>
+  <li><a href="#quantifying-uncertainty-by-bootstraping-the-basic-idea." id="toc-quantifying-uncertainty-by-bootstraping-the-basic-idea." class="nav-link active" data-scroll-target="#quantifying-uncertainty-by-bootstraping-the-basic-idea."><span class="header-section-number">8.1</span> Quantifying uncertainty by bootstraping: The basic idea.</a></li>
+  <li><a href="#doing-bootstraps-using-r" id="toc-doing-bootstraps-using-r" class="nav-link" data-scroll-target="#doing-bootstraps-using-r"><span class="header-section-number">8.2</span> Doing bootstraps using R</a>
+  <ul class="collapse">
+  <li><a href="#the-r-list-class" id="toc-the-r-list-class" class="nav-link" data-scroll-target="#the-r-list-class"><span class="header-section-number">8.2.1</span> The R list class</a></li>
+  </ul></li>
+  <li><a href="#standard-error-of-a-proportion" id="toc-standard-error-of-a-proportion" class="nav-link" data-scroll-target="#standard-error-of-a-proportion"><span class="header-section-number">8.3</span> Standard error of a proportion</a></li>
+  <li><a href="#regression-and-the-pearson-height-data" id="toc-regression-and-the-pearson-height-data" class="nav-link" data-scroll-target="#regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</a></li>
   </ul>
 </nav>
     </div>
@@ -197,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on: Estimates and intervals</span></h1>
 </div>
 
 
@@ -212,13 +251,503 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="contents" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="contents"><span class="header-section-number">8.1</span> Contents</h2>
-<p>Probability theory provides a formal language and mathematics for dealing with chance phenomena. Probability is often counter intuitive but using the idea of expected frequency improves intuition. Probability ideas can be very useful in statistics even if there is no explicit use of a randomizing mechanism. Many social phenomena show a remarkable regularity in their overall pattern while individual events are entirely unpredictable.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keywords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>How many people will there be on the planet in 2100? Nobody knows, but we can make use of our experience from the past and our knowledge of demographic mechanisms to build models, which support us in making systematic predictions. You did work out such a prediction model in your last project work of “people-count” using a regression model.</p>
+<p>In 2020 the World Health Organisation WHO published one of it’s global population forecast. The WHO needs high quality predictions of population numbers to plan their programs. They also use a prediction model but it is more sophisticated than the linear model we used in the last unit. The WHO model takes many factors into account. Here is a picture that illustrates their prediction:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>whopredplot <span class="ot">&lt;-</span> worldpop_pred <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">'WORLD'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year)) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> population<span class="sc">*</span><span class="fl">1e-06</span>)) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> population_lower95<span class="sc">*</span><span class="fl">1e-06</span>,<span class="at">ymax =</span> population_upper95<span class="sc">*</span><span class="fl">1e-06</span>),<span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"WHO predicted world population with 95% prediction interval"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"World population (Billions)"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>whopredplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What you see in the picture are dots indicating the WHO prediction about how many people will be there on the planet in future years, starting from 2020, the year this prediction was produced. The points are shown for five year intervals on the horizontal axis and give the population count estimate on the vertical axis. So for instance for 2040 the prediction is a number slightly more than 9 billion. The precise number is 9.198847 billion.</p>
+<p>But there is also a gray area surrounding the points. This area represents a <strong>margin of error</strong> that belongs to this prediction. There is an upper bound and a lower bound to this margin. The upper margin of error is 9.396987 billion and the lower margin of error is 8.996324. So there could be about 200 million people more or about 400 million people less. These are huge margins. This is a margin of error comprising x-times the size of the population of the United States of America. If you go further out into the future, say to the year 2080, this margin of error increases. Worse than that: While for 2080 the point estimate would still predict some sort of stabilization, the upper margin would indicate an increase, while the lower margin would indicate a decrease in the world population. So within the margin of error the predictions would even be qualitatively different.</p>
+<p>Knowing the margin of error is important in order to get a more precise idea about the quality of the prediction. Anyone can make an estimate. But the real challenge is to make an realistic assessment of the possible error. This is a crucial element of statistics as a science and in we are going to learn the basic skills needed for making such assessments now.</p>
+<p>The importance of having a reasonable idea about the margin of error doe not only refer to predictions but to any other statistical estimate depending on limited information.</p>
+<p>The data on population counts collected by the WHO will be mostly be based on surveys. Let us assume the surveys are all well designed and accurately executed. Assume that the people and institutions who have conducted the surveys have been very careful to avoid biases. Then the summary statistics calculated from the sample, such as the mean or median age of the people counted or any other statistics calculated from the sample, should be close to the value of the statistics in the study population.</p>
+<p>In a well designed study we expect the sample statistics, like the mean the median the standard deviation and the interquartile range to be close to the mean, median, standard deviation and interquartile range of the study population.</p>
+<p>In the communication of data often only the summary statistics is reported and sometimes this may be enough. But knowing the uncertainty attached to the estimate will be important. It can even qualitatively change the information, as in our example, where the WHO forecast for the global population in 2080 could mean an increase as well as a decrease of the numbers. Knowing the exact differences between the sample and the population, or knowing the uncertainty in a prediction may be necessary for proper statistical inference.</p>
+<p>Let us return to a dataset we have studies before, when we discussed how we get from information about a sample to information on the study population. Let us take our data <code>socr_height_weight</code> about height and weight of 25000 18 year old people we had discussed in unit 3. We retrieve the data from the <code>JWL</code> package and change the units of height from inches to cm and of weight from pounds to kg. Then we store the data in an R object which we call <code>dat</code> for simplicty.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> socr_height_weight</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Height <span class="ot">&lt;-</span> data<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Weight <span class="ot">&lt;-</span> data<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To illustrate how the accuracy of statistics depends on sample size, let us take the data on human height and assume the 25000 data we have are the population and use our function <code>emp_distr_height()</code> to draw random samples from this population. In unit three we had drawn samples of 10, 100 and 2500.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>emp_distr_height <span class="ot">&lt;-</span> <span class="cf">function</span>(n){</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  data[<span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data), <span class="at">size =</span> n, <span class="at">replace =</span> T), ]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The distributions of these various samples are shown in the following figure.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>h10 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">10</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(h10<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of human height N = 10"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>h100 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">100</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(h100<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of human height N = 100"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>h2500 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">2500</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(h2500<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of human height N = 2500"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(data<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of human height Population"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As the sample size gets smaller the sample gets more and more “bumpy” because the histogram becomes sensitive to individual data points. Only as the sample gets larger we come closer to the actual population distribution. This is also intuitively clear. If somebody would tell you he had measured 10 adults from Kenya and concludes that their average height is some number, this is less credible than in a case where the statement was based on a much larger number of observations.</p>
+<p>Let’s go back to our problem at hand. What can we say about the mean height in our ficticious population based on our different samples?</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Size =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">2500</span>, <span class="dv">25000</span>), </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Mean_Height =</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">round</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">c</span>(<span class="fu">mean</span>(h10<span class="sc">$</span>Height), </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">mean</span>(h100<span class="sc">$</span>Height), </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">mean</span>(h2500<span class="sc">$</span>Height), </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                         <span class="fu">mean</span>(data<span class="sc">$</span>Height)), <span class="dv">2</span> ))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(samp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Size</th>
+<th style="text-align: right;">Mean_Height</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">172.71</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">173.13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2500</td>
+<td style="text-align: right;">172.75</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">25000</td>
+<td style="text-align: right;">172.70</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You can see from the table that with substantive larger sample sizes our estimation of the mean becomes more and more precise.</p>
+<section id="quantifying-uncertainty-by-bootstraping-the-basic-idea." class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="quantifying-uncertainty-by-bootstraping-the-basic-idea."><span class="header-section-number">8.1</span> Quantifying uncertainty by bootstraping: The basic idea.</h2>
+<p>In order to quantify the accuracy of our statistics we now have to work out a thought experiment. If we assume that we repeatedly drew samples of 25000 indivduals of 18 years an each time measured their mean height, by how much would the statistics - the mean height - vary?</p>
+<p>If we knew how this statistics would vary, then we could say something about the accuracy of the statistics. But the precise variablity of the estimates depends on knowlegde of the population. But this knowledge is exactly the knowledge we do not have.</p>
+<p>There are in principle two ways out of this circular reasoning. We could bring in probability and mathematics to make assumptions about the population distribution and work out the variability we would expect under these assumptions and thus how far away our statistics in our sample is from the value we would theoretically expect. This is an apporach you learn in every statistics course and we will learn it too later.</p>
+<p>Here we take a second approach based on comptutation. We start from the plausible assumption that the population and the sample should roughly look the same. Since we can not draw repeated samples from the unkown population , we instead draw repeated samples from our sample.</p>
+<p>Let us illustrate this idea with our height data. Let us take the sample of 100 and draw take three bootstrap resamples from this sample.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(h100<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Original sample N = 100"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> h100</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">100</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b1<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Bootstrap 1: N = 100"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">100</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b2<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Bootstrap 2: N = 100"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>b3 <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">100</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b3<span class="sc">$</span>Height, <span class="at">breaks =</span> <span class="dv">30</span>,</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Bootstrap 3: N = 100"</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Height in cm"</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 173, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.46. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 173.22, 172.46, 172.92.</p>
+<p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution.</p>
+<p>Repeating the resampling many times, say 1000 times, we get 1000 possible estimates of the mean. Let us do this repeated resampling for the examples of sample sizes of 10, 100, 2500 and in the end 25000, the size of our fictitious population.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrap: sample with replacement</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45356</span>) <span class="co"># So you can reproduce my results</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> socr_height_weight</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Height <span class="ot">&lt;-</span> data<span class="sc">$</span>Height<span class="sc">*</span><span class="fl">2.54</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>Weight <span class="ot">&lt;-</span> data<span class="sc">$</span>Weight<span class="sc">*</span><span class="fl">0.4535924</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># Number of bootstrap resamples to take</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">100</span>,<span class="dv">2500</span>, <span class="dv">25000</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="fu">length</span>(n))</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="fu">seq_along</span>(n)){</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>bootstrapmeans <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="at">length =</span> B)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (b <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Draw a bootstrap sample</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  bootstrapsample <span class="ot">&lt;-</span> <span class="fu">sample</span>(data<span class="sc">$</span>Height,n[j],<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute the bootstrap estimate</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  bootstrapmeans[b] <span class="ot">&lt;-</span> <span class="fu">mean</span>(bootstrapsample)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>out[[j]] <span class="ot">&lt;-</span> bootstrapmeans</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(out[[<span class="dv">1</span>]], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">168</span>,<span class="dv">178</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"1000 resamples from N = 10"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean height in cm"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(out[[<span class="dv">2</span>]], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">168</span>,<span class="dv">178</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"1000 resamples from  N = 100"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean height in cm"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(out[[<span class="dv">3</span>]], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">168</span>,<span class="dv">178</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"1000 resamples from N = 2500"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean height in cm"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(out[[<span class="dv">4</span>]], <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">168</span>,<span class="dv">178</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"1000 resamples from N = 25000"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean height in cm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that the distribution of the estimates of the mean based on the resampled data is symmetric around the mean. The deeper mathematical reason for this fact is the so called <strong>Central Limit Theorem</strong>, which says that the distribution of sample means tends towards a normal distribution with increasing sample size almost regardless of the shape of the original distribution of the data. We will discuss this result in further detail later in the course.</p>
+<p>The bootstrap distributions allow us to quantify the uncertainty connected to the estimate of the mean based on the sampled data. For example, we can find the range of means that contain 95 % of all the means of the bootstrap resample and call this the 95 % uncertainty interval for the original estimates, or the margins of error.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mean_height <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">c</span>(<span class="fu">mean</span>(out[[<span class="dv">1</span>]]), <span class="fu">mean</span>(out[[<span class="dv">2</span>]]), <span class="fu">mean</span>(out[[<span class="dv">3</span>]]), <span class="fu">mean</span>(out[[<span class="dv">4</span>]])),<span class="dv">2</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>lower_margin <span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">c</span>(</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">1</span>]], <span class="at">probs=</span>.<span class="dv">025</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">2</span>]], <span class="at">probs=</span>.<span class="dv">025</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">3</span>]], <span class="at">probs=</span>.<span class="dv">025</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">4</span>]], <span class="at">probs=</span>.<span class="dv">025</span>)),<span class="dv">2</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>upper_margin <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">c</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">1</span>]], <span class="at">probs=</span>.<span class="dv">975</span>),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">2</span>]], <span class="at">probs=</span>.<span class="dv">975</span>),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">3</span>]], <span class="at">probs=</span>.<span class="dv">975</span>),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(out[[<span class="dv">4</span>]], <span class="at">probs=</span>.<span class="dv">975</span>)), <span class="dv">2</span> </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mean_height, lower_margin, upper_margin)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(tab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_height</th>
+<th style="text-align: right;">lower_margin</th>
+<th style="text-align: right;">upper_margin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">172.65</td>
+<td style="text-align: right;">169.55</td>
+<td style="text-align: right;">175.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">172.71</td>
+<td style="text-align: right;">171.79</td>
+<td style="text-align: right;">173.58</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">172.70</td>
+<td style="text-align: right;">172.52</td>
+<td style="text-align: right;">172.88</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">172.70</td>
+<td style="text-align: right;">172.64</td>
+<td style="text-align: right;">172.76</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Also observe that the bootstrap distributions get narrower as the sample size increases. This means that uncertainty shrinks and the estimate becomes more precise.</p>
+<p>One of the appeals of the bootstrap approach to quantify uncertainty is that we were able to do this without any mathematics but the idea of drawing observations at random. All we need is an estimate and a sampling distribution. Thus the quantification of uncertainty is almost entirely based on computation.</p>
+<p>We did, so far, not show you the details of how the computations are done. We will introduce these concepts now. They will enlarge the frontier of your R knowledge by the concept of R’s list class as well as the concept of computational iteration.</p>
 </section>
-<section id="outcome" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="outcome"><span class="header-section-number">8.2</span> Outcome</h2>
-<p>Students should learn the simplest and most basic facts about probability as a language to quantify uncertainty, the most important rules to manipulate probability as well as the concept of conditional probability.</p>
+<section id="doing-bootstraps-using-r" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="doing-bootstraps-using-r"><span class="header-section-number">8.2</span> Doing bootstraps using R</h2>
+<p>It is now time to learn some more R, in order to do the computations needed for a bootstrap. One convenient data structure in this context is R’s list class. The other very useful concept, which you will very often need in computation and coding is the concept of iteration. Let us begin with the R-list class.</p>
+<section id="the-r-list-class" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="the-r-list-class"><span class="header-section-number">8.2.1</span> The R list class</h3>
+<p>Let us for a moment go back to the children nutrition data from the DHS survey we discussed in unit 2 and load this dataset again and store them in a variable with a simpler name.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> children_nutrition_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In unit 2 we discussed one approach how we could compute the number of cases of stunting across the four regions in the dataset. In the exercises we discussed how to do the same computation more efficiently using the <code>tapply()</code> function.</p>
+<p>Let us introduce here a related function, called <code>split()</code>. There are usually several ways in R how we can filter data. In unit 2 we used the <code>which()</code> function to compute indices for the appropriate rows we wanted to select from our dataframe. Another way could be, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>r1 <span class="ot">&lt;-</span> dhs_data[dhs_data<span class="sc">$</span>region <span class="sc">==</span> <span class="st">"region 1"</span>, <span class="fu">c</span>(<span class="st">"wt"</span>, <span class="st">"nt_ch_stunt"</span>)]</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(r1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          wt nt_ch_stunt
+323 0.262466        TRUE
+425 0.262466       FALSE
+495 0.262466       FALSE
+498 0.262466       FALSE
+826 1.846709       FALSE
+827 1.846709       FALSE</code></pre>
+</div>
+</div>
+<p>We can do this region by region and compute the shares also for regions 2, 3 and 4.</p>
+<p>Here is a faster and cleaner way to achieve the same thing using <code>split()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>regions <span class="ot">&lt;-</span> <span class="fu">split</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  dhs_data[ ,<span class="fu">c</span>(<span class="st">"wt"</span>, <span class="st">"nt_ch_stunt"</span>, <span class="st">"region"</span>)], dhs_data<span class="sc">$</span>region</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(regions, head)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`region 1`
+          wt nt_ch_stunt   region
+323 0.262466        TRUE region 1
+425 0.262466       FALSE region 1
+495 0.262466       FALSE region 1
+498 0.262466       FALSE region 1
+826 1.846709       FALSE region 1
+827 1.846709       FALSE region 1
+
+$`region 2`
+          wt nt_ch_stunt   region
+16  1.049502       FALSE region 2
+27  1.049502        TRUE region 2
+36  1.049502        TRUE region 2
+94  1.049502       FALSE region 2
+106 1.049502       FALSE region 2
+113 1.049502        TRUE region 2
+
+$`region 3`
+           wt nt_ch_stunt   region
+1025 0.457125        TRUE region 3
+1026 0.457125       FALSE region 3
+1039 0.457125        TRUE region 3
+1102 0.457125       FALSE region 3
+1103 0.457125        TRUE region 3
+1124 0.457125       FALSE region 3
+
+$`region 4`
+          wt nt_ch_stunt   region
+149 0.925559       FALSE region 4
+158 0.925559       FALSE region 4
+159 0.925559       FALSE region 4
+171 0.925559        TRUE region 4
+172 0.925559       FALSE region 4
+187 0.925559        TRUE region 4</code></pre>
+</div>
+</div>
+<p>Let’s unpack this piece of code: You already know the syntax <code>dhs_data[ ,c("wt", "nt_ch_stunt", "region")]</code>. This says that R should choose from the dataframe <code>dhs_data</code> all rows and the columns with the names “wt”, “nt_ch_stunt” and “region”. We could also have selected the columns by indices.</p>
+<p>Now this (reduced) dataframe is given as one argument to the function <code>split()</code>. The second argument is the column <code>dhs_data$region</code>. This tells the split function the criterion how to split up the dataframe in data chunks by region, i.e.&nbsp;region 1, 2 etc.</p>
+<p>The new split data are in an object called <code>regions</code> and this object has a new class</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(regions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<p>This class is called in R a list. In this example the list <code>regions</code> contains four dataframes, which we can individually access using the $-sign. We use the <code>head()</code>function to avoid showing the entire dataframe.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(regions<span class="sc">$</span><span class="st">"region 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          wt nt_ch_stunt   region
+323 0.262466        TRUE region 1
+425 0.262466       FALSE region 1
+495 0.262466       FALSE region 1
+498 0.262466       FALSE region 1
+826 1.846709       FALSE region 1
+827 1.846709       FALSE region 1</code></pre>
+</div>
+</div>
+<p>Or we could alternatively use indices. But now for the <code>list</code> class we will need double brackets, like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(regions[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          wt nt_ch_stunt   region
+323 0.262466        TRUE region 1
+425 0.262466       FALSE region 1
+495 0.262466       FALSE region 1
+498 0.262466       FALSE region 1
+826 1.846709       FALSE region 1
+827 1.846709       FALSE region 1</code></pre>
+</div>
+</div>
+<p>This retrieves the first dataframe from the list of dataframes.</p>
+<p>Lists are particularly useful to store R objects of different types or classes. For example, one list entry can be a dataframe, another one can consist of characters, another of numbers and so on. Here is a toy exmple:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="at">b =</span> <span class="st">'sky'</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$a
+[1] 2 5
+
+$b
+[1] "sky"</code></pre>
+</div>
+</div>
+<p>As we see in the toy example, we can give names to list elements. When we use <code>split()</code> the names will be taken from the columns according to which the data are split. If we don’t like these default names we can override them by using the <code>names()</code>function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(regions) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"County A"</span>, <span class="st">"County B"</span>, <span class="st">"County C"</span>, <span class="st">"County D"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(regions, head)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`County A`
+          wt nt_ch_stunt   region
+323 0.262466        TRUE region 1
+425 0.262466       FALSE region 1
+495 0.262466       FALSE region 1
+498 0.262466       FALSE region 1
+826 1.846709       FALSE region 1
+827 1.846709       FALSE region 1
+
+$`County B`
+          wt nt_ch_stunt   region
+16  1.049502       FALSE region 2
+27  1.049502        TRUE region 2
+36  1.049502        TRUE region 2
+94  1.049502       FALSE region 2
+106 1.049502       FALSE region 2
+113 1.049502        TRUE region 2
+
+$`County C`
+           wt nt_ch_stunt   region
+1025 0.457125        TRUE region 3
+1026 0.457125       FALSE region 3
+1039 0.457125        TRUE region 3
+1102 0.457125       FALSE region 3
+1103 0.457125        TRUE region 3
+1124 0.457125       FALSE region 3
+
+$`County D`
+          wt nt_ch_stunt   region
+149 0.925559       FALSE region 4
+158 0.925559       FALSE region 4
+159 0.925559       FALSE region 4
+171 0.925559        TRUE region 4
+172 0.925559       FALSE region 4
+187 0.925559        TRUE region 4</code></pre>
+</div>
+</div>
+<p>What if we wanted the third row of the dataframe of region 1?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(regions[[<span class="dv">1</span>]][<span class="dv">3</span>, ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          wt nt_ch_stunt   region
+495 0.262466       FALSE region 1</code></pre>
+</div>
+</div>
+<p>Some of you may have noticed that the $ signs are both used to refer to columns in a dataframe as well as to elements of a list. This is no coindcidence, because in R dataframes are lists. Each column is one element of the list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dhs_data[[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.049502 1.049502 1.049502 1.049502 1.049502 1.049502</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="standard-error-of-a-proportion" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="standard-error-of-a-proportion"><span class="header-section-number">8.3</span> Standard error of a proportion</h2>
+</section>
+<section id="regression-and-the-pearson-height-data" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</h2>
 
 
 </section>
