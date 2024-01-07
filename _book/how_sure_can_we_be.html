@@ -96,6 +96,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -225,9 +227,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#doing-bootstraps-using-r" id="toc-doing-bootstraps-using-r" class="nav-link" data-scroll-target="#doing-bootstraps-using-r"><span class="header-section-number">8.2</span> Doing bootstraps using R</a>
   <ul class="collapse">
   <li><a href="#the-r-list-class" id="toc-the-r-list-class" class="nav-link" data-scroll-target="#the-r-list-class"><span class="header-section-number">8.2.1</span> The R list class</a></li>
+  <li><a href="#iteration" id="toc-iteration" class="nav-link" data-scroll-target="#iteration"><span class="header-section-number">8.2.2</span> Iteration</a></li>
   </ul></li>
   <li><a href="#standard-error-of-a-proportion" id="toc-standard-error-of-a-proportion" class="nav-link" data-scroll-target="#standard-error-of-a-proportion"><span class="header-section-number">8.3</span> Standard error of a proportion</a></li>
   <li><a href="#regression-and-the-pearson-height-data" id="toc-regression-and-the-pearson-height-data" class="nav-link" data-scroll-target="#regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</a></li>
+  <li><a href="#uncertainty-quantification-beyond-the-bootstrap" id="toc-uncertainty-quantification-beyond-the-bootstrap" class="nav-link" data-scroll-target="#uncertainty-quantification-beyond-the-bootstrap"><span class="header-section-number">8.5</span> Uncertainty quantification beyond the bootstrap</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.6</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -261,7 +266,11 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>In this unit you will learn how to quantify <strong>uncertainty intervals</strong> for your statistical estimates as well as to predictions by using computational methods. Being able to do this is a very important part of communicating statistics.</p>
+<p><strong>Bootstrapping</strong> is the technique we will learn in this unit. Bootstrapping a sample consists of creating new datasets of the same size by resampling the original data with replacement.</p>
+<p>Sample statistics computed using bootstrapping resamples are approximated by a normal curve for larger datasets, regardless of the shape of the original distribution.</p>
+<p>Uncertainty intervals based on bootstrapping depend on modern computing power. They do not require assumptions about the mathematical description of the population distribution and do not require complex probability theory beyond the intuitive idea of random sampling with replacement.</p>
+<p>Since the computational method of the bootstrap depends on repeated computations on random draws from a sample, you need to understand how to implement and use <strong>iteration</strong> as a computational technique. In this unit you will learn to work with <strong>for-loops</strong> in R and make use of them to quantify uncertainty.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-important callout-titled">
@@ -274,7 +283,13 @@ Keywords
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p><strong>Population</strong>: A population in statistics represents every possible individual element we would like to measure.</p>
+<p><strong>Sample</strong>; A sample is a part or subset of the population.</p>
+<p>Predictions with statistical models or estimates of statistics from samples have a <strong>margin of error</strong>, which we need to be able to quantify to assess the quality of a prediction or an estimate.</p>
+<p><strong>Bootstrapping</strong> is a computational technique of creating from a given dataset new datasets of the same size by resampling at random the original data with replacement making the assumption that the sample is approximately distributed similarly as the population.</p>
+<p><strong>Central Limit Theorem</strong>: When a statistics, such as for example the mean, is repeatedly computed from random resamples these computed values tend to be distributed symmetrically and approximated by a normal curve for large sample sizes. This holds irrespective of the shape of the initial distribution of the data.</p>
+<p><strong>Lists</strong>: Lists are an important class of objects in R. They are able to contain elements of different types like − numbers, strings, vectors and another list inside it. List is created using the <code>list()</code> function.</p>
+<p><strong>for-loops</strong>: For loops in R implement iterations of computations. They are an indispensable tool to iterate repeated computations. A for look consists of three key elements. The preallocated output, the specification of a sequence and the body of the for loop.</p>
 </div>
 </div>
 <p>How many people will there be on the planet in 2100? Nobody knows, but we can make use of our experience from the past and our knowledge of demographic mechanisms to build models, which support us in making systematic predictions. You did work out such a prediction model in your last project work of “people-count” using a regression model.</p>
@@ -382,15 +397,15 @@ Keywords
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">172.71</td>
+<td style="text-align: right;">174.19</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">173.13</td>
+<td style="text-align: right;">172.44</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2500</td>
-<td style="text-align: right;">172.75</td>
+<td style="text-align: right;">172.59</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">25000</td>
@@ -447,7 +462,7 @@ Keywords
 <p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 173, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.46. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 173.22, 172.46, 172.92.</p>
+<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 172, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.77. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 172.15, 172.77, 171.82.</p>
 <p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution.</p>
 <p>Repeating the resampling many times, say 1000 times, we get 1000 possible estimates of the mean. Let us do this repeated resampling for the examples of sample sizes of 10, 100, 2500 and in the end 25000, the size of our fictitious population.</p>
 <div class="cell">
@@ -672,7 +687,7 @@ $`region 4`
 </div>
 </div>
 <p>This retrieves the first dataframe from the list of dataframes.</p>
-<p>Lists are particularly useful to store R objects of different types or classes. For example, one list entry can be a dataframe, another one can consist of characters, another of numbers and so on. Here is a toy exmple:</p>
+<p>Lists are particularly useful to store R objects of different types or classes. For example, one list entry can be a dataframe, another one can consist of characters, another of numbers and so on. The R -function <code>list()</code> creates a list the same way <code>c</code> creates a vector. Separate each element in the list with a comma: Here is a toy exmple:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="at">b =</span> <span class="st">'sky'</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -742,12 +757,389 @@ $`County D`
 </div>
 </div>
 </section>
+<section id="iteration" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="iteration"><span class="header-section-number">8.2.2</span> Iteration</h3>
+<p>In the project “people count” you are working on in this course, we are often looking at countries comparatively. We looked for instance at Kenya, the United States and Japan and sometimes also at another country of your choice.</p>
+<p>In coding it is an important principle to reduce duplication of code as much as possible. This has three main benefits it focuses on the essential parts of a code, it is easier and shorter to make changes and it also helps reducing bugs in your code.</p>
+<p>One tool to reduce duplication of code you have already encountered. Here, you learn a second tool: Iteration. When you have to do tasks 1000 and more times, like in resampling from the same distribution, such tools are even necessary. These are tasks simply impossible to do by hand or by copy and paste.</p>
+<section id="for-loops" class="level4" data-number="8.2.2.1">
+<h4 data-number="8.2.2.1" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">8.2.2.1</span> For Loops</h4>
+<p>Imagine we have a simple dataframe, where we have four columns, each containing 10 random numbers from a normal distribution:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, assume we want to compute the mean of every column. In this little toy example, you could do this by hand and by copy and paste, if you chose and solve the task as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.008060505</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1712027</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.8099074</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(df<span class="sc">$</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1977989</code></pre>
+</div>
+</div>
+<p>A better way to solve such tasks is to use iteration and implement a <strong>for-loop</strong>. This looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="fu">ncol</span>(df))  <span class="co"># 1. output</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(df)) {            <span class="co"># 2. sequence</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">mean</span>(df[[i]])        <span class="co"># 3. body</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.008060505  0.171202713 -0.809907400  0.197798895</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The three components of a for loop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every for-loop has three components:</p>
+<ol type="1">
+<li>The <strong>output</strong>: <code>output &lt;- vector("double", ncol(df))</code>. Before you start a loop you need to allocate space for the results computed during the loop. This is essential for efficiency. Always preallocate space for the output This can in geeneral best be done using the <code>vector()</code> function of R. It has two arguments, the class of the vector, numeric, logical, character etc. and the length of the vector.</li>
+<li>The <strong>sequence</strong>: <code>i in seq_along(df)</code>. This describes what you are looping over. Each iteration of the for loop will assign <code>i</code> to a different value from <code>seq_along(df)</code>.</li>
+<li>The <strong>body</strong>: <code>output[[i]] &lt;- mean(df[[i]])</code>. This is the code that does the actual work in the for loop. It i run repeatedly with each <code>i</code>. When <code>i</code>is 1 the computation will be <code>output[[1]] &lt;- mean(df[[1]])</code>, when it is 2, we will have <code>output[[2]] &lt;- mean(df[[2]])</code> etc.</li>
+</ol>
+</div>
+</div>
+<p>Let us apply this technique to a problem you had worked on before in your project work “people count”. There you were asked to find a way to compute the mean age of a country for a situation where you do not have individual data but data grouped by age groups. The main idae there was to take the mid point of the age group as an approximation for the age and multiply with the population sized in the age group. Then sum over all age groups and divide by the total population size. Now if you do this for many countries this is a typical situation where you want both functions and iteration. Let us take this case as an example to show how interation works in R.</p>
+<p>First we load the data using the <code>JWL</code> library and assign them to an object with a simpler name to make our life easier.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> population_statistics_by_age_and_sex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now assume we want to compute the mean age of Kenya, the US, Japan and Austria, which happens to be my country. Instead of computing this case by case by recycling an multiplying code, we do this using iteration.</p>
+<p>Let’s first write a function, which computes the mean for our grouped data. The function should take the entire demographic dataframe as an input and the country and year we choose as an argument. It can then be applied to any country and any year by just specifying the correct argument and providing the dataframe once.</p>
+<p>Let’s start with the function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>mean_age <span class="ot">&lt;-</span> <span class="cf">function</span>(country, year, data){</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select the data for a given dataframe for a given country and a given year</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  pop_dat <span class="ot">&lt;-</span> data[data<span class="sc">$</span>Country <span class="sc">==</span> country <span class="sc">&amp;</span> data<span class="sc">$</span>Year <span class="sc">==</span> year, ]</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># compute the mean age per age group by assuming that the age in a group </span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">#is approximated by</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the mid point. For example, if the age group is 0-4 we assume the mean </span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># age is 2, if it is </span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 5 - 9 it is 7 etc. We do this by creating an appropriate sequence.</span></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>  mid <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="co">#compute the mid age. Note that we use the R recycling rules. Mid has only </span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#half the length of </span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># pop_dat$POP, because pop_dat$POP contains first all rows for females and </span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">#then for males. Once</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mid is exhausted at age group 95-99 for females it just begins from new for </span></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">#men. By this we can</span></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># make the total sum without explicitly defining objects for each sex separately.</span></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute the mean age rounded to two digits.</span></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">sum</span>(pop_dat<span class="sc">$</span>POP<span class="sc">*</span>mid)<span class="sc">/</span><span class="fu">sum</span>(pop_dat<span class="sc">$</span>POP), <span class="dv">2</span>)</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we start with the iteration:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the list of countries we are interested in first:</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>list_of_countries <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Kenya"</span>, <span class="st">"United States of America"</span>, <span class="st">"Japan"</span>, <span class="st">"Austria"</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Preallocate space for four countries: The mean is usually some decimal </span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># number, so the output of our iteration will be of type double. we will compute </span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># one mean age per country, so the length of the output pre-allocation needs to </span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co"># match the length of our country list.</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="fu">length</span>(list_of_countries))  <span class="co"># 1. output</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="fu">seq_along</span>(list_of_countries)){               <span class="co"># 2: sequence</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>   <span class="co"># 3. Body: Note the countries change over the iteration. Data and year stay </span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>   <span class="co">#          the same.</span></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> <span class="fu">mean_age</span>(list_of_countries[i], <span class="at">year =</span> <span class="dv">2022</span>, <span class="at">data =</span> dat) </span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now, let’s check:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24.24 39.52 47.28 43.43</code></pre>
+</div>
+</div>
+<p>Let me explain how this works. In the first step R reserves a vector for the entry of four doubles. Then the sequence is specified: It says that it starts at entry 1 in the <code>object list_of_numbers</code>. This is in our example <code>list_of_numers[1]</code>, which must be Kenya. Then it calls the function with this country specified as the country argument and the arguments for <code>year</code> and <code>data</code> set to our default values <code>2022</code> and <code>dat</code>. This output is written into the first entry of <code>output</code> and then the next iteration starts until the end of the country list, overwriting one component after the other with outputs from the computation.</p>
+<p>There are lots of variations of iteration scenarios. We won’t go beyond this most basic case here</p>
+</section>
+</section>
 </section>
 <section id="standard-error-of-a-proportion" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="standard-error-of-a-proportion"><span class="header-section-number">8.3</span> Standard error of a proportion</h2>
+<p>In unit 1 we computed proportions of stunted children in four of different regions and got these proportions as a mean to a series of <code>TRUE</code> or <code>FALSE</code> answers to an anthropometric measurements and a comparison with thresholds in a WHO incidence table. Let’s retrieve these data once more:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>dhs_data <span class="ot">&lt;-</span> children_nutrition_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s compute the proportions of stunted children per region using the <code>tapply</code>function and taking account that each observation is weighted by the <code>wt</code>, the weight, variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the weighted variable and attach to dataframe as an addiional column</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>dhs_data<span class="sc">$</span>weighted_nt_ch_stunt  <span class="ot">&lt;-</span> dhs_data<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>dhs_data<span class="sc">$</span>wt</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compute total number of stunted children per region</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>stunted <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dhs_data<span class="sc">$</span>weighted_nt_ch_stunt, dhs_data<span class="sc">$</span>region, sum)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the total number of children per region</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">tapply</span>(dhs_data<span class="sc">$</span>wt, dhs_data<span class="sc">$</span>region, sum)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the proportions rounded to two digits</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>prop <span class="ot">&lt;-</span> <span class="fu">round</span>(stunted<span class="sc">/</span>total,<span class="dv">2</span>)</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a>prop</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>region 1 region 2 region 3 region 4 
+    0.34     0.41     0.30     0.39 </code></pre>
+</div>
+</div>
+<p>Now we want to use the bootstrap to get an idea of how precise the estimates of these proportions are. According to the basic idea of the bootstrap we repeatedly resample from the empirical distribution. The estimated standard error of this means is then the standard deviations of these means, which are in our case the proportions per region.</p>
+<p>We write the bootstrap function first. Within the function we built in a for loop to do the repeated resampling.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>bootstrap <span class="ot">&lt;-</span> <span class="cf">function</span>(B, data){</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  boot <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, B)                                  <span class="co"># output allocation</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (b <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span>B)){                                          <span class="co"># sequence</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    aux <span class="ot">&lt;-</span> data[<span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(data), <span class="at">size =</span> <span class="fu">nrow</span>(data), <span class="at">replace =</span> T), ]</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    aux<span class="sc">$</span>weighted_nt_ch_stunt  <span class="ot">&lt;-</span> aux<span class="sc">$</span>nt_ch_stunt<span class="sc">*</span>aux<span class="sc">$</span>wt</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    stunted <span class="ot">&lt;-</span> <span class="fu">tapply</span>(aux<span class="sc">$</span>weighted_nt_ch_stunt, aux<span class="sc">$</span>region, sum)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    total <span class="ot">&lt;-</span> <span class="fu">tapply</span>(aux<span class="sc">$</span>wt, aux<span class="sc">$</span>region, sum)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    boot[[b]] <span class="ot">&lt;-</span> (stunted<span class="sc">/</span>total)                                          <span class="co"># body</span></span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a> res <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, boot)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">as.data.frame</span>(res)</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before we look at the numerical results, let us unpack this code. Here we have put the iteration inside the function. The function arguments are the data and the number of bootstrap resamplings, which we call here <span class="math inline">\(B\)</span>.</p>
+<p>The function does <span class="math inline">\(B\)</span> random samples from the data. We use a list as an output vector, because at every iteration we will get a named vector of results, with four means for every region.</p>
+<p>Now we define the sequence. We do <span class="math inline">\(B\)</span> bootstrap samples in total. You see that the running index can have any legitimate symbol. Before we called it <span class="math inline">\(i\)</span> and here we call it <span class="math inline">\(b\)</span>.</p>
+<p>Then we sample rows from our dataframe at random with replacement. This is exactly similar to our discussion in unit 3 where we took random samples from the dataframe of human heights. We save this in an r-object which we chose to call <code>aux</code>here (for auxiliary). Then we do the same computation of the mean we did before and store the result in list element <span class="math inline">\(b\)</span>.</p>
+<p>In the end we have boot filled with <span class="math inline">\(B\)</span> vectors with components showing the means of region 1 to 4.</p>
+<p>In the end we use an R-function to transform the list back into a dataframe. This function is called <code>do.call()</code> and works as follows: The first argument is a function. It specifies what <code>do.call()</code>does to every element in the list. The function we chose is called <code>rbind()</code> (for row bind) it binds together rows in a dataframe. The result is stored in an R object called res and res is then the output. With <code>as.data.frame()</code>we tell R to give this result the structure of a dataframe. Thus our output is a dataframe with 1000 rows and 4 columns, each column specifiying a region.</p>
+<p>Now we can pin down the bootstrapped mean and standard deviation. Let’s give it a try. We first take 100 bootstrap resamples from our data and compute the weightes means or prpoprtions for all four regions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>boot <span class="ot">&lt;-</span> <span class="fu">bootstrap</span>(<span class="dv">1000</span>, dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we have a dataframe with 4 columns and we want to compute the mean and sd for every column. Here we can practice iteration once more:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>all_means <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>all_sds <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(boot)){</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  all_means[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(boot[,i]),<span class="dv">2</span>)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  all_sds[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(boot[ ,i]),<span class="dv">2</span>)</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Regions =</span> <span class="fu">c</span>(<span class="st">"Region 1"</span>, <span class="st">"Region 2"</span>, <span class="st">"Regions 3"</span>, <span class="st">"Regions 4"</span>), </span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Means =</span> all_means, <span class="at">SDs =</span> all_sds)</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  out</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Regions</th>
+<th style="text-align: right;">Means</th>
+<th style="text-align: right;">SDs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Region 1</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Region 2</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Regions 3</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">0.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Regions 4</td>
+<td style="text-align: right;">0.39</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This should look very familiar to you by now. We allocate the space for the output for the means and the standard deviations. Then in the for-loop we compute the mean for every row and the standard deviation for every row. Finally we write everything into a dataframe. The final line uses the <code>kable()</code> function from the <code>knitr</code> package. This allows a particular layout for the dataframe. It gives you by the way an alternative way to call functions from a package without running the <code>library()</code> function first. When the package is installed functions from the package can be called by the syntax <code>package_name::function_name</code>.</p>
+<p>Let’s look at the numbers first. We observe a few things. First, observe that the standard deviation is worst for region 3, where the mean can vary by four percentage points as compared to 2 percentage points in all the other regions. While the proportion seems highest in region 2, within the precision of the estimate it will be difficult to distinguish it from region 4.</p>
+<p>Let us look at the histogram of the bootstrap-distribution of the means:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>hist_data1 <span class="ot">&lt;-</span> <span class="fu">hist</span>(boot[ ,<span class="dv">1</span>], <span class="at">main =</span> <span class="st">"Bootstrap 1"</span>, <span class="at">xlab =</span> <span class="st">"proportion of stunted children in region 1"</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#define x and y values to use for normal curve</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(boot[ ,<span class="dv">1</span>]), <span class="fu">max</span>(boot[ ,<span class="dv">1</span>]), <span class="at">length =</span> <span class="fu">length</span>(boot[ ,<span class="dv">1</span>]))</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(boot[ ,<span class="dv">1</span>]), <span class="at">sd =</span> <span class="fu">sd</span>(boot[ ,<span class="dv">1</span>])) </span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(hist_data1<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">*</span> <span class="fu">length</span>(boot[ ,<span class="dv">1</span>]) </span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>hist_data2 <span class="ot">&lt;-</span> <span class="fu">hist</span>(boot[ ,<span class="dv">2</span>], <span class="at">main =</span> <span class="st">"Bootstrap 2"</span>, <span class="at">xlab =</span> <span class="st">"proportion of stunted children in region 2"</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="co">#define x and y values to use for normal curve</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(boot[ ,<span class="dv">2</span>]), <span class="fu">max</span>(boot[ ,<span class="dv">2</span>]), <span class="at">length =</span> <span class="fu">length</span>(boot[ ,<span class="dv">2</span>]))</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(boot[ ,<span class="dv">2</span>]), <span class="at">sd =</span> <span class="fu">sd</span>(boot[ ,<span class="dv">2</span>])) </span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(hist_data2<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">*</span> <span class="fu">length</span>(boot[ ,<span class="dv">2</span>]) </span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a>hist_data3 <span class="ot">&lt;-</span> <span class="fu">hist</span>(boot[ ,<span class="dv">3</span>], <span class="at">main =</span> <span class="st">"Bootstrap 3"</span>, <span class="at">xlab =</span> <span class="st">"proportion of stunted children in region 3"</span>)</span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="co">#define x and y values to use for normal curve</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(boot[ ,<span class="dv">3</span>]), <span class="fu">max</span>(boot[ ,<span class="dv">3</span>]), <span class="at">length =</span> <span class="fu">length</span>(boot[ ,<span class="dv">3</span>]))</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(boot[ ,<span class="dv">3</span>]), <span class="at">sd =</span> <span class="fu">sd</span>(boot[ ,<span class="dv">3</span>])) </span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(hist_data3<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">*</span> <span class="fu">length</span>(boot[ ,<span class="dv">3</span>]) </span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a>hist_data4 <span class="ot">&lt;-</span> <span class="fu">hist</span>(boot[ ,<span class="dv">4</span>], <span class="at">main =</span> <span class="st">"Bootstrap 4"</span>, <span class="at">xlab =</span> <span class="st">"proportion of stunted children in region 4"</span>)</span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="co">#define x and y values to use for normal curve</span></span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(boot[ ,<span class="dv">4</span>]), <span class="fu">max</span>(boot[ ,<span class="dv">4</span>]), <span class="at">length =</span> <span class="fu">length</span>(boot[ ,<span class="dv">4</span>]))</span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(boot[ ,<span class="dv">4</span>]), <span class="at">sd =</span> <span class="fu">sd</span>(boot[ ,<span class="dv">4</span>])) </span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(hist_data4<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">*</span> <span class="fu">length</span>(boot[ ,<span class="dv">4</span>]) </span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We have overlayed all four distributions with a normal curve. You see that the fit is pretty good. This is no accident, as we will learn in the coming units.</p>
 </section>
 <section id="regression-and-the-pearson-height-data" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</h2>
+<p>One of the appeals of the bootstrap is that it is very general. Any estimate can be bootstrapped. All we need is an estimate and a sampling distribution. The bootstrap can be performed algorithmically without the need of a formal probability model. We can apply this idea to any situation where we need to quantify uncertainty.</p>
+<p>In unit 5 we fitted a regression line to the heights data of fathers and son collected by Pearson in 1903. Let us come back to this analysis now.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> pearson</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> dat)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>mod</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Son ~ Father, data = dat)
+
+Coefficients:
+(Intercept)       Father  
+     33.893        0.514  </code></pre>
+</div>
+</div>
+<p>Our estimated coefficient were <span class="math inline">\(33.89\)</span> for the intercept and <span class="math inline">\(0.514\)</span> for the slope. How confident can we be about the position of the regression line? We could answer this question by bootstrapping.</p>
+<p>Let us take a bootstrap resample of the 1078 Father and Son pairs with replacement. From the data we fit a least squares line. Repeating this many times we can compute a 95% interval for the coefficient. Let’s use R to implement this idea.</p>
+<p>Let us first produce a graph based on 20 resamples, which will lead to 20 regression lines:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> B)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span>B)){</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  aux <span class="ot">&lt;-</span> dat[<span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(dat), <span class="at">size =</span> <span class="fu">nrow</span>(dat), <span class="at">replace =</span> T), ]</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> aux)</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, output)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>This code should be no mystery for you by now. One point is worth mentioning though. When we call the <code>lm()</code> function to do a least suqare fit of the regression line, we store the output in an R object called mod. When R performs the computations implemented in <code>lm()</code> it does not only compute the coefficients of the regression line but a lot of more different things and stores them in a list. The value of the coefficients are stored in a list element with the name <code>coeffcients</code>. Thus we store the value of the coefficients by assigning <code>mod$coefficients</code> to the object where we store the results.</p>
+<p>When we compute the mean and the standard deviation of the coefficient, we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(result<span class="sc">$</span>Father),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.51</code></pre>
+</div>
+</div>
+<p>95 % of the values of the coefficient are between the 2.5 and the 97.5 percentile. This can be computed using the <code>quantile()</code> function:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">quantile</span>(result<span class="sc">$</span>Father, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>) ),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> 2.5% 97.5% 
+ 0.47  0.56 </code></pre>
+</div>
+</div>
+<p>This gives you a sense of the range where the coefficient value of this can fall with high confidence.</p>
+</section>
+<section id="uncertainty-quantification-beyond-the-bootstrap" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="uncertainty-quantification-beyond-the-bootstrap"><span class="header-section-number">8.5</span> Uncertainty quantification beyond the bootstrap</h2>
+<p>Bootstrapping provides an intuitive way of assessing uncertainty of estimates. The method is computer intensive and needs computing technology and capacity. Since these tools are becoming available more widely and at ever lower cost, this is an attractive approach when we need to judge the uncertainty we should attach to our estimates.</p>
+<p>Bootstrapping reaches its limit when very large quantities of data are involved. Here we have reached the limits of what we can learn about statistics without taking resort to the (mathematical) theory of probability.</p>
+<p>In such cases, when we need to deal with very large quantities of data, bootstrapping is too clumsy. In these cases we need to resort to the elegant and effective mathematics of uncertainty which is based on the theory of probability, which we explore in the next unit. We will only introduce the basic ideas without using too much mathematics. These ideas will be necessary to understand how we can leverage probability theory to quantify uncertainty.</p>
+</section>
+<section id="exercises" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.6</span> Exercises</h2>
 
 
 </section>
