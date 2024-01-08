@@ -1,11 +1,19 @@
 # How sure can we be about what is going on: Estimates and intervals
 
+In statistics we often make estimates based on samples of data from 
+a population as we discussed in unit 3 or we make predictions
+of future values of a variable using models as discussed in unit 4.
+But how precise are these estimates? Do they vary a lot or only a little?
+Estimates are not worth very much, if we are not able to quantify 
+such uncertainty. In this unit we will learn a first technique based on
+computation to do so, the bootstrap.
+
 ::: {.callout-note appearance="simple"}
 
 ## Overview
 
 In this unit you will learn how to quantify **uncertainty intervals**
-for your statistical estimates as well as to predictions by using
+for your statistical estimates as well as for your predictions by using
 computational methods. Being able
 to do this is a very important part of communicating statistics.
 
@@ -13,19 +21,23 @@ to do this is a very important part of communicating statistics.
 Bootstrapping a sample consists of creating new datasets of
 the same size by resampling the original data with replacement.
 
-Sample statistics computed using bootstrapping resamples are
+The distribution of some inportant **sample statistics** such as the mean or the
+median of a datset when computed using bootstrapping resamples are
 approximated by a normal curve for larger datasets, regardless of the
 shape of the original distribution.
 
 Uncertainty intervals based on bootstrapping depend on modern computing power.
 They do not require assumptions about the mathematical description of the
 population distribution and do not require complex probability theory beyond the
-intuitive idea of random sampling with replacement.
+intuitive idea of **random sampling with replacement**.
 
 Since the computational method of the bootstrap depends on repeated computations
 on random draws from a sample, you need to understand how to implement and
 use **iteration** as a computational technique. In this unit you will learn
 to work with **for-loops** in R and make use of them to quantify uncertainty.
+Since the objects of a resample can be complex you learn also about a new
+datastructure of R the R **list-class** which is very flexible in storing
+data or all types and shapes.
 
 :::
 
@@ -111,7 +123,8 @@ a **margin of error** that belongs to this prediction. There is an upper bound a
 a lower bound to this margin. The upper margin of error is 9.396987 billion and
 the lower margin of error is 8.996324. So there could be about 200 million 
 people more or about 400 million people less. These are huge margins. This 
-is a margin of error comprising x-times the size of the population of the 
+is a margin of error comprising almost 2-times the size of the population (roughly 
+333 Million as of 2022) of the 
 United States of America. If you go further out 
 into the future,
 say to the year 2080, this margin of error increases. Worse than that: While
@@ -123,7 +136,7 @@ predictions would even be qualitatively different.
 Knowing the margin of error is important in order to get a more precise idea 
 about the quality of the prediction. Anyone can make an estimate. But the real
 challenge is to make an realistic assessment of the possible error. This is a
-crucial element of statistics as a science and in we are going to learn the
+crucial element of statistics as a science and in this unit we are going to learn the
 basic skills needed for making such assessments now.
 
 The importance of having a reasonable idea about the margin of error
@@ -154,13 +167,13 @@ in 2080 could mean an increase as well as a decrease of the numbers. Knowing
 the exact differences between the sample and the population, or knowing the
 uncertainty in a prediction may be necessary for proper statistical inference.
 
-Let us return to a dataset we have studies before, when we discussed how we get
+Let us return to a dataset we have studied before, when we discussed how we get
 from information about a sample to information on the study population. Let
 us take our data `socr_height_weight` about height and weight of 25000 18 year 
 old people we had discussed in unit 3. We retrieve the data
 from the `JWL` package and change the units of height from inches to
 cm and of weight from pounds to kg. Then we store the data in an R object
-which we call `dat` for simplicty.
+which we call `dat` for simplicity.
 
 ```{r}
 #| code-fold: false
@@ -240,24 +253,24 @@ estimation of the mean becomes more and more precise.
 
 In order to quantify the accuracy of our statistics we now have to work out
 a thought experiment. If we assume that we repeatedly drew samples
-of 25000 indivduals of 18 years an each time measured their mean height,
+of 25000 individuals of 18 years an each time measured their mean height,
 by how much would the statistics - the mean height - vary?
 
 If we knew how this statistics would vary, then we could say something
 about the accuracy of the statistics. But the precise variablity of the
-estimates depends on knowlegde of the population. But this knowledge is
+estimates depends on knowledge of the population. But this knowledge is
 exactly the knowledge we do not have.
 
 There are in principle two ways out of this circular reasoning. We could
 bring in probability and mathematics to make assumptions about the
 population distribution and work out the variability we would expect under these
 assumptions and thus how far away our statistics in our sample 
-is from the value we would theoretically expect. This is an apporach you learn
-in every statistics course and we will learn it too later.
+is from the value we would theoretically expect. This is an approach you learn
+in every statistics course and we will learn it too later in this course.
 
-Here we take a second approach based on comptutation. We start from the
+Here we take a second approach based on computation. We start from the
 plausible assumption that the population and the sample should roughly look
-the same. Since we can  not draw repeated samples from the unkown population
+the same. Since we can  not draw repeated samples from the unknown population
 , we instead draw repeated samples from our sample.
 
 Let us illustrate this idea with our height data. Let us take the sample
@@ -308,11 +321,19 @@ vary slightly and give a slightly different mean. In our case these means
 are `r round(c(mean(b1$Height), mean(b2$Height), mean(b3$Height)), 2)`.
 
 Thus the resampling procedure gives us an idea how our statistics varies through
-this procedure of resampling with replacement. This is known as **bootstraping**
+this procedure of resampling with replacement. Why do we need
+replacement? We want to make sure that at every resample, every
+data point has the same chance of ending up in the resample. This would
+not be the case if we drew observations away once the have ended up in
+one sample. This is known as **bootstraping**
 the data. There is something "magic" about this approach, reflected in the name:
 As if pulling oneself up by one's own bootstraps, here we learn about the
 variability of an estimate without making assumptions about the
-shape of the population distribution.
+shape of the population distribution. We think of the sample 
+as  beeing a representation
+of the underlying population. If we draw random resamples we always need
+to draw from the same sample of the population so that every individual 
+in the sample has the same chance of ending up in the resample.
 
 Repeating the resampling many times, say 1000 times, we get 1000 possible
 estimates of the mean. Let us do this repeated resampling for the examples
@@ -485,7 +506,14 @@ class(regions)
 ```
 This class is called in R a list. In this example the list `regions` contains
 four dataframes, which we can individually access using the $-sign. We use the
-`head()`function to avoid showing the entire dataframe.
+`head()`function to avoid showing the entire dataframe. We applied the `heads()`
+function to all elements of the list by using the function `lapply()` short for
+list apply. This is a powerful functions allowing computations on elements of 
+a list. Our list contains dataframes as elements. The syntax of `lapply()`takes
+as input some function - what do you want to do with the list elements? - and
+a list - the list containing the elements to which the function is applied. So
+in this case R applies the heads function to every entry in te list. So when we
+
 ```{r}
 #| code-fold: false
 
@@ -604,7 +632,7 @@ Every for-loop has three components:
 1. The **output**: `output <- vector("double", ncol(df))`. Before you start
 a loop you need to allocate space for the results computed during the loop.
 This is essential for efficiency. Always preallocate space for the output
-This can in geeneral best be done using the `vector()` function of R. It has
+This can in general best be done using the `vector()` function of R. It has
 two arguments, the class of the vector, numeric, logical, character etc. and 
 the length of the vector.
 2. The **sequence**: `i in seq_along(df)`. This describes what you are
@@ -827,12 +855,12 @@ is a function. It specifies what `do.call()`does to every element in the list.
 The function we chose is called `rbind()` (for row bind) it binds together 
 rows in a dataframe. The result is stored in an R object called res and
 res is  then the output. With `as.data.frame()`we tell R to give this
-result the structure of a dataframe. Thus our output is a dataframe
+result the class of a dataframe. Thus our output is a dataframe
 with 1000 rows and 4 columns, each column specifiying a region.
 
 Now we can pin down the bootstrapped mean and standard deviation. Let's
-give it a try. We first take 100 bootstrap resamples from our data and
-compute the weightes means or prpoprtions for all four regions:
+give it a try. We first take 1000 bootstrap resamples from our data and
+compute the weighted means or proportions for all four regions:
 
 ```{r}
 #| code-fold: false
@@ -875,7 +903,7 @@ alternative way to call functions from a package without running the
 from the package can be called by the syntax `package_name::function_name`.
 
 Let's look at the numbers first. We observe a few things. First, observe
-that the standard deviation is worst for region 3, where the mean can vary
+that the standard deviation is largest for region 3, where the mean can vary
 by four percentage points as compared to 2 percentage points in all the
 other regions. While the proportion seems highest in region 2, within the
 precision of the estimate it will be difficult to distinguish it from region 4.
@@ -922,7 +950,8 @@ y_values <- y_values * diff(hist_data4$mids[1:2]) * length(boot[ ,4])
 lines(x_values, y_values, lwd = 2, col = "red")
 ```
 We have overlayed all four distributions with a normal curve. You see that the
-fit is pretty good. This is no accident, as we will learn in the coming units.
+fit is pretty good. This is no accident, as we will learn the deeper 
+reason for this in the coming units.
 
 ## Regression and the Pearson height data
 
@@ -951,10 +980,9 @@ Let us take a bootstrap resample of the 1078 Father and Son pairs with replaceme
 From the data we fit a least squares line. Repeating this many times we can
 compute a 95% interval for the coefficient. Let's use R to implement this idea.
 
-Let us first produce a graph based on 20 resamples, which will lead to 20 
-regression lines:
-
 ```{r}
+#| code-fold: false
+
 B <- 1000
 output <- vector("list", length = B)
 
@@ -1010,6 +1038,32 @@ Since these tools are becoming available more widely and at ever lower cost,
 this is an attractive approach when we need to judge the uncertainty we
 should attach to our estimates.
 
+The bootstrap is a very powerful method but always keep the following
+things in mind:
+
+::: {.callout-important}
+
+## Things to keep in mind about the bootstrap
+
+1. Try to start with a sufficiently large random sample. Note that the
+sample and hence the resample will only resemble the population distribution
+if the sample is large enough.
+
+2. To approximate the distribution of a statistics, like a mean, a median etc.
+replicate the resampling procedure very often. To get a decent approximation
+a few thousand resamples will be good. As a rule of thumb you could use 5000
+or 10000, dependning in the computational ressoruces available to you.
+
+3. The bootstrap percentile method works well for estimating the population
+mean of median based on a large random sample. It is not expected to work very well when the minimum or maximum should be estimated or when we look for very
+low or very high percentiles or other parameters that are strongly influenced
+by extreme observations. It also does not work well when the distribution of the
+statistics is not symmetric or well approximated by a normal curve. It also does
+not work well when the sample is very small say lower than 10 or 15.
+
+
+:::
+
 Bootstrapping reaches its limit when very large quantities of data are
 involved. Here we have reached the limits of what we can learn about
 statistics without taking resort to the (mathematical) theory of
@@ -1023,5 +1077,113 @@ introduce the basic ideas without using too much mathematics. These
 ideas will be necessary to understand how we can leverage
 probability theory to quantify uncertainty.
 
+
+
 ## Exercises
 
+### Exercises:
+
+:::{.callout-note icon=false}
+## Exercise 1: Thirsty students
+
+Assume you are interested in the amount of water the student 
+coming to the JWL study center consume in a day. In particular 
+you want to learn about the proportion of students that drink 
+more than 2 liters of water per day. You take a random sample 
+of 100 students in the students directory of the study center 
+and obtain from them the information about how much water they 
+drink in a day at the study center. You store your 
+results in a dataframe you call  `water`. The dataframe 
+has one column called `amount` which stores the number of liters each of the students drink.
+
+1. Write one line of R-code to compute the proportion of 
+students who drank more than 2 liters of water. Hint: You 
+can write this line of code also when you are not at the 
+computer. You can solve this exercise by thinking about 
+what you would write, if you had an R console or a Jupyter book opened in front of you.
+
+2. Write one line of R-code to compute a single bootstrap resample from the water dataframe.
+
+:::
+
+:::{.callout-note icon=false}
+
+## Exercise 2: Check your understanding of why the bootstrap works
+
+1. When we conduct a bootstrap resample, what size resample 
+should we draw from our sample? Why? Hint: There is no unique 
+answer to the size question only rules of thumb. When you 
+think about the why, go back to consult our discussion on why 
+random sampling works in unit 2.
+
+2. Why do we need to sample with replacement?
+
+3. When we conduct a bootstrap resample, what is the 
+underlying assumption/reasoning for resampling from
+our sample? Why does it work?
+
+
+:::
+
+### Exercises R
+
+:::{.callout-note icon=false}
+## Exercise 1: A toy problem for practicing iteration
+
+Load the pearson height data from the `JWL`package 
+and transform the data to standard units using a 
+for loop.
+Hint: You will need a function and an interation 
+over the columns of the dataframe.
+
+:::
+
+:::{.callout-note icon=false}
+## Exercise 2: Bootstrapped interquartile range of height data
+
+To practice the bootstrapping technique we learned in this unit, let 
+us load the human height data `socr_height_weight` once again 
+from the JWL package. Take a sample of 5000 of the height data 
+and compute the interquartile range. Implement a bootstrap 
+with 10000 resamples to quantify the uncertainty in the sample 
+inter quartile range for the inter quartile range, i.e. the 
+difference between the 25 and the 75 percentile of the height 
+distribution. Compute the range in which 95 % of the 
+inter-quartile-ranges lie. You can leave the data for this 
+exercise in the original units of inches. Hint: For the 
+interquartile range consult the passage on percentiles 
+in unit 3. If you do 10000 bootstraps this might take a 
+while in times of computation. As long as the `In [*]` cell 
+has a star in the brackets and not a number, the computation 
+is still going on. So you will need a bit of patience for 
+computing this exercise.
+
+:::
+
+
+## Project People count: The present and future of humanity in pictures and numbers
+
+### How precise are our estimates of the mean age ?
+
+In our project in unit 2 we estimated the mean age of the
+population in Kenya, the United States and Japan as well as in
+your own country in the year 2022. In this project we will leverage our
+knowledge of the bootstrap to attach some uncertainty interval
+to our estimate. Let us use Kenya as an example in this part
+of the project for. You may also choose your own country if
+you are more interested in this particular case.
+
+1. Filtering the data for Kenya (or any other country): This is a repetition
+of what we have done 
+already previously. Take the data `population_statistics_by_age_and_sex` 
+from the `JWL` package and store it in an R object. Check whether the data 
+you get in this way is what you want.
+
+2. Implement a bootstrap for the mean age in Kenya (or the country 
+of your choice) using your previous
+results and the techniques you learned in this unit and report the bounds that
+contain 95 % of these estimates based on 5000 resamples from the 
+appropriate distribution.
+
+3. What kind of data would you need to get a more precise estimate?
+What do you think? Explain in a few sentences.

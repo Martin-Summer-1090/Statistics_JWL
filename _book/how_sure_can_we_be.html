@@ -232,7 +232,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#standard-error-of-a-proportion" id="toc-standard-error-of-a-proportion" class="nav-link" data-scroll-target="#standard-error-of-a-proportion"><span class="header-section-number">8.3</span> Standard error of a proportion</a></li>
   <li><a href="#regression-and-the-pearson-height-data" id="toc-regression-and-the-pearson-height-data" class="nav-link" data-scroll-target="#regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</a></li>
   <li><a href="#uncertainty-quantification-beyond-the-bootstrap" id="toc-uncertainty-quantification-beyond-the-bootstrap" class="nav-link" data-scroll-target="#uncertainty-quantification-beyond-the-bootstrap"><span class="header-section-number">8.5</span> Uncertainty quantification beyond the bootstrap</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.6</span> Exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.6</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">8.6.1</span> Exercises:</a></li>
+  <li><a href="#exercises-r" id="toc-exercises-r" class="nav-link" data-scroll-target="#exercises-r"><span class="header-section-number">8.6.2</span> Exercises R</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">8.7</span> Project People count: The present and future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#how-precise-are-our-estimates-of-the-mean-age" id="toc-how-precise-are-our-estimates-of-the-mean-age" class="nav-link" data-scroll-target="#how-precise-are-our-estimates-of-the-mean-age"><span class="header-section-number">8.7.1</span> How precise are our estimates of the mean age ?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -256,6 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p>In statistics we often make estimates based on samples of data from a population as we discussed in unit 3 or we make predictions of future values of a variable using models as discussed in unit 4. But how precise are these estimates? Do they vary a lot or only a little? Estimates are not worth very much, if we are not able to quantify such uncertainty. In this unit we will learn a first technique based on computation to do so, the bootstrap.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -266,11 +275,11 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this unit you will learn how to quantify <strong>uncertainty intervals</strong> for your statistical estimates as well as to predictions by using computational methods. Being able to do this is a very important part of communicating statistics.</p>
+<p>In this unit you will learn how to quantify <strong>uncertainty intervals</strong> for your statistical estimates as well as for your predictions by using computational methods. Being able to do this is a very important part of communicating statistics.</p>
 <p><strong>Bootstrapping</strong> is the technique we will learn in this unit. Bootstrapping a sample consists of creating new datasets of the same size by resampling the original data with replacement.</p>
-<p>Sample statistics computed using bootstrapping resamples are approximated by a normal curve for larger datasets, regardless of the shape of the original distribution.</p>
-<p>Uncertainty intervals based on bootstrapping depend on modern computing power. They do not require assumptions about the mathematical description of the population distribution and do not require complex probability theory beyond the intuitive idea of random sampling with replacement.</p>
-<p>Since the computational method of the bootstrap depends on repeated computations on random draws from a sample, you need to understand how to implement and use <strong>iteration</strong> as a computational technique. In this unit you will learn to work with <strong>for-loops</strong> in R and make use of them to quantify uncertainty.</p>
+<p>The distribution of some inportant <strong>sample statistics</strong> such as the mean or the median of a datset when computed using bootstrapping resamples are approximated by a normal curve for larger datasets, regardless of the shape of the original distribution.</p>
+<p>Uncertainty intervals based on bootstrapping depend on modern computing power. They do not require assumptions about the mathematical description of the population distribution and do not require complex probability theory beyond the intuitive idea of <strong>random sampling with replacement</strong>.</p>
+<p>Since the computational method of the bootstrap depends on repeated computations on random draws from a sample, you need to understand how to implement and use <strong>iteration</strong> as a computational technique. In this unit you will learn to work with <strong>for-loops</strong> in R and make use of them to quantify uncertainty. Since the objects of a resample can be complex you learn also about a new datastructure of R the R <strong>list-class</strong> which is very flexible in storing data or all types and shapes.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-important callout-titled">
@@ -313,13 +322,13 @@ Keywords
 </div>
 </div>
 <p>What you see in the picture are dots indicating the WHO prediction about how many people will be there on the planet in future years, starting from 2020, the year this prediction was produced. The points are shown for five year intervals on the horizontal axis and give the population count estimate on the vertical axis. So for instance for 2040 the prediction is a number slightly more than 9 billion. The precise number is 9.198847 billion.</p>
-<p>But there is also a gray area surrounding the points. This area represents a <strong>margin of error</strong> that belongs to this prediction. There is an upper bound and a lower bound to this margin. The upper margin of error is 9.396987 billion and the lower margin of error is 8.996324. So there could be about 200 million people more or about 400 million people less. These are huge margins. This is a margin of error comprising x-times the size of the population of the United States of America. If you go further out into the future, say to the year 2080, this margin of error increases. Worse than that: While for 2080 the point estimate would still predict some sort of stabilization, the upper margin would indicate an increase, while the lower margin would indicate a decrease in the world population. So within the margin of error the predictions would even be qualitatively different.</p>
-<p>Knowing the margin of error is important in order to get a more precise idea about the quality of the prediction. Anyone can make an estimate. But the real challenge is to make an realistic assessment of the possible error. This is a crucial element of statistics as a science and in we are going to learn the basic skills needed for making such assessments now.</p>
+<p>But there is also a gray area surrounding the points. This area represents a <strong>margin of error</strong> that belongs to this prediction. There is an upper bound and a lower bound to this margin. The upper margin of error is 9.396987 billion and the lower margin of error is 8.996324. So there could be about 200 million people more or about 400 million people less. These are huge margins. This is a margin of error comprising almost 2-times the size of the population (roughly 333 Million as of 2022) of the United States of America. If you go further out into the future, say to the year 2080, this margin of error increases. Worse than that: While for 2080 the point estimate would still predict some sort of stabilization, the upper margin would indicate an increase, while the lower margin would indicate a decrease in the world population. So within the margin of error the predictions would even be qualitatively different.</p>
+<p>Knowing the margin of error is important in order to get a more precise idea about the quality of the prediction. Anyone can make an estimate. But the real challenge is to make an realistic assessment of the possible error. This is a crucial element of statistics as a science and in this unit we are going to learn the basic skills needed for making such assessments now.</p>
 <p>The importance of having a reasonable idea about the margin of error doe not only refer to predictions but to any other statistical estimate depending on limited information.</p>
 <p>The data on population counts collected by the WHO will be mostly be based on surveys. Let us assume the surveys are all well designed and accurately executed. Assume that the people and institutions who have conducted the surveys have been very careful to avoid biases. Then the summary statistics calculated from the sample, such as the mean or median age of the people counted or any other statistics calculated from the sample, should be close to the value of the statistics in the study population.</p>
 <p>In a well designed study we expect the sample statistics, like the mean the median the standard deviation and the interquartile range to be close to the mean, median, standard deviation and interquartile range of the study population.</p>
 <p>In the communication of data often only the summary statistics is reported and sometimes this may be enough. But knowing the uncertainty attached to the estimate will be important. It can even qualitatively change the information, as in our example, where the WHO forecast for the global population in 2080 could mean an increase as well as a decrease of the numbers. Knowing the exact differences between the sample and the population, or knowing the uncertainty in a prediction may be necessary for proper statistical inference.</p>
-<p>Let us return to a dataset we have studies before, when we discussed how we get from information about a sample to information on the study population. Let us take our data <code>socr_height_weight</code> about height and weight of 25000 18 year old people we had discussed in unit 3. We retrieve the data from the <code>JWL</code> package and change the units of height from inches to cm and of weight from pounds to kg. Then we store the data in an R object which we call <code>dat</code> for simplicty.</p>
+<p>Let us return to a dataset we have studied before, when we discussed how we get from information about a sample to information on the study population. Let us take our data <code>socr_height_weight</code> about height and weight of 25000 18 year old people we had discussed in unit 3. We retrieve the data from the <code>JWL</code> package and change the units of height from inches to cm and of weight from pounds to kg. Then we store the data in an R object which we call <code>dat</code> for simplicity.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -397,15 +406,15 @@ Keywords
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">174.19</td>
+<td style="text-align: right;">171.94</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">172.44</td>
+<td style="text-align: right;">172.55</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2500</td>
-<td style="text-align: right;">172.59</td>
+<td style="text-align: right;">172.69</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">25000</td>
@@ -418,10 +427,10 @@ Keywords
 <p>You can see from the table that with substantive larger sample sizes our estimation of the mean becomes more and more precise.</p>
 <section id="quantifying-uncertainty-by-bootstraping-the-basic-idea." class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="quantifying-uncertainty-by-bootstraping-the-basic-idea."><span class="header-section-number">8.1</span> Quantifying uncertainty by bootstraping: The basic idea.</h2>
-<p>In order to quantify the accuracy of our statistics we now have to work out a thought experiment. If we assume that we repeatedly drew samples of 25000 indivduals of 18 years an each time measured their mean height, by how much would the statistics - the mean height - vary?</p>
-<p>If we knew how this statistics would vary, then we could say something about the accuracy of the statistics. But the precise variablity of the estimates depends on knowlegde of the population. But this knowledge is exactly the knowledge we do not have.</p>
-<p>There are in principle two ways out of this circular reasoning. We could bring in probability and mathematics to make assumptions about the population distribution and work out the variability we would expect under these assumptions and thus how far away our statistics in our sample is from the value we would theoretically expect. This is an apporach you learn in every statistics course and we will learn it too later.</p>
-<p>Here we take a second approach based on comptutation. We start from the plausible assumption that the population and the sample should roughly look the same. Since we can not draw repeated samples from the unkown population , we instead draw repeated samples from our sample.</p>
+<p>In order to quantify the accuracy of our statistics we now have to work out a thought experiment. If we assume that we repeatedly drew samples of 25000 individuals of 18 years an each time measured their mean height, by how much would the statistics - the mean height - vary?</p>
+<p>If we knew how this statistics would vary, then we could say something about the accuracy of the statistics. But the precise variablity of the estimates depends on knowledge of the population. But this knowledge is exactly the knowledge we do not have.</p>
+<p>There are in principle two ways out of this circular reasoning. We could bring in probability and mathematics to make assumptions about the population distribution and work out the variability we would expect under these assumptions and thus how far away our statistics in our sample is from the value we would theoretically expect. This is an approach you learn in every statistics course and we will learn it too later in this course.</p>
+<p>Here we take a second approach based on computation. We start from the plausible assumption that the population and the sample should roughly look the same. Since we can not draw repeated samples from the unknown population , we instead draw repeated samples from our sample.</p>
 <p>Let us illustrate this idea with our height data. Let us take the sample of 100 and draw take three bootstrap resamples from this sample.</p>
 <div class="cell">
 <details>
@@ -462,8 +471,8 @@ Keywords
 <p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 172, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.77. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 172.15, 172.77, 171.82.</p>
-<p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution.</p>
+<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 172, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 173.13. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 171.68, 173.13, 171.95.</p>
+<p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. Why do we need replacement? We want to make sure that at every resample, every data point has the same chance of ending up in the resample. This would not be the case if we drew observations away once the have ended up in one sample. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution. We think of the sample as beeing a representation of the underlying population. If we draw random resamples we always need to draw from the same sample of the population so that every individual in the sample has the same chance of ending up in the resample.</p>
 <p>Repeating the resampling many times, say 1000 times, we get 1000 possible estimates of the mean. Let us do this repeated resampling for the examples of sample sizes of 10, 100, 2500 and in the end 25000, the size of our fictitious population.</p>
 <div class="cell">
 <details>
@@ -660,7 +669,7 @@ $`region 4`
 <pre><code>[1] "list"</code></pre>
 </div>
 </div>
-<p>This class is called in R a list. In this example the list <code>regions</code> contains four dataframes, which we can individually access using the $-sign. We use the <code>head()</code>function to avoid showing the entire dataframe.</p>
+<p>This class is called in R a list. In this example the list <code>regions</code> contains four dataframes, which we can individually access using the $-sign. We use the <code>head()</code>function to avoid showing the entire dataframe. We applied the <code>heads()</code> function to all elements of the list by using the function <code>lapply()</code> short for list apply. This is a powerful functions allowing computations on elements of a list. Our list contains dataframes as elements. The syntax of <code>lapply()</code>takes as input some function - what do you want to do with the list elements? - and a list - the list containing the elements to which the function is applied. So in this case R applies the heads function to every entry in te list. So when we</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(regions<span class="sc">$</span><span class="st">"region 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -819,7 +828,7 @@ The three components of a for loop
 <div class="callout-body-container callout-body">
 <p>Every for-loop has three components:</p>
 <ol type="1">
-<li>The <strong>output</strong>: <code>output &lt;- vector("double", ncol(df))</code>. Before you start a loop you need to allocate space for the results computed during the loop. This is essential for efficiency. Always preallocate space for the output This can in geeneral best be done using the <code>vector()</code> function of R. It has two arguments, the class of the vector, numeric, logical, character etc. and the length of the vector.</li>
+<li>The <strong>output</strong>: <code>output &lt;- vector("double", ncol(df))</code>. Before you start a loop you need to allocate space for the results computed during the loop. This is essential for efficiency. Always preallocate space for the output This can in general best be done using the <code>vector()</code> function of R. It has two arguments, the class of the vector, numeric, logical, character etc. and the length of the vector.</li>
 <li>The <strong>sequence</strong>: <code>i in seq_along(df)</code>. This describes what you are looping over. Each iteration of the for loop will assign <code>i</code> to a different value from <code>seq_along(df)</code>.</li>
 <li>The <strong>body</strong>: <code>output[[i]] &lt;- mean(df[[i]])</code>. This is the code that does the actual work in the for loop. It i run repeatedly with each <code>i</code>. When <code>i</code>is 1 the computation will be <code>output[[1]] &lt;- mean(df[[1]])</code>, when it is 2, we will have <code>output[[2]] &lt;- mean(df[[2]])</code> etc.</li>
 </ol>
@@ -956,8 +965,8 @@ The three components of a for loop
 <p>Now we define the sequence. We do <span class="math inline">\(B\)</span> bootstrap samples in total. You see that the running index can have any legitimate symbol. Before we called it <span class="math inline">\(i\)</span> and here we call it <span class="math inline">\(b\)</span>.</p>
 <p>Then we sample rows from our dataframe at random with replacement. This is exactly similar to our discussion in unit 3 where we took random samples from the dataframe of human heights. We save this in an r-object which we chose to call <code>aux</code>here (for auxiliary). Then we do the same computation of the mean we did before and store the result in list element <span class="math inline">\(b\)</span>.</p>
 <p>In the end we have boot filled with <span class="math inline">\(B\)</span> vectors with components showing the means of region 1 to 4.</p>
-<p>In the end we use an R-function to transform the list back into a dataframe. This function is called <code>do.call()</code> and works as follows: The first argument is a function. It specifies what <code>do.call()</code>does to every element in the list. The function we chose is called <code>rbind()</code> (for row bind) it binds together rows in a dataframe. The result is stored in an R object called res and res is then the output. With <code>as.data.frame()</code>we tell R to give this result the structure of a dataframe. Thus our output is a dataframe with 1000 rows and 4 columns, each column specifiying a region.</p>
-<p>Now we can pin down the bootstrapped mean and standard deviation. Let’s give it a try. We first take 100 bootstrap resamples from our data and compute the weightes means or prpoprtions for all four regions:</p>
+<p>In the end we use an R-function to transform the list back into a dataframe. This function is called <code>do.call()</code> and works as follows: The first argument is a function. It specifies what <code>do.call()</code>does to every element in the list. The function we chose is called <code>rbind()</code> (for row bind) it binds together rows in a dataframe. The result is stored in an R object called res and res is then the output. With <code>as.data.frame()</code>we tell R to give this result the class of a dataframe. Thus our output is a dataframe with 1000 rows and 4 columns, each column specifiying a region.</p>
+<p>Now we can pin down the bootstrapped mean and standard deviation. Let’s give it a try. We first take 1000 bootstrap resamples from our data and compute the weighted means or proportions for all four regions:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>boot <span class="ot">&lt;-</span> <span class="fu">bootstrap</span>(<span class="dv">1000</span>, dhs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1019,7 +1028,7 @@ The three components of a for loop
 </div>
 </div>
 <p>This should look very familiar to you by now. We allocate the space for the output for the means and the standard deviations. Then in the for-loop we compute the mean for every row and the standard deviation for every row. Finally we write everything into a dataframe. The final line uses the <code>kable()</code> function from the <code>knitr</code> package. This allows a particular layout for the dataframe. It gives you by the way an alternative way to call functions from a package without running the <code>library()</code> function first. When the package is installed functions from the package can be called by the syntax <code>package_name::function_name</code>.</p>
-<p>Let’s look at the numbers first. We observe a few things. First, observe that the standard deviation is worst for region 3, where the mean can vary by four percentage points as compared to 2 percentage points in all the other regions. While the proportion seems highest in region 2, within the precision of the estimate it will be difficult to distinguish it from region 4.</p>
+<p>Let’s look at the numbers first. We observe a few things. First, observe that the standard deviation is largest for region 3, where the mean can vary by four percentage points as compared to 2 percentage points in all the other regions. While the proportion seems highest in region 2, within the precision of the estimate it will be difficult to distinguish it from region 4.</p>
 <p>Let us look at the histogram of the bootstrap-distribution of the means:</p>
 <div class="cell">
 <details>
@@ -1066,7 +1075,7 @@ The three components of a for loop
 <p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>We have overlayed all four distributions with a normal curve. You see that the fit is pretty good. This is no accident, as we will learn in the coming units.</p>
+<p>We have overlayed all four distributions with a normal curve. You see that the fit is pretty good. This is no accident, as we will learn the deeper reason for this in the coming units.</p>
 </section>
 <section id="regression-and-the-pearson-height-data" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="regression-and-the-pearson-height-data"><span class="header-section-number">8.4</span> Regression and the Pearson height data</h2>
@@ -1089,10 +1098,7 @@ Coefficients:
 </div>
 <p>Our estimated coefficient were <span class="math inline">\(33.89\)</span> for the intercept and <span class="math inline">\(0.514\)</span> for the slope. How confident can we be about the position of the regression line? We could answer this question by bootstrapping.</p>
 <p>Let us take a bootstrap resample of the 1078 Father and Son pairs with replacement. From the data we fit a least squares line. Repeating this many times we can compute a 95% interval for the coefficient. Let’s use R to implement this idea.</p>
-<p>Let us first produce a graph based on 20 resamples, which will lead to 20 regression lines:</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> B)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1107,7 +1113,6 @@ Coefficients:
 <span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, output)</span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>This code should be no mystery for you by now. One point is worth mentioning though. When we call the <code>lm()</code> function to do a least suqare fit of the regression line, we store the output in an R object called mod. When R performs the computations implemented in <code>lm()</code> it does not only compute the coefficients of the regression line but a lot of more different things and stores them in a list. The value of the coefficients are stored in a list element with the name <code>coeffcients</code>. Thus we store the value of the coefficients by assigning <code>mod$coefficients</code> to the object where we store the results.</p>
 <p>When we compute the mean and the standard deviation of the coefficient, we get:</p>
@@ -1135,13 +1140,109 @@ Coefficients:
 <section id="uncertainty-quantification-beyond-the-bootstrap" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="uncertainty-quantification-beyond-the-bootstrap"><span class="header-section-number">8.5</span> Uncertainty quantification beyond the bootstrap</h2>
 <p>Bootstrapping provides an intuitive way of assessing uncertainty of estimates. The method is computer intensive and needs computing technology and capacity. Since these tools are becoming available more widely and at ever lower cost, this is an attractive approach when we need to judge the uncertainty we should attach to our estimates.</p>
+<p>The bootstrap is a very powerful method but always keep the following things in mind:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Things to keep in mind about the bootstrap
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Try to start with a sufficiently large random sample. Note that the sample and hence the resample will only resemble the population distribution if the sample is large enough.</p></li>
+<li><p>To approximate the distribution of a statistics, like a mean, a median etc. replicate the resampling procedure very often. To get a decent approximation a few thousand resamples will be good. As a rule of thumb you could use 5000 or 10000, dependning in the computational ressoruces available to you.</p></li>
+<li><p>The bootstrap percentile method works well for estimating the population mean of median based on a large random sample. It is not expected to work very well when the minimum or maximum should be estimated or when we look for very low or very high percentiles or other parameters that are strongly influenced by extreme observations. It also does not work well when the distribution of the statistics is not symmetric or well approximated by a normal curve. It also does not work well when the sample is very small say lower than 10 or 15.</p></li>
+</ol>
+</div>
+</div>
 <p>Bootstrapping reaches its limit when very large quantities of data are involved. Here we have reached the limits of what we can learn about statistics without taking resort to the (mathematical) theory of probability.</p>
 <p>In such cases, when we need to deal with very large quantities of data, bootstrapping is too clumsy. In these cases we need to resort to the elegant and effective mathematics of uncertainty which is based on the theory of probability, which we explore in the next unit. We will only introduce the basic ideas without using too much mathematics. These ideas will be necessary to understand how we can leverage probability theory to quantify uncertainty.</p>
 </section>
 <section id="exercises" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.6</span> Exercises</h2>
+<section id="exercises-1" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">8.6.1</span> Exercises:</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Thirsty students
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Assume you are interested in the amount of water the student coming to the JWL study center consume in a day. In particular you want to learn about the proportion of students that drink more than 2 liters of water per day. You take a random sample of 100 students in the students directory of the study center and obtain from them the information about how much water they drink in a day at the study center. You store your results in a dataframe you call <code>water</code>. The dataframe has one column called <code>amount</code> which stores the number of liters each of the students drink.</p>
+<ol type="1">
+<li><p>Write one line of R-code to compute the proportion of students who drank more than 2 liters of water. Hint: You can write this line of code also when you are not at the computer. You can solve this exercise by thinking about what you would write, if you had an R console or a Jupyter book opened in front of you.</p></li>
+<li><p>Write one line of R-code to compute a single bootstrap resample from the water dataframe.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Check your understanding of why the bootstrap works
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>When we conduct a bootstrap resample, what size resample should we draw from our sample? Why? Hint: There is no unique answer to the size question only rules of thumb. When you think about the why, go back to consult our discussion on why random sampling works in unit 2.</p></li>
+<li><p>Why do we need to sample with replacement?</p></li>
+<li><p>When we conduct a bootstrap resample, what is the underlying assumption/reasoning for resampling from our sample? Why does it work?</p></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="exercises-r" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="exercises-r"><span class="header-section-number">8.6.2</span> Exercises R</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: A toy problem for practicing iteration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Load the pearson height data from the <code>JWL</code>package and transform the data to standard units using a for loop. Hint: You will need a function and an interation over the columns of the dataframe.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Bootstrapped interquartile range of height data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To practice the bootstrapping technique we learned in this unit, let us load the human height data <code>socr_height_weight</code> once again from the JWL package. Take a sample of 5000 of the height data and compute the interquartile range. Implement a bootstrap with 10000 resamples to quantify the uncertainty in the sample inter quartile range for the inter quartile range, i.e.&nbsp;the difference between the 25 and the 75 percentile of the height distribution. Compute the range in which 95 % of the inter-quartile-ranges lie. You can leave the data for this exercise in the original units of inches. Hint: For the interquartile range consult the passage on percentiles in unit 3. If you do 10000 bootstraps this might take a while in times of computation. As long as the <code>In [*]</code> cell has a star in the brackets and not a number, the computation is still going on. So you will need a bit of patience for computing this exercise.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">8.7</span> Project People count: The present and future of humanity in pictures and numbers</h2>
+<section id="how-precise-are-our-estimates-of-the-mean-age" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="how-precise-are-our-estimates-of-the-mean-age"><span class="header-section-number">8.7.1</span> How precise are our estimates of the mean age ?</h3>
+<p>In our project in unit 2 we estimated the mean age of the population in Kenya, the United States and Japan as well as in your own country in the year 2022. In this project we will leverage our knowledge of the bootstrap to attach some uncertainty interval to our estimate. Let us use Kenya as an example in this part of the project for. You may also choose your own country if you are more interested in this particular case.</p>
+<ol type="1">
+<li><p>Filtering the data for Kenya (or any other country): This is a repetition of what we have done already previously. Take the data <code>population_statistics_by_age_and_sex</code> from the <code>JWL</code> package and store it in an R object. Check whether the data you get in this way is what you want.</p></li>
+<li><p>Implement a bootstrap for the mean age in Kenya (or the country of your choice) using your previous results and the techniques you learned in this unit and report the bounds that contain 95 % of these estimates based on 5000 resamples from the appropriate distribution.</p></li>
+<li><p>What kind of data would you need to get a more precise estimate? What do you think? Explain in a few sentences.</p></li>
+</ol>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

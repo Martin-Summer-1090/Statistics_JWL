@@ -62,6 +62,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -349,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -365,6 +369,27 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-thirsty-students">Exercise 1: Thirsty students</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-check-your-understanding-of-why-the-bootstrap-works">Exercise 2: Check your understanding of why the bootstrap works</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a-toy-problem-for-practicing-iteration">Exercise 1: A toy problem for practicing iteration.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-bootstrapped-interquartile-range-of-height-data">Exercise 2: Bootstrapped interquartile range of height data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count">Project People count</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-the-uncertainty-related-to-our-mean-age-estimates-of-a-country">Quantifying the uncertainty related to our mean age estimates of a country</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -376,6 +401,403 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-5-how-sure-can-we-be-about-what-is-going-on-estimates-and-intervals">
 <h1>Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals<a class="headerlink" href="#exercises-unit-5-how-sure-can-we-be-about-what-is-going-on-estimates-and-intervals" title="Permalink to this heading">#</a></h1>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-thirsty-students">
+<h3>Exercise 1: Thirsty students<a class="headerlink" href="#exercise-1-thirsty-students" title="Permalink to this heading">#</a></h3>
+<p>Assume you are interested in the amount of water the stundent coming to the JWL study center consume in a day. In particular you want to learn about the proportion of students that drink more than 2 liters of water per day. You take a random sample of 100 students in the stundents directory of the study center and obtain from them the information about how much water they drink in a day at the study center. You store your results in a dataframe you call  <code class="docutils literal notranslate"><span class="pre">water</span></code>. The dataframe has one column calles <code class="docutils literal notranslate"><span class="pre">amount</span></code> which stores the number of liters each of the students drink.</p>
+<ol class="arabic simple">
+<li><p>Write one line of R-code to compute the proportion of students who drank more than 2 liters of water. Hint: You can write this line of code also when you are not at the computer. You can solve this exercise by thinking about what you would write, if you had an R console or a Jupyter book opened in front of you.</p></li>
+</ol>
+<p>The code line would be: <code class="docutils literal notranslate"><span class="pre">mean(water[water$amount</span> <span class="pre">&gt;</span> <span class="pre">2])</span></code></p>
+<ol class="arabic simple" start="2">
+<li><p>Write one line of R-code to compute a single bootstrap resample from the water dataframe.</p></li>
+</ol>
+<p>The code line would be: <code class="docutils literal notranslate"><span class="pre">water[sample(x</span> <span class="pre">=</span> <span class="pre">1:nrow(water),</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">nrow(water),</span> <span class="pre">replace</span> <span class="pre">=</span> <span class="pre">T)]</span></code></p>
+</section>
+<section id="exercise-2-check-your-understanding-of-why-the-bootstrap-works">
+<h3>Exercise 2: Check your understanding of why the bootstrap works<a class="headerlink" href="#exercise-2-check-your-understanding-of-why-the-bootstrap-works" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>When we conduct a bootstrap resample, what size resample should we draw from our sample? Why? Hint: There is no unique answer to the size question only rules of thumb. When you think about the why, go back to consult our discussion on why random sampling works in unit 2.</p></li>
+</ol>
+<p>We should aim for a large resample in the order of magnitude of about more than 1000, ideally 5000 to 10000. Why? This works because by the law of averages, when we repeat a random experiment very often under identical conditions, the relative frequency of an event gets closer to the actual probability of this event occuring. This is also referred to as the law of averages (see unit 3 and the discussion of random sampling there)</p>
+<ol class="arabic simple" start="2">
+<li><p>Why do we need to sample with replacement?</p></li>
+</ol>
+<p>The idea is that the sample is a rough representation of the population. When we resample
+randomly each element at every resample needs to have the same chance of ending up in the resample. This is why
+at every draw we put all the data back in the sample before we draw again.</p>
+<ol class="arabic simple" start="3">
+<li><p>When we conduct a bootstrap resample, what is the underlying assumption/reasoning for resampling from
+our sample? Why does it work?</p></li>
+</ol>
+<p>The underlying reasoning is that the sample is a rough representation of the population in that it has
+a similar distribution. Thus when we repeatedly draw at random from the sample we will be the law of averages approach the distribtion of the population as the number of resamples grows larger.</p>
+</section>
+</section>
+<section id="exercises-r">
+<h2>Exercises R:<a class="headerlink" href="#exercises-r" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-a-toy-problem-for-practicing-iteration">
+<h3>Exercise 1: A toy problem for practicing iteration.<a class="headerlink" href="#exercise-1-a-toy-problem-for-practicing-iteration" title="Permalink to this heading">#</a></h3>
+<p>Load the pearson height data from the <code class="docutils literal notranslate"><span class="pre">JWL</span></code>package and transform the data to standard units using a for loop.
+Hint: You will need a function and an interation over the columns of the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pearson</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A spec_tbl_df: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Father</th><th scope=col>Son</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>65.0</td><td>59.8</td></tr>
+	<tr><th scope=row>2</th><td>63.3</td><td>63.2</td></tr>
+	<tr><th scope=row>3</th><td>65.0</td><td>63.3</td></tr>
+	<tr><th scope=row>4</th><td>65.8</td><td>62.8</td></tr>
+	<tr><th scope=row>5</th><td>61.1</td><td>64.3</td></tr>
+	<tr><th scope=row>6</th><td>63.0</td><td>64.2</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to nomralize any column i</span>
+
+<span class="n">rescale</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">m</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
+<span class="w">    </span><span class="n">s</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="w"> </span><span class="n">i</span><span class="p">])</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">s</span>
+<span class="w">    </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">))){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">output</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rescale</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">res</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">do.call</span><span class="p">(</span><span class="n">cbind</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">))</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">names</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w">  </span>
+<span class="p">}</span>
+
+<span class="nf">names</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Father&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Son&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+	<tr><th></th><th scope=col>Father</th><th scope=col>Son</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>-0.9785130</td><td>-3.154694</td></tr>
+	<tr><th scope=row>2</th><td>-1.5976343</td><td>-1.947391</td></tr>
+	<tr><th scope=row>3</th><td>-0.9785130</td><td>-1.911882</td></tr>
+	<tr><th scope=row>4</th><td>-0.6871618</td><td>-2.089426</td></tr>
+	<tr><th scope=row>5</th><td>-2.3988501</td><td>-1.556793</td></tr>
+	<tr><th scope=row>6</th><td>-1.7068910</td><td>-1.592302</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check results</span>
+
+<span class="nf">mean</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">Father</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">Father</span><span class="p">)</span>
+
+<span class="nf">mean</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">Son</span><span class="p">)</span>
+<span class="nf">sd</span><span class="p">(</span><span class="n">res</span><span class="o">$</span><span class="n">Son</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">-1.31100560022995e-15</div><div class="output text_html">1</div><div class="output text_html">-1.33732395422732e-15</div><div class="output text_html">1</div></div>
+</div>
+</section>
+<section id="exercise-2-bootstrapped-interquartile-range-of-height-data">
+<h3>Exercise 2: Bootstrapped interquartile range of height data<a class="headerlink" href="#exercise-2-bootstrapped-interquartile-range-of-height-data" title="Permalink to this heading">#</a></h3>
+<p>To practice the bootstrapping technique we learned in this unit, let us load the human height data <code class="docutils literal notranslate"><span class="pre">socr_height_weight</span></code> once again from the JWL package. Take a sample of 5000 of the height data and compute the interquartile range. Implement a bootstrap with 10000 resamples to quantify the uncertainty in the sample inter quartile range for the inter quartile range, i.e. the difference between the 25 and the 75 percentile of the height
+distribution. Compute the range in which 95 % of the inter-quartile-ranges lie. You can leave the data for this exercise in the original units of inches. Hint: For the interquartile range consult the passage on percentiles in unit 3. If you do 10000 bootstraps this might take a while in times of computation. As long as the <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[*]</span></code> cell has a star in the brackets and not a number, the computation is still going on. So you will need a bit of patience for computing this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">socr_height_weight</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Index</th><th scope=col>Height</th><th scope=col>Weight</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>2</th><td>1</td><td>65.78331</td><td>112.9925</td></tr>
+	<tr><th scope=row>3</th><td>2</td><td>71.51521</td><td>136.4873</td></tr>
+	<tr><th scope=row>4</th><td>3</td><td>69.39874</td><td>153.0269</td></tr>
+	<tr><th scope=row>5</th><td>4</td><td>68.21660</td><td>142.3354</td></tr>
+	<tr><th scope=row>6</th><td>5</td><td>67.78781</td><td>144.2971</td></tr>
+	<tr><th scope=row>7</th><td>6</td><td>68.69784</td><td>123.3024</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a sample of 5000 Height data from `socr_height_weight`</span>
+
+<span class="n">samp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dat</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="nf">IQR</span><span class="p">(</span><span class="n">samp</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">2.57579000000001</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># bootstrap</span>
+
+<span class="n">output</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10000</span><span class="p">)</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10000</span><span class="p">)){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">aux</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">samp</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">samp</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">samp</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">output</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">IQR</span><span class="p">(</span><span class="n">aux</span><span class="o">$</span><span class="n">Height</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="p">}</span>
+
+<span class="nf">round</span><span class="p">(</span><span class="nf">quantile</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.025</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">)),</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>2.5%</dt><dd>2.5</dd><dt>97.5%</dt><dd>2.66</dd></dl>
+</div></div>
+</div>
+<p>95 % of the IQRs are between 2.53 and 2.69 inches of Height. We might do a histirgram of the sampled statistics showing the dofferent IQRs on the x-axis and the Frequency on the y-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bbb664695bfd051b4cb6e1c0a84941c1af42a1de88bfd2aa729aac4414c10b67.png" src="_images/bbb664695bfd051b4cb6e1c0a84941c1af42a1de88bfd2aa729aac4414c10b67.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="project-people-count">
+<h2>Project People count<a class="headerlink" href="#project-people-count" title="Permalink to this heading">#</a></h2>
+<section id="quantifying-the-uncertainty-related-to-our-mean-age-estimates-of-a-country">
+<h3>Quantifying the uncertainty related to our mean age estimates of a country<a class="headerlink" href="#quantifying-the-uncertainty-related-to-our-mean-age-estimates-of-a-country" title="Permalink to this heading">#</a></h3>
+<p>In our project in unit 2 we estimated the mean age of the
+population in Kenya, the United States and Japan as well as in
+your own country in the year 2022. In unit 3 we eatimated the median age for this
+year. In this project we will leverage our
+knowledge of the bootstrap to attach some uncertainty interval
+to our estimate. Let us use Kenya as an example</p>
+<ol class="arabic simple">
+<li><p>Filtering the data for Kenya: This is a repitation of what we have done already previously. Take the data <code class="docutils literal notranslate"><span class="pre">population_statistics_by_age_and_sex</span></code> from the <code class="docutils literal notranslate"><span class="pre">JWL</span></code> package and store it in an R object. Check whether the data you get in this way is what you want.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+<span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">population_statistics_by_age_and_sex</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">dat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>0-4  </td><td>NA</td></tr>
+	<tr><th scope=row>2</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>5-9  </td><td>NA</td></tr>
+	<tr><th scope=row>3</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>10-14</td><td>NA</td></tr>
+	<tr><th scope=row>4</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>15-19</td><td>NA</td></tr>
+	<tr><th scope=row>5</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>20-24</td><td>NA</td></tr>
+	<tr><th scope=row>6</th><td>Andorra</td><td>AD</td><td>1950</td><td>F</td><td>25-29</td><td>NA</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 6</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>612921</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>0-4  </td><td>3487490</td></tr>
+	<tr><th scope=row>612922</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>5-9  </td><td>3404421</td></tr>
+	<tr><th scope=row>612923</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>10-14</td><td>3444606</td></tr>
+	<tr><th scope=row>612924</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>15-19</td><td>3225971</td></tr>
+	<tr><th scope=row>612925</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>20-24</td><td>2656730</td></tr>
+	<tr><th scope=row>612926</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>25-29</td><td>2139208</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Implement a bootstrap for the mean age in these countries using your previous
+results and the techniques you learned in this unit and report the bounds that
+contain 95 % of these estimates based on 5000 resamples from the appropriate distribution.</p></li>
+</ol>
+<p>First we compute the estimated mean age by using the idea of approximating the age in each age group by the
+mid point of the age interval and multiply this with the population number. This gives us an estimate of the
+number of people with this estimated age in an age group. Adding up over age groups and dividing by the total
+population number gives us the mean age. We can create this approximation column and add it to the dataframe to
+base the resampling distribution on this distribution.</p>
+<p>Let’s start with Kenya:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a sequence of mid points for the age groups 2,7,12, ..., 97</span>
+
+<span class="n">mid</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+
+
+<span class="c1"># Add the colum which multiplies the age mid point with the population number in that age group. This</span>
+<span class="c1"># approximates the age in say group 80-89 by approximating every members age in this group by 87 and then</span>
+<span class="c1"># multiply this by the population number in this group, giving the sum of the approximate age in this group.</span>
+
+<span class="n">data</span><span class="o">$</span><span class="n">distr</span><span class="w">  </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">data</span><span class="o">$</span><span class="n">POP</span><span class="o">*</span><span class="n">mid</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 7</caption>
+<thead>
+	<tr><th></th><th scope=col>Country</th><th scope=col>ISO2</th><th scope=col>Year</th><th scope=col>Sex</th><th scope=col>Age</th><th scope=col>POP</th><th scope=col>distr</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>612921</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>0-4  </td><td>3487490</td><td> 6974980</td></tr>
+	<tr><th scope=row>612922</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>5-9  </td><td>3404421</td><td>23830947</td></tr>
+	<tr><th scope=row>612923</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>10-14</td><td>3444606</td><td>41335272</td></tr>
+	<tr><th scope=row>612924</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>15-19</td><td>3225971</td><td>54841507</td></tr>
+	<tr><th scope=row>612925</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>20-24</td><td>2656730</td><td>58448060</td></tr>
+	<tr><th scope=row>612926</th><td>Kenya</td><td>KE</td><td>2022</td><td>F</td><td>25-29</td><td>2139208</td><td>57758616</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>The mid age is then</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">distr</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">24.2350859595261</div></div>
+</div>
+<p>As we should have derived in unit 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct a bootstrap of the mean age</span>
+
+<span class="n">output</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="m">5000</span><span class="p">)</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5000</span><span class="p">)){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># the resampled dataframe</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">aux</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">T</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># compute the mean age for this resample</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">output</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">aux</span><span class="o">$</span><span class="n">distr</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">aux</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># check the result by plotting a historgam</span>
+
+<span class="nf">hist</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8ac3a0f110af2cf4286986c265ee7710cf09b414c80aa5d1f3664fc47ee0b6d8.png" src="_images/8ac3a0f110af2cf4286986c265ee7710cf09b414c80aa5d1f3664fc47ee0b6d8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute the quantiles within which we have 95 %</span>
+
+<span class="nf">quantile</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.025</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class=dl-inline><dt>2.5%</dt><dd>18.640717298642</dd><dt>97.5%</dt><dd>31.8093777032391</dd></dl>
+</div></div>
+</div>
+<p>The mean age we get in this way is quite imprecise and the interval within which the mean age can be is very
+large, about 12 years. So we see that our approximation is very coarse.</p>
+<ol class="arabic simple" start="3">
+<li><p>What kind of data would you need to get a more precise estimate. What do you think? Explain in a few sentences.</p></li>
+</ol>
+<p>For a more precise estimate we would need individual census data giving the age by individual and not by age
+groups. By the grouping and the group mid point approxiamtion we loose lots of precision.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,6 +854,33 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-thirsty-students">Exercise 1: Thirsty students</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-check-your-understanding-of-why-the-bootstrap-works">Exercise 2: Check your understanding of why the bootstrap works</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-r">Exercises R:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-a-toy-problem-for-practicing-iteration">Exercise 1: A toy problem for practicing iteration.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-bootstrapped-interquartile-range-of-height-data">Exercise 2: Bootstrapped interquartile range of height data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count">Project People count</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-the-uncertainty-related-to-our-mean-age-estimates-of-a-country">Quantifying the uncertainty related to our mean age estimates of a country</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
