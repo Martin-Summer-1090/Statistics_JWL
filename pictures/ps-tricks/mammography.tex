@@ -1,0 +1,64 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(0,0)(12,9)
+%\psgrid
+
+\pscircle(1,4){0.5}
+\rput(1,4){$1000$}
+
+\psline{->}(1.44,4.2)(4.55, 5.8)
+\psline{->}(1.38, 3.64)(4.55,2.2)
+
+\rput(2.6, 5.4){Cancer}
+\rput(2.85, 2.4){No cancer}
+
+\rput(2.55, 8.4){{\bf True state}}
+
+
+\pscircle(5,6){0.5}
+\rput(5,6){10}
+
+\pscircle(5,2){0.5}
+\rput(5,2){990}
+
+
+\psline{->}(5.5,2)(9,3)
+\psline{->}(5.5,6)(9,7)
+
+\rput(7, 7){Positive}
+\rput(7, 5){Negative}
+
+\psline{->}(5.5,2)(9,1)
+\psline{->}(5.5,6)(9,5)
+
+\rput(7, 3){Positive}
+\rput(7, 1){Negative}
+
+\pscircle(9.5,7){0.5}
+\rput(9.5,7){9}
+
+\pscircle(9.5,5){0.5}
+\rput(9.5,5){1}
+
+\pscircle(9.5,5){0.5}
+\rput(9.5,5){1}
+
+\pscircle(9.5,3){0.5}
+\rput(9.5,3){99}
+
+\pscircle(9.5,1){0.5}
+\rput(9.5,1){891}
+
+\rput(9, 8.4){{\bf Result of mammography}}
+	
+\end{pspicture}
+
+\end{document}
