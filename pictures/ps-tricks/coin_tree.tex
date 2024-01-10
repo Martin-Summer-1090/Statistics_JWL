@@ -1,0 +1,62 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(0,0)(12,9)
+%\psgrid
+
+\pscircle(1,4){0.5}
+\rput(1,4){}
+
+\psline{->}(1.44,4.2)(4.55, 5.8)
+\psline{->}(1.38, 3.64)(4.55,2.2)
+
+\rput(2.6, 5.4){Head}
+\rput(2.85, 2.4){Tail}
+
+\rput(1.4, 8.4){{\bf Coin flip 1}}
+
+
+\pscircle(5,6){0.5}
+\rput(5,6){H}
+
+\pscircle(5,2){0.5}
+\rput(5,2){T}
+
+
+\psline{->}(5.5,2)(9,3)
+\psline{->}(5.5,6)(9,7)
+
+\rput(7, 7){Head}
+\rput(7, 5){Tail}
+
+\psline{->}(5.5,2)(9,1)
+\psline{->}(5.5,6)(9,5)
+
+\rput(7, 3){Head}
+\rput(7, 1){Tail}
+
+\pscircle(9.5,7){0.5}
+\rput(9.5,7){HH}
+
+\pscircle(9.5,5){0.5}
+\rput(9.5,5){HT}
+
+\pscircle(9.5,3){0.5}
+\rput(9.5,3){TH}
+
+\pscircle(9.5,1){0.5}
+\rput(9.5,1){TT}
+
+\rput(5.2, 8.4){{\bf Coin flip 2}}
+\rput(9.6, 8.4){{\bf Outcome}}
+	
+\end{pspicture}
+
+\end{document}

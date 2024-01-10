@@ -13,18 +13,19 @@ that every individual or unit in the population has the same
 chance of ending up in the sample, if repeated long enough under
 similar conditions, such a sampling process
 leads to a good approximation of the variability
-in the population through the variability in the sample. The sample,
-in a way, gets a very similar shape. Moreover, in the last unit, unit 5,
+in the population. The sample,
+in a way, gets a similar distributional shape as the population. 
+Moreover, in the last unit, unit 5,
 by studying the bootstrap, we learned about the idea of quantifying
 how much variation in a summary statistics or in a prediction we would
 expect if we repeated the sampling many times and use the variability in
 the samples to express our uncertainty about the underlying characteristics
 in the population.
 
-With this we also reached a threshold after which the serious encounter
-with the basic ideas of probability can not anymore be avoided. So let's
-face them right on. Many courses in statistics traditionally start with
-probability from the beginning. We chose a different route here, following
+If we want to go on in statistics and its main idea from here we have
+to learn some probability theory. So let's
+face this challenge right on. Many courses in statistics traditionally start with
+probability right away. We chose a different route here, following
 the insights of the great statistician @Spi2019 whose route of exposition
 of the subject we follow in our course.
 
@@ -47,7 +48,9 @@ of probability, which
 emerged in the 16th and 17th century in Europe in the context of 
 practical as well as 
 scholarly discussions about
-gambling. These discussions engaged the greatest minds of their 
+gambling. The analysis of games of chance are at the
+beginning of probability theory as a field of scientifc
+analysis. These discussions engaged the greatest minds of their 
 times, with names like Gerolamo
 Cardano (1501-1576), Galileo Galilei (1564 - 1642), Blaise Pascal (1623-1662), 
 Pierre Fermat (1601 - 1665), Christiaan Huyghens (1629 - 1695), 
@@ -56,19 +59,21 @@ Thomas Bayes (1701 - 1761) and Pierre Simon de Laplace (1749 - 1825).
 
 While people were aware of chance at all times, liked to gamble 
 or even had a godess of chance
-like the Greeks it seems only later it occurred to them 
+like the Greeks, it seems only later it occurred to them 
 that something as elusive as uncertainty
 or chance could perhaps be measured. This is the starting 
 point for classical probability.
 
 While probability is of immense practical value for dealing with
-uncertainty, many people, perhaps you are one of them, find probability
+uncertainty, many people find probability
 unintuitive and difficult. Don't despair. This is very natural, since
 the human mind is not geard towards probabilistic thinking. Probability is
 indeed not something that comes to us naturally. It is a way of thinking that
 has to be learned and acquired through practice and training. With
-patience and enduracne you alos will master the basic rules
-of probability.
+patience and endurance you also will master the basic rules
+of probability. With this additional skill you will grow in your 
+competence as a statistician and data
+analyst.
 
 ## What are the chances?
 
@@ -76,9 +81,9 @@ We talk loosely about chance all of the time. This is ok and it does no harm
 but for doing statistics and engaging in the science of quantifying 
 uncertainty we need to give the term **chance** a definite and clear
 interpretation. This turns out to be hard. All the great minds referred to
-above, had struggeled with this task.
+above, had struggled with this task.
 
-As ab intuitive guide, you might follow the idea to think of probability
+As an intuitive guide, you might follow the idea to think of probability
 in terms of expected frequency. You ask yourself, what would happen, if I
 repeated this experiment a number of times. So for the purpose
 of this exposition let us think of chance in the following way:
@@ -98,14 +103,26 @@ mechanism to experiment with such thoughts at very low cost.
 Let's begin with a toy probability example: If you throw a coin twice,
 what would be the chance or probability of getting two heads?
 
-Let's use R to think about this along the lines of the definition
-I had suggested before. If we toss a coin it can either come up heads
+This is a simple chance experiment we can visualize with a
+probability tree like this:
+
+![Probability Tree of two tosses of a fair coin](pictures/coin_tree.png)
+You can read this tree as follows. The first coin flip takes place
+at the root of the tree. Then the coin comes up either Heads (H) or
+Tails (T). Then we throw the coin again and it can again turn up
+Heads or Tails. We get one of four possible outcomes
+in the end. We would like to understand what is the
+chance that it ends up at the upper branch with two heads in a
+row.
+
+Let's use R to think about this along the lines of the chance
+definition suggested before. If we toss a coin it can either come up heads
 or tails and we toss it twice. We can write a function that does that.
 
 ```{r}
 #| code-fold: false
 
-flip_coin <- function(){
+flip_coin_twice <- function(){
   
   coin <- c("H", "T")
   
@@ -115,7 +132,7 @@ flip_coin <- function(){
 
 ```
 The function first creates a coin by a vector of characters - heads H and tails T.
-Then the random flip is modeled as a sample of size two from the coin. `sample()` 
+Then the two random flips are modeled as a sample of size two from the coin. `sample()` 
 will work like a random draw from `c("H", "T")`. Because the same coin is flipped 
 twice it needs to be a draw with replacement.
 
@@ -124,7 +141,7 @@ times, let's say 10.000 times for the sake of this argument.
 
 Here we can draw upon our iteration skills. We draw 10000 times and store
 each draw in an element of a list. This gives us 10000 pairs of either
-HH, HT, TH or TT. We store these results in a preallocated vector 
+HH, HT, TH or TT in each of the 10000 list elements. 
 `outcome`.
 ```{r}
 #| code-fold: false
@@ -133,38 +150,56 @@ outcome <- vector("list", 10000)
 
 for(i in seq_along(1:10000)){
   
-  outcome[[i]] <- flip_coin()
+  outcome[[i]] <- flip_coin_twice()
   
 }
 ```
-Now we have to count the list elements with two heads. One way to do this
-is:
+This outcome is a list with 10000 pairs of outcomes. We would now like to count
+the relative frequency of events showing two heads. There are many ways to do
+this but let us choose on that builds on our already acquired knowledge.
+
+We bind all the elements of the list together in rows using the `do.call()`
+and the `rbind()` function and then make a dataframe out of the result using the function
+`as.data.frame()` and show the first few lines.
+
 ```{r}
 #| code-fold: false
 
-counts <- vector("numeric", 10000)
-
-for(i in seq_along(outcome)){
-  
-  counts[[i]] <- (sum(outcome[[i]]== c("H", "H")) == 2)
-}
-
-sum(counts)/10000
+out <- as.data.frame(do.call(rbind,outcome))
+head(out)
 ```
-We make 10000 counts. For each element `i` we make a logical test by asking
-R whether `outcome == c("H", "H")` to which R answers, depending what is in the 
-component `c(TRUE, TRUE)` or `c(TRUE, FALSE)` or `c(FALSE, TRUE)` or 
-`c(FALSE, FALSE)`. We can use R coercion rules to do sums of these elements and
-the sum will be 2 only if the outcome is `c(TRUE, TRUE)`. So we have 
-10.000 numbers which are 1 if there were 2 heads, in the case of which
-`(sum(outcome[[i]]== c("H", "H")) == 2)` returns `TRUE` and 0 otherwise. 
-The sum of these
-is the number of heads. The relative frequency is 0.25 or 1/4, which is
-similar to the theoretical probability. 
 
-With this intuition of the correspondence between probability and
-the relative frequency of an event identically repeated many times, 
-we can pin down some basic properties of probability.
+You see that R gave some generic names to the columns. You could
+change that by using the `names()`function.
+
+```{r}
+#|code-fold: false
+
+names(out) <- c <- c("Flip1", "Flip2")
+```
+Now we can use our subsetting rules to count the rows with two heads. We
+just count the number of heads in the second flip for all heads in the
+first flip using logical subsetting. Then we sum up the cases:
+```{r}
+count <- (out$Flip2[out$Flip1 == "H"] == "H")
+sum(count)
+```
+Of all the 10.000 double flips this is about 1/4ths. The chance is thus
+25 % to see HH in an often identically repeated trial. This is
+intuitive when you look at the tree, with its four possible
+outcomes before the coin is drawn.
+
+The early probability theorists thought of measuring probability
+or chance by considering such situations of equally probable cases
+and then count. There is 1 event HH in four ex ante possible events
+and thus, their reasoning was we measure the chance of HH as 
+0.25 or 25%.
+
+Now no matter whether you use this classical idea of
+counting equally probable cases or looking at
+the relative frequency of repeated identical trials, this
+way of expressing chances means that chance or probability
+is a always a number between 0 and 1.
 
 ::: {.callout-important appearance="simple"}
 
@@ -172,7 +207,13 @@ we can pin down some basic properties of probability.
 The chance of an event is always a number between 0 and 1.
 :::
 
-Here is another basic property of chances. We just saw in the
+0 is the chance for impossible events and 1 for certain
+events. A zero chance event would for instance be in the
+coin tossing example that there is no tail in any outcome
+of flipping a coin twice. The probability that any of the
+four combinations will occur is 1.
+
+Here is another basic property of chance. We just saw in the
 coin tossing example that the probability that two heads occur in 
 a flip is 1/4. Since the probability of at least 1 tail is the
 probability of not heads twice, this leads to the 
@@ -182,7 +223,7 @@ probability of not heads twice, this leads to the
 
 ## Probability rule 2: Complement rule
 
-The probability of soemthing equals 1 minus the
+The probability of something equals 1 minus the
 probability of the opposite thing.
 
 :::
@@ -193,19 +234,21 @@ equal to $1 - \frac{1}{4} = \frac{3}{4}$.
 
 ## Conditional probability: When probabilities depend on other events.
 
-Here is an example from the book of the book of David Spiegelhalter (see 
+Here is an example from the book of David Spiegelhalter (see 
 @Spi2019, p 214): When screening for breast cancer,
 mammography is roughly 90% accurate. This means that 90% of women with
 cancer will be correctly detected and correctly classified. Suppose
 now that 1 % of women being screened actually have cancer: What is the
 probability that a randomly chosen woman will have a positive mammogram,
-and if she does, what is the chance that she really has cancer? From
+and if she does, what is the chance that she really has cancer? 
+
+From
 a probability viewpoint, this example is different from the example of
 tossing a coin twice. In this example, the probability of showing heads 
 is always the same no matter whether heads shows at the first or at the
 second flip.
 
-Let's think about the breast cance screening again in terms of
+Let's think about the breast cancer screening again in terms of
 expected frequencies. A tree diagram symbolizing the expected 
 frequencies might be helpful 
 to digest this reasoning better:
@@ -215,13 +258,13 @@ to digest this reasoning better:
 Say we have 1000 women. Out of these 1000
 1 % actually has in fact breast cancer. This is 10 women out of
 1000. Of these 10, 90 % have a positive result. This amounts to 
-9 women. But out of the 990 women without cancer, the complemntary
-10 %, i.e. 99 women are falsely given a positive mammography result.
+9 women. But out of the 990 women without cancer, the complementary
+10 %, i.e. 99 women, are falsely given a positive mammography result.
 
 Together these are $9 + 99 = 108$ positive mammograms, and so the 
 probability that a randomly chosen women will get a positive result
 is 108/1000 or about 11%. But of these 108 only 9 do in fact have
-cancer. And so there is only a 9/108 or 8% porbability that the women
+cancer. And so there is only a 9/108 or 8% probability that the women
 actually have cancer.
 
 Now some of you might realize, what I meant before when I said that
@@ -243,10 +286,10 @@ Assume there is a box with three tickets, colored red, white and blue.
 box <- c("R", "W", "B")
 
 ```
-Now two tickets are drawn at random without replacement. What is the chance of 
+Now two tickets are drawn at random but **without** replacement. What is the chance of 
 drawing the red and then the white ticket?
 
-Imagine a huge crowd each draws two tickets. Say we have 1000 people. Write
+Imagine a huge crowd each draws two tickets. Say we have again 10000 people. Write
 a drawing function:
 ```{r}
 #| code-fold: false
@@ -257,38 +300,71 @@ draw <- function(){
 }
 ```
 Note that this time we have set the replace argument to false, because we 
-draw at random
-**without** replacement. Let's check the frequency of people holding R, W 
+draw at random **without** replacement and this is how we tell R to follow
+such a drawing without replacement protocol. 
+
+Let's check the frequency of people holding R, W 
 tickets. Let's simulate using the ideas from before:
 
 ```{r}
+#|code-fold: false
+draws <- vector("list", 10000)
 
-n <- 10^5
-
-outcome <- vector("list", n)
-
-for(i in seq_along(1:n)){
+for(i in seq_along(1:10000)){
   
-  outcome[[i]] <- draw()
-  
+  draws[[i]] <- draw()
 }
 
-counts <- vector("numeric", n)
-
-for(i in seq_along(outcome)){
-  
-  counts[[i]] <- (sum(outcome[[i]]== c("R", "W")) == 2)
-}
-
-sum(counts)/n
+res <- as.data.frame(do.call(rbind, draws))
+names(res) <- c("Draw_1", "Draw_2")
+head(res)
 ```
-This amounts to about 1 in six. How does this come about?
 
-Im  the first draw about 1/3 will end up with a red ticket. The others will
+```{r}
+count <- (res$Draw_2[res$Draw_1 == "R"] == "W")
+sum(count)
+```
+
+The relative frequency of such pairs is then about `r round(sum(count)/10000,4)`.
+
+Another way to think about this is as follows:
+
+In  the first draw about 1/3 will end up with a red ticket. The others will
 have either a white or a blue. Of this 1/3 half of the people will get a white
 ticket, i.e. 1/2 of 1/3 or: $\frac{1}{2}*\frac{1}{3} = \frac{1}{6}. So with
-our simulated crowd of $10^5$ or 100.000 people 16667 will have a R and a W 
+our simulated crowd of $10000$ or 10.0000 people 1666.7 will have a R and a W 
 ticket.
+
+The conditional probability of a white ticket, given a red ticket has been
+drawn with replacement is 1/2. Still another way to understand this in terms
+of expected frequencies is as follows. Think of our simulated dataframe `res`
+as a notebook, where you record the outcome of any draw.
+
+```{r}
+knitr::kable(head(res, n = 10))
+```
+
+The chance to draw R on the first draw is 1/3. But since there is no
+replacement, drawing a W together with an R is the relative frequency
+of W among all the cases where R has been drawn first.
+
+To see this, look first at:
+
+```{r}
+sum(res$Draw_1 == "R")/10000
+```
+
+This about 1/3. 
+
+Now the probability of choosing a W given an R has
+been chosen before without replacement is:
+
+```{r}
+sum(res$Draw_2[res$Draw_1 == "R"] == "W")/sum(res$Draw_1 == "R")
+```
+
+This is the number of all cases where W showed on the second draw, given
+the first draw was R, divided by all cases where the first draw was red.
 
 This leads us to the next important rule of probability:
 
@@ -326,8 +402,40 @@ heads on the second flip is still 1/2. So no matter what happened in
 the first coin flip the chances for the outcome of the second
 coin flip are unchanged.
 
+We can check this again computationally:
+
+```{r}
+#| code-fold: false
+
+# flip the coins
+
+outcome <- vector("list", 10000)
+
+for(i in seq_along(1:10000)){
+  
+  outcome[[i]] <- flip_coin_twice()
+  
+}
+
+# pack result of computation into dataframe
+
+res <- as.data.frame(do.call(rbind, draws))
+names(out) <- c <- c("Flip1", "Flip2")
+
+# probability of head on the first flip with 10000 flips:
+
+sum(out$Flip1 == "H")/10000
+
+# conditional probability that the second flip will be heads given the first flip was heads
+
+sum(out$Flip2[out$Flip1 == "H"] == "H")/sum(out$Flip1 == "H")
+
+```
+
+They are both about 1/2.
+
 Thus when we draw at random with replacements we get independent draws,
-when we draw at random without replacement we get dependent draws..
+when we draw at random without replacement we get dependent draws.
 
 ::: {.callout-important appearance="simple"}
 
@@ -370,7 +478,8 @@ is $\frac{1}{6} \times \frac{1}{6} = \frac{1}{36}$
 
 You could ask other questions. If we throw the pair of dice, what is the chance
 that we get a spot sum of four? From the figure of all combinations, you can
-see that this must be 3 in 36 or 1/12.
+see that this must be 3 in 36 or 1/12. Reasoning like this
+leads us to the next idea of computaing with chances.
 
 ## The addition rule
 
@@ -382,7 +491,7 @@ cair in accounting for the chances.
 If the possibility that both happen can be ruled out we
 speak of the things as beeing **mutually exclusive**.
 
-:: {.callout-important appearance="simple"}
+::: {.callout-important appearance="simple"}
 
 ## Mutually exclusive
 
@@ -411,6 +520,97 @@ and the events are not mutually exclusive do not add the
 chances. The sum will be too big, because the same events
 will be accounted for twice. With mutually exclusive
 events, no double counting can occur.
+
+Let us summarize the rules of probability we have introduced here
+in a table once again.
+
+::: {.callout-tip}
+## A rules of probability cheat sheet
+
+1. **Probabilities are between 0 and 1**: Probabilities of things that could 
+happen or events are numbers between 0 
+   and 1, with 0 for impossible events and 1 for sure events.
+
+2. **Complement rule**: The probability of something - an event - equals 1 minus 
+   the probability of 
+   the thing - the event - not happening, i.e. the opposite thing.
+   
+3. **Multiplication rule**: Probability rule 3: The probability that two things 
+   will both occur equals the chance that the first will happen multiplied by 
+   the chance that the second will happen given the first has happened.
+   
+4. **Independence**: Two events are independent if the chances or the second 
+given the first are the same no matter how the first one turns out. 
+Otherwise two things are dependent.
+
+5. **Multiplication rule for independent events**: If two events are 
+independent, the chance that both will happen equals the product of their 
+unconditional probabilities. This is a special case of the multiplication rule.
+
+6. **Addition rule**: To find the chance that at least one of two things will 
+happen check to see if they are mutually exclusive. If they are the chances 
+can be added up.
+
+:::
+
+These are the fundamental properties of probability and you should know these
+properties by heart. From a viewpoint of pure logic and deductive
+reasoning these rules can be reduced basically to 1. and 3. and all other
+properties derived from that by the rules of logic. This is an approach
+you might encounter later in your studies if you take a course in
+mathematical probability.
+
+You might have noticed that we have defined the properties of 
+probabilities only in terms of what probabilities can do. While we said
+that thinking in relative frequencies of events happening when some
+experiment is repeated many times under similar conditions helps the
+intuition we did not actually say that this **is** probability, although
+of course the relative frequency definition does fulfill all of our rules.
+
+But what then is probability anyway? Experts still disagree on this question
+and there are many debates about this still going on. Fortunately as
+a practical data analyst or statistician you do not have to agree with any
+of the specific interpretations. Statisticians often act as if the
+observations they make are random, even when this not strict true.
+
+## What is the connection between probability and statistics?
+
+Why have I dragged you through these abstract properties we would
+like to attribute to chance and uncertainty at all? Why did we
+manage to get through five units of material without any of this and
+now suddenly need it?
+
+One situation where probability comes into play for the statistician
+in a natural way when we have data, that could be considered as
+generated from some random device. An example is to use a random mechanism
+- flipping a coin, throwing a dice - to allocate individuals to
+treatment and control groups in a controlled randomized trial.
+
+In practice we may often encounter the situation where a pre-existing datapoint
+is chosen by a random mechanism, such as in a data sample of a survey.
+
+Even more often we will have situations where there is no randomness at all.
+There are just observed data-points and we assume that these data have been
+generated by some random mechanism, like in the case of the human height data
+we analyzed in previous units.
+
+The relevance of probability is clear for the first two situations. With
+a randomizing device we assume that we can enlist all the possible outcomes 
+that might potentially be observed and we can attach chances or probabilities
+to these outcomes - for example 1/2 for a fair coin coming up Heads. When
+we attach to each of these outcomes some quantity, for example 1 for heads and
+0 for tails, probability theorists say that we have a **random variable** with
+a probability distribution. The randomizing device is such that it is ensured 
+that the observation is generated at random from this distribution. When
+it is observed the randomnes is resolved and there is only the actual outcome.
+
+Also, if we draw draw an individual at random - like in a survey - and measure
+their height, then we have drawn from a population distribution of heights
+at random.
+
+## What is the role of probability when we observe everything?
+
+
 
 <!-- # Contents -->
 

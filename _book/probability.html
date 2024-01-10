@@ -248,7 +248,8 @@ div.csl-indent {
   <li><a href="#independence" id="toc-independence" class="nav-link" data-scroll-target="#independence"><span class="header-section-number">9.4</span> Independence</a></li>
   <li><a href="#listing-events" id="toc-listing-events" class="nav-link" data-scroll-target="#listing-events"><span class="header-section-number">9.5</span> Listing events</a></li>
   <li><a href="#the-addition-rule" id="toc-the-addition-rule" class="nav-link" data-scroll-target="#the-addition-rule"><span class="header-section-number">9.6</span> The addition rule</a></li>
-  <li><a href="#mutually-exclusive" id="toc-mutually-exclusive" class="nav-link" data-scroll-target="#mutually-exclusive"><span class="header-section-number">9.7</span> Mutually exclusive</a></li>
+  <li><a href="#what-is-the-connection-between-probability-and-statistics" id="toc-what-is-the-connection-between-probability-and-statistics" class="nav-link" data-scroll-target="#what-is-the-connection-between-probability-and-statistics"><span class="header-section-number">9.7</span> What is the connection between probability and statistics?</a></li>
+  <li><a href="#what-is-the-role-of-probability-when-we-observe-everything" id="toc-what-is-the-role-of-probability-when-we-observe-everything" class="nav-link" data-scroll-target="#what-is-the-role-of-probability-when-we-observe-everything"><span class="header-section-number">9.8</span> What is the role of probability when we observe everything?</a></li>
   </ul>
 </nav>
     </div>
@@ -273,8 +274,8 @@ div.csl-indent {
 </header>
 
 <p>If you chose to study statistics and data analysis it comes natural at some stage, to also study probability. We already encountered some probability ideas in this course, although we did not treat them in any depth.</p>
-<p>The first encounter was in unit 3 where we discussed the idea of random sampling from a population and learned how the simple fact that every individual or unit in the population has the same chance of ending up in the sample, if repeated long enough under similar conditions, such a sampling process leads to a good approximation of the variability in the population through the variability in the sample. The sample, in a way, gets a very similar shape. Moreover, in the last unit, unit 5, by studying the bootstrap, we learned about the idea of quantifying how much variation in a summary statistics or in a prediction we would expect if we repeated the sampling many times and use the variability in the samples to express our uncertainty about the underlying characteristics in the population.</p>
-<p>With this we also reached a threshold after which the serious encounter with the basic ideas of probability can not anymore be avoided. So let’s face them right on. Many courses in statistics traditionally start with probability from the beginning. We chose a different route here, following the insights of the great statistician <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> whose route of exposition of the subject we follow in our course.</p>
+<p>The first encounter was in unit 3 where we discussed the idea of random sampling from a population and learned how the simple fact that every individual or unit in the population has the same chance of ending up in the sample, if repeated long enough under similar conditions, such a sampling process leads to a good approximation of the variability in the population. The sample, in a way, gets a similar distributional shape as the population. Moreover, in the last unit, unit 5, by studying the bootstrap, we learned about the idea of quantifying how much variation in a summary statistics or in a prediction we would expect if we repeated the sampling many times and use the variability in the samples to express our uncertainty about the underlying characteristics in the population.</p>
+<p>If we want to go on in statistics and its main idea from here we have to learn some probability theory. So let’s face this challenge right on. Many courses in statistics traditionally start with probability right away. We chose a different route here, following the insights of the great statistician <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> whose route of exposition of the subject we follow in our course.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -301,13 +302,13 @@ Keywords
 
 </div>
 </div>
-<p>Probability is first of all a mathematical theory. It gets practical value and intuitive meaning in connection with real or conceptual experiments. Indeed these fascinating interconnections are already visible in the very beginning of probability, which emerged in the 16th and 17th century in Europe in the context of practical as well as scholarly discussions about gambling. These discussions engaged the greatest minds of their times, with names like Gerolamo Cardano (1501-1576), Galileo Galilei (1564 - 1642), Blaise Pascal (1623-1662), Pierre Fermat (1601 - 1665), Christiaan Huyghens (1629 - 1695), Jacob Bernoulli (1654 - 1705), Abraham de Moivre (1667 - 1754), Thomas Bayes (1701 - 1761) and Pierre Simon de Laplace (1749 - 1825).</p>
-<p>While people were aware of chance at all times, liked to gamble or even had a godess of chance like the Greeks it seems only later it occurred to them that something as elusive as uncertainty or chance could perhaps be measured. This is the starting point for classical probability.</p>
-<p>While probability is of immense practical value for dealing with uncertainty, many people, perhaps you are one of them, find probability unintuitive and difficult. Don’t despair. This is very natural, since the human mind is not geard towards probabilistic thinking. Probability is indeed not something that comes to us naturally. It is a way of thinking that has to be learned and acquired through practice and training. With patience and enduracne you alos will master the basic rules of probability.</p>
+<p>Probability is first of all a mathematical theory. It gets practical value and intuitive meaning in connection with real or conceptual experiments. Indeed these fascinating interconnections are already visible in the very beginning of probability, which emerged in the 16th and 17th century in Europe in the context of practical as well as scholarly discussions about gambling. The analysis of games of chance are at the beginning of probability theory as a field of scientifc analysis. These discussions engaged the greatest minds of their times, with names like Gerolamo Cardano (1501-1576), Galileo Galilei (1564 - 1642), Blaise Pascal (1623-1662), Pierre Fermat (1601 - 1665), Christiaan Huyghens (1629 - 1695), Jacob Bernoulli (1654 - 1705), Abraham de Moivre (1667 - 1754), Thomas Bayes (1701 - 1761) and Pierre Simon de Laplace (1749 - 1825).</p>
+<p>While people were aware of chance at all times, liked to gamble or even had a godess of chance like the Greeks, it seems only later it occurred to them that something as elusive as uncertainty or chance could perhaps be measured. This is the starting point for classical probability.</p>
+<p>While probability is of immense practical value for dealing with uncertainty, many people find probability unintuitive and difficult. Don’t despair. This is very natural, since the human mind is not geard towards probabilistic thinking. Probability is indeed not something that comes to us naturally. It is a way of thinking that has to be learned and acquired through practice and training. With patience and endurance you also will master the basic rules of probability. With this additional skill you will grow in your competence as a statistician and data analyst.</p>
 <section id="what-are-the-chances" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="what-are-the-chances"><span class="header-section-number">9.1</span> What are the chances?</h2>
-<p>We talk loosely about chance all of the time. This is ok and it does no harm but for doing statistics and engaging in the science of quantifying uncertainty we need to give the term <strong>chance</strong> a definite and clear interpretation. This turns out to be hard. All the great minds referred to above, had struggeled with this task.</p>
-<p>As ab intuitive guide, you might follow the idea to think of probability in terms of expected frequency. You ask yourself, what would happen, if I repeated this experiment a number of times. So for the purpose of this exposition let us think of chance in the following way:</p>
+<p>We talk loosely about chance all of the time. This is ok and it does no harm but for doing statistics and engaging in the science of quantifying uncertainty we need to give the term <strong>chance</strong> a definite and clear interpretation. This turns out to be hard. All the great minds referred to above, had struggled with this task.</p>
+<p>As an intuitive guide, you might follow the idea to think of probability in terms of expected frequency. You ask yourself, what would happen, if I repeated this experiment a number of times. So for the purpose of this exposition let us think of chance in the following way:</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -322,9 +323,11 @@ Chance
 </div>
 </div>
 <p>Especially with the modern tool of the computer, we have a wonderful mechanism to experiment with such thoughts at very low cost. Let’s begin with a toy probability example: If you throw a coin twice, what would be the chance or probability of getting two heads?</p>
-<p>Let’s use R to think about this along the lines of the definition I had suggested before. If we toss a coin it can either come up heads or tails and we toss it twice. We can write a function that does that.</p>
+<p>This is a simple chance experiment we can visualize with a probability tree like this:</p>
+<p><img src="pictures/coin_tree.png" class="img-fluid" alt="Probability Tree of two tosses of a fair coin"> You can read this tree as follows. The first coin flip takes place at the root of the tree. Then the coin comes up either Heads (H) or Tails (T). Then we throw the coin again and it can again turn up Heads or Tails. We get one of four possible outcomes in the end. We would like to understand what is the chance that it ends up at the upper branch with two heads in a row.</p>
+<p>Let’s use R to think about this along the lines of the chance definition suggested before. If we toss a coin it can either come up heads or tails and we toss it twice. We can write a function that does that.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flip_coin <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>flip_coin_twice <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  coin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -332,34 +335,56 @@ Chance
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The function first creates a coin by a vector of characters - heads H and tails T. Then the random flip is modeled as a sample of size two from the coin. <code>sample()</code> will work like a random draw from <code>c("H", "T")</code>. Because the same coin is flipped twice it needs to be a draw with replacement.</p>
+<p>The function first creates a coin by a vector of characters - heads H and tails T. Then the two random flips are modeled as a sample of size two from the coin. <code>sample()</code> will work like a random draw from <code>c("H", "T")</code>. Because the same coin is flipped twice it needs to be a draw with replacement.</p>
 <p>To implement the expected frequency idea we now have to toss the coin many times, let’s say 10.000 times for the sake of this argument.</p>
-<p>Here we can draw upon our iteration skills. We draw 10000 times and store each draw in an element of a list. This gives us 10000 pairs of either HH, HT, TH or TT. We store these results in a preallocated vector <code>outcome</code>.</p>
+<p>Here we can draw upon our iteration skills. We draw 10000 times and store each draw in an element of a list. This gives us 10000 pairs of either HH, HT, TH or TT in each of the 10000 list elements. <code>outcome</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="dv">10000</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)){</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  outcome[[i]] <span class="ot">&lt;-</span> <span class="fu">flip_coin</span>()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  outcome[[i]] <span class="ot">&lt;-</span> <span class="fu">flip_coin_twice</span>()</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now we have to count the list elements with two heads. One way to do this is:</p>
+<p>This outcome is a list with 10000 pairs of outcomes. We would now like to count the relative frequency of events showing two heads. There are many ways to do this but let us choose on that builds on our already acquired knowledge.</p>
+<p>We bind all the elements of the list together in rows using the <code>do.call()</code> and the <code>rbind()</code> function and then make a dataframe out of the result using the function <code>as.data.frame()</code> and show the first few lines.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, <span class="dv">10000</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(outcome)){</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  counts[[i]] <span class="ot">&lt;-</span> (<span class="fu">sum</span>(outcome[[i]]<span class="sc">==</span> <span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"H"</span>)) <span class="sc">==</span> <span class="dv">2</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(counts)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind,outcome))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2501</code></pre>
+<pre><code>  V1 V2
+1  T  T
+2  T  T
+3  T  H
+4  T  H
+5  H  H
+6  T  H</code></pre>
 </div>
 </div>
-<p>We make 10000 counts. For each element <code>i</code> we make a logical test by asking R whether <code>outcome == c("H", "H")</code> to which R answers, depending what is in the component <code>c(TRUE, TRUE)</code> or <code>c(TRUE, FALSE)</code> or <code>c(FALSE, TRUE)</code> or <code>c(FALSE, FALSE)</code>. We can use R coercion rules to do sums of these elements and the sum will be 2 only if the outcome is <code>c(TRUE, TRUE)</code>. So we have 10.000 numbers which are 1 if there were 2 heads, in the case of which <code>(sum(outcome[[i]]== c("H", "H")) == 2)</code> returns <code>TRUE</code> and 0 otherwise. The sum of these is the number of heads. The relative frequency is 0.25 or 1/4, which is similar to the theoretical probability.</p>
-<p>With this intuition of the correspondence between probability and the relative frequency of an event identically repeated many times, we can pin down some basic properties of probability.</p>
+<p>You see that R gave some generic names to the columns. You could change that by using the <code>names()</code>function.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(out) <span class="ot">&lt;-</span> c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flip1"</span>, <span class="st">"Flip2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Now we can use our subsetting rules to count the rows with two heads. We just count the number of heads in the second flip for all heads in the first flip using logical subsetting. Then we sum up the cases:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> (out<span class="sc">$</span>Flip2[out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>] <span class="sc">==</span> <span class="st">"H"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2454</code></pre>
+</div>
+</div>
+<p>Of all the 10.000 double flips this is about 1/4ths. The chance is thus 25 % to see HH in an often identically repeated trial. This is intuitive when you look at the tree, with its four possible outcomes before the coin is drawn.</p>
+<p>The early probability theorists thought of measuring probability or chance by considering such situations of equally probable cases and then count. There is 1 event HH in four ex ante possible events and thus, their reasoning was we measure the chance of HH as 0.25 or 25%.</p>
+<p>Now no matter whether you use this classical idea of counting equally probable cases or looking at the relative frequency of repeated identical trials, this way of expressing chances means that chance or probability is a always a number between 0 and 1.</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -373,7 +398,8 @@ Probability rule 1
 <p>The chance of an event is always a number between 0 and 1.</p>
 </div>
 </div>
-<p>Here is another basic property of chances. We just saw in the coin tossing example that the probability that two heads occur in a flip is 1/4. Since the probability of at least 1 tail is the probability of not heads twice, this leads to the <strong>complement rule</strong></p>
+<p>0 is the chance for impossible events and 1 for certain events. A zero chance event would for instance be in the coin tossing example that there is no tail in any outcome of flipping a coin twice. The probability that any of the four combinations will occur is 1.</p>
+<p>Here is another basic property of chance. We just saw in the coin tossing example that the probability that two heads occur in a flip is 1/4. Since the probability of at least 1 tail is the probability of not heads twice, this leads to the <strong>complement rule</strong></p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -384,23 +410,24 @@ Probability rule 2: Complement rule
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The probability of soemthing equals 1 minus the probability of the opposite thing.</p>
+<p>The probability of something equals 1 minus the probability of the opposite thing.</p>
 </div>
 </div>
 <p>In the coin tossing example the probability of not having two heads is the same as the probability of at least having one tail and this is equal to <span class="math inline">\(1 - \frac{1}{4} = \frac{3}{4}\)</span>.</p>
 </section>
 <section id="conditional-probability-when-probabilities-depend-on-other-events." class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="conditional-probability-when-probabilities-depend-on-other-events."><span class="header-section-number">9.2</span> Conditional probability: When probabilities depend on other events.</h2>
-<p>Here is an example from the book of the book of David Spiegelhalter (see <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>, p 214): When screening for breast cancer, mammography is roughly 90% accurate. This means that 90% of women with cancer will be correctly detected and correctly classified. Suppose now that 1 % of women being screened actually have cancer: What is the probability that a randomly chosen woman will have a positive mammogram, and if she does, what is the chance that she really has cancer? From a probability viewpoint, this example is different from the example of tossing a coin twice. In this example, the probability of showing heads is always the same no matter whether heads shows at the first or at the second flip.</p>
-<p>Let’s think about the breast cance screening again in terms of expected frequencies. A tree diagram symbolizing the expected frequencies might be helpful to digest this reasoning better:</p>
+<p>Here is an example from the book of David Spiegelhalter (see <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>, p 214): When screening for breast cancer, mammography is roughly 90% accurate. This means that 90% of women with cancer will be correctly detected and correctly classified. Suppose now that 1 % of women being screened actually have cancer: What is the probability that a randomly chosen woman will have a positive mammogram, and if she does, what is the chance that she really has cancer?</p>
+<p>From a probability viewpoint, this example is different from the example of tossing a coin twice. In this example, the probability of showing heads is always the same no matter whether heads shows at the first or at the second flip.</p>
+<p>Let’s think about the breast cancer screening again in terms of expected frequencies. A tree diagram symbolizing the expected frequencies might be helpful to digest this reasoning better:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pictures/mammography.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Expected Frequency tree</figcaption>
 </figure>
 </div>
-<p>Say we have 1000 women. Out of these 1000 1 % actually has in fact breast cancer. This is 10 women out of 1000. Of these 10, 90 % have a positive result. This amounts to 9 women. But out of the 990 women without cancer, the complemntary 10 %, i.e.&nbsp;99 women are falsely given a positive mammography result.</p>
-<p>Together these are <span class="math inline">\(9 + 99 = 108\)</span> positive mammograms, and so the probability that a randomly chosen women will get a positive result is 108/1000 or about 11%. But of these 108 only 9 do in fact have cancer. And so there is only a 9/108 or 8% porbability that the women actually have cancer.</p>
+<p>Say we have 1000 women. Out of these 1000 1 % actually has in fact breast cancer. This is 10 women out of 1000. Of these 10, 90 % have a positive result. This amounts to 9 women. But out of the 990 women without cancer, the complementary 10 %, i.e.&nbsp;99 women, are falsely given a positive mammography result.</p>
+<p>Together these are <span class="math inline">\(9 + 99 = 108\)</span> positive mammograms, and so the probability that a randomly chosen women will get a positive result is 108/1000 or about 11%. But of these 108 only 9 do in fact have cancer. And so there is only a 9/108 or 8% probability that the women actually have cancer.</p>
 <p>Now some of you might realize, what I meant before when I said that probability is often not intuitive. Despite the 90 % accuracy of the scan, the vast majority of women with a positive mammography do not have cancer. This is, because we tend to confuse the conditional probability of a positive test, given cancer with the conditional probability of cancer given a positive test.</p>
 </section>
 <section id="the-multiplication-rule" class="level2" data-number="9.3">
@@ -408,45 +435,138 @@ Probability rule 2: Complement rule
 <p>Let us think how we can figure out the chance that two events happen in terms of probability. Here is an example, we can try in R.</p>
 <p>Assume there is a box with three tickets, colored red, white and blue.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"W"</span>, <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"W"</span>, <span class="st">"B"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now two tickets are drawn at random without replacement. What is the chance of drawing the red and then the white ticket?</p>
-<p>Imagine a huge crowd each draws two tickets. Say we have 1000 people. Write a drawing function:</p>
+<p>Now two tickets are drawn at random but <strong>without</strong> replacement. What is the chance of drawing the red and then the white ticket?</p>
+<p>Imagine a huge crowd each draws two tickets. Say we have again 10000 people. Write a drawing function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>draw <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(box, <span class="dv">2</span>, <span class="at">replace =</span> F)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>draw <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(box, <span class="dv">2</span>, <span class="at">replace =</span> F)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Note that this time we have set the replace argument to false, because we draw at random <strong>without</strong> replacement. Let’s check the frequency of people holding R, W tickets. Let’s simulate using the ideas from before:</p>
+<p>Note that this time we have set the replace argument to false, because we draw at random <strong>without</strong> replacement and this is how we tell R to follow such a drawing without replacement protocol.</p>
+<p>Let’s check the frequency of people holding R, W tickets. Let’s simulate using the ideas from before:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">5</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, n)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span>n)){</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  outcome[[i]] <span class="ot">&lt;-</span> <span class="fu">draw</span>()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"numeric"</span>, n)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(outcome)){</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  counts[[i]] <span class="ot">&lt;-</span> (<span class="fu">sum</span>(outcome[[i]]<span class="sc">==</span> <span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"W"</span>)) <span class="sc">==</span> <span class="dv">2</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(counts)<span class="sc">/</span>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|code-fold: false</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="dv">10000</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)){</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  draws[[i]] <span class="ot">&lt;-</span> <span class="fu">draw</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind, draws))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(res) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Draw_1"</span>, <span class="st">"Draw_2"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.16712</code></pre>
+<pre><code>  Draw_1 Draw_2
+1      R      W
+2      W      R
+3      W      B
+4      W      B
+5      W      B
+6      B      W</code></pre>
 </div>
 </div>
-<p>This amounts to about 1 in six. How does this come about?</p>
-<p>Im the first draw about 1/3 will end up with a red ticket. The others will have either a white or a blue. Of this 1/3 half of the people will get a white ticket, i.e.&nbsp;1/2 of 1/3 or: $* = . So with our simulated crowd of <span class="math inline">\(10^5\)</span> or 100.000 people 16667 will have a R and a W ticket.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> (res<span class="sc">$</span>Draw_2[res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>] <span class="sc">==</span> <span class="st">"W"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1663</code></pre>
+</div>
+</div>
+<p>The relative frequency of such pairs is then about 0.1663.</p>
+<p>Another way to think about this is as follows:</p>
+<p>In the first draw about 1/3 will end up with a red ticket. The others will have either a white or a blue. Of this 1/3 half of the people will get a white ticket, i.e.&nbsp;1/2 of 1/3 or: $* = . So with our simulated crowd of <span class="math inline">\(10000\)</span> or 10.0000 people 1666.7 will have a R and a W ticket.</p>
+<p>The conditional probability of a white ticket, given a red ticket has been drawn with replacement is 1/2. Still another way to understand this in terms of expected frequencies is as follows. Think of our simulated dataframe <code>res</code> as a notebook, where you record the outcome of any draw.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(res, <span class="at">n =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Draw_1</th>
+<th style="text-align: left;">Draw_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">W</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">W</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">R</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">R</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The chance to draw R on the first draw is 1/3. But since there is no replacement, drawing a W together with an R is the relative frequency of W among all the cases where R has been drawn first.</p>
+<p>To see this, look first at:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3306</code></pre>
+</div>
+</div>
+<p>This about 1/3.</p>
+<p>Now the probability of choosing a W given an R has been chosen before without replacement is:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_2[res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>] <span class="sc">==</span> <span class="st">"W"</span>)<span class="sc">/</span><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5030248</code></pre>
+</div>
+</div>
+<p>This is the number of all cases where W showed on the second draw, given the first draw was R, divided by all cases where the first draw was red.</p>
 <p>This leads us to the next important rule of probability:</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -479,7 +599,38 @@ Probability rule 4: Independence
 </div>
 </div>
 <p>In the coin tossing example we had a situation of independence. Why? Because when we flip the coin once, the chance that it turns up heads is 1/2. If it comes up heads and we flip it again the chance is 1/2 that it turns up heads. If it comes up tails the chance that it turns up heads on the second flip is still 1/2. So no matter what happened in the first coin flip the chances for the outcome of the second coin flip are unchanged.</p>
-<p>Thus when we draw at random with replacements we get independent draws, when we draw at random without replacement we get dependent draws..</p>
+<p>We can check this again computationally:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># flip the coins</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="dv">10000</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>)){</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  outcome[[i]] <span class="ot">&lt;-</span> <span class="fu">flip_coin_twice</span>()</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># pack result of computation into dataframe</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind, draws))</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(out) <span class="ot">&lt;-</span> c <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flip1"</span>, <span class="st">"Flip2"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># probability of head on the first flip with 10000 flips:</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4927</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conditional probability that the second flip will be heads given the first flip was heads</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip2[out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>] <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4980718</code></pre>
+</div>
+</div>
+<p>They are both about 1/2.</p>
+<p>Thus when we draw at random with replacements we get independent draws, when we draw at random without replacement we get dependent draws.</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -508,17 +659,25 @@ Probability rule 5: Multiplication rule for independent events
 <p><img src="pictures/dice_combinations_1.png" class="img-fluid" alt="Dice combinations with 1"> If we list all the ways the combinations of the two dies can turn out we get the following figure</p>
 <p><img src="pictures/dice_combinations_full.png" class="img-fluid" alt="All possible combinations of rolling two dice"> These are 36 combinations. There is only one in which both dies show a six. Thus the chance of showing two six is 1/36.</p>
 <p>Note that this fact could also have been worked out by the multiplication rule. Since the tosses of the dice are independent and the chance of getting a six must be <span class="math inline">\(\frac{1}{6}\)</span> by the multiplication rule the chance that both show six is <span class="math inline">\(\frac{1}{6} \times \frac{1}{6} = \frac{1}{36}\)</span></p>
-<p>You could ask other questions. If we throw the pair of dice, what is the chance that we get a spot sum of four? From the figure of all combinations, you can see that this must be 3 in 36 or 1/12.</p>
+<p>You could ask other questions. If we throw the pair of dice, what is the chance that we get a spot sum of four? From the figure of all combinations, you can see that this must be 3 in 36 or 1/12. Reasoning like this leads us to the next idea of computaing with chances.</p>
 </section>
 <section id="the-addition-rule" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="the-addition-rule"><span class="header-section-number">9.6</span> The addition rule</h2>
 <p>In this section we discuss the chance that at least one of two things will happen: Either the first happens, or the second or both. The possibility that both can happen requires some cair in accounting for the chances.</p>
 <p>If the possibility that both happen can be ruled out we speak of the things as beeing <strong>mutually exclusive</strong>.</p>
-<p>:: {.callout-important appearance=“simple”}</p>
-</section>
-<section id="mutually-exclusive" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="mutually-exclusive"><span class="header-section-number">9.7</span> Mutually exclusive</h2>
-<p>Two things are mutually exclusive when the occurence of one prevents the occurence of the other: one excludes the other. :::</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mutually exclusive
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two things are mutually exclusive when the occurence of one prevents the occurence of the other: one excludes the other.</p>
+</div>
+</div>
 <p>With this notion we can state another</p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -535,6 +694,42 @@ Probability rule 6: Addition rule
 </div>
 <p>For example in the case of tossing a coin twice the chance to see at least one head is <span class="math inline">\(\frac{3}{4}\)</span> because it comprises two heads or head and tail or tail and head. Clearly the three cases are mutually exclusive.</p>
 <p>If you want to find the chance that at least one event occurs and the events are not mutually exclusive do not add the chances. The sum will be too big, because the same events will be accounted for twice. With mutually exclusive events, no double counting can occur.</p>
+<p>Let us summarize the rules of probability we have introduced here in a table once again.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A rules of probability cheat sheet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Probabilities are between 0 and 1</strong>: Probabilities of things that could happen or events are numbers between 0 and 1, with 0 for impossible events and 1 for sure events.</p></li>
+<li><p><strong>Complement rule</strong>: The probability of something - an event - equals 1 minus the probability of the thing - the event - not happening, i.e.&nbsp;the opposite thing.</p></li>
+<li><p><strong>Multiplication rule</strong>: Probability rule 3: The probability that two things will both occur equals the chance that the first will happen multiplied by the chance that the second will happen given the first has happened.</p></li>
+<li><p><strong>Independence</strong>: Two events are independent if the chances or the second given the first are the same no matter how the first one turns out. Otherwise two things are dependent.</p></li>
+<li><p><strong>Multiplication rule for independent events</strong>: If two events are independent, the chance that both will happen equals the product of their unconditional probabilities. This is a special case of the multiplication rule.</p></li>
+<li><p><strong>Addition rule</strong>: To find the chance that at least one of two things will happen check to see if they are mutually exclusive. If they are the chances can be added up.</p></li>
+</ol>
+</div>
+</div>
+<p>These are the fundamental properties of probability and you should know these properties by heart. From a viewpoint of pure logic and deductive reasoning these rules can be reduced basically to 1. and 3. and all other properties derived from that by the rules of logic. This is an approach you might encounter later in your studies if you take a course in mathematical probability.</p>
+<p>You might have noticed that we have defined the properties of probabilities only in terms of what probabilities can do. While we said that thinking in relative frequencies of events happening when some experiment is repeated many times under similar conditions helps the intuition we did not actually say that this <strong>is</strong> probability, although of course the relative frequency definition does fulfill all of our rules.</p>
+<p>But what then is probability anyway? Experts still disagree on this question and there are many debates about this still going on. Fortunately as a practical data analyst or statistician you do not have to agree with any of the specific interpretations. Statisticians often act as if the observations they make are random, even when this not strict true.</p>
+</section>
+<section id="what-is-the-connection-between-probability-and-statistics" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="what-is-the-connection-between-probability-and-statistics"><span class="header-section-number">9.7</span> What is the connection between probability and statistics?</h2>
+<p>Why have I dragged you through these abstract properties we would like to attribute to chance and uncertainty at all? Why did we manage to get through five units of material without any of this and now suddenly need it?</p>
+<p>One situation where probability comes into play for the statistician in a natural way when we have data, that could be considered as generated from some random device. An example is to use a random mechanism - flipping a coin, throwing a dice - to allocate individuals to treatment and control groups in a controlled randomized trial.</p>
+<p>In practice we may often encounter the situation where a pre-existing datapoint is chosen by a random mechanism, such as in a data sample of a survey.</p>
+<p>Even more often we will have situations where there is no randomness at all. There are just observed data-points and we assume that these data have been generated by some random mechanism, like in the case of the human height data we analyzed in previous units.</p>
+<p>The relevance of probability is clear for the first two situations. With a randomizing device we assume that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes - for example 1/2 for a fair coin coming up Heads. When we attach to each of these outcomes some quantity, for example 1 for heads and 0 for tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. When it is observed the randomnes is resolved and there is only the actual outcome.</p>
+<p>Also, if we draw draw an individual at random - like in a survey - and measure their height, then we have drawn from a population distribution of heights at random.</p>
+</section>
+<section id="what-is-the-role-of-probability-when-we-observe-everything" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="what-is-the-role-of-probability-when-we-observe-everything"><span class="header-section-number">9.8</span> What is the role of probability when we observe everything?</h2>
 <!-- # Contents -->
 <!-- Probability theory provides a formal language and mathematics for dealing with  -->
 <!-- chance phenomena. Probability is often counter intuitive but using the idea of  -->
