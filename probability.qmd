@@ -32,11 +32,73 @@ of the subject we follow in our course.
 ::: {.callout-note appearance="simple"}
 ## Overview
 
+In this unit you will learn about the **probability theory**.
+Probability theory is a mathematical framework to analyze and
+better understand situations of **uncertainty**.
+
+While probability is a mathematical theory it gets practical
+value and intuitive meaning in connection with real or
+conceptual **experiments**, such as flipping a coin or throwing 
+a dice.
+
+**Chance** or probability can be thought of as the percentage of
+times something is going to happen when the basic process or
+experiment is done over and over again, independently under
+idetical conditions.
+
+**Probability theory** describes probability by rules that
+probability has to obey to me a meaningful and useful theory
+of uncertainty. 
+
+Probability and Statistics are connected. In some situations the
+statistician is confronted with **data that were gernerated by a random
+device**, such as in a randomized controlled experiment, where individuals
+are randomly assigened to treatment and control group.
+
+Often statisticians encounter also situations where data have been 
+chosen by a random mechnism and this mechanism can be desribed and is
+kown to the statistician such as in surveys, that build on **random
+samples**.
+
+Surprisingly, even if we know all the data, such as data from a register, and
+there are no knon random devices or random mechnisms involved, it can still be
+useful to conceptually thing about the variability in the data in terms of
+a **probability distribution**.
+
 :::
 
 ::: {.callout-important appearance="simple"}
 
 ## Keywords
+
+**Chance or probability**: An intuitive understanding of what chance is
+is perhaps easiest if we think about chance as the percentage of times
+something happens, when the basic process is repeated many times 
+independently and under the same conditions.
+
+**Probabilities are between 0 and 1**: Probabilities of things that could 
+happen or events are numbers between 0 
+   and 1, with 0 for impossible events and 1 for sure events.
+
+**Complement rule**: The probability of something - an event - equals 1 minus 
+   the probability of 
+   the thing - the event - not happening, i.e. the opposite thing.
+   
+**Multiplication rule**: Probability rule 3: The probability that two things 
+   will both occur equals the chance that the first will happen multiplied by 
+   the chance that the second will happen given the first has happened.
+   
+**Independence**: Two events are independent if the chances or the second 
+given the first are the same no matter how the first one turns out. 
+Otherwise two things are dependent.
+
+**Multiplication rule for independent events**: If two events are 
+independent, the chance that both will happen equals the product of their 
+unconditional probabilities. This is a special case of the multiplication rule.
+
+**Addition rule**: To find the chance that at least one of two things will 
+happen check to see if they are mutually exclusive. If they are the chances 
+can be added up.
 
 :::
 
@@ -610,7 +672,144 @@ at random.
 
 ## What is the role of probability when we observe everything?
 
+There are lots of data where we have a complete record as it is often
+the case with administrative registers. In this case there is no
+sampling involved and there is also no randomization which splits the
+data into control and treatment group. The numbers are just facts
+from a complex and sometimes cruel reality.
 
+Surprisingly, it still can be useful to think about these complete 
+data in terms
+of a probability distribution. 
+
+As an example, I would like to use here
+a car accident data register of the US recording the
+accident deaths per day at the level of US states.^[The data we are using are 
+retrieve from the US national center for
+statistics and analysis NCSA and we are using the  data 2017 - 2021
+from the
+Fatality Analysis Reporting System (FARS).
+Website: https://cdan.dot.gov/
+Data: https://www.nhtsa.gov/file-downloads?p=nhtsa/downloads/FARS/.
+The reason why we chose this site is simply because the NCSA makes
+the data available in an easily accessible and public form.]
+
+Based on the accidents statistics, you could ask about how
+likely it is to encounter a rare event of unusually many
+accidents occurring at once. Knowing such things may be
+very useful for emergency planning and provisioning of
+infrastructure to deal with such fatalities.
+
+Thinking about extreme events in terms of probability requires some
+leap of the mind. It might be useful to imagine that at the start
+of each day there is a large population of people, each of whom
+has a very small probability of dying in a car accident at this
+very day. For the sake of the example, let us look at the US State
+of Alabama, which has a total population of about 5 Million people.
+
+Statisticians and Data practicioners in the administartion, the military
+and at universities have found that data of this kind - data where each
+individual has a very small probability of beeing hit by a risk in a large
+population of people - can be represented as observations from a 
+so called **Poisson Distribution**.^[This is a short bio from Wikipedia:
+Baron Siméon Denis Poisson (21 June 1781 – 25 April 1840) was a French 
+mathematician and physicist who worked on statistics, complex analysis, 
+partial differential equations, the calculus of variations, analytical 
+mechanics, electricity and magnetism, thermodynamics, elasticity, 
+and fluid mechanics. Moreover, he predicted the Poisson spot in his 
+attempt to disprove the wave theory of Augustin-Jean Fresnel, which 
+was later confirmed.
+![Siméon Denis Poisson](pictures/poisson.jpg) 
+]
+Poisson worked with this probability distribution to represent the
+pattern of wrongful convictions by the criminal courts of France at his
+time.
+
+Whereas the normal distribution needs two parameters, the population mean and
+the population standard deviation, the Poisson distribution depends only
+on the mean.
+
+In our case the expected number of deaths from a car accident each day
+in  the US state of Alabama is according to the FARS register data
+is about 2 (2.27). Now let us check the assumption that these
+accident cases are reasonably modelles by a Poission distribution
+by looking at the data.
+
+We could ask ourselves what, according to this model, would
+be the probability that at a day we have 5 instead of 2 deaths
+from car accidents:
+
+For example just knowing this average and making the assumption
+that the daily number of death from car accidents in Alabama was
+distributed like a Poisson distribution, using a software package
+like R we would compute this probability as:
+
+```{r}
+#| code-fold: false
+
+dpois(5, lambda = 2.27281)
+```
+So according to the model, this probability is 0.05. Now we could
+ask ourselves, of this was the probability, how many days should
+we observe in the data that have such a high live toll in this area?
+
+This would be $0.05206736$ times the number of days, which is in
+our case 2192 days. This is equal to roughly 114 days. 
+
+Now I take the real data and ask: How many days are there in my
+data where Alabama recorded 5 car deaths in a day in all of these
+2192 days. Astonishingly the data record 119 such days. 
+
+Isn't this amazing? Think about it, from the knowledge of a mean and
+a mathematical assumption and a thought experiment we came very close
+to the actual numbers.
+
+Here we show two histograms of the data in one plot, where we lay out
+the expected distribution according to the model and the observed
+distribution from the data side by side.
+
+![Observed and expected deaths from car accidents assuming a Poisson distribution.](pictures/accidents_exp_obs.png)
+In this figure we see a comparison of the expected distribution of the number of
+deaths in car accidents in Alabama based on the assumption of the Poisson
+distribution over the 2292 days. Next to it we have the actual distribution we
+find in the data. The match is not perfect but astonishingly close.
+
+Thus we can make estimates in this case. If for instance you would ask, what is
+the probability that you get 9 or more deaths from carr accidents in a day
+this would be 0.01 percent. We can expect that such an event thus happens 
+every 7637 days or every 20 years. This is very unlikely under the given
+circumstance but it is not impossible.
+
+The fit of the theoretical distribution with the data is surprisingly
+good. Each individual death in a car accident is a tragic story for the
+individual, his friends and family and in the case of these individuals
+entirely unpredictable. The data look like if they had been generated by
+a random mechanism.
+
+@Spi2019 makes the following suggests that we might think of this as if
+there were many possible worlds that could have occured in principle. There
+might have been other people dying in a car accident in Alabama, but the didn't.
+It is just as if when we flip a coin we observe one of many possible sequences
+of heads and tails.
+
+We do not have to believe that events in the world are driven by pure chance.
+But the assumption that there is something like chance, encapsulates the
+uncertainty and unpredictablity of the world. This is sometimes also referred
+to as *natural variablility*
+
+Probability thus provides a mathematical framework for thinking both about
+pure chance, which occurs when we can use random devices. But it can also
+be a good and useful framework when we think about natural variablity, such as
+human height and other anthropometric data, accidents, survival after surgery,
+grading outcomes and everything else that is not entirely predictable.
+
+## Exercises
+
+
+### Exercises
+
+
+### Exercises with R
 
 <!-- # Contents -->
 

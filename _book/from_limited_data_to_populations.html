@@ -211,7 +211,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variabilility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -251,13 +251,13 @@ div.csl-indent {
   <li><a href="#the-law-of-averages" id="toc-the-law-of-averages" class="nav-link" data-scroll-target="#the-law-of-averages"><span class="header-section-number">4.2.4</span> The law of averages</a></li>
   </ul></li>
   <li><a href="#when-all-data-are-available" id="toc-when-all-data-are-available" class="nav-link" data-scroll-target="#when-all-data-are-available"><span class="header-section-number">4.3</span> When all data are available</a></li>
-  <li><a href="#the-normal-approximation-for-data" id="toc-the-normal-approximation-for-data" class="nav-link" data-scroll-target="#the-normal-approximation-for-data"><span class="header-section-number">4.4</span> The normal approximation for data</a>
+  <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="header-section-number">4.4</span> The normal curve</a>
   <ul class="collapse">
-  <li><a href="#the-normal-curve" id="toc-the-normal-curve" class="nav-link" data-scroll-target="#the-normal-curve"><span class="header-section-number">4.4.1</span> The normal curve</a></li>
+  <li><a href="#the-normal-curve-1" id="toc-the-normal-curve-1" class="nav-link" data-scroll-target="#the-normal-curve-1"><span class="header-section-number">4.4.1</span> The normal curve</a></li>
   <li><a href="#units-and-standard-units" id="toc-units-and-standard-units" class="nav-link" data-scroll-target="#units-and-standard-units"><span class="header-section-number">4.4.2</span> Units and standard units</a></li>
   </ul></li>
   <li><a href="#finding-areas-under-the-normal-curve-with-r" id="toc-finding-areas-under-the-normal-curve-with-r" class="nav-link" data-scroll-target="#finding-areas-under-the-normal-curve-with-r"><span class="header-section-number">4.5</span> Finding areas under the normal curve with R</a></li>
-  <li><a href="#the-normal-approximation-for-data-1" id="toc-the-normal-approximation-for-data-1" class="nav-link" data-scroll-target="#the-normal-approximation-for-data-1"><span class="header-section-number">4.6</span> The normal approximation for data</a></li>
+  <li><a href="#the-normal-approximation-for-data" id="toc-the-normal-approximation-for-data" class="nav-link" data-scroll-target="#the-normal-approximation-for-data"><span class="header-section-number">4.6</span> The normal approximation for data</a></li>
   <li><a href="#percentiles" id="toc-percentiles" class="nav-link" data-scroll-target="#percentiles"><span class="header-section-number">4.7</span> Percentiles</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.8</span> Exercises</a>
   <ul class="collapse">
@@ -644,7 +644,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="at">x=</span>die, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 </div>
 <p>The R-function <code>sample()</code> takes an object as argument. The second argument, called <code>size</code>, specifies the number of random picks or draws from the object. If we give the value 1 to <code>size</code> it is as if we threw the die once. We have now implemented in the computer an equivalent to physically throwing a die.</p>
@@ -665,15 +665,15 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1</code></pre>
+<pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p>Note that in our function <code>roll_die()</code> has no arguments, just the function body. This is perfectly legitimate in R. It is important that when we call the function we have to call it with the parenthesis like <code>roll_die()</code>. If we only call the name <code>roll_die</code>, R will display the code in the function body.</p>
@@ -692,7 +692,7 @@ Deductive and inductive reasoning
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">roll_die2</span>(<span class="at">ball =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 </div>
 <p>Note that we still get an error, if we forget to supply ball argument. This could be avoided if we give the function a default argument</p>
@@ -953,11 +953,11 @@ Deductive and inductive reasoning
 <p>Still problems can occur. <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span> mentions the problem that the police systematically misses cases which the police does not record as a crime or which have not been reported by a victim. These problems make the step of drawing conclusions from the study population to the target population difficult. It is not only police records on crimes. You have analogous problems in all other register data as well. Take population register, as one example. Often certain groups such as homeless people or undocumented immigrants who may be hesitant to register or provide personal information are under-counted. Or you can have inaccuracies in property ownership data in land registers due to incomplete or outdated records, fraudulent transactions, or illegal land occupations. Or in health registers you could have missing or incomplete data on certain health conditions, especially those that are stigmatized or poorly understood, or patients who do not seek medical attention due to lack of access or fear of discrimination.</p>
 <p>Of course if we have all the data it is a straightforward process to produce statistics that describe what we have measured. But for broader conclusions we need to be very careful and we need to think about systematic biases and how we can potentially control for them. This always needs our special attention because systematic bias can jeopardize or even invalidate the reliability of our claims.</p>
 </section>
-<section id="the-normal-approximation-for-data" class="level2 page-columns page-full" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="the-normal-approximation-for-data"><span class="header-section-number">4.4</span> The normal approximation for data</h2>
+<section id="the-normal-curve" class="level2 page-columns page-full" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="the-normal-curve"><span class="header-section-number">4.4</span> The normal curve</h2>
 <p>We will now discuss an old and powerful concept that helps us in our ultimate aim to describe the target distribution. This is called the normal distribution or often also called the “bell curve”, because of its characteristic shape. We already encountered this distribution when we worked with the DHS data.</p>
-<section id="the-normal-curve" class="level3 page-columns page-full" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="the-normal-curve"><span class="header-section-number">4.4.1</span> The normal curve</h3>
+<section id="the-normal-curve-1" class="level3 page-columns page-full" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="the-normal-curve-1"><span class="header-section-number">4.4.1</span> The normal curve</h3>
 <div class="page-columns page-full"><p>The normal curve was discovered first around 1720 by Abraham de Moivre<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> In 1809, the German mathematician Carl Friedrich Gauss<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, made significant contributions to the concept of the normal curve, which is until today often also referred as a Gaussian curve. He used the curve to model errors in astronomical observations. Around 1870 the Belgian mathematician Adolphe Quetelet<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> had the idea of using the curve as an ideal histogram to which historams of empirical distributions could be compared.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Abraham de Moivre (1667-1754) was a French mathematician known for his contributions to the development of probability theory and the normal distribution as well as for his work on complex numbers. He is perhaps best known for his discovery of the formula that bears his name, which relates complex numbers to trigonometric functions. De Moivre was also a prominent member of the scientific community in 18th-century Europe and corresponded with many of the leading mathematicians and scientists of his time. <img src="pictures/Abraham_de_moivre.jpg" class="img-fluid" alt="Abraham de Moivre"></p></li><li id="fn5"><p><sup>5</sup>&nbsp;Carl Friedrich Gauss (1777-1855) was a German mathematician and physicist who made significant contributions to a wide range of fields, including algebra, number theory, astronomy, and physics. Gauss is considered one of the greatest mathematicians of all time and is known for his contributions to the development of calculus, the discovery of the normal distribution, and his work on the theory of functions. Gauss also made important contributions to the field of astronomy, including the discovery of the asteroid Ceres and the development of a method for calculating the orbits of celestial bodies. <img src="pictures/Carl_Friedrich_Gauss_1840_by_Jensen.jpg" class="img-fluid" alt="Carl Friedrich Gauss"></p></li><li id="fn6"><p><sup>6</sup>&nbsp;Adolphe Quetelet (1796-1874) was a Belgian mathematician, astronomer, and statistician who is known for his work in developing the concept of the “average man” and the use of statistical methods in the social sciences. He is also credited with the development of the body mass index (BMI), which is still widely used today as a measure of obesity. Quetelet was a prominent figure in the scientific community of his time and was a founding member of the International Statistical Institute. <img src="pictures/Adolphe_Quételet_by_Joseph-Arnold_Demannez.jpg" class="img-fluid" alt="Adolphe Quetelet"></p></li></div></div>
 <p>The normal curve has a slightly intimidating equation, which looks as follows <span class="math display">\[\begin{equation}
 y = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left( \frac{x - \mu}{\sigma}\right)^2}
@@ -1009,7 +1009,7 @@ Conversion to standard units
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>example <span class="ot">&lt;-</span> <span class="fu">emp_distr_height</span>(<span class="dv">4</span>)</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>example<span class="sc">$</span>Height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 173.2346 174.9669 171.0302 182.4812</code></pre>
+<pre><code>[1] 165.8211 179.3776 172.0459 171.7836</code></pre>
 </div>
 </div>
 <p>Let us convert these values to standard units. Let us compute again the mean and the standard deviation of the height data.</p>
@@ -1026,7 +1026,7 @@ Conversion to standard units
 <pre><code>[1] 4.830264</code></pre>
 </div>
 </div>
-<p>173.2346 is 0.1102 from the average. In standard units therefore 173.2346 is 0.1102.</p>
+<p>165.8211 is -1.4246 from the average. In standard units therefore 165.8211 is -1.4246.</p>
 <p>Standard units are used in the DHS data on nutrition of children and adults which we worked with in the last exercise of chapter 3. Standard units are also often referred to as the <strong>z-score</strong>. Let us go back to these data and look at them more closely again.</p>
 <p>Let us go back to the histogram of human height we already discussed in the chapter 3.</p>
 <div class="cell">
@@ -1126,8 +1126,8 @@ Conversion to standard units
 </figure>
 </div>
 </section>
-<section id="the-normal-approximation-for-data-1" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="the-normal-approximation-for-data-1"><span class="header-section-number">4.6</span> The normal approximation for data</h2>
+<section id="the-normal-approximation-for-data" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="the-normal-approximation-for-data"><span class="header-section-number">4.6</span> The normal approximation for data</h2>
 <p>In certain cases the normal curve may be used to approximate data. We go back to our example with the data on the height of adult humans.</p>
 <p>Say we have the information that the height of adult humans were on average 172.7 cm with a standard deviation of 4.83 cm. Assuming the distribution of the data can be approximated by a normal curve. What is the estimated percentage of humans with a height between 168 and 178 cm?</p>
 <p>We can proceed in two steps. First we convert to standard units:</p>

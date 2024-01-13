@@ -785,7 +785,7 @@ describe what we have measured. But for broader conclusions we need to be very c
 think about systematic biases and how we can potentially control for them. This always needs our 
 special attention because systematic bias can jeopardize or even invalidate the reliability of our claims.
 
-## The normal approximation for data
+## The normal curve
 
 We will now discuss an old and powerful concept that helps us in our ultimate aim to describe the
 target distribution. This is called the normal distribution or often also called the "bell curve", because of
