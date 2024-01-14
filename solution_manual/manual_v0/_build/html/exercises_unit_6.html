@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
+    <title>Exercises: Unit 6, Probability, quantifying uncertainty and variablity &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
   
   
   
@@ -62,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Exercises" href="exercises_unit_7.html" />
-    <link rel="prev" title="Exercises" href="exercises_unit_5.html" />
+    <link rel="prev" title="Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals" href="exercises_unit_5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,17 +166,17 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Solution manual for Statistics: The art and science of learning from data.
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_1.html">Exercises: Unit 1, Categorical data and proportions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises: Unit 2, Summarizing and communication lot’s of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises: Unit 3, Generalizing observations from data and knowing what causes what</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises: Unit 4 Making predictions using regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 6, Probability, quantifying uncertainty and variablity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_7.html">Exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_8.html">Exercises</a></li>
 </ul>
@@ -349,7 +351,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,11 +364,37 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises</h1>
+    <h1>Exercises: Unit 6, Probability, quantifying uncertainty and variablity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-match-the-numerical-and-verbal-answers">Exercise 1: Match the numerical and verbal answers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-which-box-is-better">Exercise 2: Which box is better?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-what-are-the-chances">Exercise 3: What are the chances?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercies-4-rolling-a-die">Exercies 4: Rolling a die</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-tossing-coins">Exercise 5: Tossing coins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-lost-ticket">Exercise 6: The lost ticket</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-claims-about-age">Exercise 7: Claims about age</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-r">Exercises with R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-simulating-the-game-of-craps">Exercise 1: Simulating the game of craps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-tossing-coins-by-simulation">Exercise 2: Tossing coins by simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures">Project people count: The future of humanity in numbers and pictures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chances-of-finding-suitable-matches">The Chances of finding suitable matches</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -374,8 +404,427 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-6-probability-quantifying-uncertainty-and-variablity">
+<h1>Exercises: Unit 6, Probability, quantifying uncertainty and variablity<a class="headerlink" href="#exercises-unit-6-probability-quantifying-uncertainty-and-variablity" title="Permalink to this heading">#</a></h1>
+<section id="exercises">
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-match-the-numerical-and-verbal-answers">
+<h3>Exercise 1: Match the numerical and verbal answers<a class="headerlink" href="#exercise-1-match-the-numerical-and-verbal-answers" title="Permalink to this heading">#</a></h3>
+<p>A computer is programmed to compute various chances. Match the numerical answers with the verbal descripitions (which may b e used more than once).</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p></p></th>
+<th class="head text-right"><p>Numerical answer</p></th>
+<th class="head text-right"><p></p></th>
+<th class="head text-right"><p>Verbal description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>(a)</p></td>
+<td class="text-right"><p>-50 %</p></td>
+<td class="text-right"><p>(i)</p></td>
+<td class="text-right"><p>This is as likely to happen as not</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(b)</p></td>
+<td class="text-right"><p>0 %</p></td>
+<td class="text-right"><p>(ii)</p></td>
+<td class="text-right"><p>This is very likely to happen but it is not certain</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>(c)</p></td>
+<td class="text-right"><p>10 %</p></td>
+<td class="text-right"><p>(iii)</p></td>
+<td class="text-right"><p>This won’t happen</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(d)</p></td>
+<td class="text-right"><p>50 %</p></td>
+<td class="text-right"><p>(iv)</p></td>
+<td class="text-right"><p>This may happen, but it is not likely</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>(e)</p></td>
+<td class="text-right"><p>90 %</p></td>
+<td class="text-right"><p>( v)</p></td>
+<td class="text-right"><p>This will happen for sure</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>(f)</p></td>
+<td class="text-right"><p>100 %</p></td>
+<td class="text-right"><p>(vi)</p></td>
+<td class="text-right"><p>There’s a b ug in the program</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>(g)</p></td>
+<td class="text-right"><p>200 %</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Answer: (a) (iv), (b) (iii), (c) (iv), (d) (i), (e) (ii), (f) (v), (g) (vi)</p>
+</section>
+<section id="exercise-2-which-box-is-better">
+<h3>Exercise 2: Which box is better?<a class="headerlink" href="#exercise-2-which-box-is-better" title="Permalink to this heading">#</a></h3>
+<p>One hundered tickets will be drawn at random with replacement from one of the two boxes shown below.
+On each draw, you will be paid the amount shown on the ticket, money. Which box is better and why?</p>
+<p>Box 1: [ (1), (2) ]
+Box 2: [ (1), (3) ]
+The [] symbolizes the box and () symbolizes the tickets and the number in () is what is shown on the ticket.</p>
+<p>Answer: Box 2, beacause the second ticket in box 2 pays more and the other is the same as in box 1.</p>
+</section>
+<section id="exercise-3-what-are-the-chances">
+<h3>Exercise 3: What are the chances?<a class="headerlink" href="#exercise-3-what-are-the-chances" title="Permalink to this heading">#</a></h3>
+<p>Two tickes are drawn at random from the box [(1), (2), (3), (4) ]</p>
+<ol class="arabic simple">
+<li><p>What is the chance that the second tickt is 4 if the draws are without replacement?</p></li>
+<li><p>What is the chance that the second ticket is 4, given the first is 2 if the draws are without replacmenet?</p></li>
+<li><p>What is the chance that the second tickt is 4 if the draws are with replacement?</p></li>
+<li><p>What is the chance that the second tickt is 4 if the draws are with replacement?</p></li>
+</ol>
+<p>Hint: It will help figuring out the answer if you draw an event tree.</p>
+<ol class="arabic simple">
+<li><p>This is perhaps the most unituitive one. The answer is 1/4. Think about shuffling the box to bring the tickets
+into random order. The 4 has to end up somewhere in the shuffle. There are 4 possible positions and they are
+all equally likely, so there is 1 chance in 4 for it to wind up as the second card in the draw. If you find    this strange, you can do a simulation next time you are on the computer and see what you get</p></li>
+<li><p>If the first card is a 2 there are three possibilities that the second will be a four, so we have 1/3</p></li>
+<li><p>Here we have in total four possibilities that the second card will be a 4, hence 1/4</p></li>
+<li><p>This is also 1/4, since we draw with replacement.</p></li>
+</ol>
+</section>
+<section id="exercies-4-rolling-a-die">
+<h3>Exercies 4: Rolling a die<a class="headerlink" href="#exercies-4-rolling-a-die" title="Permalink to this heading">#</a></h3>
+<p>A die is rolled three times.</p>
+<p>(a) Find the chance that the first roll is a 1</p>
+<p>(b) Find the chance that first roll is a 1 and the second roll is a 2 and the third roll is a 3.</p>
+<p>Answer: (a) 1/6, (b) 1/6 1/6 1/6 = 1/216 or about 1/2 %</p>
+</section>
+<section id="exercise-5-tossing-coins">
+<h3>Exercise 5: Tossing coins<a class="headerlink" href="#exercise-5-tossing-coins" title="Permalink to this heading">#</a></h3>
+<p>A coin is tosse three times-</p>
+<ol class="arabic simple">
+<li><p>What is the chance of getting 3 heads?</p></li>
+<li><p>What is the chance of not getting 3 heads?</p></li>
+<li><p>What is the chance of getting at least 1 tail.</p></li>
+<li><p>What is the chance of getting at least one head?</p></li>
+</ol>
+<p>Answer:</p>
+<ol class="arabic simple">
+<li><p>1/8</p></li>
+<li><p>7/8 (1-1/8)</p></li>
+<li><p>7/8, you get at least one tail when you don’t get three heads</p></li>
+<li><p>7/8, just switch heads ang tails in 3.</p></li>
+</ol>
+</section>
+<section id="exercise-6-the-lost-ticket">
+<h3>Exercise 6: The lost ticket<a class="headerlink" href="#exercise-6-the-lost-ticket" title="Permalink to this heading">#</a></h3>
+<p>Two draws are are made at random without replacement from the box [(1), (2), (3), (4)]. The first ticket is lost, an nobody knows what was written on it. True or false and explain: The two draws are independent.</p>
+<p>Answer: This is false. It is like saying someone doesn’ have temperature because you can’t find the thermometer. To figure out whether two things are independent or not, you pretend to know how the first one turned out and then see if the chances for the second one change.</p>
+</section>
+<section id="exercise-7-claims-about-age">
+<h3>Exercise 7: Claims about age<a class="headerlink" href="#exercise-7-claims-about-age" title="Permalink to this heading">#</a></h3>
+<p>In the first project work back in unit 1 we learned from the population data that 50 % of the population in Kenya in 2022 were female (you can check it out at your next computer session). Also 5 % of the population was age group 60 and above.</p>
+<p>True of false and explain: The percentage of the population consisting of women age 60 and above is 50 % of 5 % or 0.5 * 0.05 or 2.5 %</p>
+<p>This is false. The calculation assumes that the percentage of women is the same accross all age groups and it isn’t: women live longer than men. Actually thepercentage of women age 60 and above is 2.7 % (you can cross check using the data when you are the computer next time).</p>
+</section>
+</section>
+<section id="exercises-with-r">
+<h2>Exercises with R<a class="headerlink" href="#exercises-with-r" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-simulating-the-game-of-craps">
+<h3>Exercise 1: Simulating the game of craps<a class="headerlink" href="#exercise-1-simulating-the-game-of-craps" title="Permalink to this heading">#</a></h3>
+<p>Craps is a dice game, where you throw two dice and bet on the outcome of the throws.
+Write a code that throws two dice and sums up their number and simulate repeating these throws many times.</p>
+<ol class="arabic simple">
+<li><p>What is the most likely outcome in terms of the sum of points the dice show when thrown many times?</p></li>
+<li><p>Can you explain why this is the most likely outcome?</p></li>
+</ol>
+<p>Answer to 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">throw_two_dice</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># create a six sided die</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">die</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">6</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># use sample with size two without replacement so virtually throw the die twice and store result in  out.</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="n">die</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1"># add up the outcomes of the two throws</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">sum</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="p">}</span>
+
+<span class="c1"># you can either write a for loop or use the repeat function. Let&#39;s write a for loop for practice:</span>
+
+<span class="c1"># number of throws</span>
+
+<span class="n">n</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10000</span><span class="w"> </span>
+
+<span class="c1"># for loop</span>
+
+<span class="n">sums</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;double&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)){</span>
+<span class="w">    </span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">sums</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">throw_two_dice</span><span class="p">()</span>
+<span class="w">    </span>
+<span class="w">    </span>
+<span class="p">}</span>
+
+<span class="nf">hist</span><span class="p">(</span><span class="n">sums</span><span class="p">,</span><span class="w"> </span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e33eeeabf486e0ea3c57c17098e5eb10bc206c80bafc844ff60c6edfdac4641c.png" src="_images/e33eeeabf486e0ea3c57c17098e5eb10bc206c80bafc844ff60c6edfdac4641c.png" />
+</div>
+</div>
+<p>The most likely outcome is 7</p>
+<ol class="arabic simple" start="2">
+<li><p>When you go back to the picture with the possible combinations of outcomes in throwing two dice you see that
+combinations that sum up to 7 must occur most frequently, because there are mor such combinations than others. For example two 1 or two sixes can only occur once in all combinations.</p></li>
+</ol>
+</section>
+<section id="exercise-2-tossing-coins-by-simulation">
+<h3>Exercise 2: Tossing coins by simulation<a class="headerlink" href="#exercise-2-tossing-coins-by-simulation" title="Permalink to this heading">#</a></h3>
+<p>Write a simulation to find out the answers to pen and paper exercise 5:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">10000</span>
+
+<span class="n">tosses</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">vector</span><span class="p">(</span><span class="s">&quot;list&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">toss_coin</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(){</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">coin</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;H&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;T&quot;</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="nf">sample</span><span class="p">(</span><span class="n">coin</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="w">    </span>
+<span class="p">}</span>
+
+<span class="nf">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="nf">seq_along</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">n</span><span class="p">)){</span>
+<span class="w">    </span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">tosses</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">toss_coin</span><span class="p">()</span>
+<span class="w">    </span>
+<span class="p">}</span>
+
+<span class="n">df</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span><span class="w"> </span><span class="n">tosses</span><span class="p">))</span>
+
+<span class="nf">names</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;t1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;t2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;t3&quot;</span><span class="p">)</span>
+
+<span class="c1"># count the incidences where all the rows fulfill the condition.</span>
+
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">t1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">t2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">df</span><span class="o">$</span><span class="n">t3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.1202</div></div>
+</div>
+<p>This is close to the true probability 0.125.</p>
+</section>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-numbers-and-pictures">
+<h2>Project people count: The future of humanity in numbers and pictures<a class="headerlink" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures" title="Permalink to this heading">#</a></h2>
+<section id="the-chances-of-finding-suitable-matches">
+<h3>The Chances of finding suitable matches<a class="headerlink" href="#the-chances-of-finding-suitable-matches" title="Permalink to this heading">#</a></h3>
+<p>Take the population data of Kenya, Japan and the United States by loading these
+data from the <code class="docutils literal notranslate"><span class="pre">JWL</span></code>l ibrary.</p>
+<p>1.) Based on the data how would you assess the chance that you will meet a boy or a girl in your own age group, when you live in Kenya in the US or in Japan?</p>
+<p>2.) Suppose 25 % of the boys and 20 % of the girls in these countries who are in your age group are interested in studying statistics. How large is the chance to find another girl with whom you could study together, if you are a
+girl. How high is the chance to find another boy to study together, if you are a boy.</p>
+<p>3.) How would you asess the chance in these three countries to meet a person older than 85 years?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">JWL</span><span class="p">)</span>
+
+<span class="n">dat</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">population_statistics_by_age_and_sex</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># select data for 2022 and for Kenya, US and Japan</span>
+
+<span class="n">data</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="p">[</span><span class="n">dat</span><span class="o">$</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">2022</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Assuming I am a boy or a girl in the age group 20-24 and I live in Kenya, I could assess the chance to meet another boy or girl from this age group by computing the relative frequency of the age group in the total population.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kenya:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0952608015442511</div></div>
+</div>
+<p>The chance is 10 % that I encounter some human beeing of the same age when I am in Kenya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># United States</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0681448875010024</div></div>
+</div>
+<p>Here the chances are worse, only 7 %</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Japan </span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0480150536978027</div></div>
+</div>
+<p>Here the chances are even worse, only 4 %</p>
+<ol class="arabic simple" start="2">
+<li><p>The chance to find a study mate:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kenya, boys:</span>
+
+<span class="c1"># Kenya:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 25 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.25</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.0119260287156659</div></div>
+</div>
+<p>The chance is 1 %</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kenya, girls:</span>
+
+<span class="c1"># Kenya:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 20 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00951133733631753</div></div>
+</div>
+<p>Slightly less but roughly the same chance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># US</span>
+
+<span class="c1"># Boys:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 25 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.25</span>
+
+<span class="c1"># Girls</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 20 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00870501037475944</div><div class="output text_html">0.00666496920039293</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Japan</span>
+
+<span class="c1"># Boys:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 25 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.25</span>
+
+<span class="c1"># Girls</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;20-24&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="n">share</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+
+<span class="c1"># of this share 20 % are interested in studying statistics:</span>
+
+<span class="n">share</span><span class="o">*</span><span class="m">0.20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00629662240648575</div><div class="output text_html">0.00456571281437194</div></div>
+</div>
+<p>Chance of meeting somebody older then 85:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kenya:</span>
+
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;85-89&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;90-94&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;95-99&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Kenya&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+<span class="w">                                                            </span>
+<span class="c1"># US</span>
+<span class="w">                                                            </span>
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;85-89&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;90-94&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;95-99&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;United States of America&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span>
+<span class="w">                                                                            </span>
+<span class="c1"># Japan</span>
+<span class="w">                                                                               </span>
+<span class="n">my_group</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">Age</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;85-89&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;90-94&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;95-99&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">sum</span><span class="p">(</span><span class="n">my_group</span><span class="o">$</span><span class="n">POP</span><span class="p">)</span><span class="o">/</span><span class="nf">sum</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;Japan&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;POP&quot;</span><span class="p">])</span><span class="w">                                                                           </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.00156629017048737</div><div class="output text_html">0.0191984017794506</div><div class="output text_html">0.0513877788811515</div></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,7 +863,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals</p>
       </div>
     </a>
     <a class="right-next"
@@ -432,6 +881,38 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-match-the-numerical-and-verbal-answers">Exercise 1: Match the numerical and verbal answers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-which-box-is-better">Exercise 2: Which box is better?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-what-are-the-chances">Exercise 3: What are the chances?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercies-4-rolling-a-die">Exercies 4: Rolling a die</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-tossing-coins">Exercise 5: Tossing coins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-lost-ticket">Exercise 6: The lost ticket</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-claims-about-age">Exercise 7: Claims about age</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises-with-r">Exercises with R</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-simulating-the-game-of-craps">Exercise 1: Simulating the game of craps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-tossing-coins-by-simulation">Exercise 2: Tossing coins by simulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures">Project people count: The future of humanity in numbers and pictures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-chances-of-finding-suitable-matches">The Chances of finding suitable matches</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

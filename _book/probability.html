@@ -255,6 +255,10 @@ div.csl-indent {
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">9.9.1</span> Exercises</a></li>
   <li><a href="#exercises-with-r" id="toc-exercises-with-r" class="nav-link" data-scroll-target="#exercises-with-r"><span class="header-section-number">9.9.2</span> Exercises with R</a></li>
   </ul></li>
+  <li><a href="#project-people-count-the-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">9.10</span> Project People count: The future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#the-chances-of-finding-suitable-matches" id="toc-the-chances-of-finding-suitable-matches" class="nav-link" data-scroll-target="#the-chances-of-finding-suitable-matches"><span class="header-section-number">9.10.1</span> The Chances of finding suitable matches</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -371,12 +375,12 @@ Chance
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  V1 V2
-1  H  H
-2  T  H
-3  H  H
-4  H  H
-5  H  T
-6  T  T</code></pre>
+1  H  T
+2  H  H
+3  T  H
+4  H  T
+5  T  H
+6  H  T</code></pre>
 </div>
 </div>
 <p>You see that R gave some generic names to the columns. You could change that by using the <code>names()</code>function.</p>
@@ -396,7 +400,7 @@ Chance
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2571</code></pre>
+<pre><code>[1] 2490</code></pre>
 </div>
 </div>
 <p>Of all the 10.000 double flips this is about 1/4ths. The chance is thus 25 % to see HH in an often identically repeated trial. This is intuitive when you look at the tree, with its four possible outcomes before the coin is drawn.</p>
@@ -446,6 +450,7 @@ Probability rule 2: Complement rule
 <p>Say we have 1000 women. Out of these 1000 1 % actually has in fact breast cancer. This is 10 women out of 1000. Of these 10, 90 % have a positive result. This amounts to 9 women. But out of the 990 women without cancer, the complementary 10 %, i.e.&nbsp;99 women, are falsely given a positive mammography result.</p>
 <p>Together these are <span class="math inline">\(9 + 99 = 108\)</span> positive mammograms, and so the probability that a randomly chosen women will get a positive result is 108/1000 or about 11%. But of these 108 only 9 do in fact have cancer. And so there is only a 9/108 or 8% probability that the women actually have cancer.</p>
 <p>Now some of you might realize, what I meant before when I said that probability is often not intuitive. Despite the 90 % accuracy of the scan, the vast majority of women with a positive mammography do not have cancer. This is, because we tend to confuse the conditional probability of a positive test, given cancer with the conditional probability of cancer given a positive test.</p>
+<p>If you continue to study probability and statistics you will encounter mathematical notation that has been etsablished in the literature on probability. We do not want to spend much time with notation and mathematical symbols but here is a convention you should know about. In a mathematical treatment of the example, we just discussed mathematicians would write the probability for the mammography screening to be positive (or negative) by <span class="math inline">\(P(\text{positive})\)</span> (<span class="math inline">\(P(\text{negative})\)</span>), where <span class="math inline">\(P\)</span> is a shorthand for probability. The conditional probability that the mammography is positive given a woman has breast cancer will be written by the mathematical in the notation <span class="math inline">\(P(\text{positive} \, | \, \text{cancer})\)</span>. The vertical bar in this expression is to be read as <em>given</em>.</p>
 </section>
 <section id="the-multiplication-rule" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="the-multiplication-rule"><span class="header-section-number">9.3</span> The multiplication rule</h2>
@@ -482,11 +487,11 @@ Probability rule 2: Complement rule
 <div class="cell-output cell-output-stdout">
 <pre><code>  Draw_1 Draw_2
 1      R      B
-2      W      B
-3      B      R
-4      W      R
-5      B      R
-6      W      B</code></pre>
+2      R      W
+3      W      B
+4      B      R
+5      R      W
+6      R      B</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -496,10 +501,10 @@ Probability rule 2: Complement rule
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1654</code></pre>
+<pre><code>[1] 1663</code></pre>
 </div>
 </div>
-<p>The relative frequency of such pairs is then about 0.1654.</p>
+<p>The relative frequency of such pairs is then about 0.1663.</p>
 <p>Another way to think about this is as follows:</p>
 <p>In the first draw about 1/3 will end up with a red ticket. The others will have either a white or a blue. Of this 1/3 half of the people will get a white ticket, i.e.&nbsp;1/2 of 1/3 or: $* = . So with our simulated crowd of <span class="math inline">\(10000\)</span> or 10.0000 people 1666.7 will have a R and a W ticket.</p>
 <p>The conditional probability of a white ticket, given a red ticket has been drawn with replacement is 1/2. Still another way to understand this in terms of expected frequencies is as follows. Think of our simulated dataframe <code>res</code> as a notebook, where you record the outcome of any draw.</p>
@@ -522,39 +527,39 @@ Probability rule 2: Complement rule
 <td style="text-align: left;">B</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">R</td>
 <td style="text-align: left;">W</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: left;">R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">W</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R</td>
 <td style="text-align: left;">B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">B</td>
-<td style="text-align: left;">R</td>
+<td style="text-align: left;">W</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">W</td>
-<td style="text-align: left;">R</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">B</td>
-<td style="text-align: left;">R</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">W</td>
-<td style="text-align: left;">B</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">R</td>
-<td style="text-align: left;">B</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">W</td>
 <td style="text-align: left;">R</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">W</td>
-<td style="text-align: left;">R</td>
+<td style="text-align: left;">B</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">R</td>
+<td style="text-align: left;">B</td>
 <td style="text-align: left;">W</td>
 </tr>
 </tbody>
@@ -569,7 +574,7 @@ Probability rule 2: Complement rule
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3334</code></pre>
+<pre><code>[1] 0.3338</code></pre>
 </div>
 </div>
 <p>This about 1/3.</p>
@@ -580,7 +585,7 @@ Probability rule 2: Complement rule
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_2[res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>] <span class="sc">==</span> <span class="st">"W"</span>)<span class="sc">/</span><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4961008</code></pre>
+<pre><code>[1] 0.4982025</code></pre>
 </div>
 </div>
 <p>This is the number of all cases where W showed on the second draw, given the first draw was R, divided by all cases where the first draw was red.</p>
@@ -637,13 +642,13 @@ Probability rule 4: Independence
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.502</code></pre>
+<pre><code>[1] 0.5008</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conditional probability that the second flip will be heads given the first flip was heads</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip2[out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>] <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5121514</code></pre>
+<pre><code>[1] 0.4972045</code></pre>
 </div>
 </div>
 <p>They are both about 1/2.</p>
@@ -749,7 +754,7 @@ A rules of probability cheat sheet
 <h2 data-number="9.8" class="anchored" data-anchor-id="what-is-the-role-of-probability-when-we-observe-everything"><span class="header-section-number">9.8</span> What is the role of probability when we observe everything?</h2>
 <p>There are lots of data where we have a complete record as it is often the case with administrative registers. In this case there is no sampling involved and there is also no randomization which splits the data into control and treatment group. The numbers are just facts from a complex and sometimes cruel reality.</p>
 <p>Surprisingly, it still can be useful to think about these complete data in terms of a probability distribution.</p>
-<div class="page-columns page-full"><p>As an example, I would like to use here a car accident data register of the US recording the accident deaths per day at the level of US states.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The data we are using are retrieve from the US national center for statistics and analysis NCSA and we are using the data 2017 - 2021 from the Fatality Analysis Reporting System (FARS). Website: https://cdan.dot.gov/ Data: https://www.nhtsa.gov/file-downloads?p=nhtsa/downloads/FARS/. The reason why we chose this site is simply because the NCSA makes the data available in an easily accessible and public form.</p></li></div></div>
+<div class="page-columns page-full"><p>As an example, I would like to use here a car accident data register of the US recording the accident deaths per day at the level of US states.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The data we are using are retrieve from the US national center for statistics and analysis NCSA and we are using the data 2017 - 2021 from the Fatality Analysis Reporting System (FARS). Website: https://cdan.dot.gov/ Data: https://www.nhtsa.gov/file-downloads?p=nhtsa/downloads/FARS/. The reason why we chose this site is simply because the NCSA makes the data available in an easily accessible and public form. Those of you who are interested can find these data in the JWL library. The dataset is called: <code>car_accidents_us</code></p></li></div></div>
 <p>Based on the accidents statistics, you could ask about how likely it is to encounter a rare event of unusually many accidents occurring at once. Knowing such things may be very useful for emergency planning and provisioning of infrastructure to deal with such fatalities.</p>
 <p>Thinking about extreme events in terms of probability requires some leap of the mind. It might be useful to imagine that at the start of each day there is a large population of people, each of whom has a very small probability of dying in a car accident at this very day. For the sake of the example, let us look at the US State of Alabama, which has a total population of about 5 Million people.</p>
 <div class="page-columns page-full"><p>Statisticians and Data practicioners in the administartion, the military and at universities have found that data of this kind - data where each individual has a very small probability of beeing hit by a risk in a large population of people - can be represented as observations from a so called <strong>Poisson Distribution</strong>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Poisson worked with this probability distribution to represent the pattern of wrongful convictions by the criminal courts of France at his time.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;This is a short bio from Wikipedia: Baron Siméon Denis Poisson (21 June 1781 – 25 April 1840) was a French mathematician and physicist who worked on statistics, complex analysis, partial differential equations, the calculus of variations, analytical mechanics, electricity and magnetism, thermodynamics, elasticity, and fluid mechanics. Moreover, he predicted the Poisson spot in his attempt to disprove the wave theory of Augustin-Jean Fresnel, which was later confirmed. <img src="pictures/poisson.jpg" class="img-fluid" alt="Siméon Denis Poisson"> </p></li></div></div>
@@ -779,9 +784,218 @@ A rules of probability cheat sheet
 <h2 data-number="9.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.9</span> Exercises</h2>
 <section id="exercises-1" class="level3" data-number="9.9.1">
 <h3 data-number="9.9.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">9.9.1</span> Exercises</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Match the numerical and verbal answers
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A computer is programmed to compute various chances. Match the numerical answers with the verbal descripitions (which may b e used more than once).</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: right;">Numerical answer</th>
+<th style="text-align: right;"></th>
+<th style="text-align: right;">Verbal description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">(a)</td>
+<td style="text-align: right;">-50 %</td>
+<td style="text-align: right;">(i)</td>
+<td style="text-align: right;">This is as likely to happen as not</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(b)</td>
+<td style="text-align: right;">0 %</td>
+<td style="text-align: right;">(ii)</td>
+<td style="text-align: right;">This is very likely to happen but it is not certain</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(c)</td>
+<td style="text-align: right;">10 %</td>
+<td style="text-align: right;">(iii)</td>
+<td style="text-align: right;">This won’t happen</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(d)</td>
+<td style="text-align: right;">50 %</td>
+<td style="text-align: right;">(iv)</td>
+<td style="text-align: right;">This may happen, but it is not likely</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(e)</td>
+<td style="text-align: right;">90 %</td>
+<td style="text-align: right;">( v)</td>
+<td style="text-align: right;">This will happen for sure</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">(f)</td>
+<td style="text-align: right;">100 %</td>
+<td style="text-align: right;">(vi)</td>
+<td style="text-align: right;">There’s a b ug in the program</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">(g)</td>
+<td style="text-align: right;">200 %</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Which box is better?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One hundered tickets will be drawn at random with replacement from one of the two boxes shown below. On each draw, you will be paid the amount shown on the ticket, money. Which box is better and why?</p>
+<p>Box 1: [ (1), (2) ] Box 2: [ (1), (3) ] The [] symbolizes the box and () symbolizes the tickets and the number in () is what is shown on the ticket.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: What are the chances?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two tickes are drawn at random from the box [(1), (2), (3), (4) ]</p>
+<ol type="1">
+<li>What is the chance that the second tickt is 4 if the draws are without replacement?</li>
+<li>What is the chance that the second ticket is 4, given the first is 2 if the draws are without replacmenet?</li>
+<li>What is the chance that the second tickt is 4 if the draws are with replacement?</li>
+<li>What is the chance that the second tickt is 4 if the draws are with replacement?</li>
+</ol>
+<p>Hint: It will help figuring out the answer if you draw an event tree.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercies 4: Rolling a die
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A die is rolled three times.</p>
+<ol type="a">
+<li><p>Find the chance that the first roll is a 1</p></li>
+<li><p>Find the chance that first roll is a 1 and the second roll is a 2 and the third roll is a 3.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: Tossing coins
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A coin is tossed three times-</p>
+<ol type="1">
+<li>What is the chance of getting 3 heads?</li>
+<li>What is the chance of not getting 3 heads?</li>
+<li>What is the chance of getting at least 1 tail.</li>
+<li>What is the chance of getting at least one head?</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 6: The lost ticket
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two draws are are made at random without replacement from the box [(1), (2), (3), (4)]. The first ticket is lost, an nobody knows what was written on it. True or false and explain: The two draws are independent.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 7: Claims about age
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the first project work back in unit 1 we learned from the population data that 50 % of the population in Kenya in 2022 were female (you can check it out at your next computer session). Also 5 % of the population was age group 60 and above.</p>
+<p>True of false and explain: The percentage of the population consisting of women age 60 and above is 50 % of 5 % or 0.5 * 0.05 or 2.5 %</p>
+</div>
+</div>
 </section>
 <section id="exercises-with-r" class="level3" data-number="9.9.2">
 <h3 data-number="9.9.2" class="anchored" data-anchor-id="exercises-with-r"><span class="header-section-number">9.9.2</span> Exercises with R</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Simulating the game of Craps
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Craps is a dice game, where you throw two dice and bet on the outcome of the throws. Write a code that throws two dice and sums up their number and simulate repeating these throws many times.</p>
+<p>What is the most likely outcome in terms of the sum of points the dice show when thrown many times? Can you explain why this is the most likely outcome?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Tossing coins by simulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write a simulation to find out the answers to pen and paper exercise 5:</p>
+</div>
+</div>
+</section>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="project-people-count-the-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">9.10</span> Project People count: The future of humanity in pictures and numbers</h2>
+<section id="the-chances-of-finding-suitable-matches" class="level3" data-number="9.10.1">
+<h3 data-number="9.10.1" class="anchored" data-anchor-id="the-chances-of-finding-suitable-matches"><span class="header-section-number">9.10.1</span> The Chances of finding suitable matches</h3>
+<p>Take the population data of Kenya, Japan and the United States by loading these data from the <code>JWL</code> library.</p>
+<ol type="1">
+<li><p>Based on the data how would you assess the chance that you will meet a boy or a girl in your own age group, when you live in Kenya in the US or in Japan?</p></li>
+<li><p>Suppose 25 % of the boys and 20 % of the girls in these countries who are in your age group are interested in studying statistics. How large is the chance to find another girl with whom you could study together, if you are a girl. How high is the chance to find another boy to study together, if you are a boy.</p></li>
+<li><p>How would you asses the chance in these three countries to meet a person older than 85 years?</p></li>
+</ol>
 <!-- # Contents -->
 <!-- Probability theory provides a formal language and mathematics for dealing with  -->
 <!-- chance phenomena. Probability is often counter intuitive but using the idea of  -->
