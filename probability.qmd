@@ -678,7 +678,7 @@ we attach to each of these outcomes some quantity, for example 1 for heads and
 0 for tails, probability theorists say that we have a **random variable** with
 a probability distribution. The randomizing device is such that it is ensured 
 that the observation is generated at random from this distribution. When
-it is observed the randomnes is resolved and there is only the actual outcome.
+it is observed the randomness is resolved and there is only the actual outcome.
 
 Also, if we draw draw an individual at random - like in a survey - and measure
 their height, then we have drawn from a population distribution of heights

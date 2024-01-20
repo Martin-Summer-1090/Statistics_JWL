@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -62,6 +96,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -150,13 +186,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./how_sure_can_we_be.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">How sure can we be about what is going on: Estimates and intervals</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variabilility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,8 +223,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents"><span class="header-section-number">10.1</span> Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">10.2</span> Outcome</a></li>
+  <li><a href="#boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." id="toc-boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." class="nav-link active" data-scroll-target="#boys-and-girls-using-probability-theory-to-find-a-sampling-distribution."><span class="header-section-number">10.1</span> Boys and Girls: Using probability theory to find a sampling distribution.</a>
+  <ul class="collapse">
+  <li><a href="#the-binomial-distribution" id="toc-the-binomial-distribution" class="nav-link" data-scroll-target="#the-binomial-distribution"><span class="header-section-number">10.1.1</span> The binomial distribution</a></li>
+  <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">10.1.2</span> Expected value</a></li>
+  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error"><span class="header-section-number">10.1.3</span> Standard error</a></li>
+  </ul></li>
+  <li><a href="#the-central-limit-theorem-and-the-normal-distribution" id="toc-the-central-limit-theorem-and-the-normal-distribution" class="nav-link" data-scroll-target="#the-central-limit-theorem-and-the-normal-distribution"><span class="header-section-number">10.2</span> The central limit theorem and the normal distribution</a></li>
+  <li><a href="#the-95-confidence-interval" id="toc-the-95-confidence-interval" class="nav-link" data-scroll-target="#the-95-confidence-interval"><span class="header-section-number">10.3</span> The 95 % confidence interval</a></li>
+  <li><a href="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" id="toc-the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="nav-link" data-scroll-target="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.4</span> The role of systematic error due to non random causes and the role of judgement</a></li>
+  <li><a href="#confidence-intervals-when-we-observe-all-the-data" id="toc-confidence-intervals-when-we-observe-all-the-data" class="nav-link" data-scroll-target="#confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.5</span> Confidence intervals when we observe all the data</a></li>
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">10.6</span> Contents</a></li>
+  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">10.7</span> Outcome</a></li>
   </ul>
 </nav>
     </div>
@@ -212,8 +258,415 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="contents" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="contents"><span class="header-section-number">10.1</span> Contents</h2>
+<p>In the last unit on probability we analyzed randomizing devices such as dice and coins. We have assumed the in these cases that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes. One example was 1/2 for a fair coin coming up Heads, or 1/6 for the die landing on any of its faces, or 1/36 for two dice showing one of the possible combinations of points.</p>
+<p>When we attach to each of these outcomes some quantity, for example 1 for Heads and 0 for Tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. This probability distribution can be described by parameters, such as the mean, for example in the case of the Poisson Distribution, or the mean and the standard deviation in the case of the normal distribution. We also learned how we can use R to draw data points from a probability distribution described by its parameters.</p>
+<p>The usual situation, we face in statistics is that we have to deal with lots of data and we give a summary description of these data usually by summary statistics like the mean, the median or other percentiles.</p>
+<p>A fundamental step and a key idea in statistics, where probability and statistics come together, is the idea that we can view a particular statistics like the mean also as a random variable and their values as draws from their own probability distribution. This is a conceptually challenging and difficult idea but we have encountered it already once when we discussed the bootstrap.</p>
+<p>There we took repeated samples with replacement from the distribution of human height data and computed the mean height at each step. In this way we generated a distribution of the mean height that gave us some idea about the precision of this estimate.</p>
+<p>In contrast to bootstrapping which is a computer intensive simulation technique, probability theory provides another approach to give a mathematical answer to the same question: How confident can I be about the precision of my statistics. In this approach we can save on computing resources but we need - as in any mathematical theory - assumptions and we need to think about whether these assumptions are justified in each single situation where we appy the theory.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keywords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<section id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution."><span class="header-section-number">10.1</span> Boys and Girls: Using probability theory to find a sampling distribution.</h2>
+<p>In unit 3 we talked about random samples, where we draw a sample from a population and want to learn from the sample statistics about the value of the statistics - say a proportion - in the underlying population.</p>
+<p>For this we need to know how a known population gives rise to different samples. Let us think about this problem in terms of concrete example.</p>
+<p>In a sample of 100 newborn babies we find that there are 48.7 % girls and 51.3 % boys. What can we say about the proportion of baby girls in the population of all newborns in a country?</p>
+<p>Suppose the sample has a size of only 1. Then the proportion of baby girls must be either 0 or 1 depending whether we have selected a girl or a boy. These events occur with probability 0.513 (boy) ans 0.487 (girl).</p>
+<p>This is actually the natural probability that a baby is a girl or a boy and it has been historically very stable. The outcomes are also independent across births. The resulting probability distribution is shown here:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(<span class="fl">0.513</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">"0 (boy)"</span>, <span class="st">"1 (girl)"</span>), </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability Distribution: Sample size 1"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Suppose our sample consists of two babies drawn at random from the population of newborns. Then the proportion of girls will be either 0 (both boys), 0.5 (one girl and one boy) or 1 (both girls).</p>
+<p>Let’s work out the probabilities of these proportions: The probability of two boys must be <span class="math inline">\(0.513 \times 0.513 = 0.263\)</span>. (multiplication rule and independence) The probability of two girls must be <span class="math inline">\(0.487 \times 0.487 = 0.237\)</span> and so the probability of one of each must be <span class="math inline">\(1 - 0.263 - 0.237 = 0.5\)</span> (Complement rule). The resulting probability distribution is here.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(<span class="fl">0.236</span>, <span class="fl">0.5</span>, <span class="fl">0.237</span>), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">"0 (both boys)"</span>, <span class="st">"0.5 (boy and girl)"</span>, <span class="st">"1 (both girls"</span>),</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability Distribution: Sample size 2"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of Girls"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We could now use probability theory to work out the probability distribution for even larger and larger samples. How would we do that?</p>
+<p>Suppose we would like to find the probability that in a random sample of 5 newborns we have two boys and then three girls, like, for example, this: BBGGG. There are, of course, many other ways in which there can be two boys in a sample of five, for example GGGBB.</p>
+<p>To solve the problem using probability theory we must first find all the possible ways two boys and three girls can occur, compute the chance of each and then use the addition rule to add up the chances. Let us skip the complicated task of finding all the possible ways and concentrate on the second task first.</p>
+<p>The chance of a pattern BBGGG is: <span class="math inline">\(0.513 \times 0.513 \times 0.487 \times 0.487 \times 0.487 = (0.513)^2 \times (0.487)^3\)</span> This follows from the multiplication rule as well as from the assumption of independence. Similarly the chance of GGGBB would compute as: <span class="math inline">\(0.487 \times 0.487 \times 0.487 \times 0.513 \times 0.513 = (0.487)^3 \times (0.513)^2\)</span>, so exactly the same chance.</p>
+<p>Now, how many patterns are there? The number of patterns is given by the <strong>binomial coefficient</strong>: <span class="math display">\[\begin{equation*}
+\frac{5 \times 4 \times 3 \times 2 \times 1}
+{(2 \times 1) \times (3 \times 2 \times 1)} = 10
+\end{equation*}\]</span> There are 10 different patterns of 2 boys and three girls, so the chance is: <span class="math inline">\(10 \times (0.513)^2 \times (0.487)^3\)</span>, or roughly 30 %.</p>
+<p>Binomial coefficientas look messy and so mathematicians have invented a cleaner notation using an exclamation mark ! as a special symbol to indicate the result of multiplying together a number and all the numbers which come before it. For example <span class="math display">\[\begin{eqnarray*}
+1! &amp;=&amp; 1\\
+2! &amp;=&amp; 2 \times 1 = 2 \\
+3! &amp;=&amp; 3 \times 2 \times 1 =  6 \\
+4! &amp;=&amp; 4 \times 3 \times 2 \times 1  =  24
+\end{eqnarray*}\]</span> The exclamation mark reads <strong>factorial</strong> and sure enough there is an R function for it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24</code></pre>
+</div>
+</div>
+<section id="the-binomial-distribution" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="the-binomial-distribution"><span class="header-section-number">10.1.1</span> The binomial distribution</h3>
+<p>All these arguments and reasoning can be packed into a formula giving the chance that an event will occur exactly <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span>. This is</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Binomial Formula
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The chance that an event <span class="math inline">\(X\)</span> will occur exactly <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> is given by the <strong>binomial formula</strong> <span class="math display">\[\begin{equation}
+P(X = k) = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+\end{equation}\]</span></p>
+<p>In this formula, <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(k\)</span> is the number of times the event is to occur, an <span class="math inline">\(p\)</span> is the probability that the event will occur on any particular trial.</p>
+<p>Mathematicians often use a particular notation for the binomial coefficient in this formula, so the formula looks like: <span class="math display">\[\begin{equation}
+P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}
+\end{equation}\]</span> where <span class="math inline">\(\binom{n}{k}\)</span> denotes the binomial coefficient.</p>
+<p>The assumptions are:</p>
+<ul>
+<li>The value of <span class="math inline">\(n\)</span> must be fixed in advance</li>
+<li><span class="math inline">\(p\)</span> must be the same for each trial</li>
+<li>The trials must be independent</li>
+</ul>
+</div>
+</div>
+<p>R has a built in function for the binomial formula and we can use it for probability computations where it is involved. This function is called <code>dbinom()</code> and is to be used like this:</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Binomial Formula in R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The chance that an event will occur exactly <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> is given by the <strong>binomial formula</strong> implemented in R as</p>
+<pre><code>dbinom(x,          # X-axis values (x = 0, 1, 2, ..., n)
+       
+       size,        # Number of trials (n &gt; = 0)
+       
+       prob,        # The probability of success on each trial
+       
+       log = FALSE) # If TRUE, probabilities are given as log</code></pre>
+</div>
+</div>
+<p>Let us demonstrate its use this to work out the theoretical probabilities for the proportion of girls in a sample of 5 for all possible cases (0, 1, 2, 3, 4, or 5 girls).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">5</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 5"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let’s check your understanding of the formula: Denote the event that a randomly chosen newborn will be a girl by <span class="math inline">\(X\)</span>. According to the binomial formula the probability that in a sample of 5 newborns we will have, say two girls, given the probability that a baby is a girl of <span class="math inline">\(0.487\)</span> is:</p>
+<p><span class="math display">\[\begin{eqnarray*}
+P(X = 0) &amp;=&amp; \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
+         &amp;=&amp; \frac{5!}{2!(5-2)!} 0.487^2(1-0.487)^{5-2} \\
+         &amp;=&amp; \frac{5\,4\,3\,2\,1}{(2\,3\,2\,1)} 0.487^2(1-0.487)^{5-2} \\
+         &amp;=&amp; 0.3201917
+\end{eqnarray*}\]</span></p>
+<p>This is what we get if we do the computation by hand and using pencil and paper. When we use R we should get the same result:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="fl">0.487</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3201917</code></pre>
+</div>
+</div>
+<p>Now look at the barplot: If we have 2 girls out of 5 the proportion of girls in the sample would be <span class="math inline">\(2/5\)</span> or <span class="math inline">\(0.4\)</span>. The theoretical probability for this proportion would be about <span class="math inline">\(0.32\)</span>. This is exactly what you see in the barplot.</p>
+<p>For the plot we have computed these probabilities and proportions for all constellations 0, 1, 2, 3, 4 and 5 girls. We have created this sequence with the R <code>seq()</code> function. For the <code>names.arg</code> argument we have created the same sequence but divided every element of the sequence by 5 to express the number as a proportion and then transformed the numbers to a vector of type character by the <code>as.character()</code> function, since <code>names.arg</code> requires a vector of characters.</p>
+<p>I think by now you understand how we apply the formula both in math and in R to figure out the probabilities. Here we do the same exercise for <span class="math inline">\(n= 100\)</span> and <span class="math inline">\(n=1000\)</span>. We do not show the code anymore her just the plots:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">100</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">100</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 100"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">1000</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">1000</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 1000"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>When we draw random samples, like in this example drawing babies from a population of newborns, then the chance process of random sampling delivers a number and then another and then another and so on, in the specific example, 1 for a girl and 0 for a boy.</p>
+<p>Mathematicians call the value around which these number vary the <strong>expected value</strong>, and the amounts of the numbers being off the in size from the expected value the <strong>standard error</strong>. The formulas for the expected value and the standard error depend on the chance process which generates the numbers.</p>
+<p>The figures above have two notable features.</p>
+<ol type="1">
+<li><p>The probability distribution for the proportion tends to become regular, symmetric and bell shaped, like a normal curve. This is something we already observed when we discussed the bootstrap.</p></li>
+<li><p>The distribution gets tighter as the sample size increases.</p></li>
+</ol>
+<p>But before we disucss these ideas and their inplications further, let us unpack the notions of expected value and standard error a bit more.</p>
+</section>
+<section id="expected-value" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">10.1.2</span> Expected value</h3>
+<p>The formula for the expected value depends on the chance process which generates the random numbers. Let us introduce the general formulas by an example. Suppose we make hundered random draws with replacement from the box, containing the following tickets, symbolized by an R vector called <code>box</code> and the draws symbolized by an R vector called <code>draws</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> <span class="fu">sample</span>(box, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We would like to know the expected value of the sum of these draws, when we add up the numbers on the tickets we have drawn at random from the box. How large should it approximately be?</p>
+<p>There should be about 1/4 cases in which the ticket shows 5 and 3/4 of cases where it shows 1. With 100 draws, this would be <span class="math inline">\(25 \times 5 + 75 \times 1 = 200\)</span>. This is the expected value.</p>
+<p>The formula has two ingredients:</p>
+<ol type="1">
+<li>The number of draws</li>
+<li>The average of the numbers of the tickets in the box.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expected value for the sum of random draws from a box
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The expected value for the sum of draws made at random with replacement from a box equals</p>
+<p><span class="math display">\[\begin{equation}
+(\text{number of draws}) \times (\text{average of box})
+\end{equation}\]</span></p>
+</div>
+</div>
+<p>The logic here is that the average of the box amounts to <span class="math display">\[\begin{equation}
+\frac{1+1+1+5}{4} = 2
+\end{equation}\]</span> On average each draw adds around 2 to the sum. With 100 draws then the sum must be around <span class="math inline">\(100 \times 2 = 200\)</span>.</p>
+<p>See what we have in our actual random draws:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 180</code></pre>
+</div>
+</div>
+<p>pretty close.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example: Boys and girls again.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the example with boys and girls the logic is the same. Here the box is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>baby_box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"girl"</span>, <span class="st">"boy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We draw 100 babies with replacement and with probabilities <span class="math inline">\(0.487, 0.513\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>baby_draws <span class="ot">&lt;-</span> <span class="fu">sample</span>(baby_box, <span class="dv">100</span>, <span class="at">replace =</span> T, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.487</span>, <span class="fl">0.513</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here you see a nice feature of the <code>sample()</code>function, we have used a lot in this lecture. You can tell sample with which probabilities it should select boys and girls and we took the natural probabilities we already used above.</p>
+<p>We draw 100 babies and the average in the box is 0.487, if we encode the outcome girl as 1 and the outcome boy as 0, like we did already before. So the expected value is:</p>
+<p><span class="math inline">\(100 \times 0.487 = 48.7\)</span></p>
+<p>Now count the girls using logicals:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(baby_draws <span class="sc">==</span> <span class="st">"girl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 49</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="standard-error" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">10.1.3</span> Standard error</h3>
+<p>We have seem before that the expected value of the sum of the tickets in the box is <span class="math inline">\(200\)</span>. The actual outcome of the random process was, however, 180, which is -20 off the expected value.</p>
+<p>This is a chance error. The sum will be off the expected value by the size of a chance error, so that:</p>
+<p><span class="math display">\[\begin{equation}
+\text{sum} = \text{expected value} + \text{chance error}
+\end{equation}\]</span></p>
+<p>How big is this chance error likely to be?</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Likely size of chance error
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The sum is likely to be around its expected value but to be off by a chance error similar in size to the standard error.</p>
+</div>
+</div>
+<p>There is also a formula to use when we compute the standard error for a sum of draws made at random from a box with replacement. This formula plays a key role in the statistical procedures we discuss in this and in the next unit.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Square root law
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When drawing at random with replacement form a box of numbered tickets, the standard error for the sum of the draws is <span class="math display">\[\begin{equation}
+\sqrt{\text{number of draws}} \times (\text{standard deviation of box})
+\end{equation}\]</span></p>
+</div>
+</div>
+<p>This formula has two ingredients: The square root of the number of draws and the standard deviation of the list of numbers in the box. If there is a lot of spread in the box, the standard deviation is big and it is hard to predict how the draws will turn out. So the standard error must be big too.</p>
+<p>The sum of two draws has more variability than one draw. The sum of 100 draws is still ore variable. As the number of draws grows the sum gets harder to predict, the chance error gets bigger and so does the standard error. However the standard error goes up slowly with a factor equal to the square root of the number of draws. With 100 draws, therefore the sum is 10 times more variable than with a single draw.</p>
+<p>Note that the standard deviation and the standard error are two different concepts:</p>
+<p>The standard deviation is for the list of numbers in the box, in our example <span class="math inline">\(1,1,1,5\)</span>. This is 1.73</p>
+<p>The standard error refers to the outcome of the chance process, in our case drawing at random from the box of numbers. This is for our particular example 17.3</p>
+<p>A statistics, like the mean or a proportion, when viewed as a random variable has a standard error. This is to distinguish from the standard deviation of the population distribution from which this statistics derives.</p>
+</section>
+</section>
+<section id="the-central-limit-theorem-and-the-normal-distribution" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-central-limit-theorem-and-the-normal-distribution"><span class="header-section-number">10.2</span> The central limit theorem and the normal distribution</h2>
+<p>When we get numbers from a chance process, the expected value and the standard error give us an impression where the numbers will be. If we want to get the full picture, however, we get the whole picture from a <strong>probability histogram</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Probability histogram
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>A probability histogram represents probabilities, not data.</p></li>
+<li><p>A probability histogram represents chance by area.</p></li>
+</ul>
+</div>
+</div>
+<p>Here is an example from gambling:</p>
+<p>Craps is a casino game where you throw two dice and gamblers bet on the sum of numbers the two dice will show. We can find the chances of the combinations by probability theory (try it). But here we will simulate using concepts we already know and learend in this course. We write a function tossing two dice and sum up their outcomes and repeat this many times and plot the outome (try it)</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>craps <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># construct a die</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># roll twice</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sample</span>(die, <span class="dv">2</span>, <span class="at">replace =</span> T)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sum the outcome of the rolls</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(out)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">craps</span>())</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>h100 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">freq =</span> F,</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">13</span>),</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Hundered repetitions: Game of craps"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"number of dots"</span>,</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"probability"</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>h100<span class="sc">$</span>mids <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">13</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">13</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now increase the repetitions to 1000</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">craps</span>())</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(crap_sim, <span class="at">freq =</span> F,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">12</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Thousand repetitions: Game of craps"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"number of dots"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"probability"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>And to 10000</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">craps</span>())</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(crap_sim, <span class="at">freq =</span> F,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">12</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ten Thousand repetitions: Game of craps"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"number of dots"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"probability"</span>, <span class="at">breaks =</span> <span class="dv">12</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">1</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="the-95-confidence-interval" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="the-95-confidence-interval"><span class="header-section-number">10.3</span> The 95 % confidence interval</h2>
+</section>
+<section id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.4</span> The role of systematic error due to non random causes and the role of judgement</h2>
+</section>
+<section id="confidence-intervals-when-we-observe-all-the-data" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.5</span> Confidence intervals when we observe all the data</h2>
+</section>
+<section id="contents" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="contents"><span class="header-section-number">10.6</span> Contents</h2>
 <p>This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are</p>
 <ol type="1">
 <li>Using probability theory we can derive the sampling distribution of summary statistics from which formulae for confidence intervals can be derived.</li>
@@ -223,8 +676,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Explain the idea that confidence intervals can be calculated even when we observe all the data which then represent uncertainty about the parameters of an underlying metaphorical population.</li>
 </ol>
 </section>
-<section id="outcome" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="outcome"><span class="header-section-number">10.2</span> Outcome</h2>
+<section id="outcome" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="outcome"><span class="header-section-number">10.7</span> Outcome</h2>
 <p>The students should gain a firm understanding of confidence intervals and how they help us in quantifying uncertainty of predictions we make based on our available data. They should see and understand how and why it is sometimes more convenient and parsimonious to have formulae for confidence intervals rather than quantifying the uncertainty from simulation. The intuitive understanding of the limit theorems and when they can be legitimately applied will be important here.</p>
 
 
@@ -467,7 +920,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./probability.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variabilility</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

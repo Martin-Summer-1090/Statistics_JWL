@@ -1,5 +1,561 @@
 # Putting probability and statistics together
 
+In the last unit on probability we analyzed 
+randomizing devices such as dice and coins. 
+We have assumed the in these cases that we can enlist all the possible 
+outcomes that might potentially be observed and we can attach chances or probabilities
+to these outcomes. One example was  1/2 for a fair coin coming up Heads, or 1/6
+for the die landing on any of its faces, or 1/36 for two dice showing one of the
+possible combinations of points. 
+
+When we attach to each of these outcomes some quantity, for example 1 for Heads
+and 0 for Tails, probability theorists say that we have a **random variable** with
+a probability distribution. The randomizing device is such that it is ensured 
+that the observation is generated at random from this distribution. This
+probability distribution can be described by parameters, such as the mean,
+for example in the case of the Poisson Distribution, or the mean and the
+standard deviation in the case of the normal distribution. We also learned how
+we can use R to draw data points from a probability distribution described
+by its parameters.
+
+The usual situation, we face in statistics is that we have to deal with lots
+of data and we give a summary description of these data usually by summary
+statistics like the mean, the median or other percentiles.
+
+A fundamental step and a key idea in statistics, where probability and 
+statistics come together, is the idea that we can view a particular statistics 
+like
+the mean also as a random variable and their values as draws from their
+own probability distribution. This is a conceptually challenging and
+difficult idea but we have encountered it already once when we
+discussed the bootstrap.
+
+There we took repeated samples with replacement from the distribution of
+human height data and computed the mean height at each step. In this way
+we generated a distribution of the mean height that gave us some idea
+about the precision of this estimate.
+
+In contrast to bootstrapping which is a computer intensive simulation 
+technique, probability theory provides another approach to give
+a mathematical answer to the same question: How confident can I be
+about the precision of my statistics. In this approach we can
+save on computing resources but we need - as in any mathematical theory -
+assumptions and we need to think about whether these assumptions are 
+justified in each single situation where we appy the theory.
+
+
+::: {.callout-note appearance="simple"}
+## Overview
+
+
+:::
+
+::: {.callout-important appearance="simple"}
+
+## Keywords
+
+
+:::
+
+## Boys and Girls: Using probability theory to find a sampling distribution.
+
+In unit 3 we talked about random samples, where we draw a sample from 
+a population and want to learn from the sample statistics about the
+value of the statistics - say a proportion - in the underlying
+population.
+
+For this we need to know how a known population gives rise to different
+samples. Let us think about this problem in terms of concrete example. 
+
+In a sample of
+100 newborn babies we find that there are 48.7 % girls and 51.3 %
+boys. What can we say about the proportion of baby girls in the
+population of all newborns in a country?
+
+Suppose the sample has a size of only 1. Then the proportion of baby
+girls must be either 0 or 1 depending whether we have selected a 
+girl or a boy. These events occur with probability 0.513 (boy)
+ans 0.487 (girl).
+
+This is actually the natural
+probability that a baby is a girl or a boy and it has been
+historically very stable. The outcomes are also independent across births.
+The resulting probability distribution is shown here:
+
+```{r}
+barplot(c(0.513, 0.487), names.arg = c("0 (boy)", "1 (girl)"), 
+        main = "Probability Distribution: Sample size 1",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+```
+
+Suppose our sample consists of two babies drawn at random from the population
+of newborns. Then the proportion of girls will be either 0 (both boys), 
+0.5 (one girl and one boy) or 1 (both girls).
+
+Let's work out the probabilities of these proportions: The probability of 
+two boys must be $0.513 \times 0.513 = 0.263$. (multiplication rule and
+independence) The probability of two girls
+must be $0.487 \times 0.487 = 0.237$ and so the probability of one of each must
+be $1 - 0.263 - 0.237 = 0.5$ (Complement rule). The resulting probability 
+distribution is here.
+
+```{r}
+barplot(c(0.236, 0.5, 0.237), names.arg = c("0 (both boys)", "0.5 (boy and girl)", "1 (both girls"),
+        main = "Probability Distribution: Sample size 2",
+        xlab = "Proportion of Girls",
+        ylab = "Probability")
+```
+
+We could now use probability theory to work out the probability distribution 
+for even larger and larger samples. How would we do that?
+
+Suppose we would like to find the probability that in a random sample of
+5 newborns we have two boys and then three girls, like,
+for example, this: BBGGG. There are, of course, many other ways in which there
+can be two boys in a sample of five, for example GGGBB.
+
+To solve the problem using probability theory we must first find all the 
+possible ways two boys and three girls can occur, compute the chance of
+each and then use the addition rule to add up the chances. Let us skip
+the complicated task of finding all the possible ways and concentrate 
+on the second task first.
+
+The chance of a pattern BBGGG is:
+$0.513 \times 0.513 \times 0.487 \times 0.487 \times 0.487 = (0.513)^2 \times
+(0.487)^3$ This follows from the multiplication rule as well as from the 
+assumption of independence. Similarly the chance of GGGBB would compute as:
+$0.487 \times 0.487 \times 0.487 \times 0.513 \times 0.513 = 
+(0.487)^3 \times (0.513)^2$, so exactly the same chance.
+
+Now, how many patterns are there? The number of patterns is given by
+the **binomial coefficient**:
+\begin{equation*}
+\frac{5 \times 4 \times 3 \times 2 \times 1}
+{(2 \times 1) \times (3 \times 2 \times 1)} = 10
+\end{equation*}
+There are 10 different patterns of 2 boys and three girls, so the chance is:
+$10 \times (0.513)^2 \times (0.487)^3$, or roughly 30 %.
+
+Binomial coefficientas look messy and so mathematicians have invented 
+a cleaner notation using an exclamation mark ! as a special 
+symbol to indicate the result of multiplying together a number
+and all the numbers which come before it. For example
+\begin{eqnarray*}
+1! &=& 1\\
+2! &=& 2 \times 1 = 2 \\
+3! &=& 3 \times 2 \times 1 =  6 \\
+4! &=& 4 \times 3 \times 2 \times 1  =  24
+\end{eqnarray*}
+The exclamation mark reads **factorial** and sure enough there is an
+R function for it:
+```{r}
+#| code-fold: false
+factorial(4)
+```
+
+### The binomial distribution
+
+All these arguments and reasoning can be packed into a
+formula giving the chance that an event will occur 
+exactly $k$ times out of $n$. This is
+
+::: {.callout-important}
+## Binomial Formula
+
+The chance that an event $X$ will occur exactly $k$ times out of $n$ is
+given by the **binomial formula**
+\begin{equation}
+P(X = k) = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}
+\end{equation}
+
+In this formula, $n$ is the number of trials, $k$ is the number of
+times the event is to occur, an $p$ is the probability that the event
+will occur on any particular trial. 
+
+Mathematicians often use a particular
+notation for the binomial coefficient in this formula, so the
+formula looks like:
+\begin{equation}
+P(X = k) = \binom{n}{k}p^k(1-p)^{n-k}
+\end{equation}
+where $\binom{n}{k}$ denotes the binomial coefficient.
+
+The assumptions are:
+
+- The value of $n$ must be fixed in advance
+- $p$ must be the same for each trial
+- The trials must be independent
+:::
+
+R has a built in function for the binomial formula
+and we can use it for probability
+computations where it is involved. This function is
+called `dbinom()` and is to be used like this:
+
+::: {.callout-important}
+## Binomial Formula in R
+
+The chance that an event will occur exactly $k$ times out of $n$ is
+given by the **binomial formula** implemented in R as
+
+```
+dbinom(x,          # X-axis values (x = 0, 1, 2, ..., n)
+       
+       size,        # Number of trials (n > = 0)
+       
+       prob,        # The probability of success on each trial
+       
+       log = FALSE) # If TRUE, probabilities are given as log
+```
+:::
+
+Let us demonstrate its use this to work out the theoretical probabilities for
+the proportion of girls in a sample of 5 for all possible cases 
+(0, 1, 2, 3, 4, or 5 girls).
+
+```{r}
+#| code-fold: false
+
+barplot(dbinom(seq(0,5, by = 1), 5, 0.487), names.arg = as.character(seq(0,5, by = 1)/5),
+        main = "Probability distribution: Sample size 5",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+
+```
+
+Let's check your understanding of the formula: Denote the event that a
+randomly chosen newborn will be a girl by $X$. According to the binomial 
+formula
+the probability that in a sample of 5 newborns we will have, say two girls, 
+given
+the probability that a baby is a girl of $0.487$ is:
+
+\begin{eqnarray*}
+P(X = 0) &=& \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
+         &=& \frac{5!}{2!(5-2)!} 0.487^2(1-0.487)^{5-2} \\
+         &=& \frac{5\,4\,3\,2\,1}{(2\,3\,2\,1)} 0.487^2(1-0.487)^{5-2} \\
+         &=& 0.3201917
+\end{eqnarray*}
+
+This is what we get if we do the computation by hand and using pencil and
+paper. When we use R we should get the same result:
+
+```{r}
+#| code-fold: false
+dbinom(2,5,0.487)
+
+```
+
+Now look at the barplot: If we have 2 girls out of 5 the proportion of girls
+in the sample would be $2/5$ or $0.4$. The theoretical probability
+for this proportion would be about $0.32$. This is exactly what you
+see in the barplot.
+
+For the plot we have computed these probabilities and proportions
+for all constellations 0, 1, 2, 3, 4 and 5 girls. We have created
+this sequence with the R `seq()` function. For the `names.arg`
+argument we have created the same sequence but divided every 
+element of the sequence by 5 to express the number as a proportion
+and then transformed the numbers to a vector of type character by
+the `as.character()` function, since `names.arg` requires a
+vector of characters.
+
+I think by now you understand how we apply the formula both in math and in
+R to figure out the probabilities. Here we do the same exercise for
+$n= 100$ and $n=1000$. We do not show the code anymore her just the
+plots:
+
+```{r}
+par(mfrow = c(1,2))
+
+barplot(dbinom(seq(0,100, by = 1), 100, 0.487), names.arg = as.character(seq(0,100, by = 1)/100),
+        main = "Probability distribution: Sample size 100",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+
+barplot(dbinom(seq(0,1000, by = 1), 1000, 0.487), names.arg = as.character(seq(0,1000, by = 1)/1000),
+        main = "Probability distribution: Sample size 1000",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+```
+
+When we draw random samples, like in this example drawing babies from a
+population of newborns, then the chance process of random
+sampling delivers a number and then another and
+then another and so on, in the specific example, 1 for a girl
+and 0 for a boy.
+
+Mathematicians call the value around which these number vary the
+**expected value**, and the amounts of the numbers being off
+the in size from the expected value the **standard error**.
+The formulas for the expected value and the standard error depend on the chance
+process which generates the numbers.
+
+The figures above have two notable features. 
+
+1. The probability distribution
+for the proportion tends to become regular, symmetric and bell shaped, like
+a normal curve. This is something we already observed when we discussed the
+bootstrap.
+
+2. The distribution gets tighter as the sample size increases.
+
+But before we disucss these ideas and their inplications further,
+let us unpack the notions of expected value and standard error 
+a bit more.
+
+### Expected value
+
+The formula for the expected value depends on the chance process which
+generates the random numbers. Let us introduce the general formulas
+by an example. Suppose we make hundered random draws with replacement
+from the box, containing the following tickets, symbolized by an
+R vector called `box` and the draws symbolized by an R vector
+called `draws`.
+
+```{r}
+#| code-fold: false
+
+box <- c(1,1,1,5)
+
+draws <- sample(box, size = 100, replace = TRUE)
+```
+
+We would like to know the expected value of the sum of these
+draws, when we add up the numbers on the tickets we have drawn at
+random from the box. How large should it approximately be?
+
+There should be about 1/4 cases in which the ticket shows 5 and
+3/4 of cases where it shows 1. With 100 draws, this would be
+$25 \times 5 + 75 \times 1 = 200$. This is the expected value.
+
+The formula has two ingredients:
+
+1. The number of draws
+2. The average of the numbers of the tickets in the box.
+
+::: {.callout-important}
+## Expected value for the sum of random draws from a box
+
+The expected value for the sum of draws made at random with
+replacement from a box equals
+
+\begin{equation}
+(\text{number of draws}) \times (\text{average of box})
+\end{equation}
+
+:::
+
+The logic here is that the average of the box amounts to
+\begin{equation}
+\frac{1+1+1+5}{4} = 2
+\end{equation}
+On average each draw adds around 2 to the sum. With 100 draws then
+the sum must be around $100 \times 2 = 200$.
+
+See what we have in our actual random draws:
+```{r}
+#| code-fold: false
+
+sum(draws)
+```
+pretty close.
+
+::: {.callout-tip}
+
+
+## Example: Boys and girls again.
+
+In the example with boys and girls the logic is the same. Here the box is:
+```{r}
+#| code-fold: false
+
+baby_box <- c("girl", "boy")
+```
+
+We draw 100 babies with replacement and with probabilities $0.487, 0.513$.
+```{r}
+#| code-fold: false
+
+baby_draws <- sample(baby_box, 100, replace = T, prob = c(0.487, 0.513))
+```
+Here you see a nice feature of the `sample()`function, we have used a lot in 
+this lecture. You can tell sample with which probabilities it should select
+boys and girls and we took the natural probabilities we already used above.
+
+We draw 100 babies and the average in  the box is 0.487, if we encode the
+outcome girl as 1 and the outcome boy as 0, like we did already before. So
+the expected value is:
+
+$100 \times 0.487 = 48.7$
+
+Now count the girls using logicals:
+
+```{r}
+#| code-fold: false
+
+sum(baby_draws == "girl")
+```
+
+:::
+
+### Standard error
+
+We have seem before that the expected value of the sum of the tickets in the
+box is $200$. The actual outcome of the random process was, however,
+`r sum(draws)`, which is `r sum(draws) - 200` off the expected value.
+
+This is a chance error. The sum will be off the expected value by the
+size of a chance error, so that:
+
+\begin{equation}
+\text{sum} = \text{expected value} + \text{chance error}
+\end{equation}
+
+How big is this chance error likely to be? 
+
+::: {.callout-important}
+## Likely size of chance error
+
+The sum is likely to be
+around its expected value but to be off by a chance error similar in
+size to the standard error.
+:::
+
+There is also a formula to use when we compute the standard error
+for a sum of draws made at random from a box with replacement. This
+formula plays a key role in the statistical procedures we discuss in this
+and in the next unit.
+
+::: {.callout-important}
+## Square root law
+
+When drawing at random with replacement form a box of numbered tickets,
+the standard error for the sum of the draws is
+\begin{equation}
+\sqrt{\text{number of draws}} \times (\text{standard deviation of box})
+\end{equation}
+:::
+
+This formula has two ingredients: The square root of the number of draws and the
+standard deviation of the list of numbers in the box. If there is a lot of
+spread in the box, the standard deviation is big and it is hard to predict
+how the draws will turn out. So the standard error must be big too.
+
+The sum of two draws has more variability than one draw. The sum of 100 draws
+is still ore variable. As the number of draws grows the sum gets harder to
+predict, the chance error gets bigger and so does the standard error. However
+the standard error goes up slowly with a factor equal to the square root
+of the number of draws. With 100 draws, therefore the sum is 10 times more
+variable than with a single draw.
+
+Note that the standard deviation and the standard error are two different
+concepts:
+
+The standard deviation is for the list of numbers in the box, in our example
+$1,1,1,5$. This is 
+`r round(sd(c(1,1,1,5)*sqrt(3/4)),2)`
+
+The standard error refers to the outcome of the chance process, in
+our case drawing at random from the box of numbers. This is
+for our particular example `r 10*round(sd(c(1,1,1,5)*sqrt(3/4)),2)`
+
+A statistics, like the mean or a proportion, when viewed as a random
+variable has a standard error. This is to distinguish from the standard
+deviation of the population distribution from which this statistics derives.
+
+## The central limit theorem and the normal distribution
+
+When we get numbers from a chance process, the expected value and
+the standard error give us an impression where the numbers will
+be. If we want to get the full picture, however, we get the
+whole picture from a **probability histogram**.
+
+::: {.callout-tip}
+## Probability histogram
+
+- A probability histogram represents probabilities, not data.
+
+- A probability histogram represents chance by area.
+:::
+
+Here is an example from gambling:
+
+Craps is a casino game where you throw two dice and gamblers bet
+on the sum of numbers the two dice will show. We can find the 
+chances of the combinations by probability theory (try it). But here
+we will simulate using concepts we already know and learend in this
+course. We write a function tossing two dice and sum up their outcomes
+and repeat this many times and plot the outome (try it)
+
+```{r}
+
+craps <- function(){
+  # construct a die
+  die <- 1:6
+  # roll twice
+  out <- sample(die, 2, replace = T)
+  # sum the outcome of the rolls
+  sum(out)
+}
+
+crap_sim <- replicate(100, craps())
+
+h100 <- hist(crap_sim, freq = F,
+     xlim = c(1,13),
+     ylim = c(0,0.4),
+     xaxt = "n",
+     main = "One Hundered repetitions: Game of craps",
+     xlab = "number of dots",
+     ylab = "probability")
+h100$mids <- seq(1, 13, by = 1)
+axis(1, at = seq(1, 13, by = 1),
+     labels = 1:13)
+```
+
+Now increase the repetitions to 1000
+
+```{r}
+crap_sim <- replicate(1000, craps())
+
+hist(crap_sim, freq = F,
+     xlim = c(2,12),
+     ylim = c(0,0.4),
+     xaxt = "n",
+     main = "One Thousand repetitions: Game of craps",
+     xlab = "number of dots",
+     ylab = "probability")
+axis(1, at = seq(2, 12, by = 1),
+     labels = 2:12)
+```
+
+And to 10000
+
+```{r}
+crap_sim <- replicate(10000, craps())
+
+hist(crap_sim, freq = F,
+     xlim = c(2,12),
+     ylim = c(0,0.4),
+     xaxt = "n",
+     main = "Ten Thousand repetitions: Game of craps",
+     xlab = "number of dots",
+     ylab = "probability", breaks = 12)
+axis(1, at = seq(2, 12, by = 1),
+     labels = 2:12)
+```
+
+
+
+## The 95 % confidence interval
+
+
+
+## The role of systematic error due to non random causes and the role of judgement
+
+## Confidence intervals when we observe all the data
+
 ## Contents 
 
 This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are

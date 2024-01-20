@@ -375,12 +375,12 @@ Chance
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  V1 V2
-1  H  T
-2  H  H
-3  T  H
-4  H  T
-5  T  H
-6  H  T</code></pre>
+1  H  H
+2  T  H
+3  H  H
+4  T  T
+5  T  T
+6  H  H</code></pre>
 </div>
 </div>
 <p>You see that R gave some generic names to the columns. You could change that by using the <code>names()</code>function.</p>
@@ -400,7 +400,7 @@ Chance
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2490</code></pre>
+<pre><code>[1] 2555</code></pre>
 </div>
 </div>
 <p>Of all the 10.000 double flips this is about 1/4ths. The chance is thus 25 % to see HH in an often identically repeated trial. This is intuitive when you look at the tree, with its four possible outcomes before the coin is drawn.</p>
@@ -487,10 +487,10 @@ Probability rule 2: Complement rule
 <div class="cell-output cell-output-stdout">
 <pre><code>  Draw_1 Draw_2
 1      R      B
-2      R      W
-3      W      B
-4      B      R
-5      R      W
+2      W      R
+3      R      B
+4      B      W
+5      W      B
 6      R      B</code></pre>
 </div>
 </div>
@@ -501,10 +501,10 @@ Probability rule 2: Complement rule
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1663</code></pre>
+<pre><code>[1] 1615</code></pre>
 </div>
 </div>
-<p>The relative frequency of such pairs is then about 0.1663.</p>
+<p>The relative frequency of such pairs is then about 0.1615.</p>
 <p>Another way to think about this is as follows:</p>
 <p>In the first draw about 1/3 will end up with a red ticket. The others will have either a white or a blue. Of this 1/3 half of the people will get a white ticket, i.e.&nbsp;1/2 of 1/3 or: $* = . So with our simulated crowd of <span class="math inline">\(10000\)</span> or 10.0000 people 1666.7 will have a R and a W ticket.</p>
 <p>The conditional probability of a white ticket, given a red ticket has been drawn with replacement is 1/2. Still another way to understand this in terms of expected frequencies is as follows. Think of our simulated dataframe <code>res</code> as a notebook, where you record the outcome of any draw.</p>
@@ -527,7 +527,15 @@ Probability rule 2: Complement rule
 <td style="text-align: left;">B</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">W</td>
 <td style="text-align: left;">R</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
 <td style="text-align: left;">W</td>
 </tr>
 <tr class="odd">
@@ -535,32 +543,24 @@ Probability rule 2: Complement rule
 <td style="text-align: left;">B</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">B</td>
-<td style="text-align: left;">R</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">R</td>
-<td style="text-align: left;">W</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">R</td>
 <td style="text-align: left;">B</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">B</td>
-<td style="text-align: left;">W</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">B</td>
 <td style="text-align: left;">R</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">W</td>
-<td style="text-align: left;">B</td>
-</tr>
 <tr class="even">
 <td style="text-align: left;">B</td>
 <td style="text-align: left;">W</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R</td>
+<td style="text-align: left;">B</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">W</td>
+<td style="text-align: left;">B</td>
 </tr>
 </tbody>
 </table>
@@ -574,7 +574,7 @@ Probability rule 2: Complement rule
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3338</code></pre>
+<pre><code>[1] 0.3287</code></pre>
 </div>
 </div>
 <p>This about 1/3.</p>
@@ -585,7 +585,7 @@ Probability rule 2: Complement rule
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(res<span class="sc">$</span>Draw_2[res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>] <span class="sc">==</span> <span class="st">"W"</span>)<span class="sc">/</span><span class="fu">sum</span>(res<span class="sc">$</span>Draw_1 <span class="sc">==</span> <span class="st">"R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4982025</code></pre>
+<pre><code>[1] 0.4913295</code></pre>
 </div>
 </div>
 <p>This is the number of all cases where W showed on the second draw, given the first draw was R, divided by all cases where the first draw was red.</p>
@@ -642,13 +642,13 @@ Probability rule 4: Independence
 <span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5008</code></pre>
+<pre><code>[1] 0.4986</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conditional probability that the second flip will be heads given the first flip was heads</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(out<span class="sc">$</span>Flip2[out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>] <span class="sc">==</span> <span class="st">"H"</span>)<span class="sc">/</span><span class="fu">sum</span>(out<span class="sc">$</span>Flip1 <span class="sc">==</span> <span class="st">"H"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4972045</code></pre>
+<pre><code>[1] 0.5124348</code></pre>
 </div>
 </div>
 <p>They are both about 1/2.</p>
@@ -747,7 +747,7 @@ A rules of probability cheat sheet
 <p>One situation where probability comes into play for the statistician in a natural way when we have data, that could be considered as generated from some random device. An example is to use a random mechanism - flipping a coin, throwing a dice - to allocate individuals to treatment and control groups in a controlled randomized trial.</p>
 <p>In practice we may often encounter the situation where a pre-existing datapoint is chosen by a random mechanism, such as in a data sample of a survey.</p>
 <p>Even more often we will have situations where there is no randomness at all. There are just observed data-points and we assume that these data have been generated by some random mechanism, like in the case of the human height data we analyzed in previous units.</p>
-<p>The relevance of probability is clear for the first two situations. With a randomizing device we assume that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes - for example 1/2 for a fair coin coming up Heads. When we attach to each of these outcomes some quantity, for example 1 for heads and 0 for tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. When it is observed the randomnes is resolved and there is only the actual outcome.</p>
+<p>The relevance of probability is clear for the first two situations. With a randomizing device we assume that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes - for example 1/2 for a fair coin coming up Heads. When we attach to each of these outcomes some quantity, for example 1 for heads and 0 for tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. When it is observed the randomness is resolved and there is only the actual outcome.</p>
 <p>Also, if we draw draw an individual at random - like in a survey - and measure their height, then we have drawn from a population distribution of heights at random.</p>
 </section>
 <section id="what-is-the-role-of-probability-when-we-observe-everything" class="level2 page-columns page-full" data-number="9.8">
