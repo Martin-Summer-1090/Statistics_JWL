@@ -1,0 +1,37 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(0,0)(8,8)
+%\psgrid
+
+\psline(1,4)(7,4)
+
+\psline(4,4.2)(4,3.8)
+\rput(4, 3.4){ 48.7 \%}
+\rput(4,3){Sample percent}
+
+
+\psline(1.4,4.2)(1.4,3.8)
+\rput(1.4, 3.4){ 45.54 \%}
+
+
+\psline(6.6,4.2)(6.6,3.8)
+\rput(6.6, 3.4){ 51.86 \%}
+
+\psline{<->}(1.4, 4.4)(4,4.4)
+\rput(5.5, 4.8){ 2 SE}
+
+
+\psline{<->}(4, 4.4)(6.6,4.4)
+\rput(2.5, 4.8){2 SE}
+	
+\end{pspicture}
+
+\end{document}

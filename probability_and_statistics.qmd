@@ -270,12 +270,12 @@ plots:
 par(mfrow = c(1,2))
 
 barplot(dbinom(seq(0,100, by = 1), 100, 0.487), names.arg = as.character(seq(0,100, by = 1)/100),
-        main = "Probability distribution: Sample size 100",
+        main = "Sample size 100",
         xlab = "Proportion of girls",
         ylab = "Probability")
 
 barplot(dbinom(seq(0,1000, by = 1), 1000, 0.487), names.arg = as.character(seq(0,1000, by = 1)/1000),
-        main = "Probability distribution: Sample size 1000",
+        main = "Sample size 1000",
         xlab = "Proportion of girls",
         ylab = "Probability")
 ```
@@ -501,55 +501,347 @@ craps <- function(){
 }
 
 crap_sim <- replicate(100, craps())
+#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)
 
-h100 <- hist(crap_sim, freq = F,
-     xlim = c(1,13),
-     ylim = c(0,0.4),
-     xaxt = "n",
-     main = "One Hundered repetitions: Game of craps",
-     xlab = "number of dots",
-     ylab = "probability")
-h100$mids <- seq(1, 13, by = 1)
-axis(1, at = seq(1, 13, by = 1),
-     labels = 1:13)
+h100 <- hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), plot = F)
+
+h100$counts <- h100$counts/sum(h100$counts)
+
+plot(h100,
+     xlab = "Number of dots",
+     ylab = "Percent",
+     main = "One Hundered Repetitions",
+     axes = F,
+     xlim = c(0,13),
+     ylim = c(0,0.3))
+
+# add labels below each column
+axis(1, at = 2:12, labels = 2:12)
+axis(2, at =c(0,0.1, 0.2, 0.3), labels = c("0 %","10 %", "20 %", "30 %"))
+
+
 ```
 
 Now increase the repetitions to 1000
 
 ```{r}
 crap_sim <- replicate(1000, craps())
+#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)
 
-hist(crap_sim, freq = F,
-     xlim = c(2,12),
-     ylim = c(0,0.4),
-     xaxt = "n",
-     main = "One Thousand repetitions: Game of craps",
-     xlab = "number of dots",
-     ylab = "probability")
-axis(1, at = seq(2, 12, by = 1),
-     labels = 2:12)
+h1000 <- hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), plot = F)
+
+h1000$counts <- h1000$counts/sum(h1000$counts)
+
+plot(h1000,
+     xlab = "Number of dots",
+     ylab = "Percent",
+     main = "One Thousand Repetitions",
+     axes = F,
+     xlim = c(0,13),
+     ylim = c(0,0.3))
+
+# add labels below each column
+axis(1, at = 2:12, labels = 2:12)
+axis(2, at =c(0,0.1, 0.2, 0.3), labels = c("0 %","10 %", "20 %", "30 %"))
 ```
 
 And to 10000
 
 ```{r}
 crap_sim <- replicate(10000, craps())
+#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)
 
-hist(crap_sim, freq = F,
-     xlim = c(2,12),
-     ylim = c(0,0.4),
-     xaxt = "n",
-     main = "Ten Thousand repetitions: Game of craps",
-     xlab = "number of dots",
-     ylab = "probability", breaks = 12)
-axis(1, at = seq(2, 12, by = 1),
-     labels = 2:12)
+h10000 <- hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), plot = F)
+
+h10000$counts <- h10000$counts/sum(h10000$counts)
+
+plot(h10000,
+     xlab = "Number of dots",
+     ylab = "Percent",
+     main = "Ten Thousand Repetitions",
+     axes = F,
+     xlim = c(0,13),
+     ylim = c(0,0.3))
+
+# add labels below each column
+axis(1, at = 2:12, labels = 2:12)
+axis(2, at =c(0,0.1, 0.2, 0.3), labels = c("0 %","10 %", "20 %", "30 %"))
 ```
 
+You can see that the probability histograms observed from the random experiments 
+of throwing the two dice 100, 1000 and 10000 times get closer and closer to the
+ideal probability historgam, where the relative frequency of events from the
+random experiment come arbitrarily close to the theoretical probabilities.
 
+There are 6 events in 36 where the sum of the die could be 7 (try to convince 
+yourself!). This is 16 2/3 %. The area of the rectangle over 7 in the probability
+histogram, therefore equals 16.3%. The total area of all the rectangles sum up to
+100 %.
+
+### Probability histograms and the normal curve
+
+When we discussed the theoretical share of baby girls in a random sample 
+drawn from a large using the binomial distribution, we saw a remarkable
+fact:
+population of newborn babies:
+
+```{r}
+par(mfrow = c(1,2))
+
+barplot(dbinom(seq(0,100, by = 1), 100, 0.487), names.arg = as.character(seq(0,100, by = 1)/100),
+        main = "Sample size 100",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+
+barplot(dbinom(seq(0,1000, by = 1), 1000, 0.487), names.arg = as.character(seq(0,1000, by = 1)/1000),
+        main = "Sample size 1000",
+        xlab = "Proportion of girls",
+        ylab = "Probability")
+```
+
+We saw in this example that the variability of the observed proportion gets
+smaller as the sample size increases. This is the classic 
+**law of large numbers** detected by Jacob Bernoulli in the 17th
+century. As we increase the sample, the proportion of girls in the
+outcome of the random experiment comes closer and close to the
+true proportion of 0.487.
+
+In unit 3 we introduced the normal curve, which we found described the
+empirical distribution of human height data with surprising accuracy.
+The argument wy this might be the case was that human height depends on
+a huge number of factors, all of which have for themselves little influence
+on the outcome. Adding up all these small effects gets to a normal 
+distribution.
+
+This is also the reasoning behind the famous **central limit theorem**
+detected in 1733 by Abraham de Moivre. This theorem says:
+
+::: {.callout-important}
+## Central limit theorem
+
+When drawing at random with replacement from a box, the probability
+histogram for the sum will follow the normal curve, even is the
+contents of the box is not normally distributed, provided the
+number of draws is large enough.
+
+:::
+
+This is a remarkable fact. Whatever the the shape of the population
+distribution from which each of the original measurements were sampled,
+for large sample sizes their average can be considered as drawn from a 
+normal curve. This will have a mean that is equal to the standard deviation
+that has a simple relationship to the standard deviation of the original
+population and is known, as we discussed before, as the standard error.
+
+Now we see also why in the bootstrap examples we discussed in unit 5, the
+distribution of the statistics we got from repeated resamples looked more
+and more like a normal distribution. This is the consequence of the central
+limit theorem.
 
 ## The 95 % confidence interval
 
+While the central limit theorem is a remarkable and extraordinary law of
+nature, the question arises, how this law can help us work out the accuracy of 
+estimates without using the heavy machinery of computer simulation.
+
+Probability theory ha s shown how the distributions of statistics like
+means and proportions look like when the data are drawn from known 
+populations.
+
+But the usual situation in practice is the other way round: Most of the time
+in a practical data analysis situation we have to go from a single sample back
+to saying something about a possible underlying population. This is the
+process of inductive inference, we discussed in unit 3.
+
+So far in this unit we have studies chance processes using probability
+theory. We ran simulations, like flipping coins or drawing tickets from
+a box or sampling girls and boys from a population of newborns using emprical
+probabilities. We have to distinguish two form of uncertainty. One type
+of uncertainty is related to the stituation when I run a simulation before I
+press the ENTER key on my computer. This relates to the chance of an 
+unpredictable event. This is called **aleatory uncertainty**.
+
+When I have run the simulation and before I look at the outcome, there is 
+another situation of uncertainty. The outcome is fixed, because I have already
+run the simulation but I do not yet know the outcome yet. This form of 
+uncertainty is called **epistemic uncenrtainty**.
+
+Statistics is used to deal with situations of epistemic uncertainty about some
+quantity in the world, like the mean human hight or the proportion of baby girls
+among the newborns in a country. 
+
+For example, wehn we conduct a surevy we do not know the true proportions of
+- for example stunted and wasted children - as in the DHS example we discussed
+in unit 2. These fixed but unknown quamtities are called **parameters**  in
+statistics. Just as in the example we gave before, before we do the survey we
+have aleatory uncertainty because of the random sampling. After we have drawn
+the sample and have the data, we use a probability model to deal with and
+understand our epistemic uncertainty. Probability theory which tells us what to
+expect is used to tell us what we can learn from what we have observed. This
+is the basis for statistical inference and this is the way in which
+statistics and probability work together to understand data.
+
+One of the most important concepts from statistical inference the 
+**confidence interval** is built on this idea. Let me explain the
+steps how we derive an uncertainty interval around an estimate, without
+resorting to a bootstrap simulation. 
+
+There are three stages, which we describe here following @Spi2019:
+
+1. Probability theory tell us for any particular population parameter,
+an interval in which we expect the observed statistics to lie with
+95 % probability.
+
+2. Then we observe the particular statistics, say a mean or a proportion.
+
+3. Finally we work out the range of possible population parameters, for which
+our statistics lies in their 95 % prediction intervals. This range we call a
+**confidence interval**.
+
+
+The label of this interval is 95% confidence interval, because with repeated 
+application 95 % of these intervals contain the true value. Note that this is
+different from saying that there is a 95 % probability that this particular
+interval contains the true value, an incorrect interpretation which you might
+encounter often even in the academic literature.
+
+### Computing confidence intervals
+
+The theory of computing confidence intervals was consolidated and introduced
+in the 1930ies by Jerzy Neyman and Egon Pearson, wo was the son of Karl Person,
+whose data on the heights of fathers and sons we had begin studying in unit 4.
+
+In our leading example we found that the sample percentage of girls in our
+simulated sample of 1000 was 487 or 48.7 %. How far can the population percentage
+be from 48.7% ? The standard error is estimated as 15.8, suggesting that the
+chance error is around 1.58 %. So the population percentage could be off by 
+around 1.6 %
+
+Let us now show how the probability histogram for the number of baby girls gets
+close to the normal curves when the sample gets large, as in our example of
+1000 draws.
+
+```{r}
+# x-axis grid
+
+set.seed(45)
+
+x <- rbinom(1000, 1000, 0.487)
+x2 <- seq(0,1000, by = 1)
+
+# normal curve
+
+fun <- dnorm(x2, mean = mean(x), sd = sd(x))
+
+# Histogram
+h <- hist(x, breaks = 100,
+     plot = F)
+
+# par(mar = c(5, 4, 4, 8) + 0.3)  
+# 
+plot(h, col = "white",
+     freq = FALSE,
+     xlab = " ",
+     ylab = "Percent per girl",
+     ylim = c(0, max(fun)),
+     main = "Histogram of number of girls",
+     xaxt = "n",
+     yaxt = "n"
+     )
+
+# overlay normal curve
+
+par(new = TRUE)
+
+lines(x2, fun, col = 2, lwd = 2)
+ axis(side = 4, at = c(0,0.005,0.01, 0.015, 0.02, 0.025), 
+      labels = c(labels = c("0 %", "8 %", "16 %", "24 %", "32 %", "40 %")), 
+      ylab = "Percent per standard unit")
+ 
+# adding axis
+
+ axis(1, at = c(440, 460, 480, 500, 520, 540),
+      labels = c("440 cm", "460 cm", "480 cm", "500 cm", "520 cm", "540 cm"))
+
+ axis(1, at = c(440, 460, 480, 500, 520, 540), 
+     labels = as.character(round(c(-2.9746835, -1.7088608, -0.4430380,  0.8227848,  2.0886076,  3.3544304), 2)), line = 2.5)
+ 
+axis(2, at = c(0,0.005,0.01, 0.015, 0.02, 0.025), 
+      labels = c(labels = c("0 %", "0.5 %", "1 %", "1.5%", "2 %", "2.5 %")), 
+      ylab = "Percent per girl")
+
+abline(v = 487, col = 4)
+
+```
+
+There are two vertical axes in the figure. The probability histogram is 
+drawn relative to the left axis showing percent per baby-girl. The normal
+curve is drawn relative to the right axis showing percent per standard unit.
+To see how the scales match up:  2 % per baby girl matches up - for example-  
+with 32 % per standard unit because the Standard error is about 16 (15.8) so
+there are about 16 baby-girls to the standard unit and 32/16 = 2. The
+same reasoning applies to the other numbers.
+
+The normal curve can now used to approximate probabilities. Assume we would
+like to know the probability that we observe between 482 and 492 girls in 
+a sample of 1000. The expected number of girls is 487 and the standard error 
+is 15.8. The chance of getting exactly 482 girls is the
+area of the rectangle between 475 and 480 on the
+number of girls scale and has a height of 0.103. The area is thus 0.52.
+
+In standard
+units the base of the rectangle goes from -0.76 to - 0.44.
+
+Since the histogram and the normal curve almost coincide, so the
+area of the rectangle between 482 and 483 is approximately
+equal to the area under the normal curve between -0.32 and
+- 0.25.
+
+The area of the rectangle is 0.021. When we approximate by the 
+normal curve we get:
+
+```{r}
+#| code-fold: false
+
+pnorm(-0.25) - pnorm(0.32)
+```
+
+This approximation is excellent.
+
+With this approximation method justified by the central limit theorem we
+can ask how far the population share of new born baby girls can deviate
+from 48.7 %- The standard error was estimated at 1.58 %, so the
+population proportion could easily be between 47.12 and 50.28.
+
+Since these are chance errors there is the possibility that errors
+of larger size, for example errors of 2 standard errors occur, if
+infrequently. What happens, when we take the cutoff at that?
+Take for example the interval of two standar errors above and below the
+expected value:
+
+![Confidence Interval](pictures/confidence_interval.png)
+This is a **confidence interval** for the population percentage, with a 
+**confidence level** of about 95%. This means that you can be about 95% 
+confident that the population proportion of baby girls is inside the+interval 
+(47.12, 50.28) percent.
+
+What, if you want different confidence levels? Anything except 100 % is
+allowed by going the appropriate number of standard errors right and left
+from the expected value. For example:
+
+1. The interval "sample percentage" plus/minus 1 stndard error is an
+68 % confidence interval for the population percentage.
+
+2. The interval "sample percentage" of plus/minus 2 standard errors is
+a 95 % confidence interval fro the population percentage.
+
+3. The interval "sample percentage" of plus minus 3 standard errors is
+a 99.7 confidnece interval for the population percentage.
+
+You can go on but even 10 standard deviations may not give you 100 % 
+confidence, because for any interval you take, the normal curve always
+has some area (if very very small) outside of it.
+ 
 
 
 ## The role of systematic error due to non random causes and the role of judgement
