@@ -1,0 +1,38 @@
+\documentclass[margin = 3pt]{standalone}
+
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{xcolor}
+
+
+\begin{document}
+
+\begin{pspicture}(0,0)(8,8)
+%\psgrid
+
+\psline(1,4)(7,4)
+
+\psdot(3,4)
+\rput(2,5){\tiny{Sum}}
+\rput(3,3.6){\tiny{Some possible value}}
+
+\pscurve{->}(2.4,5)(2.8,4.8)(3,4.2)
+
+\psline(1,4.2)(1,3.8)
+\rput(1, 3.4){$0$}
+
+
+\psline(7,4.2)(7,3.8)
+\rput(7, 3.4){$600$}
+%
+%\psline{<->}(1.4, 4.4)(4,4.4)
+%\rput(5.5, 4.8){ 2 SE}
+%
+%
+%\psline{<->}(4, 4.4)(6.6,4.4)
+%\rput(2.5, 4.8){2 SE}
+	
+\end{pspicture}
+
+\end{document}

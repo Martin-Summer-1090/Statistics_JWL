@@ -5,9 +5,9 @@ randomizing devices such as dice and coins.
 We have assumed the in these cases that we can enlist all the possible 
 outcomes that might potentially be observed and we can attach chances or probabilities
 to these outcomes. One example was  1/2 for a fair coin coming up Heads, or 1/6
-for the die landing on any of its faces, or 1/36 for two dice showing one of the
-possible combinations of points. 
-
+for the die showing any of its faces after a throw, or 1/36 for two 
+dice showing one of the possible combinations of points. 
+ 
 When we attach to each of these outcomes some quantity, for example 1 for Heads
 and 0 for Tails, probability theorists say that we have a **random variable** with
 a probability distribution. The randomizing device is such that it is ensured 
@@ -19,13 +19,13 @@ we can use R to draw data points from a probability distribution described
 by its parameters.
 
 The usual situation, we face in statistics is that we have to deal with lots
-of data and we give a summary description of these data usually by summary
+of data and we give an overall description of these data usually by a summary
 statistics like the mean, the median or other percentiles.
 
 A fundamental step and a key idea in statistics, where probability and 
 statistics come together, is the idea that we can view a particular statistics 
 like
-the mean also as a random variable and their values as draws from their
+the mean also as a random variable and its values as draws from its
 own probability distribution. This is a conceptually challenging and
 difficult idea but we have encountered it already once when we
 discussed the bootstrap.
@@ -37,11 +37,11 @@ about the precision of this estimate.
 
 In contrast to bootstrapping which is a computer intensive simulation 
 technique, probability theory provides another approach to give
-a mathematical answer to the same question: How confident can I be
-about the precision of my statistics. In this approach we can
+a mathematical answer to the same question: How confident can we be
+about the precision of our statistics. In this approach we can
 save on computing resources but we need - as in any mathematical theory -
 assumptions and we need to think about whether these assumptions are 
-justified in each single situation where we appy the theory.
+justified in each single situation where we apply the theory.
 
 
 ::: {.callout-note appearance="simple"}
@@ -77,9 +77,10 @@ girls must be either 0 or 1 depending whether we have selected a
 girl or a boy. These events occur with probability 0.513 (boy)
 ans 0.487 (girl).
 
-This is actually the natural
-probability that a baby is a girl or a boy and it has been
-historically very stable. The outcomes are also independent across births.
+These are actually the natural
+probabilities that a baby is a girl or a boy and it has been
+historically very stable. The outcomes are also independent 
+across births.^[The independence assumption is justified when we abstract for the moment from rare events such as twins and triplets. In this case things are a bit more complicated but let's not worry about these special cases for now.]
 The resulting probability distribution is shown here:
 
 ```{r}
@@ -123,7 +124,7 @@ on the second task first.
 
 The chance of a pattern BBGGG is:
 $0.513 \times 0.513 \times 0.487 \times 0.487 \times 0.487 = (0.513)^2 \times
-(0.487)^3$ This follows from the multiplication rule as well as from the 
+(0.487)^3$. This follows from the multiplication rule as well as from the 
 assumption of independence. Similarly the chance of GGGBB would compute as:
 $0.487 \times 0.487 \times 0.487 \times 0.513 \times 0.513 = 
 (0.487)^3 \times (0.513)^2$, so exactly the same chance.
@@ -217,7 +218,8 @@ the proportion of girls in a sample of 5 for all possible cases
 ```{r}
 #| code-fold: false
 
-barplot(dbinom(seq(0,5, by = 1), 5, 0.487), names.arg = as.character(seq(0,5, by = 1)/5),
+barplot(dbinom(seq(0,5, by = 1), 5, 0.487), 
+        names.arg = as.character(seq(0,5, by = 1)/5),
         main = "Probability distribution: Sample size 5",
         xlab = "Proportion of girls",
         ylab = "Probability")
@@ -232,9 +234,9 @@ given
 the probability that a baby is a girl of $0.487$ is:
 
 \begin{eqnarray*}
-P(X = 0) &=& \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
-         &=& \frac{5!}{2!(5-2)!} 0.487^2(1-0.487)^{5-2} \\
-         &=& \frac{5\,4\,3\,2\,1}{(2\,3\,2\,1)} 0.487^2(1-0.487)^{5-2} \\
+P(X = 2) &=& \binom{5}{2} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
+         &=& \frac{5!}{2!(5-2)!} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
+         &=& \frac{5\times 4\times 3\times 2\times 1}{(2\times 3\times 2 \times 1)} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
          &=& 0.3201917
 \end{eqnarray*}
 
@@ -264,7 +266,7 @@ vector of characters.
 I think by now you understand how we apply the formula both in math and in
 R to figure out the probabilities. Here we do the same exercise for
 $n= 100$ and $n=1000$. We do not show the code anymore her just the
-plots:
+plots (try it!):
 
 ```{r}
 par(mfrow = c(1,2))
@@ -281,7 +283,8 @@ barplot(dbinom(seq(0,1000, by = 1), 1000, 0.487), names.arg = as.character(seq(0
 ```
 
 When we draw random samples, like in this example drawing babies from a
-population of newborns, then the chance process of random
+population of newborns at random with replacement, then the 
+chance process of random
 sampling delivers a number and then another and
 then another and so on, in the specific example, 1 for a girl
 and 0 for a boy.
@@ -309,7 +312,9 @@ a bit more.
 
 The formula for the expected value depends on the chance process which
 generates the random numbers. Let us introduce the general formulas
-by an example. Suppose we make hundered random draws with replacement
+by an example. 
+
+Suppose we make hundred random draws with replacement
 from the box, containing the following tickets, symbolized by an
 R vector called `box` and the draws symbolized by an R vector
 called `draws`.
@@ -317,7 +322,7 @@ called `draws`.
 ```{r}
 #| code-fold: false
 
-box <- c(1,1,1,5)
+box <- c(0,2,3,4, 6)
 
 draws <- sample(box, size = 100, replace = TRUE)
 ```
@@ -326,9 +331,12 @@ We would like to know the expected value of the sum of these
 draws, when we add up the numbers on the tickets we have drawn at
 random from the box. How large should it approximately be?
 
-There should be about 1/4 cases in which the ticket shows 5 and
-3/4 of cases where it shows 1. With 100 draws, this would be
-$25 \times 5 + 75 \times 1 = 200$. This is the expected value.
+There should be about 1/5 cases in which the ticket shows 0, 1/5 where it
+shows 2, 1/5 where it shows 3, 1/5 where it shows 4 and 1/5 where 
+it shows 6. With 100 draws, this would be
+$20 \times 0 + 20 \times 2 + 20 \times 3 + 20 \times 4 + 20 \times 6 = 300$. 
+
+This is called the expected value.
 
 The formula has two ingredients:
 
@@ -349,10 +357,10 @@ replacement from a box equals
 
 The logic here is that the average of the box amounts to
 \begin{equation}
-\frac{1+1+1+5}{4} = 2
+\frac{0+2+3+4+6}{5} = 15/5 = 3
 \end{equation}
 On average each draw adds around 2 to the sum. With 100 draws then
-the sum must be around $100 \times 2 = 200$.
+the sum must be around $100 \times 3 = 300$.
 
 See what we have in our actual random draws:
 ```{r}
@@ -362,49 +370,12 @@ sum(draws)
 ```
 pretty close.
 
-::: {.callout-tip}
-
-
-## Example: Boys and girls again.
-
-In the example with boys and girls the logic is the same. Here the box is:
-```{r}
-#| code-fold: false
-
-baby_box <- c("girl", "boy")
-```
-
-We draw 100 babies with replacement and with probabilities $0.487, 0.513$.
-```{r}
-#| code-fold: false
-
-baby_draws <- sample(baby_box, 100, replace = T, prob = c(0.487, 0.513))
-```
-Here you see a nice feature of the `sample()`function, we have used a lot in 
-this lecture. You can tell sample with which probabilities it should select
-boys and girls and we took the natural probabilities we already used above.
-
-We draw 100 babies and the average in  the box is 0.487, if we encode the
-outcome girl as 1 and the outcome boy as 0, like we did already before. So
-the expected value is:
-
-$100 \times 0.487 = 48.7$
-
-Now count the girls using logicals:
-
-```{r}
-#| code-fold: false
-
-sum(baby_draws == "girl")
-```
-
-:::
 
 ### Standard error
 
 We have seem before that the expected value of the sum of the tickets in the
-box is $200$. The actual outcome of the random process was, however,
-`r sum(draws)`, which is `r sum(draws) - 200` off the expected value.
+box is $300$. The actual outcome of the random process was, however,
+`r sum(draws)`, which is `r sum(draws) - 300` off the expected value.
 
 This is a chance error. The sum will be off the expected value by the
 size of a chance error, so that:
@@ -444,7 +415,7 @@ spread in the box, the standard deviation is big and it is hard to predict
 how the draws will turn out. So the standard error must be big too.
 
 The sum of two draws has more variability than one draw. The sum of 100 draws
-is still ore variable. As the number of draws grows the sum gets harder to
+is still more variable. As the number of draws grows the sum gets harder to
 predict, the chance error gets bigger and so does the standard error. However
 the standard error goes up slowly with a factor equal to the square root
 of the number of draws. With 100 draws, therefore the sum is 10 times more
@@ -454,23 +425,277 @@ Note that the standard deviation and the standard error are two different
 concepts:
 
 The standard deviation is for the list of numbers in the box, in our example
-$1,1,1,5$. This is 
-`r round(sd(c(1,1,1,5)*sqrt(3/4)),2)`
+$0,2,3,4, 6$. This is 
+`r round(sd(c(0,2,3,4,6)*sqrt(4/5)),2)`
 
 The standard error refers to the outcome of the chance process, in
 our case drawing at random from the box of numbers. This is
-for our particular example `r 10*round(sd(c(1,1,1,5)*sqrt(3/4)),2)`
+for our particular example `r 10*round(sd(c(0,2,3,4,6)*sqrt(4/5)),2)`
 
 A statistics, like the mean or a proportion, when viewed as a random
 variable has a standard error. This is to distinguish from the standard
 deviation of the population distribution from which this statistics derives.
 
-## The central limit theorem and the normal distribution
+We began our discussion with 100 random draws with replacement from
+the box
+```{r}
+#| code-fold: false
+box <- c(0,2,3,4,6)
+```
+The expected value of the sum is 300. The sum will be around 300 but will
+be off by a chance error. The average in the box is
+```{r}
+#| code-fold: false
+mean(box)
+```
+and the standard deviation is
+```{r}
+#| code-fold: false
+
+sqrt( ((0-3)^2 + (2-3)^2+ (3-3)^2 + (4-3)^2 + (6-3)^2)/5)
+```
+
+This measures the variability in our box. According to the square 
+root law the sum of 100 draws is $\sqrt{100} = 10$ times more 
+variable. The standard error (SE) of the sum is the $10 \times 2$
+or $20$. The likely chance error is about 20. The sum of draws should
+be around 200 give or take 20.
+
+Let us use the compute again to show what this means empirically. When we 
+asked
+the computer to draw 100 times with replacement from the box we got a list
+of successive draws, which we could visualize as follows:
+
+```{r}
+
+
+res <- split(draws, ceiling(seq_along(draws)/5))
+
+df <- as.data.frame(do.call(rbind, res))
+names(df) <- c("Element 1", "Element 2", "Element 3", "Element 4", "Element 5")
+rownames(df) <- NULL
+knitr::kable(df[ , c("Element 1", "Element 2", "Element 3", "Element 4", "Element 5")])
+```
+
+The sum of these draws is `r sum(draws)`, this is `r sum(draws) - 300` off
+the expected value.
+
+Now if we do such an experiment 100 times, we get something like the
+following table. I don't show the code but you can try to refresh your
+knowledge of writing a loop here.
+```{r}
+repetitions <- vector("list", 100)
+
+for(i in seq_along(1:100)){
+  
+  
+  repetitions[[i]] <- sum(sample(box, 100, replace = TRUE))
+  
+}
+
+# perpeare a table
+
+out <- split(repetitions, ceiling(seq_along(repetitions)/20))
+aux <- lapply(out, unlist) |> as.data.frame()
+
+df <- data.frame(Round = 1:20, Sum = aux[,1], Round = 21:40, Sum = aux[, 2], Round = 41:60, Sum = aux[, 3], Round = 61:80, Sum = aux[, 4], Round = 81:100, Sum = aux[,5])
+
+knitr::kable(df, col.names = c("Round", "Sum", 
+                               "Round", "Sum", 
+                               "Round", "Sum", 
+                               "Round", "Sum",
+                               "Round", "Sum")
+             )
+```
+
+The observed values in this table have a remarkably low spread around
+the expected value of 300. It is rare that they are more than 2 or three standard errors away from the expected value. In principle they could be
+as small as 0 and as large as 600 but most of them are between 2.5 standard
+errors, actually:
+```{r}
+#| code-fold: false
+x <- mean(unlist(repetitions) <= (300 + 20*2.5) & 
+     unlist(repetitions) >= (300 - 20*2.5))
+```
+`r x*100` % are within these bounds.
+
+### Using the normal curve when the number of draws is large
+
+When we make a large number of draws at random with replacement what is
+the chance that the values are within a given range ? 
+Historically mathematicians detected the normal curve 
+while working out problems of this
+kind. Let's keep the logic of why the normal curev comes into play with
+a large number of draws aside for the moment and briefly discuss
+how it works.
+
+Think about our box from before.
+```{r}
+#| code-fold: false
+
+box <- c(0,2,3,4,6)
+```
+When we tell the computer to repeatedly sample from this box with replacement
+and take the sum, he prints or stores the result over and over again. What 
+percentage of numbers should be between 200 and 250? 
+
+Note that each sum will
+be somewhere between 0 and $100 \times 6$ or 600. Let us assume
+we want to know the chance that the sum is somewhere between
+150 and 350. Here is a picture. We convert first to standard units
+and then use the normal curve.
+![Probability of sum between 150 and 360 in a large sample](pictures/range_of_sum_with_curve.png)
+```{r}
+#| code-fold: false
+
+pnorm(1.5) - pnorm(-1.5)
+```
+
+Let's check with the data
+
+```{r}
+#| code-fold: false
+
+y <- mean(unlist(repetitions) <= (300 + 30) & 
+     unlist(repetitions) >= (300 - 30))
+```
+This is `r y` %. A pretty good approximation.
+
+Why do we need a conversion to standard units? Here we could also use the
+normal distribution with mean 300 and standard deviation 30 to derive the
+same result. To see this, consider:
+```{r}
+#| code-fold: false
+
+pnorm(330, mean = 300, sd = 20) - pnorm(270, mean = 300, sd = 20)
+```
+Same result. The probability does not depend on the units in which the
+variables are measured. There is an infinity of normal
+distributions for each different pair of means and standard deviations.
+For the computer this is no problem to handle, so in the computer age
+in some cases we do not need to convert to standard units.
+
+However before the age of computers probabilities of the normal distribution
+were printed in tables, for the standard normal distributions and you had
+to use the table to compute probabilities for intervals of normally 
+distributed random variables. Such a table looks like this:
+
+![Probability table of the standard normal distribution](pictures/standard_normal_table.png)
+The value in the table correspond to the area under the normal curve above
+a certain value $z$. So how do we read the table for our computation? The
+area above $z = 1.5$ is 0.0668 (table row 16). The area above 0 is by the
+symmetry of the normal curve 0.5. Hence the area between 0 and 1.5 must be
+0.4332 and by symmetry again, the area above -1.5 and below 0 must then by
+twice this amount which gives 0.8664, which is the same answer than we got from
+the computer.^[There are other scenarios where standardization is useful even
+if we have access to a computer. One is when we compare variables with different
+normal distributions relative to each other. One example would be, when the 
+grades of the astronomy course and the grades of the statistics course are
+normally distributed but with different means and standard deviations. 
+Then to
+compare the scores you need to standardize. For instance, suppose a student 
+is scoring 60 in Astronomy with the mean score of the class being 40, 
+and scoring 65 at statistics with the mean score of the class being 80. 
+Given the “raw” scores, one would say that the student performed better 
+in statistics than in astronomy. However, taking into consideration 
+the peers,  it is clear that the student performed relatively better in 
+astronomy than in statistics.
+
+Furthermore z-scores also allow to compare variables that would be
+impossible to compare otherwise because they have different units.
+Say you would like to know whether somebody is more extreme in
+terms of salary than in terms of running speed, then there would
+be no way to know this except when you standardize or use z-scores.
+]
+
+::: {.callout-tip}
+## Boys and girls again: A useful special case with a short cut
+
+Finding standard errors can be computationally intensive, especially
+for large samples. If the random variable can have only two values,
+like in the example of boys and girls, there is a short cut. 
+
+Assume we interpret a random device which shows a number 1 as indicating a 
+girl and 0 indicating a boy, with the probability of 1 given by 0.487.
+Then we can use a short cut.
+
+::: {.callout-important}
+
+When a list has two different numbers the standard deviation equals:
+\begin{equation}
+\left(\text{bigger number} - \text{smaller number}) \right) \times \sqrt{\text{share of bigger number}
+\times \text{share of smaller number}}
+\end{equation}
+:::
+
+Say, our box is like before with the baby girls and baby boys. Again,
+we might think of a box consisting of two values and the probability that
+a newborn baby will be a girl is 0.487. Then a list of 1000 babies will be
+a list of binomial random variables, which we can simulate
+```{r}
+#| code-fold: false
+
+box <- c("girl", "boy")
+outcome <- sample(box, 1000, replace = T, prob = c(0.487, 0.513))
+
+```
+If we encode the event girl as 1 and the event boy as 0, then the standard 
+deviation of the list must be according to our short cut formula:
+```{r}
+#| code-fold: false
+
+(1-0)*sqrt(mean(outcome == "girl")*mean(outcome == "boy"))
+```
+
+With this insight we can treat the binomial case exactly like the box case. All
+we have to do is to mark the tickets in the box, in our case the girls and boys,
+write 1 on the tickets that you count and 0 on the others and then your expected
+value of a sum of n tosses will be:
+
+\begin{eqnarray}
+\text{expected value}&=& \text{number of draws} \times \text{share of} \, 1.\\
+\text{standard error}&=& \sqrt{\text{number of draws}} \times \sqrt{\text{share of 1}\times \text{share of 0}}
+\end{eqnarray}
+This means that in our case of 100 draws the expected value of girls will be
+$1000 \times 0.487 = 487$ with a standard error of 
+$\sqrt{1000}\times \sqrt{0.487 \times 0.513} = 15.8$ or about 16.
+
+Look at the number from the simulation:
+```{r}
+mean(outcome == "girl")
+sqrt(1000)*sqrt( mean(outcome == "girl")*(mean(outcome == "boy")))
+```
+
+This is very good. Now for computing probabilities also here we can - for large
+enough samples - use the normal approximation. Say, we would like to know what 
+is the probability that we would observe a share of girls between 0.4 and 0.5?
+
+With the computer the exact computation is easy, because all the formulas we 
+need are implemented. We just add up all the binomial probabilities from 0 to
+500 and add up from 0 to 400 and take the difference:
+```{r}
+#| code-fold: false
+
+sum(dbinom(0:500, size = 1000, prob = 0.487)) - 
+sum(dbinom(0:400, size = 1000, prob = 0.487))
+```
+Using the normal approximation with mean 487 and standard error 15.8, let us
+convert to z scores, to get $(400 - 487)/15.8 = -5.5$ and 
+$(500 - 487)/15.8 = 0.82$ in standard units. Thus we get
+```{r}
+#| code-fold: false
+
+pnorm(0.82) - pnorm(-5.5)
+```
+which is a stunningly close approximation.
+:::
+
+### The central limit theorem and probability histograms
 
 When we get numbers from a chance process, the expected value and
 the standard error give us an impression where the numbers will
-be. If we want to get the full picture, however, we get the
-whole picture from a **probability histogram**.
+be. If we want to get the full picture, however, we get it
+from a **probability histogram**.
 
 ::: {.callout-tip}
 ## Probability histogram
@@ -570,7 +795,7 @@ axis(2, at =c(0,0.1, 0.2, 0.3), labels = c("0 %","10 %", "20 %", "30 %"))
 
 You can see that the probability histograms observed from the random experiments 
 of throwing the two dice 100, 1000 and 10000 times get closer and closer to the
-ideal probability historgam, where the relative frequency of events from the
+ideal probability histogram, where the relative frequency of events from the
 random experiment come arbitrarily close to the theoretical probabilities.
 
 There are 6 events in 36 where the sum of the die could be 7 (try to convince 
@@ -578,12 +803,10 @@ yourself!). This is 16 2/3 %. The area of the rectangle over 7 in the probabilit
 histogram, therefore equals 16.3%. The total area of all the rectangles sum up to
 100 %.
 
-### Probability histograms and the normal curve
-
-When we discussed the theoretical share of baby girls in a random sample 
-drawn from a large using the binomial distribution, we saw a remarkable
+When we discussed the theoretical share of baby girls using the binomial 
+distribution, we saw a remarkable
 fact:
-population of newborn babies:
+
 
 ```{r}
 par(mfrow = c(1,2))
@@ -600,20 +823,32 @@ barplot(dbinom(seq(0,1000, by = 1), 1000, 0.487), names.arg = as.character(seq(0
 ```
 
 We saw in this example that the variability of the observed proportion gets
-smaller as the sample size increases. This is the classic 
-**law of large numbers** detected by Jacob Bernoulli in the 17th
-century. As we increase the sample, the proportion of girls in the
-outcome of the random experiment comes closer and close to the
+smaller as the sample size increases. Here the same mechanisms
+are at work as in the example of craps.
+
+These mechanisms have been first systematically described
+by is the classic Jacob Bernoulli in the 17th
+century and the result is termed the
+**law of large numbers** or the law of averages.^[Jacob Bernoulli, 6 
+January 1655  – 16 August 1705,was one of the many prominent mathematicians 
+in the Swiss Bernoulli family. 
+![Jacon Bernoulli](pictures/Jakob_Bernoulli.jpg)
+He sided with Gottfried Wilhelm Leibniz during the Leibniz–Newton calculus 
+controversy and was an early proponent of Leibnizian calculus, which he made 
+numerous contributions to; along with his brother Johann, he was one of the 
+founders of the calculus of variations. He also discovered the fundamental 
+mathematical constant e. However, his most important contribution was in 
+the field of probability, where he derived the first version of the 
+law of large numbers in his work Ars Conjectandi.[3]]
+
+The manifestation of this law here is that when
+we increase the sample, the proportion of girls in the
+outcome of the random experiment comes closer and closer to the
 true proportion of 0.487.
 
-In unit 3 we introduced the normal curve, which we found described the
-empirical distribution of human height data with surprising accuracy.
-The argument wy this might be the case was that human height depends on
-a huge number of factors, all of which have for themselves little influence
-on the outcome. Adding up all these small effects gets to a normal 
-distribution.
-
-This is also the reasoning behind the famous **central limit theorem**
+In the previous section we discussed the normal
+approximation when the sample size is large enough. 
+This is also the content of the famous **central limit theorem**
 detected in 1733 by Abraham de Moivre. This theorem says:
 
 ::: {.callout-important}
@@ -637,6 +872,104 @@ Now we see also why in the bootstrap examples we discussed in unit 5, the
 distribution of the statistics we got from repeated resamples looked more
 and more like a normal distribution. This is the consequence of the central
 limit theorem.
+
+This applies also for proportions, because as we discussed in the previous
+section, by appropriate labeling of the outcomes we want to count proportions
+can be understood as means of a binary variable with values 0 and 1.
+
+Before we close this section, let us discuss the scope of the normal
+approximation to get a better feeling when it is appropriate to use it.
+
+Let us for the start consider an unbalanced box
+like this one with 9 zeros and one 1:
+
+```{r}
+#| code-fold: false
+
+skew_box <- c(0,0,0,0,0,0,0,0,1)
+```
+This is the probability histogram of this box:
+```{r}
+barplot(c(0.9, 0.1), names.arg = c("0", "1"), 
+        main = "Probability histogram of lopsided box",
+        xlab = "Proportion of 0",
+        ylab = "Probability")
+```
+How many draws do we need before the sum gets near to normal? Let us
+start with 25 draws from the skew box first. 
+(I don't show the code. You by now know how
+to code this. Try it!):
+```{r}
+appr_1 <- function(){
+  sample(skew_box, 9 , replace = TRUE, prob = c(rep(0.1,8), 0.9)) |> sum()
+}
+
+out_1 <- replicate(25, appr_1())
+
+h25 <- hist(out_1, breaks = seq(0.5, 9.5, by = 1), plot = F)
+
+h25$counts <- h25$counts/sum(h25$counts)
+
+plot(h25,
+     xlab = "Value of the sum",
+     ylab = " ",
+     main = "25 samples",
+     axes = F,
+     xlim = c(0,10),
+     ylim = c(0,0.6)
+)
+
+# add labels below each column
+axis(1, at = 1:9, labels = 1:9)
+axis(2, at =c(0,0.1, 0.2, 0.3, 0.4, 0.5), labels = c("0 %","10 %", "20 %", "30 %", "40 %", "50 %"), las = 1)
+
+data <- out_1
+
+x_values <- seq(0, 9, length = 100)
+y_values <- dnorm(x_values, mean = mean(data), sd = sd(data)) 
+y_values <- y_values * diff(h25$mids[1:2])  
+
+#overlay normal curve on histogram
+lines(x_values, y_values, lwd = 2, col = "red")
+```
+
+You can see that there are is a bad fit between the probability histogram and
+the normal curve. The approximation will not work.
+
+Let us try 1000 draws
+
+```{r}
+
+out_2 <- replicate(1000, appr_1())
+
+h1000 <- hist(out_1, breaks = seq(0.5, 9.5, by = 1), plot = F)
+
+h1000$counts <- h1000$counts/sum(h1000$counts)
+
+plot(h1000,
+     xlab = "Value of the sum",
+     ylab = " ",
+     main = "500 samples",
+     axes = F,
+     xlim = c(0,10),
+     ylim = c(0,0.6)
+)
+
+# add labels below each column
+axis(1, at = 1:9, labels = 1:9)
+axis(2, at =c(0,0.1, 0.2, 0.3, 0.4, 0.5), labels = c("0 %","10 %", "20 %", "30 %", "40 %", "50 %"), las = 1)
+
+data <- out_2
+
+x_values <- seq(0, 9, length = 100)
+y_values <- dnorm(x_values, mean = mean(data), sd = sd(data)) 
+y_values <- y_values * diff(h1000$mids[1:2])  
+
+#overlay normal curve on histogram
+lines(x_values, y_values, lwd = 2, col = "red")
+```
+
+
 
 ## The 95 % confidence interval
 

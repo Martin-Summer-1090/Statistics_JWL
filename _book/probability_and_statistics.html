@@ -120,7 +120,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -247,24 +247,22 @@ div.csl-indent {
   <li><a href="#the-binomial-distribution" id="toc-the-binomial-distribution" class="nav-link" data-scroll-target="#the-binomial-distribution"><span class="header-section-number">10.1.1</span> The binomial distribution</a></li>
   <li><a href="#expected-value" id="toc-expected-value" class="nav-link" data-scroll-target="#expected-value"><span class="header-section-number">10.1.2</span> Expected value</a></li>
   <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error"><span class="header-section-number">10.1.3</span> Standard error</a></li>
+  <li><a href="#using-the-normal-curve-when-the-number-of-draws-is-large" id="toc-using-the-normal-curve-when-the-number-of-draws-is-large" class="nav-link" data-scroll-target="#using-the-normal-curve-when-the-number-of-draws-is-large"><span class="header-section-number">10.1.4</span> Using the normal curve when the number of draws is large</a></li>
+  <li><a href="#the-central-limit-theorem-and-probability-histograms" id="toc-the-central-limit-theorem-and-probability-histograms" class="nav-link" data-scroll-target="#the-central-limit-theorem-and-probability-histograms"><span class="header-section-number">10.1.5</span> The central limit theorem and probability histograms</a></li>
   </ul></li>
-  <li><a href="#the-central-limit-theorem-and-the-normal-distribution" id="toc-the-central-limit-theorem-and-the-normal-distribution" class="nav-link" data-scroll-target="#the-central-limit-theorem-and-the-normal-distribution"><span class="header-section-number">10.2</span> The central limit theorem and the normal distribution</a>
+  <li><a href="#the-95-confidence-interval" id="toc-the-95-confidence-interval" class="nav-link" data-scroll-target="#the-95-confidence-interval"><span class="header-section-number">10.2</span> The 95 % confidence interval</a>
   <ul class="collapse">
-  <li><a href="#probability-histograms-and-the-normal-curve" id="toc-probability-histograms-and-the-normal-curve" class="nav-link" data-scroll-target="#probability-histograms-and-the-normal-curve"><span class="header-section-number">10.2.1</span> Probability histograms and the normal curve</a></li>
+  <li><a href="#computing-confidence-intervals" id="toc-computing-confidence-intervals" class="nav-link" data-scroll-target="#computing-confidence-intervals"><span class="header-section-number">10.2.1</span> Computing confidence intervals</a></li>
   </ul></li>
-  <li><a href="#the-95-confidence-interval" id="toc-the-95-confidence-interval" class="nav-link" data-scroll-target="#the-95-confidence-interval"><span class="header-section-number">10.3</span> The 95 % confidence interval</a>
-  <ul class="collapse">
-  <li><a href="#computing-confidence-intervals" id="toc-computing-confidence-intervals" class="nav-link" data-scroll-target="#computing-confidence-intervals"><span class="header-section-number">10.3.1</span> Computing confidence intervals</a></li>
-  </ul></li>
-  <li><a href="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" id="toc-the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="nav-link" data-scroll-target="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.4</span> The role of systematic error due to non random causes and the role of judgement</a></li>
-  <li><a href="#confidence-intervals-when-we-observe-all-the-data" id="toc-confidence-intervals-when-we-observe-all-the-data" class="nav-link" data-scroll-target="#confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.5</span> Confidence intervals when we observe all the data</a></li>
-  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">10.6</span> Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">10.7</span> Outcome</a></li>
+  <li><a href="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" id="toc-the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="nav-link" data-scroll-target="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.3</span> The role of systematic error due to non random causes and the role of judgement</a></li>
+  <li><a href="#confidence-intervals-when-we-observe-all-the-data" id="toc-confidence-intervals-when-we-observe-all-the-data" class="nav-link" data-scroll-target="#confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.4</span> Confidence intervals when we observe all the data</a></li>
+  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">10.5</span> Contents</a></li>
+  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">10.6</span> Outcome</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -283,12 +281,12 @@ div.csl-indent {
 
 </header>
 
-<p>In the last unit on probability we analyzed randomizing devices such as dice and coins. We have assumed the in these cases that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes. One example was 1/2 for a fair coin coming up Heads, or 1/6 for the die landing on any of its faces, or 1/36 for two dice showing one of the possible combinations of points.</p>
+<p>In the last unit on probability we analyzed randomizing devices such as dice and coins. We have assumed the in these cases that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes. One example was 1/2 for a fair coin coming up Heads, or 1/6 for the die showing any of its faces after a throw, or 1/36 for two dice showing one of the possible combinations of points.</p>
 <p>When we attach to each of these outcomes some quantity, for example 1 for Heads and 0 for Tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. This probability distribution can be described by parameters, such as the mean, for example in the case of the Poisson Distribution, or the mean and the standard deviation in the case of the normal distribution. We also learned how we can use R to draw data points from a probability distribution described by its parameters.</p>
-<p>The usual situation, we face in statistics is that we have to deal with lots of data and we give a summary description of these data usually by summary statistics like the mean, the median or other percentiles.</p>
-<p>A fundamental step and a key idea in statistics, where probability and statistics come together, is the idea that we can view a particular statistics like the mean also as a random variable and their values as draws from their own probability distribution. This is a conceptually challenging and difficult idea but we have encountered it already once when we discussed the bootstrap.</p>
+<p>The usual situation, we face in statistics is that we have to deal with lots of data and we give an overall description of these data usually by a summary statistics like the mean, the median or other percentiles.</p>
+<p>A fundamental step and a key idea in statistics, where probability and statistics come together, is the idea that we can view a particular statistics like the mean also as a random variable and its values as draws from its own probability distribution. This is a conceptually challenging and difficult idea but we have encountered it already once when we discussed the bootstrap.</p>
 <p>There we took repeated samples with replacement from the distribution of human height data and computed the mean height at each step. In this way we generated a distribution of the mean height that gave us some idea about the precision of this estimate.</p>
-<p>In contrast to bootstrapping which is a computer intensive simulation technique, probability theory provides another approach to give a mathematical answer to the same question: How confident can I be about the precision of my statistics. In this approach we can save on computing resources but we need - as in any mathematical theory - assumptions and we need to think about whether these assumptions are justified in each single situation where we appy the theory.</p>
+<p>In contrast to bootstrapping which is a computer intensive simulation technique, probability theory provides another approach to give a mathematical answer to the same question: How confident can we be about the precision of our statistics. In this approach we can save on computing resources but we need - as in any mathematical theory - assumptions and we need to think about whether these assumptions are justified in each single situation where we apply the theory.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -315,13 +313,13 @@ Keywords
 
 </div>
 </div>
-<section id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." class="level2" data-number="10.1">
+<section id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." class="level2 page-columns page-full" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution."><span class="header-section-number">10.1</span> Boys and Girls: Using probability theory to find a sampling distribution.</h2>
 <p>In unit 3 we talked about random samples, where we draw a sample from a population and want to learn from the sample statistics about the value of the statistics - say a proportion - in the underlying population.</p>
 <p>For this we need to know how a known population gives rise to different samples. Let us think about this problem in terms of concrete example.</p>
 <p>In a sample of 100 newborn babies we find that there are 48.7 % girls and 51.3 % boys. What can we say about the proportion of baby girls in the population of all newborns in a country?</p>
 <p>Suppose the sample has a size of only 1. Then the proportion of baby girls must be either 0 or 1 depending whether we have selected a girl or a boy. These events occur with probability 0.513 (boy) ans 0.487 (girl).</p>
-<p>This is actually the natural probability that a baby is a girl or a boy and it has been historically very stable. The outcomes are also independent across births. The resulting probability distribution is shown here:</p>
+<div class="page-columns page-full"><p>These are actually the natural probabilities that a baby is a girl or a boy and it has been historically very stable. The outcomes are also independent across births.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The resulting probability distribution is shown here:</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The independence assumption is justified when we abstract for the moment from rare events such as twins and triplets. In this case things are a bit more complicated but let’s not worry about these special cases for now.</p></li></div></div>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -351,7 +349,7 @@ Keywords
 <p>We could now use probability theory to work out the probability distribution for even larger and larger samples. How would we do that?</p>
 <p>Suppose we would like to find the probability that in a random sample of 5 newborns we have two boys and then three girls, like, for example, this: BBGGG. There are, of course, many other ways in which there can be two boys in a sample of five, for example GGGBB.</p>
 <p>To solve the problem using probability theory we must first find all the possible ways two boys and three girls can occur, compute the chance of each and then use the addition rule to add up the chances. Let us skip the complicated task of finding all the possible ways and concentrate on the second task first.</p>
-<p>The chance of a pattern BBGGG is: <span class="math inline">\(0.513 \times 0.513 \times 0.487 \times 0.487 \times 0.487 = (0.513)^2 \times (0.487)^3\)</span> This follows from the multiplication rule as well as from the assumption of independence. Similarly the chance of GGGBB would compute as: <span class="math inline">\(0.487 \times 0.487 \times 0.487 \times 0.513 \times 0.513 = (0.487)^3 \times (0.513)^2\)</span>, so exactly the same chance.</p>
+<p>The chance of a pattern BBGGG is: <span class="math inline">\(0.513 \times 0.513 \times 0.487 \times 0.487 \times 0.487 = (0.513)^2 \times (0.487)^3\)</span>. This follows from the multiplication rule as well as from the assumption of independence. Similarly the chance of GGGBB would compute as: <span class="math inline">\(0.487 \times 0.487 \times 0.487 \times 0.513 \times 0.513 = (0.487)^3 \times (0.513)^2\)</span>, so exactly the same chance.</p>
 <p>Now, how many patterns are there? The number of patterns is given by the <strong>binomial coefficient</strong>: <span class="math display">\[\begin{equation*}
 \frac{5 \times 4 \times 3 \times 2 \times 1}
 {(2 \times 1) \times (3 \times 2 \times 1)} = 10
@@ -419,19 +417,20 @@ Binomial Formula in R
 </div>
 <p>Let us demonstrate its use this to work out the theoretical probabilities for the proportion of girls in a sample of 5 for all possible cases (0, 1, 2, 3, 4, or 5 girls).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">5</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">5</span>),</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 5"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">5</span>, <span class="fl">0.487</span>), </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 5"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Let’s check your understanding of the formula: Denote the event that a randomly chosen newborn will be a girl by <span class="math inline">\(X\)</span>. According to the binomial formula the probability that in a sample of 5 newborns we will have, say two girls, given the probability that a baby is a girl of <span class="math inline">\(0.487\)</span> is:</p>
 <p><span class="math display">\[\begin{eqnarray*}
-P(X = 0) &amp;=&amp; \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
-         &amp;=&amp; \frac{5!}{2!(5-2)!} 0.487^2(1-0.487)^{5-2} \\
-         &amp;=&amp; \frac{5\,4\,3\,2\,1}{(2\,3\,2\,1)} 0.487^2(1-0.487)^{5-2} \\
+P(X = 2) &amp;=&amp; \binom{5}{2} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
+         &amp;=&amp; \frac{5!}{2!(5-2)!} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
+         &amp;=&amp; \frac{5\times 4\times 3\times 2\times 1}{(2\times 3\times 2 \times 1)} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
          &amp;=&amp; 0.3201917
 \end{eqnarray*}\]</span></p>
 <p>This is what we get if we do the computation by hand and using pencil and paper. When we use R we should get the same result:</p>
@@ -443,7 +442,7 @@ P(X = 0) &amp;=&amp; \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
 </div>
 <p>Now look at the barplot: If we have 2 girls out of 5 the proportion of girls in the sample would be <span class="math inline">\(2/5\)</span> or <span class="math inline">\(0.4\)</span>. The theoretical probability for this proportion would be about <span class="math inline">\(0.32\)</span>. This is exactly what you see in the barplot.</p>
 <p>For the plot we have computed these probabilities and proportions for all constellations 0, 1, 2, 3, 4 and 5 girls. We have created this sequence with the R <code>seq()</code> function. For the <code>names.arg</code> argument we have created the same sequence but divided every element of the sequence by 5 to express the number as a proportion and then transformed the numbers to a vector of type character by the <code>as.character()</code> function, since <code>names.arg</code> requires a vector of characters.</p>
-<p>I think by now you understand how we apply the formula both in math and in R to figure out the probabilities. Here we do the same exercise for <span class="math inline">\(n= 100\)</span> and <span class="math inline">\(n=1000\)</span>. We do not show the code anymore her just the plots:</p>
+<p>I think by now you understand how we apply the formula both in math and in R to figure out the probabilities. Here we do the same exercise for <span class="math inline">\(n= 100\)</span> and <span class="math inline">\(n=1000\)</span>. We do not show the code anymore her just the plots (try it!):</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -463,7 +462,7 @@ P(X = 0) &amp;=&amp; \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
 <p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When we draw random samples, like in this example drawing babies from a population of newborns, then the chance process of random sampling delivers a number and then another and then another and so on, in the specific example, 1 for a girl and 0 for a boy.</p>
+<p>When we draw random samples, like in this example drawing babies from a population of newborns at random with replacement, then the chance process of random sampling delivers a number and then another and then another and so on, in the specific example, 1 for a girl and 0 for a boy.</p>
 <p>Mathematicians call the value around which these number vary the <strong>expected value</strong>, and the amounts of the numbers being off the in size from the expected value the <strong>standard error</strong>. The formulas for the expected value and the standard error depend on the chance process which generates the numbers.</p>
 <p>The figures above have two notable features.</p>
 <ol type="1">
@@ -474,14 +473,16 @@ P(X = 0) &amp;=&amp; \binom{5}{2}0.487^2(1-0.487)^{5-2} \\
 </section>
 <section id="expected-value" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">10.1.2</span> Expected value</h3>
-<p>The formula for the expected value depends on the chance process which generates the random numbers. Let us introduce the general formulas by an example. Suppose we make hundered random draws with replacement from the box, containing the following tickets, symbolized by an R vector called <code>box</code> and the draws symbolized by an R vector called <code>draws</code>.</p>
+<p>The formula for the expected value depends on the chance process which generates the random numbers. Let us introduce the general formulas by an example.</p>
+<p>Suppose we make hundred random draws with replacement from the box, containing the following tickets, symbolized by an R vector called <code>box</code> and the draws symbolized by an R vector called <code>draws</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">5</span>)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">6</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> <span class="fu">sample</span>(box, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We would like to know the expected value of the sum of these draws, when we add up the numbers on the tickets we have drawn at random from the box. How large should it approximately be?</p>
-<p>There should be about 1/4 cases in which the ticket shows 5 and 3/4 of cases where it shows 1. With 100 draws, this would be <span class="math inline">\(25 \times 5 + 75 \times 1 = 200\)</span>. This is the expected value.</p>
+<p>There should be about 1/5 cases in which the ticket shows 0, 1/5 where it shows 2, 1/5 where it shows 3, 1/5 where it shows 4 and 1/5 where it shows 6. With 100 draws, this would be <span class="math inline">\(20 \times 0 + 20 \times 2 + 20 \times 3 + 20 \times 4 + 20 \times 6 = 300\)</span>.</p>
+<p>This is called the expected value.</p>
 <p>The formula has two ingredients:</p>
 <ol type="1">
 <li>The number of draws</li>
@@ -504,50 +505,20 @@ Expected value for the sum of random draws from a box
 </div>
 </div>
 <p>The logic here is that the average of the box amounts to <span class="math display">\[\begin{equation}
-\frac{1+1+1+5}{4} = 2
-\end{equation}\]</span> On average each draw adds around 2 to the sum. With 100 draws then the sum must be around <span class="math inline">\(100 \times 2 = 200\)</span>.</p>
+\frac{0+2+3+4+6}{5} = 15/5 = 3
+\end{equation}\]</span> On average each draw adds around 2 to the sum. With 100 draws then the sum must be around <span class="math inline">\(100 \times 3 = 300\)</span>.</p>
 <p>See what we have in our actual random draws:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 208</code></pre>
+<pre><code>[1] 301</code></pre>
 </div>
 </div>
 <p>pretty close.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Example: Boys and girls again.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In the example with boys and girls the logic is the same. Here the box is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>baby_box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"girl"</span>, <span class="st">"boy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We draw 100 babies with replacement and with probabilities <span class="math inline">\(0.487, 0.513\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>baby_draws <span class="ot">&lt;-</span> <span class="fu">sample</span>(baby_box, <span class="dv">100</span>, <span class="at">replace =</span> T, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.487</span>, <span class="fl">0.513</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Here you see a nice feature of the <code>sample()</code>function, we have used a lot in this lecture. You can tell sample with which probabilities it should select boys and girls and we took the natural probabilities we already used above.</p>
-<p>We draw 100 babies and the average in the box is 0.487, if we encode the outcome girl as 1 and the outcome boy as 0, like we did already before. So the expected value is:</p>
-<p><span class="math inline">\(100 \times 0.487 = 48.7\)</span></p>
-<p>Now count the girls using logicals:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(baby_draws <span class="sc">==</span> <span class="st">"girl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 54</code></pre>
-</div>
-</div>
-</div>
-</div>
 </section>
 <section id="standard-error" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">10.1.3</span> Standard error</h3>
-<p>We have seem before that the expected value of the sum of the tickets in the box is <span class="math inline">\(200\)</span>. The actual outcome of the random process was, however, 208, which is 8 off the expected value.</p>
+<p>We have seem before that the expected value of the sum of the tickets in the box is <span class="math inline">\(300\)</span>. The actual outcome of the random process was, however, 301, which is 1 off the expected value.</p>
 <p>This is a chance error. The sum will be off the expected value by the size of a chance error, so that:</p>
 <p><span class="math display">\[\begin{equation}
 \text{sum} = \text{expected value} + \text{chance error}
@@ -583,16 +554,610 @@ Square root law
 </div>
 </div>
 <p>This formula has two ingredients: The square root of the number of draws and the standard deviation of the list of numbers in the box. If there is a lot of spread in the box, the standard deviation is big and it is hard to predict how the draws will turn out. So the standard error must be big too.</p>
-<p>The sum of two draws has more variability than one draw. The sum of 100 draws is still ore variable. As the number of draws grows the sum gets harder to predict, the chance error gets bigger and so does the standard error. However the standard error goes up slowly with a factor equal to the square root of the number of draws. With 100 draws, therefore the sum is 10 times more variable than with a single draw.</p>
+<p>The sum of two draws has more variability than one draw. The sum of 100 draws is still more variable. As the number of draws grows the sum gets harder to predict, the chance error gets bigger and so does the standard error. However the standard error goes up slowly with a factor equal to the square root of the number of draws. With 100 draws, therefore the sum is 10 times more variable than with a single draw.</p>
 <p>Note that the standard deviation and the standard error are two different concepts:</p>
-<p>The standard deviation is for the list of numbers in the box, in our example <span class="math inline">\(1,1,1,5\)</span>. This is 1.73</p>
-<p>The standard error refers to the outcome of the chance process, in our case drawing at random from the box of numbers. This is for our particular example 17.3</p>
+<p>The standard deviation is for the list of numbers in the box, in our example <span class="math inline">\(0,2,3,4, 6\)</span>. This is 2</p>
+<p>The standard error refers to the outcome of the chance process, in our case drawing at random from the box of numbers. This is for our particular example 20</p>
 <p>A statistics, like the mean or a proportion, when viewed as a random variable has a standard error. This is to distinguish from the standard deviation of the population distribution from which this statistics derives.</p>
+<p>We began our discussion with 100 random draws with replacement from the box</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The expected value of the sum is 300. The sum will be around 300 but will be off by a chance error. The average in the box is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(box)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3</code></pre>
+</div>
+</div>
+<p>and the standard deviation is</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>( ((<span class="dv">0-3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="dv">2-3</span>)<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span> (<span class="dv">3-3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="dv">4-3</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (<span class="dv">6-3</span>)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>This measures the variability in our box. According to the square root law the sum of 100 draws is <span class="math inline">\(\sqrt{100} = 10\)</span> times more variable. The standard error (SE) of the sum is the <span class="math inline">\(10 \times 2\)</span> or <span class="math inline">\(20\)</span>. The likely chance error is about 20. The sum of draws should be around 200 give or take 20.</p>
+<p>Let us use the compute again to show what this means empirically. When we asked the computer to draw 100 times with replacement from the box we got a list of successive draws, which we could visualize as follows:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">split</span>(draws, <span class="fu">ceiling</span>(<span class="fu">seq_along</span>(draws)<span class="sc">/</span><span class="dv">5</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind, res))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Element 1"</span>, <span class="st">"Element 2"</span>, <span class="st">"Element 3"</span>, <span class="st">"Element 4"</span>, <span class="st">"Element 5"</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(df) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df[ , <span class="fu">c</span>(<span class="st">"Element 1"</span>, <span class="st">"Element 2"</span>, <span class="st">"Element 3"</span>, <span class="st">"Element 4"</span>, <span class="st">"Element 5"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Element 1</th>
+<th style="text-align: right;">Element 2</th>
+<th style="text-align: right;">Element 3</th>
+<th style="text-align: right;">Element 4</th>
+<th style="text-align: right;">Element 5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The sum of these draws is 301, this is 1 off the expected value.</p>
+<p>Now if we do such an experiment 100 times, we get something like the following table. I don’t show the code but you can try to refresh your knowledge of writing a loop here.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>repetitions <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)){</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  repetitions[[i]] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(box, <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># perpeare a table</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">split</span>(repetitions, <span class="fu">ceiling</span>(<span class="fu">seq_along</span>(repetitions)<span class="sc">/</span><span class="dv">20</span>))</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>aux <span class="ot">&lt;-</span> <span class="fu">lapply</span>(out, unlist) <span class="sc">|&gt;</span> <span class="fu">as.data.frame</span>()</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Round =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">Sum =</span> aux[,<span class="dv">1</span>], <span class="at">Round =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">40</span>, <span class="at">Sum =</span> aux[, <span class="dv">2</span>], <span class="at">Round =</span> <span class="dv">41</span><span class="sc">:</span><span class="dv">60</span>, <span class="at">Sum =</span> aux[, <span class="dv">3</span>], <span class="at">Round =</span> <span class="dv">61</span><span class="sc">:</span><span class="dv">80</span>, <span class="at">Sum =</span> aux[, <span class="dv">4</span>], <span class="at">Round =</span> <span class="dv">81</span><span class="sc">:</span><span class="dv">100</span>, <span class="at">Sum =</span> aux[,<span class="dv">5</span>])</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Round"</span>, <span class="st">"Sum"</span>, </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Round"</span>, <span class="st">"Sum"</span>, </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Round"</span>, <span class="st">"Sum"</span>, </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Round"</span>, <span class="st">"Sum"</span>,</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Round"</span>, <span class="st">"Sum"</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>             )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Round</th>
+<th style="text-align: right;">Sum</th>
+<th style="text-align: right;">Round</th>
+<th style="text-align: right;">Sum</th>
+<th style="text-align: right;">Round</th>
+<th style="text-align: right;">Sum</th>
+<th style="text-align: right;">Round</th>
+<th style="text-align: right;">Sum</th>
+<th style="text-align: right;">Round</th>
+<th style="text-align: right;">Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">282</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">319</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">286</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">313</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">289</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">337</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">305</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">342</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">366</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">320</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">83</td>
+<td style="text-align: right;">274</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">297</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">302</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">333</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">338</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">308</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">322</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">302</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">86</td>
+<td style="text-align: right;">316</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">266</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">303</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">296</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">290</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">288</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">280</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">306</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">306</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">310</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">275</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">262</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">281</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">269</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">250</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">314</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">329</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">313</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">287</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">318</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">281</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">288</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">302</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">340</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">312</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">305</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">321</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">289</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">285</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">273</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">326</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">297</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">303</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">282</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">311</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">329</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">315</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">305</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">287</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">299</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">301</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">338</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">314</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The observed values in this table have a remarkably low spread around the expected value of 300. It is rare that they are more than 2 or three standard errors away from the expected value. In principle they could be as small as 0 and as large as 600 but most of them are between 2.5 standard errors, actually:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(repetitions) <span class="sc">&lt;=</span> (<span class="dv">300</span> <span class="sc">+</span> <span class="dv">20</span><span class="sc">*</span><span class="fl">2.5</span>) <span class="sc">&amp;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unlist</span>(repetitions) <span class="sc">&gt;=</span> (<span class="dv">300</span> <span class="sc">-</span> <span class="dv">20</span><span class="sc">*</span><span class="fl">2.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>99 % are within these bounds.</p>
 </section>
+<section id="using-the-normal-curve-when-the-number-of-draws-is-large" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="using-the-normal-curve-when-the-number-of-draws-is-large"><span class="header-section-number">10.1.4</span> Using the normal curve when the number of draws is large</h3>
+<p>When we make a large number of draws at random with replacement what is the chance that the values are within a given range ? Historically mathematicians detected the normal curve while working out problems of this kind. Let’s keep the logic of why the normal curev comes into play with a large number of draws aside for the moment and briefly discuss how it works.</p>
+<p>Think about our box from before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we tell the computer to repeatedly sample from this box with replacement and take the sum, he prints or stores the result over and over again. What percentage of numbers should be between 200 and 250?</p>
+<p>Note that each sum will be somewhere between 0 and <span class="math inline">\(100 \times 6\)</span> or 600. Let us assume we want to know the chance that the sum is somewhere between 150 and 350. Here is a picture. We convert first to standard units and then use the normal curve. <img src="pictures/range_of_sum_with_curve.png" class="img-fluid" alt="Probability of sum between 150 and 360 in a large sample"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.5</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+</div>
+<p>Let’s check with the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(repetitions) <span class="sc">&lt;=</span> (<span class="dv">300</span> <span class="sc">+</span> <span class="dv">30</span>) <span class="sc">&amp;</span> </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unlist</span>(repetitions) <span class="sc">&gt;=</span> (<span class="dv">300</span> <span class="sc">-</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is 0.88 %. A pretty good approximation.</p>
+<p>Why do we need a conversion to standard units? Here we could also use the normal distribution with mean 300 and standard deviation 30 to derive the same result. To see this, consider:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">330</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">270</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8663856</code></pre>
+</div>
+</div>
+<p>Same result. The probability does not depend on the units in which the variables are measured. There is an infinity of normal distributions for each different pair of means and standard deviations. For the computer this is no problem to handle, so in the computer age in some cases we do not need to convert to standard units.</p>
+<p>However before the age of computers probabilities of the normal distribution were printed in tables, for the standard normal distributions and you had to use the table to compute probabilities for intervals of normally distributed random variables. Such a table looks like this:</p>
+<p><img src="pictures/standard_normal_table.png" class="img-fluid" alt="Probability table of the standard normal distribution"> The value in the table correspond to the area under the normal curve above a certain value <span class="math inline">\(z\)</span>. So how do we read the table for our computation? The area above <span class="math inline">\(z = 1.5\)</span> is 0.0668 (table row 16). The area above 0 is by the symmetry of the normal curve 0.5. Hence the area between 0 and 1.5 must be 0.4332 and by symmetry again, the area above -1.5 and below 0 must then by twice this amount which gives 0.8664, which is the same answer than we got from the computer.^[There are other scenarios where standardization is useful even if we have access to a computer. One is when we compare variables with different normal distributions relative to each other. One example would be, when the grades of the astronomy course and the grades of the statistics course are normally distributed but with different means and standard deviations. Then to compare the scores you need to standardize. For instance, suppose a student is scoring 60 in Astronomy with the mean score of the class being 40, and scoring 65 at statistics with the mean score of the class being 80. Given the “raw” scores, one would say that the student performed better in statistics than in astronomy. However, taking into consideration the peers, it is clear that the student performed relatively better in astronomy than in statistics.</p>
+<p>Furthermore z-scores also allow to compare variables that would be impossible to compare otherwise because they have different units. Say you would like to know whether somebody is more extreme in terms of salary than in terms of running speed, then there would be no way to know this except when you standardize or use z-scores. ]</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Boys and girls again: A useful special case with a short cut
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Finding standard errors can be computationally intensive, especially for large samples. If the random variable can have only two values, like in the example of boys and girls, there is a short cut.</p>
+<p>Assume we interpret a random device which shows a number 1 as indicating a girl and 0 indicating a boy, with the probability of 1 given by 0.487. Then we can use a short cut.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When a list has two different numbers the standard deviation equals: <span class="math display">\[\begin{equation}
+\left(\text{bigger number} - \text{smaller number}) \right) \times \sqrt{\text{share of bigger number}
+\times \text{share of smaller number}}
+\end{equation}\]</span></p>
+</div>
+</div>
+<p>Say, our box is like before with the baby girls and baby boys. Again, we might think of a box consisting of two values and the probability that a newborn baby will be a girl is 0.487. Then a list of 1000 babies will be a list of binomial random variables, which we can simulate</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"girl"</span>, <span class="st">"boy"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>outcome <span class="ot">&lt;-</span> <span class="fu">sample</span>(box, <span class="dv">1000</span>, <span class="at">replace =</span> T, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.487</span>, <span class="fl">0.513</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If we encode the event girl as 1 and the event boy as 0, then the standard deviation of the list must be according to our short cut formula:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1-0</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.499991</code></pre>
+</div>
+</div>
+<p>With this insight we can treat the binomial case exactly like the box case. All we have to do is to mark the tickets in the box, in our case the girls and boys, write 1 on the tickets that you count and 0 on the others and then your expected value of a sum of n tosses will be:</p>
+<p><span class="math display">\[\begin{eqnarray}
+\text{expected value}&amp;=&amp; \text{number of draws} \times \text{share of} \, 1.\\
+\text{standard error}&amp;=&amp; \sqrt{\text{number of draws}} \times \sqrt{\text{share of 1}\times \text{share of 0}}
+\end{eqnarray}\]</span> This means that in our case of 100 draws the expected value of girls will be <span class="math inline">\(1000 \times 0.487 = 487\)</span> with a standard error of <span class="math inline">\(\sqrt{1000}\times \sqrt{0.487 \times 0.513} = 15.8\)</span> or about 16.</p>
+<p>Look at the number from the simulation:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.497</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">sqrt</span>( <span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.8111</code></pre>
+</div>
+</div>
+<p>This is very good. Now for computing probabilities also here we can - for large enough samples - use the normal approximation. Say, we would like to know what is the probability that we would observe a share of girls between 0.4 and 0.5?</p>
+<p>With the computer the exact computation is easy, because all the formulas we need are implemented. We just add up all the binomial probabilities from 0 to 500 and add up from 0 to 400 and take the difference:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">500</span>, <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">prob =</span> <span class="fl">0.487</span>)) <span class="sc">-</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">400</span>, <span class="at">size =</span> <span class="dv">1000</span>, <span class="at">prob =</span> <span class="fl">0.487</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8034914</code></pre>
+</div>
+</div>
+<p>Using the normal approximation with mean 487 and standard error 15.8, let us convert to z scores, to get <span class="math inline">\((400 - 487)/15.8 = -5.5\)</span> and <span class="math inline">\((500 - 487)/15.8 = 0.82\)</span> in standard units. Thus we get</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.82</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">5.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7938919</code></pre>
+</div>
+</div>
+<p>which is a stunningly close approximation.</p>
+</div>
+</div>
 </section>
-<section id="the-central-limit-theorem-and-the-normal-distribution" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="the-central-limit-theorem-and-the-normal-distribution"><span class="header-section-number">10.2</span> The central limit theorem and the normal distribution</h2>
-<p>When we get numbers from a chance process, the expected value and the standard error give us an impression where the numbers will be. If we want to get the full picture, however, we get the whole picture from a <strong>probability histogram</strong>.</p>
+<section id="the-central-limit-theorem-and-probability-histograms" class="level3 page-columns page-full" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="the-central-limit-theorem-and-probability-histograms"><span class="header-section-number">10.1.5</span> The central limit theorem and probability histograms</h3>
+<p>When we get numbers from a chance process, the expected value and the standard error give us an impression where the numbers will be. If we want to get the full picture, however, we get it from a <strong>probability histogram</strong>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -614,119 +1179,118 @@ Probability histogram
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>craps <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># construct a die</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># roll twice</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sample</span>(die, <span class="dv">2</span>, <span class="at">replace =</span> T)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sum the outcome of the rolls</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(out)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">craps</span>())</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>h100 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>h100<span class="sc">$</span>counts <span class="ot">&lt;-</span> h100<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h100<span class="sc">$</span>counts)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h100,</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Hundered Repetitions"</span>,</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>craps <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># construct a die</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># roll twice</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sample</span>(die, <span class="dv">2</span>, <span class="at">replace =</span> T)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sum the outcome of the rolls</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(out)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">craps</span>())</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>h100 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>h100<span class="sc">$</span>counts <span class="ot">&lt;-</span> h100<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h100<span class="sc">$</span>counts)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h100,</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Hundered Repetitions"</span>,</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now increase the repetitions to 1000</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">craps</span>())</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>h1000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>h1000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h1000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h1000<span class="sc">$</span>counts)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h1000,</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Thousand Repetitions"</span>,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">craps</span>())</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>h1000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>h1000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h1000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h1000<span class="sc">$</span>counts)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h1000,</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"One Thousand Repetitions"</span>,</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>And to 10000</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">craps</span>())</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>h10000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>h10000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h10000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h10000<span class="sc">$</span>counts)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h10000,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ten Thousand Repetitions"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>crap_sim <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10000</span>, <span class="fu">craps</span>())</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hist(crap_sim, breaks = seq(1.5, 12.5, by = 1), freq = F, plot = F)</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>h10000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(crap_sim, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="fl">12.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>h10000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h10000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h10000<span class="sc">$</span>counts)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h10000,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Number of dots"</span>,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent"</span>,</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ten Thousand Repetitions"</span>,</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">13</span>),</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.3</span>))</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">12</span>)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>You can see that the probability histograms observed from the random experiments of throwing the two dice 100, 1000 and 10000 times get closer and closer to the ideal probability historgam, where the relative frequency of events from the random experiment come arbitrarily close to the theoretical probabilities.</p>
+<p>You can see that the probability histograms observed from the random experiments of throwing the two dice 100, 1000 and 10000 times get closer and closer to the ideal probability histogram, where the relative frequency of events from the random experiment come arbitrarily close to the theoretical probabilities.</p>
 <p>There are 6 events in 36 where the sum of the die could be 7 (try to convince yourself!). This is 16 2/3 %. The area of the rectangle over 7 in the probability histogram, therefore equals 16.3%. The total area of all the rectangles sum up to 100 %.</p>
-<section id="probability-histograms-and-the-normal-curve" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="probability-histograms-and-the-normal-curve"><span class="header-section-number">10.2.1</span> Probability histograms and the normal curve</h3>
-<p>When we discussed the theoretical share of baby girls in a random sample drawn from a large using the binomial distribution, we saw a remarkable fact: population of newborn babies:</p>
+<p>When we discussed the theoretical share of baby girls using the binomial distribution, we saw a remarkable fact:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">100</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">100</span>),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Sample size 100"</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">1000</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">1000</span>),</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Sample size 1000"</span>,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">100</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">100</span>),</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Sample size 100"</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">1000</span>, <span class="fl">0.487</span>), <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">1000</span>),</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Sample size 1000"</span>,</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>We saw in this example that the variability of the observed proportion gets smaller as the sample size increases. This is the classic <strong>law of large numbers</strong> detected by Jacob Bernoulli in the 17th century. As we increase the sample, the proportion of girls in the outcome of the random experiment comes closer and close to the true proportion of 0.487.</p>
-<p>In unit 3 we introduced the normal curve, which we found described the empirical distribution of human height data with surprising accuracy. The argument wy this might be the case was that human height depends on a huge number of factors, all of which have for themselves little influence on the outcome. Adding up all these small effects gets to a normal distribution.</p>
-<p>This is also the reasoning behind the famous <strong>central limit theorem</strong> detected in 1733 by Abraham de Moivre. This theorem says:</p>
+<p>We saw in this example that the variability of the observed proportion gets smaller as the sample size increases. Here the same mechanisms are at work as in the example of craps.</p>
+<div class="page-columns page-full"><p>These mechanisms have been first systematically described by is the classic Jacob Bernoulli in the 17th century and the result is termed the <strong>law of large numbers</strong> or the law of averages.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Jacob Bernoulli, 6 January 1655 – 16 August 1705,was one of the many prominent mathematicians in the Swiss Bernoulli family. <img src="pictures/Jakob_Bernoulli.jpg" class="img-fluid" alt="Jacon Bernoulli"> He sided with Gottfried Wilhelm Leibniz during the Leibniz–Newton calculus controversy and was an early proponent of Leibnizian calculus, which he made numerous contributions to; along with his brother Johann, he was one of the founders of the calculus of variations. He also discovered the fundamental mathematical constant e. However, his most important contribution was in the field of probability, where he derived the first version of the law of large numbers in his work Ars Conjectandi.[3]</p></li></div></div>
+<p>The manifestation of this law here is that when we increase the sample, the proportion of girls in the outcome of the random experiment comes closer and closer to the true proportion of 0.487.</p>
+<p>In the previous section we discussed the normal approximation when the sample size is large enough. This is also the content of the famous <strong>central limit theorem</strong> detected in 1733 by Abraham de Moivre. This theorem says:</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -742,10 +1306,109 @@ Central limit theorem
 </div>
 <p>This is a remarkable fact. Whatever the the shape of the population distribution from which each of the original measurements were sampled, for large sample sizes their average can be considered as drawn from a normal curve. This will have a mean that is equal to the standard deviation that has a simple relationship to the standard deviation of the original population and is known, as we discussed before, as the standard error.</p>
 <p>Now we see also why in the bootstrap examples we discussed in unit 5, the distribution of the statistics we got from repeated resamples looked more and more like a normal distribution. This is the consequence of the central limit theorem.</p>
+<p>This applies also for proportions, because as we discussed in the previous section, by appropriate labeling of the outcomes we want to count proportions can be understood as means of a binary variable with values 0 and 1.</p>
+<p>Before we close this section, let us discuss the scope of the normal approximation to get a better feeling when it is appropriate to use it.</p>
+<p>Let us for the start consider an unbalanced box like this one with 9 zeros and one 1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>skew_box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is the probability histogram of this box:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.1</span>), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>), </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability histogram of lopsided box"</span>,</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of 0"</span>,</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>How many draws do we need before the sum gets near to normal? Let us start with 25 draws from the skew box first. (I don’t show the code. You by now know how to code this. Try it!):</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>appr_1 <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(skew_box, <span class="dv">9</span> , <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">0.1</span>,<span class="dv">8</span>), <span class="fl">0.9</span>)) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>out_1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">25</span>, <span class="fu">appr_1</span>())</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>h25 <span class="ot">&lt;-</span> <span class="fu">hist</span>(out_1, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">9.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>h25<span class="sc">$</span>counts <span class="ot">&lt;-</span> h25<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h25<span class="sc">$</span>counts)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h25,</span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Value of the sum"</span>,</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">" "</span>,</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"25 samples"</span>,</span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>)</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>, <span class="st">"40 %"</span>, <span class="st">"50 %"</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> out_1</span>
+<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(data), <span class="at">sd =</span> <span class="fu">sd</span>(data)) </span>
+<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(h25<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  </span>
+<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>You can see that there are is a bad fit between the probability histogram and the normal curve. The approximation will not work.</p>
+<p>Let us try 1000 draws</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>out_2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">appr_1</span>())</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>h1000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(out_1, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">9.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>h1000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h1000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h1000<span class="sc">$</span>counts)</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h1000,</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Value of the sum"</span>,</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">" "</span>,</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"500 samples"</span>,</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>, <span class="st">"40 %"</span>, <span class="st">"50 %"</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> out_2</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(data), <span class="at">sd =</span> <span class="fu">sd</span>(data)) </span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(h1000<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  </span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
-<section id="the-95-confidence-interval" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="the-95-confidence-interval"><span class="header-section-number">10.3</span> The 95 % confidence interval</h2>
+<section id="the-95-confidence-interval" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="the-95-confidence-interval"><span class="header-section-number">10.2</span> The 95 % confidence interval</h2>
 <p>While the central limit theorem is a remarkable and extraordinary law of nature, the question arises, how this law can help us work out the accuracy of estimates without using the heavy machinery of computer simulation.</p>
 <p>Probability theory ha s shown how the distributions of statistics like means and proportions look like when the data are drawn from known populations.</p>
 <p>But the usual situation in practice is the other way round: Most of the time in a practical data analysis situation we have to go from a single sample back to saying something about a possible underlying population. This is the process of inductive inference, we discussed in unit 3.</p>
@@ -761,66 +1424,66 @@ Central limit theorem
 <li><p>Finally we work out the range of possible population parameters, for which our statistics lies in their 95 % prediction intervals. This range we call a <strong>confidence interval</strong>.</p></li>
 </ol>
 <p>The label of this interval is 95% confidence interval, because with repeated application 95 % of these intervals contain the true value. Note that this is different from saying that there is a 95 % probability that this particular interval contains the true value, an incorrect interpretation which you might encounter often even in the academic literature.</p>
-<section id="computing-confidence-intervals" class="level3" data-number="10.3.1">
-<h3 data-number="10.3.1" class="anchored" data-anchor-id="computing-confidence-intervals"><span class="header-section-number">10.3.1</span> Computing confidence intervals</h3>
+<section id="computing-confidence-intervals" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="computing-confidence-intervals"><span class="header-section-number">10.2.1</span> Computing confidence intervals</h3>
 <p>The theory of computing confidence intervals was consolidated and introduced in the 1930ies by Jerzy Neyman and Egon Pearson, wo was the son of Karl Person, whose data on the heights of fathers and sons we had begin studying in unit 4.</p>
 <p>In our leading example we found that the sample percentage of girls in our simulated sample of 1000 was 487 or 48.7 %. How far can the population percentage be from 48.7% ? The standard error is estimated as 15.8, suggesting that the chance error is around 1.58 %. So the population percentage could be off by around 1.6 %</p>
 <p>Let us now show how the probability histogram for the number of baby girls gets close to the normal curves when the sample gets large, as in our example of 1000 draws.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis grid</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="fl">0.487</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># normal curve</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x2, <span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">100</span>,</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mar = c(5, 4, 4, 8) + 0.3)  </span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">col =</span> <span class="st">"white"</span>,</span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">" "</span>,</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>,</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fun)),</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of number of girls"</span>,</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="co"># overlay normal curve</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x2, fun, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"8 %"</span>, <span class="st">"16 %"</span>, <span class="st">"24 %"</span>, <span class="st">"32 %"</span>, <span class="st">"40 %"</span>)), </span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>)</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a><span class="co"># adding axis</span></span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>),</span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"440 cm"</span>, <span class="st">"460 cm"</span>, <span class="st">"480 cm"</span>, <span class="st">"500 cm"</span>, <span class="st">"520 cm"</span>, <span class="st">"540 cm"</span>))</span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>), </span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">as.character</span>(<span class="fu">round</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.9746835</span>, <span class="sc">-</span><span class="fl">1.7088608</span>, <span class="sc">-</span><span class="fl">0.4430380</span>,  <span class="fl">0.8227848</span>,  <span class="fl">2.0886076</span>,  <span class="fl">3.3544304</span>), <span class="dv">2</span>)), <span class="at">line =</span> <span class="fl">2.5</span>)</span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"0.5 %"</span>, <span class="st">"1 %"</span>, <span class="st">"1.5%"</span>, <span class="st">"2 %"</span>, <span class="st">"2.5 %"</span>)), </span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>)</span>
-<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">487</span>, <span class="at">col =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis grid</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="fl">0.487</span>)</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># normal curve</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x2, <span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">100</span>,</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mar = c(5, 4, 4, 8) + 0.3)  </span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">col =</span> <span class="st">"white"</span>,</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">" "</span>,</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>,</span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fun)),</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of number of girls"</span>,</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span></span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a><span class="co"># overlay normal curve</span></span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x2, fun, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"8 %"</span>, <span class="st">"16 %"</span>, <span class="st">"24 %"</span>, <span class="st">"32 %"</span>, <span class="st">"40 %"</span>)), </span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>)</span>
+<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="co"># adding axis</span></span>
+<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>),</span>
+<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"440 cm"</span>, <span class="st">"460 cm"</span>, <span class="st">"480 cm"</span>, <span class="st">"500 cm"</span>, <span class="st">"520 cm"</span>, <span class="st">"540 cm"</span>))</span>
+<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>), </span>
+<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">as.character</span>(<span class="fu">round</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.9746835</span>, <span class="sc">-</span><span class="fl">1.7088608</span>, <span class="sc">-</span><span class="fl">0.4430380</span>,  <span class="fl">0.8227848</span>,  <span class="fl">2.0886076</span>,  <span class="fl">3.3544304</span>), <span class="dv">2</span>)), <span class="at">line =</span> <span class="fl">2.5</span>)</span>
+<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
+<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"0.5 %"</span>, <span class="st">"1 %"</span>, <span class="st">"1.5%"</span>, <span class="st">"2 %"</span>, <span class="st">"2.5 %"</span>)), </span>
+<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>)</span>
+<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">487</span>, <span class="at">col =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>There are two vertical axes in the figure. The probability histogram is drawn relative to the left axis showing percent per baby-girl. The normal curve is drawn relative to the right axis showing percent per standard unit. To see how the scales match up: 2 % per baby girl matches up - for example-<br>
@@ -830,7 +1493,7 @@ with 32 % per standard unit because the Standard error is about 16 (15.8) so the
 <p>Since the histogram and the normal curve almost coincide, so the area of the rectangle between 482 and 483 is approximately equal to the area under the normal curve between -0.32 and - 0.25.</p>
 <p>The area of the rectangle is 0.021. When we approximate by the normal curve we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">0.32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">0.32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.2242222</code></pre>
 </div>
@@ -848,14 +1511,14 @@ with 32 % per standard unit because the Standard error is about 16 (15.8) so the
 <p>You can go on but even 10 standard deviations may not give you 100 % confidence, because for any interval you take, the normal curve always has some area (if very very small) outside of it.</p>
 </section>
 </section>
-<section id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.4</span> The role of systematic error due to non random causes and the role of judgement</h2>
+<section id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.3</span> The role of systematic error due to non random causes and the role of judgement</h2>
 </section>
-<section id="confidence-intervals-when-we-observe-all-the-data" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.5</span> Confidence intervals when we observe all the data</h2>
+<section id="confidence-intervals-when-we-observe-all-the-data" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.4</span> Confidence intervals when we observe all the data</h2>
 </section>
-<section id="contents" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="contents"><span class="header-section-number">10.6</span> Contents</h2>
+<section id="contents" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="contents"><span class="header-section-number">10.5</span> Contents</h2>
 <p>This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are</p>
 <ol type="1">
 <li>Using probability theory we can derive the sampling distribution of summary statistics from which formulae for confidence intervals can be derived.</li>
@@ -865,8 +1528,8 @@ with 32 % per standard unit because the Standard error is about 16 (15.8) so the
 <li>Explain the idea that confidence intervals can be calculated even when we observe all the data which then represent uncertainty about the parameters of an underlying metaphorical population.</li>
 </ol>
 </section>
-<section id="outcome" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="outcome"><span class="header-section-number">10.7</span> Outcome</h2>
+<section id="outcome" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="outcome"><span class="header-section-number">10.6</span> Outcome</h2>
 <p>The students should gain a firm understanding of confidence intervals and how they help us in quantifying uncertainty of predictions we make based on our available data. They should see and understand how and why it is sometimes more convenient and parsimonious to have formulae for confidence intervals rather than quantifying the uncertainty from simulation. The intuitive understanding of the limit theorems and when they can be legitimately applied will be important here.</p>
 
 
@@ -876,6 +1539,7 @@ Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. 
 </div>
 </div>
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
