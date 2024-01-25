@@ -406,15 +406,15 @@ Keywords
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">171.94</td>
+<td style="text-align: right;">173.04</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">172.55</td>
+<td style="text-align: right;">172.67</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2500</td>
-<td style="text-align: right;">172.69</td>
+<td style="text-align: right;">172.63</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">25000</td>
@@ -471,7 +471,7 @@ Keywords
 <p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 172, 2100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 173.13. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 171.68, 173.13, 171.95.</p>
+<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 173, 2. Then we draw 100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.38. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 172.51, 172.38, 171.87.</p>
 <p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. Why do we need replacement? We want to make sure that at every resample, every data point has the same chance of ending up in the resample. This would not be the case if we drew observations away once the have ended up in one sample. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution. We think of the sample as beeing a representation of the underlying population. If we draw random resamples we always need to draw from the same sample of the population so that every individual in the sample has the same chance of ending up in the resample.</p>
 <p>Repeating the resampling many times, say 1000 times, we get 1000 possible estimates of the mean. Let us do this repeated resampling for the examples of sample sizes of 10, 100, 2500 and in the end 25000, the size of our fictitious population.</p>
 <div class="cell">
@@ -972,27 +972,22 @@ The three components of a for loop
 </div>
 <p>Now we have a dataframe with 4 columns and we want to compute the mean and sd for every column. Here we can practice iteration once more:</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: false</span></span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>all_means <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
-<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>all_sds <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
-<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(boot)){</span>
-<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  all_means[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(boot[,i]),<span class="dv">2</span>)</span>
-<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  all_sds[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(boot[ ,i]),<span class="dv">2</span>)</span>
-<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Regions =</span> <span class="fu">c</span>(<span class="st">"Region 1"</span>, <span class="st">"Region 2"</span>, <span class="st">"Regions 3"</span>, <span class="st">"Regions 4"</span>), </span>
-<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Means =</span> all_means, <span class="at">SDs =</span> all_sds)</span>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>all_means <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>all_sds <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"double"</span>, <span class="dv">4</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(boot)){</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  all_means[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">mean</span>(boot[,i]),<span class="dv">2</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  all_sds[[i]] <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">sd</span>(boot[ ,i]),<span class="dv">2</span>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Regions =</span> <span class="fu">c</span>(<span class="st">"Region 1"</span>, <span class="st">"Region 2"</span>, <span class="st">"Regions 3"</span>, <span class="st">"Regions 4"</span>), </span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Means =</span> all_means, <span class="at">SDs =</span> all_sds)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>  out</span>
 <span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>  out</span>
-<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>

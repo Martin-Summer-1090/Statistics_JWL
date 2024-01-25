@@ -312,7 +312,7 @@ hist(b3$Height, breaks = 30,
 
 At the top left corner of this figure you see our original sample of 100
 height data from our original population of 25.000, which has a mean of
-`r round(c(mean(b1$Height),2))`100 data points in sequence, each time
+`r round(c(mean(b1$Height),2))`. Then we draw 100 data points in sequence, each time
 replacing the point we have taken, and get the second distribution in the
 top right corner in this way. This distribution has a mean 
 of `r round(mean(b2$Height), 2)`. The distribution can only contain data points taking on the same values as in the original sample, but it will contain
@@ -872,7 +872,6 @@ Now we have a dataframe with 4 columns and we want to compute the mean and sd fo
 can practice iteration once more:
 
 ```{r}
-
 #| code-fold: false
 
 all_means <- vector("double", 4)
