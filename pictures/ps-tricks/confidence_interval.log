@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  21 JAN 2024 20:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=latex 2023.5.30)  28 JAN 2024 20:33
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -341,10 +341,10 @@ LaTeX Font Info:    ... okay on input line 9.
 Here is how much of TeX's memory you used:
  10257 strings out of 478288
  190290 string characters out of 5849315
- 538051 words of memory out of 5000000
+ 538043 words of memory out of 5000000
  28363 multiletter control sequences out of 15000+600000
  469259 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,5n,71p,650b,204s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on confidence_interval.dvi (1 page, 12344 bytes).
+Output written on confidence_interval.dvi (1 page, 12336 bytes).

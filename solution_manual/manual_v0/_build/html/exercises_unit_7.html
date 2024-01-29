@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Exercises &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
+    <title>Exercises: Unit 7, bringing probability theory and statistics together &#8212; Solution manual for excercises in Statistics the art and science of learning from data</title>
   
   
   
@@ -62,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_7';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Exercises" href="exercises_unit_8.html" />
-    <link rel="prev" title="Exercises" href="exercises_unit_6.html" />
+    <link rel="prev" title="Exercises: Unit 6, Probability, quantifying uncertainty and variablity" href="exercises_unit_6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,18 +166,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Solution manual for Statistics: The art and science of learning from data.
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_1.html">Exercises: Unit 1, Categorical data and proportions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_2.html">Exercises: Unit 2, Summarizing and communication lot’s of data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises: Unit 3, Generalizing observations from data and knowing what causes what</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises: Unit 4 Making predictions using regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_5.html">Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises: Unit 6, Probability, quantifying uncertainty and variablity</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 7, bringing probability theory and statistics together</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_8.html">Exercises</a></li>
 </ul>
 
@@ -349,7 +353,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,11 +366,47 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises</h1>
+    <h1>Exercises: Unit 7, bringing probability theory and statistics together</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercises: Unit 7, bringing probability theory and statistics together</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-rolling-a-die">Exercise 1: Rolling a die</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-family-composition">Exercise 2: Family composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-expected-value-and-standard-deviation-of-a-box">Exercise 3: Expected value and standard deviation of a box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-find-the-sequence">Exercise 4: Find the sequence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-assessing-the-probability-of-the-magnitude-of-a-sum">Exercise 5: Assessing the probability of the magnitude of a sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-probability-of-girls-again">Exercise 6: The probability of girls again</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-polling">Exercise 7: Polling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-a-student-survey">Exercise 8: A student survey</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures">Project people count: The future of humanity in numbers and pictures</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-level-1-heading">This is a level 1 heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-level-2-heading">This is a level 2 heading</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">This is a level 1 heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">This is a level 2 heading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-your-notebooks">Sharing Your Notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-share">Before You Share</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-your-notebooks">Exporting Your Notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -374,8 +416,194 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises-unit-7-bringing-probability-theory-and-statistics-together">
+<h1>Exercises: Unit 7, bringing probability theory and statistics together<a class="headerlink" href="#exercises-unit-7-bringing-probability-theory-and-statistics-together" title="Permalink to this heading">#</a></h1>
+<p>In this set of exercises you will not need the computer. A major point in the unit was to show how combining probability and statistics can help us quantify the uncertainty of a proportion or a mean in a population without a computer intensive method such as bootstrapping. You can - of course - use R and your computer if you wish to do so but all of the exercises do in principle not require the use of it. You will need a computational device to take a square root here and there, though.</p>
+<section id="exercises">
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-rolling-a-die">
+<h3>Exercise 1: Rolling a die<a class="headerlink" href="#exercise-1-rolling-a-die" title="Permalink to this heading">#</a></h3>
+<p>A die will be rolled 10 times. The chance it never lands such that 6 is shown can be found by one of the follwoing computations. Which one and Why?</p>
+<p>(i) <span class="math notranslate nohighlight">\(\left(\frac{1}{6}\right)^{10}\)</span></p>
+<p>(ii) 1 - <span class="math notranslate nohighlight">\(\left(\frac{1}{6} \right)^{10}\)</span></p>
+<p>(iii) <span class="math notranslate nohighlight">\(\left(\frac{5}{6} \right)^{10}\)</span></p>
+<p>(iv) 1 - <span class="math notranslate nohighlight">\(\left(\frac{5}{6} \right)^{10}\)</span></p>
+<p>The correct answer is (iii): The chance to have no six is <span class="math notranslate nohighlight">\((5/6)\)</span>, so the chance to have no six in 10 rolls must be <span class="math notranslate nohighlight">\((5/6)^10\)</span>. You may check your answer by comparing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">dbinom</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">1</span><span class="o">/</span><span class="m">6</span><span class="p">)</span>
+<span class="p">(</span><span class="m">5</span><span class="o">/</span><span class="m">6</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">0.161505582889846</div><div class="output text_html">0.161505582889846</div></div>
+</div>
+</section>
+<section id="exercise-2-family-composition">
+<h3>Exercise 2: Family composition<a class="headerlink" href="#exercise-2-family-composition" title="Permalink to this heading">#</a></h3>
+<p>Of families with 4 children, what proportion have more girls than boys, assuming that the chance for a girl is
+0.487?</p>
+<p>The families with four children who have more girls than boys are the families with 3 and 4 girls. So this is then:</p>
+<p><span class="math notranslate nohighlight">\({4 \choose 3} \times (0.487^3 \times (0.513) +  {4 \choose 4} \times 0.487^4 \times 0.513^0) = 0.2932578\)</span></p>
+</section>
+<section id="exercise-3-expected-value-and-standard-deviation-of-a-box">
+<h3>Exercise 3: Expected value and standard deviation of a box<a class="headerlink" href="#exercise-3-expected-value-and-standard-deviation-of-a-box" title="Permalink to this heading">#</a></h3>
+<p>Find the expected value and the standard error for the sum of 100 draws at random with replacement from the
+following boxes:</p>
+<p><img alt="box_exercise-2.png" src="attachment:box_exercise-2.png" /></p>
+<p>Box (a) <span class="math notranslate nohighlight">\(100 \times 2 = 200\)</span> and <span class="math notranslate nohighlight">\(\sqrt(100) \times 2.345 = 23.45\)</span>
+Box (b) <span class="math notranslate nohighlight">\(100 \times -0.25 = -25\)</span> and <span class="math notranslate nohighlight">\(\sqrt(100) \times 1.479 = 14.79\)</span>
+Box (c) <span class="math notranslate nohighlight">\(100 \times 0 = 0\)</span> and <span class="math notranslate nohighlight">\(\sqrt(100) \times 2.16 = 21.6\)</span>
+Box (d) <span class="math notranslate nohighlight">\(100 \times 0.667 = 66.7\)</span> and <span class="math notranslate nohighlight">\(\sqrt(100) \times 0.471 = 4.71\)</span></p>
+</section>
+<section id="exercise-4-find-the-sequence">
+<h3>Exercise 4: Find the sequence<a class="headerlink" href="#exercise-4-find-the-sequence" title="Permalink to this heading">#</a></h3>
+<p>The expected value for a sum is 50, with a SE of 5. the chance process generating the sum is repeated 10 times.
+Which is the sequence of observed values?</p>
+<p>(a) 51, 57, 48, 52, 57, 61, 58, 41, 53, 48</p>
+<p>(b) 51, 49, 50, 52, 48, 47, 53, 50, 49, 47</p>
+<p>(c) 45, 50, 55, 45, 50, 55, 45, 50, 55, 45</p>
+<p>Answer: it must be (a), since with (b) the numbers are too close to 50 and with (c) the pattern is too regular.</p>
+</section>
+<section id="exercise-5-assessing-the-probability-of-the-magnitude-of-a-sum">
+<h3>Exercise 5: Assessing the probability of the magnitude of a sum<a class="headerlink" href="#exercise-5-assessing-the-probability-of-the-magnitude-of-a-sum" title="Permalink to this heading">#</a></h3>
+<p>One 100 draws will be made from the box [[1], [3], [3], [9]] at random with replacement.</p>
+<p>(a) How large can the sum be and how small can it be?</p>
+<p>(b) How likely is it that the sum is in the range from 370 to 430.</p>
+<p>Answer: Larges 900, samallest 100. Chance: Convert to standard units: This is -1 and 1. Since the sample is large enough for a normal approximantion this means that 370 and 430 is within 1 standard unit from the mean, so - since we have a normal approximation - the probability is about 68 %.</p>
+</section>
+<section id="exercise-6-the-probability-of-girls-again">
+<h3>Exercise 6: The probability of girls again<a class="headerlink" href="#exercise-6-the-probability-of-girls-again" title="Permalink to this heading">#</a></h3>
+<p>According to the natural probabilities the chance that the sex of a baby is
+determined to be a girl or a boy is as if there were random draws from the box [[Girl],[Boy]] with probabilities
+0.487 and 0.513. What is the chance that the next 2500 births (ignoring twins and other multiple births) will show
+more than 1275 girls? (Hint: Use the table for the standard normal distribution from unit 7).</p>
+<p>2500 is large enough to use a normal approximation. The expected value of girls will be <span class="math notranslate nohighlight">\(2500 \times 0.487 \approx 1218\)</span> with a standard error of <span class="math notranslate nohighlight">\(\sqrt{2500} \times \sqrt{0.487 \times 0.513} \approx 25\)</span>. Convert to standard units: <span class="math notranslate nohighlight">\((1275 - 1218)/25 = 2.28\)</span>. This is approximately <span class="math notranslate nohighlight">\(0.0024\)</span></p>
+</section>
+<section id="exercise-7-polling">
+<h3>Exercise 7: Polling<a class="headerlink" href="#exercise-7-polling" title="Permalink to this heading">#</a></h3>
+<p>A simple random sample of 1600 persons is taken to estimate the percentage of voters of one of two parties, party A, among the 25000 eligible voters in a certain town. It turns out that 917 people in the sample are  voters for party A.</p>
+<p>(a) Find the 95 % confidence interval for the percentage of voters for party A among the 25000 eligible voters.</p>
+<p>(b) Im the example is the value of 917 expected or observed? Explain.</p>
+<p>(c) Th SD of the box si exactly equal to <span class="math notranslate nohighlight">\(\sqrt{0.573\times 0.427}\)</span> or estimated form the data? Explain.</p>
+<p>(d) The SE for the number of voter for party A in the sampple is exactly equal to 20, or estimated from the data as 20? Explain.</p>
+<p>Answer:</p>
+<p>(a) <span class="math notranslate nohighlight">\(917/1600 \times 100 \% \approx 57.3 \%\)</span> is the estimate of the percentage of voters for party A. The SD is estimated as <span class="math notranslate nohighlight">\(\sqrt{0.573 \times 0.427} \approx 0.5\)</span>. The SE for the number of voters for party A is <span class="math notranslate nohighlight">\(\sqrt{1600} \times 0.5 = 20\)</span> so the SE in the proportion is <span class="math notranslate nohighlight">\(20/1600 \times 100 \% = 1,25 \%\)</span>. The 95 % confidence interval is then <span class="math notranslate nohighlight">\(57.3 \% \,\, \text{plus/minus} \,\, 2 \times 1.25 \%\)</span>, so the 95 % confidence interval is <span class="math notranslate nohighlight">\([54.8, 59.8]\)</span>.
+(b) observed
+(c) estimated from data
+(d) estimated from data</p>
+</section>
+<section id="exercise-8-a-student-survey">
+<h3>Exercise 8: A student survey<a class="headerlink" href="#exercise-8-a-student-survey" title="Permalink to this heading">#</a></h3>
+<p>A university has 30.000 registered students. As part of a survey, 900 of these students are chosen at random. The average age in the sampe turns out to be 22.3 years and the SD is 4.5 years.</p>
+<p>(a) The average age of all 30.000 students is estimated as?</p>
+<p>(b) This estimate is likely to be off by ?</p>
+<p>(c) Find a 95 %-confidence interval for the average age of all 30.000 registered students.</p>
+<p>Answer:</p>
+<p>The sample average is like the average of the draws. The SD of the box is estimated as <span class="math notranslate nohighlight">\(\sqrt{900} \times 4.5 = 135\)</span> years, so the SE for the average is <span class="math notranslate nohighlight">\(135/900 = 0.15\)</span> years.</p>
+<p>The estimate is 22.3 years plus minus 0.15 years.</p>
+<p>The interval is [22, 22.6] years.</p>
+</section>
+</section>
+<section id="project-people-count-the-future-of-humanity-in-numbers-and-pictures">
+<h2>Project people count: The future of humanity in numbers and pictures<a class="headerlink" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures" title="Permalink to this heading">#</a></h2>
+<p>In this course you have worked on a project called “people count” using demographic data. The context of census data and demographic data was used to apply some of the concepts we learned in this course, such as visualizing data, subsetting and extracting particular datasets from a larger dataset by using R’s substting rules. Compute the mean and median age for grouped data, quantify the uncertainty attached to such estimates using a bootstrap algorithm and predicting peppulation growth. Often we looked at three typical countries, Kenya, a so allced bottom layered country, because of the shape of its population barplot with the typical shape you get for a very young population, the US as an example of a middle layered country and Japan as an examle for an aging society.</p>
+<p>This week I want to encourage you to think about an outline for producing a data-story about your country using the
+analysis done during the project so far as a guide. It should be a text built around data and charts that tells the story of your country using the population numbers we used in this course from the <code class="docutils literal notranslate"><span class="pre">JWL</span></code>package and which are called <code class="docutils literal notranslate"><span class="pre">population_statistics_by_age_and_sex</span></code>. You may, but you need not also use a general demorgaphic dataset, if you want, which is called <code class="docutils literal notranslate"><span class="pre">general_demograpics</span></code> and which can be studied using the R help function, for  the description of the variables.</p>
+<p>The data-story should be:</p>
+<ul class="simple">
+<li><p>About 4 pages long</p></li>
+<li><p>Written as a Jupyter Notebook.</p></li>
+<li><p>Using the analysis you did in the project in units 1 - 6.</p></li>
+<li><p>Describe your country, either your country where you have been born or where you are currently living.</p></li>
+<li><p>Contain, text, graphics and data and using the two demographic datasets we used in the course.</p></li>
+<li><p>Be roughly built around the template:</p>
+<ul>
+<li><p>my country short description in word</p></li>
+<li><p>my country viewed from the perspective of census data, a short demographic description in numbers, pictures    and text, giving a view into the past (10 years ago) and giving an outlook into the future, say in 10 years from now)</p></li>
+<li><p>Some concluding passage.</p></li>
+</ul>
+</li>
+<li><p>You have considerable freedom in the way you write this but make sure to built in the analysis you did throughout the assignment. This will be one important element for the grading of the project work.</p></li>
+</ul>
+<p>Use the project work time of this week to make a plan for this essay and to familiarize yourself a bit with working with text and code in one Notebook. Here is a very brief intro to the most basic elements.</p>
+<p>Jupyter Notebooks use Markdown for formatting text. You have to choose <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> from the menue bar above, such that Jupyter knows that the cell you are currently working in with text is a markdown cell and not a code cell.</p>
+<p>Markdown is a lightweight, easy to learn markup language for formatting plain text.</p>
+<p>Remember that this exercise sheet was written in a Jupyter notebook, so all of the narrative text and images you have seen so far were achieved writing in Markdown and code. Let’s cover the basics with a quick example:</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="this-is-a-level-1-heading">
+<h1>This is a level 1 heading<a class="headerlink" href="#this-is-a-level-1-heading" title="Permalink to this heading">#</a></h1>
+<section id="this-is-a-level-2-heading">
+<h2>This is a level 2 heading<a class="headerlink" href="#this-is-a-level-2-heading" title="Permalink to this heading">#</a></h2>
+<p>This is some plain text that forms a paragraph. Add emphasis via <strong>bold</strong> and <strong>bold</strong>, or <em>italic</em> and <em>italic</em>.</p>
+<p>Paragraphs must be separated by an empty line.</p>
+<ul class="simple">
+<li><p>Sometimes we want to include lists.</p></li>
+<li><p>Which can be bulleted using asterisks.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Lists can also be numbered.</p></li>
+<li><p>If we want an ordered list.</p></li>
+</ol>
+<p><a class="reference external" href="https://www.example.com">It is possible to include hyperlinks</a></p>
+<p>Inline code uses single backticks: foo(), and code blocks use triple backticks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or can be indented by 4 spaces:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo()
+</pre></div>
+</div>
+<p>And finally, adding images is easy: <img alt="Alt text" src="https://www.example.com/image.jpg" /></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>This is a level 1 heading<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>This is a level 2 heading<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>This is some plain text that forms a paragraph. Add emphasis via <strong>bold</strong> and <strong>bold</strong>, or <em>italic</em> and <em>italic</em>.</p>
+<p>Paragraphs must be separated by an empty line.</p>
+<ul class="simple">
+<li><p>Sometimes we want to include lists.</p></li>
+<li><p>Which can be bulleted using asterisks.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Lists can also be numbered.</p></li>
+<li><p>If we want an ordered list.</p></li>
+</ol>
+<p><a class="reference external" href="https://www.example.com">It is possible to include hyperlinks</a></p>
+<p>Inline code uses single backticks: foo(), and code blocks use triple backticks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Or can be indented by 4 spaces:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo()
+</pre></div>
+</div>
+<p>And finally, adding images is easy: <img alt="Alt text" src="https://www.example.com/image.jpg" /></p>
+<p>To see the source text from which these lines were compiled, double click into the cell. It will then
+show you the source text. When you execute the cell it will show you the formatted markup text.</p>
+</section>
+<section id="sharing-your-notebooks">
+<h2>Sharing Your Notebooks<a class="headerlink" href="#sharing-your-notebooks" title="Permalink to this heading">#</a></h2>
+<p>When people talk about sharing their notebooks, there are generally two paradigms they may be considering.</p>
+<p>Most often, individuals share the end-result of their work, much like this article itself, which means sharing non-interactive, pre-rendered versions of their notebooks. However, it is also possible to collaborate on notebooks with the aid of version control systems such as Git or online platforms like Google Colab.</p>
+<section id="before-you-share">
+<h3>Before You Share<a class="headerlink" href="#before-you-share" title="Permalink to this heading">#</a></h3>
+<p>A shared notebook will appear exactly in the state it was in when you export or save it, including the output of any code cells. Therefore, to ensure that your notebook is share-ready, so to speak, there are a few steps you should take before sharing:</p>
+<p>Click “Cell &gt; All Output &gt; Clear”
+Click “Kernel &gt; Restart &amp; Run All”
+Wait for your code cells to finish executing and check ran as expected</p>
+<p>This will ensure your notebooks don’t contain intermediary output, have a stale state, and execute in order at the time of sharing.</p>
+</section>
+<section id="exporting-your-notebooks">
+<h3>Exporting Your Notebooks<a class="headerlink" href="#exporting-your-notebooks" title="Permalink to this heading">#</a></h3>
+<p>Jupyter has built-in support for exporting to HTML and PDF as well as several other formats, which you can find from the menu under “File &gt; Download As.”</p>
+<p>You can of course always share .ipynb files more directly and this is also the format I prefer for submitting your data essay.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -414,7 +642,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Exercises: Unit 6, Probability, quantifying uncertainty and variablity</p>
       </div>
     </a>
     <a class="right-next"
@@ -432,6 +660,48 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercises: Unit 7, bringing probability theory and statistics together</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-rolling-a-die">Exercise 1: Rolling a die</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-family-composition">Exercise 2: Family composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-expected-value-and-standard-deviation-of-a-box">Exercise 3: Expected value and standard deviation of a box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-find-the-sequence">Exercise 4: Find the sequence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-assessing-the-probability-of-the-magnitude-of-a-sum">Exercise 5: Assessing the probability of the magnitude of a sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-the-probability-of-girls-again">Exercise 6: The probability of girls again</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-polling">Exercise 7: Polling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-a-student-survey">Exercise 8: A student survey</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-people-count-the-future-of-humanity-in-numbers-and-pictures">Project people count: The future of humanity in numbers and pictures</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-level-1-heading">This is a level 1 heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#this-is-a-level-2-heading">This is a level 2 heading</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">This is a level 1 heading</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">This is a level 2 heading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sharing-your-notebooks">Sharing Your Notebooks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#before-you-share">Before You Share</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-your-notebooks">Exporting Your Notebooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>

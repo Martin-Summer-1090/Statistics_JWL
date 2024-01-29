@@ -54,26 +54,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -250,14 +231,21 @@ div.csl-indent {
   <li><a href="#using-the-normal-curve-when-the-number-of-draws-is-large" id="toc-using-the-normal-curve-when-the-number-of-draws-is-large" class="nav-link" data-scroll-target="#using-the-normal-curve-when-the-number-of-draws-is-large"><span class="header-section-number">10.1.4</span> Using the normal curve when the number of draws is large</a></li>
   <li><a href="#the-central-limit-theorem-and-probability-histograms" id="toc-the-central-limit-theorem-and-probability-histograms" class="nav-link" data-scroll-target="#the-central-limit-theorem-and-probability-histograms"><span class="header-section-number">10.1.5</span> The central limit theorem and probability histograms</a></li>
   </ul></li>
-  <li><a href="#the-95-confidence-interval" id="toc-the-95-confidence-interval" class="nav-link" data-scroll-target="#the-95-confidence-interval"><span class="header-section-number">10.2</span> The 95 % confidence interval</a>
+  <li><a href="#working-out-the-accuracy-of-estimates" id="toc-working-out-the-accuracy-of-estimates" class="nav-link" data-scroll-target="#working-out-the-accuracy-of-estimates"><span class="header-section-number">10.2</span> Working out the accuracy of estimates</a>
   <ul class="collapse">
-  <li><a href="#computing-confidence-intervals" id="toc-computing-confidence-intervals" class="nav-link" data-scroll-target="#computing-confidence-intervals"><span class="header-section-number">10.2.1</span> Computing confidence intervals</a></li>
+  <li><a href="#the-accuracy-of-percentages" id="toc-the-accuracy-of-percentages" class="nav-link" data-scroll-target="#the-accuracy-of-percentages"><span class="header-section-number">10.2.1</span> The accuracy of percentages</a></li>
+  <li><a href="#confidendence-intervals" id="toc-confidendence-intervals" class="nav-link" data-scroll-target="#confidendence-intervals"><span class="header-section-number">10.2.2</span> Confidendence intervals</a></li>
+  <li><a href="#the-accuracy-of-averages" id="toc-the-accuracy-of-averages" class="nav-link" data-scroll-target="#the-accuracy-of-averages"><span class="header-section-number">10.2.3</span> The accuracy of averages</a></li>
   </ul></li>
-  <li><a href="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" id="toc-the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="nav-link" data-scroll-target="#the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.3</span> The role of systematic error due to non random causes and the role of judgement</a></li>
-  <li><a href="#confidence-intervals-when-we-observe-all-the-data" id="toc-confidence-intervals-when-we-observe-all-the-data" class="nav-link" data-scroll-target="#confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.4</span> Confidence intervals when we observe all the data</a></li>
-  <li><a href="#contents" id="toc-contents" class="nav-link" data-scroll-target="#contents"><span class="header-section-number">10.5</span> Contents</a></li>
-  <li><a href="#outcome" id="toc-outcome" class="nav-link" data-scroll-target="#outcome"><span class="header-section-number">10.6</span> Outcome</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.3</span> Exercises:</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">10.3.1</span> Exercises</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">10.4</span> Project People count: The present and future of humanity in pictures and numbers</a></li>
+  <li><a href="#this-is-a-level-1-heading" id="toc-this-is-a-level-1-heading" class="nav-link" data-scroll-target="#this-is-a-level-1-heading"><span class="header-section-number">11</span> This is a level 1 heading</a>
+  <ul class="collapse">
+  <li><a href="#this-is-a-level-2-heading" id="toc-this-is-a-level-2-heading" class="nav-link" data-scroll-target="#this-is-a-level-2-heading"><span class="header-section-number">11.1</span> This is a level 2 heading</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -284,9 +272,9 @@ div.csl-indent {
 <p>In the last unit on probability we analyzed randomizing devices such as dice and coins. We have assumed the in these cases that we can enlist all the possible outcomes that might potentially be observed and we can attach chances or probabilities to these outcomes. One example was 1/2 for a fair coin coming up Heads, or 1/6 for the die showing any of its faces after a throw, or 1/36 for two dice showing one of the possible combinations of points.</p>
 <p>When we attach to each of these outcomes some quantity, for example 1 for Heads and 0 for Tails, probability theorists say that we have a <strong>random variable</strong> with a probability distribution. The randomizing device is such that it is ensured that the observation is generated at random from this distribution. This probability distribution can be described by parameters, such as the mean, for example in the case of the Poisson Distribution, or the mean and the standard deviation in the case of the normal distribution. We also learned how we can use R to draw data points from a probability distribution described by its parameters.</p>
 <p>The usual situation, we face in statistics is that we have to deal with lots of data and we give an overall description of these data usually by a summary statistics like the mean, the median or other percentiles.</p>
-<p>A fundamental step and a key idea in statistics, where probability and statistics come together, is the idea that we can view a particular statistics like the mean also as a random variable and its values as draws from its own probability distribution. This is a conceptually challenging and difficult idea but we have encountered it already once when we discussed the bootstrap.</p>
-<p>There we took repeated samples with replacement from the distribution of human height data and computed the mean height at each step. In this way we generated a distribution of the mean height that gave us some idea about the precision of this estimate.</p>
-<p>In contrast to bootstrapping which is a computer intensive simulation technique, probability theory provides another approach to give a mathematical answer to the same question: How confident can we be about the precision of our statistics. In this approach we can save on computing resources but we need - as in any mathematical theory - assumptions and we need to think about whether these assumptions are justified in each single situation where we apply the theory.</p>
+<p>A fundamental step and a key idea in statistics, where probability and statistics come together, is the idea that we can view a particular statistics like the mean also as a random variable and its values as draws from its own probability distribution. Using this perspective allows statisticians to assess the uncertainty of estimates of population parameters using probability theory. This is a conceptually challenging and difficult idea, which we are going to develop in this unit.</p>
+<p>We have encountered a method to achieve such a quantification of uncertainty when we discussed the bootstrap in unit 5. There we took repeated samples with replacement from the distribution of human height data and computed the mean height at each step. In this way we generated a distribution of the mean height that gave us some idea about the precision of this estimate.</p>
+<p>In contrast to bootstrapping which is a computer intensive simulation technique, probability theory provides an alternative approach to give a mathematical answer to the same question: How confident can we be about the precision of our statistics? In this approach we can save on computing resources but we need - as in any mathematical theory - assumptions and we need to think about whether these assumptions are justified in each single situation where we apply the theory.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -297,7 +285,12 @@ Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p>In this unit you will learn how we can use probability theory to <strong>quantify the uncertainty of a sampling statistics</strong> as a measure about the true underlying paremter of a population, such as the mean or a proportion. This is an important, though conceptually challenging idea.</p>
+<p>The first step in this process is that we learn <strong>how a known population gives rise to different samples</strong>.</p>
+<p>We discuss the notions of <strong>expected value</strong> and the <strong>standard error</strong> of a random variable and we analyze the expected value and the standard error of a sum and a proportion using <strong>box-models</strong> and the idea of drawing at random with replacement from a box.</p>
+<p>We learn what chance error is and how the <strong>square root law</strong> can describe the chance error of sums and proportions for situations that can be described as random draws with replacement from a box.</p>
+<p>A key step in this analysis is an insight known as the <strong>central limit theorem</strong> which says that when we draw at random with replacement from a box, the probability histogram for the sum will follow the normal curve, even is the contents of the box is not normally distributed, provided the number of draws is large enough.</p>
+<p>This is a key step in bringing probability and statistics together for it helps us to work out the <strong>accuracy of estimates of the sum, the average and or proportions</strong> using the normal distribution.</p>
 </div>
 </div>
 <div class="callout callout-style-simple callout-important callout-titled">
@@ -310,16 +303,26 @@ Keywords
 </div>
 </div>
 <div class="callout-body-container callout-body">
-
+<p><strong>Random drawing with replacement from a box-model</strong> is our key model of a random variable, which arises if we attach to each outcome of a random process a quantity.</p>
+<p><strong>Expected value of the sums of random draws from a box made with replacement</strong> is equal to $() ()</p>
+<p><strong>Square root law</strong>: When drawing at random with replacement form a box of numbered tickets, the standard error for the sum of the draws is <span class="math inline">\(\sqrt{number of draws} \times (\text{standard deviation of the box})\)</span></p>
+<p><strong>Probability histogram</strong> represents probabilities, not data. A probability historgam represents chance by area.</p>
+<p><strong>Central limit theorem</strong> When drawing at random with replacement from a box, the probability histogram for the sum will follow the normal curve, even is the contents of the box is not normally distributed, provided the number of draws is large enough.</p>
+<p><strong>Confidence interval</strong>: A confidence interval is used when estimating an unknown parameter from sample data. The interval gives a range for the parameter, and a confidence level that the range covers the true value.</p>
 </div>
 </div>
 <section id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution." class="level2 page-columns page-full" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="boys-and-girls-using-probability-theory-to-find-a-sampling-distribution."><span class="header-section-number">10.1</span> Boys and Girls: Using probability theory to find a sampling distribution.</h2>
-<p>In unit 3 we talked about random samples, where we draw a sample from a population and want to learn from the sample statistics about the value of the statistics - say a proportion - in the underlying population.</p>
-<p>For this we need to know how a known population gives rise to different samples. Let us think about this problem in terms of concrete example.</p>
-<p>In a sample of 100 newborn babies we find that there are 48.7 % girls and 51.3 % boys. What can we say about the proportion of baby girls in the population of all newborns in a country?</p>
-<p>Suppose the sample has a size of only 1. Then the proportion of baby girls must be either 0 or 1 depending whether we have selected a girl or a boy. These events occur with probability 0.513 (boy) ans 0.487 (girl).</p>
-<div class="page-columns page-full"><p>These are actually the natural probabilities that a baby is a girl or a boy and it has been historically very stable. The outcomes are also independent across births.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> The resulting probability distribution is shown here:</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The independence assumption is justified when we abstract for the moment from rare events such as twins and triplets. In this case things are a bit more complicated but let’s not worry about these special cases for now.</p></li></div></div>
+<p>In unit 3 we talked about random samples, where we draw a sample from a population and want to learn from the sample statistics about the value of the statistics - say a proportion - in the underlying population. For this we need to know how a known population gives rise to different samples. Let us think about this problem in terms of concrete example.</p>
+<p>In a random sample of 1000 newborn babies we find that there are 487 girls and 513 boys. What can we say about the proportion of baby boys and girls in the population of all newborns in a country?</p>
+<div class="page-columns page-full"><p>Assume we draw random samples of different sizes from a population of newborns in a country containing exactly 48.7 % baby girls an 51.3 % baby boys. We would like to find the probability of observing possible proportions of baby girls and baby boys. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;The probabilities we use here are actually the natural probabilities that a baby is a girl or a boy. These probabilities have been historically very stable. The outcomes are also independent across births. The independence assumption is justified when we abstract for the moment from rare events such as twins and triplets. In this case things are a bit more complicated but let’s not worry about these special cases for now.</p></li></div></div>
+<p>Now, of course, this is not the situation we encounter in practice. In practice we can only use the sample to learn about the unknown population. But we can only get to such a conclusion by first exploring how a known population gives rise to different samples. Let’s imagine an example to understand this distinction better.</p>
+<p>We could think of the situation in terms of a box model. Think of the population of 10 newborns as being in a box where we know that 4 babies are girls and 6 are boys and we draw a sample of size 4 from this box at random.</p>
+<p><img src="pictures/box_proportion.png" class="img-fluid" alt="Random draws from a box with known proportions"> This is the first situtuation. We have a population with known distribution and draw at random from this population. Using probability theory we can work out the probabilities of getting different proportions of baby girls and boys.</p>
+<p>The situation we encounter in the practice of statistics is, however, rather the second situation. We have only a sample and want to learn about the population. Look at the following picture.</p>
+<p><img src="pictures/box_proportion_dist_unkown.png" class="img-fluid" alt="Random draws from a box with unkwn proportions"> In order to understand the first situation we can help ourselves via the application of probability theory. This will be a necessary step to understand how probability and statistics hang together and by this insight understand the second situation.</p>
+<p>Let us work out an answer to the first situation now. Suppose the sample has a size of only 1. Then the proportion of baby girls must be either 0 or 1 depending whether we have selected a girl or a boy. These events occur with probability 0.513 (boy) ans 0.487 (girl).</p>
+<p>The resulting probability distribution is shown here:</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -415,33 +418,33 @@ Binomial Formula in R
        log = FALSE) # If TRUE, probabilities are given as log</code></pre>
 </div>
 </div>
-<p>Let us demonstrate its use this to work out the theoretical probabilities for the proportion of girls in a sample of 5 for all possible cases (0, 1, 2, 3, 4, or 5 girls).</p>
+<p>Let us demonstrate its use this to work out the theoretical probabilities for the proportion of girls in a sample of 10 as in the example in our picture where we had a proportion of 0.5 for girls and 0.5 for boys in the sample. We show here the probabilties for all possible cases (0, 1, 2, 3, 4, 5, 6, 7, 8, 9 or 10 girls).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">5</span>, <span class="fl">0.487</span>), </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">5</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 5"</span>,</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="dv">10</span>, <span class="fl">0.487</span>), </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">10</span>, <span class="at">by =</span> <span class="dv">1</span>)<span class="sc">/</span><span class="dv">10</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability distribution: Sample size 10"</span>,</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of girls"</span>,</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Let’s check your understanding of the formula: Denote the event that a randomly chosen newborn will be a girl by <span class="math inline">\(X\)</span>. According to the binomial formula the probability that in a sample of 5 newborns we will have, say two girls, given the probability that a baby is a girl of <span class="math inline">\(0.487\)</span> is:</p>
+<p>Let’s check your understanding of the formula: Denote the event that a randomly chosen newborn will be a girl by <span class="math inline">\(X\)</span>. According to the binomial formula the probability that in a sample of 10 newborns we will have, say four girls, given the probability that a baby is a girl of <span class="math inline">\(0.487\)</span> is:</p>
 <p><span class="math display">\[\begin{eqnarray*}
-P(X = 2) &amp;=&amp; \binom{5}{2} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
-         &amp;=&amp; \frac{5!}{2!(5-2)!} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
-         &amp;=&amp; \frac{5\times 4\times 3\times 2\times 1}{(2\times 3\times 2 \times 1)} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
-         &amp;=&amp; 0.3201917
+P(X = 2) &amp;=&amp; \binom{10}{4} \times 0.487^4 \times (1-0.487)^{(10-4)} \\
+         &amp;=&amp; \frac{10!}{4!(10-4)!} \times 0.487^4 \times (1-0.487)^{(10-4)} \\
+         &amp;=&amp; \frac{10 \times 9 \times 8 \times 7 \times 6 \times 5 \times 4\times 3\times 2\times 1}{( 4 \times 3\times 2 \times 1) ( 6 \times 5 \times 4 \times 3 \times 2 \times 1)} \times 0.487^4 \times (1-0.487)^{(5-2)} \\
+         &amp;=&amp; 0.2152977
 \end{eqnarray*}\]</span></p>
 <p>This is what we get if we do the computation by hand and using pencil and paper. When we use R we should get the same result:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="fl">0.487</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">4</span>,<span class="dv">10</span>,<span class="fl">0.487</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3201917</code></pre>
+<pre><code>[1] 0.2152977</code></pre>
 </div>
 </div>
-<p>Now look at the barplot: If we have 2 girls out of 5 the proportion of girls in the sample would be <span class="math inline">\(2/5\)</span> or <span class="math inline">\(0.4\)</span>. The theoretical probability for this proportion would be about <span class="math inline">\(0.32\)</span>. This is exactly what you see in the barplot.</p>
-<p>For the plot we have computed these probabilities and proportions for all constellations 0, 1, 2, 3, 4 and 5 girls. We have created this sequence with the R <code>seq()</code> function. For the <code>names.arg</code> argument we have created the same sequence but divided every element of the sequence by 5 to express the number as a proportion and then transformed the numbers to a vector of type character by the <code>as.character()</code> function, since <code>names.arg</code> requires a vector of characters.</p>
+<p>Now look at the barplot: If we have 4 girls out of 10 the proportion of girls in the sample would be <span class="math inline">\(4/10\)</span> or <span class="math inline">\(0.4\)</span>. The theoretical probability for this proportion would be about <span class="math inline">\(0.22\)</span>. This is exactly what you see in the barplot.</p>
+<p>For the plot we have computed these probabilities and proportions for all constellations 0, 1, 2, 3, 4 up to 10 girls. We have created this sequence with the R <code>seq()</code> function. For the <code>names.arg</code> argument we have created the same sequence but divided every element of the sequence by 10 to express the number as a proportion and then transformed the numbers to a vector of type character by the <code>as.character()</code> function, since <code>names.arg</code> requires a vector of characters.</p>
 <p>I think by now you understand how we apply the formula both in math and in R to figure out the probabilities. Here we do the same exercise for <span class="math inline">\(n= 100\)</span> and <span class="math inline">\(n=1000\)</span>. We do not show the code anymore her just the plots (try it!):</p>
 <div class="cell">
 <details>
@@ -462,27 +465,29 @@ P(X = 2) &amp;=&amp; \binom{5}{2} \times 0.487^2 \times (1-0.487)^{(5-2)} \\
 <p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>When we draw random samples, like in this example drawing babies from a population of newborns at random with replacement, then the chance process of random sampling delivers a number and then another and then another and so on, in the specific example, 1 for a girl and 0 for a boy.</p>
-<p>Mathematicians call the value around which these number vary the <strong>expected value</strong>, and the amounts of the numbers being off the in size from the expected value the <strong>standard error</strong>. The formulas for the expected value and the standard error depend on the chance process which generates the numbers.</p>
+<p>When we draw random samples, like in this example drawing babies from a population of newborns, then the chance process of random sampling delivers a number and then another and then another and so on, in the specific example, 1 for a girl and 0 for a boy.</p>
+<p>Mathematicians call the value around which these number vary the <strong>expected value</strong>, and the average size of how much the numbers are off the the expected value the <strong>standard error</strong>. The formulas for the expected value and the standard error depend on the chance process which generates the numbers.</p>
 <p>The figures above have two notable features.</p>
 <ol type="1">
 <li><p>The probability distribution for the proportion tends to become regular, symmetric and bell shaped, like a normal curve. This is something we already observed when we discussed the bootstrap.</p></li>
 <li><p>The distribution gets tighter as the sample size increases.</p></li>
 </ol>
-<p>But before we disucss these ideas and their inplications further, let us unpack the notions of expected value and standard error a bit more.</p>
+<p>But before we discuss these ideas and their implications further, let us unpack the notions of expected value and standard error a bit more.</p>
 </section>
 <section id="expected-value" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="expected-value"><span class="header-section-number">10.1.2</span> Expected value</h3>
-<p>The formula for the expected value depends on the chance process which generates the random numbers. Let us introduce the general formulas by an example.</p>
+<p>The formula for the expected value depends on the chance process which generates the random numbers. Let us introduce the general formulas by another box model example.</p>
 <p>Suppose we make hundred random draws with replacement from the box, containing the following tickets, symbolized by an R vector called <code>box</code> and the draws symbolized by an R vector called <code>draws</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">6</span>)</span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>draws <span class="ot">&lt;-</span> <span class="fu">sample</span>(box, <span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We would like to know the expected value of the sum of these draws, when we add up the numbers on the tickets we have drawn at random from the box. How large should it approximately be?</p>
-<p>There should be about 1/5 cases in which the ticket shows 0, 1/5 where it shows 2, 1/5 where it shows 3, 1/5 where it shows 4 and 1/5 where it shows 6. With 100 draws, this would be <span class="math inline">\(20 \times 0 + 20 \times 2 + 20 \times 3 + 20 \times 4 + 20 \times 6 = 300\)</span>.</p>
-<p>This is called the expected value.</p>
+<p>About how large should this sum be? The draws could turn out either 0, 2, 3, 4, or 6. Each outcome has a probability of 1/5, so they should come up around 1/5th of the draws. So in 100 draws we should see:</p>
+<p><span class="math display">\[\begin{equation}
+20 \times 0 + 20 \times 2 + 20 \times 3 + 20 \times 4 + 20 \times 6 = 300
+\end{equation}\]</span></p>
+<p>This is called the <strong>expected value</strong>.</p>
 <p>The formula has two ingredients:</p>
 <ol type="1">
 <li>The number of draws</li>
@@ -506,19 +511,19 @@ Expected value for the sum of random draws from a box
 </div>
 <p>The logic here is that the average of the box amounts to <span class="math display">\[\begin{equation}
 \frac{0+2+3+4+6}{5} = 15/5 = 3
-\end{equation}\]</span> On average each draw adds around 2 to the sum. With 100 draws then the sum must be around <span class="math inline">\(100 \times 3 = 300\)</span>.</p>
+\end{equation}\]</span> On average each draw adds around 3 to the sum. With 100 draws then the sum must be around <span class="math inline">\(100 \times 3 = 300\)</span>.</p>
 <p>See what we have in our actual random draws:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 276</code></pre>
+<pre><code>[1] 312</code></pre>
 </div>
 </div>
 <p>pretty close.</p>
 </section>
 <section id="standard-error" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">10.1.3</span> Standard error</h3>
-<p>We have seem before that the expected value of the sum of the tickets in the box is <span class="math inline">\(300\)</span>. The actual outcome of the random process was, however, 276, which is -24 off the expected value.</p>
+<p>We have seen before that the expected value of the sum of the tickets in the box is <span class="math inline">\(300\)</span>. The actual outcome of the random process was, however, 312, which is 12 off the expected value.</p>
 <p>This is a chance error. The sum will be off the expected value by the size of a chance error, so that:</p>
 <p><span class="math display">\[\begin{equation}
 \text{sum} = \text{expected value} + \text{chance error}
@@ -553,7 +558,12 @@ Square root law
 \end{equation}\]</span></p>
 </div>
 </div>
-<p>This formula has two ingredients: The square root of the number of draws and the standard deviation of the list of numbers in the box. If there is a lot of spread in the box, the standard deviation is big and it is hard to predict how the draws will turn out. So the standard error must be big too.</p>
+<p>This formula has two ingredients:</p>
+<ol type="1">
+<li>The square root of the number of draws.</li>
+<li>The standard deviation of the list of numbers in the box.</li>
+</ol>
+<p>If there is a lot of spread in the box, the standard deviation is big and it is hard to predict how the draws will turn out. So the standard error must be big too.</p>
 <p>The sum of two draws has more variability than one draw. The sum of 100 draws is still more variable. As the number of draws grows the sum gets harder to predict, the chance error gets bigger and so does the standard error. However the standard error goes up slowly with a factor equal to the square root of the number of draws. With 100 draws, therefore the sum is 10 times more variable than with a single draw.</p>
 <p>Note that the standard deviation and the standard error are two different concepts:</p>
 <p>The standard deviation is for the list of numbers in the box, in our example <span class="math inline">\(0,2,3,4, 6\)</span>. This is 2</p>
@@ -603,141 +613,141 @@ Square root law
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="even">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">0</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">6</td>
 </tr>
@@ -745,7 +755,7 @@ Square root law
 </table>
 </div>
 </div>
-<p>The sum of these draws is 276, this is -24 off the expected value.</p>
+<p>The sum of these draws is 312, this is 12 off the expected value.</p>
 <p>Now if we do such an experiment 100 times, we get something like the following table. I don’t show the code but you can try to refresh your knowledge of writing a loop here.</p>
 <div class="cell">
 <details>
@@ -792,243 +802,243 @@ Square root law
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">293</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: right;">290</td>
+<td style="text-align: right;">289</td>
 <td style="text-align: right;">41</td>
-<td style="text-align: right;">261</td>
+<td style="text-align: right;">337</td>
 <td style="text-align: right;">61</td>
-<td style="text-align: right;">279</td>
+<td style="text-align: right;">290</td>
 <td style="text-align: right;">81</td>
-<td style="text-align: right;">284</td>
+<td style="text-align: right;">314</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">307</td>
+<td style="text-align: right;">311</td>
 <td style="text-align: right;">22</td>
-<td style="text-align: right;">267</td>
+<td style="text-align: right;">323</td>
 <td style="text-align: right;">42</td>
-<td style="text-align: right;">307</td>
+<td style="text-align: right;">312</td>
 <td style="text-align: right;">62</td>
-<td style="text-align: right;">285</td>
+<td style="text-align: right;">336</td>
 <td style="text-align: right;">82</td>
-<td style="text-align: right;">273</td>
+<td style="text-align: right;">329</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">296</td>
+<td style="text-align: right;">326</td>
 <td style="text-align: right;">23</td>
-<td style="text-align: right;">267</td>
+<td style="text-align: right;">324</td>
 <td style="text-align: right;">43</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">277</td>
 <td style="text-align: right;">63</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">308</td>
 <td style="text-align: right;">83</td>
-<td style="text-align: right;">263</td>
+<td style="text-align: right;">312</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">277</td>
+<td style="text-align: right;">316</td>
 <td style="text-align: right;">24</td>
-<td style="text-align: right;">331</td>
+<td style="text-align: right;">305</td>
 <td style="text-align: right;">44</td>
-<td style="text-align: right;">320</td>
+<td style="text-align: right;">280</td>
 <td style="text-align: right;">64</td>
-<td style="text-align: right;">266</td>
+<td style="text-align: right;">274</td>
 <td style="text-align: right;">84</td>
-<td style="text-align: right;">267</td>
+<td style="text-align: right;">308</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">287</td>
+<td style="text-align: right;">295</td>
 <td style="text-align: right;">25</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">293</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: right;">282</td>
-<td style="text-align: right;">65</td>
 <td style="text-align: right;">298</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">293</td>
 <td style="text-align: right;">85</td>
-<td style="text-align: right;">307</td>
+<td style="text-align: right;">308</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">308</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">274</td>
-<td style="text-align: right;">46</td>
-<td style="text-align: right;">272</td>
-<td style="text-align: right;">66</td>
 <td style="text-align: right;">311</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">278</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">296</td>
 <td style="text-align: right;">86</td>
-<td style="text-align: right;">302</td>
+<td style="text-align: right;">318</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">301</td>
 <td style="text-align: right;">27</td>
-<td style="text-align: right;">300</td>
+<td style="text-align: right;">274</td>
 <td style="text-align: right;">47</td>
-<td style="text-align: right;">329</td>
+<td style="text-align: right;">319</td>
 <td style="text-align: right;">67</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">323</td>
 <td style="text-align: right;">87</td>
-<td style="text-align: right;">273</td>
+<td style="text-align: right;">317</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">280</td>
+<td style="text-align: right;">273</td>
 <td style="text-align: right;">28</td>
-<td style="text-align: right;">296</td>
+<td style="text-align: right;">305</td>
 <td style="text-align: right;">48</td>
-<td style="text-align: right;">296</td>
+<td style="text-align: right;">331</td>
 <td style="text-align: right;">68</td>
-<td style="text-align: right;">315</td>
+<td style="text-align: right;">293</td>
 <td style="text-align: right;">88</td>
-<td style="text-align: right;">285</td>
+<td style="text-align: right;">288</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">291</td>
 <td style="text-align: right;">29</td>
-<td style="text-align: right;">272</td>
+<td style="text-align: right;">298</td>
 <td style="text-align: right;">49</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">305</td>
 <td style="text-align: right;">69</td>
-<td style="text-align: right;">276</td>
+<td style="text-align: right;">291</td>
 <td style="text-align: right;">89</td>
-<td style="text-align: right;">280</td>
+<td style="text-align: right;">298</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">302</td>
+<td style="text-align: right;">285</td>
 <td style="text-align: right;">30</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">292</td>
 <td style="text-align: right;">50</td>
-<td style="text-align: right;">307</td>
-<td style="text-align: right;">70</td>
 <td style="text-align: right;">308</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">311</td>
 <td style="text-align: right;">90</td>
-<td style="text-align: right;">278</td>
+<td style="text-align: right;">255</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">11</td>
-<td style="text-align: right;">285</td>
+<td style="text-align: right;">305</td>
 <td style="text-align: right;">31</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">314</td>
 <td style="text-align: right;">51</td>
-<td style="text-align: right;">315</td>
-<td style="text-align: right;">71</td>
-<td style="text-align: right;">267</td>
-<td style="text-align: right;">91</td>
-<td style="text-align: right;">254</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">281</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">316</td>
-<td style="text-align: right;">52</td>
-<td style="text-align: right;">267</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">301</td>
-<td style="text-align: right;">92</td>
-<td style="text-align: right;">317</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">276</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">331</td>
-<td style="text-align: right;">53</td>
-<td style="text-align: right;">290</td>
-<td style="text-align: right;">73</td>
-<td style="text-align: right;">269</td>
-<td style="text-align: right;">93</td>
-<td style="text-align: right;">293</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">263</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">332</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">292</td>
-<td style="text-align: right;">74</td>
-<td style="text-align: right;">310</td>
-<td style="text-align: right;">94</td>
-<td style="text-align: right;">326</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">293</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">307</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">332</td>
-<td style="text-align: right;">75</td>
-<td style="text-align: right;">315</td>
-<td style="text-align: right;">95</td>
-<td style="text-align: right;">273</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">318</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">318</td>
-<td style="text-align: right;">56</td>
-<td style="text-align: right;">285</td>
-<td style="text-align: right;">76</td>
-<td style="text-align: right;">344</td>
-<td style="text-align: right;">96</td>
-<td style="text-align: right;">289</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">269</td>
-<td style="text-align: right;">37</td>
 <td style="text-align: right;">284</td>
-<td style="text-align: right;">57</td>
-<td style="text-align: right;">311</td>
-<td style="text-align: right;">77</td>
-<td style="text-align: right;">298</td>
-<td style="text-align: right;">97</td>
+<td style="text-align: right;">71</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">91</td>
 <td style="text-align: right;">299</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">307</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">296</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">301</td>
-<td style="text-align: right;">78</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">304</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">339</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">308</td>
+<td style="text-align: right;">72</td>
+<td style="text-align: right;">272</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">337</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">33</td>
 <td style="text-align: right;">292</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">257</td>
+<td style="text-align: right;">73</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">310</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">288</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">328</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: right;">297</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">316</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">301</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">296</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">311</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">302</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">295</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">269</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">316</td>
+<td style="text-align: right;">76</td>
+<td style="text-align: right;">271</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">276</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">317</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">332</td>
+<td style="text-align: right;">57</td>
+<td style="text-align: right;">292</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">300</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">303</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">277</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">349</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">272</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">298</td>
 <td style="text-align: right;">98</td>
-<td style="text-align: right;">285</td>
+<td style="text-align: right;">286</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">19</td>
-<td style="text-align: right;">320</td>
+<td style="text-align: right;">294</td>
 <td style="text-align: right;">39</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">292</td>
 <td style="text-align: right;">59</td>
-<td style="text-align: right;">327</td>
+<td style="text-align: right;">291</td>
 <td style="text-align: right;">79</td>
-<td style="text-align: right;">313</td>
+<td style="text-align: right;">257</td>
 <td style="text-align: right;">99</td>
-<td style="text-align: right;">320</td>
+<td style="text-align: right;">317</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">20</td>
-<td style="text-align: right;">291</td>
+<td style="text-align: right;">276</td>
 <td style="text-align: right;">40</td>
-<td style="text-align: right;">292</td>
+<td style="text-align: right;">283</td>
 <td style="text-align: right;">60</td>
-<td style="text-align: right;">290</td>
-<td style="text-align: right;">80</td>
-<td style="text-align: right;">320</td>
-<td style="text-align: right;">100</td>
 <td style="text-align: right;">252</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">303</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">288</td>
 </tr>
 </tbody>
 </table>
@@ -1041,14 +1051,14 @@ Square root law
 </div>
 <p>100 % are within these bounds.</p>
 </section>
-<section id="using-the-normal-curve-when-the-number-of-draws-is-large" class="level3" data-number="10.1.4">
+<section id="using-the-normal-curve-when-the-number-of-draws-is-large" class="level3 page-columns page-full" data-number="10.1.4">
 <h3 data-number="10.1.4" class="anchored" data-anchor-id="using-the-normal-curve-when-the-number-of-draws-is-large"><span class="header-section-number">10.1.4</span> Using the normal curve when the number of draws is large</h3>
-<p>When we make a large number of draws at random with replacement what is the chance that the values are within a given range ? Historically mathematicians detected the normal curve while working out problems of this kind. Let’s keep the logic of why the normal curev comes into play with a large number of draws aside for the moment and briefly discuss how it works.</p>
+<p>When we make a large number of draws at random with replacement what is the chance that the values of the sum are within a given range ? Historically mathematicians detected the normal curve while working out problems of this kind. Let’s keep the logic of why the normal curve comes into play with a large number of draws aside for the moment and briefly discuss how it works.</p>
 <p>Think about our box from before.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>When we tell the computer to repeatedly sample from this box with replacement and take the sum, he prints or stores the result over and over again. What percentage of numbers should be between 200 and 250?</p>
+<p>When we tell the computer to repeatedly sample from this box with replacement and take the sum, he prints or stores the result over and over again. What percentage of numbers should be between 270 and 330?</p>
 <p>Note that each sum will be somewhere between 0 and <span class="math inline">\(100 \times 6\)</span> or 600. Let us assume we want to know the chance that the sum is somewhere between 150 and 350. Here is a picture. We convert first to standard units and then use the normal curve. <img src="pictures/range_of_sum_with_curve.png" class="img-fluid" alt="Probability of sum between 150 and 360 in a large sample"></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.5</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1061,7 +1071,7 @@ Square root law
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(repetitions) <span class="sc">&lt;=</span> (<span class="dv">300</span> <span class="sc">+</span> <span class="dv">30</span>) <span class="sc">&amp;</span> </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unlist</span>(repetitions) <span class="sc">&gt;=</span> (<span class="dv">300</span> <span class="sc">-</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is 0.82 %. A pretty good approximation.</p>
+<p>This is 0.88. A pretty good approximation.</p>
 <p>Why do we need a conversion to standard units? Here we could also use the normal distribution with mean 300 and standard deviation 30 to derive the same result. To see this, consider:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">330</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">270</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1071,15 +1081,20 @@ Square root law
 </div>
 <p>Same result. The probability does not depend on the units in which the variables are measured. There is an infinity of normal distributions for each different pair of means and standard deviations. For the computer this is no problem to handle, so in the computer age in some cases we do not need to convert to standard units.</p>
 <p>However before the age of computers probabilities of the normal distribution were printed in tables, for the standard normal distributions and you had to use the table to compute probabilities for intervals of normally distributed random variables. Such a table looks like this:</p>
-<p><img src="pictures/standard_normal_table.png" class="img-fluid" alt="Probability table of the standard normal distribution"> The value in the table correspond to the area under the normal curve above a certain value <span class="math inline">\(z\)</span>. So how do we read the table for our computation? The area above <span class="math inline">\(z = 1.5\)</span> is 0.0668 (table row 16). The area above 0 is by the symmetry of the normal curve 0.5. Hence the area between 0 and 1.5 must be 0.4332 and by symmetry again, the area above -1.5 and below 0 must then by twice this amount which gives 0.8664, which is the same answer than we got from the computer.^[There are other scenarios where standardization is useful even if we have access to a computer. One is when we compare variables with different normal distributions relative to each other. One example would be, when the grades of the astronomy course and the grades of the statistics course are normally distributed but with different means and standard deviations. Then to compare the scores you need to standardize. For instance, suppose a student is scoring 60 in Astronomy with the mean score of the class being 40, and scoring 65 at statistics with the mean score of the class being 80. Given the “raw” scores, one would say that the student performed better in statistics than in astronomy. However, taking into consideration the peers, it is clear that the student performed relatively better in astronomy than in statistics.</p>
-<p>Furthermore z-scores also allow to compare variables that would be impossible to compare otherwise because they have different units. Say you would like to know whether somebody is more extreme in terms of salary than in terms of running speed, then there would be no way to know this except when you standardize or use z-scores. ]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/standard_normal_table.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Probability table of the standard normal distribution</figcaption>
+</figure>
+</div>
+<div class="page-columns page-full"><p>The value in the table correspond to the area under the normal curve above a certain value <span class="math inline">\(z\)</span>. So how do we read the table for our computation? The area above <span class="math inline">\(z = 1.5\)</span> is 0.0668 (table row 16). The area above 0 is by the symmetry of the normal curve 0.5. Hence the area between 0 and 1.5 must be 0.4332 and by symmetry again, the area above -1.5 and below 0 must then by twice this amount which gives 0.8664, which is the same answer than we got from the computer.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;There are other scenarios where standardization is useful even if we have access to a computer. One is when we compare variables with different normal distributions relative to each other. One example would be, when the grades of the astronomy course and the grades of the statistics course are normally distributed but with different means and standard deviations. Then to compare the scores you need to standardize. For instance, suppose a student is scoring 60 in Astronomy with the mean score of the class being 40, and scoring 65 at statistics with the mean score of the class being 80. Given the “raw” scores, one would say that the student performed better in statistics than in astronomy. However, taking into consideration the peers, it is clear that the student performed relatively better in astronomy than in statistics. Furthermore z-scores also allow to compare variables that would be impossible to compare otherwise because they have different units. Say you would like to know whether somebody is more extreme in terms of salary than in terms of running speed, then there would be no way to know this except when you standardize or use z-scores. This would then tell you how far this individual is above or below average in both aspects.</p></li></div></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Boys and girls again: A useful special case with a short cut
+Where are the missing girls?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1110,7 +1125,7 @@ Important
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1-0</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.499975</code></pre>
+<pre><code>[1] 0.4993746</code></pre>
 </div>
 </div>
 <p>With this insight we can treat the binomial case exactly like the box case. All we have to do is to mark the tickets in the box, in our case the girls and boys, write 1 on the tickets that you count and 0 on the others and then your expected value of a sum of n tosses will be:</p>
@@ -1125,14 +1140,14 @@ Important
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.495</code></pre>
+<pre><code>[1] 0.475</code></pre>
 </div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">sqrt</span>( <span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.8106</code></pre>
+<pre><code>[1] 15.79161</code></pre>
 </div>
 </div>
 <p>This is very good. Now for computing probabilities also here we can - for large enough samples - use the normal approximation. Say, we would like to know what is the probability that we would observe a share of girls between 0.4 and 0.5?</p>
@@ -1152,6 +1167,8 @@ Important
 </div>
 </div>
 <p>which is a stunningly close approximation.</p>
+<p>Such statistical regularities can sometimes bring insight into social processes. For example with the natural probabilities that a baby will be a girl with 0.487 and a boy with 0.513 the sex ratio at birth should be expected to be <span class="math inline">\(0.513/0.487 = 1.053\)</span>. India, in contrast hat a sex ratio at birth of 1.063.</p>
+<p>The number of life births in 2022 in India was according to the demographic data of the US Census international database 23.377.786. With the natural probabilities we expect for such a population 11.384.982 baby girls in this cohort of 2022 babies with a standard error of <span class="math inline">\(\sqrt{23377786 \times 0.487 \times 0.513} = 2417\)</span>. Thus using the normal approximation the ratio would be with 95 % probability within the interval <span class="math inline">\([11.384.982 - 2 \times 2417 , 11.384.982 + 2 \times 2417]\)</span>, or within <span class="math inline">\([0.4868, 0.4872]\)</span>. With a ratio of boys to girls of 1.063 the share of girls would be 0.4847. This proportion is more than two standard deviations lower compared to what would be expected based on the natural probabilities of 0.487 and 0.513. There is a debate among demographers whether this discrepancy in girl births might be due to infanticide of selective abortion of female fetuses.</p>
 </div>
 </div>
 </section>
@@ -1288,7 +1305,7 @@ Probability histogram
 </div>
 </div>
 <p>We saw in this example that the variability of the observed proportion gets smaller as the sample size increases. Here the same mechanisms are at work as in the example of craps.</p>
-<div class="page-columns page-full"><p>These mechanisms have been first systematically described by is the classic Jacob Bernoulli in the 17th century and the result is termed the <strong>law of large numbers</strong> or the law of averages.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Jacob Bernoulli, 6 January 1655 – 16 August 1705,was one of the many prominent mathematicians in the Swiss Bernoulli family. <img src="pictures/Jakob_Bernoulli.jpg" class="img-fluid" alt="Jacon Bernoulli"> He sided with Gottfried Wilhelm Leibniz during the Leibniz–Newton calculus controversy and was an early proponent of Leibnizian calculus, which he made numerous contributions to; along with his brother Johann, he was one of the founders of the calculus of variations. He also discovered the fundamental mathematical constant e. However, his most important contribution was in the field of probability, where he derived the first version of the law of large numbers in his work Ars Conjectandi.[3]</p></li></div></div>
+<div class="page-columns page-full"><p>These mechanisms have been first systematically described by is the classic Jacob Bernoulli in the 17th century and the result is termed the <strong>law of large numbers</strong> or the law of averages.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Jacob Bernoulli, 6 January 1655 – 16 August 1705,was one of the many prominent mathematicians in the Swiss Bernoulli family. <img src="pictures/Jakob_Bernoulli.jpg" class="img-fluid" alt="Jacon Bernoulli"> He sided with Gottfried Wilhelm Leibniz during the Leibniz–Newton calculus controversy and was an early proponent of Leibnizian calculus, which he made numerous contributions to; along with his brother Johann, he was one of the founders of the calculus of variations. He also discovered the fundamental mathematical constant e. However, his most important contribution was in the field of probability, where he derived the first version of the law of large numbers in his work Ars Conjectandi.[3]</p></li></div></div>
 <p>The manifestation of this law here is that when we increase the sample, the proportion of girls in the outcome of the random experiment comes closer and closer to the true proportion of 0.487.</p>
 <p>In the previous section we discussed the normal approximation when the sample size is large enough. This is also the content of the famous <strong>central limit theorem</strong> detected in 1733 by Abraham de Moivre. This theorem says:</p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -1304,237 +1321,517 @@ Central limit theorem
 <p>When drawing at random with replacement from a box, the probability histogram for the sum will follow the normal curve, even is the contents of the box is not normally distributed, provided the number of draws is large enough.</p>
 </div>
 </div>
-<p>This is a remarkable fact. Whatever the the shape of the population distribution from which each of the original measurements were sampled, for large sample sizes their average can be considered as drawn from a normal curve. This will have a mean that is equal to the standard deviation that has a simple relationship to the standard deviation of the original population and is known, as we discussed before, as the standard error.</p>
+<p>This is a remarkable fact. Whatever the the shape of the population distribution from which each of the original measurements were sampled, for large sample sizes their average can be considered as drawn from a normal curve. This will have a mean that is equal to the mean of the original distribution the standard deviation that has a simple relationship to the standard deviation of the original population It is known, as we discussed before, as the standard error.</p>
+<p>Note that the central limit theorem applies to sums but not to other operations, like products. The central limit theorem is the basis for many statistical procedures we discuss in the rest of the units.</p>
+<p>How many draws will be needed before we can be confident that we may apply the approximation? There is no general rule. It depends on what is in the box but for most boxes 100 draws will already get sufficienty close.</p>
+<p>When a probability histogram follows a normal curve, it can be approximated by the expected value and the standard error.</p>
+<p>According to the square root law the expected value and the standard error for a sum can be computed from:</p>
+<ul>
+<li>the number of draws</li>
+<li>the average of the box</li>
+<li>the standard error of the box</li>
+</ul>
+<p>These are the three quantities which determine the behavior of the sum. This is why the standard error of the box is such an important measure of its spread.</p>
 <p>Now we see also why in the bootstrap examples we discussed in unit 5, the distribution of the statistics we got from repeated resamples looked more and more like a normal distribution. This is the consequence of the central limit theorem.</p>
-<p>This applies also for proportions, because as we discussed in the previous section, by appropriate labeling of the outcomes we want to count proportions can be understood as means of a binary variable with values 0 and 1.</p>
-<p>Before we close this section, let us discuss the scope of the normal approximation to get a better feeling when it is appropriate to use it.</p>
-<p>Let us for the start consider an unbalanced box like this one with 9 zeros and one 1:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>skew_box <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This is the probability histogram of this box:</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.1</span>), <span class="at">names.arg =</span> <span class="fu">c</span>(<span class="st">"0"</span>, <span class="st">"1"</span>), </span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Probability histogram of lopsided box"</span>,</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Proportion of 0"</span>,</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>How many draws do we need before the sum gets near to normal? Let us start with 25 draws from the skew box first. (I don’t show the code. You by now know how to code this. Try it!):</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>appr_1 <span class="ot">&lt;-</span> <span class="cf">function</span>(){</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample</span>(skew_box, <span class="dv">9</span> , <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="fl">0.1</span>,<span class="dv">8</span>), <span class="fl">0.9</span>)) <span class="sc">|&gt;</span> <span class="fu">sum</span>()</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>out_1 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">25</span>, <span class="fu">appr_1</span>())</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>h25 <span class="ot">&lt;-</span> <span class="fu">hist</span>(out_1, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">9.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>h25<span class="sc">$</span>counts <span class="ot">&lt;-</span> h25<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h25<span class="sc">$</span>counts)</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h25,</span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Value of the sum"</span>,</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">" "</span>,</span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"25 samples"</span>,</span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>)</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>, <span class="st">"40 %"</span>, <span class="st">"50 %"</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> out_1</span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(data), <span class="at">sd =</span> <span class="fu">sd</span>(data)) </span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(h25<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  </span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>You can see that there are is a bad fit between the probability histogram and the normal curve. The approximation will not work.</p>
-<p>Let us try 1000 draws</p>
-<div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>out_2 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">appr_1</span>())</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>h1000 <span class="ot">&lt;-</span> <span class="fu">hist</span>(out_1, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="fl">9.5</span>, <span class="at">by =</span> <span class="dv">1</span>), <span class="at">plot =</span> F)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>h1000<span class="sc">$</span>counts <span class="ot">&lt;-</span> h1000<span class="sc">$</span>counts<span class="sc">/</span><span class="fu">sum</span>(h1000<span class="sc">$</span>counts)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h1000,</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Value of the sum"</span>,</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">" "</span>,</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"500 samples"</span>,</span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> F,</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>)</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co"># add labels below each column</span></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)</span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>,<span class="st">"10 %"</span>, <span class="st">"20 %"</span>, <span class="st">"30 %"</span>, <span class="st">"40 %"</span>, <span class="st">"50 %"</span>), <span class="at">las =</span> <span class="dv">1</span>)</span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> out_2</span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>x_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
-<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x_values, <span class="at">mean =</span> <span class="fu">mean</span>(data), <span class="at">sd =</span> <span class="fu">sd</span>(data)) </span>
-<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>y_values <span class="ot">&lt;-</span> y_values <span class="sc">*</span> <span class="fu">diff</span>(h1000<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  </span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="co">#overlay normal curve on histogram</span></span>
-<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x_values, y_values, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
+<p>This applies also for proportions, because by appropriate labeling of the outcomes a count of proportions can be understood as the means of a binary variable with values 0 and 1.</p>
 </section>
 </section>
-<section id="the-95-confidence-interval" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="the-95-confidence-interval"><span class="header-section-number">10.2</span> The 95 % confidence interval</h2>
+<section id="working-out-the-accuracy-of-estimates" class="level2 page-columns page-full" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="working-out-the-accuracy-of-estimates"><span class="header-section-number">10.2</span> Working out the accuracy of estimates</h2>
 <p>While the central limit theorem is a remarkable and extraordinary law of nature, the question arises, how this law can help us work out the accuracy of estimates without using the heavy machinery of computer simulation.</p>
-<p>Probability theory ha s shown how the distributions of statistics like means and proportions look like when the data are drawn from known populations.</p>
-<p>But the usual situation in practice is the other way round: Most of the time in a practical data analysis situation we have to go from a single sample back to saying something about a possible underlying population. This is the process of inductive inference, we discussed in unit 3.</p>
-<p>So far in this unit we have studies chance processes using probability theory. We ran simulations, like flipping coins or drawing tickets from a box or sampling girls and boys from a population of newborns using emprical probabilities. We have to distinguish two form of uncertainty. One type of uncertainty is related to the stituation when I run a simulation before I press the ENTER key on my computer. This relates to the chance of an unpredictable event. This is called <strong>aleatory uncertainty</strong>.</p>
-<p>When I have run the simulation and before I look at the outcome, there is another situation of uncertainty. The outcome is fixed, because I have already run the simulation but I do not yet know the outcome yet. This form of uncertainty is called <strong>epistemic uncenrtainty</strong>.</p>
-<p>Statistics is used to deal with situations of epistemic uncertainty about some quantity in the world, like the mean human hight or the proportion of baby girls among the newborns in a country.</p>
-<p>For example, wehn we conduct a surevy we do not know the true proportions of - for example stunted and wasted children - as in the DHS example we discussed in unit 2. These fixed but unknown quamtities are called <strong>parameters</strong> in statistics. Just as in the example we gave before, before we do the survey we have aleatory uncertainty because of the random sampling. After we have drawn the sample and have the data, we use a probability model to deal with and understand our epistemic uncertainty. Probability theory which tells us what to expect is used to tell us what we can learn from what we have observed. This is the basis for statistical inference and this is the way in which statistics and probability work together to understand data.</p>
-<p>One of the most important concepts from statistical inference the <strong>confidence interval</strong> is built on this idea. Let me explain the steps how we derive an uncertainty interval around an estimate, without resorting to a bootstrap simulation.</p>
-<p>There are three stages, which we describe here following <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>:</p>
+<p>We have gone a long way now to discuss how we come from a given probability distribution to the probability of outcomes. We now are ready to discuss the second question, which is the usual situation in statistical practice. We have a single sample and need to say saying something about an underlying population. This is the process of inductive inference, we discussed in unit 3.</p>
+<section id="the-accuracy-of-percentages" class="level3 page-columns page-full" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="the-accuracy-of-percentages"><span class="header-section-number">10.2.1</span> The accuracy of percentages</h3>
+<p>Let us now turn the situation around and do not reason from the box to the draws but take the other perspective and reason from the draws to the box. The technique belongs to the key ideas of statistics and we develop it here in a context of polling.</p>
+<div class="page-columns page-full"><p>Suppose a vote between two political parties comes up and you want to find out an estimate of the percentage of votes for one of two parties, A and B. Say you were able to draw a random sample from the eligible voters in the district and all have responded truthfully<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Say you have taken a sample of 2500 voters, and in the there are 1328 voters in favor party A. The percentage is: <span class="math display">\[\begin{equation}
+\frac{1328}{2500} \times 100 \% \approx 53 \%
+\end{equation}\]</span> You have taken the data of the sample to make an estimate but how far wrong this estimate is likely to be? With a box model in mind, you might think of the following procedure. Each respondent with a stated preference for party A is represented as a ticket with a 1 written on it and the others with a ticket with a 0 written on it. The standard error of the box for the sum should be <span class="math display">\[\begin{equation}
+\sqrt{\text{(share of}\, 1's) \times (\text{share of}, 0's)}
+\end{equation}\]</span> But now you are stuck, because you don’t know how the tickets in the box (in the population of voters in the district ) are marked.</p><div class="no-row-height column-margin column-container"><li id="fn4"><p><sup>4</sup>&nbsp;Of course this is not a realistic scenario in polling. You will have non-responses and people not telling the truth and in practice you have to find methods and ways to deal with all of these aspects. The key principles can, however, be explained also in this idealized and simplified case</p></li></div></div>
+<p>Survey organisations lift themselves out of the dilemma, very much like we did in unit 5, when we learned about the bootstrap. The substitute the fractions observed in the sample for the unknown fractions in the box. For example, there were 1328/2500 or 0.53 in the sample in favor of party A and the rest of 0.47 was opposed. On this basis lets estimate the standard deviation of the box as <span class="math inline">\(\sqrt{0.53 \times 0.47}\)</span> which is about 0.5. With this assumption the standard error for the voters in the sample is <span class="math inline">\(\sqrt{2500} \times 0.5\)</span> which is 25, which is 1 % in terms of the sample size. The estimate is according to this calculation off by about 1 percentage point.</p>
+</section>
+<section id="confidendence-intervals" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="confidendence-intervals"><span class="header-section-number">10.2.2</span> Confidendence intervals</h3>
+<p>In the previous example of polling, the voter share for party A was estimated 53 % with a standard error of 1 %. So the population percentage could by 52 %. The population percentage could also be 54 %. The population percentage could also be 49 % corresponding to a chance error of 4 %. This is already unlikely because 4 % represent 4 standard deviations. But theoretically the population percentage could even be smaller than that.</p>
+<p>With chance error there is no sharp line between possible and impossible. Errors with 4 standard deviations do occur but very infrequently. What happens, if we set the cutoff at 2 standard deviations? Take the interval from s standard errors above and below the sample percentage:</p>
+<p><img src="pictures/confidence_interval.png" class="img-fluid" alt="Confidence Interval"> This is called a <strong>confidence interval</strong> for the population percentage, with a confidence level of about 95 %. You can be 95 % confident that the population percentage will be inside the interval <span class="math inline">\([53 \%, 54 \%]\)</span>. You can have other confidence intervals. Anything except 100 % is possible.</p>
+<p>What, if you want different confidence levels? Anything except 100 % is allowed by going the appropriate number of standard errors right and left from the expected value. For example:</p>
 <ol type="1">
-<li><p>Probability theory tell us for any particular population parameter, an interval in which we expect the observed statistics to lie with 95 % probability.</p></li>
-<li><p>Then we observe the particular statistics, say a mean or a proportion.</p></li>
-<li><p>Finally we work out the range of possible population parameters, for which our statistics lies in their 95 % prediction intervals. This range we call a <strong>confidence interval</strong>.</p></li>
+<li><p>The interval “sample percentage” plus/minus 1 stndard error is an 68 % confidence interval for the population percentage.</p></li>
+<li><p>The interval “sample percentage” of plus/minus 2 standard errors is a 95 % confidence interval fro the population percentage.</p></li>
+<li><p>The interval “sample percentage” of plus minus 3 standard errors is a 99.7 confidence interval for the population percentage.</p></li>
 </ol>
-<p>The label of this interval is 95% confidence interval, because with repeated application 95 % of these intervals contain the true value. Note that this is different from saying that there is a 95 % probability that this particular interval contains the true value, an incorrect interpretation which you might encounter often even in the academic literature.</p>
-<section id="computing-confidence-intervals" class="level3" data-number="10.2.1">
-<h3 data-number="10.2.1" class="anchored" data-anchor-id="computing-confidence-intervals"><span class="header-section-number">10.2.1</span> Computing confidence intervals</h3>
-<p>The theory of computing confidence intervals was consolidated and introduced in the 1930ies by Jerzy Neyman and Egon Pearson, wo was the son of Karl Person, whose data on the heights of fathers and sons we had begin studying in unit 4.</p>
-<p>In our leading example we found that the sample percentage of girls in our simulated sample of 1000 was 487 or 48.7 %. How far can the population percentage be from 48.7% ? The standard error is estimated as 15.8, suggesting that the chance error is around 1.58 %. So the population percentage could be off by around 1.6 %</p>
-<p>Let us now show how the probability histogram for the number of baby girls gets close to the normal curves when the sample gets large, as in our example of 1000 draws.</p>
+<p>You can go on but even 10 standard deviations may not give you 100 % confidence, because for any interval you take, the normal curve always has some area (if very very small) outside of it.</p>
+<p>How can we interpret a confidence interval? Often yo will hear people saying: “there is a 95 % chance that the population percentage is between 52 and 54 %. But this is misleading. The chance represents the number of times something will happen. No matter how many time you poll the voters, the share will not change.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keep in mind
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The chances are in the sampling procedure, not in the parameter.</p>
+</div>
+</div>
+<p>First of all, notice that the confidence interval depends on the sample. If the sample had come out differently, the confidence interval would be different. With some samples the confidence interval contains the population percentage and with others perhaps not. The confidence level of 95 % then means that for 95 % of all samples the confidence interval will contain the true population percentage, and for the other 5 % it will not.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Interpreting a confidence interval
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A confidence interval is used when estimating an unknown parameter from sample data. The interval gives a range for the parameter, and a confidence level that the range covers the true value.</p>
+</div>
+</div>
+<p>Suppose that 100 survey teams took a random sample of 10.000 newborns in a large country to estimated the share of baby girls. Unknown to the survey teams this percentage is 48.7 %. Each team computes a confidence interval for the proportion of girls, using the formula:</p>
+<p><span class="math display">\[\begin{equation}
+\text{percentage of girls in the sample}\,\, \substack{+ \\ -} \,\, 2 \times \text{SE}
+\end{equation}\]</span></p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x-axis grid</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">45</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="dv">1000</span>, <span class="fl">0.487</span>)</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>conf_intervals <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> <span class="dv">100</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)){</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">10</span><span class="sc">^</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="fl">0.487</span>)</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)<span class="sc">*</span><span class="dv">10000</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">10000</span><span class="sc">*</span><span class="fu">mean</span>(x)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">mean</span>(x)))</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  conf_intervals[[i]] <span class="ot">&lt;-</span> <span class="fu">c</span>((m <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>se), (m <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>se))<span class="sc">/</span><span class="dv">10000</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot setup</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">0</span>, <span class="at">type =</span> <span class="st">"n"</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">52</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>), <span class="at">xaxt =</span> <span class="st">"n"</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>, <span class="at">ylab =</span> <span class="st">"Interval Index"</span>, <span class="at">xlab =</span> <span class="st">"Percentage"</span>, <span class="at">main =</span> <span class="st">"Confidence Intervals"</span>)</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">1</span>), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="fu">seq</span>(<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">1</span>), <span class="st">"%"</span>))  <span class="co"># X-axis ticks as percentages</span></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Draw the confidence intervals</span></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(conf_intervals)) {</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>  interval <span class="ot">&lt;-</span> conf_intervals[[i]]<span class="sc">*</span><span class="dv">100</span></span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segments</span>(<span class="at">x0 =</span> interval[<span class="dv">1</span>], <span class="at">y0 =</span> i, <span class="at">x1 =</span> interval[<span class="dv">2</span>], <span class="at">y1 =</span> i, <span class="at">col =</span> <span class="st">"blue"</span>)  <span class="co"># Interval line</span></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected value line</span></span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">48.7</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Correcting the y-axis and plot limits</span></span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">las =</span> <span class="dv">1</span>)  <span class="co"># Add y-axis numbers with horizontal labels</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure plot box is shown</span></span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The percentage of girls is different from sample to sample and so is the estimated standard error. As a result the intervals have different centers and lengths. Some cover the percentage of 48.7 others fail to do so. About 95 % of them cover the true proportion.</p>
+<p>This is of course only a computer simulation. In practice an investigator would have only one sample and would not know the parameter. A sample percentage will be off the population percentage due to chance error. The standard error tells you the likely size of being off. Confidence intervals are a concept to make this idea more quantitative.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The formulas for simple random samples do not apply to other kinds of samples!</p>
+</div>
+</div>
+<p>The logic of the procedure depends on the square root law. When the size of the sample is small relative to the size of the population, taking a simple random sample is about the same as drawing at random with replacement from a box. This is the basic situation to which the square root law applies. At random means, that every ticket in the box has the same probability of ending up in the sample. If the sample is not taken at random, the square root law will give you wrong answers.</p>
+</section>
+<section id="the-accuracy-of-averages" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="the-accuracy-of-averages"><span class="header-section-number">10.2.3</span> The accuracy of averages</h3>
+<p>Let us next discuss how we can use probability theory in combination with statistics to quantify the accuracy of averages. Again our leading example will be a box, with tickets numbered from 1 to 7.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>box <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s ask the computer to take 25 draws at random from this box:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">sample</span>(box, <span class="dv">25</span>, <span class="at">replace =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and display them here:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>group_factor <span class="ot">&lt;-</span> group_factor <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">each =</span> <span class="dv">5</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sp <span class="ot">&lt;-</span> <span class="fu">split</span>(numbers, group_factor)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">do.call</span>(rbind,sp))</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="cn">NULL</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The sum of these numbers is 100, so their average is 4. If we ask the computer to do this experiment again we get a different average: 3.76. There is chance variability in the sum of draws and thus also in the average. We want to solve the problem of computing the expected value and the standard error of this statistics.</p>
+<p>The average of the box is 4 and so the average of the draws will be around 4. The standard error for the average can be worked out from the standard error of the sum. The expected value of the sum is: <span class="math display">\[\begin{equation}
+\text{number of draws}\,\, \times \,\, \text{avergage of box} = 25 \times 4 = 100
+\end{equation}\]</span> The standard deviation of the box is 2 and so the standard error of the sum must be: <span class="math display">\[\begin{equation}
+\sqrt{\text{number of draws}}\,\, \times \,\, \text{SD of box} = \sqrt{25} \times 2 = 10
+\end{equation}\]</span> The sum will be around 100 give and take about 10. For the average, this means that we have for 25 draws: <span class="math display">\[\begin{equation}
+\frac{100 + 10}{25} = \frac{100}{25} + \frac{10}{25} = 4 + 0.4
+\end{equation}\]</span> and on the other hand: <span class="math display">\[\begin{equation}
+\frac{100 - 10}{25} = \frac{100}{25} - \frac{10}{25} = 4 - 0.4
+\end{equation}\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Accuracy of averages
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When drawing at random from a box:</p>
+<ol type="1">
+<li><p>The expected value for the average of draws: Average of the box</p></li>
+<li><p>The standard error of draws: <span class="math inline">\(\frac{\text{Standard error for the sum}}{\text{number of draws}}\)</span></p></li>
+</ol>
+</div>
+</div>
+<p>Here we see a picture for the sum of draws.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the vector to draw from</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of random draws and simulations</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>n_draws <span class="ot">&lt;-</span> <span class="dv">25</span>  <span class="co"># Number of draws per simulation</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co"># Number of simulations</span></span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># normal curve</span></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>fun <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x2, <span class="at">mean =</span> <span class="fu">mean</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate and compute the sum of each set of random draws</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>sample_sums <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_sims, <span class="fu">sum</span>(<span class="fu">sample</span>(vec, n_draws, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
 <span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">100</span>,</span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot =</span> F)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic statistics for overlaying the normal curve</span></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>mean_sample_sums <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_sums)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>sd_sample_sums <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_sums)</span>
 <span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># par(mar = c(5, 4, 4, 8) + 0.3)  </span></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(h, <span class="at">col =</span> <span class="st">"white"</span>,</span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">" "</span>,</span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>,</span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(fun)),</span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of number of girls"</span>,</span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span></span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>     )</span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a><span class="co"># overlay normal curve</span></span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x2, fun, <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="at">side =</span> <span class="dv">4</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"8 %"</span>, <span class="st">"16 %"</span>, <span class="st">"24 %"</span>, <span class="st">"32 %"</span>, <span class="st">"40 %"</span>)), </span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per standard unit"</span>)</span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a><span class="co"># adding axis</span></span>
-<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>),</span>
-<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"440 cm"</span>, <span class="st">"460 cm"</span>, <span class="st">"480 cm"</span>, <span class="st">"500 cm"</span>, <span class="st">"520 cm"</span>, <span class="st">"540 cm"</span>))</span>
-<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">440</span>, <span class="dv">460</span>, <span class="dv">480</span>, <span class="dv">500</span>, <span class="dv">520</span>, <span class="dv">540</span>), </span>
-<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">as.character</span>(<span class="fu">round</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.9746835</span>, <span class="sc">-</span><span class="fl">1.7088608</span>, <span class="sc">-</span><span class="fl">0.4430380</span>,  <span class="fl">0.8227848</span>,  <span class="fl">2.0886076</span>,  <span class="fl">3.3544304</span>), <span class="dv">2</span>)), <span class="at">line =</span> <span class="fl">2.5</span>)</span>
-<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.005</span>,<span class="fl">0.01</span>, <span class="fl">0.015</span>, <span class="fl">0.02</span>, <span class="fl">0.025</span>), </span>
-<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels =</span> <span class="fu">c</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0 %"</span>, <span class="st">"0.5 %"</span>, <span class="st">"1 %"</span>, <span class="st">"1.5%"</span>, <span class="st">"2 %"</span>, <span class="st">"2.5 %"</span>)), </span>
-<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab =</span> <span class="st">"Percent per girl"</span>)</span>
-<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">487</span>, <span class="at">col =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the histogram and convert counts to percentages</span></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_sums, <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Distribution of Sample Sums"</span>, </span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">60</span>, <span class="dv">140</span>), <span class="at">xlab =</span> <span class="st">"Sum"</span>, <span class="at">ylab =</span> <span class="st">"Percentage"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"blue"</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(<span class="fu">density</span>(sample_sums)<span class="sc">$</span>y), <span class="at">length.out =</span> <span class="dv">4</span>)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at=</span>yvals, <span class="at">labels=</span><span class="fu">paste0</span>(<span class="fu">round</span>(yvals<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>), <span class="st">"%"</span>))  <span class="co"># Adjust y-axis to show percentages</span></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay a normal distribution curve</span></span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mean_sample_sums, <span class="at">sd =</span> sd_sample_sums), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>There are two vertical axes in the figure. The probability histogram is drawn relative to the left axis showing percent per baby-girl. The normal curve is drawn relative to the right axis showing percent per standard unit. To see how the scales match up: 2 % per baby girl matches up - for example-<br>
-with 32 % per standard unit because the Standard error is about 16 (15.8) so there are about 16 baby-girls to the standard unit and 32/16 = 2. The same reasoning applies to the other numbers.</p>
-<p>The normal curve can now used to approximate probabilities. Assume we would like to know the probability that we observe between 482 and 492 girls in a sample of 1000. The expected number of girls is 487 and the standard error is 15.8. The chance of getting exactly 482 girls is the area of the rectangle between 475 and 480 on the number of girls scale and has a height of 0.103. The area is thus 0.52.</p>
-<p>In standard units the base of the rectangle goes from -0.76 to - 0.44.</p>
-<p>Since the histogram and the normal curve almost coincide, so the area of the rectangle between 482 and 483 is approximately equal to the area under the normal curve between -0.32 and - 0.25.</p>
-<p>The area of the rectangle is 0.021. When we approximate by the normal curve we get:</p>
+<p>Now consider the same picture for the average:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">0.32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.2242222</code></pre>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the vector to draw from</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of random draws and simulations</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>n_draws <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Number of draws per simulation</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co"># Number of simulations</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate and compute the mean of each set of random draws</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>sample_means <span class="ot">&lt;-</span> <span class="fu">replicate</span>(n_sims, <span class="fu">mean</span>(<span class="fu">sample</span>(vec, n_draws, <span class="at">replace =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic statistics for overlaying the normal curve</span></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>mean_sample_means <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample_means)</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>sd_sample_means <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample_means)</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the histogram and convert counts to percentages</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sample_means, <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">"Distribution of Sample Means"</span>, </span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">2.8</span>, <span class="fl">5.2</span>), <span class="at">xlab =</span> <span class="st">"Mean"</span>, <span class="at">ylab =</span> <span class="st">"Percentage"</span>, <span class="at">col =</span> <span class="st">"lightblue"</span>, <span class="at">border =</span> <span class="st">"blue"</span>, <span class="at">yaxt =</span> <span class="st">"n"</span>)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>yvals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(<span class="fu">density</span>(sample_means)<span class="sc">$</span>y), <span class="at">length.out =</span> <span class="dv">3</span>)</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at=</span>yvals, <span class="at">labels=</span><span class="fu">paste0</span>(<span class="fu">round</span>(yvals, <span class="dv">2</span>), <span class="st">"%"</span>))  <span class="co"># Adjust y-axis to show percentages</span></span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay a normal distribution curve</span></span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean =</span> mean_sample_means, <span class="at">sd =</span> sd_sample_means), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="probability_and_statistics_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>This approximation is excellent.</p>
-<p>With this approximation method justified by the central limit theorem we can ask how far the population share of new born baby girls can deviate from 48.7 %- The standard error was estimated at 1.58 %, so the population proportion could easily be between 47.12 and 50.28.</p>
-<p>Since these are chance errors there is the possibility that errors of larger size, for example errors of 2 standard errors occur, if infrequently. What happens, when we take the cutoff at that? Take for example the interval of two standar errors above and below the expected value:</p>
-<p><img src="pictures/confidence_interval.png" class="img-fluid" alt="Confidence Interval"> This is a <strong>confidence interval</strong> for the population percentage, with a <strong>confidence level</strong> of about 95%. This means that you can be about 95% confident that the population proportion of baby girls is inside the+interval (47.12, 50.28) percent.</p>
-<p>What, if you want different confidence levels? Anything except 100 % is allowed by going the appropriate number of standard errors right and left from the expected value. For example:</p>
+<p>The histogram of the average is described by a normal curve because the histogram of sums is described by a normal curve. The division by the number of draws is just a change of scale and we saw that probabilities do not change when we change the scale or the units.</p>
+<p>Now as with the percentages before, let us see what happens if we don’t know the numbers in the box. The situation is now that a random sample is taken from a box of unknown composition. The problem is to estimate the average in the box.</p>
+<p>Suppose the ministry of labor wants to know the average income of the 5 million families living in the country. A survey organisation is hired to draw a random sample of 5000 families. Assume the total annual income of the families turns out to be 2.700.000 in some monetary unit. The average income of all 5000 families is then 54000. There is a chance error in this estimate.</p>
+<p>To assess the uncertainty in this statistics we need a standard error and for that a box model. There should be one ticket in the box for each family in the country. The tickets show the family income. The data we have are like 5000 draws from this box. Since 5000 is such a small fraction of 5 million, there is practically no difference between drawing with and without replacement.</p>
+<p>The standard error of the sum is <span class="math inline">\(\sqrt{5000} \times \text{SD of the box}\)</span>. But the survey team does not know the SD of the box. What they can do is to estimated the SD of the sample.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Estimating the SD of a box
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With a simple random sample, the SD of the sample can be used to estimate the SD of the box. The estimate is good when the sample is large.</p>
+</div>
+</div>
+<p>There are 5000 families in the sample and the SD turns out to be 43.000. The SE of the sum is then estimated as <span class="math display">\[\begin{equation}
+\sqrt{5000} \times 43.000 \approx 3.040.559
+\end{equation}\]</span></p>
+<p>To get the SE for the average we have to divide by the number of families in the sample which gives us 608.11. Thus two standard errors either way from the sample average is then <span class="math display">\[\begin{equation}
+54.000 \,\, \substack{+ \\ -} \,\, 2 \times 608.11
+\end{equation}\]</span></p>
+<p>Two different numbers came up in this computation: The standard deviation of the sample was 43.000 and the standard error for the average was 608. Note that these two number say two different things:</p>
 <ol type="1">
-<li><p>The interval “sample percentage” plus/minus 1 stndard error is an 68 % confidence interval for the population percentage.</p></li>
-<li><p>The interval “sample percentage” of plus/minus 2 standard errors is a 95 % confidence interval fro the population percentage.</p></li>
-<li><p>The interval “sample percentage” of plus minus 3 standard errors is a 99.7 confidnece interval for the population percentage.</p></li>
+<li>The standard deviation says how far family incomes are from average for typical families.</li>
+<li>The standard error says how far sample averages are from the population average for typical samples.</li>
 </ol>
-<p>You can go on but even 10 standard deviations may not give you 100 % confidence, because for any interval you take, the normal curve always has some area (if very very small) outside of it.</p>
+<p>The confidence interval is about the sampling procedure. In about 95 % of all samples - since we considered two SE for a large sample - the interval will contain the true average. The average in the box is not moving around.</p>
 </section>
 </section>
-<section id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="the-role-of-systematic-error-due-to-non-random-causes-and-the-role-of-judgement"><span class="header-section-number">10.3</span> The role of systematic error due to non random causes and the role of judgement</h2>
+<section id="exercises" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.3</span> Exercises:</h2>
+<p>In this set of exercises you will not need the computer. A major point in the unit was to show how combining probability and statistics can help us quantify the uncertainty of a proportion or a mean in a population without a computer intensive method such as bootstrapping. You can - of course - use R and your computer if you wish to do so but all of the exercises do in principle not require the use of it. You will need a computational device to take a square root here and there, though.</p>
+<section id="exercises-1" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">10.3.1</span> Exercises</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Rolling a die
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A die will be rolled 10 times. The chance it never lands such that 6 is shown can be found by one of the follwoing computations. Which one and Why?</p>
+<ol type="i">
+<li><p><span class="math inline">\(\left(\frac{1}{6}\right)^{10}\)</span></p></li>
+<li><p>1 - <span class="math inline">\(\left(\frac{1}{6} \right)^{10}\)</span></p></li>
+<li><p><span class="math inline">\(\left(\frac{5}{6} \right)^{10}\)</span></p></li>
+<li><p>1 - <span class="math inline">\(\left(\frac{5}{6} \right)^{10}\)</span></p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Family composition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Of families with 4 children, what proportion have more girls than boys, assuming that the chance for a girl is 0.487?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Expected value and standard deviation of a box
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Find the expected value and the standard error for the sum of 100 draws at random with replacement from the following boxes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/box_exercise.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">boxes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Find the sequence
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The expected value for a sum is 50, with a SE of 5. the chance process generating the sum is repeated 10 times. Which is the sequence of observed values?</p>
+<ol type="a">
+<li><p>51, 57, 48, 52, 57, 61, 58, 41, 53, 48</p></li>
+<li><p>51, 49, 50, 52, 48, 47, 53, 50, 49, 47</p></li>
+<li><p>45, 50, 55, 45, 50, 55, 45, 50, 55, 45</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: Assessing the probability of the magnitude of a sum
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One 100 draws will be made from the box [[1], [3], [3], [9]] at random with replacement.</p>
+<ol type="a">
+<li><p>How large can the sum be and how small can it be?</p></li>
+<li><p>How likely is it that the sum is in the range from 370 to 430.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 6: The probability of girls again
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>According to the natural probabilities the chance that the sex of a baby is determined to be a girl or a boy is as if there were random draws from the box [[Girl],[Boy]] with probabilities 0.487 and 0.513. What is the chance that the next 2500 births (ignoring twins and other multiple births) will show more than 1275 girls? (Hint: Use the table for the standard normal distribution from unit 7).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 7: Polling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A simple random sample of 1600 persons is taken to estimate the percentage of voters of one of two parties, party A, among the 25000 eligible voters in a certain town. It turns out that 917 people in the sample are voters for party A.</p>
+<ol type="a">
+<li><p>Find the 95 % confidence interval for the percentage of voters for party A among the 25000 eligible voters.</p></li>
+<li><p>Im the example is the value of 917 expected or observed? Explain.</p></li>
+<li><p>Th SD of the box si exactly equal to <span class="math inline">\(\sqrt{0.573\times 0.427}\)</span> or estimated form the data? Explain.</p></li>
+<li><p>The SE for the number of voter for party A in the sampple is exactly equal to 20, or estimated from the data as 20? Explain.</p></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 8: A student survey
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A university has 30.000 registered students. As part of a survey, 900 of these students are chosen at random. The average age in the sampe turns out to be 22.3 years and the SD is 4.5 years.</p>
+<ol type="a">
+<li><p>The average age of all 30.000 students is estimated as?</p></li>
+<li><p>This estimate is likely to be off by ?</p></li>
+<li><p>Find a 95 %-confidence interval for the average age of all 30.000 registered students.</p></li>
+</ol>
+</div>
+</div>
 </section>
-<section id="confidence-intervals-when-we-observe-all-the-data" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="confidence-intervals-when-we-observe-all-the-data"><span class="header-section-number">10.4</span> Confidence intervals when we observe all the data</h2>
 </section>
-<section id="contents" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="contents"><span class="header-section-number">10.5</span> Contents</h2>
-<p>This will be conceptually the most difficult part of the course. The main ideas that should be conveyed in this unit are</p>
+<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">10.4</span> Project People count: The present and future of humanity in pictures and numbers</h2>
+<p>In this course you have worked on a project called “people count” using demographic data. The context of census data and demographic data was used to apply some of the concepts we learned in this course, such as visualizing data, subsetting and extracting particular datasets from a larger dataset by using R’s substting rules. Compute the mean and median age for grouped data, quantify the uncertainty attached to such estimates using a bootstrap algorithm and predicting peppulation growth. Often we looked at three typical countries, Kenya, a so allced bottom layered country, because of the shape of its population barplot with the typical shape you get for a very young population, the US as an example of a middle layered country and Japan as an examle for an aging society.</p>
+<p>This week I want to encourage you to think about an outline for producing a data-story about your country using the analysis done during the project so far as a guide. It should be a text built around data and charts that tells the story of your country using the population numbers we used in this course from the JWLpackage and which are called population_statistics_by_age_and_sex. You may, but you need not also use a general demorgaphic dataset, if you want, which is called general_demograpics and which can be studied using the R help function, for the description of the variables.</p>
+<p>The data-story should be:</p>
+<ul>
+<li>About 4 pages long</li>
+<li>Written as a Jupyter Notebook.</li>
+<li>Using the analysis you did in the project in units 1 - 6.</li>
+<li>Describe your country, either your country where you have been born or where you are currently living.</li>
+<li>Contain, text, graphics and data and using the two demographic datasets we used in the course.</li>
+<li>Be roughly built around the template:
+<ul>
+<li>my country short description in word</li>
+<li>my country viewed from the perspective of census data, a short demographic description in numbers, pictures and text, giving a view into the past (10 years ago) and giving an outlook into the future, say in 10 years from now)</li>
+<li>Some concluding passage. You have considerable freedom in the way you write this but make sure to built in the analysis you did throughout the assignment. This will be one important element for the grading of the project work. Use the project work time of this week to make a plan for this essay and to familiarize yourself a bit with working with text and code in one Notebook.</li>
+</ul></li>
+</ul>
+<p>Here is a very brief intro to the most basic elements.</p>
+<p>Jupyter Notebooks use Markdown for formatting text. You have to choose <code>Markdown</code> from the menue bar above, such that Jupyter knows that the cell you are currently working in with text is a markdown cell and not a code cell.</p>
+<p>Markdown is a lightweight, easy to learn markup language for formatting plain text.</p>
+<p>Remember that this exercise sheet was written in a Jupyter notebook, so all of the narrative text and images you have seen so far were achieved writing in Markdown and code. Let’s cover the basics with a quick example:</p>
+</section>
+<section id="this-is-a-level-1-heading" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> This is a level 1 heading</h1>
+<section id="this-is-a-level-2-heading" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="this-is-a-level-2-heading"><span class="header-section-number">11.1</span> This is a level 2 heading</h2>
+<p>This is some plain text that forms a paragraph. Add emphasis via <strong>bold</strong> and <strong>bold</strong>, or <em>italic</em> and <em>italic</em>.</p>
+<p>Paragraphs must be separated by an empty line.</p>
+<ul>
+<li>Sometimes we want to include lists.</li>
+<li>Which can be bulleted using asterisks.</li>
+</ul>
 <ol type="1">
-<li>Using probability theory we can derive the sampling distribution of summary statistics from which formulae for confidence intervals can be derived.</li>
-<li>Explain what a 95 % confidence interval means</li>
-<li>The central limit theorem and the normal distribution</li>
-<li>The role of systematic error due to non random causes and the role of judgment</li>
-<li>Explain the idea that confidence intervals can be calculated even when we observe all the data which then represent uncertainty about the parameters of an underlying metaphorical population.</li>
+<li>Lists can also be numbered.</li>
+<li>If we want an ordered list.</li>
 </ol>
-</section>
-<section id="outcome" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="outcome"><span class="header-section-number">10.6</span> Outcome</h2>
-<p>The students should gain a firm understanding of confidence intervals and how they help us in quantifying uncertainty of predictions we make based on our available data. They should see and understand how and why it is sometimes more convenient and parsimonious to have formulae for confidence intervals rather than quantifying the uncertainty from simulation. The intuitive understanding of the limit theorems and when they can be legitimately applied will be important here.</p>
+<p><a href="https://www.example.com">It is possible to include hyperlinks</a></p>
+<p>Inline code uses single backticks: foo(), and code blocks use triple backticks:</p>
+<pre><code>bar()</code></pre>
+<p>Or can be indented by 4 spaces:</p>
+<pre><code>foo()</code></pre>
+<p>And finally, adding images is easy: <img src="https://www.example.com/image.jpg" class="img-fluid" alt="Alt text"></p>
+<p>To see the source text from which these lines were compiled, double click into the cell. It will then show you the source text. When you execute the cell it will show you the formatted markup text.</p>
+<p>Sharing Your Notebooks When people talk about sharing their notebooks, there are generally two paradigms they may be considering.</p>
+<p>Most often, individuals share the end-result of their work, much like this article itself, which means sharing non-interactive, pre-rendered versions of their notebooks. However, it is also possible to collaborate on notebooks with the aid of version control systems such as Git or online platforms like Google Colab.</p>
+<p>Before You Share A shared notebook will appear exactly in the state it was in when you export or save it, including the output of any code cells. Therefore, to ensure that your notebook is share-ready, so to speak, there are a few steps you should take before sharing:</p>
+<p>Click “Cell &gt; All Output &gt; Clear” Click “Kernel &gt; Restart &amp; Run All” Wait for your code cells to finish executing and check ran as expected</p>
+<p>This will ensure your notebooks don’t contain intermediary output, h ave a stale state, and execute in order at the time of sharing.</p>
+<p>Exporting Your Notebooks Jupyter has built-in support for exporting to HTML and PDF as well as several other formats, which you can find from the menu under “File &gt; Download As.”</p>
+<p>You can of course always share .ipynb files more directly and this is also the format I prefer for submitting your data essay.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
-<div id="ref-Spi2019" class="csl-entry" role="listitem">
-Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
-</div>
-</div>
+</section>
 </section>
 
 

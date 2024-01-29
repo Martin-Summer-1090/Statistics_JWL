@@ -406,15 +406,15 @@ Keywords
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">173.04</td>
+<td style="text-align: right;">173.75</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">172.67</td>
+<td style="text-align: right;">172.49</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2500</td>
-<td style="text-align: right;">172.63</td>
+<td style="text-align: right;">172.72</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">25000</td>
@@ -471,7 +471,7 @@ Keywords
 <p><img src="how_sure_can_we_be_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 173, 2. Then we draw 100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 172.38. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 172.51, 172.38, 171.87.</p>
+<p>At the top left corner of this figure you see our original sample of 100 height data from our original population of 25.000, which has a mean of 172, 2. Then we draw 100 data points in sequence, each time replacing the point we have taken, and get the second distribution in the top right corner in this way. This distribution has a mean of 171.92. The distribution can only contain data points taking on the same values as in the original sample, but it will contain different number of each value. Therefore the shape of the distribution will vary slightly and give a slightly different mean. In our case these means are 172.34, 171.92, 172.38.</p>
 <p>Thus the resampling procedure gives us an idea how our statistics varies through this procedure of resampling with replacement. Why do we need replacement? We want to make sure that at every resample, every data point has the same chance of ending up in the resample. This would not be the case if we drew observations away once the have ended up in one sample. This is known as <strong>bootstraping</strong> the data. There is something “magic” about this approach, reflected in the name: As if pulling oneself up by one’s own bootstraps, here we learn about the variability of an estimate without making assumptions about the shape of the population distribution. We think of the sample as beeing a representation of the underlying population. If we draw random resamples we always need to draw from the same sample of the population so that every individual in the sample has the same chance of ending up in the resample.</p>
 <p>Repeating the resampling many times, say 1000 times, we get 1000 possible estimates of the mean. Let us do this repeated resampling for the examples of sample sizes of 10, 100, 2500 and in the end 25000, the size of our fictitious population.</p>
 <div class="cell">
