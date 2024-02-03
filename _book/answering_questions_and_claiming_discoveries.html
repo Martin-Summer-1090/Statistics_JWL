@@ -20,7 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,10 +115,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -187,13 +242,31 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#contents" id="toc-contents" class="nav-link active" data-scroll-target="#contents"><span class="header-section-number">11.1</span> Contents</a></li>
-  <li><a href="#outcomes" id="toc-outcomes" class="nav-link" data-scroll-target="#outcomes"><span class="header-section-number">11.2</span> Outcomes</a></li>
+  <li><a href="#tests-of-significance" id="toc-tests-of-significance" class="nav-link active" data-scroll-target="#tests-of-significance"><span class="header-section-number">11.1</span> Tests of significance</a>
+  <ul class="collapse">
+  <li><a href="#the-null-and-the-alternative" id="toc-the-null-and-the-alternative" class="nav-link" data-scroll-target="#the-null-and-the-alternative"><span class="header-section-number">11.1.1</span> The Null and the Alternative</a></li>
+  <li><a href="#test-statistics-and-significance-levels" id="toc-test-statistics-and-significance-levels" class="nav-link" data-scroll-target="#test-statistics-and-significance-levels"><span class="header-section-number">11.1.2</span> Test statistics and Significance Levels</a></li>
+  </ul></li>
+  <li><a href="#tests-for-counts-and-proportions" id="toc-tests-for-counts-and-proportions" class="nav-link" data-scroll-target="#tests-for-counts-and-proportions"><span class="header-section-number">11.2</span> Tests for counts and proportions</a>
+  <ul class="collapse">
+  <li><a href="#murder-in-the-hospital" id="toc-murder-in-the-hospital" class="nav-link" data-scroll-target="#murder-in-the-hospital"><span class="header-section-number">11.2.1</span> Murder in the hospital</a></li>
+  <li><a href="#some-things-to-bear-in-mind-with-regard-to-p-values" id="toc-some-things-to-bear-in-mind-with-regard-to-p-values" class="nav-link" data-scroll-target="#some-things-to-bear-in-mind-with-regard-to-p-values"><span class="header-section-number">11.2.2</span> Some things to bear in mind with regard to p-values</a></li>
+  </ul></li>
+  <li><a href="#tests-for-regression-coefficients" id="toc-tests-for-regression-coefficients" class="nav-link" data-scroll-target="#tests-for-regression-coefficients"><span class="header-section-number">11.3</span> Tests for regression coefficients</a></li>
+  <li><a href="#more-tests" id="toc-more-tests" class="nav-link" data-scroll-target="#more-tests"><span class="header-section-number">11.4</span> More tests</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.5</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">11.5.1</span> Exercises:</a></li>
+  </ul></li>
+  <li><a href="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" id="toc-project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="nav-link" data-scroll-target="#project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">11.6</span> Project People count: The present and future of humanity in pictures and numbers</a>
+  <ul class="collapse">
+  <li><a href="#counting-people-of-my-country-a-data-story" id="toc-counting-people-of-my-country-a-data-story" class="nav-link" data-scroll-target="#counting-people-of-my-country-a-data-story"><span class="header-section-number">11.6.1</span> Counting people of my country: A data-story</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -212,26 +285,1138 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="contents" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="contents"><span class="header-section-number">11.1</span> Contents</h2>
-<p>Formal statistical testing as a major empirical tool for answering questions and claiming discoveries.</p>
+<p>In the previous unit we discussed at several stages examples that involved the natural probabilities that a newborn baby would be a girl or a boy and reported the established evidence that this probability was found to be 0.487 for girls and 0.513 for boys, which corresponds to a ratio of 105 boys for 100 girls.</p>
+<p>The first person who seems to have established this fact was Doctor John Arbutnoth, a doctor who became physician to the English Queen Anne in 1705 (see <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>). From parish records reaching from 1609 to 1710, he looked at the numbers of boys born per 100 girls, a number that is today also known as the sex-ratio. His data said that there had been more males than females baptized in every year with an overall sex ratio varying between 107 and 116.</p>
+<p>But he wanted to establish something more general about this result. He wanted in fact establish something like a general law or claim. In his attempt to say, something about a general fact revealed in this pattern, he used an argument which would be recognizable to modern statisticians as a so called <strong>hypothesis test</strong>.</p>
+<p>His idea was to imagine first what would be the implication for the sex-ratio if the determination of a baby’s sex would work like a fair coin, a randomizing device that had an equal chance of coming up Heads as of coming up Tails. This thought experiment is what is called in the statistical jargon a <strong>null hypothesis</strong>: The starting point of your reasoning. In the case of the coin, if you flip a coin 10 times and the coin is fair then you would expect five heads to show up. But there is chance variation and so in ten flips the number of heads will be some times larger and some times lower.</p>
+<p>If the mechanism of assignment of a baby’s sex was like a fair coin flip the probability to observe an excess of boys in every year from 1629 to 1705 would be <span class="math inline">\(\left(\frac{1}{2}\right)^{82}\)</span>, which is 0.0000000000000000000000002067952. This is what in statistical testing is called a <strong><span class="math inline">\(p\)</span>-value</strong>. You start with the hypothesis of a 50/50 chance of heads and compute the probability of 82 heads in a row. Statisticians regard a <span class="math inline">\(p\)</span>-value of about 1/1000 or 0.001 so extreme that is too unlikely that the extreme observation is due to chance. Soemthing else mut be going on.</p>
+<p>An excess of boys for 82 years was so unlikely that it is implausible to regard it as chance variation. Statisticians also today use <span class="math inline">\(p\)</span>-values in this way. If there is an outcome with a really low <span class="math inline">\(p\)</span>-value then either we have seen a very unlikely event or else the hypothesis we used to compute the <span class="math inline">\(p\)</span>-value must be wrong. The logic is analogous to an argument by contradiction, designed to show that the hypothesis leads to an absurd conclusion and thus the hypothesis can not be true.</p>
+<p>Answering questions and establishing results in statistics is mostly done through the procedure of statistical testing, thus the title of this unit in which you will learn its basic tools.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In this unit you will learn about the idea of a <strong>statistical test of significance.</strong> Test of significance are a powerful tool combining statistics and probability to decide systematically whether observed differences in some statistics of interest are different for real or just by chance.</p>
+<p>To understand the idea of a statistical test it is useful to imagine the tossing of a coin. How can you decide whether there is something suspicious about the coin from observing 10 flips?</p>
+<p>We <strong>expect</strong> that when coin is “fair” coming up Heads and Tails should be equally likely. This expectation is built on an idealized <strong>probability model</strong> of a perfect random device. This model is the starting point of the reasoning.</p>
+<p>In 10 flips you expect 5 Heads but you know that you might get more or less in any particular run just by chance. Assume now, you got 10 heads in a row. Is that extreme enough to be suspicious? How extreme the outcome needs to be before you should doubt the hypothesis that the chances for heads are 50/50?</p>
+<p>To answer the question a test of significance computes a <strong><span class="math inline">\(p\)</span>-value</strong>. The probability of at least 6 heads in 1o flips is about 0.38: 38% of the time when you flip a fair coin you will get at least six heads.</p>
+<p>For 10 heads out of 10 flips, the <span class="math inline">\(p\)</span>-value is about 0.001 or 1 in thousand. The result is so extreme that you would almost never get it from a fair coin. Maybe there is more about this coin than just chance variation.</p>
+<p>This is the idea we will learn in this unit: If statisticians see a result with a really low <span class="math inline">\(p\)</span>-value then either they believe they have seen something extremely rare of else the null hypothesis we used to compute the <span class="math inline">\(p\)</span>-value must be wrong.</p>
+<p>Test of significance are among the most important tools of statistics because they help <strong>answering specific questions</strong>. These questions might have been raised by exploring and visualizing data, studying their shape or by making predictions using models as we have learned in previous units. With the tools of formal testing we can now make new discoveries and establish claims.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keywords
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Null hypothesis</strong>: The null hypothesis corresponds to the idea that an observed difference is due to chance. To make a test of significance, the null hypothesis has to be set up as a probability model - or as we have called it in the previous units a box-model - for the data. The alternative hypothesis is another statement about the box, corresponding to the ideas that the difference is real.</p>
+<p><strong>Test-statistic</strong>: A test statistic is used to measure the difference between the data and what is expected under the null hypothesis.</p>
+<p><strong>z</strong> says how many standard errors away an observed value is from its expected value where the expected value is calculated using the null hypothesis.</p>
+<p><strong>observed significance level</strong>: The observed significance level is the chance of getting a test statistic as extreme as, or more extreme than the observed one. The chance is computed on the basis that the null hypothesis is right. The smaller this chance is, the stronger the evidence against the null.</p>
+<p><strong><span class="math inline">\(p\)</span>-value</strong>: The P-value of a test is the chance of getting a bix test statistic - assuming the null hypothesis to be right. P is not the chance that the null hypothesis being right,</p>
+</div>
+</div>
+<section id="tests-of-significance" class="level2 page-columns page-full" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="tests-of-significance"><span class="header-section-number">11.1</span> Tests of significance</h2>
+<p>Is an observation about a measurement a result of chance or is there something else going on ? A <strong>test of significance</strong> is the tool that statisticians have invented to deal with these kinds of questions. Test of significance are another major area of statistics where probability and statistics work together, to understand the world in a new way through data.</p>
+<p>Let us consider a fictitious story at the beginning: The manager of a huge online store for electronic products runs a huge advertising campaign promising that the average delivery time for its products is 2 days. The online shop is very large with a huge number of deliveries per day. One day complaints start accumulating at various consumer protection agencies that the promised delivery times are in fact much longer and the advertising campaign is based on false claims.</p>
+<p>The manager, when confronted with these claims, argues that there is of course variation in delivery times and that it can happen in rare cases that deliveries take up to double time but if it occurs, it will always be investigated why it took much longer and quality improvement measures are taken.</p>
+<p>Since the arguments can not be settled in this way the consumer protection agency decides to look at some data by taking a random sample of 500 delivery records and find an average delivery time of 2.3 days. The standard deviation of the sample turns out to be 2 days.</p>
+<p>The manager says, you see, the difference is only 0.3 days and small relative to the standard deviation. The late deliveries reported at your agency must occur just by chance not systematically.</p>
+<p>The consumer protection agency does not buy this argument. They point out to the manager that that the relevant number to look at is the standard error, because it will tell how far the average of the sample is likely to be from its expected value, which is the average of the actual delivery times.</p>
+<p>The manager, who has taken a statistics course with JWL some years ago, after a refresher of unit 7 of his course, finally agrees to this argument and they estimate the standard deviation of the average delivery time by the standard deviation of the data, which is 2.</p>
+<p>The standard error of the sum of the randomly sampled shop records is about, <span class="math inline">\(\sqrt{500} \times 2\)</span> using the square root law and since we are taking about the average and not the sum, we need to divide by 500, which gives us approximately 0.09.</p>
+<p>Now the consumer protection agency suggests to make the following thought experiment:</p>
+<p>The average of the randomly chosen delivery times from you records is 2.3 days. You say it ought to be 2. If you were right, the average is about <span class="math display">\[\begin{equation}
+\frac{2.3 - 2}{0.09} \approx 3.33
+\end{equation}\]</span></p>
+<p>This says that your average delivery times are more than 3 standard errors above the expected value. This difference is so large that it is very unlikely that it is due to chance. The average delivery time is in reality not 2 days but more than that. The customer complaints are justified and you need to improve your processes or stop the advertising based on duious claims.</p>
+<p>“I thought the standard error is about the difference between the sample average and the expected value?”, asks the shop manager.<br>
+That’s true says the consumer protection agency but the expected value of the sample average is the average of the delivery times in your own records.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comment for Seitwerk
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This could be developed as a small dialog or comic between the shop manager and the investigator for the consumer protection agency, if not too tedious. Might be fun.</p>
+</div>
+</div>
+</div>
+<p>This is a situation we will encounter now over and over again in this unit. The issue is whether a difference is real or by chance. The calculation to settle this different possibilities is called a <strong>test of significance</strong>. The key idea is that the observed value is too many standard deviations away from the expected value, that is hard to explain by chance.</p>
+<p>Now let us unpack these ideas a bit more generally and introduce you to the technical jargon statistics uses for these ideas.</p>
+<section id="the-null-and-the-alternative" class="level3 page-columns page-full" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="the-null-and-the-alternative"><span class="header-section-number">11.1.1</span> The Null and the Alternative</h3>
+<p>In the example discussed before there was a random sample of 500 records from an online shop and the records reported an average delivery time for the products of 2.3 days. This is an “observed” value in the language of statistics.</p>
+<p>Now 2.3 is clearly more than 2. There is no doubt about that. The value of 2.3 is observed but the question is whether the difference to the claimed average of 2 across the entire records of the webshop is real or just by chance from the sampling process.</p>
+<p>In the terminology of statistics, we have two <strong>hypothesis</strong> both about the webshop records, not the sample.</p>
 <ol type="1">
-<li>Tests of null hypothesis as a major part of statistical practice</li>
-<li>p-value as the measure of incompatibility between the observed data and the null hypothesis</li>
-<li>The traditional p value thresholds.</li>
-<li>The need to adjust thresholds with multiple tests</li>
-<li>Correspondence between p-values and confidence intervals</li>
-<li>Neyman-Pearson theory (alternative hypothesis and type 1 and type 2 error).</li>
-<li>Sequential testing</li>
-<li>The misinterpretation of p-values.</li>
+<li><strong>Null Hypothesis</strong>: The average delivery time in the records is 2</li>
+<li><strong>Alternative Hypothesis</strong>: The average delivery time is more than 2.</li>
 </ol>
+<p>The question now is the following. When we agree on the sampled data, can we settle the argument about the records? Here is once again the idea of how a statistical test suggests to proceed.</p>
+<p>We use the standard deviation of the sample data as an estimate about the standard deviation of the records, and assume in the example that it is 2. Then the standard error of the sum of the 500 draws is <span class="math inline">\(\sqrt{500} \times 2 \approx 44.72\)</span>. Since we argue about the average and not the sum, we need as standard error <span class="math inline">\(44.72/500 \approx 0.09\)</span>.</p>
+<p>Now comes a crucial idea, the Null Hypothesis makes an assumption. Assume the claim that the average is 2 is the true average of the records. We have observed an average of 2.3 then given our estimate of the standard error of 0.09, your observed value is <span class="math display">\[
+\frac{(2.3-2)}{0.09} \approx 3.33
+\]</span> more than three standard deviations above from the claimed average. This is just very unlikely and thus too implausible to be due to chance. Thus the hypothesis must be wrong and the average is actually larger than 2.</p>
+<div class="page-columns page-full"><p>In the terminology of unit 7 we have set up the testing problem in terms of a box model. The entire records of the webshop are the box and the sample are randomly drawn tickets from the box showing the actual delivery times for each sampled product. When we have a large enough sample, we may then - due to the central limit theorem - assume that the test statistics - in this case average delivery time - follows a normal distribution and this anchor helps us to work out the probabilities of observing the actual average given the assumption of the null hypothesis and the distribution.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;In many textbooks on statistics you will find the advise that in situations of our example, you need to take a so called t-test and not a a z-test, because for the z-test the standard deviation of the box should be known. Practicall, however, it is rare that the standard deviation of the population (or “the box”) is known. For sample sizes larger than 30 the difference does practically not matter and you can as well work with the z-test like we did in the example. We will discuss the t-test later in the unit.</p></li></div></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Null hypothesis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The null hypothesis corresponds to the idea that an observed difference is due to chance. To make a test of significance, the null hypothesis has to be set up as a box model for the data. The alternative hypothesis is another statement about the box, corresponding to the the idea that the difference is real.</p>
+</div>
+</div>
 </section>
-<section id="outcomes" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="outcomes"><span class="header-section-number">11.2</span> Outcomes</h2>
-<p>Students should learn the basic ideas of hypothesis testing and the terminology around it.</p>
+<section id="test-statistics-and-significance-levels" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="test-statistics-and-significance-levels"><span class="header-section-number">11.1.2</span> Test statistics and Significance Levels</h3>
+<p>Every test of significance needs a <strong>test-statistics</strong>. The idea of a test statistics uses the assumption that the Null-Hypothesis is right and on this basis calculates how many standard errors away the observed value is from its expected value. This was the ratio <span class="math display">\[\begin{equation*}
+\frac{(2.3-2)}{0.09}\approx 3.33
+\end{equation*}\]</span> in our example.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Test statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A test statistics is used to measure the difference between the data and what is expected on the null hypothesis.</p>
+</div>
+</div>
+<p>The test statistics we used in the example is called <strong>z</strong> and is defined as <span class="math display">\[
+z = \frac{\text{observed} - \text{expected}}{SE}
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+z-test-statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>z says how many SEs away an observed value is from its expected value, where the expected value is calculated using the null hypothesis.</p>
+</div>
+</div>
+<p>Note that the benchmark in the numerator of the z-statistics - in our example 2, the expected value - is determined by the Null-hypothesis. Different hypotheses lead to different benchmarks.</p>
+<p>The standard deviation of the box, however, can not be be determined from the Null hypothesis, it has to be estimated from the data, in order to compute a standard error in the denominator of z.</p>
+<p>Why would the shop manager have to give in to the complaints when a test statistics shows a value of 3.33?</p>
+<p>The answer is that if the test statistics is normally distributed - which we can assume here by the central limit theorem about the distribution of sums and averages - the probability measured by the normal curve of the area above 3.33 is ridiculously small. You can check it with R in a single line:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">3.33</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0004342299</code></pre>
+</div>
+</div>
+<p>which corresponds to a chance that an average delivery time would be observed, which is 3.33 standard higher then the average: about 4 cases in 10000.</p>
+<p>This chance is called an <strong>observed significance level</strong>. The observed significance level is referred to in the statistical jargon as <strong><span class="math inline">\(p\)</span>-value</strong>.</p>
+<p>Why look at the area to the right of 3.33? The data could have turned out differently and then <span class="math inline">\(z\)</span> would have been different too. For example, when the sample average were 2.5 and the standard deviation were 2.3, then we have <span class="math display">\[\begin{equation*}
+\frac{2.5 - 2}{0.11} \approx 5
+\end{equation*}\]</span> This would be stronger evidence against the null hypothesis. On the other hand the sample average could have been 2.1 and the standard deviation 1.8. In this case we would get: <span class="math display">\[\begin{equation*}
+\frac{2.1 - 2}{0.08} \approx 2.5
+\end{equation*}\]</span> This would be weaker evidence, because the area right of 2.5 is larger.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate x values for the normal curve</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the corresponding standard normal probabilities</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot of the standard normal curve</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>), <span class="at">xlab =</span> <span class="st">"Standard Units"</span>, <span class="at">ylab =</span> <span class="st">"Density"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Shade the area to the right of 3.33</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#polygon(c(3.33, x[x &gt; 3.33], max(x)), c(0, y[x &gt; 3.33], 0), col = "blue")</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(x[x<span class="sc">&gt;=</span><span class="fl">2.5</span>], <span class="fu">max</span>(x), <span class="fl">2.5</span>), <span class="fu">c</span>(y[x<span class="sc">&gt;=</span><span class="fl">2.5</span>], <span class="dv">0</span>, <span class="dv">0</span>), <span class="at">col=</span> <span class="dv">4</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a vertical line at 2.5</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">2.5</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the letter "z" below the x-axis</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fl">2.7</span>, <span class="fl">0.06</span>, <span class="st">"z"</span>, <span class="at">pos =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">font =</span> <span class="dv">2</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a legend</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#legend("topright", legend = c("Area &gt; 3.33"), fill = "blue", alpha = 0.3)</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Title</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main =</span> <span class="st">"Standard Normal Distribution"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="answering_questions_and_claiming_discoveries_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Observed significance level
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The observed significance level is the chance of getting a test statistic as extreme as, or more extreme than the observed one. The chance is computed on the basis that the null hypothesis is right. The smaller this chance is, the stronger the evidence againts the null.</p>
+</div>
+</div>
+<p>As the test statistics <span class="math inline">\(z\)</span> depends on the data, so does the <span class="math inline">\(p\)</span>-value. This is why the <span class="math inline">\(p\)</span>-value is called an observed significance level. The concept is sometimes confusing because the <span class="math inline">\(p\)</span>-value is computed using the Null hypothesis.</p>
+<p>The null hypothesis is a statement about the population, or in the jargon of unit 7, the “box”. The null hypothesis is either always right or always wrong, because the population does not change. What the observed significance level gives is the chance of getting evidence against the Null Hypothesis as strong as the evidence at hand - or stronger, provided the null is true.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+P-value
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <span class="math inline">\(p\)</span>-value of a test is the chance of getting a big test statistic - assuming the null hypothesis to be right. <span class="math inline">\(p\)</span>- is not the chance of the null hypothesis being right.</p>
+</div>
+</div>
+<p>Note that the z-test requires a reasonably large sample, when the normal approximation can be used. With small samples other techniques are required.</p>
+</section>
+</section>
+<section id="tests-for-counts-and-proportions" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="tests-for-counts-and-proportions"><span class="header-section-number">11.2</span> Tests for counts and proportions</h2>
+<p>At the end of this course you will not be surprised that what we can say for the the sum or the mean can easily transferred to the case of proportions because a sum can be interpreted as the sum of a box with tickets 0 and 1 only or a box with <code>TRUE</code>and <code>FALSE</code>values. Likewise the mean of a box with 0 and 1 values can be interpreted as a proportion. This section will give an example, involving a sum.</p>
+<section id="murder-in-the-hospital" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="murder-in-the-hospital"><span class="header-section-number">11.2.1</span> Murder in the hospital</h3>
+<p>George Cobb and Stephen Gehlbach report in a very interesting case book of applied statistics (<span class="citation" data-cites="Peck_et_al_2006">Cobb and Gehlbach (<a href="references.html#ref-Peck_et_al_2006" role="doc-biblioref">2006</a>)</span>) about a court case where statistics was used as evidence.</p>
+<p>The case is about an experienced nurse from the Veteran’s Administration hospital in Northampton, Massachusetts. In the 80ier and 90ies this nurse had developed a special reputation among her superiors and colleagues for skill and competence, especially in dealing with emergency situations where patients went into cardiac arrest. She knew how to handle such situations calmly, calling in the resuscitation team and setting shots of a stimulant to try restart a patient’s heart. Often the shot worked and the patient’s heart began to beat again. Many lives were saved in this way. Some patients, however, tragically died.</p>
+<p>After a while though suspicion mounted that things were not right. It seemed that there were too many crisis when the experienced nurse was on ward and also the number of patients who died in a cardiac arrest rose sharply. An investigation was launched but nothing was found. The pattern of deaths seemed to be consistent with other patterns in other hospitals. But the suspicion remained.</p>
+<p>After an additional investigation, including a statistical analysis by Stephen Gehlbach from the School of Public Health and Health Sciences at the university of Massachusetts, the nurse was indicted for multiple murders by giving patients lethal doses of heart stimulant.</p>
+<p>The evidence that was heard by the grand jury in 1998 dealt with her motivation, with the testimony of coworkers as well as the testimony of a physician about the symptoms of the patients that had died. The evidence was indicative but no one actually had seen the nurse give a fatal injection and while some patient’s deaths were unexpected, the symptoms could have been considered consistent with other causes of death.</p>
+<p>Was it true that there were more death when the nurse was working? The prosecutor realized that the question of excess deaths required statistics for an answer and this was how Stephen Gehlbach came into the case.</p>
+<p>The data consisted of a record of deaths by year and shift as well as information about whether the nurse was on the shift or not. The data could be summarized in a table:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>countdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">nurse_present =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">death_on_shift =</span> <span class="fu">c</span>(<span class="st">"Yes"</span>,<span class="st">"Yes"</span>, <span class="st">"No"</span>, <span class="st">"No"</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Freq =</span> <span class="fu">c</span>(<span class="dv">40</span>, <span class="dv">34</span>, <span class="dv">217</span>, <span class="dv">1350</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert from data frame of counts to data frame of cases.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># `countcol` is the name of the column containing the counts</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>countsToCases <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">countcol =</span> <span class="st">"Freq"</span>) {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the row indices to pull from x</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    idx <span class="ot">&lt;-</span> <span class="fu">rep.int</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(x)), x[[countcol]])</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Drop count column</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    x[[countcol]] <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get the rows from x</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    x[idx, ]</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>cases <span class="ot">&lt;-</span> <span class="fu">countsToCases</span>(countdf)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">tbl_cross</span>(cases, <span class="at">row=</span>nurse_present, <span class="at">col=</span>death_on_shift)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div id="zxxwylldyz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zxxwylldyz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zxxwylldyz thead, #zxxwylldyz tbody, #zxxwylldyz tfoot, #zxxwylldyz tr, #zxxwylldyz td, #zxxwylldyz th {
+  border-style: none;
+}
+
+#zxxwylldyz p {
+  margin: 0;
+  padding: 0;
+}
+
+#zxxwylldyz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zxxwylldyz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zxxwylldyz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zxxwylldyz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zxxwylldyz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zxxwylldyz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zxxwylldyz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zxxwylldyz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zxxwylldyz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zxxwylldyz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zxxwylldyz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zxxwylldyz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zxxwylldyz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zxxwylldyz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zxxwylldyz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zxxwylldyz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zxxwylldyz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zxxwylldyz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zxxwylldyz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zxxwylldyz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zxxwylldyz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zxxwylldyz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zxxwylldyz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zxxwylldyz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zxxwylldyz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zxxwylldyz .gt_left {
+  text-align: left;
+}
+
+#zxxwylldyz .gt_center {
+  text-align: center;
+}
+
+#zxxwylldyz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zxxwylldyz .gt_font_normal {
+  font-weight: normal;
+}
+
+#zxxwylldyz .gt_font_bold {
+  font-weight: bold;
+}
+
+#zxxwylldyz .gt_font_italic {
+  font-style: italic;
+}
+
+#zxxwylldyz .gt_super {
+  font-size: 65%;
+}
+
+#zxxwylldyz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zxxwylldyz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zxxwylldyz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zxxwylldyz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zxxwylldyz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zxxwylldyz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zxxwylldyz .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings gt_spanner_row">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=""></th>
+      <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="2" scope="colgroup" id="death_on_shift">
+        <span class="gt_column_spanner">death_on_shift</span>
+      </th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="2" colspan="1" scope="col" id="Total">Total</th>
+    </tr>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="No">No</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="Yes">Yes</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">nurse_present</td>
+<td headers="stat_1" class="gt_row gt_center"><br></td>
+<td headers="stat_2" class="gt_row gt_center"><br></td>
+<td headers="stat_0" class="gt_row gt_center"><br></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;No</td>
+<td headers="stat_1" class="gt_row gt_center">1,350</td>
+<td headers="stat_2" class="gt_row gt_center">34</td>
+<td headers="stat_0" class="gt_row gt_center">1,384</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">&nbsp;&nbsp;&nbsp;&nbsp;Yes</td>
+<td headers="stat_1" class="gt_row gt_center">217</td>
+<td headers="stat_2" class="gt_row gt_center">40</td>
+<td headers="stat_0" class="gt_row gt_center">257</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Total</td>
+<td headers="stat_1" class="gt_row gt_center">1,567</td>
+<td headers="stat_2" class="gt_row gt_center">74</td>
+<td headers="stat_0" class="gt_row gt_center">1,641</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+<p>This table forms the basis for the statistical test. The table summarizes the records for all 18 months leading up to the end of February 1996. There are 547 days in this time and three shifts per day, so there are 1641 shifts. Out of these 1641 shifts there were 74 for which there was at least one death.</p>
+<p>The null hypothesis says that the data are like 1641 draws from the box:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="pictures/box_gehlbach.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Box-model for the court case</figcaption>
+</figure>
+</div>
+<p>with a probability of 0.045 of drawing a 1, the event of a shift with at least one death. The number of deaths is like the sum of 1641 draws from the box with the chance of 0.045 of drawing a 1 at every draw. This completes the box model for the null hypothesis.</p>
+<p>The box model implies that out of every 100 shifts you would expect 4.5% with at least one death. With this translation we can use the z-test. <span class="math display">\[\begin{equation}
+z = \frac{\text{observed} - \text{expected}}{SE}
+\end{equation}\]</span></p>
+<p>The expected number comes from the Null hypothesis. There are 257 shifts where the nurse worked and was present at the hospital. If the events with at least one deaths were distributed like in our box model, we would expect between 11 ans 12 of these shifts to have at least one death, because 4.5% of 257 is 11.6. So the numerator is <span class="math inline">\((40 - 12)\)</span>.</p>
+<p>The observed number comes from the record. As you can see from the table, there were in fact not 11 or 12 shifts with a death but 40. Can this happen by chance?</p>
+<p>Now we need the denominator: The standard error for the events with at least one death. The null hypothesis tells us that the standard deviation of the box is <span class="math inline">\(\sqrt{0.045 \times 0.955} \approx 0.21\)</span>. The standard error is then <span class="math inline">\(\sqrt{257}\times 0.21 \approx 3.37\)</span>.</p>
+<p>This is extremely small. The exact p-value could be computed in this case using the binomial distribution. The probability of observing 40 deaths events in 257 days with the probability of a death event at 0.045 would be computed as:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">40</span>,<span class="dv">257</span>, <span class="fl">0.045</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.648372e-12</code></pre>
+</div>
+</div>
+<p>This is even much smaller still. In other words, it is for practical purposes impossible, to get 40 shifts with at least one death by chance.</p>
+<p>Note that in the first example about average delivery times, the standard error was for the average. Here the standard error is for the number of events with at least one death. So always ask yourself, what observed in the numerator means: Is it a sum, an average a number or a percent?</p>
+<p>In the example with the delivery times the standard deviation of the box was unknown and had to be estimated from data. Here the standard deviation is given by the null hypothesis. It does not need to be estimated.</p>
+<p>In the example with the delivery times the data were like draws from a box by the sampling procedure. The argument was only about the average of the box. In the trial example the argument is about whether the data are like draws from a box and can be modeled as such.</p>
+</section>
+<section id="some-things-to-bear-in-mind-with-regard-to-p-values" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="some-things-to-bear-in-mind-with-regard-to-p-values"><span class="header-section-number">11.2.2</span> Some things to bear in mind with regard to p-values</h3>
+<p>How small does a <span class="math inline">\(p\)</span>-value have to get, before you reject the null hypothesis? Many investigators and researchers draw the line at 5% and 1%, talking in the former case of “significant” and in the latter of “highly significant”. These are conventions but logically there is no sharp dividing line between results that are likely and unlikely. Thus it is always important to report not only whether a result was significant at any of these two levels but also report the <span class="math inline">\(p\)</span>-value.</p>
+<section id="always-report-p-values-not-only-significance-levels" class="level4" data-number="11.2.2.1">
+<h4 data-number="11.2.2.1" class="anchored" data-anchor-id="always-report-p-values-not-only-significance-levels"><span class="header-section-number">11.2.2.1</span> Always report <span class="math inline">\(p\)</span>-values, not only significance levels</h4>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Always report p values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Investigators should summarize the data, say what test was used, and report the <span class="math inline">\(p\)</span>-value instead of just comparing <span class="math inline">\(p\)</span> to 5 or 1 percent.</p>
+</div>
+</div>
+</section>
+<section id="data-snooping" class="level4" data-number="11.2.2.2">
+<h4 data-number="11.2.2.2" class="anchored" data-anchor-id="data-snooping"><span class="header-section-number">11.2.2.2</span> Data snooping</h4>
+<p>The point of testing is to distinguish between real differences and differences that occur just by chance. Sometimes people jump to the conclusion that a result that is statistically significant can not occur by chance. But this is false. Even in the hospital murder case 40 deaths in 257 days could in principle occur in somehow more than every 100 million shifts by chance.</p>
+<p>So even if the null hypothesis is right there is a 5% or a 1% chance that the test gets a significant difference, alhough the difference is not real. If an investigator makes enough tests, then eventually he will get also one significant one.</p>
+<p>It also happens that investigators first look at the data before they decide which hypothesis to to test. Statisticians call this bad practice <strong>data snooping</strong>. Investigators should be transparent about how many tests they ran. They also ought to test their conclusions on an independent batch of data.</p>
+</section>
+<section id="was-the-result-important" class="level4" data-number="11.2.2.3">
+<h4 data-number="11.2.2.3" class="anchored" data-anchor-id="was-the-result-important"><span class="header-section-number">11.2.2.3</span> Was the result important</h4>
+<p>If something is statistically significant it is hard to explain by chance variation. It does not mean that it is important or practically significant. Always remember that the <span class="math inline">\(p\)</span>-value of a test depends on the sample size. With a large sample, even a very small difference can be statistically significant or hard to explain by the chance of the draw. This does not make it necessarily important. Conversely an important differecne may not be significant if the sample is too small.</p>
+</section>
+<section id="the-role-of-the-model" class="level4" data-number="11.2.2.4">
+<h4 data-number="11.2.2.4" class="anchored" data-anchor-id="the-role-of-the-model"><span class="header-section-number">11.2.2.4</span> The role of the model</h4>
+<p>The answer to the question: Does the difference come by chance or is it real, needs a precise understanding of chance. Probability theory and box models provide this precision.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mind the role of the box-model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To make sense out of test of significance a box-model is needed.</p>
+</div>
+</div>
+<p>It is an illusion to believe that the test generates the chances directly from the data. It is the probability model or the box-model as we have called it in this course, which pins down the chances. The formulas for the expected value and the standard error makes the assumption that the data are like draws from a box.</p>
+</section>
+<section id="association-and-causation-again" class="level4" data-number="11.2.2.5">
+<h4 data-number="11.2.2.5" class="anchored" data-anchor-id="association-and-causation-again"><span class="header-section-number">11.2.2.5</span> Association and Causation again</h4>
+<p>Let us go back to the court case. The low <span class="math inline">\(p\)</span>-value derived by Gehlbach in producing the statistical evidence for the jury ruled out chance variation as an explanation for the number of deaths registered in the hospital records. The low <span class="math inline">\(p\)</span>-value, however, does not provide an explanation.</p>
+<p>The data used in the court trial were observational. Because the data are observational and not from a randomized controlled trial, which would have had to determine the shifts of the nurse by a random device, while it can rule out chance as an explanation for the deaths it can not rule out other possible explanations. For example, suppose that on one of the shifts of the nurse a boiler had exploded causing a high number of deaths. Such an event would also lead to a tiny <span class="math inline">\(p\)</span>-value showing the the nurse’s presence was associated with the high number of deaths. But it would not be evidence for her guilt.</p>
+</section>
+</section>
+</section>
+<section id="tests-for-regression-coefficients" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="tests-for-regression-coefficients"><span class="header-section-number">11.3</span> Tests for regression coefficients</h2>
+<p>In unit 5 we discussed regression as a way to make predictions from data. In a regression we can also put an uncertainty estimate around the coefficients as well as uncertainty intervals around predictions. We have discussed how to do this in unit 6 when we discussed the bootstrap.</p>
+<p>Let us take up the bootstrapping ideas here again to discuss how we could test in a regression whether the slope of the line was actually different from 0 and not just by chance.</p>
+<p>In unit 5 we ran a regression on the historical data of Pearson about the height of fathers and sons.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>datp <span class="ot">&lt;-</span> pearson</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(datp, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.3</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Father's height (inches)"</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Son's height (inches)"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Pearson's height data from 1903"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">reg =</span> <span class="fu">lm</span>(datp<span class="sc">$</span>Son <span class="sc">~</span> datp<span class="sc">$</span>Father), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="answering_questions_and_claiming_discoveries_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#points(63.1, 74.3, pch = 19, col = "red")</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#lines(c(63.1, 63.1), c(66.3264, 74.3), col = "red", lty = 2)</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#points(71.1, 66.3, pch = 19, col = "red")</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#lines(c(71.1,71.1), c(66.3, 70.4384), col = "red", lty = 2)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span>  <span class="fu">lm</span>(datp<span class="sc">$</span>Son <span class="sc">~</span> datp<span class="sc">$</span>Father)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The regression line had a slope of 0.51. Could it be that this is just chance and the regression line is actually flat?</p>
+<p>Using the logic of a test of significance we would state the following hypothesis:</p>
+<ol type="1">
+<li>Null-Hypothesis: The slope of the true regression line is 0</li>
+<li>Alternative Hypothesis: The slope of the true regression line is not 0</li>
+</ol>
+<p>Now we can see a close relation between tests of significance and confidence intervals. When the 95 % or the 99 % confidence interval contain 0 we need to accept the Null hypothesis and otherwise we can reject it. This time we set up our box-model through a simulation.</p>
+<p>Remember what we did back in unit 6. We re-sampled at random with replacement from our Pearson data and for each new re-sample ran the same regression. This produces a distribution for the coefficient value, which we can then use to compute a confidence interval and check our hypothesis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="at">length =</span> B)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(<span class="dv">1</span><span class="sc">:</span>B)){</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  aux <span class="ot">&lt;-</span> datp[<span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(datp), <span class="at">size =</span> <span class="fu">nrow</span>(datp), <span class="at">replace =</span> T), ]</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> aux)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  output[[i]] <span class="ot">&lt;-</span> mod<span class="sc">$</span>coefficients</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, output)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we took 5000 resamples from our original data, ran a regression for each resample and stored the coefficients in a dataframe we called <code>result</code>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean and standard deviation</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>mean_slope <span class="ot">&lt;-</span> <span class="fu">mean</span>(result<span class="sc">$</span>Father)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>std_dev <span class="ot">&lt;-</span> <span class="fu">sd</span>(result<span class="sc">$</span>Father)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the histogram</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(result<span class="sc">$</span>Father, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">main =</span> <span class="st">"Histogram of regression coefficient"</span>, <span class="at">xlab =</span> <span class="st">"Bootstrapped slopes"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(result<span class="sc">$</span>Father), <span class="fu">max</span>(result<span class="sc">$</span>Father), <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the normal distribution curve</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(x, <span class="at">mean =</span> mean_slope, <span class="at">sd =</span> std_dev)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the normal curve in red</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, y, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate confidence intervals</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>ci_95 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(result<span class="sc">$</span>Father, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>ci_99 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(result<span class="sc">$</span>Father, <span class="fu">c</span>(<span class="fl">0.005</span>, <span class="fl">0.995</span>))</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Color the x-axis within the 95% CI</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">rect</span>(ci_95[<span class="dv">1</span>], <span class="dv">0</span>, ci_95[<span class="dv">2</span>], <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"orange"</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mean_slope, <span class="at">col =</span> <span class="dv">4</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="answering_questions_and_claiming_discoveries_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Because the confidence interval does not contain 0 we can reject the Null hypothesis that the true slope is 0. We can be confident that it is very unlikely that there is no relation between the height of the father and the height of the son.</p>
+<p>Without a bootstrap simulation we would have had to use a test statistics to test against the Null hypothesis. The test statistics would involve a distribution related but not similar to the normal distribution. This distribution is called the <span class="math inline">\(t\)</span>-distribution and the test base on it, the <span class="math inline">\(t\)</span>-test. In this course we will not go into the theory of the <span class="math inline">\(t\)</span>-test here. It basically uses a different box model and leads to a distribution of the test statistics that is similar to the normal but with higher probabilities for the extreme events.</p>
+<p>The regression output of R by default contains a <span class="math inline">\(t-test\)</span> for the significance of the slope coefficient. When you call the <code>lm()</code> function of R, R will compute not only intercept and slope but many other things as well and store them in a list. When you store the regression output like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>modp <span class="ot">&lt;-</span> <span class="fu">lm</span>(Son <span class="sc">~</span> Father, <span class="at">data =</span> datp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>you can use the R <code>summary()</code>function to see an overview of these computations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Son ~ Father, data = datp)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.8910 -1.5361 -0.0092  1.6359  8.9894 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 33.89280    1.83289   18.49   &lt;2e-16 ***
+Father       0.51401    0.02706   19.00   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.438 on 1076 degrees of freedom
+Multiple R-squared:  0.2512,    Adjusted R-squared:  0.2505 
+F-statistic: 360.9 on 1 and 1076 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The number called <code>t-value</code> in the output of the summary function is the ratio of the coefficient and the value of <code>Std. error</code>. The p-value is reported at the right under <code>Pr(&gt;|t|)</code> and as you can see it is highly significant. The Null hypothesis that the coefficient is 0 must be rejected.</p>
+<p>To see an alternative application of this R function, go back to an exercise we studied in unit 4 about expenditure on advertising via different channels and sales income. We found that the correlation of expenditures in newspaper ads was weakest and for TV advertising strongest. Let’s do a rgereesion in R for the newspaper channel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(JWL)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> advertising</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mod  <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> newspaper, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here is the corresponding scatterplot with the regression line</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data<span class="sc">$</span>newspaper, data<span class="sc">$</span>sales,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Expenditure on newspaper advertising versus sale's income"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Expenditure on newspaper advertising"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Sales income"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">0.5</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mod, <span class="at">col =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="answering_questions_and_claiming_discoveries_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here is R’ summary statistics of this regression:</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = sales ~ newspaper, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-11.2272  -3.3873  -0.8392   3.5059  12.7751 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 12.35141    0.62142   19.88  &lt; 2e-16 ***
+newspaper    0.05469    0.01658    3.30  0.00115 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.092 on 198 degrees of freedom
+Multiple R-squared:  0.05212,   Adjusted R-squared:  0.04733 
+F-statistic: 10.89 on 1 and 198 DF,  p-value: 0.001148</code></pre>
+</div>
+</div>
+<p>The relation is weak but still significant. The coefficient is very likely different from 0, as you can read from the two stars right of the row for the coefficient <code>newspaper</code>.</p>
+</section>
+<section id="more-tests" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="more-tests"><span class="header-section-number">11.4</span> More tests</h2>
+<p>There is much more to say about tests of significance. There are many more tests, than we discussed here. For example tests about the difference of averages, tests about independence, tests about classification problems with more than two categories. The logic is, however, always the same. Formulate a Null hypothesis, work out the box-model for the null hypothesis. Construct a test statistics under the assumption that the Null hypothesis is true and then use the data and the box model to compute the p-value. If the p-value is small enough, reject the Null hypothesis.</p>
+</section>
+<section id="exercises" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.5</span> Exercises</h2>
+<section id="exercises-1" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">11.5.1</span> Exercises:</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Is the die loaded?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li><p>A die is rolled 100 times. The total number of spots is 368 instead of the expected 350. Can this be explained by chance variation or is the die loaded?</p></li>
+<li><p>A die is rolled 1000 times. The total number of spots is 3680 instead of the expected 3500. Can this be explained by chance variation or is the die loaded?</p></li>
+</ol>
+<p>Note: A die is “fair”, if each face has the same probability of coming up after the die is thrown. If one face has a higher probability than the others, the die is called “loaded”.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Is this plausible?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One hundered draws are made at random with replacement from a box. The average of the draws is 22.7 and the SD is 10. Someone claims that the average of the box is 20. Is this plausible?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: Which p-value is best?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>Other things equal which of the following <span class="math inline">\(p\)</span>-values is best for the null hypothesis? Explain briefly.</li>
+</ol>
+<p>0.001%, 3%, 17 %, 32%</p>
+<ol start="2" type="a">
+<li>Repeat for the alternative</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 4: Evaluating a flextime work model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many companies are experimenting with flexible working times, also referred to as “flex-times”. “Flex-time”-models allow employees to choose their schedule within broad limits set by the management. Among other things, flex time is supposed to reduce absenteeism. One form knows that in the past few years, employees have averaged 6.3 days off from work (apart from vacations). This year, the firm introduces felx-time. Management chooses a simple random sample of 100 employees to follow in detail, and at the end of the year these employees average 5.5 days off from work and the standard deviation is 2.9 days. Difd absenteeism really go down or is this just chance variation? Formulate the null and the alternative hypothesis in terms of a box model, then answer the question.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: True or False?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="a">
+<li>A “highly” significant result cannot possibly be due to chance</li>
+<li>If a difference is “highly significant” there is less than 1 % chance for the Null hypothesis to be right.</li>
+<li>If the difference is “highly significant”, there is better that a 99% chance for the alternative hypothesis to be right.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 5: A test of significance for the missing girls
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In a country with birth cohorts of the order of magnitude of millions, a sample of 10000 newborns is taken and 4608 girls are counted. Is the chance that the baby is a girl equal to 0.487 as would be expected from the natural sex-ratio, or are there too few baby girls for that?</p>
+<ol type="a">
+<li>Formulate the null and alternative hypothesis in terms of a box model.</li>
+<li>compute z and P</li>
+<li>what do you conclude?</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="project-people-count-the-present-and-future-of-humanity-in-pictures-and-numbers"><span class="header-section-number">11.6</span> Project People count: The present and future of humanity in pictures and numbers</h2>
+<section id="counting-people-of-my-country-a-data-story" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="counting-people-of-my-country-a-data-story"><span class="header-section-number">11.6.1</span> Counting people of my country: A data-story</h3>
+<p>In this course you have worked unit by unit on a project, which we called people count: the present and future of humanity in picture and numbers.</p>
+<p>In this final assignment of the course you are asked to thread this work together in a short guided data essay using the data and graphs from the project. Please write this essay as a Jupyter-Notebook and submit the notebook. Try to combine text (Markup cells) and code (Input-cells).</p>
+<p>Here is an outline:</p>
+<ol type="1">
+<li>Brief introduction: who am I and what is my country (1 paragraph)</li>
+<li>My country and its people in numbers: Past and Present Use the dataset <code>population_statistics_by_age_and_sex</code> from the <code>JWL</code>-package. Use results from project 1 and describe with a bar chart the age composition in 2010 and now. Say a few words about what has changed in terms of the graph and how you would assess this change.</li>
+<li>The mean age and the 0.25, 0.5 and 0.75 percentile of the age distribution in my country today. One or two challenges emanating from that, one or two opportunities that result from this fact.</li>
+<li>Predicting the future: Make a population prediction for the next 10 years based on a regression model as you did in the project using the data for your country. Try to give a 95 % confidence interval for the slope coefficient.</li>
+</ol>
+<p>The essay need not be very long but it should be:</p>
+<ol type="a">
+<li>clearly written</li>
+<li>develop along the outline given her 1.-4.</li>
+<li>leverage the project work and use graphs, data and calculations from there.</li>
+</ol>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-Peck_et_al_2006" class="csl-entry" role="listitem">
+Cobb, George, and Stephen Gehlbach. 2006. <span>“<span class="nocase">Statistics in the Courtroom. United States versus Kristen Gilbert</span>.”</span> In <em>Statistics: A Guide to the Unknown</em>, edited by Roxy Peck, George Casella, George Cobb, Roger Hoerl, Deborah Nolan, Robert Starbuck, and Hal Stern, 3–33. Thomason.
+</div>
+<div id="ref-Spi2019" class="csl-entry" role="listitem">
+Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
+</div>
+</div>
 </section>
+</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

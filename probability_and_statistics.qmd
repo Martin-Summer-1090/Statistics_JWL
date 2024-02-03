@@ -1486,7 +1486,7 @@ A simple random sample of 1600 persons is taken to estimate the percentage of vo
 
 (b) Im the example is the value of 917 expected or observed? Explain.
 
-(c) Th SD of the box si exactly equal to $\sqrt{0.573\times 0.427}$ or estimated form the data? Explain.
+(c) Th SD of the box is exactly equal to $\sqrt{0.573\times 0.427}$ or estimated form the data? Explain.
 
 (d) The SE for the number of voter for party A in the sampple is exactly equal to 20, or estimated from the data as 20? Explain.
 

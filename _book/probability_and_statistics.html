@@ -516,14 +516,14 @@ Expected value for the sum of random draws from a box
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(draws)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 312</code></pre>
+<pre><code>[1] 304</code></pre>
 </div>
 </div>
 <p>pretty close.</p>
 </section>
 <section id="standard-error" class="level3" data-number="10.1.3">
 <h3 data-number="10.1.3" class="anchored" data-anchor-id="standard-error"><span class="header-section-number">10.1.3</span> Standard error</h3>
-<p>We have seen before that the expected value of the sum of the tickets in the box is <span class="math inline">\(300\)</span>. The actual outcome of the random process was, however, 312, which is 12 off the expected value.</p>
+<p>We have seen before that the expected value of the sum of the tickets in the box is <span class="math inline">\(300\)</span>. The actual outcome of the random process was, however, 304, which is 4 off the expected value.</p>
 <p>This is a chance error. The sum will be off the expected value by the size of a chance error, so that:</p>
 <p><span class="math display">\[\begin{equation}
 \text{sum} = \text{expected value} + \text{chance error}
@@ -612,150 +612,150 @@ Square root law
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="odd">
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">0</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
 <td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-</tr>
-<tr class="even">
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">2</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">0</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The sum of these draws is 312, this is 12 off the expected value.</p>
+<p>The sum of these draws is 304, this is 4 off the expected value.</p>
 <p>Now if we do such an experiment 100 times, we get something like the following table. I don’t show the code but you can try to refresh your knowledge of writing a loop here.</p>
 <div class="cell">
 <details>
@@ -802,243 +802,243 @@ Square root law
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">293</td>
+<td style="text-align: right;">292</td>
 <td style="text-align: right;">21</td>
-<td style="text-align: right;">289</td>
+<td style="text-align: right;">262</td>
 <td style="text-align: right;">41</td>
-<td style="text-align: right;">337</td>
+<td style="text-align: right;">318</td>
 <td style="text-align: right;">61</td>
-<td style="text-align: right;">290</td>
+<td style="text-align: right;">341</td>
 <td style="text-align: right;">81</td>
-<td style="text-align: right;">314</td>
+<td style="text-align: right;">276</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">343</td>
 <td style="text-align: right;">22</td>
-<td style="text-align: right;">323</td>
+<td style="text-align: right;">310</td>
 <td style="text-align: right;">42</td>
-<td style="text-align: right;">312</td>
+<td style="text-align: right;">290</td>
 <td style="text-align: right;">62</td>
-<td style="text-align: right;">336</td>
+<td style="text-align: right;">289</td>
 <td style="text-align: right;">82</td>
-<td style="text-align: right;">329</td>
+<td style="text-align: right;">308</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">326</td>
+<td style="text-align: right;">259</td>
 <td style="text-align: right;">23</td>
-<td style="text-align: right;">324</td>
+<td style="text-align: right;">275</td>
 <td style="text-align: right;">43</td>
-<td style="text-align: right;">277</td>
+<td style="text-align: right;">320</td>
 <td style="text-align: right;">63</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">264</td>
 <td style="text-align: right;">83</td>
-<td style="text-align: right;">312</td>
+<td style="text-align: right;">305</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
-<td style="text-align: right;">316</td>
+<td style="text-align: right;">320</td>
 <td style="text-align: right;">24</td>
-<td style="text-align: right;">305</td>
+<td style="text-align: right;">292</td>
 <td style="text-align: right;">44</td>
-<td style="text-align: right;">280</td>
+<td style="text-align: right;">290</td>
 <td style="text-align: right;">64</td>
-<td style="text-align: right;">274</td>
+<td style="text-align: right;">273</td>
 <td style="text-align: right;">84</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">281</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">295</td>
+<td style="text-align: right;">341</td>
 <td style="text-align: right;">25</td>
-<td style="text-align: right;">293</td>
+<td style="text-align: right;">315</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">259</td>
 <td style="text-align: right;">65</td>
-<td style="text-align: right;">293</td>
+<td style="text-align: right;">297</td>
 <td style="text-align: right;">85</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">291</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">6</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">260</td>
 <td style="text-align: right;">26</td>
-<td style="text-align: right;">278</td>
+<td style="text-align: right;">288</td>
 <td style="text-align: right;">46</td>
-<td style="text-align: right;">300</td>
+<td style="text-align: right;">321</td>
 <td style="text-align: right;">66</td>
-<td style="text-align: right;">296</td>
+<td style="text-align: right;">295</td>
 <td style="text-align: right;">86</td>
-<td style="text-align: right;">318</td>
+<td style="text-align: right;">285</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">301</td>
+<td style="text-align: right;">289</td>
 <td style="text-align: right;">27</td>
-<td style="text-align: right;">274</td>
+<td style="text-align: right;">325</td>
 <td style="text-align: right;">47</td>
-<td style="text-align: right;">319</td>
+<td style="text-align: right;">271</td>
 <td style="text-align: right;">67</td>
-<td style="text-align: right;">323</td>
+<td style="text-align: right;">318</td>
 <td style="text-align: right;">87</td>
-<td style="text-align: right;">317</td>
+<td style="text-align: right;">283</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">8</td>
-<td style="text-align: right;">273</td>
+<td style="text-align: right;">311</td>
 <td style="text-align: right;">28</td>
-<td style="text-align: right;">305</td>
+<td style="text-align: right;">268</td>
 <td style="text-align: right;">48</td>
-<td style="text-align: right;">331</td>
+<td style="text-align: right;">310</td>
 <td style="text-align: right;">68</td>
-<td style="text-align: right;">293</td>
+<td style="text-align: right;">324</td>
 <td style="text-align: right;">88</td>
-<td style="text-align: right;">288</td>
+<td style="text-align: right;">271</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">9</td>
-<td style="text-align: right;">291</td>
+<td style="text-align: right;">320</td>
 <td style="text-align: right;">29</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">297</td>
 <td style="text-align: right;">49</td>
-<td style="text-align: right;">305</td>
+<td style="text-align: right;">344</td>
 <td style="text-align: right;">69</td>
-<td style="text-align: right;">291</td>
+<td style="text-align: right;">334</td>
 <td style="text-align: right;">89</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">338</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">285</td>
+<td style="text-align: right;">282</td>
 <td style="text-align: right;">30</td>
-<td style="text-align: right;">292</td>
+<td style="text-align: right;">307</td>
 <td style="text-align: right;">50</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">273</td>
 <td style="text-align: right;">70</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">303</td>
 <td style="text-align: right;">90</td>
-<td style="text-align: right;">255</td>
+<td style="text-align: right;">277</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">11</td>
-<td style="text-align: right;">305</td>
-<td style="text-align: right;">31</td>
 <td style="text-align: right;">314</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">274</td>
 <td style="text-align: right;">51</td>
-<td style="text-align: right;">284</td>
+<td style="text-align: right;">289</td>
 <td style="text-align: right;">71</td>
-<td style="text-align: right;">310</td>
+<td style="text-align: right;">279</td>
 <td style="text-align: right;">91</td>
-<td style="text-align: right;">299</td>
+<td style="text-align: right;">260</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">12</td>
-<td style="text-align: right;">304</td>
+<td style="text-align: right;">320</td>
 <td style="text-align: right;">32</td>
-<td style="text-align: right;">339</td>
+<td style="text-align: right;">315</td>
 <td style="text-align: right;">52</td>
-<td style="text-align: right;">308</td>
+<td style="text-align: right;">317</td>
 <td style="text-align: right;">72</td>
-<td style="text-align: right;">272</td>
+<td style="text-align: right;">313</td>
 <td style="text-align: right;">92</td>
-<td style="text-align: right;">337</td>
+<td style="text-align: right;">316</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">13</td>
-<td style="text-align: right;">309</td>
+<td style="text-align: right;">299</td>
 <td style="text-align: right;">33</td>
 <td style="text-align: right;">292</td>
 <td style="text-align: right;">53</td>
-<td style="text-align: right;">257</td>
+<td style="text-align: right;">282</td>
 <td style="text-align: right;">73</td>
-<td style="text-align: right;">309</td>
+<td style="text-align: right;">328</td>
 <td style="text-align: right;">93</td>
-<td style="text-align: right;">310</td>
+<td style="text-align: right;">296</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">14</td>
-<td style="text-align: right;">288</td>
+<td style="text-align: right;">278</td>
 <td style="text-align: right;">34</td>
-<td style="text-align: right;">280</td>
+<td style="text-align: right;">289</td>
 <td style="text-align: right;">54</td>
-<td style="text-align: right;">328</td>
+<td style="text-align: right;">298</td>
 <td style="text-align: right;">74</td>
-<td style="text-align: right;">297</td>
+<td style="text-align: right;">306</td>
 <td style="text-align: right;">94</td>
-<td style="text-align: right;">316</td>
+<td style="text-align: right;">297</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">15</td>
-<td style="text-align: right;">301</td>
+<td style="text-align: right;">307</td>
 <td style="text-align: right;">35</td>
-<td style="text-align: right;">296</td>
+<td style="text-align: right;">264</td>
 <td style="text-align: right;">55</td>
-<td style="text-align: right;">311</td>
+<td style="text-align: right;">314</td>
 <td style="text-align: right;">75</td>
-<td style="text-align: right;">302</td>
+<td style="text-align: right;">322</td>
 <td style="text-align: right;">95</td>
-<td style="text-align: right;">295</td>
+<td style="text-align: right;">305</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">16</td>
-<td style="text-align: right;">269</td>
+<td style="text-align: right;">275</td>
 <td style="text-align: right;">36</td>
-<td style="text-align: right;">307</td>
+<td style="text-align: right;">308</td>
 <td style="text-align: right;">56</td>
-<td style="text-align: right;">316</td>
+<td style="text-align: right;">300</td>
 <td style="text-align: right;">76</td>
-<td style="text-align: right;">271</td>
+<td style="text-align: right;">288</td>
 <td style="text-align: right;">96</td>
-<td style="text-align: right;">276</td>
+<td style="text-align: right;">292</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">17</td>
-<td style="text-align: right;">317</td>
+<td style="text-align: right;">335</td>
 <td style="text-align: right;">37</td>
-<td style="text-align: right;">332</td>
+<td style="text-align: right;">305</td>
 <td style="text-align: right;">57</td>
-<td style="text-align: right;">292</td>
-<td style="text-align: right;">77</td>
 <td style="text-align: right;">300</td>
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">280</td>
 <td style="text-align: right;">97</td>
-<td style="text-align: right;">303</td>
+<td style="text-align: right;">288</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">18</td>
-<td style="text-align: right;">277</td>
+<td style="text-align: right;">309</td>
 <td style="text-align: right;">38</td>
-<td style="text-align: right;">349</td>
+<td style="text-align: right;">270</td>
 <td style="text-align: right;">58</td>
-<td style="text-align: right;">272</td>
+<td style="text-align: right;">284</td>
 <td style="text-align: right;">78</td>
-<td style="text-align: right;">298</td>
+<td style="text-align: right;">300</td>
 <td style="text-align: right;">98</td>
-<td style="text-align: right;">286</td>
+<td style="text-align: right;">284</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">19</td>
-<td style="text-align: right;">294</td>
+<td style="text-align: right;">319</td>
 <td style="text-align: right;">39</td>
-<td style="text-align: right;">292</td>
+<td style="text-align: right;">284</td>
 <td style="text-align: right;">59</td>
-<td style="text-align: right;">291</td>
+<td style="text-align: right;">299</td>
 <td style="text-align: right;">79</td>
-<td style="text-align: right;">257</td>
-<td style="text-align: right;">99</td>
 <td style="text-align: right;">317</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">299</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">20</td>
-<td style="text-align: right;">276</td>
+<td style="text-align: right;">325</td>
 <td style="text-align: right;">40</td>
-<td style="text-align: right;">283</td>
+<td style="text-align: right;">286</td>
 <td style="text-align: right;">60</td>
-<td style="text-align: right;">252</td>
-<td style="text-align: right;">80</td>
 <td style="text-align: right;">303</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">308</td>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">288</td>
+<td style="text-align: right;">278</td>
 </tr>
 </tbody>
 </table>
@@ -1071,7 +1071,7 @@ Square root law
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">unlist</span>(repetitions) <span class="sc">&lt;=</span> (<span class="dv">300</span> <span class="sc">+</span> <span class="dv">30</span>) <span class="sc">&amp;</span> </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">unlist</span>(repetitions) <span class="sc">&gt;=</span> (<span class="dv">300</span> <span class="sc">-</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This is 0.88. A pretty good approximation.</p>
+<p>This is 0.85. A pretty good approximation.</p>
 <p>Why do we need a conversion to standard units? Here we could also use the normal distribution with mean 300 and standard deviation 30 to derive the same result. To see this, consider:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">330</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">270</span>, <span class="at">mean =</span> <span class="dv">300</span>, <span class="at">sd =</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1125,7 +1125,7 @@ Important
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1-0</span>)<span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4993746</code></pre>
+<pre><code>[1] 0.499996</code></pre>
 </div>
 </div>
 <p>With this insight we can treat the binomial case exactly like the box case. All we have to do is to mark the tickets in the box, in our case the girls and boys, write 1 on the tickets that you count and 0 on the others and then your expected value of a sum of n tosses will be:</p>
@@ -1140,14 +1140,14 @@ Important
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.475</code></pre>
+<pre><code>[1] 0.498</code></pre>
 </div>
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">1000</span>)<span class="sc">*</span><span class="fu">sqrt</span>( <span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"girl"</span>)<span class="sc">*</span>(<span class="fu">mean</span>(outcome <span class="sc">==</span> <span class="st">"boy"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15.79161</code></pre>
+<pre><code>[1] 15.81126</code></pre>
 </div>
 </div>
 <p>This is very good. Now for computing probabilities also here we can - for large enough samples - use the normal approximation. Say, we would like to know what is the probability that we would observe a share of girls between 0.4 and 0.5?</p>
@@ -1474,45 +1474,45 @@ Warning
 <table class="table table-sm table-striped small">
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
 <td style="text-align: right;">2</td>
 </tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">7</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
 <td style="text-align: right;">3</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<p>The sum of these numbers is 100, so their average is 4. If we ask the computer to do this experiment again we get a different average: 3.76. There is chance variability in the sum of draws and thus also in the average. We want to solve the problem of computing the expected value and the standard error of this statistics.</p>
+<p>The sum of these numbers is 96, so their average is 3.84. If we ask the computer to do this experiment again we get a different average: 4.04. There is chance variability in the sum of draws and thus also in the average. We want to solve the problem of computing the expected value and the standard error of this statistics.</p>
 <p>The average of the box is 4 and so the average of the draws will be around 4. The standard error for the average can be worked out from the standard error of the sum. The expected value of the sum is: <span class="math display">\[\begin{equation}
 \text{number of draws}\,\, \times \,\, \text{avergage of box} = 25 \times 4 = 100
 \end{equation}\]</span> The standard deviation of the box is 2 and so the standard error of the sum must be: <span class="math display">\[\begin{equation}
@@ -1753,7 +1753,7 @@ Exercise 7: Polling
 <ol type="a">
 <li><p>Find the 95 % confidence interval for the percentage of voters for party A among the 25000 eligible voters.</p></li>
 <li><p>Im the example is the value of 917 expected or observed? Explain.</p></li>
-<li><p>Th SD of the box si exactly equal to <span class="math inline">\(\sqrt{0.573\times 0.427}\)</span> or estimated form the data? Explain.</p></li>
+<li><p>Th SD of the box is exactly equal to <span class="math inline">\(\sqrt{0.573\times 0.427}\)</span> or estimated form the data? Explain.</p></li>
 <li><p>The SE for the number of voter for party A in the sampple is exactly equal to 20, or estimated from the data as 20? Explain.</p></li>
 </ol>
 </div>

@@ -1,0 +1,36 @@
+\documentclass[margin=3pt]{standalone}
+
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-func}
+
+\begin{document}
+	
+	\begin{pspicture}(0,0)(5, 5)
+		%\psgrid
+		
+		\psline(1,2)(3.6,2)
+		\psline(1,2)(1,3)
+		\psline(3.6,2)(3.6,3)
+		
+		\psframe(1.2,2.2)(2.2,3.2)
+		\psframe(2.4,2.2)(3.4,3.2)
+		
+
+		
+		\rput(1.7,2.7){1}
+		\rput(2.9,2.7){0}
+		
+		\rput(2.8,1.4){$1 = \text{at least one death}$}
+	    \rput(2.1,1){$0 = \text{no death}$}
+		
+		
+	     \pscurve[linestyle=dotted](1.65,3.2)(2,4)(2.6,4.4)
+	     
+	     \rput(2.8,4.6){$Prob(X = 1) = \frac{74}{1641}$}
+	
+		
+		
+	\end{pspicture}
+	
+\end{document}
