@@ -90,12 +90,12 @@ distribution.
 a random variable, which arises if we attach to each outcome of a random
 process a quantity.
 
-**Expected value of the sums of random draws from a box made with replacement**
-is equal to $(\text{the number of draws}) \times (\text{average of the box})
+**Expected value of the sum of random draws of tickets from a box made with replacement**
+is equal to $(\text{the number of draws}) \times (\text{average of the box})$
 
 **Square root law**: When drawing at random with replacement form a 
 box of numbered tickets, the standard error for the sum of the draws is 
-$\sqrt{number of draws} \times (\text{standard deviation of the box})$
+$\sqrt{\text{number of draws}} \times (\text{standard deviation of the box})$
 
 **Probability histogram** represents probabilities, not data. A
 probability historgam represents chance by area.
@@ -635,7 +635,7 @@ percentage of numbers should be between 270 and 330?
 Note that each sum will
 be somewhere between 0 and $100 \times 6$ or 600. Let us assume
 we want to know the chance that the sum is somewhere between
-150 and 350. Here is a picture. We convert first to standard units
+270 and 330. Here is a picture. We convert first to standard units
 and then use the normal curve.
 ![Probability of sum between 150 and 360 in a large sample](pictures/range_of_sum_with_curve.png)
 ```{r}
@@ -1052,13 +1052,13 @@ of the following procedure. Each respondent with a stated preference for party
 A is represented as a ticket with a 1 written on it and the others with a ticket
 with a 0 written on it. The standard error of the box for the sum should be
 \begin{equation}
-\sqrt{\text{(share of}\, 1's) \times (\text{share of}, 0's)}
+\sqrt{\text{(share of}\, 1's) \times (\text{share of} 0's)}
 \end{equation}
 But now you are stuck, because you don't know how the tickets in the box (in the
 population of voters in the district ) are marked.
 
 Survey organisations lift themselves out of the dilemma, very much like we did
-in unit 5, when we learned about the bootstrap.  The substitute the fractions
+in unit 5, when we learned about the bootstrap.  They substitute the fractions
 observed in the sample  for the unknown fractions in the box. For example, there
 were 1328/2500 or 0.53 in the sample in favor of party A and the rest of 0.47
 was opposed. On this basis lets estimate the standard deviation of the box as
@@ -1512,13 +1512,13 @@ In this course you have worked on a project called "people count" using
 demographic data. The context of census data and demographic data was used to 
 apply some of the concepts we learned in this course, such as visualizing 
 data, subsetting and extracting particular datasets from a larger dataset 
-by using R's substting rules. Compute the mean and median age for grouped 
+by using R's subsetting rules. Compute the mean and median age for grouped 
 data, quantify the uncertainty attached to such estimates using a bootstrap 
-algorithm and predicting peppulation growth. Often we looked at three 
-typical countries, Kenya, a so allced bottom layered country, because 
+algorithm and predicting population growth. Often we looked at three 
+typical countries, Kenya, a so called bottom layered country, because 
 of the shape of its population barplot with the typical shape you get 
 for a very young population, the US as an example of a middle layered 
-country and Japan as an examle for an aging society.
+country and Japan as an example for an aging society.
 
 This week I want to encourage you to think about an outline for 
 producing a data-story about your country using the analysis done 
