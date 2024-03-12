@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercises_unit_5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Exercises" href="exercises_unit_6.html" />
+    <link rel="next" title="Exercises: Unit 6, Probability, quantifying uncertainty and variablity" href="exercises_unit_6.html" />
     <link rel="prev" title="Exercises: Unit 4 Making predictions using regression" href="exercises_unit_4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,9 +176,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_3.html">Exercises: Unit 3, Generalizing observations from data and knowing what causes what</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercises_unit_4.html">Exercises: Unit 4 Making predictions using regression</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercises: Unit 5, How sure can we be about what is going on: Estimates and Intervals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_7.html">Exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercises_unit_8.html">Exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_6.html">Exercises: Unit 6, Probability, quantifying uncertainty and variablity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_7.html">Exercises: Unit 7, bringing probability theory and statistics together</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="exercises_unit_8.html">Exercises: Unit 8 Making discoveries, claiming results</a></li>
 </ul>
 
     </div>
@@ -413,7 +415,7 @@ document.write(`
 <ol class="arabic simple" start="2">
 <li><p>Write one line of R-code to compute a single bootstrap resample from the water dataframe.</p></li>
 </ol>
-<p>The code line would be: <code class="docutils literal notranslate"><span class="pre">water[sample(x</span> <span class="pre">=</span> <span class="pre">1:nrow(water),</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">nrow(water),</span> <span class="pre">replace</span> <span class="pre">=</span> <span class="pre">T)]</span></code></p>
+<p>The code line would be: <code class="docutils literal notranslate"><span class="pre">water[sample(x</span> <span class="pre">=</span> <span class="pre">1:nrow(water),</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">nrow(water),</span> <span class="pre">replace</span> <span class="pre">=</span> <span class="pre">T),</span> <span class="pre">]</span></code></p>
 </section>
 <section id="exercise-2-check-your-understanding-of-why-the-bootstrap-works">
 <h3>Exercise 2: Check your understanding of why the bootstrap works<a class="headerlink" href="#exercise-2-check-your-understanding-of-why-the-bootstrap-works" title="Permalink to this heading">#</a></h3>
@@ -575,7 +577,7 @@ distribution. Compute the range in which 95 % of the inter-quartile-ranges lie. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">2.57579000000001</div></div>
+<div class="output text_html">2.55946250000001</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -601,7 +603,7 @@ distribution. Compute the range in which 95 % of the inter-quartile-ranges lie. 
 .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
 .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
 .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
-</style><dl class=dl-inline><dt>2.5%</dt><dd>2.5</dd><dt>97.5%</dt><dd>2.66</dd></dl>
+</style><dl class=dl-inline><dt>2.5%</dt><dd>2.49</dd><dt>97.5%</dt><dd>2.64</dd></dl>
 </div></div>
 </div>
 <p>95 % of the IQRs are between 2.53 and 2.69 inches of Height. We might do a histirgram of the sampled statistics showing the dofferent IQRs on the x-axis and the Frequency on the y-axis.</p>
@@ -612,7 +614,7 @@ distribution. Compute the range in which 95 % of the inter-quartile-ranges lie. 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bbb664695bfd051b4cb6e1c0a84941c1af42a1de88bfd2aa729aac4414c10b67.png" src="_images/bbb664695bfd051b4cb6e1c0a84941c1af42a1de88bfd2aa729aac4414c10b67.png" />
+<img alt="_images/930ff4754d726c621386d833748bb6d2f969c95566e13e1e11cd68a47b98c5ac.png" src="_images/930ff4754d726c621386d833748bb6d2f969c95566e13e1e11cd68a47b98c5ac.png" />
 </div>
 </div>
 </section>
@@ -769,7 +771,7 @@ base the resampling distribution on this distribution.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ac3a0f110af2cf4286986c265ee7710cf09b414c80aa5d1f3664fc47ee0b6d8.png" src="_images/8ac3a0f110af2cf4286986c265ee7710cf09b414c80aa5d1f3664fc47ee0b6d8.png" />
+<img alt="_images/94b6ae6472479988a2eae696f7dd5f4cc049b70c132db25c719648687703b3db.png" src="_images/94b6ae6472479988a2eae696f7dd5f4cc049b70c132db25c719648687703b3db.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -786,7 +788,7 @@ base the resampling distribution on this distribution.</p>
 .dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
 .dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
 .dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
-</style><dl class=dl-inline><dt>2.5%</dt><dd>18.640717298642</dd><dt>97.5%</dt><dd>31.8093777032391</dd></dl>
+</style><dl class=dl-inline><dt>2.5%</dt><dd>18.6258967153611</dd><dt>97.5%</dt><dd>31.6659594750752</dd></dl>
 </div></div>
 </div>
 <p>The mean age we get in this way is quite imprecise and the interval within which the mean age can be is very
@@ -844,7 +846,7 @@ groups. By the grouping and the group mid point approxiamtion we loose lots of p
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercises</p>
+        <p class="prev-next-title">Exercises: Unit 6, Probability, quantifying uncertainty and variablity</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
