@@ -1,33 +1,39 @@
 # Preface {.unnumbered}
 
-These are lecture notes for my introductory statistics and data literacy course I am 
-developing for Jesuit Worldwide Learning (JWL) together with my colleagues from Seitwerk. 
+These are lecture notes for an introductory statistics and data literacy 
+course I have been developing as a volunteer for the Pres-Stem Program of
+Jesuit Worldwide Learning (JWL, https://www.jwl.org/). These notes are input 
+for a series of 8 learning units, provided in a digital format 
+by JWL's service provider Seitwerk (https://www.seitwerk.de/de/home). 
+together with my colleagues from Seitwerk. 
+
 I would like to thank
-Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst and Anny Mayr 
-for all their generous help and support
-in kickstarting this challenging project.
+Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst Anna Mayr and
+Reda Daugelaviciute for all their generous help and support
+in kickstarting this challenging project. The course has first been
+run in the Spring-term of 2024 and will be part of a new Pre-Stem course
+program in the collection of courses provided and taught in the overall
+program of JWL.
 
-The goal of the notes is to develop the core contents of the course systematically and to support
-the production of the online units. I also write up in these notes material and instructions for
-teaching material, which is meant to be used in the local study centers. My  vision is that after
-we are through with the production of the online units, the notes will be overhauled and can then
-when the course actually begins, be used by the students as a textbook and reading material.
+The goal of the notes is to develop the core contents of 
+the course systematically and to support
+the production of the online units. I also write up in 
+these notes material and instructions for
+teaching material, which is meant to be used in the local study centers. 
 
-For the time beeing it is more like a systematic notebook and a scenario. I will add questions
-and comments for the Seitwerk team during this phase as collapsible callout notes like this:
 
-:::{.callout-caution collapse="true"}
-## Comment or Remark for Seitwerk
+For the time being it is more like a systematic notebook and a scenario. 
+This is a first, yet unstable version of the notes. They certainly will
+need more than one overhaul in the months and years to come.
+This archive helps me to keep a better overview of the overall 
+development of the text.
 
-This is an example of a 'folded' caution callout that can be expanded by the user. 
-:::
-
-This helps me to keep a better overview of the overall development of the text.
-
-I will put the developing material on our MS-teams collaboration platform as we go along. Data and
-graphics will be put on the platform as separate files. In addition, mainly for the interaction with
-my past and future self, I keep a versioning of the notes on a public github archive, which may
-also be accessed by colleagues, and of course by the Seitwerk team. The github repository's address is:
+Mainly for the interaction with
+my past and future self, I keep a versioning of the notes on this 
+public github archive, which may
+also be accessed by interested colleagues, other users of GitHub
+and of course by the Seitwerk team. 
+The github repository's address is:
 
 https://github.com/Martin-Summer-1090/Statistics_JWL
 
