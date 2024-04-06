@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -156,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./probability.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variablility</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability: Quantifying uncertainty and variabilility</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -187,7 +206,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
+  <ul class="collapse">
+  <li><a href="#about-the-course" id="toc-about-the-course" class="nav-link" data-scroll-target="#about-the-course">About the course</a></li>
+  <li><a href="#about-the-main-sources-of-this-course" id="toc-about-the-main-sources-of-this-course" class="nav-link" data-scroll-target="#about-the-main-sources-of-this-course">About the main sources of this course</a></li>
+  <li><a href="#about-the-use-of-data-in-this-course" id="toc-about-the-use-of-data-in-this-course" class="nav-link" data-scroll-target="#about-the-use-of-data-in-this-course">About the use of data in this course</a></li>
+  <li><a href="#about-the-computational-tools-used-in-the-course" id="toc-about-the-computational-tools-used-in-the-course" class="nav-link" data-scroll-target="#about-the-computational-tools-used-in-the-course">About the computational tools used in the course</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -214,7 +239,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 January, 2024</p>
+      <p class="date">6 April, 2024</p>
     </div>
   </div>
   
@@ -226,30 +251,67 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="preface" class="level1 unnumbered">
 <h1 class="unnumbered">Preface</h1>
-<p>These are lecture notes for my introductory statistics and data literacy course I am developing for Jesuit Worldwide Learning (JWL) together with my colleagues from Seitwerk. I would like to thank Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst and Anny Mayr for all their generous help and support in kickstarting this challenging project.</p>
-<p>The goal of the notes is to develop the core contents of the course systematically and to support the production of the online units. I also write up in these notes material and instructions for teaching material, which is meant to be used in the local study centers. My vision is that after we are through with the production of the online units, the notes will be overhauled and can then when the course actually begins, be used by the students as a textbook and reading material.</p>
-<p>For the time beeing it is more like a systematic notebook and a scenario. I will add questions and comments for the Seitwerk team during this phase as collapsible callout notes like this:</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Comment or Remark for Seitwerk
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>This is an example of a ‘folded’ caution callout that can be expanded by the user.</p>
-</div>
-</div>
-</div>
-<p>This helps me to keep a better overview of the overall development of the text.</p>
-<p>I will put the developing material on our MS-teams collaboration platform as we go along. Data and graphics will be put on the platform as separate files. In addition, mainly for the interaction with my past and future self, I keep a versioning of the notes on a public github archive, which may also be accessed by colleagues, and of course by the Seitwerk team. The github repository’s address is:</p>
+<p>These are lecture notes for an introductory statistics and data literacy course I have been developing as a volunteer for the Pre-Stem Program of Jesuit Worldwide Learning (JWL, https://www.jwl.org/). These notes are input for a series of 8 learning units, provided in a digital format by JWL’s service provider Seitwerk (https://www.seitwerk.de/de/home). together with my colleagues from Seitwerk.</p>
+<p>I would like to thank Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst Anna Mayr and Reda Daugelaviciute for all their generous help and support in kickstarting this challenging project and bringing it to the first live deployment. The course has first been run in the Spring-term of 2024 and will be part of a new Pre-Stem course program in the collection of courses provided and taught in the overall program of JWL.</p>
+<p>The goal of the notes is to develop the core contents of the course systematically and to support the production of the online units. I also write up in these notes material and instructions for teaching material, which is meant to be used in the local study centers.</p>
+<p>For the time being it is more like a systematic notebook and a scenario. This is a first, yet unstable version of the notes. They certainly will need more than one overhaul in the months and years to come. This archive helps me to keep a better overview of the overall development of the text.</p>
+<p>Mainly for the interaction with my past and future self, I keep a versioning of the notes on this public github archive, which may also be accessed by interested colleagues, other users of GitHub and of course by the Seitwerk team. The github repository’s address is:</p>
 <p>https://github.com/Martin-Summer-1090/Statistics_JWL</p>
+<section id="about-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-course">About the course</h2>
+<p>Statistics is a standard subject needed in many applied fields, including in mathematics itself. Due to the advances in digital technology the traditional statistics curriculum has been enlarged and enhanced by new computational tools which were traditionally not available. These tools significantly enlarged the opportunities of learning statistics and data analysis. They also provide a much simplified and low cost access to many data.</p>
+<p>The marriage between statistics and computational tools has even created an entire new field called data science. The availability of low cost computational tools also allows the teaching of statistics becoming more practical. This is because many ideas and concepts can be implemented and played with hands on. It also allows a lower dependence on mathematical formalism and derivations.</p>
+<p>The course is assuming in principle no prerequisites except for some intellectual maturity and basic knowledge you might expect from students who have gone through nine years of basic schooling and three to four years of high school, which prepares students to start undergraduate studies at a college. It covers three main topics:</p>
+<ol type="1">
+<li><strong>Data exploration</strong> or finding patterns in data through visualization and computation.</li>
+<li><strong>Making predictions</strong> which means using available data and information to make informed guesses about data and information we do not have.</li>
+<li><strong>Quantifying uncertainty</strong> we have to attache to predictions and estimates.</li>
+</ol>
+<p>The main idea which makes statistics simultaneously practical but also subtle and deep is the combination of data analysis with probability theory. In this approach probability is really only needed when we come to the third item, quantifying uncertainty. This allows a slow and step by step build up of ideas without confusing students from the beginning. It also allows for a clearer understanding about the roles of both data and probability in statistical analysis.</p>
+</section>
+<section id="about-the-main-sources-of-this-course" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-main-sources-of-this-course">About the main sources of this course</h2>
+<p>The course presents standard material which has been described and presented in many textbooks and other teaching material before in many places. My contribution is only to present this material in a way suitable to the needs of the PreStem program of JWL.</p>
+<p>I have used and relied on in particular on three main sources, which I particularly liked and which I think are role models for an interesting and good exposition of the three high level topics - data exploration, prediction and quantifying uncertainty. The first, an most important source is David Spiegelhalter’s wondeful book <span class="citation" data-cites="Spi2019">Spiegelhalter (<a href="references.html#ref-Spi2019" role="doc-biblioref">2019</a>)</span>. When I read David’s book I immediately saw that this is the way the subject should be developed when you start from zero. The second source I use is a course taught at UC Berkely and available on the internet <span class="citation" data-cites="AdhDen2022">Adhikari, DeNero, and Wagner (<a href="references.html#ref-AdhDen2022" role="doc-biblioref">2022</a>)</span>. This course sets a particularly good standard in the use of computational tools. Finally I use strongly the classical text of <span class="citation" data-cites="FrePisPur2009">Freedman, Pisani, and Purves (<a href="references.html#ref-FrePisPur2009" role="doc-biblioref">2009</a>)</span>, which I consider as a hallmark of excellence in teaching. My notes are really a compilation from these sources.</p>
+</section>
+<section id="about-the-use-of-data-in-this-course" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-use-of-data-in-this-course">About the use of data in this course</h2>
+<p>Each statistics course has to work with data. Also in the use of data and datasets I strive to adhere to a set of principles, which in my view very important for a successful learning experience.</p>
+<ol type="1">
+<li><strong>Choose relevant real world data sets</strong> instead of toy data or data that happen to be available most easily.</li>
+<li><strong>Choose data from relevant contexts for the students</strong>. This means that the data should measure concepts that are tangible and easy to understand and are relevant to the context of students. I think that demographic and health related data are very suitable for this purpose, because the concepts are clear (mostly simple counts and proportions of people or certain phenomena known to everyone from experience.), because it is interesting to compare different countries (which is good because students usually come from different countries) and some of these data - most importantly health related data - show spectacular success stories even for the countries of Sub Saharan Africa, which gives students a positive outlook and perhaps also a sense of agency that something can be done to actually improve the life of people.</li>
+<li><strong>Choose data where statistical methods can be legitimately applied</strong>. This sounds obvious but it is often ignored. Many textbooks do spend no effort in explaining why certain methods, especially when involving probability, can be legitimately be applied to particular data or contexts.</li>
+</ol>
+<p>For the data, I decided to make all datasets available through an R package or a library. This library is also on GitHub and can be installed from there under the adress:</p>
+<p>https://github.com/Martin-Summer-1090/JWL</p>
+<p>The main reason for doing this, instead of teaching the students the messy and important work of loading real datasets into the computer, is that I am convinced that with an audience of beginners indirectly taught via a platform there would be a huge inefficiency of trouble shooting all kinds of trivial problems, which consume much time. For example, a file can not be read because somebody has the wrong path, a typo in the path-name, a backslash going into the wrong direction, an inappropriate file extension etc.</p>
+</section>
+<section id="about-the-computational-tools-used-in-the-course" class="level2">
+<h2 class="anchored" data-anchor-id="about-the-computational-tools-used-in-the-course">About the computational tools used in the course</h2>
+<p>For the first two topics - data exploration and visualization and making predictions - and to some degree also for the third - quantifying uncertainty - the use of a computer and a computing language suitable for statistics is useful and also essential. This course therefore integrates computational techniques from the beginning. When it comes to quantifying uncertainty the computer is a unique tool to simulate random devices and random processes making the application of probability much more tangible than from a purely mathematical discussion.</p>
+<p>We have chosen the computing language R because R is very widely used in this field, it is free and can be run on many different devices, including older hardware and different hardware platforms (with some hacking and tweaking even on an android phone). One possible alternative would have been to use Python, which would be equally useful.</p>
+<p>I was asked by Seitwerk to combine the use of R with Jupyter Notebooks, a file format which combines text and code and which allows code execution from within the document. I followed this demand instead of using the more common computing environment RStudio, which is directly and specifically adapted and written for R. In principle there are many options that can be used to run R and to do statistical analysis in R. The various trade offs between different user requirements have to be assessed for the given particular situation and for the available hardware and computing environment.</p>
+<p>The teaching of R in my course also follows some core principles:</p>
+<ol type="1">
+<li><strong>Focus on the essentials</strong> instead of being comprehensive and introduce only the minimum that is needed for the given context.</li>
+<li><strong>Stay within the frame of base R</strong> and not use very advanced packages or different paradigms such as the tidyverse.</li>
+<li><strong>Develop a minimum set of tools</strong> which enable the students to do basic tasks and to independently build specialized and more advanced knowledge of R themselves later.</li>
+</ol>
+<p>In implementing these principle I follow the excellent exposition https://faster-site.netlify.app/ by Normann Mattloff, my favorite teacher of R.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-AdhDen2022" class="csl-entry" role="listitem">
+Adhikari, Ani, John DeNero, and David Wagner. 2022. <span>“Computational and Inferential Thinking: The Foundations of Data Science.”</span> <a href="https://inferentialthinking.com/chapters/intro.html" class="uri">https://inferentialthinking.com/chapters/intro.html</a>.
+</div>
+<div id="ref-FrePisPur2009" class="csl-entry" role="listitem">
+Freedman, David, Robert Pisani, and Roger Purves. 2009. <em>Statistics</em>. Fourth. Viva-Norton.
+</div>
+<div id="ref-Spi2019" class="csl-entry" role="listitem">
+Spiegelhalter, David. 2019. <em>The Art of Statistcis: Learning from Data</em>. Pelican Books.
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->

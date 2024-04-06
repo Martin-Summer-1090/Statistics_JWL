@@ -1,7 +1,7 @@
 # Preface {.unnumbered}
 
 These are lecture notes for an introductory statistics and data literacy 
-course I have been developing as a volunteer for the Pres-Stem Program of
+course I have been developing as a volunteer for the Pre-Stem Program of
 Jesuit Worldwide Learning (JWL, https://www.jwl.org/). These notes are input 
 for a series of 8 learning units, provided in a digital format 
 by JWL's service provider Seitwerk (https://www.seitwerk.de/de/home). 
@@ -10,7 +10,8 @@ together with my colleagues from Seitwerk.
 I would like to thank
 Peter Balleis, Mathias Beck, Martha Habash, Stefan Hengst Anna Mayr and
 Reda Daugelaviciute for all their generous help and support
-in kickstarting this challenging project. The course has first been
+in kickstarting this challenging project and bringing it to the
+first live deployment. The course has first been
 run in the Spring-term of 2024 and will be part of a new Pre-Stem course
 program in the collection of courses provided and taught in the overall
 program of JWL.
@@ -127,7 +128,7 @@ when involving probability, can be legitimately be applied
 to particular data or contexts. 
 
 For the data, I decided to make all datasets available through an R 
-package or a library. This libary is also on GitHub and can be
+package or a library. This library is also on GitHub and can be
 installed from there under the adress:
 
 https://github.com/Martin-Summer-1090/JWL
