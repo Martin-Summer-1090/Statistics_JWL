@@ -1445,7 +1445,8 @@ Find the expected value and the standard error for the sum of 100 draws at rando
 ::: {.callout-note icon=false}
 ## Exercise 4: Find the sequence
 
-The expected value for a sum is 50, with a SE of 5. the chance process generating the sum is repeated 10 times.
+The expected value for a sum is 50, with a SE of 5. the chance process 
+generating the sum is repeated 10 times.
 Which is the sequence of observed values?
 
 (a) 51, 57, 48, 52, 57, 61, 58, 41, 53, 48
